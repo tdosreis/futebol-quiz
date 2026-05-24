@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1c3a1c"/>
+      <stop offset="100%" stop-color="#060e08"/>
+    </radialGradient>
+    <radialGradient id="ballGlow" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#d8d8d8" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <!-- Subtle grid overlay -->
+  <line x1="0" y1="256" x2="512" y2="256" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="256" y1="0" x2="256" y2="512" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- Football body -->
+  <circle cx="248" cy="205" r="128" fill="url(#ballGlow)"/>
+
+  <!-- Black pentagon patches (soccer ball pattern) -->
+  <!-- Top center -->
+  <polygon points="248,100 290,128 276,174 220,174 206,128" fill="#111111"/>
+  <!-- Upper left -->
+  <polygon points="164,163 206,135 210,178 190,215 150,205" fill="#111111"/>
+  <!-- Upper right -->
+  <polygon points="332,163 290,135 286,178 306,215 346,205" fill="#111111"/>
+  <!-- Lower left -->
+  <polygon points="150,260 190,248 200,284 178,310 146,290" fill="#111111"/>
+  <!-- Lower right -->
+  <polygon points="346,260 306,248 296,284 318,310 350,290" fill="#111111"/>
+  <!-- Bottom center -->
+  <polygon points="248,316 220,292 226,262 270,262 276,292" fill="#111111"/>
+
+  <!-- Gold ring accent -->
+  <circle cx="248" cy="205" r="132" fill="none" stroke="#FFD700" stroke-width="4" opacity="0.35"/>
+
+  <!-- Separator line -->
+  <line x1="72" y1="370" x2="440" y2="370" stroke="#FFD700" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- FUTEBOL label -->
+  <text x="256" y="420"
+    text-anchor="middle"
+    font-family="Impact, Arial Black, sans-serif"
+    font-size="54" font-weight="900"
+    fill="#FFD700" opacity="0.8"
+    letter-spacing="7">FUTEBOL</text>
+
+  <!-- QUIZ big label -->
+  <text x="256" y="486"
+    text-anchor="middle"
+    font-family="Impact, Arial Black, sans-serif"
+    font-size="78" font-weight="900"
+    fill="#FFD700"
+    letter-spacing="10">QUIZ</text>
+</svg>

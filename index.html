@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Futebol Quiz BR</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#FFD700" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Futebol Quiz" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & base ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background: #0a0f0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      font-family: 'Inter', system-ui, sans-serif;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    #qz {
+      background: #060e08;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+      min-height: 500px;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    #grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #ct { position: relative; z-index: 1; }
+
+    /* ── Screen entrance ── */
+    @keyframes screenIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #ct > div { animation: screenIn .22s ease-out; }
+
+    /* ── Badge: tap press ── */
+    .b { touch-action: manipulation; }
+    .b:active { transform: scale(0.93) !important; filter: brightness(1.2); }
+
+    /* ── Category card hover ── */
+    .cc { touch-action: manipulation; }
+    .cc:hover  { transform: scale(1.03); background: rgba(255,255,255,.07) !important; }
+    .cc:active { transform: scale(0.97) !important; }
+
+    /* ── Badge animations ── */
+    @keyframes badgePop {
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.14); }
+      65%  { transform: scale(1.04); }
+      100% { transform: scale(1.06); }
+    }
+    @keyframes correctGlow {
+      0%, 100% { box-shadow: 0 0 0 3px #00e676, 0 0 20px rgba(0,230,118,.45); }
+      50%       { box-shadow: 0 0 0 4px #00e676, 0 0 38px rgba(0,230,118,.8), 0 0 64px rgba(0,230,118,.25); }
+    }
+    @keyframes wrongShake {
+      0%, 100% { transform: translateX(0) scale(1); }
+      18%      { transform: translateX(-6px) scale(0.96); }
+      36%      { transform: translateX(6px) scale(0.96); }
+      54%      { transform: translateX(-4px); }
+      72%      { transform: translateX(4px); }
+      88%      { transform: translateX(-2px); }
+    }
+    @keyframes scoreUp {
+      0%, 100% { transform: scale(1); }
+      45%      { transform: scale(1.45); }
+    }
+    @keyframes fireBob {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      30%      { transform: scale(1.12) rotate(-4deg); }
+      70%      { transform: scale(1.06) rotate(4deg); }
+    }
+    @keyframes ctaBounce {
+      0%, 100% { transform: translateY(0); box-shadow: 0 4px 24px rgba(255,215,0,.25); }
+      50%      { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(255,215,0,.45); }
+    }
+    @keyframes timerPulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.55; }
+    }
+
+    .b-correct { animation: correctGlow 1.4s ease-in-out infinite !important; transform: scale(1.04) !important; }
+    .b-wrong   { animation: wrongShake .45s ease-out !important; }
+    .b-sel     { animation: badgePop .18s ease-out forwards; }
+
+    .score-up  { animation: scoreUp .28s ease-out; }
+    .fire-bob  { animation: fireBob .7s ease-in-out infinite; }
+
+    #cta-btn   { animation: ctaBounce 2.2s ease-in-out infinite; }
+    .timer-low { animation: timerPulse .55s ease-in-out infinite; }
+
+    /* ── Misc ── */
+    button { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
+</head>
+<body>
+<div id="qz">
+  <div id="grid-overlay"></div>
+  <div id="ct"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   WEB AUDIO — procedural sound effects
+═══════════════════════════════════════════════════ */
+let _AC = null;
+function AC() {
+  if (!_AC) _AC = new (window.AudioContext || window.webkitAudioContext)();
+  return _AC;
+}
+
+function beep(freq, dur, type='sine', vol=0.18, freqEnd=null) {
+  try {
+    const ac = AC();
+    const osc = ac.createOscillator();
+    const g   = ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ac.currentTime);
+    if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, ac.currentTime + dur);
+    g.gain.setValueAtTime(vol, ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
+    osc.start(ac.currentTime);
+    osc.stop(ac.currentTime + dur);
+  } catch(e) {}
+}
+
+const snd = {
+  tap()     { beep(520, .055, 'sine',     .12, 380); },
+  correct() {
+    [[523,.22],[659,.22],[784,.3]].forEach(([f,d],i) =>
+      setTimeout(() => beep(f, d, 'triangle', .2), i*90));
+  },
+  almost()  { beep(440, .18, 'sine', .15); },
+  wrong()   { beep(200, .32, 'sawtooth', .14, 90); },
+  select()  { beep(660, .07, 'sine', .1, 600); },
+  swipe()   { beep(300, .12, 'sine', .08, 500); },
+};
+
+/* ═══════════════════════════════════════════════════
+   DATA — CLUBS
+═══════════════════════════════════════════════════ */
+const CL = [
+  { id:'flamengo',     n:'Flamengo',     a:'FLA', s:'RJ', c1:'#CC1011', c2:'#111' },
+  { id:'fluminense',   n:'Fluminense',   a:'FLU', s:'RJ', c1:'#8B1D3B', c2:'#2E7D52' },
+  { id:'vasco',        n:'Vasco',        a:'VAS', s:'RJ', c1:'#111',    c2:'#EEE' },
+  { id:'botafogo',     n:'Botafogo',     a:'BOT', s:'RJ', c1:'#111',    c2:'#EEE' },
+  { id:'corinthians',  n:'Corinthians',  a:'COR', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'palmeiras',    n:'Palmeiras',    a:'PAL', s:'SP', c1:'#005C30', c2:'#EEE' },
+  { id:'saopaulo',     n:'São Paulo FC', a:'SPF', s:'SP', c1:'#CC0000', c2:'#111' },
+  { id:'santos',       n:'Santos FC',    a:'SAN', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'gremio',       n:'Grêmio',       a:'GRE', s:'RS', c1:'#3E72B8', c2:'#111' },
+  { id:'internacional',n:'Internacional',a:'INT', s:'RS', c1:'#C00000', c2:'#EEE' },
+  { id:'cruzeiro',     n:'Cruzeiro',     a:'CRU', s:'MG', c1:'#002F8B', c2:'#EEE' },
+  { id:'atleticomg',   n:'Atlético MG',  a:'CAM', s:'MG', c1:'#111',    c2:'#EEE' },
+  { id:'atleticopr',   n:'Athletico PR', a:'CAP', s:'PR', c1:'#C00000', c2:'#111' },
+  { id:'bahia',        n:'Bahia',        a:'BAH', s:'BA', c1:'#003A9B', c2:'#C00000' },
+  { id:'fortaleza',    n:'Fortaleza',    a:'FOR', s:'CE', c1:'#003A9B', c2:'#A81C1C' },
+  { id:'ceara',        n:'Ceará',        a:'CEA', s:'CE', c1:'#111',    c2:'#EEE' },
+  { id:'sport',        n:'Sport Recife', a:'SPO', s:'PE', c1:'#C00000', c2:'#111' },
+  { id:'pontepreta',   n:'Ponte Preta',  a:'PON', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'bragantino',   n:'Bragantino',   a:'RBB', s:'SP', c1:'#B80000', c2:'#EEE' },
+  { id:'coritiba',     n:'Coritiba',     a:'COT', s:'PR', c1:'#005C30', c2:'#EEE' },
+  { id:'vitoria',      n:'Vitória',      a:'VIT', s:'BA', c1:'#B80000', c2:'#111' },
+  { id:'criciuma',     n:'Criciúma',     a:'CRI', s:'SC', c1:'#D4A800', c2:'#111' },
+  { id:'americamg',    n:'América MG',   a:'AME', s:'MG', c1:'#1A6B3C', c2:'#EEE' },
+  { id:'guarani',      n:'Guarani',      a:'GUA', s:'SP', c1:'#1A6B3C', c2:'#EEE' },
+  { id:'nautico',      n:'Náutico',      a:'NAU', s:'PE', c1:'#B80000', c2:'#EEE' },
+];
+
+/* ═══════════════════════════════════════════════════
+   DATA — PLAYER PORTRAITS (Lendas)
+═══════════════════════════════════════════════════ */
+const PORT = {
+  pele:       { num:'10', c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Pelé' },
+  zico:       { num:'10', c1:'#CC1011', c2:'#111',    ct:'#FFD700', name:'Zico' },
+  garrincha:  { num:'7',  c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Garrincha' },
+  ronaldinho: { num:'10', c1:'#3E72B8', c2:'#111',    ct:'#EEE',    name:'Ronaldinho' },
+  kaka:       { num:'8',  c1:'#CC0000', c2:'#111',    ct:'#EEE',    name:'Kaká' },
+  ronaldo:    { num:'9',  c1:'#002F8B', c2:'#EEE',    ct:'#EEE',    name:'R. Fenômeno' },
+  dinamite:   { num:'9',  c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Dinamite' },
+  socrates:   { num:'8',  c1:'#EEE',    c2:'#111',    ct:'#111',    name:'Sócrates' },
+};
+
+/* ═══════════════════════════════════════════════════
+   DATA — STADIUMS
+═══════════════════════════════════════════════════ */
+const STAD = {
+  allianz:    { name:'Allianz Parque',     city:'São Paulo',      oval:false },
+  neoq:       { name:'Neo Química Arena',  city:'São Paulo',      oval:false },
+  beirario:   { name:'Beira-Rio',          city:'Porto Alegre',   oval:false },
+  vilabelmiro:{ name:'Vila Belmiro',       city:'Santos',         oval:false },
+  saojanua:   { name:'São Januário',       city:'Rio de Janeiro', oval:false },
+  arena_gre:  { name:'Arena do Grêmio',    city:'Porto Alegre',   oval:false },
+  maracana:   { name:'Maracanã',           city:'Rio de Janeiro', oval:true  },
+  mineirao:   { name:'Mineirão',           city:'Belo Horizonte', oval:true  },
+};
+
+/* ═══════════════════════════════════════════════════
+   DATA — CATEGORIES & QUESTIONS
+═══════════════════════════════════════════════════ */
+const CATS = [
+  {
+    id:'libertadores', name:'Libertadores', emoji:'🏆',
+    tag:'Quem levantou a taça?', col:'#C8A400', diff:'Médio',
+    qs:[
+      { t:'Quem venceu a Libertadores em 2023?', a:['fluminense'] },
+      { t:'Quem venceu a Libertadores em 2022?', a:['flamengo'] },
+      { t:'Quem venceu a Libertadores em 2021?', a:['palmeiras'] },
+      { t:'Quem venceu a Libertadores em 2020?', a:['palmeiras'] },
+      { t:'Quem venceu a Libertadores em 2019?', a:['flamengo'] },
+      { t:'Quem venceu a Libertadores em 2017?', a:['gremio'] },
+      { t:'Quem venceu a Libertadores em 2013?', a:['atleticomg'] },
+      { t:'Quem venceu a Libertadores em 2012?', a:['corinthians'] },
+      { t:'Quem venceu a Libertadores em 2010?', a:['internacional'] },
+      { t:'Quem venceu a Libertadores em 2006?', a:['internacional'] },
+    ]
+  },
+  {
+    id:'brasileirao', name:'Brasileirão', emoji:'🇧🇷',
+    tag:'Campeões da Série A', col:'#1A8C3A', diff:'Médio',
+    qs:[
+      { t:'Campeão do Brasileirão em 2022?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2021?', a:['atleticomg'] },
+      { t:'Campeão do Brasileirão em 2020?', a:['flamengo'] },
+      { t:'Campeão do Brasileirão em 2019?', a:['flamengo'] },
+      { t:'Campeão do Brasileirão em 2018?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2017?', a:['corinthians'] },
+      { t:'Campeão do Brasileirão em 2016?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2015?', a:['corinthians'] },
+      { t:'Campeão do Brasileirão em 2014?', a:['cruzeiro'] },
+      { t:'Campeão do Brasileirão em 2012?', a:['fluminense'] },
+    ]
+  },
+  {
+    id:'estados', name:'Por Estado', emoji:'📍',
+    tag:'Onde fica o clube?', col:'#1A6B9E', diff:'Fácil',
+    qs:[
+      { t:'Selecione TODOS os times do Rio de Janeiro',                         a:['flamengo','fluminense','vasco','botafogo'] },
+      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional'] },
+      { t:'Selecione TODOS os times de Minas Gerais',                           a:['cruzeiro','atleticomg','americamg'] },
+      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo'] },
+      { t:'Selecione TODOS os times do Ceará',                                  a:['fortaleza','ceara'] },
+      { t:'Selecione TODOS os times do Paraná',                                 a:['atleticopr','coritiba'] },
+      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico'] },
+      { t:'Selecione TODOS os times da Bahia',                                  a:['bahia','vitoria'] },
+    ]
+  },
+  {
+    id:'lendas', name:'Lendas', emoji:'⚽',
+    tag:'Ídolos do futebol', col:'#7B3FC4', diff:'Difícil',
+    qs:[
+      { t:'Em qual clube Pelé jogou quase toda a sua carreira?',               a:['santos'],      port:'pele' },
+      { t:'Zico é o maior ídolo histórico de qual clube?',                     a:['flamengo'],    port:'zico' },
+      { t:'Garrincha jogou praticamente toda a vida em qual clube?',           a:['botafogo'],    port:'garrincha' },
+      { t:'Qual foi o primeiro grande clube de Ronaldinho Gaúcho no Brasil?',  a:['gremio'],      port:'ronaldinho' },
+      { t:'Em qual clube Kaká se destacou antes de ir para a Europa?',         a:['saopaulo'],    port:'kaka' },
+      { t:'Ronaldo Fenômeno começou sua carreira em qual clube?',              a:['cruzeiro'],    port:'ronaldo' },
+      { t:'Roberto Dinamite foi ídolo por mais de 20 anos em qual clube?',     a:['vasco'],       port:'dinamite' },
+      { t:'Sócrates liderou a Democracia Corinthiana em qual clube?',          a:['corinthians'], port:'socrates' },
+    ]
+  },
+  {
+    id:'estadios', name:'Estádios', emoji:'🏟️',
+    tag:'A casa dos clubes', col:'#C44F2A', diff:'Médio',
+    qs:[
+      { t:'O Allianz Parque é o estádio de qual clube?',             a:['palmeiras'],              stad:'allianz' },
+      { t:'A Neo Química Arena é o estádio de qual clube?',          a:['corinthians'],             stad:'neoq' },
+      { t:'O Beira-Rio é o estádio de qual clube gaúcho?',           a:['internacional'],           stad:'beirario' },
+      { t:'A Vila Belmiro é a casa histórica de qual clube?',        a:['santos'],                  stad:'vilabelmiro' },
+      { t:'O Estádio São Januário pertence a qual clube carioca?',   a:['vasco'],                   stad:'saojanua' },
+      { t:'Qual time gaúcho joga na Arena do Grêmio?',               a:['gremio'],                  stad:'arena_gre' },
+      { t:'O Maracanã é usado como mandante por quais clubes do RJ?',a:['flamengo','fluminense'],   stad:'maracana' },
+      { t:'O Mineirão em BH é compartilhado por quais times?',       a:['cruzeiro','atleticomg'],   stad:'mineirao' },
+    ]
+  },
+];
+
+/* ═══════════════════════════════════════════════════
+   GAME STATE
+═══════════════════════════════════════════════════ */
+let sc       = 'home';
+let cat      = null;
+let qi       = 0;
+let sel      = new Set();
+let pts      = 0;
+let prevPts  = 0;   // to detect score change for animation
+let streak   = 0;
+let disp     = [];
+let tLeft    = 30;
+let tmr      = null;
+let lastMsg  = '';
+let scores   = {};
+
+/* ═══════════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════════ */
+function getDisp(q) {
+  const right = q.a.map(id => CL.find(c => c.id === id)).filter(Boolean);
+  const wrong  = CL.filter(c => !q.a.includes(c.id)).sort(() => Math.random() - .5);
+  return [...right, ...wrong.slice(0, 10 - right.length)].sort(() => Math.random() - .5);
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — PLAYER PORTRAIT
+═══════════════════════════════════════════════════ */
+function mkPort(p) {
+  return `
+    <ellipse cx="30" cy="19" rx="10" ry="11" fill="#D4956E"/>
+    <path d="M20 12Q25 3 30 2Q35 3 40 12Q38 7 30 6Q22 7 20 12Z" fill="#2A1505"/>
+    <path d="M14 58L12 36L23 29L30 32L37 29L48 36L46 58Z" fill="${p.c1}"/>
+    <path d="M12 36L6 44L8 54L14 52L14 43" fill="${p.c2}" opacity=".85"/>
+    <path d="M48 36L54 44L52 54L46 52L46 43" fill="${p.c2}" opacity=".85"/>
+    <text x="30" y="50" text-anchor="middle" font-size="13" font-weight="900"
+      fill="${p.ct}" font-family="Inter,system-ui">${p.num}</text>
+    <text x="30" y="68" text-anchor="middle" font-size="8" font-weight="700"
+      fill="rgba(255,255,255,.65)" font-family="Inter,system-ui">${p.name}</text>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — STADIUM ILLUSTRATION
+═══════════════════════════════════════════════════ */
+function mkStad(s) {
+  const ov = s.oval;
+  const field = ov
+    ? `<ellipse cx="30" cy="30" rx="25" ry="20" fill="#3A7030"/>
+       <ellipse cx="30" cy="30" rx="25" ry="20" fill="none" stroke="#FFF" stroke-width="1.5"/>
+       <ellipse cx="30" cy="30" rx="14" ry="9" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1"/>
+       <line x1="30" y1="10" x2="30" y2="50" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`
+    : `<rect x="6" y="9" width="48" height="42" fill="#3A7030"/>
+       <rect x="6" y="9" width="48" height="42" fill="none" stroke="#FFF" stroke-width="1.5"/>
+       <rect x="17" y="9" width="26" height="42" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+       <line x1="6" y1="30" x2="54" y2="30" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+       <circle cx="30" cy="30" r="6" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`;
+  return `<rect width="60" height="60" fill="#2A5020"/>
+    ${field}
+    <text x="30" y="57" text-anchor="middle" font-size="6.5" font-weight="700"
+      fill="rgba(255,255,255,.7)" font-family="Inter,system-ui">${s.name}</text>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — CLUB CRESTS
+═══════════════════════════════════════════════════ */
+function crest(id) {
+  const SH = 'M30 3L57 17L57 43L30 57L3 43L3 17Z';
+  const ci  = 'CX' + id.replace(/\W/g, '');
+  const D   = `<defs><clipPath id="${ci}"><path d="${SH}"/></clipPath></defs>`;
+  const B   = `<path d="${SH}" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"/>`;
+  const c   = `clip-path="url(#${ci})"`;
+  const r   = (x,y,w,h,f)    => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" ${c}/>`;
+  const pg  = (pts,f)         => `<polygon points="${pts}" fill="${f}" ${c}/>`;
+  const el  = (cx,cy,rx,ry,f) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}" ${c}/>`;
+  const fc  = (cx,cy,r2,f)    => `<circle cx="${cx}" cy="${cy}" r="${r2}" fill="${f}" ${c}/>`;
+  const ln  = (x1,y1,x2,y2,s,w)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${s}" stroke-width="${w}" ${c}/>`;
+
+  function star(cx, cy, ro, ri, f) {
+    let pts = '';
+    for (let i = 0; i < 10; i++) {
+      const a = Math.PI / 5 * i - Math.PI / 2;
+      const rad = i % 2 ? ri : ro;
+      pts += `${cx + rad * Math.cos(a)},${cy + rad * Math.sin(a)} `;
+    }
+    return `<polygon points="${pts.trim()}" fill="${f}" ${c}/>`;
+  }
+
+  switch (id) {
+    case 'flamengo':
+      return D + r(0,0,60,60,'#111') + r(0,15,60,15,'#CC1011')
+               + r(0,30,60,15,'#111') + r(0,45,60,15,'#CC1011') + B;
+    case 'fluminense':
+      return D + r(0,0,20,60,'#8B1D3B') + r(20,0,20,60,'#EEE') + r(40,0,20,60,'#2E7D52') + B;
+    case 'vasco':
+      return D + r(0,0,60,60,'#EEE')
+               + pg('0,18 42,60 60,60 60,42 18,0 0,0','#111')
+               + r(25,5,10,50,'#EEE') + r(5,25,50,10,'#EEE') + B;
+    case 'botafogo':
+      return D + r(0,0,60,60,'#111') + star(30,29,18,8,'#EEE') + B;
+    case 'corinthians':
+      return D + r(0,0,60,60,'#111') + r(30,0,30,60,'#EEE')
+               + `<circle cx="30" cy="27" r="13" fill="none"
+                   stroke="rgba(120,120,120,.6)" stroke-width="3" ${c}/>`
+               + fc(30,27,3,'rgba(120,120,120,.5)') + B;
+    case 'palmeiras':
+      return D + r(0,0,60,60,'#005C30') + el(30,30,16,20,'#FFF')
+               + `<text x="30" y="37" text-anchor="middle" font-size="22" font-weight="900"
+                   fill="#005C30" font-family="serif" ${c}>P</text>` + B;
+    case 'saopaulo':
+      return D + r(0,0,60,20,'#CC0000') + r(0,20,60,12,'#111') + r(0,32,60,28,'#EEE') + B;
+    case 'santos':
+      return D + r(0,0,60,60,'#111')
+               + `<circle cx="30" cy="28" r="17" fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>`
+               + ln(30,11,30,45,'#EEE',2) + ln(13,28,47,28,'#EEE',2)
+               + ln(18,15,42,41,'#EEE',1.5) + ln(42,15,18,41,'#EEE',1.5)
+               + fc(30,28,4,'#EEE') + B;
+    case 'gremio':
+      return D + r(0,0,60,22,'#3E72B8') + r(0,22,60,14,'#111') + r(0,36,60,24,'#EEE') + B;
+    case 'internacional':
+      return D + r(0,0,60,60,'#C00000') + star(30,28,17,7,'#FFD700') + B;
+    case 'cruzeiro':
+      return D + r(0,0,60,60,'#002F8B')
+               + star(30,16,9,4,'#EEE')
+               + star(18,32,6,3,'#EEE')
+               + star(42,32,6,3,'#EEE')
+               + star(30,44,6,3,'#EEE') + B;
+    case 'atleticomg':
+      return D + r(0,0,60,60,'#111')
+               + el(30,21,9,10,'#EEE')
+               + el(30,40,12,11,'#EEE')
+               + pg('27,11 28.5,6 30,4 31.5,6 33,11 31,12 30,9 29,12','#CC0000')
+               + pg('38,22 45,24 38,26','#EE8800') + B;
+    case 'americamg':
+      return D + r(0,0,60,60,'#1A6B3C')
+               + el(21,17,7,13,'#EEE')
+               + el(39,17,7,13,'#EEE')
+               + fc(30,38,12,'#EEE')
+               + fc(25,37,2.5,'#1A6B3C')
+               + fc(35,37,2.5,'#1A6B3C')
+               + el(30,43,3.5,2,'#FF9999') + B;
+    case 'atleticopr':
+      return D + r(0,0,60,30,'#C00000') + r(0,30,60,30,'#111')
+               + `<circle cx="30" cy="30" r="17" fill="none"
+                   stroke="#EEE" stroke-width="2.5" ${c}/>`
+               + ln(30,13,30,47,'#EEE',3)
+               + fc(30,30,5,'#EEE') + B;
+    case 'coritiba':
+      return D + r(0,0,60,60,'#005C30') + r(0,10,60,10,'#EEE') + r(0,40,60,10,'#EEE') + B;
+    case 'bahia':
+      return D + r(0,0,30,60,'#003A9B') + r(30,0,30,60,'#CC0000')
+               + ln(0,30,60,30,'#EEE',2) + ln(30,0,30,60,'#EEE',2) + B;
+    case 'vitoria':
+      return D + r(0,0,60,60,'#B80000')
+               + r(9,0,10,60,'#111') + r(27,0,10,60,'#111') + r(45,0,10,60,'#111') + B;
+    case 'fortaleza':
+      return D + r(0,0,60,60,'#003A9B') + r(0,42,60,18,'#A81C1C')
+               + star(30,22,13,5,'#FFD700') + B;
+    case 'ceara':
+      return D + r(0,0,60,22,'#111') + r(0,22,60,16,'#EEE') + r(0,38,60,22,'#111') + B;
+    case 'sport':
+      return D + r(0,0,30,60,'#C00000') + r(30,0,30,60,'#111')
+               + star(30,29,13,5,'#EEE') + B;
+    case 'nautico':
+      return D + r(0,0,60,60,'#B80000')
+               + `<circle cx="30" cy="17" r="7" fill="none" stroke="#EEE" stroke-width="3" ${c}/>`
+               + ln(30,24,30,50,'#EEE',3)
+               + ln(20,31,40,31,'#EEE',2.5)
+               + `<path d="M16 50Q14 44 22 41Q30 38 38 41Q46 44 44 50"
+                   fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>` + B;
+    case 'pontepreta':
+      return D
+        + r(0,0,20,20,'#EEE')  + r(20,0,20,20,'#111') + r(40,0,20,20,'#EEE')
+        + r(0,20,20,20,'#111') + r(20,20,20,20,'#EEE') + r(40,20,20,20,'#111')
+        + r(0,40,20,20,'#EEE') + r(20,40,20,20,'#111') + r(40,40,20,20,'#EEE') + B;
+    case 'bragantino':
+      return D + r(0,0,60,60,'#B80000') + star(30,28,18,7,'#EEE') + B;
+    case 'guarani':
+      return D + r(0,0,60,60,'#1A6B3C')
+               + pg('30,7 38,23 33,23 33,51 27,51 27,23 22,23','#EEE') + B;
+    case 'criciuma':
+      return D + r(0,0,60,30,'#111') + r(0,30,60,30,'#D4A800') + B;
+    default:
+      return D + r(0,0,60,60,'#333')
+               + `<text x="30" y="33" text-anchor="middle" font-size="11"
+                   font-weight="900" fill="#EEE" font-family="Inter,system-ui" ${c}>
+                   ${id.substring(0,3).toUpperCase()}</text>` + B;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   BADGE — one club tile
+═══════════════════════════════════════════════════ */
+function badge(club) {
+  const isSel   = sel.has(club.id);
+  const isAns   = sc === 'reveal' && cat.qs[qi].a.includes(club.id);
+  const isWrong = sc === 'reveal' && isSel && !isAns;
+
+  let cls  = 'b';
+  let ring = '';
+  if (sc === 'reveal') {
+    if (isAns)        { cls += ' b-correct'; ring = 'box-shadow:0 0 0 3px #00e676,0 0 20px rgba(0,230,118,.45);'; }
+    else if (isWrong) { cls += ' b-wrong';   ring = 'box-shadow:0 0 0 3px #f44336,0 0 20px rgba(244,67,54,.45);'; }
+  } else if (isSel) {
+    cls += ' b-sel';
+    ring = `box-shadow:0 0 0 3px ${cat.col},0 0 16px ${cat.col}66;transform:scale(1.06);`;
+  }
+
+  return `<div class="${cls}" data-id="${club.id}" style="
+      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
+      position:relative;overflow:hidden;user-select:none;
+      background:rgba(0,0,0,.6);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
+    <svg viewBox="0 0 60 60" width="82%" height="82%">${crest(club.id)}</svg>
+    <span style="font-size:7.5px;color:rgba(255,255,255,.65);text-align:center;
+      font-weight:700;font-family:'Inter',system-ui;
+      text-shadow:0 1px 4px rgba(0,0,0,1);
+      padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
+      ${club.n}</span>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREENS
+═══════════════════════════════════════════════════ */
+function html() {
+
+  /* ── Home ── */
+  if (sc === 'home') return `
+  <div style="display:flex;flex-direction:column;align-items:center;
+    justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:16px;">
+    <div style="font-size:52px;filter:drop-shadow(0 4px 16px rgba(255,215,0,.3));">⚽</div>
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:4px;
+        color:rgba(255,215,0,.5);margin-bottom:6px;font-family:'Inter',system-ui;">PROTÓTIPO v0.3</div>
+      <div style="font-size:42px;font-weight:900;color:#FFD700;
+        font-family:'Bebas Neue','Impact',sans-serif;
+        letter-spacing:4px;line-height:1.05;
+        text-shadow:0 2px 20px rgba(255,215,0,.35);">FUTEBOL<br>QUIZ BR</div>
+    </div>
+    <p style="color:rgba(255,255,255,.38);font-size:13px;max-width:280px;line-height:1.7;
+      margin:0;font-family:'Inter',system-ui;">
+      Prove que você conhece o futebol brasileiro melhor que ninguém.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+      ${CATS.map(c =>
+        `<span style="background:${c.col}18;border:1px solid ${c.col}33;
+          border-radius:20px;padding:4px 11px;font-size:11px;color:${c.col};
+          font-family:'Inter',system-ui;font-weight:600;">
+          ${c.emoji} ${c.name}</span>`).join('')}
+    </div>
+    <button id="cta-btn" style="margin-top:6px;background:#FFD700;color:#060e08;
+      font-size:15px;font-weight:900;padding:13px 50px;border-radius:28px;
+      border:none;cursor:pointer;letter-spacing:1px;
+      font-family:'Bebas Neue','Impact',sans-serif;font-size:18px;
+      letter-spacing:3px;">ESCOLHER CATEGORIA</button>
+  </div>`;
+
+  /* ── Category Selection ── */
+  if (sc === 'categories') return `
+  <div style="padding:16px;display:flex;flex-direction:column;gap:12px;min-height:500px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
+        color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
+        border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.5);
+        font-family:'Inter',system-ui;">Escolha uma categoria</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;">
+      ${CATS.map(c => `
+      <div class="cc" data-cat="${c.id}" style="
+          background:rgba(255,255,255,.035);border:1px solid ${c.col}40;
+          border-radius:12px;padding:14px 12px;cursor:pointer;
+          transition:transform .12s,background .12s,box-shadow .12s;position:relative;
+          min-height:126px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-size:24px;margin-bottom:6px;">${c.emoji}</div>
+          <div style="font-size:13px;font-weight:800;color:#fff;
+            font-family:'Inter',system-ui;
+            line-height:1.2;margin-bottom:3px;">${c.name}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.38);line-height:1.3;
+            font-family:'Inter',system-ui;">
+            ${c.tag}</div>
+        </div>
+        <div style="display:flex;align-items:center;
+          justify-content:space-between;margin-top:8px;">
+          <span style="font-size:9px;color:${c.col};font-weight:700;
+            font-family:'Inter',system-ui;">
+            ${c.qs.length}Q</span>
+          <span style="font-size:9px;background:${c.col}20;color:${c.col};
+            border-radius:8px;padding:2px 6px;font-weight:700;
+            font-family:'Inter',system-ui;">${c.diff}</span>
+        </div>
+        ${scores[c.id] !== undefined
+          ? `<div style="position:absolute;top:9px;right:9px;font-size:9px;
+              color:${c.col};font-weight:800;background:${c.col}18;
+              border-radius:8px;padding:2px 6px;font-family:'Inter',system-ui;">★${scores[c.id]}</div>` : ''}
+      </div>`).join('')}
+      <div style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);
+          border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;
+          align-items:center;justify-content:center;min-height:126px;gap:5px;">
+        <div style="font-size:20px;opacity:.35;">🔒</div>
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.2);
+          font-family:'Inter',system-ui;">Em breve</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.15);text-align:center;
+          line-height:1.4;font-family:'Inter',system-ui;">
+          Copa do Brasil<br>Seleção &amp; mais</div>
+      </div>
+    </div>
+    <p style="font-size:10.5px;color:rgba(255,255,255,.22);text-align:center;
+      margin:0;font-family:'Inter',system-ui;">
+      Toque em uma categoria para começar</p>
+  </div>`;
+
+  /* ── End Screen ── */
+  if (sc === 'end') {
+    const max = cat.qs.length * 3;
+    const pct = Math.round(pts / max * 100);
+    const [em, msg] = pct >= 80 ? ['🏆','Craque!'] : pct >= 50 ? ['⚽','Boa jogada!'] : ['😅','Treina mais!'];
+    return `
+    <div style="display:flex;flex-direction:column;align-items:center;
+      justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:10px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:${cat.col};
+        font-family:'Inter',system-ui;">
+        ${cat.emoji} ${cat.name.toUpperCase()}</div>
+      <div style="font-size:52px;margin:4px 0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.5));">${em}</div>
+      <div style="font-size:28px;font-weight:800;color:#FFD700;
+        font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">${msg}</div>
+      <div style="font-size:68px;font-weight:900;color:#fff;line-height:1;
+        font-family:'Bebas Neue','Impact',sans-serif;">${pts}</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);font-family:'Inter',system-ui;">
+        de ${max} pontos · ${pct}%</div>
+      <div style="width:200px;height:6px;background:rgba(255,255,255,.1);
+        border-radius:3px;overflow:hidden;margin:4px 0;">
+        <div style="height:100%;width:${pct}%;background:${cat.col};border-radius:3px;
+          transition:width 1s ease-out;"></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
+        <button id="brep" style="background:${cat.col};color:#060e08;font-size:14px;
+          font-weight:900;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
+          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
+          JOGAR DE NOVO</button>
+        <button id="bcats" style="background:rgba(255,255,255,.09);color:#fff;font-size:13px;
+          font-weight:700;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
+          font-family:'Inter',system-ui;">
+          Outra categoria</button>
+      </div>
+    </div>`;
+  }
+
+  /* ── Quiz / Reveal ── */
+  const q    = cat.qs[qi];
+  const tpct = (tLeft / 30) * 100;
+  const tc   = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+  const timerCls = tLeft <= 5 ? 'timer-low' : '';
+
+  const portSVG = (q.port && cat.id === 'lendas')
+    ? `<svg viewBox="0 0 60 72" width="46" height="55"
+        style="flex-shrink:0;">${mkPort(PORT[q.port])}</svg>` : '';
+  const stadSVG = (q.stad && cat.id === 'estadios')
+    ? `<svg viewBox="0 0 60 60" width="52" height="52"
+        style="flex-shrink:0;border-radius:6px;overflow:hidden;">${mkStad(STAD[q.stad])}</svg>` : '';
+
+  const scoreChanged = pts !== prevPts;
+
+  return `
+  <div style="padding:14px;display:flex;flex-direction:column;gap:10px;min-height:500px;">
+
+    <!-- Header -->
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:7px;">
+        <button id="bexit" style="background:rgba(255,255,255,.07);border:none;
+          color:rgba(255,255,255,.4);font-size:11px;padding:4px 10px;
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">✕</button>
+        <div style="background:${cat.col}18;border:1px solid ${cat.col}30;
+          border-radius:16px;padding:3px 10px;font-size:10px;
+          font-weight:700;color:${cat.col};font-family:'Inter',system-ui;">${cat.emoji} ${cat.name}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;">
+        ${streak > 1
+          ? `<div class="fire-bob" style="background:rgba(255,100,0,.14);border:1px solid rgba(255,100,0,.22);
+              border-radius:12px;padding:2px 8px;font-size:11px;
+              color:#FF7700;font-weight:700;font-family:'Inter',system-ui;">🔥${streak}x</div>` : ''}
+        <div style="font-size:11px;color:rgba(255,255,255,.32);font-family:'Inter',system-ui;">${qi+1}/${cat.qs.length}</div>
+        <div id="score-disp" class="${scoreChanged ? 'score-up' : ''}"
+          style="font-size:18px;font-weight:900;color:#FFD700;
+            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${pts}
+          <span style="font-size:9px;margin-left:1px;color:rgba(255,215,0,.45);
+            font-family:'Inter',system-ui;font-weight:600;">pts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer bar -->
+    <div style="height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
+      <div id="tf" class="${timerCls}" style="height:100%;width:${tpct}%;background:${tc};
+        border-radius:2px;transition:width .8s linear;"></div>
+    </div>
+
+    <!-- Question card -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:11px;padding:12px 14px;min-height:60px;
+      display:flex;align-items:center;gap:10px;">
+      ${portSVG}${stadSVG}
+      <p style="font-size:14px;font-weight:600;color:#fff;line-height:1.45;
+        margin:0;flex:1;font-family:'Inter',system-ui;">
+        ${q.t}</p>
+    </div>
+
+    <!-- Club grid: 5×2 -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px;">
+      ${disp.map(c => badge(c)).join('')}
+    </div>
+
+    <!-- Footer -->
+    ${sc === 'quiz' ? `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:2px;">
+      <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;
+        font-family:'Inter',system-ui;">
+        ${q.a.length > 1
+          ? `Selecione os ${q.a.length} times corretos`
+          : 'Selecione o time correto'} · toque para marcar</p>
+      <button id="bconf" style="
+          background:${sel.size > 0 ? cat.col : 'rgba(255,255,255,.07)'};
+          color:${sel.size > 0 ? '#060e08' : 'rgba(255,255,255,.2)'};
+          font-size:16px;font-weight:900;padding:10px 44px;
+          border-radius:24px;border:none;
+          cursor:${sel.size > 0 ? 'pointer' : 'default'};
+          letter-spacing:2px;transition:all .18s;
+          font-family:'Bebas Neue','Impact',sans-serif;">CONFIRMAR</button>
+    </div>`
+    : `<div style="text-align:center;padding:6px 0;" id="rvl"></div>`}
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   RENDER + EVENT BINDING
+═══════════════════════════════════════════════════ */
+function go() {
+  prevPts = pts; // snapshot before render (score-up only fires once)
+  document.getElementById('ct').innerHTML = html();
+  prevPts = pts; // prevent re-fire on subsequent re-renders without score change
+
+  document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='categories'; go(); });
+  document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); sc='home'; go(); });
+  document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='categories'; go(); });
+  document.getElementById('bconf')?.addEventListener('click',   () => { if (sel.size > 0) doReveal(); });
+  document.getElementById('brep')?.addEventListener('click',    () => { snd.swipe(); startCat(cat); });
+  document.getElementById('bcats')?.addEventListener('click',   () => { snd.swipe(); sc='categories'; go(); });
+
+  document.querySelectorAll('.cc').forEach(c => c.addEventListener('click', () => {
+    const found = CATS.find(x => x.id === c.dataset.cat);
+    if (found) { snd.select(); startCat(found); }
+  }));
+
+  document.querySelectorAll('.b').forEach(b => b.addEventListener('click', () => {
+    if (sc !== 'quiz') return;
+    snd.tap();
+    const id = b.dataset.id;
+    sel.has(id) ? sel.delete(id) : sel.add(id);
+    go();
+  }));
+
+  if (sc === 'reveal') {
+    const rv = document.getElementById('rvl');
+    if (rv && lastMsg) rv.innerHTML = lastMsg;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   GAME LOGIC
+═══════════════════════════════════════════════════ */
+function startCat(c) {
+  cat = c; qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+  sc = 'quiz'; tLeft = 30; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
+  startTmr();
+  go();
+}
+
+function doReveal() {
+  clearInterval(tmr);
+  sc = 'reveal';
+
+  const q     = cat.qs[qi];
+  const rs    = new Set(q.a);
+  const sa    = [...sel];
+  const wrong = sa.filter(id => !rs.has(id)).length;
+  const right = sa.filter(id =>  rs.has(id)).length;
+  const p     = wrong === 0 && right === rs.size ? 3
+              : wrong === 0 && right > 0          ? 1
+              :                                     0;
+
+  prevPts = pts;
+  pts    += p;
+  p === 3 ? streak++ : (streak = 0);
+
+  if      (p === 3) snd.correct();
+  else if (p === 1) snd.almost();
+  else              snd.wrong();
+
+  lastMsg = p === 3
+    ? `<span style="font-size:15px;font-weight:800;color:#00e676;
+        font-family:'Inter',system-ui;">✓ Perfeito! +3 pontos</span>`
+    : p === 1
+    ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
+        font-family:'Inter',system-ui;">~ Quase! +1 ponto</span>`
+    : `<span style="font-size:15px;font-weight:800;color:#f44336;
+        font-family:'Inter',system-ui;">✗ Errou! +0 pontos</span>`;
+
+  go();
+
+  setTimeout(() => {
+    qi++;
+    sel.clear();
+    lastMsg = '';
+    if (qi >= cat.qs.length) {
+      sc = 'end';
+      if (scores[cat.id] === undefined || pts > scores[cat.id]) scores[cat.id] = pts;
+    } else {
+      sc    = 'quiz';
+      tLeft = 30;
+      disp  = getDisp(cat.qs[qi]);
+      startTmr();
+    }
+    go();
+  }, 2200);
+}
+
+function startTmr() {
+  clearInterval(tmr);
+  tmr = setInterval(() => {
+    tLeft = Math.max(0, tLeft - 1);
+    const tf = document.getElementById('tf');
+    if (tf) {
+      tf.style.width      = (tLeft / 30 * 100) + '%';
+      tf.style.background = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+      if (tLeft <= 5 && !tf.classList.contains('timer-low')) tf.classList.add('timer-low');
+    }
+    if (tLeft <= 0 && sc === 'quiz') doReveal();
+  }, 1000);
+}
+
+/* ── Boot ── */
+go();
+
+/* ── Service Worker registration ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .catch(() => {}); // silently fail (e.g. file:// protocol)
+  });
+}
+</script>
+</body>
+</html>
