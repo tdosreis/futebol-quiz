@@ -4,17 +4,17 @@
 ──────────────────────────────────────────────── */
 const CACHE  = 'futebol-quiz-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon-72.png',
-  '/icons/icon-96.png',
-  '/icons/icon-128.png',
-  '/icons/icon-144.png',
-  '/icons/icon-152.png',
-  '/icons/icon-192.png',
-  '/icons/icon-384.png',
-  '/icons/icon-512.png',
+  '/futebol-quiz/',
+  '/futebol-quiz/index.html',
+  '/futebol-quiz/manifest.json',
+  '/futebol-quiz/icons/icon-72.png',
+  '/futebol-quiz/icons/icon-96.png',
+  '/futebol-quiz/icons/icon-128.png',
+  '/futebol-quiz/icons/icon-144.png',
+  '/futebol-quiz/icons/icon-152.png',
+  '/futebol-quiz/icons/icon-192.png',
+  '/futebol-quiz/icons/icon-384.png',
+  '/futebol-quiz/icons/icon-512.png',
 ];
 
 /* ── Install: precache all assets ── */
