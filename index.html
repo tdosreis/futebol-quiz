@@ -74,6 +74,11 @@
     .cc:hover  { transform: scale(1.03); background: rgba(255,255,255,.07) !important; }
     .cc:active { transform: scale(0.97) !important; }
 
+    /* ── Difficulty card hover ── */
+    .dc { touch-action: manipulation; }
+    .dc:hover  { transform: translateY(-2px); background: rgba(255,255,255,.08) !important; }
+    .dc:active { transform: scale(0.98) !important; }
+
     /* ── Badge animations ── */
     @keyframes badgePop {
       0%   { transform: scale(1); }
@@ -246,6 +251,12 @@ const CATS = [
       { t:'Quem venceu a Libertadores em 2012?', a:['corinthians'] },
       { t:'Quem venceu a Libertadores em 2010?', a:['internacional'] },
       { t:'Quem venceu a Libertadores em 2006?', a:['internacional'] },
+      { t:'Quem venceu a Libertadores em 2011?', a:['santos'] },
+      { t:'Quem venceu a Libertadores em 2005?', a:['saopaulo'] },
+      { t:'Quem venceu a Libertadores em 1999?', a:['palmeiras'] },
+      { t:'Quem venceu a Libertadores em 1998?', a:['vasco'] },
+      { t:'Quem venceu a Libertadores em 1997?', a:['cruzeiro'] },
+      { t:'Quem venceu a Libertadores em 1995?', a:['gremio'] },
     ]
   },
   {
@@ -309,11 +320,99 @@ const CATS = [
 ];
 
 /* ═══════════════════════════════════════════════════
+   IMAGES — CLUB LOGOS (Wikimedia Commons)
+═══════════════════════════════════════════════════ */
+const LOGOS = {
+  flamengo:     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Clube_de_Regatas_do_Flamengo_logo.svg/250px-Clube_de_Regatas_do_Flamengo_logo.svg.png',
+  fluminense:   'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Fluminense_Football_Club.svg/250px-Fluminense_Football_Club.svg.png',
+  vasco:        'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Club_de_Regatas_Vasco_da_Gama_logo_%282021%29.svg/250px-Club_de_Regatas_Vasco_da_Gama_logo_%282021%29.svg.png',
+  botafogo:     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/250px-Botafogo_de_Futebol_e_Regatas_logo.svg.png',
+  corinthians:  'https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Sport_Club_Corinthians_Paulista_crest.svg/250px-Sport_Club_Corinthians_Paulista_crest.svg.png',
+  palmeiras:    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/SE_Palmeiras_2025_crest.png/250px-SE_Palmeiras_2025_crest.png',
+  saopaulo:     'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/S%C3%A3o_Paulo_Futebol_Clube_logo_%282022%29.svg/250px-S%C3%A3o_Paulo_Futebol_Clube_logo_%282022%29.svg.png',
+  santos:       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Santos_Futebol_Clube_logo_%28with_stars_and_crown%29.png/250px-Santos_Futebol_Clube_logo_%28with_stars_and_crown%29.png',
+  gremio:       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gremio_logo.svg/250px-Gremio_logo.svg.png',
+  internacional:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sport_Club_Internacional_logo.svg/250px-Sport_Club_Internacional_logo.svg.png',
+  cruzeiro:     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg/250px-Cruzeiro_Esporte_Clube_%28logo%29.svg.png',
+  atleticomg:   'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Logo_of_Clube_Atl%C3%A9tico_Mineiro.svg/250px-Logo_of_Clube_Atl%C3%A9tico_Mineiro.svg.png',
+  atleticopr:   'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Athletico_Paranaense_%28Logo_2019%29.svg/250px-Athletico_Paranaense_%28Logo_2019%29.svg.png',
+  bahia:        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Logo_of_Esporte_Clube_Bahia_%282004%29.svg/250px-Logo_of_Esporte_Clube_Bahia_%282004%29.svg.png',
+  fortaleza:    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Fortaleza_Esporte_Clube_logo.png/250px-Fortaleza_Esporte_Clube_logo.png',
+  ceara:        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cear%C3%A1_Sporting_Club_logo.svg/250px-Cear%C3%A1_Sporting_Club_logo.svg.png',
+  sport:        'https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Sport_Club_Recife.svg/250px-Sport_Club_Recife.svg.png',
+  pontepreta:   'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Logo_AA_Ponte_Preta.svg/250px-Logo_AA_Ponte_Preta.svg.png',
+  bragantino:   'https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Red_Bull_Bragantino_logo.svg/250px-Red_Bull_Bragantino_logo.svg.png',
+  coritiba:     'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Coritiba_Foot_Ball_Club_logo.svg/250px-Coritiba_Foot_Ball_Club_logo.svg.png',
+  vitoria:      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Esporte_Clube_Vit%C3%B3ria_%282024%29.svg/250px-Esporte_Clube_Vit%C3%B3ria_%282024%29.svg.png',
+  criciuma:     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Crici%C3%BAma_EC_2025_crest.svg/250px-Crici%C3%BAma_EC_2025_crest.svg.png',
+  americamg:    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Escudo_oficial_do_Am%C3%A9rica_Futebol_Clube.svg/250px-Escudo_oficial_do_Am%C3%A9rica_Futebol_Clube.svg.png',
+  guarani:      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Guarani_Futebol_Clube_logo.svg/250px-Guarani_Futebol_Clube_logo.svg.png',
+  nautico:      'https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/Clube_N%C3%A1utico_Capibaribe_%282010%29.svg/250px-Clube_N%C3%A1utico_Capibaribe_%282010%29.svg.png',
+};
+
+/* ═══════════════════════════════════════════════════
+   IMAGES — PLAYER PORTRAITS (Wikimedia Commons)
+═══════════════════════════════════════════════════ */
+const PORT_IMGS = {
+  pele:       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Pele_con_brasil_%28cropped%29.jpg/250px-Pele_con_brasil_%28cropped%29.jpg',
+  zico:       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Zico.JPG/250px-Zico.JPG',
+  garrincha:  'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Manoel_Francisco_dos_Santos-Garrincha.jpg/250px-Manoel_Francisco_dos_Santos-Garrincha.jpg',
+  ronaldinho: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ronaldinho_in_2019.jpg/250px-Ronaldinho_in_2019.jpg',
+  kaka:       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kak%C3%A1_visited_Stadium_St._Petersburg.jpg/250px-Kak%C3%A1_visited_Stadium_St._Petersburg.jpg',
+  ronaldo:    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg/250px-Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg',
+  dinamite:   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Roberto_Dinamite_Vasco_da_Gama.jpg/250px-Roberto_Dinamite_Vasco_da_Gama.jpg',
+  socrates:   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Socrates_elgrafico_1983.jpg/250px-Socrates_elgrafico_1983.jpg',
+};
+
+/* ═══════════════════════════════════════════════════
+   IMAGES — STADIUMS (Wikimedia Commons)
+═══════════════════════════════════════════════════ */
+const STAD_IMGS = {
+  allianz:    'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Allianz_Parque.jpg/330px-Allianz_Parque.jpg',
+  neoq:       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/ARENA_CORINTHIANS.jpg/330px-ARENA_CORINTHIANS.jpg',
+  beirario:   'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Beira_Rio_Stadium.JPG/330px-Beira_Rio_Stadium.JPG',
+  vilabelmiro:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Vila_Belmiro_pre-match_Santos_vs_Gr%C3%AAmio_2021.jpg/330px-Vila_Belmiro_pre-match_Santos_vs_Gr%C3%AAmio_2021.jpg',
+  saojanua:   'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Estadio_sao_januario_cropp.jpg/330px-Estadio_sao_januario_cropp.jpg',
+  arena_gre:  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Arena_do_Gr%C3%AAmio_2014.jpg/330px-Arena_do_Gr%C3%AAmio_2014.jpg',
+  maracana:   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Maracana_2022.jpg/330px-Maracana_2022.jpg',
+  mineirao:   'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Mineir%C3%A3o_%28Top_View%29.jpg/330px-Mineir%C3%A3o_%28Top_View%29.jpg',
+};
+
+/* ═══════════════════════════════════════════════════
+   MIXED GAME BUILDER
+═══════════════════════════════════════════════════ */
+const DIFFS = [
+  { key:'facil',    label:'Fácil',    emoji:'😊', n:10, col:'#43A047',
+    desc:'Para aquecer os motores' },
+  { key:'moderado', label:'Moderado', emoji:'⚽', n:20, col:'#FF9800',
+    desc:'Para os bons de bola' },
+  { key:'dificil',  label:'Difícil',  emoji:'🔥', n:50, col:'#E53935',
+    desc:'Para os craques do quiz' },
+];
+
+function buildMixedGame(n) {
+  // Flatten all questions, tagging each with its source category
+  const allQs = CATS.flatMap(c => c.qs.map(q => ({ ...q, _cat: c })));
+  // Fisher-Yates shuffle
+  for (let i = allQs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allQs[i], allQs[j]] = [allQs[j], allQs[i]];
+  }
+  return {
+    id: 'mixed', name: 'Futebol Quiz BR', emoji: '⚽',
+    tag: 'Perguntas misturadas', col: '#FFD700', diff: 'Variado',
+    qs: allQs.slice(0, Math.min(n, allQs.length)),
+  };
+}
+
+/* ═══════════════════════════════════════════════════
    GAME STATE
 ═══════════════════════════════════════════════════ */
 let sc       = 'home';
 let cat      = null;
 let qi       = 0;
+let numQs    = 10;
+let diffKey  = 'facil';
 let sel      = new Set();
 let pts      = 0;
 let prevPts  = 0;   // to detect score change for animation
@@ -518,11 +617,13 @@ function badge(club) {
   return `<div class="${cls}" data-id="${club.id}" style="
       width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
       position:relative;overflow:hidden;user-select:none;
-      background:rgba(0,0,0,.6);
+      background:rgba(255,255,255,.06);
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-    <svg viewBox="0 0 60 60" width="82%" height="82%">${crest(club.id)}</svg>
-    <span style="font-size:7.5px;color:rgba(255,255,255,.65);text-align:center;
+    <img src="${LOGOS[club.id]}" alt="${club.n}"
+      style="width:72%;height:72%;object-fit:contain;pointer-events:none;flex-shrink:0;"
+      onerror="this.style.opacity='.3'" />
+    <span style="font-size:7.5px;color:rgba(255,255,255,.7);text-align:center;
       font-weight:700;font-family:'Inter',system-ui;
       text-shadow:0 1px 4px rgba(0,0,0,1);
       padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
@@ -558,67 +659,62 @@ function html() {
           font-family:'Inter',system-ui;font-weight:600;">
           ${c.emoji} ${c.name}</span>`).join('')}
     </div>
+    <p style="color:rgba(255,255,255,.22);font-size:11px;max-width:260px;
+      margin:0;font-family:'Inter',system-ui;line-height:1.6;">
+      ${CATS.reduce((n,c)=>n+c.qs.length,0)} perguntas de todas as categorias — misturadas!</p>
     <button id="cta-btn" style="margin-top:6px;background:#FFD700;color:#060e08;
-      font-size:15px;font-weight:900;padding:13px 50px;border-radius:28px;
-      border:none;cursor:pointer;letter-spacing:1px;
-      font-family:'Bebas Neue','Impact',sans-serif;font-size:18px;
-      letter-spacing:3px;">ESCOLHER CATEGORIA</button>
+      font-size:18px;font-weight:900;padding:13px 50px;border-radius:28px;
+      border:none;cursor:pointer;
+      font-family:'Bebas Neue','Impact',sans-serif;
+      letter-spacing:3px;">JOGAR AGORA</button>
   </div>`;
 
-  /* ── Category Selection ── */
-  if (sc === 'categories') return `
-  <div style="padding:16px;display:flex;flex-direction:column;gap:12px;min-height:500px;">
-    <div style="display:flex;align-items:center;gap:8px;">
+  /* ── Difficulty Selection ── */
+  if (sc === 'difficulty') return `
+  <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
       <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
         color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
         border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
-      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.5);
-        font-family:'Inter',system-ui;">Escolha uma categoria</span>
+      <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
+        font-family:'Inter',system-ui;">Escolha a dificuldade</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;">
-      ${CATS.map(c => `
-      <div class="cc" data-cat="${c.id}" style="
-          background:rgba(255,255,255,.035);border:1px solid ${c.col}40;
-          border-radius:12px;padding:14px 12px;cursor:pointer;
-          transition:transform .12s,background .12s,box-shadow .12s;position:relative;
-          min-height:126px;display:flex;flex-direction:column;justify-content:space-between;">
-        <div>
-          <div style="font-size:24px;margin-bottom:6px;">${c.emoji}</div>
-          <div style="font-size:13px;font-weight:800;color:#fff;
-            font-family:'Inter',system-ui;
-            line-height:1.2;margin-bottom:3px;">${c.name}</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.38);line-height:1.3;
-            font-family:'Inter',system-ui;">
-            ${c.tag}</div>
+
+    <!-- Difficulty cards -->
+    <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center;">
+      ${DIFFS.map(d => `
+      <div class="dc" data-key="${d.key}" data-n="${d.n}" style="
+          background:rgba(255,255,255,.04);border:1px solid ${d.col}50;
+          border-radius:14px;padding:18px 20px;cursor:pointer;
+          display:flex;align-items:center;gap:16px;
+          transition:transform .12s,background .12s,box-shadow .12s;
+          box-shadow:0 2px 12px rgba(0,0,0,.3);">
+        <div style="font-size:36px;flex-shrink:0;
+          filter:drop-shadow(0 2px 8px ${d.col}66);">${d.emoji}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:18px;font-weight:900;color:#fff;
+            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;
+            line-height:1.1;">${d.label.toUpperCase()}</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.45);
+            font-family:'Inter',system-ui;margin-top:2px;">${d.desc}</div>
         </div>
-        <div style="display:flex;align-items:center;
-          justify-content:space-between;margin-top:8px;">
-          <span style="font-size:9px;color:${c.col};font-weight:700;
-            font-family:'Inter',system-ui;">
-            ${c.qs.length}Q</span>
-          <span style="font-size:9px;background:${c.col}20;color:${c.col};
-            border-radius:8px;padding:2px 6px;font-weight:700;
-            font-family:'Inter',system-ui;">${c.diff}</span>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-size:20px;font-weight:900;color:${d.col};
+            font-family:'Bebas Neue','Impact',sans-serif;line-height:1;">
+            ${d.n}Q</div>
+          ${scores[d.key] !== undefined
+            ? `<div style="font-size:10px;color:${d.col};font-weight:700;
+                font-family:'Inter',system-ui;opacity:.8;margin-top:2px;">
+                ★ ${scores[d.key]} pts</div>` : ''}
         </div>
-        ${scores[c.id] !== undefined
-          ? `<div style="position:absolute;top:9px;right:9px;font-size:9px;
-              color:${c.col};font-weight:800;background:${c.col}18;
-              border-radius:8px;padding:2px 6px;font-family:'Inter',system-ui;">★${scores[c.id]}</div>` : ''}
       </div>`).join('')}
-      <div style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);
-          border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;
-          align-items:center;justify-content:center;min-height:126px;gap:5px;">
-        <div style="font-size:20px;opacity:.35;">🔒</div>
-        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.2);
-          font-family:'Inter',system-ui;">Em breve</div>
-        <div style="font-size:9px;color:rgba(255,255,255,.15);text-align:center;
-          line-height:1.4;font-family:'Inter',system-ui;">
-          Copa do Brasil<br>Seleção &amp; mais</div>
-      </div>
     </div>
-    <p style="font-size:10.5px;color:rgba(255,255,255,.22);text-align:center;
+
+    <p style="font-size:10px;color:rgba(255,255,255,.2);text-align:center;
       margin:0;font-family:'Inter',system-ui;">
-      Toque em uma categoria para começar</p>
+      Todas as categorias misturadas numa partida só</p>
   </div>`;
 
   /* ── End Screen ── */
@@ -626,12 +722,14 @@ function html() {
     const max = cat.qs.length * 3;
     const pct = Math.round(pts / max * 100);
     const [em, msg] = pct >= 80 ? ['🏆','Craque!'] : pct >= 50 ? ['⚽','Boa jogada!'] : ['😅','Treina mais!'];
+    const isRecord = scores[diffKey] !== undefined && pts === scores[diffKey] && pts > 0;
+    const curDiff  = DIFFS.find(d => d.key === diffKey);
     return `
     <div style="display:flex;flex-direction:column;align-items:center;
       justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:10px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:${cat.col};
-        font-family:'Inter',system-ui;">
-        ${cat.emoji} ${cat.name.toUpperCase()}</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;
+        color:${curDiff.col};font-family:'Inter',system-ui;">
+        ${curDiff.emoji} ${curDiff.label.toUpperCase()} · ${cat.qs.length} perguntas</div>
       <div style="font-size:52px;margin:4px 0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.5));">${em}</div>
       <div style="font-size:28px;font-weight:800;color:#FFD700;
         font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">${msg}</div>
@@ -641,34 +739,41 @@ function html() {
         de ${max} pontos · ${pct}%</div>
       <div style="width:200px;height:6px;background:rgba(255,255,255,.1);
         border-radius:3px;overflow:hidden;margin:4px 0;">
-        <div style="height:100%;width:${pct}%;background:${cat.col};border-radius:3px;
+        <div style="height:100%;width:${pct}%;background:${curDiff.col};border-radius:3px;
           transition:width 1s ease-out;"></div>
       </div>
+      ${isRecord ? `<div style="font-size:12px;font-weight:800;color:#FFD700;
+        font-family:'Inter',system-ui;">🌟 Novo recorde!</div>` : ''}
       <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
-        <button id="brep" style="background:${cat.col};color:#060e08;font-size:14px;
+        <button id="brep" style="background:${curDiff.col};color:#fff;font-size:14px;
           font-weight:900;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
           font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
           JOGAR DE NOVO</button>
-        <button id="bcats" style="background:rgba(255,255,255,.09);color:#fff;font-size:13px;
-          font-weight:700;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
+        <button id="bdiff" style="background:rgba(255,255,255,.09);color:#fff;font-size:13px;
+          font-weight:700;padding:10px 20px;border-radius:20px;border:none;cursor:pointer;
           font-family:'Inter',system-ui;">
-          Outra categoria</button>
+          Mudar dificuldade</button>
       </div>
     </div>`;
   }
 
   /* ── Quiz / Reveal ── */
   const q    = cat.qs[qi];
+  const qcat = q._cat || cat;          // source category for label / colour
   const tpct = (tLeft / 30) * 100;
-  const tc   = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+  const tc   = tLeft > 10 ? qcat.col : tLeft > 5 ? '#FF9800' : '#F44336';
   const timerCls = tLeft <= 5 ? 'timer-low' : '';
 
-  const portSVG = (q.port && cat.id === 'lendas')
-    ? `<svg viewBox="0 0 60 72" width="46" height="55"
-        style="flex-shrink:0;">${mkPort(PORT[q.port])}</svg>` : '';
-  const stadSVG = (q.stad && cat.id === 'estadios')
-    ? `<svg viewBox="0 0 60 60" width="52" height="52"
-        style="flex-shrink:0;border-radius:6px;overflow:hidden;">${mkStad(STAD[q.stad])}</svg>` : '';
+  const portSVG = q.port
+    ? `<div style="flex-shrink:0;width:54px;height:54px;border-radius:50%;overflow:hidden;
+        border:2px solid rgba(255,255,255,.18);box-shadow:0 2px 12px rgba(0,0,0,.5);">
+        <img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}"
+          style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>` : '';
+  const stadSVG = q.stad
+    ? `<div style="flex-shrink:0;width:88px;height:56px;border-radius:8px;overflow:hidden;
+        border:1px solid rgba(255,255,255,.12);box-shadow:0 2px 12px rgba(0,0,0,.5);">
+        <img src="${STAD_IMGS[q.stad]}" alt="${STAD[q.stad].name}"
+          style="width:100%;height:100%;object-fit:cover;" /></div>` : '';
 
   const scoreChanged = pts !== prevPts;
 
@@ -681,9 +786,9 @@ function html() {
         <button id="bexit" style="background:rgba(255,255,255,.07);border:none;
           color:rgba(255,255,255,.4);font-size:11px;padding:4px 10px;
           border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">✕</button>
-        <div style="background:${cat.col}18;border:1px solid ${cat.col}30;
+        <div style="background:${qcat.col}18;border:1px solid ${qcat.col}30;
           border-radius:16px;padding:3px 10px;font-size:10px;
-          font-weight:700;color:${cat.col};font-family:'Inter',system-ui;">${cat.emoji} ${cat.name}</div>
+          font-weight:700;color:${qcat.col};font-family:'Inter',system-ui;">${qcat.emoji} ${qcat.name}</div>
       </div>
       <div style="display:flex;align-items:center;gap:7px;">
         ${streak > 1
@@ -730,7 +835,7 @@ function html() {
           ? `Selecione os ${q.a.length} times corretos`
           : 'Selecione o time correto'} · toque para marcar</p>
       <button id="bconf" style="
-          background:${sel.size > 0 ? cat.col : 'rgba(255,255,255,.07)'};
+          background:${sel.size > 0 ? qcat.col : 'rgba(255,255,255,.07)'};
           color:${sel.size > 0 ? '#060e08' : 'rgba(255,255,255,.2)'};
           font-size:16px;font-weight:900;padding:10px 44px;
           border-radius:24px;border:none;
@@ -750,16 +855,18 @@ function go() {
   document.getElementById('ct').innerHTML = html();
   prevPts = pts; // prevent re-fire on subsequent re-renders without score change
 
-  document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='categories'; go(); });
-  document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); sc='home'; go(); });
-  document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='categories'; go(); });
+  document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='difficulty'; go(); });
+  document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='home'; go(); });
+  document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='difficulty'; go(); });
   document.getElementById('bconf')?.addEventListener('click',   () => { if (sel.size > 0) doReveal(); });
-  document.getElementById('brep')?.addEventListener('click',    () => { snd.swipe(); startCat(cat); });
-  document.getElementById('bcats')?.addEventListener('click',   () => { snd.swipe(); sc='categories'; go(); });
+  document.getElementById('brep')?.addEventListener('click',    () => { snd.swipe(); startGame(); });
+  document.getElementById('bdiff')?.addEventListener('click',   () => { snd.swipe(); sc='difficulty'; go(); });
 
-  document.querySelectorAll('.cc').forEach(c => c.addEventListener('click', () => {
-    const found = CATS.find(x => x.id === c.dataset.cat);
-    if (found) { snd.select(); startCat(found); }
+  document.querySelectorAll('.dc').forEach(d => d.addEventListener('click', () => {
+    numQs   = parseInt(d.dataset.n);
+    diffKey = d.dataset.key;
+    snd.select();
+    startGame();
   }));
 
   document.querySelectorAll('.b').forEach(b => b.addEventListener('click', () => {
@@ -779,8 +886,9 @@ function go() {
 /* ═══════════════════════════════════════════════════
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
-function startCat(c) {
-  cat = c; qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+function startGame() {
+  cat = buildMixedGame(numQs);
+  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   sc = 'quiz'; tLeft = 30; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
@@ -825,7 +933,7 @@ function doReveal() {
     lastMsg = '';
     if (qi >= cat.qs.length) {
       sc = 'end';
-      if (scores[cat.id] === undefined || pts > scores[cat.id]) scores[cat.id] = pts;
+      if (scores[diffKey] === undefined || pts > scores[diffKey]) scores[diffKey] = pts;
     } else {
       sc    = 'quiz';
       tLeft = 30;
