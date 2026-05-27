@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Futebol Quiz BR v0.3</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0f0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+    }
+    #qz {
+      background: #060e08;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+      min-height: 500px;
+      width: 100%;
+      max-width: 680px;
+    }
+    #grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #ct { position: relative; z-index: 1; }
+
+    /* ── Category card hover ── */
+    .cc:hover { transform: scale(1.03); background: rgba(255,255,255,.07) !important; }
+
+    /* ── Badge hover ── */
+    .b:hover { filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+<div id="qz">
+  <div id="grid-overlay"></div>
+  <div id="ct"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   DATA — CLUBS
+═══════════════════════════════════════════════════ */
+const CL = [
+  { id:'flamengo',     n:'Flamengo',     a:'FLA', s:'RJ', c1:'#CC1011', c2:'#111' },
+  { id:'fluminense',   n:'Fluminense',   a:'FLU', s:'RJ', c1:'#8B1D3B', c2:'#2E7D52' },
+  { id:'vasco',        n:'Vasco',        a:'VAS', s:'RJ', c1:'#111',    c2:'#EEE' },
+  { id:'botafogo',     n:'Botafogo',     a:'BOT', s:'RJ', c1:'#111',    c2:'#EEE' },
+  { id:'corinthians',  n:'Corinthians',  a:'COR', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'palmeiras',    n:'Palmeiras',    a:'PAL', s:'SP', c1:'#005C30', c2:'#EEE' },
+  { id:'saopaulo',     n:'São Paulo FC', a:'SPF', s:'SP', c1:'#CC0000', c2:'#111' },
+  { id:'santos',       n:'Santos FC',    a:'SAN', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'gremio',       n:'Grêmio',       a:'GRE', s:'RS', c1:'#3E72B8', c2:'#111' },
+  { id:'internacional',n:'Internacional',a:'INT', s:'RS', c1:'#C00000', c2:'#EEE' },
+  { id:'cruzeiro',     n:'Cruzeiro',     a:'CRU', s:'MG', c1:'#002F8B', c2:'#EEE' },
+  { id:'atleticomg',   n:'Atlético MG',  a:'CAM', s:'MG', c1:'#111',    c2:'#EEE' },
+  { id:'atleticopr',   n:'Athletico PR', a:'CAP', s:'PR', c1:'#C00000', c2:'#111' },
+  { id:'bahia',        n:'Bahia',        a:'BAH', s:'BA', c1:'#003A9B', c2:'#C00000' },
+  { id:'fortaleza',    n:'Fortaleza',    a:'FOR', s:'CE', c1:'#003A9B', c2:'#A81C1C' },
+  { id:'ceara',        n:'Ceará',        a:'CEA', s:'CE', c1:'#111',    c2:'#EEE' },
+  { id:'sport',        n:'Sport Recife', a:'SPO', s:'PE', c1:'#C00000', c2:'#111' },
+  { id:'pontepreta',   n:'Ponte Preta',  a:'PON', s:'SP', c1:'#111',    c2:'#EEE' },
+  { id:'bragantino',   n:'Bragantino',   a:'RBB', s:'SP', c1:'#B80000', c2:'#EEE' },
+  { id:'coritiba',     n:'Coritiba',     a:'COT', s:'PR', c1:'#005C30', c2:'#EEE' },
+  { id:'vitoria',      n:'Vitória',      a:'VIT', s:'BA', c1:'#B80000', c2:'#111' },
+  { id:'criciuma',     n:'Criciúma',     a:'CRI', s:'SC', c1:'#D4A800', c2:'#111' },
+  { id:'americamg',    n:'América MG',   a:'AME', s:'MG', c1:'#1A6B3C', c2:'#EEE' },
+  { id:'guarani',      n:'Guarani',      a:'GUA', s:'SP', c1:'#1A6B3C', c2:'#EEE' },
+  { id:'nautico',      n:'Náutico',      a:'NAU', s:'PE', c1:'#B80000', c2:'#EEE' },
+];
+
+/* ═══════════════════════════════════════════════════
+   DATA — PLAYER PORTRAITS (Lendas)
+   c1 = jersey primary, c2 = jersey secondary, ct = number text color
+═══════════════════════════════════════════════════ */
+const PORT = {
+  pele:       { num:'10', c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Pelé' },
+  zico:       { num:'10', c1:'#CC1011', c2:'#111',    ct:'#FFD700', name:'Zico' },
+  garrincha:  { num:'7',  c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Garrincha' },
+  ronaldinho: { num:'10', c1:'#3E72B8', c2:'#111',    ct:'#EEE',    name:'Ronaldinho' },
+  kaka:       { num:'8',  c1:'#CC0000', c2:'#111',    ct:'#EEE',    name:'Kaká' },
+  ronaldo:    { num:'9',  c1:'#002F8B', c2:'#EEE',    ct:'#EEE',    name:'R. Fenômeno' },
+  dinamite:   { num:'9',  c1:'#111',    c2:'#EEE',    ct:'#EEE',    name:'Dinamite' },
+  socrates:   { num:'8',  c1:'#EEE',    c2:'#111',    ct:'#111',    name:'Sócrates' },
+};
+
+/* ═══════════════════════════════════════════════════
+   DATA — STADIUMS (Estádios)
+   oval: true = circular bowl shape, false = rectangular pitch
+═══════════════════════════════════════════════════ */
+const STAD = {
+  allianz:    { name:'Allianz Parque',     city:'São Paulo',      oval:false },
+  neoq:       { name:'Neo Química Arena',  city:'São Paulo',      oval:false },
+  beirario:   { name:'Beira-Rio',          city:'Porto Alegre',   oval:false },
+  vilabelmiro:{ name:'Vila Belmiro',       city:'Santos',         oval:false },
+  saojanua:   { name:'São Januário',       city:'Rio de Janeiro', oval:false },
+  arena_gre:  { name:'Arena do Grêmio',    city:'Porto Alegre',   oval:false },
+  maracana:   { name:'Maracanã',           city:'Rio de Janeiro', oval:true  },
+  mineirao:   { name:'Mineirão',           city:'Belo Horizonte', oval:true  },
+};
+
+/* ═══════════════════════════════════════════════════
+   DATA — CATEGORIES & QUESTIONS
+   Each question: { t: text, a: [correct club ids], port?: portrait key, stad?: stadium key }
+═══════════════════════════════════════════════════ */
+const CATS = [
+  {
+    id:'libertadores', name:'Libertadores', emoji:'🏆',
+    tag:'Quem levantou a taça?', col:'#C8A400', diff:'Médio',
+    qs:[
+      { t:'Quem venceu a Libertadores em 2023?', a:['fluminense'] },
+      { t:'Quem venceu a Libertadores em 2022?', a:['flamengo'] },
+      { t:'Quem venceu a Libertadores em 2021?', a:['palmeiras'] },
+      { t:'Quem venceu a Libertadores em 2020?', a:['palmeiras'] },
+      { t:'Quem venceu a Libertadores em 2019?', a:['flamengo'] },
+      { t:'Quem venceu a Libertadores em 2017?', a:['gremio'] },
+      { t:'Quem venceu a Libertadores em 2013?', a:['atleticomg'] },
+      { t:'Quem venceu a Libertadores em 2012?', a:['corinthians'] },
+      { t:'Quem venceu a Libertadores em 2010?', a:['internacional'] },
+      { t:'Quem venceu a Libertadores em 2006?', a:['internacional'] },
+    ]
+  },
+  {
+    id:'brasileirao', name:'Brasileirão', emoji:'🇧🇷',
+    tag:'Campeões da Série A', col:'#1A8C3A', diff:'Médio',
+    qs:[
+      { t:'Campeão do Brasileirão em 2022?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2021?', a:['atleticomg'] },
+      { t:'Campeão do Brasileirão em 2020?', a:['flamengo'] },
+      { t:'Campeão do Brasileirão em 2019?', a:['flamengo'] },
+      { t:'Campeão do Brasileirão em 2018?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2017?', a:['corinthians'] },
+      { t:'Campeão do Brasileirão em 2016?', a:['palmeiras'] },
+      { t:'Campeão do Brasileirão em 2015?', a:['corinthians'] },
+      { t:'Campeão do Brasileirão em 2014?', a:['cruzeiro'] },
+      { t:'Campeão do Brasileirão em 2012?', a:['fluminense'] },
+    ]
+  },
+  {
+    id:'estados', name:'Por Estado', emoji:'📍',
+    tag:'Onde fica o clube?', col:'#1A6B9E', diff:'Fácil',
+    qs:[
+      { t:'Selecione TODOS os times do Rio de Janeiro',                         a:['flamengo','fluminense','vasco','botafogo'] },
+      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional'] },
+      { t:'Selecione TODOS os times de Minas Gerais',                           a:['cruzeiro','atleticomg','americamg'] },
+      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo'] },
+      { t:'Selecione TODOS os times do Ceará',                                  a:['fortaleza','ceara'] },
+      { t:'Selecione TODOS os times do Paraná',                                 a:['atleticopr','coritiba'] },
+      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico'] },
+      { t:'Selecione TODOS os times da Bahia',                                  a:['bahia','vitoria'] },
+    ]
+  },
+  {
+    id:'lendas', name:'Lendas', emoji:'⚽',
+    tag:'Ídolos do futebol', col:'#7B3FC4', diff:'Difícil',
+    qs:[
+      { t:'Em qual clube Pelé jogou quase toda a sua carreira?',               a:['santos'],      port:'pele' },
+      { t:'Zico é o maior ídolo histórico de qual clube?',                     a:['flamengo'],    port:'zico' },
+      { t:'Garrincha jogou praticamente toda a vida em qual clube?',           a:['botafogo'],    port:'garrincha' },
+      { t:'Qual foi o primeiro grande clube de Ronaldinho Gaúcho no Brasil?',  a:['gremio'],      port:'ronaldinho' },
+      { t:'Em qual clube Kaká se destacou antes de ir para a Europa?',         a:['saopaulo'],    port:'kaka' },
+      { t:'Ronaldo Fenômeno começou sua carreira em qual clube?',              a:['cruzeiro'],    port:'ronaldo' },
+      { t:'Roberto Dinamite foi ídolo por mais de 20 anos em qual clube?',     a:['vasco'],       port:'dinamite' },
+      { t:'Sócrates liderou a Democracia Corinthiana em qual clube?',          a:['corinthians'], port:'socrates' },
+    ]
+  },
+  {
+    id:'estadios', name:'Estádios', emoji:'🏟️',
+    tag:'A casa dos clubes', col:'#C44F2A', diff:'Médio',
+    qs:[
+      { t:'O Allianz Parque é o estádio de qual clube?',             a:['palmeiras'],              stad:'allianz' },
+      { t:'A Neo Química Arena é o estádio de qual clube?',          a:['corinthians'],             stad:'neoq' },
+      { t:'O Beira-Rio é o estádio de qual clube gaúcho?',           a:['internacional'],           stad:'beirario' },
+      { t:'A Vila Belmiro é a casa histórica de qual clube?',        a:['santos'],                  stad:'vilabelmiro' },
+      { t:'O Estádio São Januário pertence a qual clube carioca?',   a:['vasco'],                   stad:'saojanua' },
+      { t:'Qual time gaúcho joga na Arena do Grêmio?',               a:['gremio'],                  stad:'arena_gre' },
+      { t:'O Maracanã é usado como mandante por quais clubes do RJ?',a:['flamengo','fluminense'],   stad:'maracana' },
+      { t:'O Mineirão em BH é compartilhado por quais times?',       a:['cruzeiro','atleticomg'],   stad:'mineirao' },
+    ]
+  },
+];
+
+/* ═══════════════════════════════════════════════════
+   GAME STATE
+═══════════════════════════════════════════════════ */
+let sc       = 'home';   // screen: home | categories | quiz | reveal | end
+let cat      = null;     // active category object
+let qi       = 0;        // question index
+let sel      = new Set();// selected club ids
+let pts      = 0;        // current score
+let streak   = 0;        // consecutive perfect answers
+let disp     = [];       // 10 clubs shown this question
+let tLeft    = 30;       // seconds remaining
+let tmr      = null;     // setInterval handle
+let lastMsg  = '';       // reveal feedback message
+let scores   = {};       // { catId: highScore }
+
+/* ═══════════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════════ */
+function getDisp(q) {
+  const right = q.a.map(id => CL.find(c => c.id === id)).filter(Boolean);
+  const wrong  = CL.filter(c => !q.a.includes(c.id)).sort(() => Math.random() - .5);
+  return [...right, ...wrong.slice(0, 10 - right.length)].sort(() => Math.random() - .5);
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — PLAYER PORTRAIT
+   Used in the Lendas question card
+═══════════════════════════════════════════════════ */
+function mkPort(p) {
+  return `
+    <ellipse cx="30" cy="19" rx="10" ry="11" fill="#D4956E"/>
+    <path d="M20 12Q25 3 30 2Q35 3 40 12Q38 7 30 6Q22 7 20 12Z" fill="#2A1505"/>
+    <path d="M14 58L12 36L23 29L30 32L37 29L48 36L46 58Z" fill="${p.c1}"/>
+    <path d="M12 36L6 44L8 54L14 52L14 43" fill="${p.c2}" opacity=".85"/>
+    <path d="M48 36L54 44L52 54L46 52L46 43" fill="${p.c2}" opacity=".85"/>
+    <text x="30" y="50" text-anchor="middle" font-size="13" font-weight="900"
+      fill="${p.ct}" font-family="system-ui">${p.num}</text>
+    <text x="30" y="68" text-anchor="middle" font-size="8" font-weight="700"
+      fill="rgba(255,255,255,.65)" font-family="system-ui">${p.name}</text>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — STADIUM ILLUSTRATION
+   Used in the Estádios question card
+═══════════════════════════════════════════════════ */
+function mkStad(s) {
+  const ov = s.oval;
+  const field = ov
+    ? `<ellipse cx="30" cy="30" rx="25" ry="20" fill="#3A7030"/>
+       <ellipse cx="30" cy="30" rx="25" ry="20" fill="none" stroke="#FFF" stroke-width="1.5"/>
+       <ellipse cx="30" cy="30" rx="14" ry="9" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1"/>
+       <line x1="30" y1="10" x2="30" y2="50" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`
+    : `<rect x="6" y="9" width="48" height="42" fill="#3A7030"/>
+       <rect x="6" y="9" width="48" height="42" fill="none" stroke="#FFF" stroke-width="1.5"/>
+       <rect x="17" y="9" width="26" height="42" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+       <line x1="6" y1="30" x2="54" y2="30" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+       <circle cx="30" cy="30" r="6" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`;
+  return `<rect width="60" height="60" fill="#2A5020"/>
+    ${field}
+    <text x="30" y="57" text-anchor="middle" font-size="6.5" font-weight="700"
+      fill="rgba(255,255,255,.7)" font-family="system-ui">${s.name}</text>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SVG — CLUB CRESTS
+   Each crest is clipped to a hexagonal shield path.
+   Returns inner SVG markup (no <svg> wrapper).
+═══════════════════════════════════════════════════ */
+function crest(id) {
+  const SH = 'M30 3L57 17L57 43L30 57L3 43L3 17Z'; // shield outline
+  const ci  = 'CX' + id.replace(/\W/g, '');         // unique clipPath id
+
+  // ── shorthand helpers ──
+  const D   = `<defs><clipPath id="${ci}"><path d="${SH}"/></clipPath></defs>`;
+  const B   = `<path d="${SH}" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"/>`;
+  const c   = `clip-path="url(#${ci})"`;
+  const r   = (x,y,w,h,f)  => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" ${c}/>`;
+  const pg  = (pts,f)       => `<polygon points="${pts}" fill="${f}" ${c}/>`;
+  const el  = (cx,cy,rx,ry,f)=> `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}" ${c}/>`;
+  const fc  = (cx,cy,r2,f)  => `<circle cx="${cx}" cy="${cy}" r="${r2}" fill="${f}" ${c}/>`;
+  const ln  = (x1,y1,x2,y2,s,w)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${s}" stroke-width="${w}" ${c}/>`;
+
+  // ── 5-pointed star helper ──
+  function star(cx, cy, ro, ri, f) {
+    let pts = '';
+    for (let i = 0; i < 10; i++) {
+      const a = Math.PI / 5 * i - Math.PI / 2;
+      const rad = i % 2 ? ri : ro;
+      pts += `${cx + rad * Math.cos(a)},${cy + rad * Math.sin(a)} `;
+    }
+    return `<polygon points="${pts.trim()}" fill="${f}" ${c}/>`;
+  }
+
+  switch (id) {
+
+    /* ── Rio de Janeiro ── */
+    case 'flamengo':
+      // 4 horizontal bands: black / red / black / red
+      return D + r(0,0,60,60,'#111') + r(0,15,60,15,'#CC1011')
+               + r(0,30,60,15,'#111') + r(0,45,60,15,'#CC1011') + B;
+
+    case 'fluminense':
+      // 3 vertical stripes: dark-red / white / dark-green
+      return D + r(0,0,20,60,'#8B1D3B') + r(20,0,20,60,'#EEE') + r(40,0,20,60,'#2E7D52') + B;
+
+    case 'vasco':
+      // White shield, diagonal black sash, white cross on sash
+      return D + r(0,0,60,60,'#EEE')
+               + pg('0,18 42,60 60,60 60,42 18,0 0,0','#111')
+               + r(25,5,10,50,'#EEE') + r(5,25,50,10,'#EEE') + B;
+
+    case 'botafogo':
+      // Black with a lone white 5-pointed star
+      return D + r(0,0,60,60,'#111') + star(30,29,18,8,'#EEE') + B;
+
+    /* ── São Paulo ── */
+    case 'corinthians':
+      // Vertical black/white split + faint ring
+      return D + r(0,0,60,60,'#111') + r(30,0,30,60,'#EEE')
+               + `<circle cx="30" cy="27" r="13" fill="none"
+                   stroke="rgba(120,120,120,.6)" stroke-width="3" ${c}/>`
+               + fc(30,27,3,'rgba(120,120,120,.5)') + B;
+
+    case 'palmeiras':
+      // Green with white oval and serif "P"
+      return D + r(0,0,60,60,'#005C30') + el(30,30,16,20,'#FFF')
+               + `<text x="30" y="37" text-anchor="middle" font-size="22" font-weight="900"
+                   fill="#005C30" font-family="serif" ${c}>P</text>` + B;
+
+    case 'saopaulo':
+      // Horizontal stripes: red / black / white
+      return D + r(0,0,60,20,'#CC0000') + r(0,20,60,12,'#111') + r(0,32,60,28,'#EEE') + B;
+
+    case 'santos':
+      // Black with 8-spoke ship's helm (wheel)
+      return D + r(0,0,60,60,'#111')
+               + `<circle cx="30" cy="28" r="17" fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>`
+               + ln(30,11,30,45,'#EEE',2) + ln(13,28,47,28,'#EEE',2)
+               + ln(18,15,42,41,'#EEE',1.5) + ln(42,15,18,41,'#EEE',1.5)
+               + fc(30,28,4,'#EEE') + B;
+
+    /* ── Rio Grande do Sul ── */
+    case 'gremio':
+      // 3 horizontal bands: blue / black / white
+      return D + r(0,0,60,22,'#3E72B8') + r(0,22,60,14,'#111') + r(0,36,60,24,'#EEE') + B;
+
+    case 'internacional':
+      // Red with a golden star
+      return D + r(0,0,60,60,'#C00000') + star(30,28,17,7,'#FFD700') + B;
+
+    /* ── Minas Gerais ── */
+    case 'cruzeiro':
+      // Dark blue with 4 stars (Cruzeiro do Sul constellation)
+      return D + r(0,0,60,60,'#002F8B')
+               + star(30,16,9,4,'#EEE')   // top (larger)
+               + star(18,32,6,3,'#EEE')   // left
+               + star(42,32,6,3,'#EEE')   // right
+               + star(30,44,6,3,'#EEE')   // bottom
+               + B;
+
+    case 'atleticomg':
+      // Black with simplified white rooster (Galo)
+      return D + r(0,0,60,60,'#111')
+               + el(30,21,9,10,'#EEE')   // head
+               + el(30,40,12,11,'#EEE')  // body
+               + pg('27,11 28.5,6 30,4 31.5,6 33,11 31,12 30,9 29,12','#CC0000') // comb
+               + pg('38,22 45,24 38,26','#EE8800')  // beak
+               + B;
+
+    case 'americamg':
+      // Green with white rabbit face (Coelho)
+      return D + r(0,0,60,60,'#1A6B3C')
+               + el(21,17,7,13,'#EEE')     // left ear
+               + el(39,17,7,13,'#EEE')     // right ear
+               + fc(30,38,12,'#EEE')       // head
+               + fc(25,37,2.5,'#1A6B3C')   // left eye
+               + fc(35,37,2.5,'#1A6B3C')   // right eye
+               + el(30,43,3.5,2,'#FF9999') // nose
+               + B;
+
+    /* ── Paraná ── */
+    case 'atleticopr':
+      // Red top / black bottom with white target circle + vertical line
+      return D + r(0,0,60,30,'#C00000') + r(0,30,60,30,'#111')
+               + `<circle cx="30" cy="30" r="17" fill="none"
+                   stroke="#EEE" stroke-width="2.5" ${c}/>`
+               + ln(30,13,30,47,'#EEE',3)
+               + fc(30,30,5,'#EEE') + B;
+
+    case 'coritiba':
+      // Green with 2 white horizontal bands
+      return D + r(0,0,60,60,'#005C30') + r(0,10,60,10,'#EEE') + r(0,40,60,10,'#EEE') + B;
+
+    /* ── Bahia ── */
+    case 'bahia':
+      // Blue / red vertical halves with white cross
+      return D + r(0,0,30,60,'#003A9B') + r(30,0,30,60,'#CC0000')
+               + ln(0,30,60,30,'#EEE',2) + ln(30,0,30,60,'#EEE',2) + B;
+
+    case 'vitoria':
+      // Red with 3 black vertical stripes
+      return D + r(0,0,60,60,'#B80000')
+               + r(9,0,10,60,'#111') + r(27,0,10,60,'#111') + r(45,0,10,60,'#111') + B;
+
+    /* ── Ceará ── */
+    case 'fortaleza':
+      // Blue with red bottom band and gold star
+      return D + r(0,0,60,60,'#003A9B') + r(0,42,60,18,'#A81C1C')
+               + star(30,22,13,5,'#FFD700') + B;
+
+    case 'ceara':
+      // Black / white / black horizontal thirds
+      return D + r(0,0,60,22,'#111') + r(0,22,60,16,'#EEE') + r(0,38,60,22,'#111') + B;
+
+    /* ── Pernambuco ── */
+    case 'sport':
+      // Red left / black right with white star
+      return D + r(0,0,30,60,'#C00000') + r(30,0,30,60,'#111')
+               + star(30,29,13,5,'#EEE') + B;
+
+    case 'nautico':
+      // Red with white anchor
+      return D + r(0,0,60,60,'#B80000')
+               + `<circle cx="30" cy="17" r="7" fill="none" stroke="#EEE" stroke-width="3" ${c}/>`
+               + ln(30,24,30,50,'#EEE',3)
+               + ln(20,31,40,31,'#EEE',2.5)
+               + `<path d="M16 50Q14 44 22 41Q30 38 38 41Q46 44 44 50"
+                   fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>` + B;
+
+    /* ── São Paulo interior / other ── */
+    case 'pontepreta':
+      // 3×3 black and white checkerboard
+      return D
+        + r(0,0,20,20,'#EEE')  + r(20,0,20,20,'#111') + r(40,0,20,20,'#EEE')
+        + r(0,20,20,20,'#111') + r(20,20,20,20,'#EEE') + r(40,20,20,20,'#111')
+        + r(0,40,20,20,'#EEE') + r(20,40,20,20,'#111') + r(40,40,20,20,'#EEE') + B;
+
+    case 'bragantino':
+      // Red with large white star
+      return D + r(0,0,60,60,'#B80000') + star(30,28,18,7,'#EEE') + B;
+
+    case 'guarani':
+      // Green with white upward arrow
+      return D + r(0,0,60,60,'#1A6B3C')
+               + pg('30,7 38,23 33,23 33,51 27,51 27,23 22,23','#EEE') + B;
+
+    /* ── Santa Catarina ── */
+    case 'criciuma':
+      // Black top / yellow bottom
+      return D + r(0,0,60,30,'#111') + r(0,30,60,30,'#D4A800') + B;
+
+    /* ── Fallback ── */
+    default:
+      return D + r(0,0,60,60,'#333')
+               + `<text x="30" y="33" text-anchor="middle" font-size="11"
+                   font-weight="900" fill="#EEE" font-family="system-ui" ${c}>
+                   ${id.substring(0,3).toUpperCase()}</text>` + B;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   BADGE — renders one club tile in the 5×2 grid
+═══════════════════════════════════════════════════ */
+function badge(club) {
+  const isSel  = sel.has(club.id);
+  const isAns  = sc === 'reveal' && cat.qs[qi].a.includes(club.id);
+  const isWrong= sc === 'reveal' && isSel && !isAns;
+
+  let ring = '';
+  if (sc === 'reveal') {
+    if (isAns)   ring = 'box-shadow:0 0 0 3px #00e676,0 0 20px rgba(0,230,118,.45);';
+    else if (isWrong) ring = 'box-shadow:0 0 0 3px #f44336,0 0 20px rgba(244,67,54,.45);';
+  } else if (isSel) {
+    ring = `box-shadow:0 0 0 3px ${cat.col},0 0 16px ${cat.col}66;transform:scale(1.06);`;
+  }
+
+  return `<div class="b" data-id="${club.id}" style="
+      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
+      position:relative;overflow:hidden;user-select:none;
+      background:rgba(0,0,0,.6);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition:transform .12s,box-shadow .12s;${ring}">
+    <svg viewBox="0 0 60 60" width="82%" height="82%">${crest(club.id)}</svg>
+    <span style="font-size:7.5px;color:rgba(255,255,255,.65);text-align:center;
+      font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,1);
+      padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
+      ${club.n}</span>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREENS — HTML render
+═══════════════════════════════════════════════════ */
+function html() {
+
+  /* ── Home ── */
+  if (sc === 'home') return `
+  <div style="display:flex;flex-direction:column;align-items:center;
+    justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:16px;">
+    <div style="font-size:48px;">⚽</div>
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:4px;
+        color:rgba(255,215,0,.5);margin-bottom:6px;">PROTÓTIPO v0.3</div>
+      <div style="font-size:38px;font-weight:900;color:#FFD700;
+        letter-spacing:2px;line-height:1.05;">FUTEBOL<br>QUIZ BR</div>
+    </div>
+    <p style="color:rgba(255,255,255,.4);font-size:13px;max-width:280px;line-height:1.7;margin:0;">
+      Prove que você conhece o futebol brasileiro melhor que ninguém.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+      ${CATS.map(c =>
+        `<span style="background:${c.col}18;border:1px solid ${c.col}33;
+          border-radius:20px;padding:4px 11px;font-size:11px;color:${c.col};">
+          ${c.emoji} ${c.name}</span>`).join('')}
+    </div>
+    <button id="bh" style="margin-top:6px;background:#FFD700;color:#060e08;
+      font-size:15px;font-weight:900;padding:13px 50px;border-radius:28px;
+      border:none;cursor:pointer;letter-spacing:1px;">ESCOLHER CATEGORIA</button>
+  </div>`;
+
+  /* ── Category Selection ── */
+  if (sc === 'categories') return `
+  <div style="padding:16px;display:flex;flex-direction:column;gap:12px;min-height:500px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
+        color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
+        border-radius:12px;cursor:pointer;">← Início</button>
+      <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.5);">
+        Escolha uma categoria</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;">
+      ${CATS.map(c => `
+      <div class="cc" data-cat="${c.id}" style="
+          background:rgba(255,255,255,.035);border:1px solid ${c.col}40;
+          border-radius:12px;padding:14px 12px;cursor:pointer;
+          transition:transform .12s,background .12s;position:relative;
+          min-height:126px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-size:24px;margin-bottom:6px;">${c.emoji}</div>
+          <div style="font-size:13px;font-weight:800;color:#fff;
+            line-height:1.2;margin-bottom:3px;">${c.name}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.38);line-height:1.3;">
+            ${c.tag}</div>
+        </div>
+        <div style="display:flex;align-items:center;
+          justify-content:space-between;margin-top:8px;">
+          <span style="font-size:9px;color:${c.col};font-weight:700;">
+            ${c.qs.length}Q</span>
+          <span style="font-size:9px;background:${c.col}20;color:${c.col};
+            border-radius:8px;padding:2px 6px;font-weight:700;">${c.diff}</span>
+        </div>
+        ${scores[c.id] !== undefined
+          ? `<div style="position:absolute;top:9px;right:9px;font-size:9px;
+              color:${c.col};font-weight:800;background:${c.col}18;
+              border-radius:8px;padding:2px 6px;">★${scores[c.id]}</div>` : ''}
+      </div>`).join('')}
+      <!-- Coming soon slot -->
+      <div style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);
+          border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;
+          align-items:center;justify-content:center;min-height:126px;gap:5px;">
+        <div style="font-size:20px;opacity:.35;">🔒</div>
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.2);">Em breve</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.15);text-align:center;line-height:1.4;">
+          Copa do Brasil<br>Seleção &amp; mais</div>
+      </div>
+    </div>
+    <p style="font-size:10.5px;color:rgba(255,255,255,.22);text-align:center;margin:0;">
+      Toque em uma categoria para começar</p>
+  </div>`;
+
+  /* ── End Screen ── */
+  if (sc === 'end') {
+    const max = cat.qs.length * 3;
+    const pct = Math.round(pts / max * 100);
+    const [em, msg] = pct >= 80 ? ['🏆','Craque!'] : pct >= 50 ? ['⚽','Boa jogada!'] : ['😅','Treina mais!'];
+    return `
+    <div style="display:flex;flex-direction:column;align-items:center;
+      justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:10px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:${cat.col};">
+        ${cat.emoji} ${cat.name.toUpperCase()}</div>
+      <div style="font-size:50px;margin:4px 0;">${em}</div>
+      <div style="font-size:26px;font-weight:800;color:#FFD700;">${msg}</div>
+      <div style="font-size:64px;font-weight:900;color:#fff;line-height:1;">${pts}</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);">
+        de ${max} pontos · ${pct}%</div>
+      <div style="width:200px;height:6px;background:rgba(255,255,255,.1);
+        border-radius:3px;overflow:hidden;margin:4px 0;">
+        <div style="height:100%;width:${pct}%;background:${cat.col};border-radius:3px;"></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
+        <button id="brep" style="background:${cat.col};color:#060e08;font-size:13px;
+          font-weight:900;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;">
+          Jogar de novo</button>
+        <button id="bcats" style="background:rgba(255,255,255,.09);color:#fff;font-size:13px;
+          font-weight:700;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;">
+          Outra categoria</button>
+      </div>
+    </div>`;
+  }
+
+  /* ── Quiz / Reveal ── */
+  const q     = cat.qs[qi];
+  const tpct  = (tLeft / 30) * 100;
+  const tc    = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+
+  // Optional visual in question card
+  const portSVG = (q.port && cat.id === 'lendas')
+    ? `<svg viewBox="0 0 60 72" width="46" height="55"
+        style="flex-shrink:0;">${mkPort(PORT[q.port])}</svg>` : '';
+  const stadSVG = (q.stad && cat.id === 'estadios')
+    ? `<svg viewBox="0 0 60 60" width="52" height="52"
+        style="flex-shrink:0;border-radius:6px;overflow:hidden;">${mkStad(STAD[q.stad])}</svg>` : '';
+
+  return `
+  <div style="padding:14px;display:flex;flex-direction:column;gap:10px;min-height:500px;">
+
+    <!-- Header bar -->
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:7px;">
+        <button id="bexit" style="background:rgba(255,255,255,.07);border:none;
+          color:rgba(255,255,255,.4);font-size:11px;padding:4px 10px;
+          border-radius:12px;cursor:pointer;">✕</button>
+        <div style="background:${cat.col}18;border:1px solid ${cat.col}30;
+          border-radius:16px;padding:3px 10px;font-size:10px;
+          font-weight:700;color:${cat.col};">${cat.emoji} ${cat.name}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;">
+        ${streak > 1
+          ? `<div style="background:rgba(255,100,0,.14);border:1px solid rgba(255,100,0,.22);
+              border-radius:12px;padding:2px 8px;font-size:11px;
+              color:#FF7700;font-weight:700;">🔥${streak}x</div>` : ''}
+        <div style="font-size:11px;color:rgba(255,255,255,.32);">${qi+1}/${cat.qs.length}</div>
+        <div style="font-size:16px;font-weight:800;color:#FFD700;">${pts}
+          <span style="font-size:9px;margin-left:1px;color:rgba(255,215,0,.45);">pts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer bar -->
+    <div style="height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
+      <div id="tf" style="height:100%;width:${tpct}%;background:${tc};
+        border-radius:2px;transition:width .8s linear;"></div>
+    </div>
+
+    <!-- Question card -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:11px;padding:12px 14px;min-height:60px;
+      display:flex;align-items:center;gap:10px;">
+      ${portSVG}${stadSVG}
+      <p style="font-size:14px;font-weight:600;color:#fff;line-height:1.45;margin:0;flex:1;">
+        ${q.t}</p>
+    </div>
+
+    <!-- Club grid: 5×2 -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px;">
+      ${disp.map(c => badge(c)).join('')}
+    </div>
+
+    <!-- Footer: confirm button OR reveal message -->
+    ${sc === 'quiz' ? `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:2px;">
+      <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;">
+        ${q.a.length > 1
+          ? `Selecione os ${q.a.length} times corretos`
+          : 'Selecione o time correto'} · toque para marcar</p>
+      <button id="bconf" style="
+          background:${sel.size > 0 ? cat.col : 'rgba(255,255,255,.07)'};
+          color:${sel.size > 0 ? '#060e08' : 'rgba(255,255,255,.2)'};
+          font-size:14px;font-weight:900;padding:10px 44px;
+          border-radius:24px;border:none;
+          cursor:${sel.size > 0 ? 'pointer' : 'default'};
+          letter-spacing:1px;transition:all .18s;">CONFIRMAR</button>
+    </div>`
+    : `<div style="text-align:center;padding:6px 0;" id="rvl"></div>`}
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   RENDER + EVENT BINDING
+═══════════════════════════════════════════════════ */
+function go() {
+  document.getElementById('ct').innerHTML = html();
+
+  document.getElementById('bh')?.addEventListener('click',    () => { sc='categories'; go(); });
+  document.getElementById('bhome')?.addEventListener('click', () => { sc='home'; go(); });
+  document.getElementById('bexit')?.addEventListener('click', () => { clearInterval(tmr); sc='categories'; go(); });
+  document.getElementById('bconf')?.addEventListener('click', () => { if (sel.size > 0) doReveal(); });
+  document.getElementById('brep')?.addEventListener('click',  () => startCat(cat));
+  document.getElementById('bcats')?.addEventListener('click', () => { sc='categories'; go(); });
+
+  document.querySelectorAll('.cc').forEach(c => c.addEventListener('click', () => {
+    const found = CATS.find(x => x.id === c.dataset.cat);
+    if (found) startCat(found);
+  }));
+
+  document.querySelectorAll('.b').forEach(b => b.addEventListener('click', () => {
+    if (sc !== 'quiz') return;
+    const id = b.dataset.id;
+    sel.has(id) ? sel.delete(id) : sel.add(id);
+    go();
+  }));
+
+  // Re-inject reveal message after re-render
+  if (sc === 'reveal') {
+    const rv = document.getElementById('rvl');
+    if (rv && lastMsg) rv.innerHTML = lastMsg;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   GAME LOGIC
+═══════════════════════════════════════════════════ */
+function startCat(c) {
+  cat = c; qi = 0; sel.clear(); pts = 0; streak = 0;
+  sc = 'quiz'; tLeft = 30; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
+  startTmr();
+  go();
+}
+
+function doReveal() {
+  clearInterval(tmr);
+  sc = 'reveal';
+
+  const q      = cat.qs[qi];
+  const rs     = new Set(q.a);
+  const sa     = [...sel];
+  const wrong  = sa.filter(id => !rs.has(id)).length;
+  const right  = sa.filter(id =>  rs.has(id)).length;
+  const p      = wrong === 0 && right === rs.size ? 3
+               : wrong === 0 && right > 0         ? 1
+               :                                    0;
+
+  pts += p;
+  p === 3 ? streak++ : (streak = 0);
+
+  lastMsg = p === 3
+    ? `<span style="font-size:15px;font-weight:800;color:#00e676;">✓ Perfeito! +3 pontos</span>`
+    : p === 1
+    ? `<span style="font-size:15px;font-weight:800;color:#FFD700;">~ Quase! +1 ponto</span>`
+    : `<span style="font-size:15px;font-weight:800;color:#f44336;">✗ Errou! +0 pontos</span>`;
+
+  go();
+
+  setTimeout(() => {
+    qi++;
+    sel.clear();
+    lastMsg = '';
+    if (qi >= cat.qs.length) {
+      sc = 'end';
+      if (scores[cat.id] === undefined || pts > scores[cat.id]) scores[cat.id] = pts;
+    } else {
+      sc    = 'quiz';
+      tLeft = 30;
+      disp  = getDisp(cat.qs[qi]);
+      startTmr();
+    }
+    go();
+  }, 2200);
+}
+
+function startTmr() {
+  clearInterval(tmr);
+  tmr = setInterval(() => {
+    tLeft = Math.max(0, tLeft - 1);
+    const tf = document.getElementById('tf');
+    if (tf) {
+      tf.style.width      = (tLeft / 30 * 100) + '%';
+      tf.style.background = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+    }
+    if (tLeft <= 0 && sc === 'quiz') doReveal();
+  }, 1000);
+}
+
+/* ── Boot ── */
+go();
+</script>
+</body>
+</html>
