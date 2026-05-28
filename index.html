@@ -322,17 +322,17 @@ const CATS = [
     tag:'Lendas e curiosidades', col:'#9C27B0', diff:'Variado',
     qs:[
       /* ── Copa do Mundo ── */
-      { t:'Quem marcou os dois gols do Brasil na final da Copa do Mundo de 2002?',              a:['ronaldo'],       type:'player' },
+      { t:'Quem marcou os dois gols do Brasil na final da Copa do Mundo de 2002?',              a:['ronaldo'],       type:'player', qimg:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ronaldo_2002_cropped.jpg/330px-Ronaldo_2002_cropped.jpg' },
       { t:'Quem fez o "Gol do Século" contra a Inglaterra nas quartas da Copa de 1986?',        a:['maradona'],      type:'player' },
       { t:'Quem foi artilheiro da Copa do Mundo de 2002 com 8 gols pelo Brasil?',              a:['ronaldo'],       type:'player' },
       { t:'Quem é o maior artilheiro de Copas do Mundo de todos os tempos, com 16 gols?',      a:['klose'],         type:'player' },
-      { t:'Qual jogador do Brasil marcou gol em todas as 6 partidas da Copa de 1970?',          a:['jairzinho'],     type:'player' },
-      { t:'Quem marcou o 4º gol na final da Copa de 1970 e era o capitão do Brasil?',          a:['carlos_alberto'],type:'player' },
+      { t:'Qual jogador do Brasil marcou gol em todas as 6 partidas da Copa de 1970?',          a:['jairzinho'],     type:'player', qimg:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Brazil_v_italy_1970_06.jpg/330px-Brazil_v_italy_1970_06.jpg' },
+      { t:'Quem marcou o 4º gol na final da Copa de 1970 e era o capitão do Brasil?',          a:['carlos_alberto'],type:'player', qimg:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Brazil_v_italy_1970_06.jpg/330px-Brazil_v_italy_1970_06.jpg' },
       { t:'Quem foi a grande revelação do Brasil na Copa de 1958, marcando 6 gols aos 17 anos?',a:['pele'],         type:'player' },
       { t:'Quem foi o goleiro do Brasil que defendeu o pênalti de Roberto Baggio na final de 1994?', a:['taffarel'], type:'player' },
       { t:'Quem foi artilheiro da Copa de 1958 com 13 gols, recorde absoluto até hoje?',       a:['fontaine'],      type:'player' },
       { t:'Quem foi eleito o melhor jogador da Copa do Mundo de 2022 no Catar?',               a:['messi'],         type:'player' },
-      { t:'Quem fez a famosa comemoração de "ninar o bebê" após marcar na Copa de 1994?',      a:['bebeto'],        type:'player' },
+      { t:'Quem fez a famosa comemoração de "ninar o bebê" após marcar na Copa de 1994?',      a:['bebeto'],        type:'player', qimg:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bebeto_brazil_%28cropped%29.jpg/330px-Bebeto_brazil_%28cropped%29.jpg' },
       { t:'Qual búlgaro dividiu a artilharia da Copa de 1994 com 6 gols, mesmo nível de Salenko?', a:['stoichkov'], type:'player' },
       /* ── Bola de Ouro / Prêmios ── */
       { t:'Quem ganhou a Bola de Ouro em 2004 e 2005 jogando pelo Barcelona?',                 a:['ronaldinho'],    type:'player' },
@@ -368,7 +368,7 @@ const CATS = [
       { t:'Qual craque germânico marcou gols em 4 Copas do Mundo diferentes — 2002, 2006, 2010 e 2014?',                         a:['klose'],       type:'player' },
       { t:'Quem foi artilheiro do Brasil na Copa de 1994 com 5 gols e ganhou o troféu de Melhor Jogador do torneio?',             a:['romario'],     type:'player' },
       { t:'Qual francês marcou dois gols de cabeça na final da Copa de 1998, dando o título inédito à França?',                   a:['zidane'],      type:'player' },
-      { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player' },
+      { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player', qimg:'https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Zidaneheadbutt.jpg/330px-Zidaneheadbutt.jpg' },
       { t:'Quem foi o goleiro bicampeão do Brasil nas Copas de 1994 e 1998, essencial na conquista do tetracampeonato?',          a:['taffarel'],    type:'player' },
       { t:'Quem ganhou a Copa do Mundo de 2022, completando o único grande título que faltava em uma das maiores carreiras do esporte?', a:['messi'], type:'player' },
       { t:'Quem ganhou a Copa América de 2021 com a Argentina, encerrando 28 anos de seca de títulos da Seleção?',                a:['messi'],       type:'player' },
@@ -767,15 +767,15 @@ function badge(item) {
         position:relative;user-select:none;
         background:rgba(255,255,255,.06);
         display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-        padding:6px 3px 20px;
+        padding:6px 3px 24px;
         transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-      <div style="width:62%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
-        border:2px solid rgba(255,255,255,.2);box-shadow:0 2px 8px rgba(0,0,0,.5);">
+      <div style="width:70%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
+        border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 10px rgba(0,0,0,.6);">
         <img src="${item.img}" alt="${item.n}"
           style="width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none;"
           onerror="this.style.opacity='.25'" />
       </div>
-      <span style="font-size:6.5px;color:rgba(255,255,255,.75);text-align:center;
+      <span style="font-size:8px;color:rgba(255,255,255,.82);text-align:center;
         font-weight:700;font-family:'Inter',system-ui;text-shadow:0 1px 4px rgba(0,0,0,1);
         padding:0 2px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
         ${item.nat} ${item.n}</span>
@@ -790,9 +790,9 @@ function badge(item) {
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
     <img src="${LOGOS[item.id]}" alt="${item.n}"
-      style="width:72%;height:72%;object-fit:contain;pointer-events:none;flex-shrink:0;"
+      style="width:78%;height:78%;object-fit:contain;pointer-events:none;flex-shrink:0;"
       onerror="this.style.opacity='.3'" />
-    <span style="font-size:7.5px;color:rgba(255,255,255,.7);text-align:center;
+    <span style="font-size:9px;color:rgba(255,255,255,.78);text-align:center;
       font-weight:700;font-family:'Inter',system-ui;
       text-shadow:0 1px 4px rgba(0,0,0,1);
       padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
@@ -991,7 +991,7 @@ function html() {
       border-radius:11px;padding:12px 14px;min-height:60px;
       display:flex;align-items:center;gap:10px;">
       ${portSVG}${stadSVG}${qimgEl}
-      <p style="font-size:14px;font-weight:600;color:#fff;line-height:1.45;
+      <p style="font-size:15px;font-weight:600;color:#fff;line-height:1.48;
         margin:0;flex:1;font-family:'Inter',system-ui;">
         ${q.t}</p>
     </div>
