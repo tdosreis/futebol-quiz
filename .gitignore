@@ -2,3 +2,12 @@
 *.log
 node_modules/
 .claude/
+
+# --- Android signing & build artifacts (never commit) ---
+*.keystore
+*.jks
+*.aab
+*.apk
+*.idsig
+android/app/build/
+android/.gradle/
