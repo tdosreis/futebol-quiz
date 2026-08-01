@@ -1,0 +1,1389 @@
+{
+ "dida": {
+  "id": "dida",
+  "n": "Dida",
+  "nat": "🇧🇷",
+  "img": "img/6a816865c94e5bd3.png",
+  "pos": "GK",
+  "era": [
+   1992,
+   2015
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "cruzeiro",
+   "milan",
+   "corinthians",
+   "gremio"
+  ]
+ },
+ "rogerio_ceni": {
+  "id": "rogerio_ceni",
+  "n": "Rogério Ceni",
+  "nat": "🇧🇷",
+  "img": "img/f8d7cb9715893c93.jpg",
+  "pos": "GK",
+  "era": [
+   1990,
+   2015
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "saopaulo"
+  ]
+ },
+ "marcos": {
+  "id": "marcos",
+  "n": "Marcos",
+  "nat": "🇧🇷",
+  "img": "img/1e59746f3b5a8618.png",
+  "pos": "GK",
+  "era": [
+   1992,
+   2012
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "palmeiras"
+  ]
+ },
+ "julio_cesar": {
+  "id": "julio_cesar",
+  "n": "Júlio César",
+  "nat": "🇧🇷",
+  "img": "img/3d2301f72881532f.jpg",
+  "pos": "GK",
+  "era": [
+   1997,
+   2018
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "flamengo",
+   "inter",
+   "benfica"
+  ]
+ },
+ "alisson": {
+  "id": "alisson",
+  "n": "Alisson",
+  "nat": "🇧🇷",
+  "img": "img/58802c8550ef5fa7.jpg",
+  "pos": "GK",
+  "era": [
+   2013,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "internacional",
+   "roma",
+   "liverpool"
+  ]
+ },
+ "ederson": {
+  "id": "ederson",
+  "n": "Ederson",
+  "nat": "🇧🇷",
+  "img": "img/e2ec3359b334126a.jpg",
+  "pos": "GK",
+  "era": [
+   2012,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "benfica",
+   "mancity"
+  ]
+ },
+ "leao": {
+  "id": "leao",
+  "n": "Emerson Leão",
+  "nat": "🇧🇷",
+  "img": "img/8009d0c8ca776192.jpg",
+  "pos": "GK",
+  "era": [
+   1965,
+   1985
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "palmeiras",
+   "gremio",
+   "corinthians",
+   "sport"
+  ]
+ },
+ "buffon": {
+  "id": "buffon",
+  "n": "Gianluigi Buffon",
+  "nat": "🇮🇹",
+  "img": "img/6e42572899f9dce9.jpg",
+  "pos": "GK",
+  "era": [
+   1995,
+   2023
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "parma",
+   "juventus",
+   "psg"
+  ]
+ },
+ "casillas": {
+  "id": "casillas",
+  "n": "Iker Casillas",
+  "nat": "🇪🇸",
+  "img": "img/779dcd8f35662801.jpg",
+  "pos": "GK",
+  "era": [
+   1999,
+   2020
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "realmadrid",
+   "porto"
+  ]
+ },
+ "neuer": {
+  "id": "neuer",
+  "n": "Manuel Neuer",
+  "nat": "🇩🇪",
+  "img": "img/a4a135f81bbd912b.jpg",
+  "pos": "GK",
+  "era": [
+   2006,
+   2026
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "schalke",
+   "bayern"
+  ]
+ },
+ "kahn": {
+  "id": "kahn",
+  "n": "Oliver Kahn",
+  "nat": "🇩🇪",
+  "img": "img/ab23500e9fe71e50.jpg",
+  "pos": "GK",
+  "era": [
+   1987,
+   2008
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "karlsruher",
+   "bayern"
+  ]
+ },
+ "van_der_sar": {
+  "id": "van_der_sar",
+  "n": "Van der Sar",
+  "nat": "🇳🇱",
+  "img": "img/aedd9c392e0535c1.jpg",
+  "pos": "GK",
+  "era": [
+   1990,
+   2011
+  ],
+  "ctry": "NED",
+  "clubs": [
+   "ajax",
+   "juventus",
+   "fulham",
+   "manutd"
+  ]
+ },
+ "schmeichel": {
+  "id": "schmeichel",
+  "n": "Peter Schmeichel",
+  "nat": "🇩🇰",
+  "img": "img/618d79848fbbec21.jpg",
+  "pos": "GK",
+  "era": [
+   1981,
+   2003
+  ],
+  "ctry": "DEN",
+  "clubs": [
+   "brondby",
+   "manutd",
+   "mancity"
+  ]
+ },
+ "cech": {
+  "id": "cech",
+  "n": "Petr Čech",
+  "nat": "🇨🇿",
+  "img": "img/c19fd91ef2f23508.jpg",
+  "pos": "GK",
+  "era": [
+   1999,
+   2019
+  ],
+  "ctry": "CZE",
+  "clubs": [
+   "rennes",
+   "chelsea",
+   "arsenal"
+  ]
+ },
+ "courtois": {
+  "id": "courtois",
+  "n": "Thibaut Courtois",
+  "nat": "🇧🇪",
+  "img": "img/fdb3f78c7ce459dd.jpg",
+  "pos": "GK",
+  "era": [
+   2009,
+   2026
+  ],
+  "ctry": "BEL",
+  "clubs": [
+   "genk",
+   "chelsea",
+   "atletico",
+   "realmadrid"
+  ]
+ },
+ "yashin": {
+  "id": "yashin",
+  "n": "Lev Yashin",
+  "nat": "🇷🇺",
+  "img": "img/0b276412bf3f5bd8.jpg",
+  "pos": "GK",
+  "era": [
+   1950,
+   1970
+  ],
+  "ctry": "RUS",
+  "clubs": [
+   "dinamomoscow"
+  ]
+ },
+ "thiago_silva": {
+  "id": "thiago_silva",
+  "n": "Thiago Silva",
+  "nat": "🇧🇷",
+  "img": "img/becb9d93999c12ae.jpg",
+  "pos": "DF",
+  "era": [
+   2004,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "fluminense",
+   "milan",
+   "psg",
+   "chelsea"
+  ]
+ },
+ "aldair": {
+  "id": "aldair",
+  "n": "Aldair",
+  "nat": "🇧🇷",
+  "img": "img/0a4e5389e07bead4.jpg",
+  "pos": "DF",
+  "era": [
+   1985,
+   2004
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "flamengo",
+   "benfica",
+   "roma"
+  ]
+ },
+ "marcelo": {
+  "id": "marcelo",
+  "n": "Marcelo",
+  "nat": "🇧🇷",
+  "img": "img/fe82c30b82065f32.jpg",
+  "pos": "DF",
+  "era": [
+   2005,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "fluminense",
+   "realmadrid",
+   "olympiacos"
+  ]
+ },
+ "dani_alves": {
+  "id": "dani_alves",
+  "n": "Daniel Alves",
+  "nat": "🇧🇷",
+  "img": "img/88468c09c32948e3.jpg",
+  "pos": "DF",
+  "era": [
+   2001,
+   2023
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "bahia",
+   "sevilla",
+   "barcelona",
+   "juventus",
+   "psg",
+   "saopaulo"
+  ]
+ },
+ "marquinhos": {
+  "id": "marquinhos",
+  "n": "Marquinhos",
+  "nat": "🇧🇷",
+  "img": "img/f58660371bf6d29c.jpg",
+  "pos": "DF",
+  "era": [
+   2012,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "corinthians",
+   "roma",
+   "psg"
+  ]
+ },
+ "david_luiz": {
+  "id": "david_luiz",
+  "n": "David Luiz",
+  "nat": "🇧🇷",
+  "img": "img/7061b6cbdc57abe7.jpg",
+  "pos": "DF",
+  "era": [
+   2006,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "vitoria",
+   "benfica",
+   "chelsea",
+   "psg",
+   "arsenal",
+   "flamengo"
+  ]
+ },
+ "maicon": {
+  "id": "maicon",
+  "n": "Maicon",
+  "nat": "🇧🇷",
+  "img": "img/763f03ab1bff5adf.jpg",
+  "pos": "DF",
+  "era": [
+   2001,
+   2020
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "cruzeiro",
+   "monaco",
+   "inter",
+   "roma"
+  ]
+ },
+ "maldini": {
+  "id": "maldini",
+  "n": "Paolo Maldini",
+  "nat": "🇮🇹",
+  "img": "img/fb3077ff4e56c7bd.jpg",
+  "pos": "DF",
+  "era": [
+   1984,
+   2009
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "milan"
+  ]
+ },
+ "baresi": {
+  "id": "baresi",
+  "n": "Franco Baresi",
+  "nat": "🇮🇹",
+  "img": "img/201fa8e5460c7212.jpg",
+  "pos": "DF",
+  "era": [
+   1977,
+   1997
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "milan"
+  ]
+ },
+ "nesta": {
+  "id": "nesta",
+  "n": "Alessandro Nesta",
+  "nat": "🇮🇹",
+  "img": "img/09109cfa614d1185.jpg",
+  "pos": "DF",
+  "era": [
+   1993,
+   2014
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "lazio",
+   "milan"
+  ]
+ },
+ "sergio_ramos": {
+  "id": "sergio_ramos",
+  "n": "Sergio Ramos",
+  "nat": "🇪🇸",
+  "img": "img/971d29633a44b706.jpg",
+  "pos": "DF",
+  "era": [
+   2003,
+   2026
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "sevilla",
+   "realmadrid",
+   "psg"
+  ]
+ },
+ "puyol": {
+  "id": "puyol",
+  "n": "Carles Puyol",
+  "nat": "🇪🇸",
+  "img": "img/9564d5244c34c91c.jpg",
+  "pos": "DF",
+  "era": [
+   1999,
+   2014
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "barcelona"
+  ]
+ },
+ "beckenbauer": {
+  "id": "beckenbauer",
+  "n": "Beckenbauer",
+  "nat": "🇩🇪",
+  "img": "img/51fdbdc7c90eb840.jpg",
+  "pos": "DF",
+  "era": [
+   1964,
+   1983
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "bayern",
+   "cosmos"
+  ]
+ },
+ "cannavaro": {
+  "id": "cannavaro",
+  "n": "Fabio Cannavaro",
+  "nat": "🇮🇹",
+  "img": "img/499deeb9096da832.jpg",
+  "pos": "DF",
+  "era": [
+   1992,
+   2011
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "napoli",
+   "parma",
+   "inter",
+   "juventus",
+   "realmadrid"
+  ]
+ },
+ "van_dijk": {
+  "id": "van_dijk",
+  "n": "Virgil van Dijk",
+  "nat": "🇳🇱",
+  "img": "img/82d5307026607b2a.jpg",
+  "pos": "DF",
+  "era": [
+   2011,
+   2026
+  ],
+  "ctry": "NED",
+  "clubs": [
+   "celtic",
+   "southampton",
+   "liverpool"
+  ]
+ },
+ "lahm": {
+  "id": "lahm",
+  "n": "Philipp Lahm",
+  "nat": "🇩🇪",
+  "img": "img/8595a6ca0651c6c5.jpg",
+  "pos": "DF",
+  "era": [
+   2002,
+   2017
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "bayern",
+   "stuttgart"
+  ]
+ },
+ "rivellino": {
+  "id": "rivellino",
+  "n": "Rivellino",
+  "nat": "🇧🇷",
+  "img": "img/bf612f288773656a.jpg",
+  "pos": "MF",
+  "era": [
+   1965,
+   1981
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "corinthians",
+   "fluminense"
+  ]
+ },
+ "dunga": {
+  "id": "dunga",
+  "n": "Dunga",
+  "nat": "🇧🇷",
+  "img": "img/e97089e508fffa75.jpg",
+  "pos": "MF",
+  "era": [
+   1980,
+   2000
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "internacional",
+   "fiorentina",
+   "pescara",
+   "stuttgart"
+  ]
+ },
+ "juninho": {
+  "id": "juninho",
+  "n": "Juninho Pernambucano",
+  "nat": "🇧🇷",
+  "img": "img/52c0aea6ebbb0561.jpg",
+  "pos": "MF",
+  "era": [
+   1993,
+   2013
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "vasco",
+   "lyon",
+   "alsadd"
+  ]
+ },
+ "gilberto_silva": {
+  "id": "gilberto_silva",
+  "n": "Gilberto Silva",
+  "nat": "🇧🇷",
+  "img": "img/ce2fa1c8f787f96d.jpg",
+  "pos": "MF",
+  "era": [
+   1997,
+   2013
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "atleticomg",
+   "arsenal",
+   "panathinaikos",
+   "gremio"
+  ]
+ },
+ "emerson": {
+  "id": "emerson",
+  "n": "Emerson",
+  "nat": "🇧🇷",
+  "img": "img/acd8c17cb88e9cba.jpg",
+  "pos": "MF",
+  "era": [
+   1993,
+   2010
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "gremio",
+   "leverkusen",
+   "roma",
+   "juventus",
+   "realmadrid",
+   "milan"
+  ]
+ },
+ "alex": {
+  "id": "alex",
+  "n": "Alex",
+  "nat": "🇧🇷",
+  "img": "img/b8e36fbf197410f6.jpg",
+  "pos": "MF",
+  "era": [
+   1995,
+   2012
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "palmeiras",
+   "cruzeiro",
+   "fenerbahce",
+   "coritiba"
+  ]
+ },
+ "diego": {
+  "id": "diego",
+  "n": "Diego",
+  "nat": "🇧🇷",
+  "img": "img/1a890e79166cbd6b.jpg",
+  "pos": "MF",
+  "era": [
+   2002,
+   2021
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "santos",
+   "porto",
+   "werder",
+   "juventus",
+   "flamengo"
+  ]
+ },
+ "casemiro": {
+  "id": "casemiro",
+  "n": "Casemiro",
+  "nat": "🇧🇷",
+  "img": "img/a49cd1072ac4f08a.jpg",
+  "pos": "MF",
+  "era": [
+   2010,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "saopaulo",
+   "realmadrid",
+   "manutd"
+  ]
+ },
+ "iniesta": {
+  "id": "iniesta",
+  "n": "Andrés Iniesta",
+  "nat": "🇪🇸",
+  "img": "img/adf896d5e2f38903.jpg",
+  "pos": "MF",
+  "era": [
+   2002,
+   2024
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "barcelona",
+   "vissel"
+  ]
+ },
+ "pirlo": {
+  "id": "pirlo",
+  "n": "Andrea Pirlo",
+  "nat": "🇮🇹",
+  "img": "img/1ef3bb0fbdbf78f7.jpg",
+  "pos": "MF",
+  "era": [
+   1995,
+   2017
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "brescia",
+   "inter",
+   "milan",
+   "juventus",
+   "nycfc"
+  ]
+ },
+ "gerrard": {
+  "id": "gerrard",
+  "n": "Steven Gerrard",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/3bf77b3cfa1ac83a.jpg",
+  "pos": "MF",
+  "era": [
+   1998,
+   2016
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "liverpool",
+   "lagalaxy"
+  ]
+ },
+ "lampard": {
+  "id": "lampard",
+  "n": "Frank Lampard",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/fcd3c0654c588ded.jpg",
+  "pos": "MF",
+  "era": [
+   1995,
+   2016
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "westham",
+   "chelsea",
+   "mancity",
+   "nycfc"
+  ]
+ },
+ "scholes": {
+  "id": "scholes",
+  "n": "Paul Scholes",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/87ed4227f19deced.jpg",
+  "pos": "MF",
+  "era": [
+   1993,
+   2013
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "manutd"
+  ]
+ },
+ "kroos": {
+  "id": "kroos",
+  "n": "Toni Kroos",
+  "nat": "🇩🇪",
+  "img": "img/161e26d90ff643d1.jpg",
+  "pos": "MF",
+  "era": [
+   2007,
+   2024
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "bayern",
+   "leverkusen",
+   "realmadrid"
+  ]
+ },
+ "de_bruyne": {
+  "id": "de_bruyne",
+  "n": "Kevin De Bruyne",
+  "nat": "🇧🇪",
+  "img": "img/81c06667fa16b652.jpg",
+  "pos": "MF",
+  "era": [
+   2008,
+   2026
+  ],
+  "ctry": "BEL",
+  "clubs": [
+   "genk",
+   "chelsea",
+   "wolfsburg",
+   "mancity"
+  ]
+ },
+ "riquelme": {
+  "id": "riquelme",
+  "n": "Riquelme",
+  "nat": "🇦🇷",
+  "img": "img/0738bef8f33aefe8.jpg",
+  "pos": "MF",
+  "era": [
+   1996,
+   2014
+  ],
+  "ctry": "ARG",
+  "clubs": [
+   "boca",
+   "barcelona",
+   "villarreal",
+   "argentinos"
+  ]
+ },
+ "nedved": {
+  "id": "nedved",
+  "n": "Pavel Nedvěd",
+  "nat": "🇨🇿",
+  "img": "img/9429cb23de075033.jpg",
+  "pos": "MF",
+  "era": [
+   1991,
+   2009
+  ],
+  "ctry": "CZE",
+  "clubs": [
+   "sparta",
+   "lazio",
+   "juventus"
+  ]
+ },
+ "figo": {
+  "id": "figo",
+  "n": "Luís Figo",
+  "nat": "🇵🇹",
+  "img": "img/c9b175338e538436.jpg",
+  "pos": "MF",
+  "era": [
+   1989,
+   2009
+  ],
+  "ctry": "POR",
+  "clubs": [
+   "sporting",
+   "barcelona",
+   "realmadrid",
+   "inter"
+  ]
+ },
+ "tostao": {
+  "id": "tostao",
+  "n": "Tostão",
+  "nat": "🇧🇷",
+  "img": "img/e8ed7b9d7bfb0269.jpg",
+  "pos": "FW",
+  "era": [
+   1963,
+   1973
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "cruzeiro",
+   "vasco"
+  ]
+ },
+ "robinho": {
+  "id": "robinho",
+  "n": "Robinho",
+  "nat": "🇧🇷",
+  "img": "img/c0b1d021fd8cc669.jpg",
+  "pos": "FW",
+  "era": [
+   2002,
+   2020
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "santos",
+   "realmadrid",
+   "mancity",
+   "milan"
+  ]
+ },
+ "hulk": {
+  "id": "hulk",
+  "n": "Hulk",
+  "nat": "🇧🇷",
+  "img": "img/1dcca609790e222f.jpg",
+  "pos": "FW",
+  "era": [
+   2004,
+   2026
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "porto",
+   "zenit",
+   "atleticomg"
+  ]
+ },
+ "luis_fabiano": {
+  "id": "luis_fabiano",
+  "n": "Luís Fabiano",
+  "nat": "🇧🇷",
+  "img": "img/318b44473cb72bfd.jpg",
+  "pos": "FW",
+  "era": [
+   1997,
+   2018
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "saopaulo",
+   "porto",
+   "sevilla",
+   "vasco"
+  ]
+ },
+ "suarez": {
+  "id": "suarez",
+  "n": "Luis Suárez",
+  "nat": "🇺🇾",
+  "img": "img/733f0792d0bcb15e.jpg",
+  "pos": "FW",
+  "era": [
+   2005,
+   2026
+  ],
+  "ctry": "URU",
+  "clubs": [
+   "ajax",
+   "liverpool",
+   "barcelona",
+   "atletico",
+   "gremio",
+   "intermiami"
+  ]
+ },
+ "cavani": {
+  "id": "cavani",
+  "n": "Edinson Cavani",
+  "nat": "🇺🇾",
+  "img": "img/c951450a110a5e28.jpg",
+  "pos": "FW",
+  "era": [
+   2006,
+   2026
+  ],
+  "ctry": "URU",
+  "clubs": [
+   "palermo",
+   "napoli",
+   "psg",
+   "manutd",
+   "boca"
+  ]
+ },
+ "salah": {
+  "id": "salah",
+  "n": "Mohamed Salah",
+  "nat": "🇪🇬",
+  "img": "img/b4b0af27fb90b6ad.jpg",
+  "pos": "FW",
+  "era": [
+   2010,
+   2026
+  ],
+  "ctry": "EGY",
+  "clubs": [
+   "basel",
+   "chelsea",
+   "roma",
+   "liverpool"
+  ]
+ },
+ "haaland": {
+  "id": "haaland",
+  "n": "Erling Haaland",
+  "nat": "🇳🇴",
+  "img": "img/5564dc0bb05fda53.jpg",
+  "pos": "FW",
+  "era": [
+   2016,
+   2026
+  ],
+  "ctry": "NOR",
+  "clubs": [
+   "salzburg",
+   "dortmund",
+   "mancity"
+  ]
+ },
+ "kane": {
+  "id": "kane",
+  "n": "Harry Kane",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/2c5f507afd2b35ae.jpg",
+  "pos": "FW",
+  "era": [
+   2011,
+   2026
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "tottenham",
+   "bayern"
+  ]
+ },
+ "aguero": {
+  "id": "aguero",
+  "n": "Sergio Agüero",
+  "nat": "🇦🇷",
+  "img": "img/d1eb64abf64a7ecc.jpg",
+  "pos": "FW",
+  "era": [
+   2003,
+   2021
+  ],
+  "ctry": "ARG",
+  "clubs": [
+   "independiente",
+   "atletico",
+   "mancity",
+   "barcelona"
+  ]
+ },
+ "etoo": {
+  "id": "etoo",
+  "n": "Samuel Eto'o",
+  "nat": "🇨🇲",
+  "img": "img/2e086d825817e07c.jpg",
+  "pos": "FW",
+  "era": [
+   1997,
+   2019
+  ],
+  "ctry": "CMR",
+  "clubs": [
+   "realmadrid",
+   "mallorca",
+   "barcelona",
+   "inter",
+   "chelsea"
+  ]
+ },
+ "shevchenko": {
+  "id": "shevchenko",
+  "n": "Shevchenko",
+  "nat": "🇺🇦",
+  "img": "img/758326660493848f.png",
+  "pos": "FW",
+  "era": [
+   1994,
+   2012
+  ],
+  "ctry": "UKR",
+  "clubs": [
+   "dynamokyiv",
+   "milan",
+   "chelsea"
+  ]
+ },
+ "raul": {
+  "id": "raul",
+  "n": "Raúl",
+  "nat": "🇪🇸",
+  "img": "img/45beff756309566b.jpg",
+  "pos": "FW",
+  "era": [
+   1994,
+   2015
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "realmadrid",
+   "schalke",
+   "cosmos"
+  ]
+ },
+ "del_piero": {
+  "id": "del_piero",
+  "n": "Del Piero",
+  "nat": "🇮🇹",
+  "img": "img/73da24ccdc705361.jpg",
+  "pos": "FW",
+  "era": [
+   1991,
+   2014
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "padova",
+   "juventus",
+   "sydney"
+  ]
+ },
+ "totti": {
+  "id": "totti",
+  "n": "Francesco Totti",
+  "nat": "🇮🇹",
+  "img": "img/13c70fbbcc6a2cca.jpg",
+  "pos": "FW",
+  "era": [
+   1992,
+   2017
+  ],
+  "ctry": "ITA",
+  "clubs": [
+   "roma"
+  ]
+ },
+ "rooney": {
+  "id": "rooney",
+  "n": "Wayne Rooney",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/d3048d0dcd6295ea.jpg",
+  "pos": "FW",
+  "era": [
+   2002,
+   2021
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "everton",
+   "manutd",
+   "dcunited"
+  ]
+ },
+ "owen": {
+  "id": "owen",
+  "n": "Michael Owen",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/d042f2b35b5efade.jpg",
+  "pos": "FW",
+  "era": [
+   1996,
+   2013
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "liverpool",
+   "realmadrid",
+   "newcastle",
+   "manutd"
+  ]
+ },
+ "puskas": {
+  "id": "puskas",
+  "n": "Ferenc Puskás",
+  "nat": "🇭🇺",
+  "img": "img/b24057226b77cc3d.jpg",
+  "pos": "FW",
+  "era": [
+   1943,
+   1966
+  ],
+  "ctry": "HUN",
+  "clubs": [
+   "honved",
+   "realmadrid"
+  ]
+ },
+ "distefano": {
+  "id": "distefano",
+  "n": "Di Stéfano",
+  "nat": "🇦🇷",
+  "img": "img/52657817692601d7.jpg",
+  "pos": "FW",
+  "era": [
+   1945,
+   1966
+  ],
+  "ctry": "ARG",
+  "clubs": [
+   "riverplate",
+   "millonarios",
+   "realmadrid",
+   "espanyol"
+  ]
+ },
+ "eusebio": {
+  "id": "eusebio",
+  "n": "Eusébio",
+  "nat": "🇵🇹",
+  "img": "img/18923a812a393569.jpg",
+  "pos": "FW",
+  "era": [
+   1957,
+   1979
+  ],
+  "ctry": "POR",
+  "clubs": [
+   "benfica"
+  ]
+ },
+ "gerd_muller": {
+  "id": "gerd_muller",
+  "n": "Gerd Müller",
+  "nat": "🇩🇪",
+  "img": "img/83a240d4788163b3.jpg",
+  "pos": "FW",
+  "era": [
+   1963,
+   1981
+  ],
+  "ctry": "GER",
+  "clubs": [
+   "bayern",
+   "fortlauderdale"
+  ]
+ },
+ "charlton": {
+  "id": "charlton",
+  "n": "Bobby Charlton",
+  "nat": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "img": "img/4ae52a3f1231575e.jpg",
+  "pos": "FW",
+  "era": [
+   1956,
+   1975
+  ],
+  "ctry": "ENG",
+  "clubs": [
+   "manutd",
+   "prestonne"
+  ]
+ },
+ "lucio": {
+  "id": "lucio",
+  "n": "Lúcio",
+  "nat": "🇧🇷",
+  "img": "img/ac82278f5d3eec63.jpg",
+  "pos": "DF",
+  "era": [
+   1997,
+   2020
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "internacional",
+   "leverkusen",
+   "bayern",
+   "inter"
+  ]
+ },
+ "junior": {
+  "id": "junior",
+  "n": "Júnior",
+  "nat": "🇧🇷",
+  "img": "img/150a78c7ead73656.jpg",
+  "pos": "DF",
+  "era": [
+   1974,
+   1993
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "flamengo",
+   "torino",
+   "pescara"
+  ]
+ },
+ "gerson": {
+  "id": "gerson",
+  "n": "Gérson",
+  "nat": "🇧🇷",
+  "img": "img/264a56ec578e4950.jpg",
+  "pos": "MF",
+  "era": [
+   1959,
+   1977
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "flamengo",
+   "botafogo",
+   "saopaulo",
+   "fluminense"
+  ]
+ },
+ "xavi": {
+  "id": "xavi",
+  "n": "Xavi",
+  "nat": "🇪🇸",
+  "img": "img/a918407d3e86de2a.jpg",
+  "pos": "MF",
+  "era": [
+   1998,
+   2019
+  ],
+  "ctry": "ESP",
+  "clubs": [
+   "barcelona",
+   "alsadd"
+  ]
+ },
+ "careca": {
+  "id": "careca",
+  "n": "Careca",
+  "nat": "🇧🇷",
+  "img": "img/acf7a54d907325b5.jpg",
+  "pos": "FW",
+  "era": [
+   1978,
+   1997
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "guarani",
+   "saopaulo",
+   "napoli"
+  ]
+ },
+ "edmundo": {
+  "id": "edmundo",
+  "n": "Edmundo",
+  "nat": "🇧🇷",
+  "img": "img/7a6f9e0a9d58ee6d.jpg",
+  "pos": "FW",
+  "era": [
+   1988,
+   2008
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "vasco",
+   "palmeiras",
+   "flamengo",
+   "fiorentina",
+   "corinthians",
+   "santos"
+  ]
+ },
+ "zagallo": {
+  "id": "zagallo",
+  "n": "Zagallo",
+  "nat": "🇧🇷",
+  "img": "img/66a6d28f83b53839.jpg",
+  "pos": "FW",
+  "era": [
+   1950,
+   1965
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "flamengo",
+   "botafogo"
+  ]
+ },
+ "didi": {
+  "id": "didi",
+  "n": "Didi",
+  "nat": "🇧🇷",
+  "img": "img/94bf9a8f11ebefd0.jpg",
+  "pos": "MF",
+  "era": [
+   1946,
+   1966
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "botafogo",
+   "realmadrid",
+   "fluminense",
+   "sport"
+  ]
+ },
+ "nilton_santos": {
+  "id": "nilton_santos",
+  "n": "Nílton Santos",
+  "nat": "🇧🇷",
+  "img": "img/37e2df5c9425049f.jpg",
+  "pos": "DF",
+  "era": [
+   1948,
+   1964
+  ],
+  "ctry": "BRA",
+  "clubs": [
+   "botafogo"
+  ]
+ }
+}

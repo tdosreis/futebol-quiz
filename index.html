@@ -58,6 +58,13 @@
 
     #ct { position: relative; z-index: 1; }
 
+    /* Flex/grid children default to min-width:auto, so one wide child (a long
+       author name, a club-career path) stretches the screen past the viewport
+       and #qz's overflow:hidden clips everything. Opt every box out of that. */
+    #ct > div { max-width: 100%; }
+    #ct div, #ct p { min-width: 0; }
+    #ct p, #ct span { overflow-wrap: anywhere; }
+
     /* ── Screen entrance ── */
     @keyframes screenIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -368,7 +375,7 @@ const CATS = [
       { t:'Qual craque germânico marcou gols em 4 Copas do Mundo diferentes — 2002, 2006, 2010 e 2014?',                         a:['klose'],       type:'player' },
       { t:'Quem foi artilheiro do Brasil na Copa de 1994 com 5 gols e ganhou o troféu de Melhor Jogador do torneio?',             a:['romario'],     type:'player' },
       { t:'Qual francês marcou dois gols de cabeça na final da Copa de 1998, dando o título inédito à França?',                   a:['zidane'],      type:'player' },
-      { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player', qimg:'img/3bb9546c991a0d0c.jpg' },
+      { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player' },
       { t:'Quem foi o goleiro bicampeão do Brasil nas Copas de 1994 e 1998, essencial na conquista do tetracampeonato?',          a:['taffarel'],    type:'player' },
       { t:'Quem ganhou a Copa do Mundo de 2022, completando o único grande título que faltava em uma das maiores carreiras do esporte?', a:['messi'], type:'player' },
       { t:'Quem ganhou a Copa América de 2021 com a Argentina, encerrando 28 anos de seca de títulos da Seleção?',                a:['messi'],       type:'player' },
@@ -458,7 +465,316 @@ const PL = [
   { id:'weah',         n:'George Weah',      nat:'🇱🇷', img:'img/97883ef7e09ebbd6.jpg' },
   { id:'modric',       n:'Luka Modrić',      nat:'🇭🇷', img:'img/6c5cbdbd0210e78e.jpg' },
   { id:'benzema',      n:'Karim Benzema',    nat:'🇫🇷', img:'img/ca38a5d8fb15d1d3.jpg' },
+
+  /* ── EXPANDED SQUAD (Wikimedia Commons, freely licensed) ── */
+  { id:'aldair', n:'Aldair', nat:'🇧🇷', img:'img/0a4e5389e07bead4.jpg' },
+  { id:'nesta', n:'Alessandro Nesta', nat:'🇮🇹', img:'img/09109cfa614d1185.jpg' },
+  { id:'beckenbauer', n:'Beckenbauer', nat:'🇩🇪', img:'img/51fdbdc7c90eb840.jpg' },
+  { id:'puyol', n:'Carles Puyol', nat:'🇪🇸', img:'img/9564d5244c34c91c.jpg' },
+  { id:'dani_alves', n:'Daniel Alves', nat:'🇧🇷', img:'img/88468c09c32948e3.jpg' },
+  { id:'david_luiz', n:'David Luiz', nat:'🇧🇷', img:'img/7061b6cbdc57abe7.jpg' },
+  { id:'cannavaro', n:'Fabio Cannavaro', nat:'🇮🇹', img:'img/499deeb9096da832.jpg' },
+  { id:'baresi', n:'Franco Baresi', nat:'🇮🇹', img:'img/201fa8e5460c7212.jpg' },
+  { id:'junior', n:'Júnior', nat:'🇧🇷', img:'img/150a78c7ead73656.jpg' },
+  { id:'lucio', n:'Lúcio', nat:'🇧🇷', img:'img/ac82278f5d3eec63.jpg' },
+  { id:'maicon', n:'Maicon', nat:'🇧🇷', img:'img/763f03ab1bff5adf.jpg' },
+  { id:'marcelo', n:'Marcelo', nat:'🇧🇷', img:'img/fe82c30b82065f32.jpg' },
+  { id:'marquinhos', n:'Marquinhos', nat:'🇧🇷', img:'img/f58660371bf6d29c.jpg' },
+  { id:'nilton_santos', n:'Nílton Santos', nat:'🇧🇷', img:'img/37e2df5c9425049f.jpg' },
+  { id:'maldini', n:'Paolo Maldini', nat:'🇮🇹', img:'img/fb3077ff4e56c7bd.jpg' },
+  { id:'lahm', n:'Philipp Lahm', nat:'🇩🇪', img:'img/8595a6ca0651c6c5.jpg' },
+  { id:'sergio_ramos', n:'Sergio Ramos', nat:'🇪🇸', img:'img/971d29633a44b706.jpg' },
+  { id:'thiago_silva', n:'Thiago Silva', nat:'🇧🇷', img:'img/becb9d93999c12ae.jpg' },
+  { id:'van_dijk', n:'Virgil van Dijk', nat:'🇳🇱', img:'img/82d5307026607b2a.jpg' },
+  { id:'charlton', n:'Bobby Charlton', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/4ae52a3f1231575e.jpg' },
+  { id:'careca', n:'Careca', nat:'🇧🇷', img:'img/acf7a54d907325b5.jpg' },
+  { id:'del_piero', n:'Del Piero', nat:'🇮🇹', img:'img/73da24ccdc705361.jpg' },
+  { id:'distefano', n:'Di Stéfano', nat:'🇦🇷', img:'img/52657817692601d7.jpg' },
+  { id:'cavani', n:'Edinson Cavani', nat:'🇺🇾', img:'img/c951450a110a5e28.jpg' },
+  { id:'edmundo', n:'Edmundo', nat:'🇧🇷', img:'img/7a6f9e0a9d58ee6d.jpg' },
+  { id:'haaland', n:'Erling Haaland', nat:'🇳🇴', img:'img/5564dc0bb05fda53.jpg' },
+  { id:'eusebio', n:'Eusébio', nat:'🇵🇹', img:'img/18923a812a393569.jpg' },
+  { id:'puskas', n:'Ferenc Puskás', nat:'🇭🇺', img:'img/b24057226b77cc3d.jpg' },
+  { id:'totti', n:'Francesco Totti', nat:'🇮🇹', img:'img/13c70fbbcc6a2cca.jpg' },
+  { id:'gerd_muller', n:'Gerd Müller', nat:'🇩🇪', img:'img/83a240d4788163b3.jpg' },
+  { id:'kane', n:'Harry Kane', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/2c5f507afd2b35ae.jpg' },
+  { id:'hulk', n:'Hulk', nat:'🇧🇷', img:'img/1dcca609790e222f.jpg' },
+  { id:'suarez', n:'Luis Suárez', nat:'🇺🇾', img:'img/733f0792d0bcb15e.jpg' },
+  { id:'luis_fabiano', n:'Luís Fabiano', nat:'🇧🇷', img:'img/318b44473cb72bfd.jpg' },
+  { id:'owen', n:'Michael Owen', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/d042f2b35b5efade.jpg' },
+  { id:'salah', n:'Mohamed Salah', nat:'🇪🇬', img:'img/b4b0af27fb90b6ad.jpg' },
+  { id:'raul', n:'Raúl', nat:'🇪🇸', img:'img/45beff756309566b.jpg' },
+  { id:'robinho', n:'Robinho', nat:'🇧🇷', img:'img/c0b1d021fd8cc669.jpg' },
+  { id:'etoo', n:'Samuel Eto\'o', nat:'🇨🇲', img:'img/2e086d825817e07c.jpg' },
+  { id:'aguero', n:'Sergio Agüero', nat:'🇦🇷', img:'img/d1eb64abf64a7ecc.jpg' },
+  { id:'shevchenko', n:'Shevchenko', nat:'🇺🇦', img:'img/758326660493848f.png' },
+  { id:'tostao', n:'Tostão', nat:'🇧🇷', img:'img/e8ed7b9d7bfb0269.jpg' },
+  { id:'rooney', n:'Wayne Rooney', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/d3048d0dcd6295ea.jpg' },
+  { id:'zagallo', n:'Zagallo', nat:'🇧🇷', img:'img/66a6d28f83b53839.jpg' },
+  { id:'alisson', n:'Alisson', nat:'🇧🇷', img:'img/58802c8550ef5fa7.jpg' },
+  { id:'dida', n:'Dida', nat:'🇧🇷', img:'img/6a816865c94e5bd3.png' },
+  { id:'ederson', n:'Ederson', nat:'🇧🇷', img:'img/e2ec3359b334126a.jpg' },
+  { id:'leao', n:'Emerson Leão', nat:'🇧🇷', img:'img/8009d0c8ca776192.jpg' },
+  { id:'buffon', n:'Gianluigi Buffon', nat:'🇮🇹', img:'img/6e42572899f9dce9.jpg' },
+  { id:'casillas', n:'Iker Casillas', nat:'🇪🇸', img:'img/779dcd8f35662801.jpg' },
+  { id:'julio_cesar', n:'Júlio César', nat:'🇧🇷', img:'img/3d2301f72881532f.jpg' },
+  { id:'yashin', n:'Lev Yashin', nat:'🇷🇺', img:'img/0b276412bf3f5bd8.jpg' },
+  { id:'neuer', n:'Manuel Neuer', nat:'🇩🇪', img:'img/a4a135f81bbd912b.jpg' },
+  { id:'marcos', n:'Marcos', nat:'🇧🇷', img:'img/1e59746f3b5a8618.png' },
+  { id:'kahn', n:'Oliver Kahn', nat:'🇩🇪', img:'img/ab23500e9fe71e50.jpg' },
+  { id:'schmeichel', n:'Peter Schmeichel', nat:'🇩🇰', img:'img/618d79848fbbec21.jpg' },
+  { id:'cech', n:'Petr Čech', nat:'🇨🇿', img:'img/c19fd91ef2f23508.jpg' },
+  { id:'rogerio_ceni', n:'Rogério Ceni', nat:'🇧🇷', img:'img/f8d7cb9715893c93.jpg' },
+  { id:'courtois', n:'Thibaut Courtois', nat:'🇧🇪', img:'img/fdb3f78c7ce459dd.jpg' },
+  { id:'van_der_sar', n:'Van der Sar', nat:'🇳🇱', img:'img/aedd9c392e0535c1.jpg' },
+  { id:'alex', n:'Alex', nat:'🇧🇷', img:'img/b8e36fbf197410f6.jpg' },
+  { id:'pirlo', n:'Andrea Pirlo', nat:'🇮🇹', img:'img/1ef3bb0fbdbf78f7.jpg' },
+  { id:'iniesta', n:'Andrés Iniesta', nat:'🇪🇸', img:'img/adf896d5e2f38903.jpg' },
+  { id:'casemiro', n:'Casemiro', nat:'🇧🇷', img:'img/a49cd1072ac4f08a.jpg' },
+  { id:'didi', n:'Didi', nat:'🇧🇷', img:'img/94bf9a8f11ebefd0.jpg' },
+  { id:'diego', n:'Diego', nat:'🇧🇷', img:'img/1a890e79166cbd6b.jpg' },
+  { id:'dunga', n:'Dunga', nat:'🇧🇷', img:'img/e97089e508fffa75.jpg' },
+  { id:'emerson', n:'Emerson', nat:'🇧🇷', img:'img/acd8c17cb88e9cba.jpg' },
+  { id:'lampard', n:'Frank Lampard', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/fcd3c0654c588ded.jpg' },
+  { id:'gilberto_silva', n:'Gilberto Silva', nat:'🇧🇷', img:'img/ce2fa1c8f787f96d.jpg' },
+  { id:'gerson', n:'Gérson', nat:'🇧🇷', img:'img/264a56ec578e4950.jpg' },
+  { id:'juninho', n:'Juninho Pernambucano', nat:'🇧🇷', img:'img/52c0aea6ebbb0561.jpg' },
+  { id:'de_bruyne', n:'Kevin De Bruyne', nat:'🇧🇪', img:'img/81c06667fa16b652.jpg' },
+  { id:'figo', n:'Luís Figo', nat:'🇵🇹', img:'img/c9b175338e538436.jpg' },
+  { id:'scholes', n:'Paul Scholes', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/87ed4227f19deced.jpg' },
+  { id:'nedved', n:'Pavel Nedvěd', nat:'🇨🇿', img:'img/9429cb23de075033.jpg' },
+  { id:'riquelme', n:'Riquelme', nat:'🇦🇷', img:'img/0738bef8f33aefe8.jpg' },
+  { id:'rivellino', n:'Rivellino', nat:'🇧🇷', img:'img/bf612f288773656a.jpg' },
+  { id:'gerrard', n:'Steven Gerrard', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/3bf77b3cfa1ac83a.jpg' },
+  { id:'kroos', n:'Toni Kroos', nat:'🇩🇪', img:'img/161e26d90ff643d1.jpg' },
+  { id:'xavi', n:'Xavi', nat:'🇪🇸', img:'img/a918407d3e86de2a.jpg' },
 ];
+
+/* ═══════════════════════════════════════════════════
+   DATA — PLAYER METADATA  (position, era, clubs, country)
+   Powers smart distractors, generated questions & career mode
+═══════════════════════════════════════════════════ */
+const POS_NAME = { GK:'Goleiro', DF:'Defensor', MF:'Meia', FW:'Atacante' };
+const CTRY_NAME = { BRA:'Brasil', ARG:'Argentina', POR:'Portugal', FRA:'França',
+  NED:'Holanda', GER:'Alemanha', BUL:'Bulgária', ITA:'Itália', ENG:'Inglaterra',
+  SWE:'Suécia', POL:'Polônia', CIV:'Costa do Marfim', LBR:'Libéria', CRO:'Croácia',
+  COL:'Colômbia' };
+
+/* Display names for clubs outside the Brazilian crest set */
+const CLUB_NAMES = {
+  cosmos:'New York Cosmos', udinese:'Udinese', kashima:'Kashima Antlers',
+  psv:'PSV', barcelona:'Barcelona', inter:'Inter de Milão', realmadrid:'Real Madrid',
+  milan:'Milan', psg:'PSG', orlando:'Orlando City', fiorentina:'Fiorentina',
+  deportivo:'Deportivo La Coruña', olympiacos:'Olympiacos', valencia:'Valencia',
+  alhilal:'Al-Hilal', fenerbahce:'Fenerbahçe', roma:'Roma', parma:'Parma',
+  atalanta:'Atalanta', galatasaray:'Galatasaray', torino:'Torino',
+  marseille:'Marseille', benfica:'Benfica', argentinos:'Argentinos Juniors',
+  boca:'Boca Juniors', napoli:'Napoli', sevilla:'Sevilla', intermiami:'Inter Miami',
+  sporting:'Sporting', manutd:'Manchester United', juventus:'Juventus',
+  alnassr:'Al-Nassr', cannes:'Cannes', bordeaux:'Bordeaux', ajax:'Ajax',
+  kaiserslautern:'Kaiserslautern', werder:'Werder Bremen', bayern:'Bayern de Munique',
+  lazio:'Lazio', riverplate:'River Plate', cska:'CSKA Sofia', feyenoord:'Feyenoord',
+  nice:'Nice', reims:'Reims', banfield:'Banfield', porto:'Porto', monaco:'Monaco',
+  everton:'Everton', bologna:'Bologna', brescia:'Brescia', nancy:'Nancy',
+  saintetienne:'Saint-Étienne', lagalaxy:'LA Galaxy', arsenal:'Arsenal',
+  nyrb:'New York Red Bulls', malmo:'Malmö', lech:'Lech Poznań',
+  dortmund:'Borussia Dortmund', guingamp:'Guingamp', chelsea:'Chelsea',
+  mancity:'Manchester City', dinamo:'Dinamo Zagreb', tottenham:'Tottenham',
+  lyon:'Lyon', alittihad:'Al-Ittihad', fulham:'Fulham',
+  alsadd:'Al-Sadd',
+  atletico:'Atlético de Madrid',
+  basel:'Basel',
+  brondby:'Brøndby',
+  celtic:'Celtic',
+  dcunited:'D.C. United',
+  dinamomoscow:'Dínamo de Moscou',
+  dynamokyiv:'Dínamo de Kiev',
+  espanyol:'Espanyol',
+  fiorentina:'Fiorentina',
+  fortlauderdale:'Fort Lauderdale',
+  genk:'Genk',
+  honved:'Honvéd',
+  independiente:'Independiente',
+  karlsruher:'Karlsruher',
+  leverkusen:'Bayer Leverkusen',
+  liverpool:'Liverpool',
+  mallorca:'Mallorca',
+  millonarios:'Millonarios',
+  newcastle:'Newcastle',
+  nycfc:'New York City FC',
+  padova:'Padova',
+  palermo:'Palermo',
+  panathinaikos:'Panathinaikos',
+  pescara:'Pescara',
+  prestonne:'Preston North End',
+  rennes:'Rennes',
+  salzburg:'RB Salzburg',
+  schalke:'Schalke 04',
+  southampton:'Southampton',
+  sparta:'Sparta Praga',
+  stuttgart:'Stuttgart',
+  sydney:'Sydney FC',
+  villarreal:'Villarreal',
+  vissel:'Vissel Kobe',
+  westham:'West Ham',
+  wolfsburg:'Wolfsburg',
+  zenit:'Zenit',
+};
+function clubName(id) {
+  const c = CL.find(x => x.id === id);
+  return c ? c.n : (CLUB_NAMES[id] || id);
+}
+
+const PL_META = {
+  /* ── Brasileiros ── */
+  pele:          { pos:'FW', era:[1956,1977], ctry:'BRA', clubs:['santos','cosmos'] },
+  zico:          { pos:'MF', era:[1971,1994], ctry:'BRA', clubs:['flamengo','udinese','kashima'] },
+  garrincha:     { pos:'FW', era:[1953,1972], ctry:'BRA', clubs:['botafogo','corinthians','flamengo'] },
+  ronaldo:       { pos:'FW', era:[1993,2011], ctry:'BRA', clubs:['cruzeiro','psv','barcelona','inter','realmadrid','milan','corinthians'] },
+  ronaldinho:    { pos:'MF', era:[1998,2015], ctry:'BRA', clubs:['gremio','psg','barcelona','milan','flamengo','atleticomg'] },
+  kaka:          { pos:'MF', era:[2001,2017], ctry:'BRA', clubs:['saopaulo','milan','realmadrid','orlando'] },
+  dinamite:      { pos:'FW', era:[1971,1993], ctry:'BRA', clubs:['vasco','barcelona'] },
+  socrates:      { pos:'MF', era:[1974,1989], ctry:'BRA', clubs:['corinthians','fiorentina','flamengo','santos'] },
+  romario:       { pos:'FW', era:[1985,2009], ctry:'BRA', clubs:['vasco','psv','barcelona','flamengo','valencia','fluminense'] },
+  bebeto:        { pos:'FW', era:[1983,2002], ctry:'BRA', clubs:['flamengo','vasco','deportivo','botafogo','cruzeiro'] },
+  rivaldo:       { pos:'FW', era:[1991,2015], ctry:'BRA', clubs:['palmeiras','deportivo','barcelona','milan','olympiacos','corinthians','saopaulo'] },
+  adriano:       { pos:'FW', era:[1999,2016], ctry:'BRA', clubs:['flamengo','inter','parma','roma','corinthians'] },
+  neymar:        { pos:'FW', era:[2009,2026], ctry:'BRA', clubs:['santos','barcelona','psg','alhilal'] },
+  roberto_carlos:{ pos:'DF', era:[1992,2015], ctry:'BRA', clubs:['palmeiras','inter','realmadrid','fenerbahce','corinthians'] },
+  cafu:          { pos:'DF', era:[1989,2008], ctry:'BRA', clubs:['saopaulo','palmeiras','roma','milan'] },
+  taffarel:      { pos:'GK', era:[1985,2003], ctry:'BRA', clubs:['internacional','parma','atalanta','galatasaray'] },
+  vinicius:      { pos:'FW', era:[2017,2026], ctry:'BRA', clubs:['flamengo','realmadrid'] },
+  carlos_alberto:{ pos:'DF', era:[1963,1982], ctry:'BRA', clubs:['fluminense','santos','botafogo','cosmos'] },
+  muller_sp:     { pos:'FW', era:[1983,2000], ctry:'BRA', clubs:['saopaulo','torino','palmeiras','cruzeiro'] },
+  jairzinho:     { pos:'FW', era:[1959,1982], ctry:'BRA', clubs:['botafogo','marseille','cruzeiro'] },
+  gabigol:       { pos:'FW', era:[2010,2026], ctry:'BRA', clubs:['santos','inter','benfica','flamengo','cruzeiro'] },
+  falcao:        { pos:'MF', era:[1973,1986], ctry:'BRA', clubs:['internacional','roma','saopaulo'] },
+  /* ── Internacionais ── */
+  maradona:      { pos:'MF', era:[1976,1997], ctry:'ARG', clubs:['argentinos','boca','barcelona','napoli','sevilla'] },
+  messi:         { pos:'FW', era:[2003,2026], ctry:'ARG', clubs:['barcelona','psg','intermiami'] },
+  cr7:           { pos:'FW', era:[2002,2026], ctry:'POR', clubs:['sporting','manutd','realmadrid','juventus','alnassr'] },
+  zidane:        { pos:'MF', era:[1988,2006], ctry:'FRA', clubs:['cannes','bordeaux','juventus','realmadrid'] },
+  van_basten:    { pos:'FW', era:[1981,1995], ctry:'NED', clubs:['ajax','milan'] },
+  klose:         { pos:'FW', era:[1999,2016], ctry:'GER', clubs:['kaiserslautern','werder','bayern','lazio'] },
+  batistuta:     { pos:'FW', era:[1988,2005], ctry:'ARG', clubs:['riverplate','boca','fiorentina','roma','inter'] },
+  stoichkov:     { pos:'FW', era:[1984,2003], ctry:'BUL', clubs:['cska','barcelona','parma'] },
+  cruyff:        { pos:'FW', era:[1964,1984], ctry:'NED', clubs:['ajax','barcelona','feyenoord'] },
+  fontaine:      { pos:'FW', era:[1953,1962], ctry:'FRA', clubs:['nice','reims'] },
+  james:         { pos:'MF', era:[2006,2026], ctry:'COL', clubs:['banfield','porto','monaco','realmadrid','bayern','everton'] },
+  baggio:        { pos:'FW', era:[1982,2004], ctry:'ITA', clubs:['fiorentina','juventus','milan','bologna','inter','brescia'] },
+  platini:       { pos:'MF', era:[1972,1987], ctry:'FRA', clubs:['nancy','saintetienne','juventus'] },
+  beckham:       { pos:'MF', era:[1992,2013], ctry:'ENG', clubs:['manutd','realmadrid','lagalaxy','milan','psg'] },
+  henry:         { pos:'FW', era:[1994,2014], ctry:'FRA', clubs:['monaco','juventus','arsenal','barcelona','nyrb'] },
+  ibrahimovic:   { pos:'FW', era:[1999,2023], ctry:'SWE', clubs:['malmo','ajax','juventus','inter','barcelona','milan','psg','manutd','lagalaxy'] },
+  lewandowski:   { pos:'FW', era:[2006,2026], ctry:'POL', clubs:['lech','dortmund','bayern','barcelona'] },
+  mbappe:        { pos:'FW', era:[2015,2026], ctry:'FRA', clubs:['monaco','psg','realmadrid'] },
+  drogba:        { pos:'FW', era:[1998,2018], ctry:'CIV', clubs:['guingamp','marseille','chelsea','galatasaray'] },
+  weah:          { pos:'FW', era:[1985,2003], ctry:'LBR', clubs:['monaco','psg','milan','chelsea','mancity'] },
+  modric:        { pos:'MF', era:[2003,2026], ctry:'CRO', clubs:['dinamo','tottenham','realmadrid'] },
+  benzema:       { pos:'FW', era:[2004,2026], ctry:'FRA', clubs:['lyon','realmadrid','alittihad'] },
+
+  /* ── expanded squad ── */
+  aldair: { pos:'DF', era:[1985,2004], ctry:'BRA', clubs:['flamengo','benfica','roma'] },
+  nesta: { pos:'DF', era:[1993,2014], ctry:'ITA', clubs:['lazio','milan'] },
+  beckenbauer: { pos:'DF', era:[1964,1983], ctry:'GER', clubs:['bayern','cosmos'] },
+  puyol: { pos:'DF', era:[1999,2014], ctry:'ESP', clubs:['barcelona'] },
+  dani_alves: { pos:'DF', era:[2001,2023], ctry:'BRA', clubs:['bahia','sevilla','barcelona','juventus','psg','saopaulo'] },
+  david_luiz: { pos:'DF', era:[2006,2026], ctry:'BRA', clubs:['vitoria','benfica','chelsea','psg','arsenal','flamengo'] },
+  cannavaro: { pos:'DF', era:[1992,2011], ctry:'ITA', clubs:['napoli','parma','inter','juventus','realmadrid'] },
+  baresi: { pos:'DF', era:[1977,1997], ctry:'ITA', clubs:['milan'] },
+  junior: { pos:'DF', era:[1974,1993], ctry:'BRA', clubs:['flamengo','torino','pescara'] },
+  lucio: { pos:'DF', era:[1997,2020], ctry:'BRA', clubs:['internacional','leverkusen','bayern','inter'] },
+  maicon: { pos:'DF', era:[2001,2020], ctry:'BRA', clubs:['cruzeiro','monaco','inter','roma'] },
+  marcelo: { pos:'DF', era:[2005,2026], ctry:'BRA', clubs:['fluminense','realmadrid','olympiacos'] },
+  marquinhos: { pos:'DF', era:[2012,2026], ctry:'BRA', clubs:['corinthians','roma','psg'] },
+  nilton_santos: { pos:'DF', era:[1948,1964], ctry:'BRA', clubs:['botafogo'] },
+  maldini: { pos:'DF', era:[1984,2009], ctry:'ITA', clubs:['milan'] },
+  lahm: { pos:'DF', era:[2002,2017], ctry:'GER', clubs:['bayern','stuttgart'] },
+  sergio_ramos: { pos:'DF', era:[2003,2026], ctry:'ESP', clubs:['sevilla','realmadrid','psg'] },
+  thiago_silva: { pos:'DF', era:[2004,2026], ctry:'BRA', clubs:['fluminense','milan','psg','chelsea'] },
+  van_dijk: { pos:'DF', era:[2011,2026], ctry:'NED', clubs:['celtic','southampton','liverpool'] },
+  charlton: { pos:'FW', era:[1956,1975], ctry:'ENG', clubs:['manutd','prestonne'] },
+  careca: { pos:'FW', era:[1978,1997], ctry:'BRA', clubs:['guarani','saopaulo','napoli'] },
+  del_piero: { pos:'FW', era:[1991,2014], ctry:'ITA', clubs:['padova','juventus','sydney'] },
+  distefano: { pos:'FW', era:[1945,1966], ctry:'ARG', clubs:['riverplate','millonarios','realmadrid','espanyol'] },
+  cavani: { pos:'FW', era:[2006,2026], ctry:'URU', clubs:['palermo','napoli','psg','manutd','boca'] },
+  edmundo: { pos:'FW', era:[1988,2008], ctry:'BRA', clubs:['vasco','palmeiras','flamengo','fiorentina','corinthians','santos'] },
+  haaland: { pos:'FW', era:[2016,2026], ctry:'NOR', clubs:['salzburg','dortmund','mancity'] },
+  eusebio: { pos:'FW', era:[1957,1979], ctry:'POR', clubs:['benfica'] },
+  puskas: { pos:'FW', era:[1943,1966], ctry:'HUN', clubs:['honved','realmadrid'] },
+  totti: { pos:'FW', era:[1992,2017], ctry:'ITA', clubs:['roma'] },
+  gerd_muller: { pos:'FW', era:[1963,1981], ctry:'GER', clubs:['bayern','fortlauderdale'] },
+  kane: { pos:'FW', era:[2011,2026], ctry:'ENG', clubs:['tottenham','bayern'] },
+  hulk: { pos:'FW', era:[2004,2026], ctry:'BRA', clubs:['porto','zenit','atleticomg'] },
+  suarez: { pos:'FW', era:[2005,2026], ctry:'URU', clubs:['ajax','liverpool','barcelona','atletico','gremio','intermiami'] },
+  luis_fabiano: { pos:'FW', era:[1997,2018], ctry:'BRA', clubs:['saopaulo','porto','sevilla','vasco'] },
+  owen: { pos:'FW', era:[1996,2013], ctry:'ENG', clubs:['liverpool','realmadrid','newcastle','manutd'] },
+  salah: { pos:'FW', era:[2010,2026], ctry:'EGY', clubs:['basel','chelsea','roma','liverpool'] },
+  raul: { pos:'FW', era:[1994,2015], ctry:'ESP', clubs:['realmadrid','schalke','cosmos'] },
+  robinho: { pos:'FW', era:[2002,2020], ctry:'BRA', clubs:['santos','realmadrid','mancity','milan'] },
+  etoo: { pos:'FW', era:[1997,2019], ctry:'CMR', clubs:['realmadrid','mallorca','barcelona','inter','chelsea'] },
+  aguero: { pos:'FW', era:[2003,2021], ctry:'ARG', clubs:['independiente','atletico','mancity','barcelona'] },
+  shevchenko: { pos:'FW', era:[1994,2012], ctry:'UKR', clubs:['dynamokyiv','milan','chelsea'] },
+  tostao: { pos:'FW', era:[1963,1973], ctry:'BRA', clubs:['cruzeiro','vasco'] },
+  rooney: { pos:'FW', era:[2002,2021], ctry:'ENG', clubs:['everton','manutd','dcunited'] },
+  zagallo: { pos:'FW', era:[1950,1965], ctry:'BRA', clubs:['flamengo','botafogo'] },
+  alisson: { pos:'GK', era:[2013,2026], ctry:'BRA', clubs:['internacional','roma','liverpool'] },
+  dida: { pos:'GK', era:[1992,2015], ctry:'BRA', clubs:['cruzeiro','milan','corinthians','gremio'] },
+  ederson: { pos:'GK', era:[2012,2026], ctry:'BRA', clubs:['benfica','mancity'] },
+  leao: { pos:'GK', era:[1965,1985], ctry:'BRA', clubs:['palmeiras','gremio','corinthians','sport'] },
+  buffon: { pos:'GK', era:[1995,2023], ctry:'ITA', clubs:['parma','juventus','psg'] },
+  casillas: { pos:'GK', era:[1999,2020], ctry:'ESP', clubs:['realmadrid','porto'] },
+  julio_cesar: { pos:'GK', era:[1997,2018], ctry:'BRA', clubs:['flamengo','inter','benfica'] },
+  yashin: { pos:'GK', era:[1950,1970], ctry:'RUS', clubs:['dinamomoscow'] },
+  neuer: { pos:'GK', era:[2006,2026], ctry:'GER', clubs:['schalke','bayern'] },
+  marcos: { pos:'GK', era:[1992,2012], ctry:'BRA', clubs:['palmeiras'] },
+  kahn: { pos:'GK', era:[1987,2008], ctry:'GER', clubs:['karlsruher','bayern'] },
+  schmeichel: { pos:'GK', era:[1981,2003], ctry:'DEN', clubs:['brondby','manutd','mancity'] },
+  cech: { pos:'GK', era:[1999,2019], ctry:'CZE', clubs:['rennes','chelsea','arsenal'] },
+  rogerio_ceni: { pos:'GK', era:[1990,2015], ctry:'BRA', clubs:['saopaulo'] },
+  courtois: { pos:'GK', era:[2009,2026], ctry:'BEL', clubs:['genk','chelsea','atletico','realmadrid'] },
+  van_der_sar: { pos:'GK', era:[1990,2011], ctry:'NED', clubs:['ajax','juventus','fulham','manutd'] },
+  alex: { pos:'MF', era:[1995,2012], ctry:'BRA', clubs:['palmeiras','cruzeiro','fenerbahce','coritiba'] },
+  pirlo: { pos:'MF', era:[1995,2017], ctry:'ITA', clubs:['brescia','inter','milan','juventus','nycfc'] },
+  iniesta: { pos:'MF', era:[2002,2024], ctry:'ESP', clubs:['barcelona','vissel'] },
+  casemiro: { pos:'MF', era:[2010,2026], ctry:'BRA', clubs:['saopaulo','realmadrid','manutd'] },
+  didi: { pos:'MF', era:[1946,1966], ctry:'BRA', clubs:['botafogo','realmadrid','fluminense','sport'] },
+  diego: { pos:'MF', era:[2002,2021], ctry:'BRA', clubs:['santos','porto','werder','juventus','flamengo'] },
+  dunga: { pos:'MF', era:[1980,2000], ctry:'BRA', clubs:['internacional','fiorentina','pescara','stuttgart'] },
+  emerson: { pos:'MF', era:[1993,2010], ctry:'BRA', clubs:['gremio','leverkusen','roma','juventus','realmadrid','milan'] },
+  lampard: { pos:'MF', era:[1995,2016], ctry:'ENG', clubs:['westham','chelsea','mancity','nycfc'] },
+  gilberto_silva: { pos:'MF', era:[1997,2013], ctry:'BRA', clubs:['atleticomg','arsenal','panathinaikos','gremio'] },
+  gerson: { pos:'MF', era:[1959,1977], ctry:'BRA', clubs:['flamengo','botafogo','saopaulo','fluminense'] },
+  juninho: { pos:'MF', era:[1993,2013], ctry:'BRA', clubs:['vasco','lyon','alsadd'] },
+  de_bruyne: { pos:'MF', era:[2008,2026], ctry:'BEL', clubs:['genk','chelsea','wolfsburg','mancity'] },
+  figo: { pos:'MF', era:[1989,2009], ctry:'POR', clubs:['sporting','barcelona','realmadrid','inter'] },
+  scholes: { pos:'MF', era:[1993,2013], ctry:'ENG', clubs:['manutd'] },
+  nedved: { pos:'MF', era:[1991,2009], ctry:'CZE', clubs:['sparta','lazio','juventus'] },
+  riquelme: { pos:'MF', era:[1996,2014], ctry:'ARG', clubs:['boca','barcelona','villarreal','argentinos'] },
+  rivellino: { pos:'MF', era:[1965,1981], ctry:'BRA', clubs:['corinthians','fluminense'] },
+  gerrard: { pos:'MF', era:[1998,2016], ctry:'ENG', clubs:['liverpool','lagalaxy'] },
+  kroos: { pos:'MF', era:[2007,2024], ctry:'GER', clubs:['bayern','leverkusen','realmadrid'] },
+  xavi: { pos:'MF', era:[1998,2019], ctry:'ESP', clubs:['barcelona','alsadd'] },
+};
+PL.forEach(p => Object.assign(p, PL_META[p.id] || { pos:'FW', era:[1990,2010], ctry:'BRA', clubs:[] }));
+
+/* Club metadata — founding year & major titles (for generated questions) */
+const CL_META = {
+  flamengo:{f:1895,br:8,lib:3},   fluminense:{f:1902,br:4,lib:1},
+  vasco:{f:1898,br:4,lib:1},      botafogo:{f:1904,br:3,lib:1},
+  corinthians:{f:1910,br:7,lib:1},palmeiras:{f:1914,br:12,lib:3},
+  saopaulo:{f:1930,br:6,lib:3},   santos:{f:1912,br:8,lib:3},
+  gremio:{f:1903,br:2,lib:3},     internacional:{f:1909,br:3,lib:2},
+  cruzeiro:{f:1921,br:4,lib:2},   atleticomg:{f:1908,br:2,lib:1},
+  atleticopr:{f:1924,br:1,lib:0}, bahia:{f:1931,br:2,lib:0},
+  fortaleza:{f:1918,br:0,lib:0},  ceara:{f:1914,br:0,lib:0},
+  sport:{f:1905,br:1,lib:0},      pontepreta:{f:1900,br:0,lib:0},
+  bragantino:{f:1928,br:0,lib:0}, coritiba:{f:1909,br:1,lib:0},
+  vitoria:{f:1899,br:0,lib:0},    criciuma:{f:1947,br:0,lib:0},
+  americamg:{f:1912,br:0,lib:0},  guarani:{f:1911,br:1,lib:0},
+  nautico:{f:1901,br:0,lib:0},
+};
+CL.forEach(c => Object.assign(c, CL_META[c.id] || { f:1900, br:0, lib:0 }));
 
 /* ═══════════════════════════════════════════════════
    IMAGES — CLUB LOGOS (Wikimedia Commons)
@@ -466,9 +782,7 @@ const PL = [
 const LOGOS = {
   flamengo:     'img/83cfe7a2e3c07a6d.png',
   fluminense:   'img/f349098ce51f3de6.png',
-  vasco:        'img/0fc4886f8af57286.png',
   botafogo:     'img/6f6803956f2610ff.png',
-  corinthians:  'img/de810f8b271b88f6.png',
   palmeiras:    'img/09298e3b8b615c53.png',
   saopaulo:     'img/a5bf018d3843a28a.png',
   santos:       'img/879bfa459e4ff17e.png',
@@ -480,15 +794,12 @@ const LOGOS = {
   bahia:        'img/558858adda0e83fa.png',
   fortaleza:    'img/ed806b4b2f0348ac.png',
   ceara:        'img/1b83fed2c4cff421.png',
-  sport:        'img/70c2bdc10c5d38c5.png',
   pontepreta:   'img/ef0db62d4a991d5d.png',
-  bragantino:   'img/d9f3e7682d363342.png',
   coritiba:     'img/d984f3dc1ac2317e.png',
   vitoria:      'img/1d1a225a22dcc17f.png',
   criciuma:     'img/5a5e8c49ba076870.png',
   americamg:    'img/385a518b92fc0556.png',
   guarani:      'img/3565e2d188f683e3.png',
-  nautico:      'img/213056b776410774.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -519,31 +830,484 @@ const STAD_IMGS = {
   mineirao:   'img/c99de12758334b6d.jpg',
 };
 
+
+/* ═══════════════════════════════════════════════════
+   IMAGE CREDITS — Wikimedia Commons
+   CC licences require attribution; shown on the Créditos screen.
+═══════════════════════════════════════════════════ */
+const CREDITS = {
+  'img/01c9eb3147d30e5a.jpg': { a:'Contato: clickdearaujo@gmail.com', l:'CC BY 2.0' },
+  'img/0638863700c4b493.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/0738bef8f33aefe8.jpg': { a:'Todo Noticias', l:'CC BY 3.0' },
+  'img/0859a19b8b37b5bf.jpg': { a:'The White House', l:'Public domain' },
+  'img/09109cfa614d1185.jpg': { a:'Joerudi', l:'CC BY-SA 4.0' },
+  'img/09298e3b8b615c53.png': { a:'Sociedade Esportiva Palmeiras', l:'Public domain' },
+  'img/0a4e5389e07bead4.jpg': { a:'Christophe95', l:'CC BY-SA 3.0' },
+  'img/0b276412bf3f5bd8.jpg': { a:'Kroon, Ron for Anefo', l:'CC BY-SA 3.0 nl' },
+  'img/0d05b817ada00b01.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
+  'img/0dc77d51638aacd6.jpg': { a:'Meghdad Madadi', l:'CC BY 4.0' },
+  'img/13c70fbbcc6a2cca.jpg': { a:'Антон Зайцев', l:'CC BY-SA 3.0' },
+  'img/150a78c7ead73656.jpg': { a:'Wiki0096', l:'CC BY-SA 4.0' },
+  'img/161e26d90ff643d1.jpg': { a:'https://www.youtube.com/@realmadrid', l:'CC BY 3.0' },
+  'img/174077928ee92afd.jpg': { a:'Rob Mieremet / Anefo', l:'CC0' },
+  'img/18923a812a393569.jpg': { a:'Panini', l:'Public domain' },
+  'img/1942386e409ddbbc.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/194767288f90128d.png': { a:'Grêmio Foot-Ball Porto Alegrense', l:'Public domain' },
+  'img/1a7d080f967ddb0a.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/1a890e79166cbd6b.jpg': { a:'Segue o baile', l:'CC BY 3.0' },
+  'img/1b83fed2c4cff421.png': { a:'Ceará Sporting Club', l:'Public domain' },
+  'img/1d1a225a22dcc17f.png': { a:'Esporte Clube Vitória', l:'Public domain' },
+  'img/1dcca609790e222f.jpg': { a:'Вячеслав Евдокимов', l:'CC BY-SA 3.0' },
+  'img/1e59746f3b5a8618.png': { a:'History Channel', l:'CC0' },
+  'img/1ed00c1d3b7c89d2.jpg': { a:'José Cruz/A Br', l:'CC BY 3.0 br' },
+  'img/1ef3bb0fbdbf78f7.jpg': { a:'Clément Bucco-Lechat', l:'CC BY-SA 3.0' },
+  'img/201fa8e5460c7212.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/264a56ec578e4950.jpg': { a:'Christophe95', l:'CC BY-SA 3.0' },
+  'img/29e4bf594fcd70df.jpg': { a:'Arne Müseler', l:'CC BY-SA 3.0 de' },
+  'img/2ab41e623ca93fd8.jpg': { a:'Chancellery of the President of the Republic of Poland', l:'GFDL 1.2' },
+  'img/2c5f507afd2b35ae.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/2e086d825817e07c.jpg': { a:'Майоров Владимир', l:'CC BY-SA 3.0' },
+  'img/30714e4c8d04f3d4.png': { a:'Sport Club Internacional', l:'Public domain' },
+  'img/318b44473cb72bfd.jpg': { a:'Oberlandi', l:'CC BY-SA 3.0' },
+  'img/3565e2d188f683e3.png': { a:'Guarani Futebol Clube', l:'Public domain' },
+  'img/35887c152589cb9a.jpg': { a:'André Cros', l:'CC BY-SA 4.0' },
+  'img/3777abb05c91c3fa.jpg': { a:'Mikhail Slain', l:'CC BY-SA 3.0' },
+  'img/37e2df5c9425049f.jpg': { a:'UnknownUnknown', l:'Public domain' },
+  'img/385a518b92fc0556.png': { a:'América Futebol Clube', l:'Public domain' },
+  'img/3bf77b3cfa1ac83a.jpg': { a:'Эдгар Брещанов', l:'CC BY-SA 3.0' },
+  'img/3c7e7132b3e8c2da.jpg': { a:'Евгений Асмолов', l:'CC BY-SA 3.0' },
+  'img/3d2301f72881532f.jpg': { a:'Marcello Casal Jr/ABr', l:'CC BY 3.0 br' },
+  'img/3e42a2c3cad24abd.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/4315f16ceb61883f.jpg': { a:'Ricardosoruco', l:'CC BY-SA 3.0' },
+  'img/45beff756309566b.jpg': { a:'Barcex', l:'CC BY-SA 4.0' },
+  'img/491fb1154f03a925.jpg': { a:'International Federation of Football History and Statistics', l:'Public domain' },
+  'img/499deeb9096da832.jpg': { a:'Doha Stadium Plus Qatar', l:'CC BY 2.0' },
+  'img/4a0342f90a220ca9.jpg': { a:'Helfer Emilio', l:'CC0' },
+  'img/4ac976b184cc63fc.jpg': { a:'مقداد مددی', l:'CC BY 4.0' },
+  'img/4ae52a3f1231575e.jpg': { a:'ANEFO', l:'CC0' },
+  'img/4ef8747be0d6505e.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/4f0ed4152b2a54a3.png': { a:'Clube Atlético Mineiro', l:'Public domain' },
+  'img/516c48659ff0cdb0.jpg': { a:'Arthur Miranda', l:'CC0' },
+  'img/51fdbdc7c90eb840.jpg': { a:'Panini Group', l:'Public domain' },
+  'img/52657817692601d7.jpg': { a:'Wim van Rossem for Anefo', l:'CC0' },
+  'img/52c0aea6ebbb0561.jpg': { a:'TV Brasil', l:'CC BY 3.0 br' },
+  'img/5564dc0bb05fda53.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/558858adda0e83fa.png': { a:'Esporte Clube Bahia', l:'Public domain' },
+  'img/58802c8550ef5fa7.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/5a5e8c49ba076870.png': { a:'Criciúma Esporte Clube', l:'Public domain' },
+  'img/618d79848fbbec21.jpg': { a:'Carlsberg', l:'CC BY 3.0' },
+  'img/666048b495ae1438.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/66a6d28f83b53839.jpg': { a:'Wilson Dias/ABr', l:'CC BY 3.0 br' },
+  'img/67fda0a92c0c4dde.jpg': { a:'Sergio Savarese from Sao Paulo City / Ipiranga, Brasil', l:'CC BY-SA 2.0' },
+  'img/6a816865c94e5bd3.png': { a:'NullReason', l:'CC BY-SA 3.0' },
+  'img/6b52ccf84346c214.jpg': { a:'AbolfaZl0990', l:'CC BY-SA 4.0' },
+  'img/6c5cbdbd0210e78e.jpg': { a:'Fotografías Archimadrid.es', l:'CC BY 2.0' },
+  'img/6c878cb3f764d10d.jpg': { a:'Alexandre Breveglieri', l:'CC BY 2.0' },
+  'img/6e42572899f9dce9.jpg': { a:'MichaelEmilio', l:'CC BY 4.0' },
+  'img/6f6803956f2610ff.png': { a:'Botafogo de Futebol e Regatas', l:'Public domain' },
+  'img/7061b6cbdc57abe7.jpg': { a:'Amir Hosseini', l:'CC BY 4.0' },
+  'img/733f0792d0bcb15e.jpg': { a:'The White House', l:'Public domain' },
+  'img/73da24ccdc705361.jpg': { a:'Barcex', l:'CC BY-SA 4.0' },
+  'img/758326660493848f.png': { a:'Міністерство молоді та спорту України', l:'CC BY 4.0' },
+  'img/763f03ab1bff5adf.jpg': { a:'Reto Stauffer, www.hopp-schwiiz.ch', l:'CC BY-SA 2.0 de' },
+  'img/779dcd8f35662801.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/7a6f9e0a9d58ee6d.jpg': { a:'Alex Carvalho', l:'CC BY-SA 2.0' },
+  'img/7ae20ec3aa4bb7e4.jpg': { a:'Sven Mandel', l:'CC BY-SA 4.0' },
+  'img/8009d0c8ca776192.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
+  'img/81c06667fa16b652.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/82d5307026607b2a.jpg': { a:'Ailura', l:'CC BY-SA 3.0 at' },
+  'img/83a240d4788163b3.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/83cfe7a2e3c07a6d.png': { a:'Clube de Regatas do Flamengo', l:'Public domain' },
+  'img/8595a6ca0651c6c5.jpg': { a:'Elena Ternovaja', l:'CC BY-SA 3.0' },
+  'img/879bfa459e4ff17e.png': { a:'Santos F.C.', l:'Public domain' },
+  'img/87ed4227f19deced.jpg': { a:'James Adams', l:'CC BY 2.0' },
+  'img/88468c09c32948e3.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
+  'img/9303d0cc8b834d4f.jpg': { a:'Y.Leclercq©', l:'CC BY-SA 4.0' },
+  'img/9429cb23de075033.jpg': { a:'Pavel Lebeda', l:'CC BY-SA 2.0' },
+  'img/94bf9a8f11ebefd0.jpg': { a:'Emilio Ronchini (Mondadori Publishers)', l:'Public domain' },
+  'img/9564d5244c34c91c.jpg': { a:'Pedro J Pacheco', l:'CC BY-SA 4.0' },
+  'img/971d29633a44b706.jpg': { a:'Real Madrid', l:'CC BY 3.0' },
+  'img/97883ef7e09ebbd6.jpg': { a:'United States Department of State Africa U.S.-Africa Leaders Summit: Photos and ', l:'Public domain' },
+  'img/9857fb0acb22e8ef.jpg': { a:'Laura Cortizo/Portal da Copa', l:'CC BY 3.0 br' },
+  'img/9d3579f7683545f1.jpg': { a:'Bernardo1989', l:'CC BY-SA 4.0' },
+  'img/9d91c1374cf5c69b.jpg': { a:'Sergio Savarese from Sao Paulo City / Ipiranga, Brasil', l:'CC BY-SA 2.0' },
+  'img/9fdc4e925e614702.jpg': { a:'Milly barzellai', l:'CC BY-SA 4.0' },
+  'img/a49cd1072ac4f08a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/a4a135f81bbd912b.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/a5a00230e9194c14.jpg': { a:'Paul Blank', l:'CC BY 2.5' },
+  'img/a5bf018d3843a28a.png': { a:'São Paulo FC', l:'Public domain' },
+  'img/a918407d3e86de2a.jpg': { a:'Meysam Mehabadi', l:'CC BY 4.0' },
+  'img/ab23500e9fe71e50.jpg': { a:'Steffen Prößdorf', l:'CC BY-SA 4.0' },
+  'img/ac82278f5d3eec63.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
+  'img/ac9b72fbf485640d.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
+  'img/acd8c17cb88e9cba.jpg': { a:'Nicola Genati', l:'CC BY-SA 3.0' },
+  'img/acf7a54d907325b5.jpg': { a:'NullReason', l:'CC BY-SA 4.0' },
+  'img/adf896d5e2f38903.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/aedd9c392e0535c1.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/b1e64d65207899d5.jpg': { a:'Roberto Vicario', l:'CC BY-SA 3.0' },
+  'img/b20f256bbc5bfbe1.jpg': { a:'Roberto Sabino', l:'CC BY 2.0' },
+  'img/b24057226b77cc3d.jpg': { a:'Panini', l:'Public domain' },
+  'img/b4b0af27fb90b6ad.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/b60bcbe37aa5443f.png': { a:'Clube Athletico Paranaense', l:'Public domain' },
+  'img/b8e36fbf197410f6.jpg': { a:'Empresa Brasil de Comunicação - EBC', l:'CC BY 3.0 br' },
+  'img/bca7c83998971046.jpg': { a:'The White House', l:'Public domain' },
+  'img/becb9d93999c12ae.jpg': { a:'محمد امین انصاری', l:'CC BY 4.0' },
+  'img/bf612f288773656a.jpg': { a:'Mídia promocional do programa Caminhos da Reportagem, TV Brasil.', l:'CC BY 3.0 br' },
+  'img/c0b1d021fd8cc669.jpg': { a:'Reto Stauffer, www.hopp-schwiiz.ch', l:'CC BY-SA 2.0 de' },
+  'img/c19fd91ef2f23508.jpg': { a:'Amir Hosseini', l:'CC BY 4.0' },
+  'img/c1a715e0c0f81882.jpg': { a:'Junta de Andalucía', l:'CC BY-SA 2.0' },
+  'img/c780eaab619fbae9.png': { a:'Cruzeiro Esporte Clube', l:'Public domain' },
+  'img/c951450a110a5e28.jpg': { a:'soccerdigital', l:'Public domain' },
+  'img/c99de12758334b6d.jpg': { a:'Governo Federal Brasileiro', l:'CC BY-SA 3.0' },
+  'img/c9b175338e538436.jpg': { a:'Žan Kolman', l:'Public domain' },
+  'img/ca38a5d8fb15d1d3.jpg': { a:'Zack', l:'CC BY 4.0' },
+  'img/ce2fa1c8f787f96d.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/cec165242fdd66eb.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/d042f2b35b5efade.jpg': { a:'David Seow', l:'CC BY-SA 4.0' },
+  'img/d1eb64abf64a7ecc.jpg': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
+  'img/d2c6410686305d9c.jpg': { a:'Hadi Abyar', l:'CC BY 4.0' },
+  'img/d3048d0dcd6295ea.jpg': { a:'All-Pro Reels from District of Columbia, USA', l:'CC BY-SA 2.0' },
+  'img/d609af6f47604b15.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/d984f3dc1ac2317e.png': { a:'Coritiba Foot Ball Club', l:'Public domain' },
+  'img/dffa17aea5fe72c7.jpg': { a:'Marcos Corrêa/PR', l:'CC BY 2.0' },
+  'img/e2ec3359b334126a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/e2ed77c74290729e.jpg': { a:'BrazilianDude70', l:'CC BY-SA 4.0' },
+  'img/e4338b3611dcdec3.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/e4bbfb4842eaf994.png': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
+  'img/e89e123d5b748a6e.jpg': { a:'Rufus46', l:'CC BY-SA 3.0' },
+  'img/e8ed7b9d7bfb0269.jpg': { a:'Panini', l:'Public domain' },
+  'img/e97089e508fffa75.jpg': { a:'Aécio Neves from Brasília, Brasil', l:'CC BY 2.0' },
+  'img/ed806b4b2f0348ac.png': { a:'Fortaleza Esporte Clube', l:'Public domain' },
+  'img/edad5d0ef563881e.jpg': { a:'Sven Mandel', l:'CC BY-SA 4.0' },
+  'img/ef0db62d4a991d5d.png': { a:'Associação Atlética Ponte Preta', l:'Public domain' },
+  'img/f349098ce51f3de6.png': { a:'Fluminense FC', l:'Public domain' },
+  'img/f58660371bf6d29c.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
+  'img/f69a84f12e6c3e2d.jpg': { a:'Web Summit', l:'CC BY 2.0' },
+  'img/f8d7cb9715893c93.jpg': { a:'SOCCER DIGITAL', l:'Public domain' },
+  'img/fa4679be155093f7.jpg': { a:'El Gráfico, n° 2233', l:'Public domain' },
+  'img/fb3077ff4e56c7bd.jpg': { a:'GOAL TV', l:'CC BY 3.0' },
+  'img/fcd3c0654c588ded.jpg': { a:'Mehdi Bolourian', l:'CC BY 4.0' },
+  'img/fdb3f78c7ce459dd.jpg': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
+  'img/fe82c30b82065f32.jpg': { a:'Olga Shcherbytska', l:'CC BY-SA 4.0' },
+};
+
 /* ═══════════════════════════════════════════════════
    MIXED GAME BUILDER
 ═══════════════════════════════════════════════════ */
 const DIFFS = [
   { key:'facil',    label:'Fácil',    emoji:'😊', n:10, col:'#43A047',
-    desc:'Para aquecer os motores' },
-  { key:'moderado', label:'Moderado', emoji:'⚽', n:20, col:'#FF9800',
-    desc:'Para os bons de bola' },
-  { key:'dificil',  label:'Difícil',  emoji:'🔥', n:50, col:'#E53935',
-    desc:'Para os craques do quiz' },
+    desc:'Alternativas variadas · 30s',
+    time:30, strict:0.00, opts:10, tier:1, pmul:1   },
+  { key:'moderado', label:'Moderado', emoji:'⚽', n:15, col:'#FF9800',
+    desc:'Alternativas parecidas · 25s',
+    time:25, strict:0.55, opts:10, tier:2, pmul:1.5 },
+  { key:'dificil',  label:'Difícil',  emoji:'🔥', n:20, col:'#E53935',
+    desc:'Mesma posição e era · 20s',
+    time:20, strict:1.00, opts:10, tier:3, pmul:2   },
 ];
+const DCFG = () => DIFFS.find(d => d.key === diffKey) || DIFFS[0];
 
-function buildMixedGame(n) {
-  // Flatten all questions, tagging each with its source category
-  const allQs = CATS.flatMap(c => c.qs.map(q => ({ ...q, _cat: c })));
-  // Fisher-Yates shuffle
-  for (let i = allQs.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [allQs[i], allQs[j]] = [allQs[j], allQs[i]];
+/* ═══════════════════════════════════════════════════
+   SMART DISTRACTOR ENGINE
+   Wrong answers are scored for plausibility instead of
+   being drawn at random, so harder levels really are harder.
+═══════════════════════════════════════════════════ */
+/* Seedable PRNG — when _seed is set the sequence is reproducible, which is
+   what makes the Daily Challenge identical for every player. */
+let _seed = null;
+function rnd() {
+  if (_seed === null) return Math.random();
+  _seed = (_seed + 0x6D2B79F5) | 0;
+  let t = Math.imul(_seed ^ (_seed >>> 15), 1 | _seed);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+function seedFrom(n) { _seed = (n * 2654435761) | 0; }
+
+function shuf(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
+}
+
+/* days since 2024-01-01 — the daily puzzle number */
+function dayIndex(d) {
+  const n = d || new Date();
+  return Math.floor((Date.UTC(n.getFullYear(), n.getMonth(), n.getDate())
+                     - Date.UTC(2024, 0, 1)) / 86400000);
+}
+
+function eraOverlap(a, b) {
+  if (!a.era || !b.era) return 0;
+  return Math.max(0, Math.min(a.era[1], b.era[1]) - Math.max(a.era[0], b.era[0]));
+}
+
+/* How confusable is `cand` with the correct player `ref`? 0-100 */
+function simPlayer(cand, ref) {
+  let sc = 0;
+  if (cand.pos  === ref.pos)  sc += 38;           // same position
+  if (cand.ctry === ref.ctry) sc += 22;           // same country
+  sc += Math.min(26, eraOverlap(cand, ref) * 1.8); // contemporaries
+  const shared = (cand.clubs || []).filter(c => (ref.clubs || []).includes(c)).length;
+  sc += Math.min(14, shared * 7);                 // shared clubs
+  return sc;
+}
+
+/* Confusability between clubs */
+function simClub(cand, ref) {
+  let sc = 0;
+  if (cand.s === ref.s) sc += 42;                              // same state
+  sc += Math.max(0, 22 - Math.abs((cand.f||1900) - (ref.f||1900)) / 2);
+  if ((cand.lib > 0) === (ref.lib > 0)) sc += 20;              // both/neither Libertadores
+  if ((cand.br  > 0) === (ref.br  > 0)) sc += 16;              // both/neither Brasileirão
+  return sc;
+}
+
+function getDisp(q) {
+  const isPlayer = q.type === 'player';
+  const pool0 = isPlayer ? PL : CL;
+  const sim   = isPlayer ? simPlayer : simClub;
+  const cfg   = DCFG();
+  const strict = (q.strict !== undefined) ? q.strict : cfg.strict;
+  const nOpts  = q.opts || cfg.opts;
+
+  // `fixed` = show exactly these tiles (comparison questions)
+  if (q.fixed) return shuf(q.fixed.map(id => pool0.find(x => x.id === id)).filter(Boolean));
+
+  const right = q.a.map(id => pool0.find(x => x.id === id)).filter(Boolean);
+
+  // `pool` = explicit list of ids allowed as wrong answers
+  let wrong;
+  if (q.pool) {
+    const allow = new Set(q.pool);
+    wrong = pool0.filter(x => allow.has(x.id) && !q.a.includes(x.id));
+  } else {
+    const skip = new Set([...(q.excl || []), ...q.a]);
+    wrong = pool0.filter(x => !skip.has(x.id));
+  }
+
+  const ref = right[0];
+  if (ref && strict > 0 && wrong.length > nOpts) {
+    const jitter = 14 * (1 - strict) + 6;
+    wrong = wrong
+      .map(x => ({ x, s: sim(x, ref) + rnd() * jitter }))
+      .sort((a, b) => b.s - a.s)
+      .map(o => o.x);
+    const need = nOpts - right.length;
+    const band = Math.max(need + 2, Math.round(wrong.length * (1 - strict * 0.72)));
+    wrong = wrong.slice(0, band);
+  }
+
+  wrong = shuf(wrong);
+  return shuf([...right, ...wrong.slice(0, Math.max(0, nOpts - right.length))]);
+}
+
+/* ═══════════════════════════════════════════════════
+   QUESTION DIFFICULTY RATING
+═══════════════════════════════════════════════════ */
+const FAMOUS = new Set(['pele','messi','cr7','ronaldo','ronaldinho','neymar',
+  'maradona','zidane','romario','garrincha','zico','kaka','mbappe','vinicius','gabigol']);
+
+function qTier(q) {
+  if (q.d) return q.d;                       // explicit override
+  const cid = (q._cat && q._cat.id) || '';
+  if (cid === 'estados')  return 1;
+  if (cid === 'estadios') return 2;
+  if (cid === 'lendas')   return 2;
+  if (cid === 'libertadores' || cid === 'brasileirao') {
+    const m = /\b(19|20)\d{2}\b/.exec(q.t);
+    const y = m ? parseInt(m[0], 10) : 2000;
+    return y >= 2015 ? 1 : y >= 2005 ? 2 : 3;
+  }
+  if (cid === 'craques') {
+    return q.a.some(id => FAMOUS.has(id)) ? 2 : 3;
+  }
+  return 2;
+}
+
+function buildGame(key) {
+  const cfg = DIFFS.find(d => d.key === key) || DIFFS[0];
+  let all = CATS.flatMap(c => c.qs.map(q => ({ ...q, _cat: c })));
+  if (typeof GEN_QS === 'function') all = all.concat(GEN_QS(cfg.tier));
+  all.forEach(q => { q._d = qTier(q); });
+
+  // prefer questions at the requested tier, then nearest tiers
+  const scored = shuf(all).map(q => ({ q, w: -Math.abs(q._d - cfg.tier) * 10 + rnd() * 4 }));
+  scored.sort((a, b) => b.w - a.w);
+
+  // generators can emit the same wording twice (e.g. two "who was a goalkeeper?"),
+  // so de-duplicate by question text before filling the round
+  const seen = new Set();
+  const qs = [];
+  for (const o of scored) {
+    if (seen.has(o.q.t)) continue;
+    seen.add(o.q.t);
+    qs.push(o.q);
+    if (qs.length >= cfg.n) break;
+  }
+
   return {
     id: 'mixed', name: 'Futebol Quiz BR', emoji: '⚽',
-    tag: 'Perguntas misturadas', col: '#FFD700', diff: 'Variado',
-    qs: allQs.slice(0, Math.min(n, allQs.length)),
+    tag: 'Perguntas misturadas', col: '#FFD700', diff: cfg.label,
+    qs: shuf(qs),
   };
+}
+
+
+/* ═══════════════════════════════════════════════════
+   QUESTION GENERATORS
+   Build fresh questions from the structured data so the
+   pool never runs dry and distractors are correct by design.
+═══════════════════════════════════════════════════ */
+function GEN_QS(tier) {
+  /* GENCAT — badge shown in the quiz header for generated questions */
+  const GC = {
+    club:  { id:'g_club',  name:'Carreira',  emoji:'🧭', col:'#26A69A' },
+    pos:   { id:'g_pos',   name:'Posição',   emoji:'🎯', col:'#7E57C2' },
+    nat:   { id:'g_nat',   name:'Seleções',  emoji:'🌎', col:'#42A5F5' },
+    hist:  { id:'g_hist',  name:'História',  emoji:'📚', col:'#C8A400' },
+    squad: { id:'g_squad', name:'Elenco',    emoji:'👥', col:'#66BB6A' },
+    era:   { id:'g_era',   name:'Época',     emoji:'⏳', col:'#FFA726' },
+    photo: { id:'g_photo', name:'Foto',      emoji:'📸', col:'#EC407A' },
+    path:  { id:'g_path',  name:'Caminho',   emoji:'🗺️', col:'#26C6DA' },
+  };
+  const out  = [];
+  const CIDS = new Set(CL.map(c => c.id));
+  const rndOf = a => a[Math.floor(rnd() * a.length)];
+  const pick = (a, n) => shuf(a).slice(0, n);
+
+  /* ── 1. Which Brazilian club did this player turn out for? ── */
+  const withBr = PL.filter(p => (p.clubs || []).some(c => CIDS.has(c)));
+  pick(withBr, 26).forEach(p => {
+    const mine = (p.clubs || []).filter(c => CIDS.has(c));
+    out.push({
+      t: `Por qual destes clubes ${p.n} jogou?`,
+      a: [rndOf(mine)],
+      pool: CL.filter(c => !(p.clubs || []).includes(c.id)).map(c => c.id),
+      face: p.img, _cat: GC.club,
+      d: p.ctry === 'BRA' ? 2 : 3,
+    });
+  });
+
+  /* ── 2. Position recognition ── */
+  ['GK', 'DF', 'MF'].forEach(pos => {
+    const same   = PL.filter(p => p.pos === pos);
+    const others = PL.filter(p => p.pos !== pos);
+    if (same.length < 2 || others.length < 9) return;
+    pick(same, 4).forEach(p => {
+      out.push({
+        t: `Qual destes jogadores atuava como ${POS_NAME[pos].toLowerCase()}?`,
+        a: [p.id], type: 'player',
+        pool: others.map(x => x.id), _cat: GC.pos,
+        d: pos === 'GK' ? 1 : 2,
+      });
+    });
+  });
+
+  /* ── 3. Nationality ── */
+  const byCtry = {};
+  PL.forEach(p => { (byCtry[p.ctry] = byCtry[p.ctry] || []).push(p); });
+  Object.keys(byCtry).filter(c => c !== 'BRA' && byCtry[c].length >= 1).forEach(c => {
+    const p = rndOf(byCtry[c]);
+    out.push({
+      t: `Qual destes jogadores defendeu a seleção de ${CTRY_NAME[c] || c}?`,
+      a: [p.id], type: 'player',
+      pool: PL.filter(x => x.ctry !== c).map(x => x.id), _cat: GC.nat,
+      d: 2,
+    });
+  });
+
+  /* ── 4. Oldest club (comparison, exact 10 tiles) ── */
+  for (let i = 0; i < 4; i++) {
+    const set = pick(CL, 10);
+    const oldest = set.reduce((a, b) => (a.f <= b.f ? a : b));
+    if (set.filter(c => c.f === oldest.f).length > 1) continue;   // avoid ties
+    out.push({ t: 'Qual destes clubes foi fundado primeiro?',
+               a: [oldest.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 3 });
+  }
+
+  /* ── 5. Most Brasileirão titles ── */
+  for (let i = 0; i < 4; i++) {
+    const set = pick(CL, 10);
+    const top = set.reduce((a, b) => (a.br >= b.br ? a : b));
+    if (top.br === 0 || set.filter(c => c.br === top.br).length > 1) continue;
+    out.push({ t: 'Qual destes clubes tem mais títulos do Brasileirão?',
+               a: [top.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 2 });
+  }
+
+  /* ── 6. Libertadores winners (multi-select) ── */
+  for (let i = 0; i < 3; i++) {
+    const champs = pick(CL.filter(c => c.lib > 0), 3);
+    const rest   = pick(CL.filter(c => c.lib === 0), 7);
+    if (champs.length < 3 || rest.length < 7) break;
+    out.push({ t: 'Selecione os clubes que JÁ venceram a Libertadores',
+               a: champs.map(c => c.id),
+               fixed: champs.concat(rest).map(c => c.id), _cat: GC.hist, d: 2 });
+  }
+
+  /* ── 7. Team-mates: who also played for this club? ── */
+  const clubPlayers = {};
+  PL.forEach(p => (p.clubs || []).forEach(c => {
+    if (CIDS.has(c)) (clubPlayers[c] = clubPlayers[c] || []).push(p);
+  }));
+  pick(Object.keys(clubPlayers).filter(c => clubPlayers[c].length >= 2), 6).forEach(c => {
+    const yes = pick(clubPlayers[c], 2);
+    const no  = PL.filter(p => !(p.clubs || []).includes(c));
+    out.push({
+      t: `Selecione os 2 jogadores que passaram pelo ${clubName(c)}`,
+      a: yes.map(p => p.id), type: 'player',
+      pool: no.map(p => p.id),
+      crest: c, _cat: GC.squad,
+      d: 3,
+    });
+  });
+
+  /* ── 8. Era placement ── */
+  pick(PL.filter(p => p.era && p.era[0] >= 1990), 6).forEach(p => {
+    const dec = Math.floor(p.era[0] / 10) * 10;
+    const others = PL.filter(x => x.era && Math.floor(x.era[0] / 10) * 10 !== dec);
+    if (others.length < 9) return;
+    out.push({
+      t: `Qual destes jogadores começou a carreira nos anos ${dec}?`,
+      a: [p.id], type: 'player',
+      pool: others.map(x => x.id), _cat: GC.era,
+      d: 3,
+    });
+  });
+
+  /* ── 9. PHOTO REVEAL: the picture sharpens as the clock runs down ── */
+  pick(PL.filter(p => p.img), 8).forEach(p => {
+    const others = PL.filter(x => x.id !== p.id);
+    out.push({
+      t: 'Quem é este jogador? (a foto vai ficando nítida)',
+      a: [p.id], type: 'player',
+      reveal: p.img,
+      textTiles: true,
+      pool: others.map(x => x.id), _cat: GC.photo,
+      d: 2,
+    });
+  });
+
+  /* ── 10. CAREER PATH: guess the player from the clubs he played for ── */
+  pick(PL.filter(p => (p.clubs || []).length >= 3), 8).forEach(p => {
+    const path = (p.clubs || []).slice(0, 4).map(clubName).join(' → ');
+    out.push({
+      t: `Que jogador seguiu este caminho?\n${path}`,
+      a: [p.id], type: 'player',
+      textTiles: true,
+      pool: PL.filter(x => x.id !== p.id).map(x => x.id), _cat: GC.path,
+      d: 3,
+    });
+  });
+
+  // Safety net: a generator bug must never put an unanswerable question in front
+  // of a player, so drop anything whose answers don't resolve.
+  return out.filter(q =>
+    q.a && q.a.length &&
+    q.a.every(id => (q.type === 'player' ? PL : CL).some(x => x.id === id)));
 }
 
 /* ═══════════════════════════════════════════════════
@@ -560,23 +1324,102 @@ let prevPts  = 0;   // to detect score change for animation
 let streak   = 0;
 let disp     = [];
 let tLeft    = 30;
+let tMax     = 30;
 let tmr      = null;
 let lastMsg  = '';
-let scores   = {};
+/* ═══════════════════════════════════════════════════
+   COMBO SCORING + PERSISTENCE
+═══════════════════════════════════════════════════ */
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem('fqbr_' + k);
+                    return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('fqbr_' + k, JSON.stringify(v)); } catch (e) {} },
+};
+let scores     = LS.get('scores', {});      // best points per difficulty
+let stats      = LS.get('stats', { games:0, correct:0, answered:0, bestStreak:0 });
+let nCorrect   = 0;   // perfect answers this run
+let nPartial   = 0;
+let bestStreak = 0;
+let lastGain   = 0;
+let runLog     = [];  // per-question 3/1/0, for the share card
+
+/* points for one answer, with speed + combo + difficulty multipliers */
+function scoreAnswer(base) {
+  if (base <= 0) return { gained:0, mult:1, speed:0 };
+  const frac  = tMax ? tLeft / tMax : 0;
+  const speed = base === 3 ? (frac > 0.6 ? 2 : frac > 0.3 ? 1 : 0) : 0;
+  const mult  = streak >= 6 ? 3 : streak >= 3 ? 2 : 1;
+  return { gained: Math.round((base + speed) * mult * DCFG().pmul), mult, speed };
+}
+
+
+/* ═══════════════════════════════════════════════════
+   DAILY CHALLENGE
+   One identical 10-question run per day for everybody,
+   plus a Wordle-style card that is easy to paste in WhatsApp.
+═══════════════════════════════════════════════════ */
+let isDaily = false;
+
+function dailyDone() { return LS.get('dailyDay', -1) === dayIndex(); }
+function dailyInfo() { return LS.get('dailyRes', null); }
+
+function dailyStreakNow() {
+  const last = LS.get('dailyDay', -1);
+  const st   = LS.get('dailyStreak', 0);
+  const today = dayIndex();
+  if (last === today || last === today - 1) return st;
+  return 0;                       // streak broken
+}
+
+function saveDaily() {
+  const today = dayIndex(), last = LS.get('dailyDay', -1);
+  let st = LS.get('dailyStreak', 0);
+  st = (last === today - 1) ? st + 1 : (last === today ? st : 1);
+  LS.set('dailyDay', today);
+  LS.set('dailyStreak', st);
+  LS.set('dailyRes', { pts, nCorrect, total: cat.qs.length, log: runLog, streak: st });
+}
+
+function shareText() {
+  const res  = isDaily ? null : null;
+  const grid = runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : '⬛').join('');
+  const head = isDaily ? `Futebol Quiz BR ⚽ Desafio #${dayIndex()}`
+                       : `Futebol Quiz BR ⚽ ${DCFG().label}`;
+  const strk = bestStreak >= 3 ? `  🔥${bestStreak}` : '';
+  return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}\n`
+       + `https://tdosreis.github.io/futebol-quiz/`;
+}
+
+function doShare() {
+  const txt = shareText();
+  if (navigator.share) {
+    navigator.share({ text: txt }).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(() => {
+      const b = document.getElementById('bshare');
+      if (b) { b.textContent = 'COPIADO!'; setTimeout(() => { b.textContent = 'COMPARTILHAR'; }, 1600); }
+    }).catch(() => {});
+  }
+}
+
+function startDaily() {
+  isDaily = true;
+  diffKey = 'moderado';
+  seedFrom(dayIndex());
+  cat = buildGame('moderado');
+  cat.qs = cat.qs.slice(0, 10);
+  cat.name = 'Desafio Diário';
+  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
+  startTmr();
+  go();
+}
 
 /* ═══════════════════════════════════════════════════
    HELPERS
 ═══════════════════════════════════════════════════ */
-function getDisp(q) {
-  if (q.type === 'player') {
-    const right = q.a.map(id => PL.find(p => p.id === id)).filter(Boolean);
-    const wrong  = PL.filter(p => !q.a.includes(p.id)).sort(() => Math.random() - .5);
-    return [...right, ...wrong.slice(0, 10 - right.length)].sort(() => Math.random() - .5);
-  }
-  const right = q.a.map(id => CL.find(c => c.id === id)).filter(Boolean);
-  const wrong  = CL.filter(c => !q.a.includes(c.id)).sort(() => Math.random() - .5);
-  return [...right, ...wrong.slice(0, 10 - right.length)].sort(() => Math.random() - .5);
-}
 
 /* ═══════════════════════════════════════════════════
    SVG — PLAYER PORTRAIT
@@ -742,6 +1585,18 @@ function crest(id) {
   }
 }
 
+
+/* Club artwork: use the licensed crest image when we have one, otherwise fall
+   back to the app's own hand-drawn SVG crest (see crest() above). This keeps
+   the bundle free of non-free Wikipedia files. */
+function clubArt(id, style) {
+  if (LOGOS[id]) {
+    return `<img src="${LOGOS[id]}" alt="" style="${style}"
+      onerror="this.style.opacity='.3'" />`;
+  }
+  return `<svg viewBox="0 0 60 60" style="${style}" aria-hidden="true">${crest(id)}</svg>`;
+}
+
 /* ═══════════════════════════════════════════════════
    BADGE — one club tile
 ═══════════════════════════════════════════════════ */
@@ -750,6 +1605,7 @@ function badge(item) {
   const isSel   = sel.has(item.id);
   const isAns   = sc === 'reveal' && cat.qs[qi].a.includes(item.id);
   const isWrong = sc === 'reveal' && isSel && !isAns;
+  const curQ    = (cat && cat.qs && cat.qs[qi]) || {};
 
   let cls  = 'b';
   let ring = '';
@@ -759,6 +1615,18 @@ function badge(item) {
   } else if (isSel) {
     cls += ' b-sel';
     ring = `box-shadow:0 0 0 3px ${cat.col},0 0 16px ${cat.col}66;transform:scale(1.06);`;
+  }
+
+  if (curQ.textTiles) {
+    return `<div class="${cls}" data-id="${item.id}" style="
+        width:100%;min-height:44px;border-radius:9px;cursor:pointer;
+        background:rgba(255,255,255,.06);user-select:none;
+        display:flex;align-items:center;justify-content:center;text-align:center;
+        padding:6px 4px;transition:transform .12s,box-shadow .12s;${ring}">
+      <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.9);
+        font-family:'Inter',system-ui;line-height:1.25;
+        text-shadow:0 1px 4px rgba(0,0,0,.9);">${item.n}</span>
+    </div>`;
   }
 
   if (isPlayer) {
@@ -789,9 +1657,7 @@ function badge(item) {
       background:rgba(255,255,255,.06);
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-    <img src="${LOGOS[item.id]}" alt="${item.n}"
-      style="width:78%;height:78%;object-fit:contain;pointer-events:none;flex-shrink:0;"
-      onerror="this.style.opacity='.3'" />
+    ${clubArt(item.id, 'width:78%;height:78%;object-fit:contain;pointer-events:none;flex-shrink:0;')}
     <span style="font-size:9px;color:rgba(255,255,255,.78);text-align:center;
       font-weight:700;font-family:'Inter',system-ui;
       text-shadow:0 1px 4px rgba(0,0,0,1);
@@ -819,7 +1685,8 @@ function html() {
     <p style="color:rgba(255,255,255,.38);font-size:13px;max-width:280px;line-height:1.7;
       margin:0;font-family:'Inter',system-ui;">
       Prove que você conhece o futebol brasileiro melhor que ninguém.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+      width:100%;max-width:320px;">
       ${CATS.map(c =>
         `<span style="background:${c.col}18;border:1px solid ${c.col}33;
           border-radius:20px;padding:4px 11px;font-size:11px;color:${c.col};
@@ -828,13 +1695,80 @@ function html() {
     </div>
     <p style="color:rgba(255,255,255,.22);font-size:11px;max-width:260px;
       margin:0;font-family:'Inter',system-ui;line-height:1.6;">
-      ${CATS.reduce((n,c)=>n+c.qs.length,0)} perguntas de todas as categorias — misturadas!</p>
+      Centenas de perguntas — nunca a mesma partida duas vezes.</p>
     <button id="cta-btn" style="margin-top:6px;background:#FFD700;color:#060e08;
       font-size:18px;font-weight:900;padding:13px 50px;border-radius:28px;
       border:none;cursor:pointer;
       font-family:'Bebas Neue','Impact',sans-serif;
       letter-spacing:3px;">JOGAR AGORA</button>
+    ${(() => {
+      const done = dailyDone(), st = dailyStreakNow(), r = dailyInfo();
+      return `<button id="daily-btn" style="background:${done ? 'rgba(255,255,255,.06)' : 'rgba(255,215,0,.12)'};
+        border:1px solid ${done ? 'rgba(255,255,255,.14)' : 'rgba(255,215,0,.45)'};
+        color:${done ? 'rgba(255,255,255,.55)' : '#FFD700'};
+        font-size:13px;font-weight:700;padding:9px 22px;border-radius:22px;
+        cursor:pointer;font-family:'Inter',system-ui;display:flex;
+        align-items:center;gap:7px;">
+        <span style="font-size:15px;">📅</span>
+        <span>${done ? `Desafio de hoje: ${r ? r.nCorrect + '/' + r.total : 'feito'}`
+                     : 'Desafio Diário #' + dayIndex()}</span>
+        ${st > 0 ? `<span style="background:rgba(255,119,0,.18);border-radius:8px;
+            padding:1px 6px;font-size:11px;color:#FF7700;">🔥${st}</span>` : ''}
+      </button>`;
+    })()}
+    <button id="bcred" style="background:none;border:none;
+      color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
+      font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
+      Créditos das imagens</button>
+    ${stats.games > 0 ? `<div style="font-size:10px;color:rgba(255,255,255,.25);
+      font-family:'Inter',system-ui;">${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
+      · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
+      ${stats.bestStreak >= 3 ? ' · 🔥 ' + stats.bestStreak : ''}</div>` : ''}
   </div>`;
+
+
+  /* ── CREDITS SCREEN ── */
+  if (sc === 'credits') {
+    const pairs = {};
+    Object.values(typeof CREDITS !== 'undefined' ? CREDITS : {}).forEach(c => {
+      const k = (c.a || 'Desconhecido') + '||' + (c.l || '?');
+      pairs[k] = (pairs[k] || 0) + 1;
+    });
+    const rows = Object.keys(pairs).sort().map(k => {
+      const [a, l] = k.split('||');
+      return `<div style="display:flex;justify-content:space-between;gap:8px;
+        padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);">
+        <span style="font-size:10px;color:rgba(255,255,255,.62);flex:1;
+          font-family:'Inter',system-ui;line-height:1.35;">${a}</span>
+        <span style="font-size:9px;color:rgba(255,215,0,.55);white-space:nowrap;
+          font-family:'Inter',system-ui;">${l}</span>
+      </div>`;
+    }).join('');
+    return `
+    <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
+          color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+        <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
+          font-family:'Inter',system-ui;">Créditos das imagens</span>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,.42);line-height:1.65;margin:0;
+        font-family:'Inter',system-ui;">
+        As fotos dos jogadores vêm da <strong style="color:rgba(255,255,255,.7);">Wikimedia
+        Commons</strong> e são usadas sob licenças livres (CC / domínio público).
+        Obrigado a cada autor listado abaixo.<br><br>
+        Escudos dos clubes são marcas registradas de seus respectivos clubes, exibidos
+        apenas para identificação dentro do quiz.
+      </p>
+      <div style="flex:1;overflow-y:auto;background:rgba(255,255,255,.03);
+        border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 12px;
+        max-height:330px;">${rows || '<span style="font-size:11px;color:#888;">—</span>'}</div>
+      <p style="font-size:9px;color:rgba(255,255,255,.25);text-align:center;margin:0;
+        font-family:'Inter',system-ui;">
+        Detalhes completos: commons.wikimedia.org</p>
+    </div>`;
+  }
 
   /* ── Difficulty Selection ── */
   if (sc === 'difficulty') return `
@@ -886,8 +1820,8 @@ function html() {
 
   /* ── End Screen ── */
   if (sc === 'end') {
-    const max = cat.qs.length * 3;
-    const pct = Math.round(pts / max * 100);
+    const total = cat.qs.length;
+    const pct = Math.round(nCorrect / total * 100);
     const [em, msg] = pct >= 80 ? ['🏆','Craque!'] : pct >= 50 ? ['⚽','Boa jogada!'] : ['😅','Treina mais!'];
     const isRecord = scores[diffKey] !== undefined && pts === scores[diffKey] && pts > 0;
     const curDiff  = DIFFS.find(d => d.key === diffKey);
@@ -903,7 +1837,9 @@ function html() {
       <div style="font-size:68px;font-weight:900;color:#fff;line-height:1;
         font-family:'Bebas Neue','Impact',sans-serif;">${pts}</div>
       <div style="font-size:13px;color:rgba(255,255,255,.35);font-family:'Inter',system-ui;">
-        de ${max} pontos · ${pct}%</div>
+        pontos · ${nCorrect}/${total} acertos (${pct}%)</div>
+      ${bestStreak >= 3 ? `<div style="font-size:12px;color:#FF7700;font-weight:700;
+        font-family:'Inter',system-ui;">🔥 melhor sequência: ${bestStreak}</div>` : ''}
       <div style="width:200px;height:6px;background:rgba(255,255,255,.1);
         border-radius:3px;overflow:hidden;margin:4px 0;">
         <div style="height:100%;width:${pct}%;background:${curDiff.col};border-radius:3px;
@@ -911,7 +1847,12 @@ function html() {
       </div>
       ${isRecord ? `<div style="font-size:12px;font-weight:800;color:#FFD700;
         font-family:'Inter',system-ui;">🌟 Novo recorde!</div>` : ''}
+      <div style="display:flex;gap:3px;margin-top:8px;font-size:15px;letter-spacing:1px;">
+        ${runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : '⬛').join('')}</div>
       <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
+        <button id="bshare" style="background:#25D366;color:#fff;font-size:13px;
+          font-weight:900;padding:10px 22px;border-radius:20px;border:none;cursor:pointer;
+          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">COMPARTILHAR</button>
         <button id="brep" style="background:${curDiff.col};color:#fff;font-size:14px;
           font-weight:900;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
           font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
@@ -927,7 +1868,7 @@ function html() {
   /* ── Quiz / Reveal ── */
   const q    = cat.qs[qi];
   const qcat = q._cat || cat;          // source category for label / colour
-  const tpct = (tLeft / 30) * 100;
+  const tpct = (tLeft / tMax) * 100;
   const tc   = tLeft > 10 ? qcat.col : tLeft > 5 ? '#FF9800' : '#F44336';
   const timerCls = tLeft <= 5 ? 'timer-low' : '';
 
@@ -941,6 +1882,15 @@ function html() {
         border:1px solid rgba(255,255,255,.12);box-shadow:0 2px 12px rgba(0,0,0,.5);">
         <img src="${STAD_IMGS[q.stad]}" alt="${STAD[q.stad].name}"
           style="width:100%;height:100%;object-fit:cover;" /></div>` : '';
+  const faceEl = q.face
+    ? `<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;
+        border:2px solid rgba(255,255,255,.2);box-shadow:0 2px 12px rgba(0,0,0,.55);">
+        <img src="${q.face}" alt=""
+          style="width:100%;height:100%;object-fit:cover;object-position:top center;"
+          onerror="this.parentElement.style.display='none'" /></div>` : '';
+  const crestEl = q.crest
+    ? `<div style="flex-shrink:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;">
+        ${clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;')}</div>` : '';
   const qimgEl = q.qimg
     ? `<div style="flex-shrink:0;width:96px;height:64px;border-radius:8px;overflow:hidden;
         border:1px solid rgba(255,255,255,.15);box-shadow:0 2px 12px rgba(0,0,0,.6);">
@@ -984,18 +1934,32 @@ function html() {
         border-radius:2px;transition:width .8s linear;"></div>
     </div>
 
+    <!-- Progressive photo reveal -->
+    ${q.reveal ? `
+    <div style="display:flex;justify-content:center;padding:2px 0 4px;">
+      <div style="width:150px;height:150px;border-radius:14px;overflow:hidden;
+        border:2px solid rgba(255,215,0,.28);box-shadow:0 6px 26px rgba(0,0,0,.65);
+        position:relative;background:#0b1a0f;">
+        <img id="revimg" src="${q.reveal}" alt=""
+          style="width:100%;height:100%;object-fit:cover;object-position:top center;
+            filter:blur(${sc === 'reveal' ? 0 : (20 * (tLeft / tMax)).toFixed(1)}px);
+            transform:scale(1.08);transition:filter .9s linear;" />
+      </div>
+    </div>` : ''}
+
     <!-- Question card -->
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
       border-radius:11px;padding:12px 14px;min-height:60px;
       display:flex;align-items:center;gap:10px;">
-      ${portSVG}${stadSVG}${qimgEl}
+      ${portSVG}${stadSVG}${faceEl}${crestEl}${qimgEl}
       <p style="font-size:15px;font-weight:600;color:#fff;line-height:1.48;
-        margin:0;flex:1;font-family:'Inter',system-ui;">
+        margin:0;flex:1;min-width:0;overflow-wrap:anywhere;
+        font-family:'Inter',system-ui;white-space:pre-line;">
         ${q.t}</p>
     </div>
 
-    <!-- Club grid: 5×2 -->
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px;">
+    <!-- Option grid — 2 wide columns for name tiles, 5 for crest/face tiles -->
+    <div style="display:grid;grid-template-columns:repeat(${q.textTiles ? 2 : 5},1fr);gap:7px;">
       ${disp.map(c => badge(c)).join('')}
     </div>
 
@@ -1030,6 +1994,9 @@ function go() {
   prevPts = pts; // prevent re-fire on subsequent re-renders without score change
 
   document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='difficulty'; go(); });
+  document.getElementById('daily-btn')?.addEventListener('click', () => { snd.select(); startDaily(); });
+  document.getElementById('bcred')?.addEventListener('click', () => { snd.swipe(); sc='credits'; go(); });
+  document.getElementById('bshare')?.addEventListener('click', () => { snd.tap(); doShare(); });
   document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='home'; go(); });
   document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='difficulty'; go(); });
   document.getElementById('bconf')?.addEventListener('click',   () => { if (sel.size > 0) doReveal(); });
@@ -1037,8 +2004,8 @@ function go() {
   document.getElementById('bdiff')?.addEventListener('click',   () => { snd.swipe(); sc='difficulty'; go(); });
 
   document.querySelectorAll('.dc').forEach(d => d.addEventListener('click', () => {
-    numQs   = parseInt(d.dataset.n);
     diffKey = d.dataset.key;
+    numQs   = parseInt(d.dataset.n);
     snd.select();
     startGame();
   }));
@@ -1061,9 +2028,11 @@ function go() {
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
 function startGame() {
-  cat = buildMixedGame(numQs);
+  isDaily = false; _seed = null;
+  cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  sc = 'quiz'; tLeft = 30; lastMsg = '';
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
   go();
@@ -1083,21 +2052,35 @@ function doReveal() {
               :                                     0;
 
   prevPts = pts;
-  pts    += p;
-  p === 3 ? streak++ : (streak = 0);
+  if (p === 3) streak++; else streak = 0;
+  bestStreak = Math.max(bestStreak, streak);
+
+  const { gained, mult, speed } = scoreAnswer(p);
+  pts += gained;
+  lastGain = gained;
+  if (p === 3) nCorrect++; else if (p === 1) nPartial++;
+  runLog.push(p);
 
   if      (p === 3) snd.correct();
   else if (p === 1) snd.almost();
   else              snd.wrong();
 
+  const chip = (txt, col) => `<span style="display:inline-block;background:${col}22;
+      border:1px solid ${col}44;color:${col};border-radius:9px;padding:1px 7px;
+      font-size:10px;font-weight:700;margin-left:4px;
+      font-family:'Inter',system-ui;">${txt}</span>`;
+  const bonuses = (speed ? chip('⚡ rápido +' + speed, '#4FC3F7') : '')
+                + (mult > 1 ? chip('🔥 combo ×' + mult, '#FF7700') : '')
+                + (DCFG().pmul > 1 ? chip(DCFG().emoji + ' ×' + DCFG().pmul, DCFG().col) : '');
+
   lastMsg = p === 3
     ? `<span style="font-size:15px;font-weight:800;color:#00e676;
-        font-family:'Inter',system-ui;">✓ Perfeito! +3 pontos</span>`
+        font-family:'Inter',system-ui;">✓ Perfeito! +${gained}</span>${bonuses}`
     : p === 1
     ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
-        font-family:'Inter',system-ui;">~ Quase! +1 ponto</span>`
+        font-family:'Inter',system-ui;">~ Quase! +${gained}</span>${bonuses}`
     : `<span style="font-size:15px;font-weight:800;color:#f44336;
-        font-family:'Inter',system-ui;">✗ Errou! +0 pontos</span>`;
+        font-family:'Inter',system-ui;">✗ Errou!</span>`;
 
   go();
 
@@ -1107,10 +2090,20 @@ function doReveal() {
     lastMsg = '';
     if (qi >= cat.qs.length) {
       sc = 'end';
-      if (scores[diffKey] === undefined || pts > scores[diffKey]) scores[diffKey] = pts;
+      if (scores[diffKey] === undefined || pts > scores[diffKey]) {
+        scores[diffKey] = pts;
+        LS.set('scores', scores);
+      }
+      if (isDaily) saveDaily();
+      stats.games    += 1;
+      stats.correct  += nCorrect;
+      stats.answered += cat.qs.length;
+      stats.bestStreak = Math.max(stats.bestStreak || 0, bestStreak);
+      LS.set('stats', stats);
     } else {
       sc    = 'quiz';
-      tLeft = 30;
+      tMax  = DCFG().time;
+      tLeft = tMax;
       disp  = getDisp(cat.qs[qi]);
       startTmr();
     }
@@ -1124,10 +2117,12 @@ function startTmr() {
     tLeft = Math.max(0, tLeft - 1);
     const tf = document.getElementById('tf');
     if (tf) {
-      tf.style.width      = (tLeft / 30 * 100) + '%';
+      tf.style.width      = (tLeft / tMax * 100) + '%';
       tf.style.background = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
       if (tLeft <= 5 && !tf.classList.contains('timer-low')) tf.classList.add('timer-low');
     }
+    const rv = document.getElementById('revimg');
+    if (rv && sc === 'quiz') rv.style.filter = 'blur(' + (20 * (tLeft / tMax)).toFixed(1) + 'px)';
     if (tLeft <= 0 && sc === 'quiz') doReveal();
   }, 1000);
 }
