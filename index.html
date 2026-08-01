@@ -1465,140 +1465,58 @@ function mkStad(s) {
 /* ═══════════════════════════════════════════════════
    SVG — CLUB CRESTS
 ═══════════════════════════════════════════════════ */
-function crest(id) {
-  const SH = 'M30 3L57 17L57 43L30 57L3 43L3 17Z';
-  const ci  = 'CX' + id.replace(/\W/g, '');
-  const D   = `<defs><clipPath id="${ci}"><path d="${SH}"/></clipPath></defs>`;
-  const B   = `<path d="${SH}" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"/>`;
-  const c   = `clip-path="url(#${ci})"`;
-  const r   = (x,y,w,h,f)    => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" ${c}/>`;
-  const pg  = (pts,f)         => `<polygon points="${pts}" fill="${f}" ${c}/>`;
-  const el  = (cx,cy,rx,ry,f) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}" ${c}/>`;
-  const fc  = (cx,cy,r2,f)    => `<circle cx="${cx}" cy="${cy}" r="${r2}" fill="${f}" ${c}/>`;
-  const ln  = (x1,y1,x2,y2,s,w)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${s}" stroke-width="${w}" ${c}/>`;
-
-  function star(cx, cy, ro, ri, f) {
-    let pts = '';
-    for (let i = 0; i < 10; i++) {
-      const a = Math.PI / 5 * i - Math.PI / 2;
-      const rad = i % 2 ? ri : ro;
-      pts += `${cx + rad * Math.cos(a)},${cy + rad * Math.sin(a)} `;
-    }
-    return `<polygon points="${pts.trim()}" fill="${f}" ${c}/>`;
-  }
-
-  switch (id) {
-    case 'flamengo':
-      return D + r(0,0,60,60,'#111') + r(0,15,60,15,'#CC1011')
-               + r(0,30,60,15,'#111') + r(0,45,60,15,'#CC1011') + B;
-    case 'fluminense':
-      return D + r(0,0,20,60,'#8B1D3B') + r(20,0,20,60,'#EEE') + r(40,0,20,60,'#2E7D52') + B;
-    case 'vasco':
-      return D + r(0,0,60,60,'#EEE')
-               + pg('0,18 42,60 60,60 60,42 18,0 0,0','#111')
-               + r(25,5,10,50,'#EEE') + r(5,25,50,10,'#EEE') + B;
-    case 'botafogo':
-      return D + r(0,0,60,60,'#111') + star(30,29,18,8,'#EEE') + B;
-    case 'corinthians':
-      return D + r(0,0,60,60,'#111') + r(30,0,30,60,'#EEE')
-               + `<circle cx="30" cy="27" r="13" fill="none"
-                   stroke="rgba(120,120,120,.6)" stroke-width="3" ${c}/>`
-               + fc(30,27,3,'rgba(120,120,120,.5)') + B;
-    case 'palmeiras':
-      return D + r(0,0,60,60,'#005C30') + el(30,30,16,20,'#FFF')
-               + `<text x="30" y="37" text-anchor="middle" font-size="22" font-weight="900"
-                   fill="#005C30" font-family="serif" ${c}>P</text>` + B;
-    case 'saopaulo':
-      return D + r(0,0,60,20,'#CC0000') + r(0,20,60,12,'#111') + r(0,32,60,28,'#EEE') + B;
-    case 'santos':
-      return D + r(0,0,60,60,'#111')
-               + `<circle cx="30" cy="28" r="17" fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>`
-               + ln(30,11,30,45,'#EEE',2) + ln(13,28,47,28,'#EEE',2)
-               + ln(18,15,42,41,'#EEE',1.5) + ln(42,15,18,41,'#EEE',1.5)
-               + fc(30,28,4,'#EEE') + B;
-    case 'gremio':
-      return D + r(0,0,60,22,'#3E72B8') + r(0,22,60,14,'#111') + r(0,36,60,24,'#EEE') + B;
-    case 'internacional':
-      return D + r(0,0,60,60,'#C00000') + star(30,28,17,7,'#FFD700') + B;
-    case 'cruzeiro':
-      return D + r(0,0,60,60,'#002F8B')
-               + star(30,16,9,4,'#EEE')
-               + star(18,32,6,3,'#EEE')
-               + star(42,32,6,3,'#EEE')
-               + star(30,44,6,3,'#EEE') + B;
-    case 'atleticomg':
-      return D + r(0,0,60,60,'#111')
-               + el(30,21,9,10,'#EEE')
-               + el(30,40,12,11,'#EEE')
-               + pg('27,11 28.5,6 30,4 31.5,6 33,11 31,12 30,9 29,12','#CC0000')
-               + pg('38,22 45,24 38,26','#EE8800') + B;
-    case 'americamg':
-      return D + r(0,0,60,60,'#1A6B3C')
-               + el(21,17,7,13,'#EEE')
-               + el(39,17,7,13,'#EEE')
-               + fc(30,38,12,'#EEE')
-               + fc(25,37,2.5,'#1A6B3C')
-               + fc(35,37,2.5,'#1A6B3C')
-               + el(30,43,3.5,2,'#FF9999') + B;
-    case 'atleticopr':
-      return D + r(0,0,60,30,'#C00000') + r(0,30,60,30,'#111')
-               + `<circle cx="30" cy="30" r="17" fill="none"
-                   stroke="#EEE" stroke-width="2.5" ${c}/>`
-               + ln(30,13,30,47,'#EEE',3)
-               + fc(30,30,5,'#EEE') + B;
-    case 'coritiba':
-      return D + r(0,0,60,60,'#005C30') + r(0,10,60,10,'#EEE') + r(0,40,60,10,'#EEE') + B;
-    case 'bahia':
-      return D + r(0,0,30,60,'#003A9B') + r(30,0,30,60,'#CC0000')
-               + ln(0,30,60,30,'#EEE',2) + ln(30,0,30,60,'#EEE',2) + B;
-    case 'vitoria':
-      return D + r(0,0,60,60,'#B80000')
-               + r(9,0,10,60,'#111') + r(27,0,10,60,'#111') + r(45,0,10,60,'#111') + B;
-    case 'fortaleza':
-      return D + r(0,0,60,60,'#003A9B') + r(0,42,60,18,'#A81C1C')
-               + star(30,22,13,5,'#FFD700') + B;
-    case 'ceara':
-      return D + r(0,0,60,22,'#111') + r(0,22,60,16,'#EEE') + r(0,38,60,22,'#111') + B;
-    case 'sport':
-      return D + r(0,0,30,60,'#C00000') + r(30,0,30,60,'#111')
-               + star(30,29,13,5,'#EEE') + B;
-    case 'nautico':
-      return D + r(0,0,60,60,'#B80000')
-               + `<circle cx="30" cy="17" r="7" fill="none" stroke="#EEE" stroke-width="3" ${c}/>`
-               + ln(30,24,30,50,'#EEE',3)
-               + ln(20,31,40,31,'#EEE',2.5)
-               + `<path d="M16 50Q14 44 22 41Q30 38 38 41Q46 44 44 50"
-                   fill="none" stroke="#EEE" stroke-width="2.5" ${c}/>` + B;
-    case 'pontepreta':
-      return D
-        + r(0,0,20,20,'#EEE')  + r(20,0,20,20,'#111') + r(40,0,20,20,'#EEE')
-        + r(0,20,20,20,'#111') + r(20,20,20,20,'#EEE') + r(40,20,20,20,'#111')
-        + r(0,40,20,20,'#EEE') + r(20,40,20,20,'#111') + r(40,40,20,20,'#EEE') + B;
-    case 'bragantino':
-      return D + r(0,0,60,60,'#B80000') + star(30,28,18,7,'#EEE') + B;
-    case 'guarani':
-      return D + r(0,0,60,60,'#1A6B3C')
-               + pg('30,7 38,23 33,23 33,51 27,51 27,23 22,23','#EEE') + B;
-    case 'criciuma':
-      return D + r(0,0,60,30,'#111') + r(0,30,60,30,'#D4A800') + B;
-    default:
-      return D + r(0,0,60,60,'#333')
-               + `<text x="30" y="33" text-anchor="middle" font-size="11"
-                   font-weight="900" fill="#EEE" font-family="Inter,system-ui" ${c}>
-                   ${id.substring(0,3).toUpperCase()}</text>` + B;
-  }
-}
 
 
 /* Club artwork: use the licensed crest image when we have one, otherwise fall
-   back to the app's own hand-drawn SVG crest (see crest() above). This keeps
+   back to genericCrest(): a designed shield in the club's colours. This keeps
    the bundle free of non-free Wikipedia files. */
+
+/* ── Designed fallback badge (used when we have no licensed crest file) ── */
+function _lum(hex) {
+  let h = String(hex).replace('#', '');
+  if (h.length === 3) h = h.split('').map(x => x + x).join('');
+  const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+}
+function _shade(hex, amt) {
+  let h = String(hex).replace('#', '');
+  if (h.length === 3) h = h.split('').map(x => x + x).join('');
+  const f = v => Math.max(0, Math.min(255, Math.round(v + 255 * amt)));
+  const r = f(parseInt(h.slice(0, 2), 16)), g = f(parseInt(h.slice(2, 4), 16)), b = f(parseInt(h.slice(4, 6), 16));
+  return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+}
+
+function genericCrest(id) {
+  const c = CL.find(x => x.id === id);
+  if (!c) return '';
+  const uid  = 'bg' + id.replace(/\W/g, '');
+  const dark = _lum(c.c1) < 0.5;
+  const ink  = dark ? '#ffffff' : '#111111';
+  const trim = _lum(c.c2) > 0.25 ? c.c2 : '#e8e8e8';
+  const SHIELD = 'M30 3 L53 11 L53 30 C53 43 42 52 30 57 C18 52 7 43 7 30 L7 11 Z';
+  return `
+    <defs>
+      <linearGradient id="${uid}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="${_shade(c.c1, 0.10)}"/>
+        <stop offset="100%" stop-color="${_shade(c.c1, -0.16)}"/>
+      </linearGradient>
+    </defs>
+    <path d="${SHIELD}" fill="url(#${uid})" stroke="${trim}" stroke-width="2.6"
+      stroke-linejoin="round"/>
+    <path d="M30 3 L53 11 L53 17 L7 17 L7 11 Z" fill="${trim}" opacity=".92"/>
+    <circle cx="30" cy="11" r="3.1" fill="${c.c1}" opacity=".85"/>
+    <text x="30" y="41" text-anchor="middle"
+      font-family="'Bebas Neue','Arial Black',Impact,sans-serif"
+      font-size="19" font-weight="900" letter-spacing="1.2" fill="${ink}">${c.a}</text>
+  `;
+}
+
 function clubArt(id, style) {
   if (LOGOS[id]) {
     return `<img src="${LOGOS[id]}" alt="" style="${style}"
       onerror="clubFallback(this,'${id}')" />`;
   }
-  return `<svg viewBox="0 0 60 60" style="${style}" aria-hidden="true">${crest(id)}</svg>`;
+  return `<svg viewBox="0 0 60 60" style="${style}" aria-hidden="true">${genericCrest(id)}</svg>`;
 }
 
 /* If a crest file is missing (e.g. an old cached page pointing at a file we
@@ -1606,7 +1524,7 @@ function clubArt(id, style) {
 function clubFallback(img, id) {
   try {
     img.outerHTML = `<svg viewBox="0 0 60 60" style="${img.getAttribute('style') || ''}"
-      aria-hidden="true">${crest(id)}</svg>`;
+      aria-hidden="true">${genericCrest(id)}</svg>`;
   } catch (e) { img.style.opacity = '.3'; }
 }
 
