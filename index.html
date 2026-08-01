@@ -558,7 +558,9 @@ const POS_NAME = { GK:'Goleiro', DF:'Defensor', MF:'Meia', FW:'Atacante' };
 const CTRY_NAME = { BRA:'Brasil', ARG:'Argentina', POR:'Portugal', FRA:'França',
   NED:'Holanda', GER:'Alemanha', BUL:'Bulgária', ITA:'Itália', ENG:'Inglaterra',
   SWE:'Suécia', POL:'Polônia', CIV:'Costa do Marfim', LBR:'Libéria', CRO:'Croácia',
-  COL:'Colômbia' };
+  COL:'Colômbia', ESP:'Espanha', URU:'Uruguai', EGY:'Egito', NOR:'Noruega',
+  CMR:'Camarões', UKR:'Ucrânia', HUN:'Hungria', BEL:'Bélgica', CZE:'Chéquia',
+  DEN:'Dinamarca', RUS:'Rússia', MEX:'México', CHI:'Chile', GHA:'Gana' };
 
 /* Display names for clubs outside the Brazilian crest set */
 const CLUB_NAMES = {
@@ -1214,6 +1216,7 @@ function GEN_QS(tier) {
     const p = rndOf(byCtry[c]);
     out.push({
       t: `Qual destes jogadores defendeu a seleção de ${CTRY_NAME[c] || c}?`,
+      _skip: !CTRY_NAME[c],
       a: [p.id], type: 'player',
       pool: PL.filter(x => x.ctry !== c).map(x => x.id), _cat: GC.nat,
       d: 2,
@@ -1306,6 +1309,7 @@ function GEN_QS(tier) {
   // Safety net: a generator bug must never put an unanswerable question in front
   // of a player, so drop anything whose answers don't resolve.
   return out.filter(q =>
+    !q._skip &&
     q.a && q.a.length &&
     q.a.every(id => (q.type === 'player' ? PL : CL).some(x => x.id === id)));
 }
@@ -1592,9 +1596,18 @@ function crest(id) {
 function clubArt(id, style) {
   if (LOGOS[id]) {
     return `<img src="${LOGOS[id]}" alt="" style="${style}"
-      onerror="this.style.opacity='.3'" />`;
+      onerror="clubFallback(this,'${id}')" />`;
   }
   return `<svg viewBox="0 0 60 60" style="${style}" aria-hidden="true">${crest(id)}</svg>`;
+}
+
+/* If a crest file is missing (e.g. an old cached page pointing at a file we
+   removed), swap in the app's own SVG crest instead of a broken-image icon. */
+function clubFallback(img, id) {
+  try {
+    img.outerHTML = `<svg viewBox="0 0 60 60" style="${img.getAttribute('style') || ''}"
+      aria-hidden="true">${crest(id)}</svg>`;
+  } catch (e) { img.style.opacity = '.3'; }
 }
 
 /* ═══════════════════════════════════════════════════
