@@ -2416,6 +2416,7 @@ function startGame() {
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  resetLifes();
   sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
