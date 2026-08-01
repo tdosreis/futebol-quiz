@@ -8,6 +8,10 @@ OUT = os.path.join(ROOT, "store-assets")
 
 # name -> JS to run once the page has booted
 STATES = {
+ "s-lifelines": """diffKey='moderado'; startGame();
+   useHalf();""",
+ "s-frozen": """diffKey='moderado'; startGame(); useFreeze();""",
+
  "s-svgcrest": """diffKey='facil';
    cat = buildGame('facil');
    const fq = { t:'Escudos originais do app (Vasco, Corinthians, Sport, Bragantino, Náutico)',
@@ -57,7 +61,7 @@ def shot(name, js):
     io.open(tmp, "w", encoding="utf-8").write(src.replace("</body>", inject + "</body>"))
     try:
         subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
-                        "--window-size=430,860", "--force-device-scale-factor=2",
+                        "--window-size=500,940", "--force-device-scale-factor=2",
                         "--allow-file-access-from-files", "--virtual-time-budget=5000",
                         "--screenshot=" + os.path.join(OUT, name + ".png"),
                         "file://" + tmp], capture_output=True, timeout=240)

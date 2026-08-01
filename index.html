@@ -133,6 +133,102 @@
     #cta-btn   { animation: ctaBounce 2.2s ease-in-out infinite; }
     .timer-low { animation: timerPulse .55s ease-in-out infinite; }
 
+
+    /* ══════════ VISUAL POLISH ══════════ */
+
+    /* Ambient stadium glow behind everything (adds depth to the flat panel) */
+    #qz::before {
+      content: '';
+      position: absolute;
+      left: -25%; right: -25%; top: -30%;
+      height: 78%;
+      background: radial-gradient(ellipse at 50% 0%,
+        rgba(255,215,0,.075), rgba(26,140,58,.05) 42%, transparent 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #qz::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0; height: 34%;
+      background: linear-gradient(to top, rgba(0,0,0,.35), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Option tiles fade in with a slight stagger */
+    @keyframes tileIn {
+      from { opacity: 0; transform: translateY(9px) scale(.94); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+    .b { animation: tileIn .3s cubic-bezier(.2,.8,.3,1) backwards; }
+
+    /* Points that float up off the score when you gain */
+    @keyframes floatUp {
+      0%   { opacity: 0; transform: translate(-50%, 4px)   scale(.8); }
+      18%  { opacity: 1; transform: translate(-50%, -4px)  scale(1.15); }
+      100% { opacity: 0; transform: translate(-50%, -42px) scale(1); }
+    }
+    .gain {
+      position: absolute; left: 50%; top: 0;
+      font-family: 'Bebas Neue','Impact',sans-serif;
+      font-size: 22px; font-weight: 900; color: #00e676;
+      text-shadow: 0 2px 12px rgba(0,230,118,.6);
+      pointer-events: none; z-index: 40;
+      animation: floatUp 1.05s ease-out forwards;
+    }
+
+    /* Confetti for a strong finish */
+    @keyframes confFall {
+      0%   { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
+      100% { opacity: .15; transform: translate3d(var(--dx,0px), 105vh, 0) rotate(var(--rot,720deg)); }
+    }
+    .conf {
+      position: fixed; top: -24px;
+      width: 8px; height: 13px; border-radius: 2px;
+      pointer-events: none; z-index: 999;
+      animation: confFall linear forwards;
+    }
+
+    /* Progress dots */
+    .pdot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,.16);
+      transition: background .25s, transform .25s;
+      flex-shrink: 0;
+    }
+    .pdot-on   { background: #FFD700; }
+    .pdot-cur  { background: #fff; transform: scale(1.55); box-shadow: 0 0 8px rgba(255,255,255,.7); }
+    .pdot-miss { background: rgba(244,67,54,.75); }
+
+    /* Timer bar gets a moving sheen so it reads as "live" */
+    @keyframes sheen { to { background-position: 240% 0; } }
+    .tf-live {
+      background-image: linear-gradient(100deg,
+        rgba(255,255,255,0) 34%, rgba(255,255,255,.5) 50%, rgba(255,255,255,0) 66%);
+      background-size: 240% 100%;
+      animation: sheen 1.9s linear infinite;
+    }
+
+    /* Home ball idle bounce */
+    @keyframes ballIdle {
+      0%,100% { transform: translateY(0) rotate(-4deg); }
+      50%     { transform: translateY(-9px) rotate(4deg); }
+    }
+    .ball-idle { animation: ballIdle 2.8s ease-in-out infinite; display: inline-block; }
+
+    /* Gold gradient wordmark */
+    .goldgrad {
+      background: linear-gradient(175deg, #FFF3B0 4%, #FFD700 42%, #E0A800 96%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 3px 18px rgba(255,215,0,.32));
+    }
+
+    /* Primary buttons get depth + a press response */
+    .btn-press { transition: transform .12s, box-shadow .12s, filter .12s; }
+    .btn-press:active { transform: scale(.955); filter: brightness(1.08); }
+
     /* ── Misc ── */
     button { font-family: 'Inter', system-ui, sans-serif; }
   </style>
@@ -1386,7 +1482,7 @@ function saveDaily() {
 
 function shareText() {
   const res  = isDaily ? null : null;
-  const grid = runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : '⬛').join('');
+  const grid = runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('');
   const head = isDaily ? `Futebol Quiz BR ⚽ Desafio #${dayIndex()}`
                        : `Futebol Quiz BR ⚽ ${DCFG().label}`;
   const strk = bestStreak >= 3 ? `  🔥${bestStreak}` : '';
@@ -1415,9 +1511,63 @@ function startDaily() {
   cat.name = 'Desafio Diário';
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  resetLifes();
   sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
+  go();
+}
+
+
+/* ═══════════════════════════════════════════════════
+   LIFELINES
+   Three single-use helpers per run. They cost nothing but
+   the speed bonus, so using one is a real trade-off.
+═══════════════════════════════════════════════════ */
+let lifes  = { half: 1, freeze: 1, skip: 1 };
+let hidden = new Set();   // tiles removed by 50/50
+let frozen = false;       // clock paused for this question
+
+function resetLifes() {
+  lifes  = { half: 1, freeze: 1, skip: 1 };
+  hidden = new Set();
+  frozen = false;
+}
+
+function useHalf() {
+  if (!lifes.half || sc !== 'quiz') return;
+  const q = cat.qs[qi];
+  const wrong = disp.filter(o => !q.a.includes(o.id)).map(o => o.id);
+  // remove half of the wrong options, keeping the board readable
+  const drop = shuf(wrong).slice(0, Math.floor(wrong.length / 2));
+  drop.forEach(id => { hidden.add(id); sel.delete(id); });
+  lifes.half = 0;
+  snd.select();
+  go();
+}
+
+function useFreeze() {
+  if (!lifes.freeze || sc !== 'quiz') return;
+  lifes.freeze = 0;
+  frozen = true;
+  snd.select();
+  go();
+}
+
+function useSkip() {
+  if (!lifes.skip || sc !== 'quiz') return;
+  lifes.skip = 0;
+  clearInterval(tmr);
+  snd.swipe();
+  runLog.push(-1);                 // neither right nor wrong
+  qi++;
+  sel.clear(); hidden = new Set(); frozen = false; lastMsg = '';
+  if (qi >= cat.qs.length) { finishRun(); }
+  else {
+    sc = 'quiz'; tMax = DCFG().time; tLeft = tMax;
+    disp = getDisp(cat.qs[qi]);
+    startTmr();
+  }
   go();
 }
 
@@ -1531,12 +1681,18 @@ function clubFallback(img, id) {
 /* ═══════════════════════════════════════════════════
    BADGE — one club tile
 ═══════════════════════════════════════════════════ */
-function badge(item) {
+function badge(item, idx) {
   const isPlayer = 'img' in item;
   const isSel   = sel.has(item.id);
   const isAns   = sc === 'reveal' && cat.qs[qi].a.includes(item.id);
   const isWrong = sc === 'reveal' && isSel && !isAns;
   const curQ    = (cat && cat.qs && cat.qs[qi]) || {};
+  const delay   = `animation-delay:${Math.min(9, idx || 0) * 32}ms;`;
+  if (hidden.has(item.id) && sc === 'quiz') {
+    return `<div style="${delay}width:100%;${curQ.textTiles ? 'min-height:44px' : 'aspect-ratio:1'};
+      border-radius:9px;background:rgba(255,255,255,.02);opacity:.25;
+      border:1px dashed rgba(255,255,255,.08);"></div>`;
+  }
 
   let cls  = 'b';
   let ring = '';
@@ -1550,7 +1706,7 @@ function badge(item) {
 
   if (curQ.textTiles) {
     return `<div class="${cls}" data-id="${item.id}" style="
-        width:100%;min-height:44px;border-radius:9px;cursor:pointer;
+${delay}        width:100%;min-height:44px;border-radius:9px;cursor:pointer;
         background:rgba(255,255,255,.06);user-select:none;
         display:flex;align-items:center;justify-content:center;text-align:center;
         padding:6px 4px;transition:transform .12s,box-shadow .12s;${ring}">
@@ -1562,7 +1718,7 @@ function badge(item) {
 
   if (isPlayer) {
     return `<div class="${cls}" data-id="${item.id}" style="
-        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
+${delay}  ${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
         position:relative;user-select:none;
         background:rgba(255,255,255,.06);
         display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
@@ -1606,12 +1762,11 @@ function html() {
   if (sc === 'home') return `
   <div style="display:flex;flex-direction:column;align-items:center;
     justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:16px;">
-    <div style="font-size:52px;filter:drop-shadow(0 4px 16px rgba(255,215,0,.3));">⚽</div>
+    <div class="ball-idle" style="font-size:56px;filter:drop-shadow(0 6px 20px rgba(255,215,0,.35));">⚽</div>
     <div>
-      <div style="font-size:42px;font-weight:900;color:#FFD700;
+      <div class="goldgrad" style="font-size:44px;font-weight:900;
         font-family:'Bebas Neue','Impact',sans-serif;
-        letter-spacing:4px;line-height:1.05;
-        text-shadow:0 2px 20px rgba(255,215,0,.35);">FUTEBOL<br>QUIZ BR</div>
+        letter-spacing:4px;line-height:1.04;">FUTEBOL<br>QUIZ BR</div>
     </div>
     <p style="color:rgba(255,255,255,.38);font-size:13px;max-width:280px;line-height:1.7;
       margin:0;font-family:'Inter',system-ui;">
@@ -1627,7 +1782,8 @@ function html() {
     <p style="color:rgba(255,255,255,.22);font-size:11px;max-width:260px;
       margin:0;font-family:'Inter',system-ui;line-height:1.6;">
       Centenas de perguntas — nunca a mesma partida duas vezes.</p>
-    <button id="cta-btn" style="margin-top:6px;background:#FFD700;color:#060e08;
+    <button id="cta-btn" class="btn-press" style="margin-top:6px;
+      background:linear-gradient(180deg,#FFE469,#FFD700 45%,#E8B400);color:#060e08;
       font-size:18px;font-weight:900;padding:13px 50px;border-radius:28px;
       border:none;cursor:pointer;
       font-family:'Bebas Neue','Impact',sans-serif;
@@ -1779,7 +1935,7 @@ function html() {
       ${isRecord ? `<div style="font-size:12px;font-weight:800;color:#FFD700;
         font-family:'Inter',system-ui;">🌟 Novo recorde!</div>` : ''}
       <div style="display:flex;gap:3px;margin-top:8px;font-size:15px;letter-spacing:1px;">
-        ${runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : '⬛').join('')}</div>
+        ${runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('')}</div>
       <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
         <button id="bshare" style="background:#25D366;color:#fff;font-size:13px;
           font-weight:900;padding:10px 22px;border-radius:20px;border:none;cursor:pointer;
@@ -1849,10 +2005,21 @@ function html() {
           ? `<div class="fire-bob" style="background:rgba(255,100,0,.14);border:1px solid rgba(255,100,0,.22);
               border-radius:12px;padding:2px 8px;font-size:11px;
               color:#FF7700;font-weight:700;font-family:'Inter',system-ui;">🔥${streak}x</div>` : ''}
-        <div style="font-size:11px;color:rgba(255,255,255,.32);font-family:'Inter',system-ui;">${qi+1}/${cat.qs.length}</div>
-        <div id="score-disp" class="${scoreChanged ? 'score-up' : ''}"
+        <div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;
+          justify-content:flex-end;">
+          ${cat.qs.length <= 20 ? cat.qs.map((_, i) => {
+              const cls = i < runLog.length ? (runLog[i] === 3 ? 'pdot pdot-on'
+                        : runLog[i] === 0 ? 'pdot pdot-miss' : 'pdot pdot-on')
+                        : (i === qi ? 'pdot pdot-cur' : 'pdot');
+              return `<span class="${cls}"></span>`;
+            }).join('')
+          : `<span style="font-size:11px;color:rgba(255,255,255,.32);
+               font-family:'Inter',system-ui;">${qi+1}/${cat.qs.length}</span>`}
+        </div>
+        <div id="score-disp" class="${scoreChanged ? 'score-up' : ''}" style="position:relative"
           style="font-size:18px;font-weight:900;color:#FFD700;
-            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${pts}
+            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${
+          sc === 'reveal' && lastGain > 0 ? `<span class="gain">+${lastGain}</span>` : ''}${pts}
           <span style="font-size:9px;margin-left:1px;color:rgba(255,215,0,.45);
             font-family:'Inter',system-ui;font-weight:600;">pts</span>
         </div>
@@ -1861,7 +2028,7 @@ function html() {
 
     <!-- Timer bar -->
     <div style="height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
-      <div id="tf" class="${timerCls}" style="height:100%;width:${tpct}%;background:${tc};
+      <div id="tf" class="${timerCls} ${sc === 'quiz' ? 'tf-live' : ''}" style="height:100%;width:${tpct}%;background-color:${tc};
         border-radius:2px;transition:width .8s linear;"></div>
     </div>
 
@@ -1891,12 +2058,27 @@ function html() {
 
     <!-- Option grid — 2 wide columns for name tiles, 5 for crest/face tiles -->
     <div style="display:grid;grid-template-columns:repeat(${q.textTiles ? 2 : 5},1fr);gap:7px;">
-      ${disp.map(c => badge(c)).join('')}
+      ${disp.map((c, i) => badge(c, i)).join('')}
     </div>
 
     <!-- Footer -->
     ${sc === 'quiz' ? `
     <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:2px;">
+      <div style="display:flex;gap:7px;margin-bottom:1px;">
+        ${[['bhalf','50:50','✂️',lifes.half],
+           ['bfreeze','Congelar','❄️',lifes.freeze],
+           ['bskip','Pular','⏭️',lifes.skip]].map(([id,lbl,ic,on]) => `
+          <button id="${id}" ${on ? '' : 'disabled'} class="btn-press" style="
+            background:${on ? 'rgba(255,255,255,.07)' : 'rgba(255,255,255,.02)'};
+            border:1px solid ${on ? 'rgba(255,215,0,.3)' : 'rgba(255,255,255,.05)'};
+            color:${on ? 'rgba(255,255,255,.82)' : 'rgba(255,255,255,.18)'};
+            border-radius:14px;padding:4px 10px;font-size:10px;font-weight:700;
+            cursor:${on ? 'pointer' : 'default'};font-family:'Inter',system-ui;
+            display:flex;align-items:center;gap:4px;">
+            <span style="font-size:11px;">${ic}</span>${lbl}</button>`).join('')}
+      </div>
+      ${frozen ? `<div style="font-size:10px;color:#4FC3F7;font-weight:700;
+        font-family:'Inter',system-ui;">❄️ Tempo congelado nesta pergunta</div>` : ''}
       <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;
         font-family:'Inter',system-ui;">
         ${q.type === 'player'
@@ -1916,6 +2098,27 @@ function html() {
   </div>`;
 }
 
+
+/* ── Confetti (pure DOM, no library) ── */
+function burst(n) {
+  const cols = ['#FFD700','#00e676','#4FC3F7','#FF7043','#FFFFFF','#AB47BC'];
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('div');
+    d.className = 'conf';
+    d.style.left = (Math.random() * 100) + 'vw';
+    d.style.background = cols[(Math.random() * cols.length) | 0];
+    d.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
+    d.style.setProperty('--rot', ((Math.random() * 900) + 360).toFixed(0) + 'deg');
+    d.style.animationDuration = (1.9 + Math.random() * 1.5).toFixed(2) + 's';
+    d.style.animationDelay = (Math.random() * 0.5).toFixed(2) + 's';
+    if (Math.random() > .6) d.style.borderRadius = '50%';
+    frag.appendChild(d);
+  }
+  document.body.appendChild(frag);
+  setTimeout(() => document.querySelectorAll('.conf').forEach(e => e.remove()), 4200);
+}
+
 /* ═══════════════════════════════════════════════════
    RENDER + EVENT BINDING
 ═══════════════════════════════════════════════════ */
@@ -1927,6 +2130,12 @@ function go() {
   document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='difficulty'; go(); });
   document.getElementById('daily-btn')?.addEventListener('click', () => { snd.select(); startDaily(); });
   document.getElementById('bcred')?.addEventListener('click', () => { snd.swipe(); sc='credits'; go(); });
+
+  if (sc === 'end' && !window._celebrated) {
+    const acc = nCorrect / Math.max(1, cat.qs.length);
+    if (acc >= 0.7) { window._celebrated = true; burst(acc >= 0.9 ? 70 : 42); }
+  }
+  if (sc !== 'end') window._celebrated = false;
   document.getElementById('bshare')?.addEventListener('click', () => { snd.tap(); doShare(); });
   document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='home'; go(); });
   document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='difficulty'; go(); });
@@ -2018,19 +2227,11 @@ function doReveal() {
   setTimeout(() => {
     qi++;
     sel.clear();
+    hidden = new Set();
+    frozen = false;
     lastMsg = '';
     if (qi >= cat.qs.length) {
-      sc = 'end';
-      if (scores[diffKey] === undefined || pts > scores[diffKey]) {
-        scores[diffKey] = pts;
-        LS.set('scores', scores);
-      }
-      if (isDaily) saveDaily();
-      stats.games    += 1;
-      stats.correct  += nCorrect;
-      stats.answered += cat.qs.length;
-      stats.bestStreak = Math.max(stats.bestStreak || 0, bestStreak);
-      LS.set('stats', stats);
+      finishRun();
     } else {
       sc    = 'quiz';
       tMax  = DCFG().time;
@@ -2042,9 +2243,26 @@ function doReveal() {
   }, 2200);
 }
 
+
+function finishRun() {
+  clearInterval(tmr);
+  sc = 'end';
+  if (scores[diffKey] === undefined || pts > scores[diffKey]) {
+    scores[diffKey] = pts;
+    LS.set('scores', scores);
+  }
+  if (isDaily) saveDaily();
+  stats.games    += 1;
+  stats.correct  += nCorrect;
+  stats.answered += cat.qs.length;
+  stats.bestStreak = Math.max(stats.bestStreak || 0, bestStreak);
+  LS.set('stats', stats);
+}
+
 function startTmr() {
   clearInterval(tmr);
   tmr = setInterval(() => {
+    if (frozen) return;
     tLeft = Math.max(0, tLeft - 1);
     const tf = document.getElementById('tf');
     if (tf) {
