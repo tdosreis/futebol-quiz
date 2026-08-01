@@ -249,7 +249,16 @@ function AC() {
   return _AC;
 }
 
+/* MUTE — read straight from storage so it survives a reload */
+let muted = (() => { try { return localStorage.getItem('fqbr_muted') === 'true'; }
+                     catch (e) { return false; } })();
+function setMuted(v) {
+  muted = v;
+  try { localStorage.setItem('fqbr_muted', String(v)); } catch (e) {}
+}
+
 function beep(freq, dur, type='sine', vol=0.18, freqEnd=null) {
+  if (muted) return;
   try {
     const ac = AC();
     const osc = ac.createOscillator();
@@ -1997,6 +2006,14 @@ function html() {
           align-self:center;">+${e.length - 11}</span>` : ''}
       </div>`;
     })()}
+    <div style="display:flex;gap:14px;align-items:center;">
+      <button id="bmute" style="background:none;border:none;cursor:pointer;
+        font-size:15px;opacity:.55;padding:2px;" title="Som">${muted ? '🔇' : '🔊'}</button>
+      <button id="bmed" style="background:none;border:none;
+        color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
+        font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
+        Medalhas</button>
+    </div>
     <button id="bcred" style="background:none;border:none;
       color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
       font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
@@ -2373,6 +2390,8 @@ function go() {
   document.getElementById('daily-btn')?.addEventListener('click', () => { snd.select(); startDaily(); });
   document.getElementById('bcred')?.addEventListener('click', () => { snd.swipe(); sc='credits'; go(); });
   document.getElementById('surv-btn')?.addEventListener('click', () => { snd.select(); startSurvival(); });
+  document.getElementById('bmed')?.addEventListener('click',  () => { snd.swipe(); sc='medals'; go(); });
+  document.getElementById('bmute')?.addEventListener('click', () => { setMuted(!muted); snd.tap(); go(); });
   document.getElementById('medal-strip')?.addEventListener('click', () => { snd.swipe(); sc='medals'; go(); });
 
   if (sc === 'end' && !window._celebrated) {
@@ -2465,7 +2484,14 @@ function doReveal() {
     ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
         font-family:'Inter',system-ui;">~ Quase! +${gained}</span>${bonuses}`
     : `<span style="font-size:15px;font-weight:800;color:#f44336;
-        font-family:'Inter',system-ui;">✗ Errou!</span>`;
+        font-family:'Inter',system-ui;">✗ Errou!</span>
+       <div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;
+        font-family:'Inter',system-ui;">Resposta: <strong style="color:#00e676;">${
+          q.a.map(id => {
+            const pool = q.type === 'player' ? PL : CL;
+            const hit = pool.find(x => x.id === id);
+            return hit ? hit.n : id;
+          }).join(', ')}</strong></div>`;
 
   go();
 

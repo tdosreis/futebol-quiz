@@ -8,6 +8,10 @@ OUT = os.path.join(ROOT, "store-assets")
 
 # name -> JS to run once the page has booted
 STATES = {
+ "s-wrong": """diffKey='moderado'; startGame();
+   const q=cat.qs[0]; const bad=disp.find(o=>!q.a.includes(o.id));
+   sel=new Set([bad.id]); tLeft=12; doReveal();""",
+
  "s-medals": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:4};
    LS.set('stats',stats); sc='medals'; go();""",
  "s-home2": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:9};
