@@ -8,6 +8,24 @@ OUT = os.path.join(ROOT, "store-assets")
 
 # name -> JS to run once the page has booted
 STATES = {
+ "shot-01-home": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:9};
+   LS.set('stats',stats); sc='home'; go();""",
+ "shot-02-difficulty": "sc='difficulty'; go();",
+ "shot-03-question": """diffKey='dificil'; startGame();""",
+ "shot-04-players": """diffKey='moderado';
+   cat = buildGame('moderado');
+   const rq = GEN_QS(2).find(q => q.reveal);
+   cat.qs=[rq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
+   sc='quiz'; tMax=25; tLeft=17; disp=getDisp(rq); go();""",
+ "shot-05-medals": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:4};
+   LS.set('stats',stats); sc='medals'; go();""",
+ "shot-06-end": """diffKey='dificil';
+   cat = buildGame('dificil'); cat.qs = cat.qs.slice(0,10);
+   pts=64; nCorrect=8; nPartial=1; bestStreak=5; streak=5;
+   runLog=[3,3,3,0,3,3,1,3,3,3]; scores['dificil']=64;
+   stats={games:12,correct:74,answered:110,bestStreak:7};
+   sc='end'; go();""",
+
  "s-wrong": """diffKey='moderado'; startGame();
    const q=cat.qs[0]; const bad=disp.find(o=>!q.a.includes(o.id));
    sel=new Set([bad.id]); tLeft=12; doReveal();""",
