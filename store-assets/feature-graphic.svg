@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500" width="1024" height="500">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="45%" r="85%">
+      <stop offset="0%" stop-color="#1c3a1c"/>
+      <stop offset="100%" stop-color="#060e08"/>
+    </radialGradient>
+    <radialGradient id="ballGlow" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6d6d6"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#FFD700" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background pitch -->
+  <rect width="1024" height="500" fill="url(#bg)"/>
+
+  <!-- Subtle pitch markings -->
+  <g stroke="#FFD700" stroke-opacity="0.10" fill="none">
+    <line x1="512" y1="20" x2="512" y2="480" stroke-width="2"/>
+    <circle cx="512" cy="250" r="120" stroke-width="2"/>
+    <circle cx="512" cy="250" r="6" fill="#FFD700" fill-opacity="0.15" stroke="none"/>
+  </g>
+  <!-- faint mowing stripes -->
+  <g fill="#ffffff" fill-opacity="0.02">
+    <rect x="0" y="0" width="128" height="500"/>
+    <rect x="256" y="0" width="128" height="500"/>
+    <rect x="512" y="0" width="128" height="500"/>
+    <rect x="768" y="0" width="128" height="500"/>
+  </g>
+
+  <!-- ===== Soccer ball (left) ===== -->
+  <g transform="translate(262,250) scale(1.18)" filter="url(#soft)">
+    <circle cx="0" cy="0" r="132" fill="none" stroke="#FFD700" stroke-width="4" opacity="0.4"/>
+    <circle cx="0" cy="0" r="128" fill="url(#ballGlow)"/>
+    <!-- black pentagon patches, centered on (0,0) mapped from original (248,205) -->
+    <g fill="#111111">
+      <polygon points="0,-105 42,-77 28,-31 -28,-31 -42,-77"/>
+      <polygon points="-84,-42 -42,-70 -38,-27 -58,10 -98,0"/>
+      <polygon points="84,-42 42,-70 38,-27 58,10 98,0"/>
+      <polygon points="-98,55 -58,43 -48,79 -70,105 -102,85"/>
+      <polygon points="98,55 58,43 48,79 70,105 102,85"/>
+      <polygon points="0,111 -28,87 -22,57 22,57 28,87"/>
+    </g>
+  </g>
+
+  <!-- ===== Title block (right) ===== -->
+  <g text-anchor="start" font-family="'Arial Black','Impact',sans-serif" font-weight="900">
+    <text x="500" y="180" font-size="66" letter-spacing="8" fill="#FFD700" fill-opacity="0.9">FUTEBOL</text>
+    <text x="500" y="282" font-size="112" letter-spacing="4" fill="#FFD700" filter="url(#glow)">QUIZ</text>
+    <!-- BR badge, top-right, clear of the title -->
+    <g transform="translate(872,118)">
+      <rect x="0" y="0" rx="12" ry="12" width="104" height="64" fill="#FFD700"/>
+      <text x="52" y="49" text-anchor="middle" font-size="46" fill="#0b1a0b" letter-spacing="2">BR</text>
+    </g>
+  </g>
+
+  <!-- Tagline -->
+  <text x="502" y="345" font-family="'Arial','Helvetica',sans-serif" font-weight="700"
+        font-size="30" fill="#ffffff" fill-opacity="0.92" letter-spacing="1">Você manja mesmo de futebol?</text>
+  <line x1="502" y1="368" x2="905" y2="368" stroke="#FFD700" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="502" y="405" font-family="'Arial','Helvetica',sans-serif" font-weight="400"
+        font-size="23" fill="#ffffff" fill-opacity="0.75" letter-spacing="0.5">Craques • Times • Seleções • História</text>
+</svg>
