@@ -1402,6 +1402,120 @@ function GEN_QS(tier) {
     });
   });
 
+  /* ═════ GEN2 — extra templates ═════ */
+
+  /* 11. Stadium → club */
+  const STIDS = Object.keys(typeof STAD !== 'undefined' ? STAD : {});
+  const STAD_CLUB = { allianz:'palmeiras', neoq:'corinthians', beirario:'internacional',
+    vilabelmiro:'santos', saojanua:'vasco', arena_gre:'gremio' };
+  pick(STIDS.filter(k => STAD_CLUB[k]), 4).forEach(k => {
+    const owner = STAD_CLUB[k];
+    out.push({
+      t: `Qual clube manda seus jogos no ${STAD[k].name}, em ${STAD[k].city}?`,
+      a: [owner],
+      pool: CL.filter(c => c.id !== owner).map(c => c.id),
+      stad: k,
+      _cat: GC.hist, d: 2,
+    });
+  });
+
+  /* 12. Which club is from this state? */
+  const byState = {};
+  CL.forEach(c => { (byState[c.s] = byState[c.s] || []).push(c); });
+  const ST_NAME = { RJ:'Rio de Janeiro', SP:'São Paulo', RS:'Rio Grande do Sul',
+    MG:'Minas Gerais', PR:'Paraná', BA:'Bahia', CE:'Ceará', PE:'Pernambuco', SC:'Santa Catarina' };
+  pick(Object.keys(byState).filter(st => ST_NAME[st] && byState[st].length >= 2), 4).forEach(st => {
+    const yes = rndOf(byState[st]);
+    out.push({
+      t: `Qual destes clubes é de ${ST_NAME[st]}?`,
+      a: [yes.id],
+      pool: CL.filter(c => c.s !== st).map(c => c.id),
+      _cat: GC.hist, d: 1,
+    });
+  });
+
+  /* 13. Head-to-head: who played longer? */
+  for (let i = 0; i < 4; i++) {
+    const two = pick(PL.filter(p => p.era), 2);
+    if (two.length < 2) break;
+    const span = p => p.era[1] - p.era[0];
+    if (span(two[0]) === span(two[1])) continue;
+    const longer = span(two[0]) > span(two[1]) ? two[0] : two[1];
+    out.push({
+      t: 'Quem teve a carreira mais longa?',
+      a: [longer.id], type: 'player',
+      fixed: two.map(p => p.id),
+      _cat: GC.era, d: 2,
+    });
+  }
+
+  /* 14. Odd one out — nine share a trait, one doesn't */
+  ['GK', 'DF', 'MF', 'FW'].forEach(pos => {
+    const same = PL.filter(p => p.pos === pos);
+    const other = PL.filter(p => p.pos !== pos);
+    if (same.length < 9 || !other.length) return;
+    const odd = rndOf(other);
+    out.push({
+      t: `Qual destes NÃO era ${POS_NAME[pos].toLowerCase()}?`,
+      a: [odd.id], type: 'player',
+      fixed: pick(same, 9).map(p => p.id).concat(odd.id),
+      _cat: GC.pos, d: 2,
+    });
+  });
+
+  /* 15. Which club was founded in this decade? */
+  for (let i = 0; i < 3; i++) {
+    const c = rndOf(CL);
+    const dec = Math.floor(c.f / 10) * 10;
+    const others = CL.filter(x => Math.floor(x.f / 10) * 10 !== dec);
+    if (others.length < 9) continue;
+    out.push({
+      t: `Qual destes clubes foi fundado na década de ${dec}?`,
+      a: [c.id],
+      pool: others.map(x => x.id),
+      _cat: GC.hist, d: 3,
+    });
+  }
+
+  /* 16. Contemporaries — who played in the same era? */
+  pick(PL.filter(p => p.era), 5).forEach(p => {
+    const overlaps = x => x.id !== p.id &&
+      Math.min(x.era[1], p.era[1]) - Math.max(x.era[0], p.era[0]) >= 5;
+    const mates = PL.filter(overlaps);
+    const strangers = PL.filter(x => x.id !== p.id && !overlaps(x));
+    if (!mates.length || strangers.length < 9) return;
+    const mate = rndOf(mates);
+    out.push({
+      t: `Quem jogou na mesma época que ${p.n}?`,
+      a: [mate.id], type: 'player',
+      fixed: pick(strangers, 9).map(x => x.id).concat(mate.id),
+      face: p.img,
+      _cat: GC.era, d: 3,
+    });
+  });
+
+  /* 17. Most Libertadores titles among these */
+  for (let i = 0; i < 3; i++) {
+    const set = pick(CL, 10);
+    const top = set.reduce((a, b) => (a.lib >= b.lib ? a : b));
+    if (top.lib === 0 || set.filter(c => c.lib === top.lib).length > 1) continue;
+    out.push({ t: 'Qual destes clubes tem mais títulos da Libertadores?',
+               a: [top.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 2 });
+  }
+
+  /* 18. Country → multi-select */
+  Object.keys(byCtry).filter(c => byCtry[c].length >= 2 && c !== 'BRA').slice(0, 4).forEach(c => {
+    const yes = pick(byCtry[c], 2);
+    const no = PL.filter(p => p.ctry !== c);
+    if (no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 jogadores de ${CTRY_NAME[c] || c}`,
+      a: yes.map(p => p.id), type: 'player',
+      fixed: yes.map(p => p.id).concat(pick(no, 8).map(p => p.id)),
+      _cat: GC.nat, d: 3,
+    });
+  });
+
   // Safety net: a generator bug must never put an unanswerable question in front
   // of a player, so drop anything whose answers don't resolve.
   return out.filter(q =>
@@ -1503,7 +1617,7 @@ function doShare() {
 }
 
 function startDaily() {
-  isDaily = true;
+  isDaily = true; isSurv = false;
   diffKey = 'moderado';
   seedFrom(dayIndex());
   cat = buildGame('moderado');
@@ -1568,6 +1682,67 @@ function useSkip() {
     disp = getDisp(cat.qs[qi]);
     startTmr();
   }
+  go();
+}
+
+
+/* ═══════════════════════════════════════════════════
+   MEDALS — long-run progression
+═══════════════════════════════════════════════════ */
+const MEDALS = [
+  { id:'first',  ic:'⚽', n:'Estreia',        d:'Jogue sua primeira partida',
+    t: st => st.games >= 1 },
+  { id:'ten',    ic:'🎽', n:'Rodada',         d:'Jogue 10 partidas',
+    t: st => st.games >= 10 },
+  { id:'perfect',ic:'🎯', n:'Perfeição',      d:'Acerte 100% de uma partida',
+    t: st => (st.perfect || 0) >= 1 },
+  { id:'streak5',ic:'🔥', n:'Pegando fogo',   d:'Sequência de 5 acertos',
+    t: st => (st.bestStreak || 0) >= 5 },
+  { id:'streak10',ic:'☄️', n:'Imparável',     d:'Sequência de 10 acertos',
+    t: st => (st.bestStreak || 0) >= 10 },
+  { id:'hard',   ic:'💀', n:'Cara de pau',    d:'80% ou mais no Difícil',
+    t: st => (st.hard80 || 0) >= 1 },
+  { id:'c100',   ic:'💯', n:'Centenário',     d:'100 acertos no total',
+    t: st => (st.correct || 0) >= 100 },
+  { id:'c500',   ic:'🧠', n:'Enciclopédia',   d:'500 acertos no total',
+    t: st => (st.correct || 0) >= 500 },
+  { id:'daily3', ic:'📅', n:'Rotina',         d:'3 desafios diários seguidos',
+    t: st => LS.get('dailyStreak', 0) >= 3 },
+  { id:'daily7', ic:'🗓️', n:'Semana cheia',   d:'7 desafios diários seguidos',
+    t: st => LS.get('dailyStreak', 0) >= 7 },
+  { id:'surv10', ic:'🛡️', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
+    t: st => (st.survBest || 0) >= 10 },
+];
+
+function earnedMedals() { return MEDALS.filter(m => { try { return m.t(stats); } catch (e) { return false; } }); }
+
+/* returns medals unlocked by the run that just finished */
+function newMedals() {
+  const had = new Set(LS.get('medals', []));
+  const now = earnedMedals().map(m => m.id);
+  LS.set('medals', now);
+  return MEDALS.filter(m => now.includes(m.id) && !had.has(m.id));
+}
+
+/* ═══════════════════════════════════════════════════
+   SURVIVAL — one mistake and the run is over
+═══════════════════════════════════════════════════ */
+let isSurv = false;
+
+function startSurvival() {
+  isSurv = true; isDaily = false; _seed = null;
+  diffKey = 'moderado';
+  cat = buildGame('moderado');
+  cat.name = 'Mata-mata';
+  // a long queue; the run ends on the first mistake, not on length
+  const extra = buildGame('dificil');
+  cat.qs = cat.qs.concat(extra.qs);
+  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  resetLifes();
+  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
+  startTmr();
   go();
 }
 
@@ -1803,6 +1978,25 @@ function html() {
             padding:1px 6px;font-size:11px;color:#FF7700;">🔥${st}</span>` : ''}
       </button>`;
     })()}
+    <button id="surv-btn" class="btn-press" style="background:rgba(229,57,53,.12);
+      border:1px solid rgba(229,57,53,.45);color:#FF6B68;
+      font-size:13px;font-weight:700;padding:9px 22px;border-radius:22px;
+      cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:7px;">
+      <span style="font-size:15px;">🛡️</span><span>Mata-mata</span>
+      ${(stats.survBest || 0) > 0 ? `<span style="background:rgba(229,57,53,.2);
+        border-radius:8px;padding:1px 6px;font-size:11px;">${stats.survBest}</span>` : ''}
+    </button>
+    ${(() => {
+      const e = earnedMedals();
+      if (!e.length) return '';
+      return `<div id="medal-strip" style="display:flex;gap:5px;flex-wrap:wrap;
+        justify-content:center;max-width:280px;cursor:pointer;">
+        ${e.slice(0, 11).map(m => `<span title="${m.n}" style="font-size:16px;
+          filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));">${m.ic}</span>`).join('')}
+        ${e.length > 11 ? `<span style="font-size:11px;color:rgba(255,255,255,.35);
+          align-self:center;">+${e.length - 11}</span>` : ''}
+      </div>`;
+    })()}
     <button id="bcred" style="background:none;border:none;
       color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
       font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
@@ -1813,6 +2007,42 @@ function html() {
       ${stats.bestStreak >= 3 ? ' · 🔥 ' + stats.bestStreak : ''}</div>` : ''}
   </div>`;
 
+
+
+  /* ── MEDALS SCREEN ── */
+  if (sc === 'medals') {
+    const got = new Set(earnedMedals().map(m => m.id));
+    return `
+    <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
+          color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+        <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
+          font-family:'Inter',system-ui;">Medalhas · ${got.size}/${MEDALS.length}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px;flex:1;overflow-y:auto;">
+        ${MEDALS.map(m => {
+          const on = got.has(m.id);
+          return `<div style="display:flex;align-items:center;gap:11px;
+            background:${on ? 'rgba(255,215,0,.07)' : 'rgba(255,255,255,.025)'};
+            border:1px solid ${on ? 'rgba(255,215,0,.28)' : 'rgba(255,255,255,.05)'};
+            border-radius:11px;padding:9px 12px;">
+            <span style="font-size:22px;filter:${on ? 'none' : 'grayscale(1)'};
+              opacity:${on ? 1 : .3};">${m.ic}</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:800;
+                color:${on ? '#FFD700' : 'rgba(255,255,255,.45)'};
+                font-family:'Inter',system-ui;">${m.n}</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.35);
+                font-family:'Inter',system-ui;">${m.d}</div>
+            </div>
+            ${on ? '<span style="font-size:13px;color:#00e676;">✓</span>' : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }
 
   /* ── CREDITS SCREEN ── */
   if (sc === 'credits') {
@@ -1917,7 +2147,8 @@ function html() {
       justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:10px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:2px;
         color:${curDiff.col};font-family:'Inter',system-ui;">
-        ${curDiff.emoji} ${curDiff.label.toUpperCase()} · ${cat.qs.length} perguntas</div>
+        ${isSurv ? `🛡️ MATA-MATA · ${nCorrect} ${nCorrect === 1 ? 'acerto' : 'acertos'} seguidos`
+                 : `${curDiff.emoji} ${curDiff.label.toUpperCase()} · ${cat.qs.length} perguntas`}</div>
       <div style="font-size:52px;margin:4px 0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.5));">${em}</div>
       <div style="font-size:28px;font-weight:800;color:#FFD700;
         font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">${msg}</div>
@@ -1934,6 +2165,16 @@ function html() {
       </div>
       ${isRecord ? `<div style="font-size:12px;font-weight:800;color:#FFD700;
         font-family:'Inter',system-ui;">🌟 Novo recorde!</div>` : ''}
+      ${(window._newMedals || []).length ? `<div style="display:flex;flex-direction:column;
+        gap:4px;margin-top:8px;align-items:center;">
+        ${window._newMedals.map(m => `<div style="display:flex;align-items:center;gap:7px;
+          background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.4);
+          border-radius:20px;padding:4px 13px;">
+          <span style="font-size:16px;">${m.ic}</span>
+          <span style="font-size:11px;font-weight:800;color:#FFD700;
+            font-family:'Inter',system-ui;">Nova medalha: ${m.n}</span>
+        </div>`).join('')}
+      </div>` : ''}
       <div style="display:flex;gap:3px;margin-top:8px;font-size:15px;letter-spacing:1px;">
         ${runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('')}</div>
       <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
@@ -2057,7 +2298,8 @@ function html() {
     </div>
 
     <!-- Option grid — 2 wide columns for name tiles, 5 for crest/face tiles -->
-    <div style="display:grid;grid-template-columns:repeat(${q.textTiles ? 2 : 5},1fr);gap:7px;">
+    <div style="display:grid;grid-template-columns:repeat(${
+      q.textTiles ? 2 : disp.length <= 4 ? 2 : 5},1fr);gap:${disp.length <= 4 ? 12 : 7}px;">
       ${disp.map((c, i) => badge(c, i)).join('')}
     </div>
 
@@ -2130,6 +2372,8 @@ function go() {
   document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='difficulty'; go(); });
   document.getElementById('daily-btn')?.addEventListener('click', () => { snd.select(); startDaily(); });
   document.getElementById('bcred')?.addEventListener('click', () => { snd.swipe(); sc='credits'; go(); });
+  document.getElementById('surv-btn')?.addEventListener('click', () => { snd.select(); startSurvival(); });
+  document.getElementById('medal-strip')?.addEventListener('click', () => { snd.swipe(); sc='medals'; go(); });
 
   if (sc === 'end' && !window._celebrated) {
     const acc = nCorrect / Math.max(1, cat.qs.length);
@@ -2168,7 +2412,7 @@ function go() {
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
 function startGame() {
-  isDaily = false; _seed = null;
+  isDaily = false; isSurv = false; _seed = null;
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
@@ -2225,11 +2469,21 @@ function doReveal() {
   go();
 
   setTimeout(() => {
+    if (isSurv && p !== 3) {          // survival: anything short of perfect ends it
+      cat.qs = cat.qs.slice(0, qi + 1);
+      finishRun();
+      go();
+      return;
+    }
     qi++;
     sel.clear();
     hidden = new Set();
     frozen = false;
     lastMsg = '';
+    if (isSurv && qi >= cat.qs.length - 2) {
+      const more = buildGame(rnd() > .5 ? 'moderado' : 'dificil');
+      cat.qs = cat.qs.concat(more.qs);
+    }
     if (qi >= cat.qs.length) {
       finishRun();
     } else {
@@ -2256,7 +2510,15 @@ function finishRun() {
   stats.correct  += nCorrect;
   stats.answered += cat.qs.length;
   stats.bestStreak = Math.max(stats.bestStreak || 0, bestStreak);
+  const acc = nCorrect / Math.max(1, cat.qs.length);
+  if (isSurv) {
+    stats.survBest = Math.max(stats.survBest || 0, nCorrect);
+  } else {
+    if (acc === 1) stats.perfect = (stats.perfect || 0) + 1;
+    if (diffKey === 'dificil' && acc >= 0.8) stats.hard80 = (stats.hard80 || 0) + 1;
+  }
   LS.set('stats', stats);
+  window._newMedals = newMedals();
 }
 
 function startTmr() {

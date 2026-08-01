@@ -112,6 +112,74 @@ TESTS = r"""
     });
     ok('team-mate questions: only listed players match the club', mateBad===0, `${mateBad} bad`);
 
+
+    // ---- GEN2 templates ----
+    const oddq = gen.filter(q => /NÃO era/.test(q.t));
+    let oddBad = 0;
+    oddq.forEach(q => {
+      const want = /goleiro/.test(q.t)?'GK': /defensor/.test(q.t)?'DF': /meia/.test(q.t)?'MF':'FW';
+      const set = q.fixed.map(P);
+      if (set.filter(p => p.pos !== want).length !== 1) oddBad++;
+      if (P(q.a[0]).pos === want) oddBad++;
+    });
+    ok('"odd one out" has exactly one non-matching player', oddBad===0, `${oddBad} bad / ${oddq.length}`);
+
+    const longq = gen.filter(q => /carreira mais longa/.test(q.t));
+    let longBad = 0;
+    longq.forEach(q => {
+      const set = q.fixed.map(P);
+      const span = p => p.era[1]-p.era[0];
+      const mx = Math.max(...set.map(span));
+      if (set.filter(p=>span(p)===mx).length !== 1) longBad++;
+      if (span(P(q.a[0])) !== mx) longBad++;
+    });
+    ok('"longest career" answer really is the longest', longBad===0, `${longBad} bad / ${longq.length}`);
+
+    const contq = gen.filter(q => /mesma época que/.test(q.t));
+    let contBad = 0;
+    contq.forEach(q => {
+      const subj = PL.find(x => q.face === x.img && q.t.indexOf(x.n) !== -1);
+      if (!subj) { contBad++; return; }
+      const ov = x => Math.min(x.era[1],subj.era[1]) - Math.max(x.era[0],subj.era[0]) >= 5;
+      const set = q.fixed.map(P);
+      if (set.filter(ov).length !== 1) contBad++;
+      if (!ov(P(q.a[0]))) contBad++;
+    });
+    ok('"same era" has exactly one contemporary', contBad===0, `${contBad} bad / ${contq.length}`);
+
+    const stateq = gen.filter(q => / é de /.test(q.t));
+    let stBad = 0;
+    stateq.forEach(q => {
+      const st = C(q.a[0]).s;
+      diffKey='dificil';
+      getDisp(q).forEach(o => { if (!q.a.includes(o.id) && o.s === st) stBad++; });
+    });
+    ok('state questions have no same-state distractor', stBad===0, `${stBad} bad / ${stateq.length}`);
+
+    const libq = gen.filter(q => /mais títulos da Libertadores/.test(q.t));
+    let libBad2 = 0;
+    libq.forEach(q => {
+      const set = q.fixed.map(C);
+      const mx = Math.max(...set.map(c=>c.lib));
+      if (set.filter(c=>c.lib===mx).length !== 1) libBad2++;
+      if (C(q.a[0]).lib !== mx) libBad2++;
+    });
+    ok('"most Libertadores" has a unique winner', libBad2===0, `${libBad2} bad / ${libq.length}`);
+
+    const multiNat = gen.filter(q => /Selecione os 2 jogadores de/.test(q.t));
+    let mnBad = 0;
+    multiNat.forEach(q => {
+      const ctry = P(q.a[0]).ctry;
+      const set = q.fixed.map(P);
+      if (set.filter(p=>p.ctry===ctry).length !== q.a.length) mnBad++;
+    });
+    ok('country multi-select lists every match shown', mnBad===0, `${mnBad} bad / ${multiNat.length}`);
+
+    const stadq = gen.filter(q => /manda seus jogos/.test(q.t));
+    let sdBad = 0;
+    stadq.forEach(q => { if (!C(q.a[0])) sdBad++; });
+    ok('stadium questions resolve to a real club', sdBad===0, `${sdBad} bad / ${stadq.length}`);
+
     // --- fixed sets always render 10 tiles ---
     let fixedBad = 0;
     gen.filter(q=>q.fixed).forEach(q => { if (getDisp(q).length !== q.fixed.length) fixedBad++; });

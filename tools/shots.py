@@ -8,6 +8,12 @@ OUT = os.path.join(ROOT, "store-assets")
 
 # name -> JS to run once the page has booted
 STATES = {
+ "s-medals": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:4};
+   LS.set('stats',stats); sc='medals'; go();""",
+ "s-home2": """stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:9};
+   LS.set('stats',stats); sc='home'; go();""",
+ "s-survival": """startSurvival();""",
+
  "s-lifelines": """diffKey='moderado'; startGame();
    useHalf();""",
  "s-frozen": """diffKey='moderado'; startGame(); useFreeze();""",
