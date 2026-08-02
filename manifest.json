@@ -1,13 +1,13 @@
 {
   "name": "Futebol Quiz BR",
   "short_name": "Futebol Quiz",
-  "description": "Quiz de futebol brasileiro — Libertadores, Brasileirão, Lendas, Estádios e mais!",
+  "description": "Quiz de futebol brasileiro em formato de programa de auditório: suba os 16 degraus rumo ao milhão.",
   "start_url": "/futebol-quiz/",
   "scope": "/futebol-quiz/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#060e08",
-  "theme_color": "#FFD700",
+  "background_color": "#05081a",
+  "theme_color": "#0a1030",
   "lang": "pt-BR",
   "categories": ["games", "sports"],
   "icons": [

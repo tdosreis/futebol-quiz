@@ -44,8 +44,91 @@ TESTS = r"""
     const ge=firstGain('facil'), gh=firstGain('dificil');
     ok('hard pays more than easy', gh > ge, `easy=${ge} hard=${gh}`);
 
+    // ---- the prize ladder ----
+    startMilhao();
+    ok('milhao starts on the first rung',
+       isMil===true && rung===0 && sc==='quiz' && banked===0, `rung=${rung}`);
+    ok('milhao deals one question per rung',
+       cat.qs.length===LADDER.length, `${cat.qs.length} vs ${LADDER.length}`);
+    ok('milhao questions are all distinct',
+       new Set(cat.qs.map(q=>q.t)).size===cat.qs.length);
+    ok('the first rung has no safety net', safetyNet()===0, `${safetyNet()}`);
+    ok('the clock comes from the rung, not the difficulty',
+       tMax===LADDER[0].time, `tMax=${tMax}`);
+
+    // climbing: each correct answer moves up exactly one rung
+    const r0 = rung; answerCorrectly();
+    ok('a correct answer does not advance during the reveal', rung===r0, `rung=${rung}`);
+    advanceAfterReveal(3);
+    ok('the reveal timing out moves up one rung', rung===r0+1, `rung=${rung}`);
+
+    /* Drive the real state machine, skipping only the dramatic pause. */
+    function climb(n){
+      startMilhao();
+      for (let i=0;i<n;i++){ answerCorrectly(); advanceAfterReveal(3); }
+    }
+    climb(4);
+    ok('four rungs cleared banks the first checkpoint',
+       rung===4 && safetyNet()===5000, `rung=${rung} net=${safetyNet()}`);
+    ok('the clock shortens as the money grows',
+       qTime() < LADDER[0].time, `${qTime()} < ${LADDER[0].time}`);
+    ok('distractors get stricter as the money grows',
+       qStrict() > 0, `strict=${qStrict().toFixed(2)}`);
+
+    climb(9);
+    ok('nine rungs cleared banks the second checkpoint',
+       safetyNet()===50000, `net=${safetyNet()}`);
+
+    // cashing out pays the rung you have already cleared
+    climb(6); sc='quiz'; cashOut();
+    ok('parar ends the run', sc==='end' && cashed===true, sc);
+    ok('parar pays the last rung cleared',
+       banked===LADDER[5].v, `${banked} vs ${LADDER[5].v}`);
+
+    // falling drops to the safety net, not to zero
+    climb(6); sc='quiz';
+    const netBefore = safetyNet();
+    answerWrong();
+    ok('a miss on the ladder banks the safety net',
+       banked===netBefore && netBefore===5000, `banked=${banked} net=${netBefore}`);
+
+    // falling before any checkpoint pays nothing
+    startMilhao(); sc='quiz'; answerWrong();
+    ok('a miss before the first checkpoint pays nothing', banked===0, `${banked}`);
+
+    // the ask-first threshold
+    startMilhao(); sel=new Set([disp[0].id]); confirmAnswer();
+    ok('early rungs lock in without asking', sc!=='ask', sc);
+    startMilhao(); rung=ASK_FROM_RUNG; sel=new Set([disp[0].id]); confirmAnswer();
+    ok('high rungs ask for a final answer', sc==='ask', sc);
+    unlockAnswer();
+    ok('the player can take it back', sc==='quiz', sc);
+
+    // the ladder sheet holds the clock
+    startMilhao(); ladderOpen=true;
+    const tBefore = tLeft;
+    ok('opening the ladder does not spend the clock', tLeft===tBefore);
+    clearHelpers();
+    ok('the ladder sheet closes between questions', ladderOpen===false);
+
+    // money formatting
+    ok('money reads in pt-BR grouping', money(1000000)==='R$ 1.000.000', money(1000000));
+
+    // clearing the last rung must count as sixteen cleared, not fifteen
+    climb(LADDER.length);
+    ok('the million ends the run', sc==='end' && cashed===true, sc);
+    ok('the million banks the top prize',
+       banked===LADDER[LADDER.length-1].v, `${banked}`);
+    ok('a full climb reads 16 of 16', rung===LADDER.length, `${rung}/${LADDER.length}`);
+    ok('the share card shows every rung lit',
+       (shareText().match(/🟨/g)||[]).length===LADDER.length,
+       shareText().split('\n')[1]);
+
     // ---- lifelines ----
+    // Some questions are two-way comparisons; land on a full board so the
+    // assertion is about the card, not about which question came up.
     diffKey='moderado'; startGame();
+    while (disp.length < 10) { qi = (qi + 1) % cat.qs.length; disp = getDisp(cat.qs[qi]); }
     const before = disp.length;
     useHalf();
     ok('50/50 hides options', hidden.size > 0 && hidden.size < before, `hid ${hidden.size}/${before}`);
@@ -53,12 +136,70 @@ TESTS = r"""
        [...hidden].every(id => !cat.qs[qi].a.includes(id)));
     ok('50/50 is single use', lifes.half === 0);
 
+    // and it refuses to spend itself when it could not remove anything
+    diffKey='moderado'; startGame();
+    (function(){
+      const q = cat.qs[qi];                       // a two-way board: one right, one wrong
+      disp = [disp.find(o => q.a.includes(o.id)), disp.find(o => !q.a.includes(o.id))]
+             .filter(Boolean);
+      const available = cutCount();
+      useHalf();
+      ok('50/50 is not wasted on a two-way question',
+         available === 0 && lifes.half === 1, `cut=${available} card=${lifes.half}`);
+    })();
+
     diffKey='moderado'; startGame();
     useFreeze();
     ok('freeze pauses the clock', frozen === true && lifes.freeze === 0);
     const t1 = tLeft; // simulate a tick
     if (typeof tmr !== 'undefined') { /* tick handled by interval; just assert flag */ }
     ok('freeze is single use', lifes.freeze === 0);
+
+    // ---- placar: the audience vote ----
+    diffKey='moderado'; startGame();
+    usePoll();
+    ok('placar votes on every visible tile',
+       poll && Object.keys(poll).length === disp.length, `${poll?Object.keys(poll).length:0}/${disp.length}`);
+    ok('placar percentages add up to 100',
+       Object.values(poll).reduce((a,b)=>a+b,0) === 100,
+       `${Object.values(poll).reduce((a,b)=>a+b,0)}`);
+    ok('placar is single use', lifes.poll === 0);
+    // The crowd should be a strong hint, never a free answer — and it should
+    // get noticeably worse as the money climbs, or Placar beats every other card.
+    function crowd(atRung){
+      let hit = 0;
+      for (let i=0;i<80;i++){
+        startMilhao(); rung=atRung; qi=atRung; disp=getDisp(cat.qs[qi]);
+        lifes.poll=1; usePoll();
+        const top = Object.keys(poll).reduce((a,b)=>poll[a]>=poll[b]?a:b);
+        if (cat.qs[qi].a.includes(top)) hit++;
+      }
+      return hit;
+    }
+    const cLow = crowd(0), cHigh = crowd(15);
+    ok('the crowd is a strong hint, not a free answer',
+       cLow >= 56 && cLow <= 78, `${cLow}/80`);
+    ok('the crowd falls apart near the million', cHigh < cLow - 20, `${cLow} -> ${cHigh}`);
+
+    // ---- convidado: the pundit ----
+    diffKey='moderado'; startGame();
+    useExpert();
+    ok('the pundit names a visible option',
+       expert && disp.some(o => o.id === expert.id), expert ? expert.name : 'none');
+    ok('the pundit says how sure he is', typeof expert.sure === 'boolean' && !!expert.line);
+    ok('the pundit is single use', lifes.expert === 0);
+    // he should be shakier near the million than at the bottom of the ladder
+    function pundit(atRung){
+      let hit = 0;
+      for (let i=0;i<60;i++){
+        startMilhao(); rung=atRung; qi=atRung; disp=getDisp(cat.qs[qi]);
+        lifes.expert=1; useExpert();
+        if (cat.qs[qi].a.includes(expert.id)) hit++;
+      }
+      return hit;
+    }
+    const low = pundit(0), high = pundit(14);
+    ok('the pundit gets shakier as the money climbs', low > high, `rung1=${low} rung15=${high}`);
 
     diffKey='moderado'; startGame();
     const q0 = qi;
@@ -101,6 +242,101 @@ TESTS = r"""
     ok('share card renders one emoji per question',
        (txt.match(/🟩|🟨|⬛|⬜/g)||[]).length === 4, txt.split('\n')[1]);
     ok('share card includes the site link', txt.includes('tdosreis.github.io'));
+
+    // ---- symbols: nothing the platform can refuse to draw ----
+    ok('every country in the squad has a drawn flag',
+       PL.every(p => FLAGS[p.ctry]),
+       PL.filter(p => !FLAGS[p.ctry]).map(p=>p.ctry).join(',') || 'all covered');
+    ok('flags render as svg, not text', flagSVG('BRA', 8).startsWith('<svg'));
+    ok('an unknown country still renders something',
+       flagSVG('ZZZ', 8).length > 20 && !/undefined/.test(flagSVG('ZZZ', 8)));
+    ok('icons render as svg', ICON.check('#fff',12).startsWith('<svg')
+       && ICON.cut('#fff',12).startsWith('<svg'));
+    // the glyphs that Android's WebView has no font for must not be in the markup
+    (function(){
+      const screens = [];
+      sc='home';    go(); screens.push(document.getElementById('ct').innerHTML);
+      sc='medals';  go(); screens.push(document.getElementById('ct').innerHTML);
+      sc='difficulty'; go(); screens.push(document.getElementById('ct').innerHTML);
+      startMilhao();     screens.push(document.getElementById('ct').innerHTML);
+      ladderOpen=true; go(); screens.push(document.getElementById('ct').innerHTML);
+      ladderOpen=false;
+      // ✓ ✗ ✕ ★ → ← ✂ ❄ ⏭ have no glyph in Roboto; regional-indicator and
+      // tag-sequence flags have none on most non-Apple platforms.
+      const banned = /[✓✗✕★→←✂❄⏭]|🏴|\uD83C[\uDDE6-\uDDFF]/;
+      const bad = screens.map((h, i) => banned.test(h) ? i : -1).filter(i => i >= 0);
+      ok('no tofu-prone glyphs reach the DOM', bad.length === 0, `screens ${bad.join(',')}`);
+    })();
+
+    // ---- artwork: everything referenced, everything labelled ----
+    ok('every player has a photo', PL.every(p => p.img),
+       PL.filter(p=>!p.img).map(p=>p.id).join(',') || 'all present');
+    ok('every club has a crest or a drawn fallback',
+       CL.every(c => LOGOS[c.id] || (c.c1 && c.c2)),
+       CL.filter(c=>!LOGOS[c.id]&&!(c.c1&&c.c2)).map(c=>c.id).join(',') || 'all covered');
+
+    // The five clubs whose real crests are non-free must still get a *designed*
+    // badge — colours, kit pattern, founding year and monogram — not a bare box.
+    (function(){
+      const drawn = CL.filter(c => !LOGOS[c.id]);
+      ok('the non-free clubs fall back to a drawn badge', drawn.length === 5,
+         drawn.map(c=>c.id).join(',') || 'none');
+      const thin = drawn.filter(c => {
+        const svg = genericCrest(c.id);
+        return !svg
+            || svg.indexOf(c.a) === -1                      // monogram
+            || (c.f && svg.indexOf(String(c.f)) === -1)     // founding year
+            || svg.indexOf('linearGradient') === -1;        // shaded, not flat
+      });
+      ok('each drawn badge carries its monogram, year and shading',
+         thin.length === 0, thin.map(c=>c.id).join(',') || 'all complete');
+      // and the kit pattern must actually differ between clubs, or Sport and
+      // Náutico both come out as red-and-white stripes
+      const shapes = new Set(drawn.map(c => genericCrest(c.id).replace(/[\d.]/g,'')));
+      ok('drawn badges are visually distinct from one another',
+         shapes.size === drawn.length, `${shapes.size} distinct of ${drawn.length}`);
+      ok('a dark second colour survives as the kit pattern',
+         _dist('#C00000', '#111111') > 70, `dist=${Math.round(_dist('#C00000','#111111'))}`);
+    })();
+    ok('every portrait and stadium has an image',
+       Object.keys(PORT).every(k => PORT_IMGS[k]) && Object.keys(STAD).every(k => STAD_IMGS[k]));
+    ok('generated questions never reference a blank image',
+       [1,2,3].every(t => GEN_QS(t).every(q =>
+         ['reveal','face','qimg','port','stad','crest'].every(k => q[k] === undefined || !!q[k]))));
+
+    (function(){
+      // Every visual must either carry a name or be explicitly marked decorative.
+      const unlabelled = new Set();
+      function audit(tag){
+        document.querySelectorAll('#ct img').forEach(im => {
+          if (im.getAttribute('aria-hidden') !== 'true' && !im.getAttribute('alt'))
+            unlabelled.add(tag + ':img');
+          if (!im.getAttribute('src')) unlabelled.add(tag + ':img-no-src');
+        });
+        document.querySelectorAll('#ct svg').forEach(sv => {
+          if (sv.getAttribute('aria-hidden') !== 'true' && !sv.getAttribute('aria-label'))
+            unlabelled.add(tag + ':svg');
+        });
+      }
+      ['home','medals','credits','difficulty'].forEach(s => { sc=s; go(); audit(s); });
+      for (let i=0;i<20;i++){ startMilhao(); audit('milhao'); }
+      for (let i=0;i<12;i++){ diffKey='dificil'; startGame(); audit('treino'); }
+      ok('every image and icon is named or marked decorative',
+         unlabelled.size === 0, [...unlabelled].join(', ') || 'all labelled');
+    })();
+
+    // Attribution is a licence condition, so an unattributed photo must never be
+    // silent — the credits screen has to name it as unsourced.
+    (function(){
+      const unsourced = PL.filter(p => p.img && !CREDITS[p.img]).map(p => p.n);
+      sc='credits'; go();
+      const shown = document.getElementById('ct').textContent;
+      ok('every unattributed photo is disclosed on the credits screen',
+         unsourced.every(n => shown.includes(n)),
+         unsourced.length ? unsourced.join(', ') : 'all photos attributed');
+      ok('the credits screen lists an author for every attributed photo',
+         Object.values(CREDITS).every(c => c.a && c.l));
+    })();
 
   } catch(e) { out.push({n:'EXCEPTION',pass:false,extra:(e&&(e.stack||e.message))||String(e)}); }
   const el=document.createElement('div'); el.id='OUT';

@@ -60,7 +60,7 @@ STATES = {
    sc='quiz'; tMax=25; tLeft=17; disp=getDisp(rq); go();""",
  "s-career": """diffKey='dificil';
    cat = buildGame('dificil');
-   const cq = GEN_QS(3).find(q => /caminho/.test(q.t));
+   const cq = GEN_QS(3).find(q => /nesta ordem/.test(q.t));
    cat.qs = [cq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
    sc='quiz'; tMax=20; tLeft=14; disp=getDisp(cq); go();""",
  "s-clubface": """diffKey='moderado';

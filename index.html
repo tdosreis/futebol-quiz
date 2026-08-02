@@ -7,7 +7,7 @@
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#FFD700" />
+  <meta name="theme-color" content="#0a1030" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -20,11 +20,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
+    /* ═══════════════════════════════════════════════════════════════
+       THE STUDIO
+       The whole app is staged like a TV quiz set: a dark arena, two
+       spotlights raking in from above, and one lit panel in the middle
+       where everything happens. Gold is the money colour and is spent
+       sparingly — on the plaque, the ladder and the prize — so that it
+       still reads as special when the big numbers arrive.
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --gold:      #FFC845;
+      --gold-hi:   #FFF0B0;
+      --gold-lo:   #B8860B;
+      --stage:     #05081a;
+      --panel:     #0a1030;
+      --panel-2:   #121a45;
+      --ink:       #ffffff;
+      --ink-dim:   rgba(255,255,255,.45);
+      --ink-faint: rgba(255,255,255,.22);
+      --win:       #00e676;
+      --lose:      #ff4d5e;
+      --line:      rgba(255,255,255,.09);
+    }
+
     /* ── Reset & base ── */
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
-      background: #0a0f0a;
+      background: var(--stage);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,26 +55,61 @@
       min-height: 100dvh;
       font-family: 'Inter', system-ui, sans-serif;
       padding-bottom: env(safe-area-inset-bottom);
+      overflow-x: hidden;
+    }
+
+    /* Two spotlights raking down onto the set. Fixed, so they stay put
+       while the panel's contents change underneath them. */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      top: -30vh;
+      width: 60vw;
+      height: 130vh;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(28px);
+      opacity: .5;
+    }
+    body::before {
+      left: -18vw;
+      background: linear-gradient(160deg, rgba(255,200,69,.16), transparent 58%);
+      transform: rotate(14deg);
+    }
+    body::after {
+      right: -18vw;
+      background: linear-gradient(200deg, rgba(90,140,255,.18), transparent 58%);
+      transform: rotate(-14deg);
     }
 
     #qz {
-      background: #060e08;
-      border-radius: 12px;
+      background:
+        radial-gradient(120% 70% at 50% -8%, #1b2a6b 0%, transparent 62%),
+        linear-gradient(180deg, var(--panel) 0%, #060a20 100%);
+      border-radius: 16px;
       overflow: hidden;
       position: relative;
-      color: #fff;
+      color: var(--ink);
       min-height: 500px;
       width: 100%;
       max-width: 680px;
+      box-shadow:
+        0 0 0 1px rgba(255,200,69,.14),
+        0 24px 70px rgba(0,0,0,.75),
+        0 0 90px rgba(60,90,220,.14);
+      z-index: 1;
     }
 
+    /* Floor grid — the set's perspective lines, faint enough to feel like depth */
     #grid-overlay {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
-      background-size: 52px 52px;
+        linear-gradient(rgba(120,160,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,160,255,.045) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(115% 80% at 50% 4%, #000 12%, transparent 74%);
+      mask-image: radial-gradient(115% 80% at 50% 4%, #000 12%, transparent 74%);
       pointer-events: none;
       z-index: 0;
     }
@@ -136,14 +194,14 @@
 
     /* ══════════ VISUAL POLISH ══════════ */
 
-    /* Ambient stadium glow behind everything (adds depth to the flat panel) */
+    /* Key light from the rig above the panel */
     #qz::before {
       content: '';
       position: absolute;
       left: -25%; right: -25%; top: -30%;
       height: 78%;
       background: radial-gradient(ellipse at 50% 0%,
-        rgba(255,215,0,.075), rgba(26,140,58,.05) 42%, transparent 68%);
+        rgba(255,200,69,.11), rgba(70,110,255,.07) 42%, transparent 68%);
       pointer-events: none;
       z-index: 0;
     }
@@ -151,7 +209,7 @@
       content: '';
       position: absolute;
       left: 0; right: 0; bottom: 0; height: 34%;
-      background: linear-gradient(to top, rgba(0,0,0,.35), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,.45), transparent);
       pointer-events: none;
       z-index: 0;
     }
@@ -229,8 +287,144 @@
     .btn-press { transition: transform .12s, box-shadow .12s, filter .12s; }
     .btn-press:active { transform: scale(.955); filter: brightness(1.08); }
 
+
+    /* ═══════════════════════════════════════════════════════════════
+       THE PLAQUE
+       The question board. Its corners are cut on the diagonal — the
+       shape every one of these shows has used since the eighties — and
+       the gold edge is a second clipped element behind it rather than a
+       border, because a border would follow the box, not the cut.
+    ═══════════════════════════════════════════════════════════════ */
+    .plaque {
+      position: relative;
+      padding: 2px;                 /* this is the visible gold edge */
+      background: linear-gradient(150deg, var(--gold-hi), var(--gold) 34%, var(--gold-lo) 78%, var(--gold) 100%);
+      clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+      filter: drop-shadow(0 6px 22px rgba(0,0,0,.55));
+    }
+    .plaque-in {
+      background: linear-gradient(165deg, #1b2668 0%, #16205a 38%, #0b1136 100%);
+      clip-path: polygon(13px 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%, 0 13px);
+      padding: 13px 15px;
+      display: flex; align-items: center; gap: 11px;
+      min-height: 62px;
+    }
+    /* a slow glint travelling across the gold edge */
+    @keyframes plaqueGlint { to { background-position: 260% 0; } }
+    .plaque::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(105deg,
+        transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
+      background-size: 260% 100%;
+      animation: plaqueGlint 5.5s linear infinite;
+      pointer-events: none; mix-blend-mode: overlay;
+    }
+
+    /* ── Lettered answer tiles (A … J) ── */
+    .tile-letter {
+      position: absolute; top: 3px; left: 3px;
+      min-width: 14px; height: 14px; padding: 0 3px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, rgba(255,200,69,.9), rgba(184,134,11,.9));
+      color: #10142e;
+      font: 900 9px/14px 'Inter', system-ui, sans-serif;
+      text-align: center; letter-spacing: .3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.6);
+      z-index: 3; pointer-events: none;
+    }
+    .b-correct .tile-letter { background: linear-gradient(180deg,#7dffb4,#00c853); }
+    .b-wrong   .tile-letter { background: linear-gradient(180deg,#ff9aa4,#d32f2f); color:#fff; }
+
+    /* ── Audience vote bars, drawn over the tiles ── */
+    .vote {
+      position: absolute; left: 3px; right: 3px; bottom: 15px;
+      height: 4px; border-radius: 2px; overflow: hidden;
+      background: rgba(0,0,0,.55); z-index: 3; pointer-events: none;
+    }
+    .vote > i {
+      display: block; height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, #4FC3F7, #7C4DFF);
+      animation: voteGrow .7s cubic-bezier(.2,.9,.3,1) backwards;
+    }
+    @keyframes voteGrow { from { width: 0 !important; } }
+    .vote-pct {
+      position: absolute; right: 2px; bottom: 20px; z-index: 4;
+      padding: 1px 3px; border-radius: 3px;
+      background: rgba(4,7,22,.8);
+      font: 900 8px/1 'Inter', system-ui, sans-serif;
+      color: #cfe6ff; pointer-events: none;
+    }
+
+    /* ── The pundit's pick ── */
+    .expert-ring { box-shadow: 0 0 0 2px #AB47BC, 0 0 14px rgba(171,71,188,.55) !important; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       THE MOMENT
+       Confirming an answer stops the clock and drains the colour out of
+       everything you did not pick, so the board holds its breath with
+       you. The higher the rung, the longer we sit here.
+    ═══════════════════════════════════════════════════════════════ */
+    @keyframes lockPulse {
+      0%,100% { box-shadow: 0 0 0 3px var(--gold), 0 0 20px rgba(255,200,69,.45); }
+      50%     { box-shadow: 0 0 0 4px var(--gold), 0 0 44px rgba(255,200,69,.9); }
+    }
+    .b-locked { animation: lockPulse .78s ease-in-out infinite !important; transform: scale(1.05) !important; }
+    .b-faded  { opacity: .2; filter: grayscale(1) brightness(.7); transition: opacity .35s, filter .35s; }
+
+    @keyframes stageDim { from { opacity: 0; } to { opacity: 1; } }
+    .stage-dark {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 42%, transparent 22%, rgba(0,0,0,.62) 78%);
+      animation: stageDim .5s ease-out backwards;
+    }
+
+    /* ── The prize ladder ── */
+    .rung {
+      display: flex; align-items: center; gap: 8px;
+      padding: 4px 10px; border-radius: 7px;
+      font: 800 11px/1.2 'Inter', system-ui, sans-serif;
+      color: var(--ink-dim);
+      transition: background .25s, color .25s, transform .25s;
+    }
+    .rung-safe { color: rgba(255,255,255,.62); background: rgba(255,255,255,.035); }
+    .rung-done { color: var(--win); }
+    .rung-now  {
+      background: linear-gradient(90deg, rgba(255,200,69,.28), rgba(255,200,69,.06));
+      color: #fff; transform: scale(1.03);
+      box-shadow: inset 0 0 0 1px rgba(255,200,69,.55);
+    }
+    .rung-top  { color: var(--gold); }
+    .rung-n {
+      width: 17px; text-align: right; flex-shrink: 0;
+      font-size: 9px; color: var(--ink-faint); font-weight: 700;
+    }
+
+    /* The rail across the top of the quiz: one notch per rung */
+    .notch {
+      flex: 1; height: 5px; border-radius: 3px;
+      background: rgba(255,255,255,.09);
+      transition: background .3s, box-shadow .3s;
+    }
+    .notch-done { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
+    .notch-safe { background: rgba(255,255,255,.26); }
+    .notch-safe.notch-done { background: linear-gradient(180deg,#b9ffd4,var(--win)); }
+    .notch-now  {
+      background: #fff;
+      box-shadow: 0 0 9px rgba(255,255,255,.85);
+      animation: timerPulse 1.1s ease-in-out infinite;
+    }
+
+    /* Money climbing the ladder */
+    @keyframes prizeUp {
+      0%   { transform: translateY(6px) scale(.85); opacity: 0; }
+      55%  { transform: translateY(0)   scale(1.16); opacity: 1; }
+      100% { transform: translateY(0)   scale(1); opacity: 1; }
+    }
+    .prize-pop { animation: prizeUp .55s cubic-bezier(.2,.9,.3,1); }
+
     /* ── Misc ── */
     button { font-family: 'Inter', system-ui, sans-serif; }
+    .scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
   </style>
 </head>
 <body>
@@ -284,6 +478,35 @@ const snd = {
   wrong()   { beep(200, .32, 'sawtooth', .14, 90); },
   select()  { beep(660, .07, 'sine', .1, 600); },
   swipe()   { beep(300, .12, 'sine', .08, 500); },
+
+  /* ── studio cues ── */
+  /* the dramatic thud when an answer is locked in */
+  lock()    { beep(110, .34, 'square', .13, 62); beep(220, .16, 'triangle', .1, 150); },
+  /* the pulse under the silence while the host lets it hang */
+  heartbeat() { beep(72, .13, 'sine', .17, 50); },
+  /* the money ladder lighting up another rung */
+  rung()    {
+    [[660,.1],[880,.1],[1175,.2]].forEach(([f,d],i) =>
+      setTimeout(() => beep(f, d, 'square', .1), i*70));
+  },
+  /* R$ 1.000.000 */
+  fanfare() {
+    [[523,.16],[659,.16],[784,.16],[1047,.16],[1319,.5]].forEach(([f,d],i) =>
+      setTimeout(() => { beep(f, d, 'triangle', .2); beep(f/2, d, 'sine', .12); }, i*110));
+  },
+  /* walking away with the money */
+  cash()    {
+    [[784,.12],[988,.12],[1319,.28]].forEach(([f,d],i) =>
+      setTimeout(() => beep(f, d, 'sine', .16), i*80));
+  },
+  /* falling back down the ladder */
+  drop()    {
+    beep(320, .9, 'sawtooth', .16, 55);
+    setTimeout(() => beep(160, .7, 'square', .1, 40), 120);
+  },
+  cut()     { beep(1400, .06, 'square', .1, 400); setTimeout(() => beep(900, .07, 'square', .08, 260), 70); },
+  crowd()   { beep(140, .55, 'sawtooth', .05, 260); beep(300, .5, 'triangle', .04, 520); },
+  freeze()  { [1568,1319,1047].forEach((f,i) => setTimeout(() => beep(f, .16, 'sine', .09), i*60)); },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -524,135 +747,135 @@ const CATS = [
 ═══════════════════════════════════════════════════ */
 const PL = [
   // ── Brasileiros ──
-  { id:'pele',         n:'Pelé',            nat:'🇧🇷', img:'img/d609af6f47604b15.jpg' },
-  { id:'zico',         n:'Zico',            nat:'🇧🇷', img:'img/89327837f14f3c13.jpg' },
-  { id:'garrincha',    n:'Garrincha',        nat:'🇧🇷', img:'img/fa4679be155093f7.jpg' },
-  { id:'ronaldo',      n:'Ronaldo Fenômeno', nat:'🇧🇷', img:'img/f69a84f12e6c3e2d.jpg' },
-  { id:'ronaldinho',   n:'Ronaldinho',       nat:'🇧🇷', img:'img/dffa17aea5fe72c7.jpg' },
-  { id:'kaka',         n:'Kaká',             nat:'🇧🇷', img:'img/3c7e7132b3e8c2da.jpg' },
-  { id:'dinamite',     n:'R. Dinamite',      nat:'🇧🇷', img:'img/491fb1154f03a925.jpg' },
-  { id:'socrates',     n:'Sócrates',         nat:'🇧🇷', img:'img/cec165242fdd66eb.jpg' },
-  { id:'romario',      n:'Romário',          nat:'🇧🇷', img:'img/0d187854e036c104.jpg' },
-  { id:'bebeto',       n:'Bebeto',           nat:'🇧🇷', img:'img/67fda0a92c0c4dde.jpg' },
-  { id:'rivaldo',      n:'Rivaldo',          nat:'🇧🇷', img:'img/9857fb0acb22e8ef.jpg' },
-  { id:'adriano',      n:'Adriano',          nat:'🇧🇷', img:'img/1ed00c1d3b7c89d2.jpg' },
-  { id:'neymar',       n:'Neymar',           nat:'🇧🇷', img:'img/4ac976b184cc63fc.jpg' },
-  { id:'roberto_carlos',n:'Roberto Carlos',  nat:'🇧🇷', img:'img/666048b495ae1438.jpg' },
-  { id:'cafu',         n:'Cafu',             nat:'🇧🇷', img:'img/ac9b72fbf485640d.jpg' },
-  { id:'taffarel',     n:'Taffarel',         nat:'🇧🇷', img:'img/e4bbfb4842eaf994.png' },
-  { id:'vinicius',     n:'Vinícius Jr.',     nat:'🇧🇷', img:'img/c1a715e0c0f81882.jpg' },
-  { id:'carlos_alberto',n:'Carlos Alberto',  nat:'🇧🇷', img:'img/1a7d080f967ddb0a.jpg' },
-  { id:'muller_sp',    n:'Müller',           nat:'🇧🇷', img:'img/120c643b5d10f93c.jpg' },
-  { id:'jairzinho',    n:'Jairzinho',        nat:'🇧🇷', img:'img/4ef8747be0d6505e.jpg' },
-  { id:'gabigol',      n:'Gabigol',          nat:'🇧🇷', img:'img/516c48659ff0cdb0.jpg' },
-  { id:'falcao',       n:'Falcão',           nat:'🇧🇷', img:'img/e4338b3611dcdec3.jpg' },
+  { id:'pele',         n:'Pelé',            img:'img/d609af6f47604b15.jpg' },
+  { id:'zico',         n:'Zico',            img:'img/89327837f14f3c13.jpg' },
+  { id:'garrincha',    n:'Garrincha',        img:'img/fa4679be155093f7.jpg' },
+  { id:'ronaldo',      n:'Ronaldo Fenômeno', img:'img/f69a84f12e6c3e2d.jpg' },
+  { id:'ronaldinho',   n:'Ronaldinho',       img:'img/dffa17aea5fe72c7.jpg' },
+  { id:'kaka',         n:'Kaká',             img:'img/3c7e7132b3e8c2da.jpg' },
+  { id:'dinamite',     n:'R. Dinamite',      img:'img/491fb1154f03a925.jpg' },
+  { id:'socrates',     n:'Sócrates',         img:'img/cec165242fdd66eb.jpg' },
+  { id:'romario',      n:'Romário',          img:'img/0d187854e036c104.jpg' },
+  { id:'bebeto',       n:'Bebeto',           img:'img/67fda0a92c0c4dde.jpg' },
+  { id:'rivaldo',      n:'Rivaldo',          img:'img/9857fb0acb22e8ef.jpg' },
+  { id:'adriano',      n:'Adriano',          img:'img/1ed00c1d3b7c89d2.jpg' },
+  { id:'neymar',       n:'Neymar',           img:'img/4ac976b184cc63fc.jpg' },
+  { id:'roberto_carlos',n:'Roberto Carlos',  img:'img/666048b495ae1438.jpg' },
+  { id:'cafu',         n:'Cafu',             img:'img/ac9b72fbf485640d.jpg' },
+  { id:'taffarel',     n:'Taffarel',         img:'img/e4bbfb4842eaf994.png' },
+  { id:'vinicius',     n:'Vinícius Jr.',     img:'img/c1a715e0c0f81882.jpg' },
+  { id:'carlos_alberto',n:'Carlos Alberto',  img:'img/1a7d080f967ddb0a.jpg' },
+  { id:'muller_sp',    n:'Müller',           img:'img/120c643b5d10f93c.jpg' },
+  { id:'jairzinho',    n:'Jairzinho',        img:'img/4ef8747be0d6505e.jpg' },
+  { id:'gabigol',      n:'Gabigol',          img:'img/516c48659ff0cdb0.jpg' },
+  { id:'falcao',       n:'Falcão',           img:'img/e4338b3611dcdec3.jpg' },
   // ── Internacionais ──
-  { id:'maradona',     n:'Maradona',         nat:'🇦🇷', img:'img/3e42a2c3cad24abd.jpg' },
-  { id:'messi',        n:'Messi',            nat:'🇦🇷', img:'img/0859a19b8b37b5bf.jpg' },
-  { id:'cr7',          n:'Cristiano Ronaldo',nat:'🇵🇹', img:'img/bca7c83998971046.jpg' },
-  { id:'zidane',       n:'Zidane',           nat:'🇫🇷', img:'img/d2c6410686305d9c.jpg' },
-  { id:'van_basten',   n:'Van Basten',       nat:'🇳🇱', img:'img/a5a00230e9194c14.jpg' },
-  { id:'klose',        n:'Miroslav Klose',   nat:'🇩🇪', img:'img/7ae20ec3aa4bb7e4.jpg' },
-  { id:'batistuta',    n:'Batistuta',        nat:'🇦🇷', img:'img/b1e64d65207899d5.jpg' },
-  { id:'stoichkov',    n:'Stoichkov',        nat:'🇧🇬', img:'img/e24f17b1a1c19a47.jpg' },
-  { id:'cruyff',       n:'Johan Cruyff',     nat:'🇳🇱', img:'img/174077928ee92afd.jpg' },
-  { id:'fontaine',     n:'Just Fontaine',    nat:'🇫🇷', img:'img/35887c152589cb9a.jpg' },
+  { id:'maradona',     n:'Maradona',         img:'img/3e42a2c3cad24abd.jpg' },
+  { id:'messi',        n:'Messi',            img:'img/0859a19b8b37b5bf.jpg' },
+  { id:'cr7',          n:'Cristiano Ronaldo',img:'img/bca7c83998971046.jpg' },
+  { id:'zidane',       n:'Zidane',           img:'img/d2c6410686305d9c.jpg' },
+  { id:'van_basten',   n:'Van Basten',       img:'img/a5a00230e9194c14.jpg' },
+  { id:'klose',        n:'Miroslav Klose',   img:'img/7ae20ec3aa4bb7e4.jpg' },
+  { id:'batistuta',    n:'Batistuta',        img:'img/b1e64d65207899d5.jpg' },
+  { id:'stoichkov',    n:'Stoichkov',        img:'img/e24f17b1a1c19a47.jpg' },
+  { id:'cruyff',       n:'Johan Cruyff',     img:'img/174077928ee92afd.jpg' },
+  { id:'fontaine',     n:'Just Fontaine',    img:'img/35887c152589cb9a.jpg' },
   // ── Segunda leva de internacionais ──
-  { id:'james',        n:'James Rodríguez',  nat:'🇨🇴', img:'img/e89e123d5b748a6e.jpg' },
-  { id:'baggio',       n:'Roberto Baggio',   nat:'🇮🇹', img:'img/6b52ccf84346c214.jpg' },
-  { id:'platini',      n:'Michel Platini',   nat:'🇫🇷', img:'img/2ab41e623ca93fd8.jpg' },
-  { id:'beckham',      n:'David Beckham',    nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/d024d7b6a9840505.jpg' },
-  { id:'henry',        n:'Thierry Henry',    nat:'🇫🇷', img:'img/0638863700c4b493.jpg' },
-  { id:'ibrahimovic',  n:'Ibrahimović',      nat:'🇸🇪', img:'img/0dc77d51638aacd6.jpg' },
-  { id:'lewandowski',  n:'Lewandowski',      nat:'🇵🇱', img:'img/edad5d0ef563881e.jpg' },
-  { id:'mbappe',       n:'Kylian Mbappé',    nat:'🇫🇷', img:'img/4a0342f90a220ca9.jpg' },
-  { id:'drogba',       n:'Didier Drogba',    nat:'🇨🇮', img:'img/9303d0cc8b834d4f.jpg' },
-  { id:'weah',         n:'George Weah',      nat:'🇱🇷', img:'img/97883ef7e09ebbd6.jpg' },
-  { id:'modric',       n:'Luka Modrić',      nat:'🇭🇷', img:'img/6c5cbdbd0210e78e.jpg' },
-  { id:'benzema',      n:'Karim Benzema',    nat:'🇫🇷', img:'img/ca38a5d8fb15d1d3.jpg' },
+  { id:'james',        n:'James Rodríguez',  img:'img/e89e123d5b748a6e.jpg' },
+  { id:'baggio',       n:'Roberto Baggio',   img:'img/6b52ccf84346c214.jpg' },
+  { id:'platini',      n:'Michel Platini',   img:'img/2ab41e623ca93fd8.jpg' },
+  { id:'beckham',      n:'David Beckham',    img:'img/d024d7b6a9840505.jpg' },
+  { id:'henry',        n:'Thierry Henry',    img:'img/0638863700c4b493.jpg' },
+  { id:'ibrahimovic',  n:'Ibrahimović',      img:'img/0dc77d51638aacd6.jpg' },
+  { id:'lewandowski',  n:'Lewandowski',      img:'img/edad5d0ef563881e.jpg' },
+  { id:'mbappe',       n:'Kylian Mbappé',    img:'img/4a0342f90a220ca9.jpg' },
+  { id:'drogba',       n:'Didier Drogba',    img:'img/9303d0cc8b834d4f.jpg' },
+  { id:'weah',         n:'George Weah',      img:'img/97883ef7e09ebbd6.jpg' },
+  { id:'modric',       n:'Luka Modrić',      img:'img/6c5cbdbd0210e78e.jpg' },
+  { id:'benzema',      n:'Karim Benzema',    img:'img/ca38a5d8fb15d1d3.jpg' },
 
   /* ── EXPANDED SQUAD (Wikimedia Commons, freely licensed) ── */
-  { id:'aldair', n:'Aldair', nat:'🇧🇷', img:'img/0a4e5389e07bead4.jpg' },
-  { id:'nesta', n:'Alessandro Nesta', nat:'🇮🇹', img:'img/09109cfa614d1185.jpg' },
-  { id:'beckenbauer', n:'Beckenbauer', nat:'🇩🇪', img:'img/51fdbdc7c90eb840.jpg' },
-  { id:'puyol', n:'Carles Puyol', nat:'🇪🇸', img:'img/9564d5244c34c91c.jpg' },
-  { id:'dani_alves', n:'Daniel Alves', nat:'🇧🇷', img:'img/88468c09c32948e3.jpg' },
-  { id:'david_luiz', n:'David Luiz', nat:'🇧🇷', img:'img/7061b6cbdc57abe7.jpg' },
-  { id:'cannavaro', n:'Fabio Cannavaro', nat:'🇮🇹', img:'img/499deeb9096da832.jpg' },
-  { id:'baresi', n:'Franco Baresi', nat:'🇮🇹', img:'img/201fa8e5460c7212.jpg' },
-  { id:'junior', n:'Júnior', nat:'🇧🇷', img:'img/150a78c7ead73656.jpg' },
-  { id:'lucio', n:'Lúcio', nat:'🇧🇷', img:'img/ac82278f5d3eec63.jpg' },
-  { id:'maicon', n:'Maicon', nat:'🇧🇷', img:'img/763f03ab1bff5adf.jpg' },
-  { id:'marcelo', n:'Marcelo', nat:'🇧🇷', img:'img/fe82c30b82065f32.jpg' },
-  { id:'marquinhos', n:'Marquinhos', nat:'🇧🇷', img:'img/f58660371bf6d29c.jpg' },
-  { id:'nilton_santos', n:'Nílton Santos', nat:'🇧🇷', img:'img/37e2df5c9425049f.jpg' },
-  { id:'maldini', n:'Paolo Maldini', nat:'🇮🇹', img:'img/fb3077ff4e56c7bd.jpg' },
-  { id:'lahm', n:'Philipp Lahm', nat:'🇩🇪', img:'img/8595a6ca0651c6c5.jpg' },
-  { id:'sergio_ramos', n:'Sergio Ramos', nat:'🇪🇸', img:'img/971d29633a44b706.jpg' },
-  { id:'thiago_silva', n:'Thiago Silva', nat:'🇧🇷', img:'img/becb9d93999c12ae.jpg' },
-  { id:'van_dijk', n:'Virgil van Dijk', nat:'🇳🇱', img:'img/82d5307026607b2a.jpg' },
-  { id:'charlton', n:'Bobby Charlton', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/4ae52a3f1231575e.jpg' },
-  { id:'careca', n:'Careca', nat:'🇧🇷', img:'img/acf7a54d907325b5.jpg' },
-  { id:'del_piero', n:'Del Piero', nat:'🇮🇹', img:'img/73da24ccdc705361.jpg' },
-  { id:'distefano', n:'Di Stéfano', nat:'🇦🇷', img:'img/52657817692601d7.jpg' },
-  { id:'cavani', n:'Edinson Cavani', nat:'🇺🇾', img:'img/c951450a110a5e28.jpg' },
-  { id:'edmundo', n:'Edmundo', nat:'🇧🇷', img:'img/7a6f9e0a9d58ee6d.jpg' },
-  { id:'haaland', n:'Erling Haaland', nat:'🇳🇴', img:'img/5564dc0bb05fda53.jpg' },
-  { id:'eusebio', n:'Eusébio', nat:'🇵🇹', img:'img/18923a812a393569.jpg' },
-  { id:'puskas', n:'Ferenc Puskás', nat:'🇭🇺', img:'img/b24057226b77cc3d.jpg' },
-  { id:'totti', n:'Francesco Totti', nat:'🇮🇹', img:'img/13c70fbbcc6a2cca.jpg' },
-  { id:'gerd_muller', n:'Gerd Müller', nat:'🇩🇪', img:'img/83a240d4788163b3.jpg' },
-  { id:'kane', n:'Harry Kane', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/2c5f507afd2b35ae.jpg' },
-  { id:'hulk', n:'Hulk', nat:'🇧🇷', img:'img/1dcca609790e222f.jpg' },
-  { id:'suarez', n:'Luis Suárez', nat:'🇺🇾', img:'img/733f0792d0bcb15e.jpg' },
-  { id:'luis_fabiano', n:'Luís Fabiano', nat:'🇧🇷', img:'img/318b44473cb72bfd.jpg' },
-  { id:'owen', n:'Michael Owen', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/d042f2b35b5efade.jpg' },
-  { id:'salah', n:'Mohamed Salah', nat:'🇪🇬', img:'img/b4b0af27fb90b6ad.jpg' },
-  { id:'raul', n:'Raúl', nat:'🇪🇸', img:'img/45beff756309566b.jpg' },
-  { id:'robinho', n:'Robinho', nat:'🇧🇷', img:'img/c0b1d021fd8cc669.jpg' },
-  { id:'etoo', n:'Samuel Eto\'o', nat:'🇨🇲', img:'img/2e086d825817e07c.jpg' },
-  { id:'aguero', n:'Sergio Agüero', nat:'🇦🇷', img:'img/d1eb64abf64a7ecc.jpg' },
-  { id:'shevchenko', n:'Shevchenko', nat:'🇺🇦', img:'img/758326660493848f.png' },
-  { id:'tostao', n:'Tostão', nat:'🇧🇷', img:'img/e8ed7b9d7bfb0269.jpg' },
-  { id:'rooney', n:'Wayne Rooney', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/d3048d0dcd6295ea.jpg' },
-  { id:'zagallo', n:'Zagallo', nat:'🇧🇷', img:'img/66a6d28f83b53839.jpg' },
-  { id:'alisson', n:'Alisson', nat:'🇧🇷', img:'img/58802c8550ef5fa7.jpg' },
-  { id:'dida', n:'Dida', nat:'🇧🇷', img:'img/6a816865c94e5bd3.png' },
-  { id:'ederson', n:'Ederson', nat:'🇧🇷', img:'img/e2ec3359b334126a.jpg' },
-  { id:'leao', n:'Emerson Leão', nat:'🇧🇷', img:'img/7b5031b82250b269.jpg' },
-  { id:'buffon', n:'Gianluigi Buffon', nat:'🇮🇹', img:'img/6e42572899f9dce9.jpg' },
-  { id:'casillas', n:'Iker Casillas', nat:'🇪🇸', img:'img/779dcd8f35662801.jpg' },
-  { id:'julio_cesar', n:'Júlio César', nat:'🇧🇷', img:'img/3d2301f72881532f.jpg' },
-  { id:'yashin', n:'Lev Yashin', nat:'🇷🇺', img:'img/0b276412bf3f5bd8.jpg' },
-  { id:'neuer', n:'Manuel Neuer', nat:'🇩🇪', img:'img/a4a135f81bbd912b.jpg' },
-  { id:'marcos', n:'Marcos', nat:'🇧🇷', img:'img/1e59746f3b5a8618.png' },
-  { id:'kahn', n:'Oliver Kahn', nat:'🇩🇪', img:'img/ab23500e9fe71e50.jpg' },
-  { id:'schmeichel', n:'Peter Schmeichel', nat:'🇩🇰', img:'img/618d79848fbbec21.jpg' },
-  { id:'cech', n:'Petr Čech', nat:'🇨🇿', img:'img/c19fd91ef2f23508.jpg' },
-  { id:'rogerio_ceni', n:'Rogério Ceni', nat:'🇧🇷', img:'img/f8d7cb9715893c93.jpg' },
-  { id:'courtois', n:'Thibaut Courtois', nat:'🇧🇪', img:'img/fdb3f78c7ce459dd.jpg' },
-  { id:'van_der_sar', n:'Van der Sar', nat:'🇳🇱', img:'img/aedd9c392e0535c1.jpg' },
-  { id:'alex', n:'Alex', nat:'🇧🇷', img:'img/b8e36fbf197410f6.jpg' },
-  { id:'pirlo', n:'Andrea Pirlo', nat:'🇮🇹', img:'img/1ef3bb0fbdbf78f7.jpg' },
-  { id:'iniesta', n:'Andrés Iniesta', nat:'🇪🇸', img:'img/adf896d5e2f38903.jpg' },
-  { id:'casemiro', n:'Casemiro', nat:'🇧🇷', img:'img/a49cd1072ac4f08a.jpg' },
-  { id:'didi', n:'Didi', nat:'🇧🇷', img:'img/94bf9a8f11ebefd0.jpg' },
-  { id:'diego', n:'Diego', nat:'🇧🇷', img:'img/1a890e79166cbd6b.jpg' },
-  { id:'dunga', n:'Dunga', nat:'🇧🇷', img:'img/e97089e508fffa75.jpg' },
-  { id:'emerson', n:'Emerson', nat:'🇧🇷', img:'img/acd8c17cb88e9cba.jpg' },
-  { id:'lampard', n:'Frank Lampard', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/fcd3c0654c588ded.jpg' },
-  { id:'gilberto_silva', n:'Gilberto Silva', nat:'🇧🇷', img:'img/ce2fa1c8f787f96d.jpg' },
-  { id:'gerson', n:'Gérson', nat:'🇧🇷', img:'img/264a56ec578e4950.jpg' },
-  { id:'juninho', n:'Juninho Pernambucano', nat:'🇧🇷', img:'img/52c0aea6ebbb0561.jpg' },
-  { id:'de_bruyne', n:'Kevin De Bruyne', nat:'🇧🇪', img:'img/81c06667fa16b652.jpg' },
-  { id:'figo', n:'Luís Figo', nat:'🇵🇹', img:'img/c9b175338e538436.jpg' },
-  { id:'scholes', n:'Paul Scholes', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/87ed4227f19deced.jpg' },
-  { id:'nedved', n:'Pavel Nedvěd', nat:'🇨🇿', img:'img/9429cb23de075033.jpg' },
-  { id:'riquelme', n:'Riquelme', nat:'🇦🇷', img:'img/0738bef8f33aefe8.jpg' },
-  { id:'rivellino', n:'Rivellino', nat:'🇧🇷', img:'img/bf612f288773656a.jpg' },
-  { id:'gerrard', n:'Steven Gerrard', nat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', img:'img/3bf77b3cfa1ac83a.jpg' },
-  { id:'kroos', n:'Toni Kroos', nat:'🇩🇪', img:'img/161e26d90ff643d1.jpg' },
-  { id:'xavi', n:'Xavi', nat:'🇪🇸', img:'img/a918407d3e86de2a.jpg' },
+  { id:'aldair', n:'Aldair', img:'img/0a4e5389e07bead4.jpg' },
+  { id:'nesta', n:'Alessandro Nesta', img:'img/09109cfa614d1185.jpg' },
+  { id:'beckenbauer', n:'Beckenbauer', img:'img/51fdbdc7c90eb840.jpg' },
+  { id:'puyol', n:'Carles Puyol', img:'img/9564d5244c34c91c.jpg' },
+  { id:'dani_alves', n:'Daniel Alves', img:'img/88468c09c32948e3.jpg' },
+  { id:'david_luiz', n:'David Luiz', img:'img/7061b6cbdc57abe7.jpg' },
+  { id:'cannavaro', n:'Fabio Cannavaro', img:'img/499deeb9096da832.jpg' },
+  { id:'baresi', n:'Franco Baresi', img:'img/201fa8e5460c7212.jpg' },
+  { id:'junior', n:'Júnior', img:'img/150a78c7ead73656.jpg' },
+  { id:'lucio', n:'Lúcio', img:'img/ac82278f5d3eec63.jpg' },
+  { id:'maicon', n:'Maicon', img:'img/763f03ab1bff5adf.jpg' },
+  { id:'marcelo', n:'Marcelo', img:'img/fe82c30b82065f32.jpg' },
+  { id:'marquinhos', n:'Marquinhos', img:'img/f58660371bf6d29c.jpg' },
+  { id:'nilton_santos', n:'Nílton Santos', img:'img/37e2df5c9425049f.jpg' },
+  { id:'maldini', n:'Paolo Maldini', img:'img/fb3077ff4e56c7bd.jpg' },
+  { id:'lahm', n:'Philipp Lahm', img:'img/8595a6ca0651c6c5.jpg' },
+  { id:'sergio_ramos', n:'Sergio Ramos', img:'img/971d29633a44b706.jpg' },
+  { id:'thiago_silva', n:'Thiago Silva', img:'img/becb9d93999c12ae.jpg' },
+  { id:'van_dijk', n:'Virgil van Dijk', img:'img/82d5307026607b2a.jpg' },
+  { id:'charlton', n:'Bobby Charlton', img:'img/4ae52a3f1231575e.jpg' },
+  { id:'careca', n:'Careca', img:'img/acf7a54d907325b5.jpg' },
+  { id:'del_piero', n:'Del Piero', img:'img/73da24ccdc705361.jpg' },
+  { id:'distefano', n:'Di Stéfano', img:'img/52657817692601d7.jpg' },
+  { id:'cavani', n:'Edinson Cavani', img:'img/c951450a110a5e28.jpg' },
+  { id:'edmundo', n:'Edmundo', img:'img/7a6f9e0a9d58ee6d.jpg' },
+  { id:'haaland', n:'Erling Haaland', img:'img/5564dc0bb05fda53.jpg' },
+  { id:'eusebio', n:'Eusébio', img:'img/18923a812a393569.jpg' },
+  { id:'puskas', n:'Ferenc Puskás', img:'img/b24057226b77cc3d.jpg' },
+  { id:'totti', n:'Francesco Totti', img:'img/13c70fbbcc6a2cca.jpg' },
+  { id:'gerd_muller', n:'Gerd Müller', img:'img/83a240d4788163b3.jpg' },
+  { id:'kane', n:'Harry Kane', img:'img/2c5f507afd2b35ae.jpg' },
+  { id:'hulk', n:'Hulk', img:'img/1dcca609790e222f.jpg' },
+  { id:'suarez', n:'Luis Suárez', img:'img/733f0792d0bcb15e.jpg' },
+  { id:'luis_fabiano', n:'Luís Fabiano', img:'img/318b44473cb72bfd.jpg' },
+  { id:'owen', n:'Michael Owen', img:'img/d042f2b35b5efade.jpg' },
+  { id:'salah', n:'Mohamed Salah', img:'img/b4b0af27fb90b6ad.jpg' },
+  { id:'raul', n:'Raúl', img:'img/45beff756309566b.jpg' },
+  { id:'robinho', n:'Robinho', img:'img/c0b1d021fd8cc669.jpg' },
+  { id:'etoo', n:'Samuel Eto\'o', img:'img/2e086d825817e07c.jpg' },
+  { id:'aguero', n:'Sergio Agüero', img:'img/d1eb64abf64a7ecc.jpg' },
+  { id:'shevchenko', n:'Shevchenko', img:'img/758326660493848f.png' },
+  { id:'tostao', n:'Tostão', img:'img/e8ed7b9d7bfb0269.jpg' },
+  { id:'rooney', n:'Wayne Rooney', img:'img/d3048d0dcd6295ea.jpg' },
+  { id:'zagallo', n:'Zagallo', img:'img/66a6d28f83b53839.jpg' },
+  { id:'alisson', n:'Alisson', img:'img/58802c8550ef5fa7.jpg' },
+  { id:'dida', n:'Dida', img:'img/6a816865c94e5bd3.png' },
+  { id:'ederson', n:'Ederson', img:'img/e2ec3359b334126a.jpg' },
+  { id:'leao', n:'Emerson Leão', img:'img/7b5031b82250b269.jpg' },
+  { id:'buffon', n:'Gianluigi Buffon', img:'img/6e42572899f9dce9.jpg' },
+  { id:'casillas', n:'Iker Casillas', img:'img/779dcd8f35662801.jpg' },
+  { id:'julio_cesar', n:'Júlio César', img:'img/3d2301f72881532f.jpg' },
+  { id:'yashin', n:'Lev Yashin', img:'img/0b276412bf3f5bd8.jpg' },
+  { id:'neuer', n:'Manuel Neuer', img:'img/a4a135f81bbd912b.jpg' },
+  { id:'marcos', n:'Marcos', img:'img/1e59746f3b5a8618.png' },
+  { id:'kahn', n:'Oliver Kahn', img:'img/ab23500e9fe71e50.jpg' },
+  { id:'schmeichel', n:'Peter Schmeichel', img:'img/618d79848fbbec21.jpg' },
+  { id:'cech', n:'Petr Čech', img:'img/c19fd91ef2f23508.jpg' },
+  { id:'rogerio_ceni', n:'Rogério Ceni', img:'img/f8d7cb9715893c93.jpg' },
+  { id:'courtois', n:'Thibaut Courtois', img:'img/fdb3f78c7ce459dd.jpg' },
+  { id:'van_der_sar', n:'Van der Sar', img:'img/aedd9c392e0535c1.jpg' },
+  { id:'alex', n:'Alex', img:'img/b8e36fbf197410f6.jpg' },
+  { id:'pirlo', n:'Andrea Pirlo', img:'img/1ef3bb0fbdbf78f7.jpg' },
+  { id:'iniesta', n:'Andrés Iniesta', img:'img/adf896d5e2f38903.jpg' },
+  { id:'casemiro', n:'Casemiro', img:'img/a49cd1072ac4f08a.jpg' },
+  { id:'didi', n:'Didi', img:'img/94bf9a8f11ebefd0.jpg' },
+  { id:'diego', n:'Diego', img:'img/1a890e79166cbd6b.jpg' },
+  { id:'dunga', n:'Dunga', img:'img/e97089e508fffa75.jpg' },
+  { id:'emerson', n:'Emerson', img:'img/acd8c17cb88e9cba.jpg' },
+  { id:'lampard', n:'Frank Lampard', img:'img/fcd3c0654c588ded.jpg' },
+  { id:'gilberto_silva', n:'Gilberto Silva', img:'img/ce2fa1c8f787f96d.jpg' },
+  { id:'gerson', n:'Gérson', img:'img/264a56ec578e4950.jpg' },
+  { id:'juninho', n:'Juninho Pernambucano', img:'img/52c0aea6ebbb0561.jpg' },
+  { id:'de_bruyne', n:'Kevin De Bruyne', img:'img/81c06667fa16b652.jpg' },
+  { id:'figo', n:'Luís Figo', img:'img/c9b175338e538436.jpg' },
+  { id:'scholes', n:'Paul Scholes', img:'img/87ed4227f19deced.jpg' },
+  { id:'nedved', n:'Pavel Nedvěd', img:'img/9429cb23de075033.jpg' },
+  { id:'riquelme', n:'Riquelme', img:'img/0738bef8f33aefe8.jpg' },
+  { id:'rivellino', n:'Rivellino', img:'img/bf612f288773656a.jpg' },
+  { id:'gerrard', n:'Steven Gerrard', img:'img/3bf77b3cfa1ac83a.jpg' },
+  { id:'kroos', n:'Toni Kroos', img:'img/161e26d90ff643d1.jpg' },
+  { id:'xavi', n:'Xavi', img:'img/a918407d3e86de2a.jpg' },
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -665,7 +888,162 @@ const CTRY_NAME = { BRA:'Brasil', ARG:'Argentina', POR:'Portugal', FRA:'França'
   SWE:'Suécia', POL:'Polônia', CIV:'Costa do Marfim', LBR:'Libéria', CRO:'Croácia',
   COL:'Colômbia', ESP:'Espanha', URU:'Uruguai', EGY:'Egito', NOR:'Noruega',
   CMR:'Camarões', UKR:'Ucrânia', HUN:'Hungria', BEL:'Bélgica', CZE:'Chéquia',
-  DEN:'Dinamarca', RUS:'Rússia', MEX:'México', CHI:'Chile', GHA:'Gana' };
+  DEN:'Dinamarca', RUS:'Rússia', MEX:'México', CHI:'Chile', GHA:'Gana',
+  SCO:'Escócia', WAL:'País de Gales', SEN:'Senegal', NGA:'Nigéria' };
+
+/* ═══════════════════════════════════════════════════
+   FLAGS — drawn, not typed
+
+   Flag emoji (🇧🇷 and friends) are regional-indicator pairs: Android WebView
+   and Windows have no glyphs for most of them, so they degrade to the bare
+   letters "BR" or to tofu boxes. The England flag is worse still — a tag
+   sequence that almost nothing outside Apple renders. Every flag here is
+   therefore hand-drawn SVG on a 9×6 field, which looks identical on every
+   device the app can possibly run on.
+═══════════════════════════════════════════════════ */
+const _NORDIC = (bg, cross, inner) =>
+  `<rect width="9" height="6" fill="${bg}"/>` +
+  `<path d="M0 2.35h9v1.3H0z M2.45 0h1.3v6h-1.3z" fill="${cross}"/>` +
+  (inner ? `<path d="M0 2.7h9v.6H0z M2.8 0h.6v6h-.6z" fill="${inner}"/>` : '');
+
+const _VERT = (a, b, c) =>
+  `<rect width="3" height="6" fill="${a}"/><rect x="3" width="3" height="6" fill="${b}"/>` +
+  `<rect x="6" width="3" height="6" fill="${c}"/>`;
+
+const _HORZ = (a, b, c) =>
+  `<rect width="9" height="2" fill="${a}"/><rect y="2" width="9" height="2" fill="${b}"/>` +
+  `<rect y="4" width="9" height="2" fill="${c}"/>`;
+
+const _STAR = (cx, cy, r, fill) => {
+  let d = '';
+  for (let i = 0; i < 5; i++) {
+    const o = -Math.PI / 2 + i * 2 * Math.PI / 5;
+    const inn = o + Math.PI / 5;
+    d += (i ? 'L' : 'M') + (cx + Math.cos(o) * r).toFixed(2) + ' ' + (cy + Math.sin(o) * r).toFixed(2)
+       + 'L' + (cx + Math.cos(inn) * r * .4).toFixed(2) + ' ' + (cy + Math.sin(inn) * r * .4).toFixed(2);
+  }
+  return `<path d="${d}Z" fill="${fill}"/>`;
+};
+
+const FLAGS = {
+  BRA: `<rect width="9" height="6" fill="#009B3A"/><path d="M4.5.75 8.1 3 4.5 5.25.9 3Z" fill="#FEDF00"/>`
+     + `<circle cx="4.5" cy="3" r="1.25" fill="#002776"/>`
+     + `<path d="M3.3 2.5a4 4 0 0 1 2.45.35" stroke="#fff" stroke-width=".28" fill="none"/>`,
+  ARG: `<rect width="9" height="6" fill="#74ACDF"/><rect y="2" width="9" height="2" fill="#fff"/>`
+     + `<circle cx="4.5" cy="3" r=".6" fill="#F6B40E"/>`,
+  POR: `<rect width="9" height="6" fill="#DA291C"/><rect width="3.6" height="6" fill="#046A38"/>`
+     + `<circle cx="3.6" cy="3" r="1.05" fill="#FFE900"/><circle cx="3.6" cy="3" r=".62" fill="#DA291C"/>`,
+  FRA: _VERT('#002395', '#fff', '#ED2939'),
+  NED: _HORZ('#AE1C28', '#fff', '#21468B'),
+  GER: _HORZ('#000', '#DD0000', '#FFCE00'),
+  BUL: _HORZ('#fff', '#00966E', '#D62612'),
+  ITA: _VERT('#008C45', '#F4F5F0', '#CD212A'),
+  ENG: `<rect width="9" height="6" fill="#fff"/><path d="M0 2.4h9v1.2H0z M3.9 0h1.2v6H3.9z" fill="#CE1124"/>`,
+  SCO: `<rect width="9" height="6" fill="#0065BD"/>`
+     + `<path d="M0 0 9 6 M9 0 0 6" stroke="#fff" stroke-width="1.1"/>`,
+  WAL: `<rect width="9" height="3" fill="#fff"/><rect y="3" width="9" height="3" fill="#00AB39"/>`
+     + `<path d="M2.4 3.7c.9-.9 2-.6 2.8-1.1.6-.4 1.3-.2 1.6.3-.4-.1-.7 0-.8.3.5.2.6.7.3 1-.2-.3-.6-.4-1-.2-.9.4-1.9.5-2.9-.3Z" fill="#C8102E"/>`,
+  SWE: _NORDIC('#006AA7', '#FECC00'),
+  DEN: _NORDIC('#C8102E', '#fff'),
+  NOR: _NORDIC('#BA0C2F', '#fff', '#00205B'),
+  POL: `<rect width="9" height="3" fill="#fff"/><rect y="3" width="9" height="3" fill="#DC143C"/>`,
+  CIV: _VERT('#F77F00', '#fff', '#009E60'),
+  LBR: `<rect width="9" height="6" fill="#fff"/>`
+     + [0, 2, 4, 6, 8, 10].map(i => `<rect y="${i * .545}" width="9" height=".545" fill="#BF0A30"/>`).join('')
+     + `<rect width="3.3" height="3.27" fill="#002868"/>` + _STAR(1.65, 1.6, 1.05, '#fff'),
+  CRO: `<rect width="9" height="6" fill="#171796"/><rect width="9" height="4" fill="#fff"/>`
+     + `<rect width="9" height="2" fill="#FF0000"/>`
+     + `<path d="M3.6 1.7h1.8v1.7c0 .8-.9 1.2-.9 1.2s-.9-.4-.9-1.2Z" fill="#fff" stroke="#171796" stroke-width=".2"/>`
+     + `<path d="M3.6 1.7h.6v.6h-.6z M4.8 1.7h.6v.6h-.6z M4.2 2.3h.6v.6h-.6z M3.6 2.9h.6v.6h-.6z M4.8 2.9h.6v.6h-.6z" fill="#FF0000"/>`,
+  COL: `<rect width="9" height="6" fill="#FCD116"/><rect y="3" width="9" height="1.5" fill="#003893"/>`
+     + `<rect y="4.5" width="9" height="1.5" fill="#CE1126"/>`,
+  ESP: `<rect width="9" height="6" fill="#AA151B"/><rect y="1.5" width="9" height="3" fill="#F1BF00"/>`
+     + `<rect x="1.6" y="2.3" width="1.3" height="1.5" rx=".2" fill="#AA151B" opacity=".85"/>`,
+  URU: `<rect width="9" height="6" fill="#fff"/>`
+     + [1, 3, 5, 7].map(i => `<rect y="${i * .667}" width="9" height=".667" fill="#0038A8"/>`).join('')
+     + `<rect width="3.6" height="2.67" fill="#fff"/><circle cx="1.8" cy="1.33" r=".7" fill="#FCD116"/>`,
+  EGY: `<rect width="9" height="6" fill="#000"/><rect width="9" height="4" fill="#fff"/>`
+     + `<rect width="9" height="2" fill="#CE1126"/><circle cx="4.5" cy="3" r=".62" fill="#C09300"/>`,
+  CMR: _VERT('#007A5E', '#CE1126', '#FCD116') + _STAR(4.5, 3, .8, '#FCD116'),
+  UKR: `<rect width="9" height="3" fill="#0057B7"/><rect y="3" width="9" height="3" fill="#FFDD00"/>`,
+  HUN: _HORZ('#CE2939', '#fff', '#477050'),
+  BEL: _VERT('#000', '#FAE042', '#ED2939'),
+  CZE: `<rect width="9" height="3" fill="#fff"/><rect y="3" width="9" height="3" fill="#D7141A"/>`
+     + `<path d="M0 0 4.5 3 0 6Z" fill="#11457E"/>`,
+  RUS: _HORZ('#fff', '#0039A6', '#D52B1E'),
+  MEX: _VERT('#006847', '#fff', '#CE1126') + `<circle cx="4.5" cy="3" r=".72" fill="#8B5A2B"/>`,
+  CHI: `<rect width="9" height="6" fill="#fff"/><rect y="3" width="9" height="3" fill="#D52B1E"/>`
+     + `<rect width="3" height="3" fill="#0039A6"/>` + _STAR(1.5, 1.5, 1, '#fff'),
+  GHA: _HORZ('#CE1126', '#FCD116', '#006B3F') + _STAR(4.5, 3, .8, '#000'),
+  SEN: _VERT('#00853F', '#FDEF42', '#E31B23') + _STAR(4.5, 3, .8, '#00853F'),
+  NGA: _VERT('#008751', '#fff', '#008751'),
+};
+
+/* A drawn flag chip. `h` is the height in px; the flag keeps a 3:2 ratio. */
+function flagSVG(code, h) {
+  h = h || 8;
+  const name = CTRY_NAME[code] || code || '';
+  const art  = FLAGS[code];
+  const box  = `width:${(h * 1.5).toFixed(1)}px;height:${h}px;flex-shrink:0;vertical-align:-1px;
+    border-radius:1.5px;box-shadow:0 0 0 .5px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.5);`;
+  if (!art) {
+    return `<span title="${name}" style="${box}display:inline-block;background:#3a4a5a;
+      font-size:${(h * .78).toFixed(0)}px;line-height:${h}px;text-align:center;color:#fff;
+      font-weight:800;letter-spacing:-.3px;">${(code || '?').slice(0, 2)}</span>`;
+  }
+  return `<svg viewBox="0 0 9 6" preserveAspectRatio="none" role="img" aria-label="${name}"
+    style="${box}display:inline-block;">${art}</svg>`;
+}
+
+/* The Brasileirão chip carried a 🇧🇷 in its label — the one flag the app
+   showed outside the player tiles, and the same regional-indicator pair
+   that renders as the bare letters "BR" on Android. Swap in the drawing. */
+(CATS.find(c => c.id === 'brasileirao') || {}).emoji = flagSVG('BRA', 10);
+
+/* ═══════════════════════════════════════════════════
+   ICONS — drawn, not typed
+
+   ✓ ✗ ✕ ★ → and friends are *text* symbols, not emoji: Roboto has no
+   glyph for most of them, so Android's WebView draws an empty box. The
+   ones that are emoji but default to text presentation (✂ ❄ ⏭ 🛡 🗺)
+   are just as unreliable. Everything structural in the UI is therefore
+   an inline SVG path — same pixels on every device, and it inherits the
+   colour we actually want instead of a vendor's.
+═══════════════════════════════════════════════════ */
+const _ico = (d, extra) => (c, s) =>
+  `<svg viewBox="0 0 24 24" width="${s || 14}" height="${s || 14}" fill="none"
+     stroke="${c || 'currentColor'}" stroke-width="2.4" stroke-linecap="round"
+     stroke-linejoin="round" aria-hidden="true"
+     style="display:inline-block;vertical-align:-.14em;flex-shrink:0;${extra || ''}"><path d="${d}"/></svg>`;
+
+const ICON = {
+  check:  _ico('M4 12.5 9.5 18 20 6'),
+  cross:  _ico('M6 6l12 12M18 6L6 18'),
+  close:  _ico('M6 6l12 12M18 6L6 18'),
+  back:   _ico('M15 5l-7 7 7 7'),
+  star:   (c, s) => `<svg viewBox="0 0 24 24" width="${s||14}" height="${s||14}"
+     fill="${c||'#FFD700'}" aria-hidden="true" style="display:inline-block;vertical-align:-.14em;">
+     <path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"/></svg>`,
+  /* ── the five ajuda cards ── */
+  cut:    _ico('M8.5 8.5 20 20M20 4 8.5 15.5M9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM9 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z'),
+  crowd:  _ico('M3 20v-1.5a4 4 0 0 1 4-4h3a4 4 0 0 1 4 4V20M11 7.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM16 14.6a4 4 0 0 1 5 3.9V20M18.6 7.9a2.2 2.2 0 1 1-3 2'),
+  mic:    _ico('M12 3.5a2.6 2.6 0 0 1 2.6 2.6v5.2a2.6 2.6 0 1 1-5.2 0V6.1A2.6 2.6 0 0 1 12 3.5ZM6 11a6 6 0 0 0 12 0M12 17v3.5M9 20.5h6'),
+  snow:   _ico('M12 2.5v19M3.8 7.2l16.4 9.6M20.2 7.2 3.8 16.8M12 6l-2.4-2.4M12 6l2.4-2.4M12 18l-2.4 2.4M12 18l2.4 2.4'),
+  skip:   _ico('M5 5.5 14 12l-9 6.5zM18.5 5.5v13'),
+  stop:   _ico('M9 11V4.8a1.6 1.6 0 0 1 3.2 0V11M12.2 11V6a1.6 1.6 0 0 1 3.2 0v5M15.4 11.5V8a1.6 1.6 0 1 1 3.2 0v6.4a6 6 0 0 1-6 6h-1.3a5 5 0 0 1-3.8-1.8l-3-3.6a1.7 1.7 0 0 1 2.4-2.3L9 14.4V11'),
+  /* ── chrome ── */
+  clock:  _ico('M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7.2V12l3.2 2'),
+  money:  _ico('M12 2.8v18.4M15.8 6.6H10a2.9 2.9 0 0 0 0 5.8h4a2.9 2.9 0 1 1 0 5.8H7.6'),
+  ladder: _ico('M7 3v18M17 3v18M7 7.5h10M7 12h10M7 16.5h10'),
+  sound:  _ico('M4 9.5h3.5L12 5.5v13L7.5 14.5H4zM15.8 9a4 4 0 0 1 0 6M18.6 6.4a8 8 0 0 1 0 11.2'),
+  mute:   _ico('M4 9.5h3.5L12 5.5v13L7.5 14.5H4zM16 9.5l5 5M21 9.5l-5 5'),
+  medal:  _ico('M12 15.5a4.2 4.2 0 1 0 0 8.4 4.2 4.2 0 0 0 0-8.4ZM8.5 15.9 5.5 2.5h13l-3 13.4'),
+  shield: _ico('M12 2.8 20 6v6c0 4.6-3.3 7.9-8 9.2C7.3 19.9 4 16.6 4 12V6z'),
+  flame:  _ico('M12 21c3.6 0 6-2.4 6-5.6 0-3.9-3.6-5.3-3-9.4-2.6.6-4 2.6-4 5 0 1.4-.7 2-1.4 2s-1.6-.7-1.6-2.4C6.6 12 6 13.2 6 15.4 6 18.6 8.4 21 12 21Z'),
+  bolt:   _ico('M13.5 2.5 5 13.6h6.2L10.5 21.5 19 10.4h-6.2z'),
+  play:   _ico('M6 4.5 19 12 6 19.5z'),
+  calendar: _ico('M4.5 5.5h15v15h-15zM4.5 10h15M9 3v4.4M15 3v4.4'),
+};
 
 /* Display names for clubs outside the Brazilian crest set */
 const CLUB_NAMES = {
@@ -953,6 +1331,7 @@ const CREDITS = {
   'img/0b276412bf3f5bd8.jpg': { a:'Kroon, Ron for Anefo', l:'CC BY-SA 3.0 nl' },
   'img/0d05b817ada00b01.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
   'img/0dc77d51638aacd6.jpg': { a:'Meghdad Madadi', l:'CC BY 4.0' },
+  'img/120c643b5d10f93c.jpg': { a:'Júnior Faria/flickr (cropped by tales.ebner)', l:'CC BY-SA 2.0' },
   'img/13c70fbbcc6a2cca.jpg': { a:'Антон Зайцев', l:'CC BY-SA 3.0' },
   'img/150a78c7ead73656.jpg': { a:'Wiki0096', l:'CC BY-SA 4.0' },
   'img/161e26d90ff643d1.jpg': { a:'https://www.youtube.com/@realmadrid', l:'CC BY 3.0' },
@@ -1005,7 +1384,7 @@ const CREDITS = {
   'img/618d79848fbbec21.jpg': { a:'Carlsberg', l:'CC BY 3.0' },
   'img/666048b495ae1438.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/66a6d28f83b53839.jpg': { a:'Wilson Dias/ABr', l:'CC BY 3.0 br' },
-  'img/67fda0a92c0c4dde.jpg': { a:'Sergio Savarese from Sao Paulo City / Ipiranga, Brasil', l:'CC BY-SA 2.0' },
+  'img/67fda0a92c0c4dde.jpg': { a:'Sergio Savarese from Sao Paulo City  /  Ipiranga, Brasil', l:'CC BY-SA 2.0' },
   'img/6a816865c94e5bd3.png': { a:'NullReason', l:'CC BY-SA 3.0' },
   'img/6b52ccf84346c214.jpg': { a:'AbolfaZl0990', l:'CC BY-SA 4.0' },
   'img/6c5cbdbd0210e78e.jpg': { a:'Fotografías Archimadrid.es', l:'CC BY 2.0' },
@@ -1020,6 +1399,7 @@ const CREDITS = {
   'img/779dcd8f35662801.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/7a6f9e0a9d58ee6d.jpg': { a:'Alex Carvalho', l:'CC BY-SA 2.0' },
   'img/7ae20ec3aa4bb7e4.jpg': { a:'Sven Mandel', l:'CC BY-SA 4.0' },
+  'img/7b5031b82250b269.jpg': { a:'Panini', l:'Public domain' },
   'img/8009d0c8ca776192.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
   'img/81c06667fa16b652.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/82d5307026607b2a.jpg': { a:'Ailura', l:'CC BY-SA 3.0 at' },
@@ -1029,15 +1409,16 @@ const CREDITS = {
   'img/879bfa459e4ff17e.png': { a:'Santos F.C.', l:'Public domain' },
   'img/87ed4227f19deced.jpg': { a:'James Adams', l:'CC BY 2.0' },
   'img/88468c09c32948e3.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
+  'img/89327837f14f3c13.jpg': { a:'Doha Stadium Plus Qatar', l:'CC BY 2.0' },
   'img/9303d0cc8b834d4f.jpg': { a:'Y.Leclercq©', l:'CC BY-SA 4.0' },
   'img/9429cb23de075033.jpg': { a:'Pavel Lebeda', l:'CC BY-SA 2.0' },
   'img/94bf9a8f11ebefd0.jpg': { a:'Emilio Ronchini (Mondadori Publishers)', l:'Public domain' },
   'img/9564d5244c34c91c.jpg': { a:'Pedro J Pacheco', l:'CC BY-SA 4.0' },
   'img/971d29633a44b706.jpg': { a:'Real Madrid', l:'CC BY 3.0' },
-  'img/97883ef7e09ebbd6.jpg': { a:'United States Department of State Africa U.S.-Africa Leaders Summit: Photos and ', l:'Public domain' },
+  'img/97883ef7e09ebbd6.jpg': { a:'United States Department of State Africa U.S.-Africa Leaders Summit: Photos and Videos', l:'Public domain' },
   'img/9857fb0acb22e8ef.jpg': { a:'Laura Cortizo/Portal da Copa', l:'CC BY 3.0 br' },
   'img/9d3579f7683545f1.jpg': { a:'Bernardo1989', l:'CC BY-SA 4.0' },
-  'img/9d91c1374cf5c69b.jpg': { a:'Sergio Savarese from Sao Paulo City / Ipiranga, Brasil', l:'CC BY-SA 2.0' },
+  'img/9d91c1374cf5c69b.jpg': { a:'Sergio Savarese from Sao Paulo City  /  Ipiranga, Brasil', l:'CC BY-SA 2.0' },
   'img/9fdc4e925e614702.jpg': { a:'Milly barzellai', l:'CC BY-SA 4.0' },
   'img/a49cd1072ac4f08a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/a4a135f81bbd912b.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
@@ -1178,7 +1559,7 @@ function getDisp(q) {
   const pool0 = isPlayer ? PL : CL;
   const sim   = isPlayer ? simPlayer : simClub;
   const cfg   = DCFG();
-  const strict = (q.strict !== undefined) ? q.strict : cfg.strict;
+  const strict = (q.strict !== undefined) ? q.strict : qStrict();
   const nOpts  = q.opts || cfg.opts;
 
   // `fixed` = show exactly these tiles (comparison questions)
@@ -1279,7 +1660,7 @@ function GEN_QS(tier) {
     squad: { id:'g_squad', name:'Elenco',    emoji:'👥', col:'#66BB6A' },
     era:   { id:'g_era',   name:'Época',     emoji:'⏳', col:'#FFA726' },
     photo: { id:'g_photo', name:'Foto',      emoji:'📸', col:'#EC407A' },
-    path:  { id:'g_path',  name:'Caminho',   emoji:'🗺️', col:'#26C6DA' },
+    path:  { id:'g_path',  name:'Caminho',   emoji:'🔀', col:'#26C6DA' },
   };
   const out  = [];
   const CIDS = new Set(CL.map(c => c.id));
@@ -1401,9 +1782,12 @@ function GEN_QS(tier) {
 
   /* ── 10. CAREER PATH: guess the player from the clubs he played for ── */
   pick(PL.filter(p => (p.clubs || []).length >= 3), 8).forEach(p => {
-    const path = (p.clubs || []).slice(0, 4).map(clubName).join(' → ');
+    /* Joined with a middle dot, not an arrow: U+2192 has no glyph in Roboto,
+       so Android's WebView draws a box between every club. The wording
+       carries the ordering instead. */
+    const path = (p.clubs || []).slice(0, 4).map(clubName).join('  ·  ');
     out.push({
-      t: `Que jogador seguiu este caminho?\n${path}`,
+      t: `Que jogador passou por estes clubes, nesta ordem?\n${path}`,
       a: [p.id], type: 'player',
       textTiles: true,
       pool: PL.filter(x => x.id !== p.id).map(x => x.id), _cat: GC.path,
@@ -1604,13 +1988,23 @@ function saveDaily() {
 }
 
 function shareText() {
-  const res  = isDaily ? null : null;
+  const link = 'https://tdosreis.github.io/futebol-quiz/';
+
+  /* The ladder gets its own card: the climb reads better as a column of
+     rungs than as a row of squares, and the number is the whole story. */
+  if (isMil) {
+    const climb   = LADDER.map((s, i) => i < rung ? '🟨' : '⬛').join('');
+    const verdict = banked >= LADDER[LADDER.length - 1].v ? 'LEVEI O MILHÃO!'
+                  : cashed ? 'parei e levei' : 'caí e levei';
+    return `Rumo ao Milhão ⚽ Futebol Quiz BR\n${climb}\n`
+         + `${verdict} ${money(banked)} · degrau ${rung}/${LADDER.length}\n${link}`;
+  }
+
   const grid = runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('');
   const head = isDaily ? `Futebol Quiz BR ⚽ Desafio #${dayIndex()}`
                        : `Futebol Quiz BR ⚽ ${DCFG().label}`;
   const strk = bestStreak >= 3 ? `  🔥${bestStreak}` : '';
-  return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}\n`
-       + `https://tdosreis.github.io/futebol-quiz/`;
+  return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}\n${link}`;
 }
 
 function doShare() {
@@ -1626,7 +2020,7 @@ function doShare() {
 }
 
 function startDaily() {
-  isDaily = true; isSurv = false;
+  isDaily = true; isSurv = false; isMil = false;
   diffKey = 'moderado';
   seedFrom(dayIndex());
   cat = buildGame('moderado');
@@ -1635,7 +2029,7 @@ function startDaily() {
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
   resetLifes();
-  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
+  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
   go();
@@ -1643,28 +2037,136 @@ function startDaily() {
 
 
 /* ═══════════════════════════════════════════════════
-   LIFELINES
-   Three single-use helpers per run. They cost nothing but
-   the speed bonus, so using one is a real trade-off.
+   AJUDAS (LIFELINES)
+   The show's five cards, each usable once per run. They cost
+   nothing but the speed bonus, so using one is a real trade-off.
+     cortar   — burns half the wrong tiles
+     placar   — the audience votes
+     expert   — a pundit gives an opinion (and can be wrong)
+     congelar — stops the clock for this question
+     pular    — next question, same rung
+   `parar` (cash out) lives with the ladder, not here: it ends the run.
 ═══════════════════════════════════════════════════ */
-let lifes  = { half: 1, freeze: 1, skip: 1 };
-let hidden = new Set();   // tiles removed by 50/50
+let lifes  = { half: 1, poll: 1, expert: 1, freeze: 1, skip: 1 };
+let hidden = new Set();   // tiles burned by "cortar"
 let frozen = false;       // clock paused for this question
+let poll   = null;        // {id: percent} audience vote, drawn over the tiles
+let expert = null;        // { id, line } the pundit's call
 
 function resetLifes() {
-  lifes  = { half: 1, freeze: 1, skip: 1 };
+  lifes  = { half: 1, poll: 1, expert: 1, freeze: 1, skip: 1 };
   hidden = new Set();
   frozen = false;
+  poll   = null;
+  expert = null;
+  ladderOpen = false;
+}
+
+/* cleared between questions; the cards themselves stay spent */
+function clearHelpers() {
+  hidden = new Set();
+  frozen = false;
+  poll   = null;
+  expert = null;
+  ladderOpen = false;
+}
+
+/* How many tiles Cortar would actually burn right now. Some questions are
+   two-way comparisons ("who had the longer career?"), where halving one
+   wrong option rounds to nothing — the card must not be spent on those. */
+function cutCount() {
+  if (!cat || !cat.qs || !cat.qs[qi]) return 0;
+  const q = cat.qs[qi];
+  const wrong = disp.filter(o => !q.a.includes(o.id) && !hidden.has(o.id));
+  return Math.floor(wrong.length / 2);
 }
 
 function useHalf() {
-  if (!lifes.half || sc !== 'quiz') return;
+  if (!lifes.half || sc !== 'quiz' || cutCount() < 1) return;
   const q = cat.qs[qi];
-  const wrong = disp.filter(o => !q.a.includes(o.id)).map(o => o.id);
+  const wrong = disp.filter(o => !q.a.includes(o.id) && !hidden.has(o.id)).map(o => o.id);
   // remove half of the wrong options, keeping the board readable
-  const drop = shuf(wrong).slice(0, Math.floor(wrong.length / 2));
+  const drop = shuf(wrong).slice(0, cutCount());
   drop.forEach(id => { hidden.add(id); sel.delete(id); });
   lifes.half = 0;
+  snd.cut();
+  go();
+}
+
+/* ── PLACAR: the audience votes ──────────────────────────────
+   The crowd is well informed but not infallible, and it gets shakier
+   as the money climbs: the right answer takes the biggest share only
+   about as often as the rung is easy. */
+function usePoll() {
+  if (!lifes.poll || sc !== 'quiz') return;
+  const q    = cat.qs[qi];
+  const live = disp.filter(o => !hidden.has(o.id));
+  if (!live.length) return;
+
+  /* How often the crowd's biggest bar is actually the right answer. Decided
+     up front rather than emerging from weights, because this number is the
+     whole balance of the card: too high and Placar is a free answer that
+     makes the other four pointless, too low and nobody would spend it.
+     ~88% on the first rung, ~22% on the last. */
+  const acc     = isMil ? Math.max(0.22, 0.88 - rung * 0.045) : 0.75;
+  const rightOf = live.filter(o => q.a.includes(o.id));
+  const wrongOf = live.filter(o => !q.a.includes(o.id));
+  const lands   = rnd() < acc && rightOf.length > 0;
+  const pool    = lands ? rightOf : (wrongOf.length ? wrongOf : live);
+  const winner  = pool[Math.floor(rnd() * pool.length)];
+
+  /* The leading bar, then the remainder scattered over everyone else. Every
+     other share is capped below the lead and whatever is left over from the
+     rounding goes back to the winner, so the biggest bar is always the one
+     the crowd actually picked — otherwise the card would lie about itself. */
+  const lead   = Math.round(24 + rnd() * 22);      // 24–46%
+  const others = live.filter(o => o.id !== winner.id);
+  const noise  = others.map(o => ({ id: o.id, w: 0.25 + rnd() * rnd() * 3 }));
+  const sum    = noise.reduce((s, x) => s + x.w, 0) || 1;
+  const cap    = Math.max(1, lead - 2);
+
+  poll = {};
+  let spent = 0;
+  noise.forEach(x => {
+    const share = Math.max(0, Math.min(cap, Math.round(x.w / sum * (100 - lead))));
+    poll[x.id] = share;
+    spent += share;
+  });
+  poll[winner.id] = 100 - spent;                   // ≥ lead, so always the tallest
+
+  lifes.poll = 0;
+  snd.crowd();
+  go();
+}
+
+/* ── ESPECIALISTA: a commentator calls it ────────────────────
+   Right most of the time early on, distinctly shaky near the million —
+   and the phrasing tells you how much to trust him. */
+const EXPERT_SURE  = ['Sem sombra de dúvida:', 'Pode marcar tranquilo:', 'Essa eu sei de cor:',
+                      'Cravo aqui, sem medo:', 'Acompanhei isso de perto:'];
+const EXPERT_UNSURE = ['Acho que é', 'Se a memória não falha,', 'Chutaria em',
+                       'Na dúvida eu iria de', 'Vou no palpite:'];
+
+function useExpert() {
+  if (!lifes.expert || sc !== 'quiz') return;
+  const q    = cat.qs[qi];
+  const live = disp.filter(o => !hidden.has(o.id));
+  const acc  = isMil ? Math.max(0.4, 0.95 - rung * 0.038) : 0.8;
+  const sure = rnd() < acc;
+
+  const rightOnes = live.filter(o => q.a.includes(o.id));
+  const wrongOnes = live.filter(o => !q.a.includes(o.id));
+  const pickFrom  = sure && rightOnes.length ? rightOnes : (wrongOnes.length ? wrongOnes : live);
+  const choice    = pickFrom[Math.floor(rnd() * pickFrom.length)];
+
+  const lines = sure ? EXPERT_SURE : EXPERT_UNSURE;
+  expert = {
+    id: choice ? choice.id : null,
+    sure,
+    line: lines[Math.floor(rnd() * lines.length)],
+    name: choice ? choice.n : '—',
+  };
+  lifes.expert = 0;
   snd.select();
   go();
 }
@@ -1673,7 +2175,7 @@ function useFreeze() {
   if (!lifes.freeze || sc !== 'quiz') return;
   lifes.freeze = 0;
   frozen = true;
-  snd.select();
+  snd.freeze();
   go();
 }
 
@@ -1684,10 +2186,10 @@ function useSkip() {
   snd.swipe();
   runLog.push(-1);                 // neither right nor wrong
   qi++;
-  sel.clear(); hidden = new Set(); frozen = false; lastMsg = '';
+  sel.clear(); clearHelpers(); lastMsg = '';
   if (qi >= cat.qs.length) { finishRun(); }
   else {
-    sc = 'quiz'; tMax = DCFG().time; tLeft = tMax;
+    sc = 'quiz'; tMax = qTime(); tLeft = tMax;
     disp = getDisp(cat.qs[qi]);
     startTmr();
   }
@@ -1707,20 +2209,29 @@ const MEDALS = [
     t: st => (st.perfect || 0) >= 1 },
   { id:'streak5',ic:'🔥', n:'Pegando fogo',   d:'Sequência de 5 acertos',
     t: st => (st.bestStreak || 0) >= 5 },
-  { id:'streak10',ic:'☄️', n:'Imparável',     d:'Sequência de 10 acertos',
+  { id:'streak10',ic:'🚀', n:'Imparável',     d:'Sequência de 10 acertos',
     t: st => (st.bestStreak || 0) >= 10 },
   { id:'hard',   ic:'💀', n:'Cara de pau',    d:'80% ou mais no Difícil',
     t: st => (st.hard80 || 0) >= 1 },
   { id:'c100',   ic:'💯', n:'Centenário',     d:'100 acertos no total',
     t: st => (st.correct || 0) >= 100 },
-  { id:'c500',   ic:'🧠', n:'Enciclopédia',   d:'500 acertos no total',
+  { id:'c500',   ic:'📖', n:'Enciclopédia',   d:'500 acertos no total',
     t: st => (st.correct || 0) >= 500 },
   { id:'daily3', ic:'📅', n:'Rotina',         d:'3 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 3 },
-  { id:'daily7', ic:'🗓️', n:'Semana cheia',   d:'7 desafios diários seguidos',
+  { id:'daily7', ic:'📆', n:'Semana cheia',   d:'7 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 7 },
-  { id:'surv10', ic:'🛡️', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
+  { id:'surv10', ic:'💪', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
     t: st => (st.survBest || 0) >= 10 },
+  /* ── the ladder ── */
+  { id:'safe1',  ic:'💵', n:'Primeiro degrau', d:'Garanta R$ 5.000 no Milhão',
+    t: st => (st.milBest || 0) >= 5000 },
+  { id:'safe2',  ic:'💰', n:'Meio caminho',   d:'Garanta R$ 50.000 no Milhão',
+    t: st => (st.milBest || 0) >= 50000 },
+  { id:'quit',   ic:'🤝', n:'Sabe a hora',    d:'Pare e leve R$ 100.000 ou mais',
+    t: st => (st.milBest || 0) >= 100000 },
+  { id:'million',ic:'👑', n:'Milionário',     d:'Chegue a R$ 1.000.000',
+    t: st => (st.million || 0) >= 1 },
 ];
 
 function earnedMedals() { return MEDALS.filter(m => { try { return m.t(stats); } catch (e) { return false; } }); }
@@ -1739,7 +2250,7 @@ function newMedals() {
 let isSurv = false;
 
 function startSurvival() {
-  isSurv = true; isDaily = false; _seed = null;
+  isSurv = true; isDaily = false; isMil = false; _seed = null;
   diffKey = 'moderado';
   cat = buildGame('moderado');
   cat.name = 'Mata-mata';
@@ -1749,11 +2260,120 @@ function startSurvival() {
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
   resetLifes();
-  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
+  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
   go();
 }
+
+/* ═══════════════════════════════════════════════════
+   RUMO AO MILHÃO — the prize ladder
+
+   The headline mode. Sixteen questions, one per rung, each worth
+   more than the last and each drawn from a harder pool with a shorter
+   clock and nastier distractors. Two rungs are checkpoints: clear one
+   and that money is yours whatever happens afterwards. Miss a question
+   and the run ends at your last checkpoint — so every rung above one is
+   a bet, and "PARAR" is always on the table.
+═══════════════════════════════════════════════════ */
+const LADDER = [
+  { v:      1000, tier: 1, time: 45 },
+  { v:      2000, tier: 1, time: 45 },
+  { v:      3000, tier: 1, time: 42 },
+  { v:      5000, tier: 1, time: 40, safe: true },
+  { v:     10000, tier: 2, time: 38 },
+  { v:     15000, tier: 2, time: 36 },
+  { v:     20000, tier: 2, time: 34 },
+  { v:     30000, tier: 2, time: 32 },
+  { v:     50000, tier: 2, time: 30, safe: true },
+  { v:     75000, tier: 3, time: 30 },
+  { v:    100000, tier: 3, time: 28 },
+  { v:    150000, tier: 3, time: 26 },
+  { v:    250000, tier: 3, time: 24 },
+  { v:    400000, tier: 3, time: 22 },
+  { v:    600000, tier: 3, time: 20 },
+  { v:   1000000, tier: 3, time: 20 },
+];
+
+let isMil  = false;
+let rung   = 0;       // index into LADDER — the question being played for
+let banked = 0;       // guaranteed by the last checkpoint cleared
+let cashed = false;   // player pressed PARAR instead of falling
+let ladderOpen = false;   // the ladder sheet is up; the clock waits
+
+const RUNG    = () => LADDER[Math.min(rung, LADDER.length - 1)];
+const isFinal = () => rung === LADDER.length - 1;
+
+/* R$ 1.000.000 — pt-BR grouping without leaning on Intl in old WebViews */
+function money(v) {
+  return 'R$ ' + String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+/* the money you walk away with if you get this one wrong */
+function safetyNet() {
+  let v = 0;
+  for (let i = 0; i < rung; i++) if (LADDER[i].safe) v = LADDER[i].v;
+  return v;
+}
+
+/* seconds on the clock and distractor strictness for the current question */
+function qTime()   { return isMil ? RUNG().time : DCFG().time; }
+function qStrict() { return isMil ? Math.min(1, rung / (LADDER.length - 1) * 1.15) : DCFG().strict; }
+
+/* One question per rung, each matched to that rung's tier. Built in one pass
+   so a question can never repeat inside a run. */
+function buildMilhao() {
+  let all = CATS.flatMap(c => c.qs.map(q => ({ ...q, _cat: c })));
+  if (typeof GEN_QS === 'function') {
+    all = all.concat(GEN_QS(1)).concat(GEN_QS(2)).concat(GEN_QS(3));
+  }
+  all.forEach(q => { q._d = qTier(q); });
+
+  const seen = new Set();
+  const pool = shuf(all).filter(q => { if (seen.has(q.t)) return false; seen.add(q.t); return true; });
+
+  const used = new Set();
+  const qs = LADDER.map(step => {
+    let best = null, bestW = -1e9;
+    for (let i = 0; i < pool.length; i++) {
+      if (used.has(i)) continue;
+      const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3;
+      if (w > bestW) { bestW = w; best = i; }
+    }
+    used.add(best);
+    return pool[best];
+  }).filter(Boolean);
+
+  return { id:'milhao', name:'Rumo ao Milhão', emoji:'💰',
+           tag:'Uma pergunta por degrau', col:'#FFD700', diff:'Show', qs };
+}
+
+function startMilhao() {
+  isMil = true; isDaily = false; isSurv = false; _seed = null;
+  diffKey = 'moderado';                  // only used for the score multiplier
+  cat = buildMilhao();
+  rung = 0; banked = 0; cashed = false;
+  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  resetLifes();
+  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
+  startTmr();
+  go();
+}
+
+/* PARAR — take the money on the table and stop. Always a win. */
+function cashOut() {
+  if (!isMil || sc !== 'quiz') return;
+  clearInterval(tmr);
+  cashed = true;
+  banked = rung > 0 ? LADDER[rung - 1].v : 0;
+  snd.cash();
+  finishRun();
+  go();
+}
+
+function milBest() { return LS.get('milBest', 0); }
 
 /* ═══════════════════════════════════════════════════
    HELPERS
@@ -1812,6 +2432,19 @@ function _lum(hex) {
   const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 }
+/* How far apart two colours are in plain RGB terms. Luminance alone is the
+   wrong test for a kit: Sport's red and black stripes sit only 0.16 apart in
+   brightness but are obviously different colours, and judging them by
+   lightness painted them white. */
+function _dist(a, b) {
+  const p = hex => {
+    let h = String(hex).replace('#', '');
+    if (h.length === 3) h = h.split('').map(x => x + x).join('');
+    return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+  };
+  const [r1, g1, b1] = p(a), [r2, g2, b2] = p(b);
+  return Math.sqrt((r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2);
+}
 function _shade(hex, amt) {
   let h = String(hex).replace('#', '');
   if (h.length === 3) h = h.split('').map(x => x + x).join('');
@@ -1820,62 +2453,147 @@ function _shade(hex, amt) {
   return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
 }
 
+/* Five clubs — Corinthians, Vasco, Sport, Bragantino and Náutico — have no
+   crest file, and that is deliberate: Wikipedia carries those marks only under
+   fair use, which cannot be redistributed inside a shipped app (see
+   tools/patch_nonfree.py). Drawing imitations of the real crests would be
+   worse than shipping none, so this badge deliberately does not resemble them.
+   It is an identification device built from public facts we already hold —
+   the club's colours, its kit pattern, its founding year, its titles — and it
+   is drawn with enough craft to sit beside a photographed crest without
+   looking like a missing asset. */
+const KIT = {
+  vasco:       'sash',     // black shirt, white diagonal sash
+  nautico:     'stripes',  // red and white vertical stripes
+  sport:       'stripes',  // red and black vertical stripes
+  bragantino:  'band',     // white shirt, red chest band
+  corinthians: 'solid',
+};
+
 function genericCrest(id) {
   const c = CL.find(x => x.id === id);
   if (!c) return '';
-  const uid  = 'bg' + id.replace(/\W/g, '');
-  const dark = _lum(c.c1) < 0.5;
-  const ink  = dark ? '#ffffff' : '#111111';
-  const trim = _lum(c.c2) > 0.25 ? c.c2 : '#e8e8e8';
-  const SHIELD = 'M30 3 L53 11 L53 30 C53 43 42 52 30 57 C18 52 7 43 7 30 L7 11 Z';
+  const uid   = 'c' + id.replace(/\W/g, '');
+  const base  = c.c1;
+  /* The pattern takes the club's real second colour whenever the two are
+     visibly different, so Sport gets its red-on-black stripes instead of
+     Náutico's red-on-white. Only genuinely similar pairs get a neutral. */
+  const alt   = _dist(c.c1, c.c2) > 70
+                ? c.c2
+                : (_lum(base) < 0.5 ? '#ececec' : '#1a1a1a');
+  const kit   = KIT[id] || 'solid';
+  const ink   = _lum(base) < 0.55 ? '#ffffff' : '#141414';
+  const rim   = _lum(c.c2) > 0.5 ? c.c2 : '#d8d8d8';
+  const stars = Math.min(3, (c.br || 0) + (c.lib || 0));
+
+  /* the kit pattern, clipped to the inner disc */
+  let field = `<circle cx="30" cy="29" r="21" fill="url(#${uid}g)"/>`;
+  if (kit === 'stripes') {
+    field += [ -18, -10, -2, 6, 14 ].map(x =>
+      `<rect x="${30 + x}" y="8" width="4" height="42" fill="${alt}" opacity=".92"/>`).join('');
+  } else if (kit === 'sash') {
+    field += `<path d="M11 40 L41 8 L49 15 L19 47 Z" fill="${alt}" opacity=".95"/>`;
+  } else if (kit === 'band') {
+    field += `<rect x="9" y="25" width="42" height="9" fill="${alt}" opacity=".95"/>`;
+  }
+
+  const starRow = stars
+    ? Array.from({ length: stars }, (_, i) =>
+        _STAR(30 + (i - (stars - 1) / 2) * 7, 15.5, 2.7, rim)).join('')
+    : '';
+
   return `
     <defs>
-      <linearGradient id="${uid}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%"   stop-color="${_shade(c.c1, 0.10)}"/>
-        <stop offset="100%" stop-color="${_shade(c.c1, -0.16)}"/>
+      <linearGradient id="${uid}g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="${_shade(base, 0.16)}"/>
+        <stop offset="100%" stop-color="${_shade(base, -0.20)}"/>
       </linearGradient>
+      <linearGradient id="${uid}r" x1="0" y1="0" x2="0.4" y2="1">
+        <stop offset="0%"   stop-color="${_shade(rim, 0.30)}"/>
+        <stop offset="48%"  stop-color="${rim}"/>
+        <stop offset="100%" stop-color="${_shade(rim, -0.34)}"/>
+      </linearGradient>
+      <clipPath id="${uid}c"><circle cx="30" cy="29" r="21"/></clipPath>
     </defs>
-    <path d="${SHIELD}" fill="url(#${uid})" stroke="${trim}" stroke-width="2.6"
-      stroke-linejoin="round"/>
-    <path d="M30 3 L53 11 L53 17 L7 17 L7 11 Z" fill="${trim}" opacity=".92"/>
-    <circle cx="30" cy="11" r="3.1" fill="${c.c1}" opacity=".85"/>
-    <text x="30" y="41" text-anchor="middle"
+
+    <!-- outer ring -->
+    <circle cx="30" cy="29" r="26.5" fill="url(#${uid}r)"/>
+    <circle cx="30" cy="29" r="26.5" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="1"/>
+    <circle cx="30" cy="29" r="22.4" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1.2"/>
+
+    <!-- the shirt -->
+    <g clip-path="url(#${uid}c)">${field}</g>
+
+    <!-- titles, then the monogram -->
+    ${starRow}
+    <text x="30" y="36" text-anchor="middle"
       font-family="'Bebas Neue','Arial Black',Impact,sans-serif"
-      font-size="19" font-weight="900" letter-spacing="1.2" fill="${ink}">${c.a}</text>
+      font-size="17" font-weight="900" letter-spacing="0.6" fill="${ink}"
+      style="paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:.8px;">${c.a}</text>
+
+    <!-- founding year, on its own plate so it survives a striped shirt -->
+    ${c.f ? `<g opacity=".92">
+      <rect x="19.5" y="39.4" width="21" height="8" rx="2.4" fill="rgba(0,0,0,.42)"/>
+      <text x="30" y="45.4" text-anchor="middle"
+        font-family="'Inter',system-ui,sans-serif"
+        font-size="5.8" font-weight="800" letter-spacing=".5" fill="#f2f2f2">${c.f}</text>
+    </g>` : ''}
+
+    <!-- a light catch across the top, so it reads as an object not a sticker -->
+    <path d="M30 3.6a25.4 25.4 0 0 1 20 9.8A31 31 0 0 0 30 20a31 31 0 0 0-20 -6.6A25.4 25.4 0 0 1 30 3.6Z"
+      fill="#fff" opacity=".13"/>
   `;
 }
 
-function clubArt(id, style) {
+/* `label` decides whether the crest speaks. On an answer tile the club name
+   sits right underneath it, so the crest is decorative and stays silent —
+   otherwise a screen reader says every name twice. In the question header
+   there is no such caption, so there the crest has to carry the name. */
+function clubArt(id, style, label) {
+  const name = clubName(id);
   if (LOGOS[id]) {
-    return `<img src="${LOGOS[id]}" alt="" style="${style}"
-      onerror="clubFallback(this,'${id}')" />`;
+    return `<img src="${LOGOS[id]}" style="${style}"
+      onerror="clubFallback(this,'${id}')"
+      ${label ? `alt="${name}"` : 'alt="" aria-hidden="true"'} />`;
   }
-  return `<svg viewBox="0 0 60 60" style="${style}" aria-hidden="true">${genericCrest(id)}</svg>`;
+  return `<svg viewBox="0 0 60 60" style="${style}"
+    ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}
+    >${genericCrest(id)}</svg>`;
 }
 
 /* If a crest file is missing (e.g. an old cached page pointing at a file we
    removed), swap in the app's own SVG crest instead of a broken-image icon. */
 function clubFallback(img, id) {
   try {
+    const alt = img.getAttribute('alt');
     img.outerHTML = `<svg viewBox="0 0 60 60" style="${img.getAttribute('style') || ''}"
-      aria-hidden="true">${genericCrest(id)}</svg>`;
+      ${alt ? `role="img" aria-label="${alt}"` : 'aria-hidden="true"'}
+      >${genericCrest(id)}</svg>`;
   } catch (e) { img.style.opacity = '.3'; }
 }
 
 /* ═══════════════════════════════════════════════════
-   BADGE — one club tile
+   BADGE — one answer tile
+
+   Ten of these make the board. Each carries the show's letter marker
+   (A…J), and can be overlaid with the audience vote, the pundit's pick,
+   or the lock-in dimming, depending on what the player has spent.
 ═══════════════════════════════════════════════════ */
+const LETTERS = 'ABCDEFGHIJKLMNOP';
+
 function badge(item, idx) {
   const isPlayer = 'img' in item;
   const isSel   = sel.has(item.id);
-  const isAns   = sc === 'reveal' && cat.qs[qi].a.includes(item.id);
-  const isWrong = sc === 'reveal' && isSel && !isAns;
+  const live    = sc === 'quiz' || sc === 'ask' || sc === 'lock';
+  const isAns   = (sc === 'reveal') && cat.qs[qi].a.includes(item.id);
+  const isWrong = (sc === 'reveal') && isSel && !isAns;
   const curQ    = (cat && cat.qs && cat.qs[qi]) || {};
   const delay   = `animation-delay:${Math.min(9, idx || 0) * 32}ms;`;
-  if (hidden.has(item.id) && sc === 'quiz') {
+
+  if (hidden.has(item.id) && live) {
     return `<div style="${delay}width:100%;${curQ.textTiles ? 'min-height:44px' : 'aspect-ratio:1'};
-      border-radius:9px;background:rgba(255,255,255,.02);opacity:.25;
-      border:1px dashed rgba(255,255,255,.08);"></div>`;
+      border-radius:9px;background:rgba(255,255,255,.015);opacity:.3;
+      border:1px dashed rgba(255,255,255,.07);"></div>`;
   }
 
   let cls  = 'b';
@@ -1883,18 +2601,34 @@ function badge(item, idx) {
   if (sc === 'reveal') {
     if (isAns)        { cls += ' b-correct'; ring = 'box-shadow:0 0 0 3px #00e676,0 0 20px rgba(0,230,118,.45);'; }
     else if (isWrong) { cls += ' b-wrong';   ring = 'box-shadow:0 0 0 3px #f44336,0 0 20px rgba(244,67,54,.45);'; }
+  } else if (sc === 'ask' || sc === 'lock') {
+    // the board holds its breath: only what you picked stays lit
+    if (isSel) { cls += ' b-locked'; }
+    else       { cls += ' b-faded'; }
   } else if (isSel) {
     cls += ' b-sel';
-    ring = `box-shadow:0 0 0 3px ${cat.col},0 0 16px ${cat.col}66;transform:scale(1.06);`;
+    ring = `box-shadow:0 0 0 3px var(--gold),0 0 16px rgba(255,200,69,.5);transform:scale(1.06);`;
+  } else if (expert && expert.id === item.id) {
+    cls += ' expert-ring';
   }
+
+  const letter = `<span class="tile-letter">${LETTERS[idx] || '?'}</span>`;
+
+  const votePct = poll && poll[item.id] !== undefined ? poll[item.id] : null;
+  const voteEl  = votePct === null ? '' :
+    `<span class="vote-pct">${votePct}%</span>
+     <span class="vote"><i style="width:${votePct}%;animation-delay:${(idx || 0) * 45}ms;"></i></span>`;
 
   if (curQ.textTiles) {
     return `<div class="${cls}" data-id="${item.id}" style="
-${delay}        width:100%;min-height:44px;border-radius:9px;cursor:pointer;
-        background:rgba(255,255,255,.06);user-select:none;
+${delay}        width:100%;min-height:46px;border-radius:9px;cursor:pointer;
+        background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
+        border:1px solid rgba(255,255,255,.08);
+        position:relative;user-select:none;
         display:flex;align-items:center;justify-content:center;text-align:center;
-        padding:6px 4px;transition:transform .12s,box-shadow .12s;${ring}">
-      <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.9);
+        padding:6px 4px 6px 18px;transition:transform .12s,box-shadow .12s;${ring}">
+      ${letter}${voteEl}
+      <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.92);
         font-family:'Inter',system-ui;line-height:1.25;
         text-shadow:0 1px 4px rgba(0,0,0,.9);">${item.n}</span>
     </div>`;
@@ -1902,34 +2636,39 @@ ${delay}        width:100%;min-height:44px;border-radius:9px;cursor:pointer;
 
   if (isPlayer) {
     return `<div class="${cls}" data-id="${item.id}" style="
-${delay}  ${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
+${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
         position:relative;user-select:none;
-        background:rgba(255,255,255,.06);
+        background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
+        border:1px solid rgba(255,255,255,.08);
         display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-        padding:6px 3px 24px;
+        padding:8px 3px 24px;
         transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-      <div style="width:70%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
-        border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 10px rgba(0,0,0,.6);">
+      ${letter}${voteEl}
+      <div style="width:68%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
+        border:2px solid rgba(255,200,69,.32);box-shadow:0 2px 10px rgba(0,0,0,.6);">
         <img src="${item.img}" alt="${item.n}"
           style="width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none;"
           onerror="this.style.opacity='.25'" />
       </div>
-      <span style="font-size:8px;color:rgba(255,255,255,.82);text-align:center;
+      <span style="font-size:8px;color:rgba(255,255,255,.85);text-align:center;
         font-weight:700;font-family:'Inter',system-ui;text-shadow:0 1px 4px rgba(0,0,0,1);
-        padding:0 2px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
-        ${item.nat} ${item.n}</span>
+        padding:0 2px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;
+        display:flex;align-items:center;justify-content:center;gap:3px;">
+        ${flagSVG(item.ctry, 7)}<span>${item.n}</span></span>
     </div>`;
   }
 
   // ── Club tile ──
   return `<div class="${cls}" data-id="${item.id}" style="
-      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
+${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
       position:relative;overflow:hidden;user-select:none;
-      background:rgba(255,255,255,.06);
+      background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-    ${clubArt(item.id, 'width:78%;height:78%;object-fit:contain;pointer-events:none;flex-shrink:0;')}
-    <span style="font-size:9px;color:rgba(255,255,255,.78);text-align:center;
+    ${letter}${voteEl}
+    ${clubArt(item.id, 'width:76%;height:76%;object-fit:contain;pointer-events:none;flex-shrink:0;')}
+    <span style="font-size:9px;color:rgba(255,255,255,.8);text-align:center;
       font-weight:700;font-family:'Inter',system-ui;
       text-shadow:0 1px 4px rgba(0,0,0,1);
       padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
@@ -1942,87 +2681,109 @@ ${delay}  ${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:point
 ═══════════════════════════════════════════════════ */
 function html() {
 
-  /* ── Home ── */
-  if (sc === 'home') return `
-  <div style="display:flex;flex-direction:column;align-items:center;
-    justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:16px;">
-    <div class="ball-idle" style="font-size:56px;filter:drop-shadow(0 6px 20px rgba(255,215,0,.35));">⚽</div>
-    <div>
-      <div class="goldgrad" style="font-size:44px;font-weight:900;
-        font-family:'Bebas Neue','Impact',sans-serif;
-        letter-spacing:4px;line-height:1.04;">FUTEBOL<br>QUIZ BR</div>
-    </div>
-    <p style="color:rgba(255,255,255,.38);font-size:13px;max-width:280px;line-height:1.7;
-      margin:0;font-family:'Inter',system-ui;">
-      Prove que você conhece o futebol brasileiro melhor que ninguém.</p>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
-      width:100%;max-width:320px;">
-      ${CATS.map(c =>
-        `<span style="background:${c.col}18;border:1px solid ${c.col}33;
-          border-radius:20px;padding:4px 11px;font-size:11px;color:${c.col};
-          font-family:'Inter',system-ui;font-weight:600;">
-          ${c.emoji} ${c.name}</span>`).join('')}
-    </div>
-    <p style="color:rgba(255,255,255,.22);font-size:11px;max-width:260px;
-      margin:0;font-family:'Inter',system-ui;line-height:1.6;">
-      Centenas de perguntas — nunca a mesma partida duas vezes.</p>
-    <button id="cta-btn" class="btn-press" style="margin-top:6px;
-      background:linear-gradient(180deg,#FFE469,#FFD700 45%,#E8B400);color:#060e08;
-      font-size:18px;font-weight:900;padding:13px 50px;border-radius:28px;
-      border:none;cursor:pointer;
-      font-family:'Bebas Neue','Impact',sans-serif;
-      letter-spacing:3px;">JOGAR AGORA</button>
-    ${(() => {
-      const done = dailyDone(), st = dailyStreakNow(), r = dailyInfo();
-      return `<button id="daily-btn" style="background:${done ? 'rgba(255,255,255,.06)' : 'rgba(255,215,0,.12)'};
-        border:1px solid ${done ? 'rgba(255,255,255,.14)' : 'rgba(255,215,0,.45)'};
-        color:${done ? 'rgba(255,255,255,.55)' : '#FFD700'};
-        font-size:13px;font-weight:700;padding:9px 22px;border-radius:22px;
-        cursor:pointer;font-family:'Inter',system-ui;display:flex;
-        align-items:center;gap:7px;">
-        <span style="font-size:15px;">📅</span>
-        <span>${done ? `Desafio de hoje: ${r ? r.nCorrect + '/' + r.total : 'feito'}`
-                     : 'Desafio Diário #' + dayIndex()}</span>
-        ${st > 0 ? `<span style="background:rgba(255,119,0,.18);border-radius:8px;
-            padding:1px 6px;font-size:11px;color:#FF7700;">🔥${st}</span>` : ''}
+  /* ── Home: the cold open ──────────────────────────────────────
+     One headline act — the ladder — with the other three modes as
+     supporting chips underneath, so the million is unmistakably the
+     point of the app. */
+  if (sc === 'home') {
+    const best = milBest();
+    const modeChip = (id, ic, col, label, tail) => `
+      <button id="${id}" class="btn-press" style="
+        background:linear-gradient(180deg,${col}22,${col}0e);
+        border:1px solid ${col}55;color:${col};
+        font-size:12px;font-weight:800;padding:9px 13px;border-radius:13px;
+        cursor:pointer;font-family:'Inter',system-ui;
+        display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:88px;">
+        ${ic}<span>${label}</span>
+        ${tail ? `<span style="font-size:9px;opacity:.7;font-weight:600;">${tail}</span>` : ''}
       </button>`;
-    })()}
-    <button id="surv-btn" class="btn-press" style="background:rgba(229,57,53,.12);
-      border:1px solid rgba(229,57,53,.45);color:#FF6B68;
-      font-size:13px;font-weight:700;padding:9px 22px;border-radius:22px;
-      cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:7px;">
-      <span style="font-size:15px;">🛡️</span><span>Mata-mata</span>
-      ${(stats.survBest || 0) > 0 ? `<span style="background:rgba(229,57,53,.2);
-        border-radius:8px;padding:1px 6px;font-size:11px;">${stats.survBest}</span>` : ''}
-    </button>
-    ${(() => {
-      const e = earnedMedals();
-      if (!e.length) return '';
-      return `<div id="medal-strip" style="display:flex;gap:5px;flex-wrap:wrap;
-        justify-content:center;max-width:280px;cursor:pointer;">
-        ${e.slice(0, 11).map(m => `<span title="${m.n}" style="font-size:16px;
-          filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));">${m.ic}</span>`).join('')}
-        ${e.length > 11 ? `<span style="font-size:11px;color:rgba(255,255,255,.35);
-          align-self:center;">+${e.length - 11}</span>` : ''}
-      </div>`;
-    })()}
-    <div style="display:flex;gap:14px;align-items:center;">
-      <button id="bmute" style="background:none;border:none;cursor:pointer;
-        font-size:15px;opacity:.55;padding:2px;" title="Som">${muted ? '🔇' : '🔊'}</button>
-      <button id="bmed" style="background:none;border:none;
-        color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
-        font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
-        Medalhas</button>
-    </div>
-    <button id="bcred" style="background:none;border:none;
-      color:rgba(255,255,255,.22);font-size:10px;cursor:pointer;
-      font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
-      Créditos das imagens</button>
-    ${stats.games > 0 ? `<div style="font-size:10px;color:rgba(255,255,255,.25);
-      font-family:'Inter',system-ui;">${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
-      · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
-      ${stats.bestStreak >= 3 ? ' · 🔥 ' + stats.bestStreak : ''}</div>` : ''}
-  </div>`;
+
+    const done = dailyDone(), dst = dailyStreakNow(), dres = dailyInfo();
+
+    return `
+    <div style="display:flex;flex-direction:column;align-items:center;
+      justify-content:center;min-height:500px;padding:26px 20px;text-align:center;gap:13px;">
+
+      <div class="ball-idle" style="font-size:44px;
+        filter:drop-shadow(0 6px 20px rgba(255,200,69,.4));">⚽</div>
+
+      <div>
+        <div style="font-size:10px;letter-spacing:5px;color:rgba(255,200,69,.6);
+          font-weight:800;font-family:'Inter',system-ui;margin-bottom:2px;">RUMO AO</div>
+        <div class="goldgrad" style="font-size:52px;font-weight:900;
+          font-family:'Bebas Neue','Impact',sans-serif;
+          letter-spacing:5px;line-height:.92;">MILHÃO</div>
+        <div style="font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.42);
+          font-weight:800;font-family:'Inter',system-ui;margin-top:5px;">FUTEBOL QUIZ BR</div>
+      </div>
+
+      <p style="color:rgba(255,255,255,.4);font-size:12.5px;max-width:290px;line-height:1.65;
+        margin:0;font-family:'Inter',system-ui;">
+        Dezesseis perguntas separam você de
+        <strong style="color:var(--gold);white-space:nowrap;">R$ 1.000.000</strong>.
+        Elas ficam mais difíceis a cada degrau.</p>
+
+      ${best > 0 ? `<div style="display:flex;align-items:center;gap:6px;
+        background:rgba(255,200,69,.1);border:1px solid rgba(255,200,69,.3);
+        border-radius:16px;padding:4px 13px;">
+        ${ICON.money('#FFC845', 12)}
+        <span style="font-size:11px;font-weight:800;color:var(--gold);
+          font-family:'Inter',system-ui;">Seu recorde: ${money(best)}</span>
+      </div>` : ''}
+
+      <button id="mil-btn" class="btn-press" style="margin-top:2px;
+        background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
+        font-size:20px;font-weight:900;padding:14px 42px;border-radius:30px;
+        border:none;cursor:pointer;
+        box-shadow:0 6px 26px rgba(255,200,69,.34), inset 0 -2px 0 rgba(0,0,0,.18);
+        font-family:'Bebas Neue','Impact',sans-serif;
+        letter-spacing:3px;display:flex;align-items:center;gap:10px;">
+        ${ICON.play('#0b1136', 17)}JOGAR AGORA</button>
+
+      <div style="display:flex;gap:7px;width:100%;max-width:330px;margin-top:4px;">
+        ${modeChip('daily-btn', ICON.calendar(done ? '#8a93b8' : '#FFC845', 16),
+          done ? '#8a93b8' : '#FFC845',
+          'Diário',
+          done ? (dres ? dres.nCorrect + '/' + dres.total : 'feito')
+               : '#' + dayIndex() + (dst > 0 ? ' · ' + dst + ' seg.' : ''))}
+        ${modeChip('surv-btn', ICON.shield('#FF6B68', 16), '#FF6B68', 'Mata-mata',
+          (stats.survBest || 0) > 0 ? 'recorde ' + stats.survBest : 'até errar')}
+        ${modeChip('cta-btn', ICON.ladder('#4FC3F7', 16), '#4FC3F7', 'Treino',
+          'sem apostar')}
+      </div>
+
+      ${(() => {
+        const e = earnedMedals();
+        if (!e.length) return '';
+        return `<div id="medal-strip" style="display:flex;gap:5px;flex-wrap:wrap;
+          justify-content:center;max-width:280px;cursor:pointer;margin-top:2px;">
+          ${e.slice(0, 11).map(m => `<span title="${m.n}" style="font-size:15px;
+            filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));">${m.ic}</span>`).join('')}
+          ${e.length > 11 ? `<span style="font-size:11px;color:rgba(255,255,255,.35);
+            align-self:center;">+${e.length - 11}</span>` : ''}
+        </div>`;
+      })()}
+
+      <div style="display:flex;gap:16px;align-items:center;margin-top:2px;">
+        <button id="bmute" title="Som" style="background:none;border:none;cursor:pointer;
+          opacity:.5;padding:3px;display:flex;">${
+          muted ? ICON.mute('#fff', 16) : ICON.sound('#fff', 16)}</button>
+        <button id="bmed" style="background:none;border:none;
+          color:rgba(255,255,255,.28);font-size:10px;cursor:pointer;
+          font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
+          Medalhas</button>
+        <button id="bcred" style="background:none;border:none;
+          color:rgba(255,255,255,.28);font-size:10px;cursor:pointer;
+          font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
+          Créditos</button>
+      </div>
+
+      ${stats.games > 0 ? `<div style="font-size:10px;color:rgba(255,255,255,.25);
+        font-family:'Inter',system-ui;">${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
+        · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
+        ${stats.bestStreak >= 3 ? ' · 🔥 ' + stats.bestStreak : ''}</div>` : ''}
+    </div>`;
+  }
 
 
 
@@ -2034,7 +2795,7 @@ function html() {
       <div style="display:flex;align-items:center;gap:8px;">
         <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
           color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
         <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
           font-family:'Inter',system-ui;">Medalhas · ${got.size}/${MEDALS.length}</span>
       </div>
@@ -2054,7 +2815,7 @@ function html() {
               <div style="font-size:10px;color:rgba(255,255,255,.35);
                 font-family:'Inter',system-ui;">${m.d}</div>
             </div>
-            ${on ? '<span style="font-size:13px;color:#00e676;">✓</span>' : ''}
+            ${on ? ICON.check('#00e676', 14) : ''}
           </div>`;
         }).join('')}
       </div>
@@ -2074,16 +2835,21 @@ function html() {
         padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);">
         <span style="font-size:10px;color:rgba(255,255,255,.62);flex:1;
           font-family:'Inter',system-ui;line-height:1.35;">${a}</span>
-        <span style="font-size:9px;color:rgba(255,215,0,.55);white-space:nowrap;
+        <span style="font-size:9px;color:rgba(255,200,69,.55);white-space:nowrap;
           font-family:'Inter',system-ui;">${l}</span>
       </div>`;
     }).join('');
+
+    /* A handful of the oldest photos were added before the app started
+       recording where each one came from. Saying so is better than an
+       attribution list that quietly looks complete. */
+    const unsourced = PL.filter(p => p.img && !CREDITS[p.img]).map(p => p.n);
     return `
     <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
           color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
         <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
           font-family:'Inter',system-ui;">Créditos das imagens</span>
       </div>
@@ -2095,16 +2861,26 @@ function html() {
         Escudos dos clubes são marcas registradas de seus respectivos clubes, exibidos
         apenas para identificação dentro do quiz.
       </p>
-      <div style="flex:1;overflow-y:auto;background:rgba(255,255,255,.03);
+      <div class="scroll-y" style="flex:1;background:rgba(255,255,255,.03);
         border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 12px;
-        max-height:330px;">${rows || '<span style="font-size:11px;color:#888;">—</span>'}</div>
+        max-height:${unsourced.length ? 262 : 330}px;">${
+        rows || '<span style="font-size:11px;color:#888;">—</span>'}</div>
+      ${unsourced.length ? `<div style="background:rgba(255,152,0,.08);
+        border:1px solid rgba(255,152,0,.28);border-radius:9px;padding:8px 11px;">
+        <div style="font-size:10px;font-weight:800;color:#FFB74D;margin-bottom:2px;
+          font-family:'Inter',system-ui;">Fonte ainda não registrada</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5;
+          font-family:'Inter',system-ui;">${unsourced.join(', ')} —
+          estamos rastreando a autoria dessas fotos. Se você é o autor,
+          escreva para tiagor.reis@gmail.com.</div>
+      </div>` : ''}
       <p style="font-size:9px;color:rgba(255,255,255,.25);text-align:center;margin:0;
         font-family:'Inter',system-ui;">
         Detalhes completos: commons.wikimedia.org</p>
     </div>`;
   }
 
-  /* ── Difficulty Selection ── */
+  /* ── Treino: the old fixed-length rounds, no money at stake ── */
   if (sc === 'difficulty') return `
   <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
 
@@ -2112,9 +2888,9 @@ function html() {
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
       <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
         color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-        border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">← Início</button>
+        border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
       <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
-        font-family:'Inter',system-ui;">Escolha a dificuldade</span>
+        font-family:'Inter',system-ui;">Treino · escolha a dificuldade</span>
     </div>
 
     <!-- Difficulty cards -->
@@ -2141,16 +2917,98 @@ function html() {
             ${d.n}Q</div>
           ${scores[d.key] !== undefined
             ? `<div style="font-size:10px;color:${d.col};font-weight:700;
-                font-family:'Inter',system-ui;opacity:.8;margin-top:2px;">
-                ★ ${scores[d.key]} pts</div>` : ''}
+                font-family:'Inter',system-ui;opacity:.8;margin-top:2px;
+                display:flex;align-items:center;gap:3px;justify-content:flex-end;">
+                ${ICON.star(d.col, 10)} ${scores[d.key]} pts</div>` : ''}
         </div>
       </div>`).join('')}
     </div>
 
     <p style="font-size:10px;color:rgba(255,255,255,.2);text-align:center;
       margin:0;font-family:'Inter',system-ui;">
-      Todas as categorias misturadas numa partida só</p>
+      Rodadas de treino: sem degraus, sem prêmio, só pontos</p>
   </div>`;
+
+  /* ── The payout: how a ladder run ends ──────────────────────
+     Three different endings, and they should not look alike. Walking
+     away with money is a win and gets the gold treatment; falling to a
+     checkpoint still pays, but quietly; going out with nothing is
+     stated plainly rather than dressed up. */
+  if (sc === 'end' && isMil) {
+    const won     = banked >= LADDER[LADDER.length - 1].v;
+    const cleared = rung;                       // rungs actually banked
+    const tone    = won ? 'var(--gold)' : banked > 0 ? 'var(--win)' : 'var(--lose)';
+    const head    = won     ? 'UM MILHÃO!'
+                  : cashed  ? 'VOCÊ PAROU A TEMPO'
+                  : banked  ? 'CAIU, MAS LEVOU'
+                  :           'FIM DE JOGO';
+    const sub     = won
+      ? 'Dezesseis perguntas, dezesseis acertos. Não dá pra ir mais longe.'
+      : cashed
+      ? 'Saiu com o dinheiro na mão — decisão de quem sabe a hora.'
+      : banked
+      ? `Errou a pergunta de ${money(LADDER[Math.min(rung, LADDER.length - 1)].v)} — o degrau garantido segurou.`
+      : 'Escorregou antes do primeiro degrau garantido. Da próxima, considere parar.';
+
+    return `
+    <div class="scroll-y" style="display:flex;flex-direction:column;align-items:center;
+      justify-content:center;min-height:500px;padding:26px 22px;text-align:center;gap:9px;">
+
+      <div style="font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.35);
+        font-family:'Inter',system-ui;">RUMO AO MILHÃO · DEGRAU ${cleared}/${LADDER.length}</div>
+
+      <div style="font-size:26px;font-weight:900;color:${tone};letter-spacing:2px;
+        font-family:'Bebas Neue','Impact',sans-serif;">${head}</div>
+
+      <div class="prize-pop ${banked > 0 ? 'goldgrad' : ''}"
+        style="font-size:${banked >= 100000 ? 46 : 54}px;font-weight:900;line-height:1;
+        font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;
+        ${banked > 0 ? '' : 'color:rgba(255,255,255,.3);'}">${money(banked)}</div>
+
+      <p style="font-size:12px;color:rgba(255,255,255,.45);margin:2px 0 0;max-width:290px;
+        line-height:1.6;font-family:'Inter',system-ui;">${sub}</p>
+
+      <!-- the climb, rung by rung -->
+      <div style="display:flex;gap:2px;align-items:center;width:100%;max-width:300px;margin:6px 0;">
+        ${LADDER.map((step, i) => `<span class="notch${i < rung ? ' notch-done' : ''}${
+          step.safe ? ' notch-safe' : ''}"></span>`).join('')}
+      </div>
+
+      <div style="display:flex;gap:16px;font-family:'Inter',system-ui;">
+        <div><div style="font-size:17px;font-weight:900;color:#fff;">${nCorrect}</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">ACERTOS</div></div>
+        <div><div style="font-size:17px;font-weight:900;color:#fff;">${pts}</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">PONTOS</div></div>
+        <div><div style="font-size:17px;font-weight:900;color:var(--gold);">${money(Math.max(milBest(), banked))}</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">RECORDE</div></div>
+      </div>
+
+      ${(window._newMedals || []).length ? `<div style="display:flex;flex-direction:column;
+        gap:4px;margin-top:6px;align-items:center;">
+        ${window._newMedals.map(m => `<div style="display:flex;align-items:center;gap:7px;
+          background:rgba(255,200,69,.12);border:1px solid rgba(255,200,69,.4);
+          border-radius:20px;padding:4px 13px;">
+          <span style="font-size:16px;">${m.ic}</span>
+          <span style="font-size:11px;font-weight:800;color:var(--gold);
+            font-family:'Inter',system-ui;">Nova medalha: ${m.n}</span>
+        </div>`).join('')}
+      </div>` : ''}
+
+      <div style="display:flex;gap:9px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
+        <button id="bshare" class="btn-press" style="background:#25D366;color:#fff;font-size:13px;
+          font-weight:900;padding:10px 20px;border-radius:20px;border:none;cursor:pointer;
+          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">COMPARTILHAR</button>
+        <button id="bmilrep" class="btn-press" style="
+          background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
+          font-size:14px;font-weight:900;padding:10px 22px;border-radius:20px;border:none;
+          cursor:pointer;font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
+          DE NOVO</button>
+        <button id="bhome" class="btn-press" style="background:rgba(255,255,255,.08);color:#fff;
+          font-size:12px;font-weight:700;padding:10px 18px;border-radius:20px;border:none;
+          cursor:pointer;font-family:'Inter',system-ui;">Início</button>
+      </div>
+    </div>`;
+  }
 
   /* ── End Screen ── */
   if (sc === 'end') {
@@ -2214,7 +3072,8 @@ function html() {
   const q    = cat.qs[qi];
   const qcat = q._cat || cat;          // source category for label / colour
   const tpct = (tLeft / tMax) * 100;
-  const tc   = tLeft > 10 ? qcat.col : tLeft > 5 ? '#FF9800' : '#F44336';
+  // on the ladder the clock is gold like everything else that costs money
+  const tc   = tLeft > 10 ? (isMil ? '#FFC845' : qcat.col) : tLeft > 5 ? '#FF9800' : '#F44336';
   const timerCls = tLeft <= 5 ? 'timer-low' : '';
 
   const portSVG = q.port
@@ -2230,40 +3089,99 @@ function html() {
   const faceEl = q.face
     ? `<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;
         border:2px solid rgba(255,255,255,.2);box-shadow:0 2px 12px rgba(0,0,0,.55);">
-        <img src="${q.face}" alt=""
+        <img src="${q.face}" alt="" aria-hidden="true"
           style="width:100%;height:100%;object-fit:cover;object-position:top center;"
           onerror="this.parentElement.style.display='none'" /></div>` : '';
   const crestEl = q.crest
     ? `<div style="flex-shrink:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;">
-        ${clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;')}</div>` : '';
+        ${clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>` : '';
   const qimgEl = q.qimg
     ? `<div style="flex-shrink:0;width:96px;height:64px;border-radius:8px;overflow:hidden;
         border:1px solid rgba(255,255,255,.15);box-shadow:0 2px 12px rgba(0,0,0,.6);">
-        <img src="${q.qimg}" alt="momento"
+        <img src="${q.qimg}" alt="Momento do jogo referido na pergunta"
           style="width:100%;height:100%;object-fit:cover;"
           onerror="this.parentElement.style.display='none'" /></div>` : '';
 
   const scoreChanged = pts !== prevPts;
+  const armed = sc === 'quiz';           // the board is accepting taps
+
+  /* ── The rail: sixteen notches, one per rung, checkpoints picked out ── */
+  const prizeRail = !isMil ? '' : `
+    <div style="display:flex;gap:2px;align-items:center;">
+      ${LADDER.map((step, i) => `<span class="notch${
+        i < rung ? ' notch-done' : ''}${step.safe ? ' notch-safe' : ''}${
+        i === rung ? ' notch-now' : ''}"></span>`).join('')}
+    </div>`;
+
+  /* ── What this question is worth, and what you keep if it goes wrong ── */
+  const stakes = !isMil ? '' : `
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+      <div style="min-width:0;">
+        <div style="font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);
+          font-weight:800;font-family:'Inter',system-ui;">
+          PERGUNTA ${rung + 1} DE ${LADDER.length}${isFinal() ? ' · A ÚLTIMA' : ''}</div>
+        <div class="prize-pop goldgrad" style="font-size:27px;font-weight:900;line-height:1.05;
+          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1.5px;">
+          ${money(RUNG().v)}</div>
+      </div>
+      <button id="bladder" class="btn-press" style="background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:5px 9px;
+        cursor:pointer;text-align:right;flex-shrink:0;
+        display:flex;align-items:center;gap:7px;">
+        <div>
+          <div style="font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.3);
+            font-weight:800;font-family:'Inter',system-ui;">GARANTIDO</div>
+          <div style="font-size:12px;font-weight:900;color:${safetyNet() ? 'var(--win)' : 'rgba(255,255,255,.3)'};
+            font-family:'Inter',system-ui;">${safetyNet() ? money(safetyNet()) : '—'}</div>
+        </div>
+        ${ICON.ladder('rgba(255,255,255,.4)', 15)}
+      </button>
+    </div>`;
+
+  /* ── The pundit's line, if he was called ── */
+  const expertBox = !(expert && armed) ? '' : `
+    <div style="display:flex;align-items:center;gap:9px;
+      background:rgba(171,71,188,.12);border:1px solid rgba(171,71,188,.38);
+      border-radius:11px;padding:7px 11px;">
+      ${ICON.mic('#CE93D8', 16)}
+      <p style="font-size:11px;color:#E1BEE7;margin:0;line-height:1.45;
+        font-family:'Inter',system-ui;">
+        <em style="opacity:.75;">${expert.line}</em>
+        <strong style="color:#fff;">${expert.name}</strong>${
+        expert.sure ? '' : ' <span style="opacity:.6;">— mas é chute, hein.</span>'}</p>
+    </div>`;
+
+  /* ── The five cards ── */
+  const ajudas = [
+    ['bhalf',   'Cortar',   ICON.cut,  lifes.half && cutCount() >= 1],
+    ['bpoll',   'Placar',   ICON.crowd, lifes.poll],
+    ['bexpert', 'Convidado',ICON.mic,  lifes.expert],
+    ['bfreeze', 'Congelar', ICON.snow, lifes.freeze],
+    ['bskip',   'Pular',    ICON.skip, lifes.skip],
+  ];
 
   return `
-  <div style="padding:14px;display:flex;flex-direction:column;gap:10px;min-height:500px;">
+  <div style="padding:13px;display:flex;flex-direction:column;gap:9px;min-height:500px;
+    position:relative;">
 
     <!-- Header -->
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div style="display:flex;align-items:center;gap:7px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:7px;min-width:0;">
         <button id="bexit" style="background:rgba(255,255,255,.07);border:none;
           color:rgba(255,255,255,.4);font-size:11px;padding:4px 10px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;">✕</button>
+          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;
+          display:flex;align-items:center;">${ICON.close('currentColor', 12)}</button>
         <div style="background:${qcat.col}18;border:1px solid ${qcat.col}30;
-          border-radius:16px;padding:3px 10px;font-size:10px;
+          border-radius:16px;padding:3px 10px;font-size:10px;white-space:nowrap;
+          overflow:hidden;text-overflow:ellipsis;
           font-weight:700;color:${qcat.col};font-family:'Inter',system-ui;">${qcat.emoji} ${qcat.name}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:7px;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
         ${streak > 1
           ? `<div class="fire-bob" style="background:rgba(255,100,0,.14);border:1px solid rgba(255,100,0,.22);
               border-radius:12px;padding:2px 8px;font-size:11px;
               color:#FF7700;font-weight:700;font-family:'Inter',system-ui;">🔥${streak}x</div>` : ''}
-        <div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;
+        ${isMil ? '' : `<div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;
           justify-content:flex-end;">
           ${cat.qs.length <= 20 ? cat.qs.map((_, i) => {
               const cls = i < runLog.length ? (runLog[i] === 3 ? 'pdot pdot-on'
@@ -2273,46 +3191,59 @@ function html() {
             }).join('')
           : `<span style="font-size:11px;color:rgba(255,255,255,.32);
                font-family:'Inter',system-ui;">${qi+1}/${cat.qs.length}</span>`}
-        </div>
-        <div id="score-disp" class="${scoreChanged ? 'score-up' : ''}" style="position:relative"
-          style="font-size:18px;font-weight:900;color:#FFD700;
-            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${
-          sc === 'reveal' && lastGain > 0 ? `<span class="gain">+${lastGain}</span>` : ''}${pts}
-          <span style="font-size:9px;margin-left:1px;color:rgba(255,215,0,.45);
-            font-family:'Inter',system-ui;font-weight:600;">pts</span>
-        </div>
+        </div>`}
+        ${isMil
+          /* money is the score here, so the corner shows the clock instead */
+          ? `<div class="${tLeft <= 5 ? 'timer-low' : ''}" style="display:flex;align-items:center;
+              gap:4px;color:${tLeft > 5 ? 'rgba(255,255,255,.62)' : '#F44336'};">
+              ${ICON.clock('currentColor', 13)}
+              <span id="clock-n" style="font-size:17px;font-weight:900;letter-spacing:.5px;
+                font-family:'Bebas Neue','Impact',sans-serif;">${tLeft}</span>
+            </div>`
+          : `<div id="score-disp" class="${scoreChanged ? 'score-up' : ''}"
+              style="position:relative;font-size:18px;font-weight:900;color:var(--gold);
+                font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${
+              sc === 'reveal' && lastGain > 0 ? `<span class="gain">+${lastGain}</span>` : ''}${pts}
+              <span style="font-size:9px;margin-left:1px;color:rgba(255,200,69,.45);
+                font-family:'Inter',system-ui;font-weight:600;">pts</span>
+            </div>`}
       </div>
     </div>
 
+    ${prizeRail}
+    ${stakes}
+
     <!-- Timer bar -->
     <div style="height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
-      <div id="tf" class="${timerCls} ${sc === 'quiz' ? 'tf-live' : ''}" style="height:100%;width:${tpct}%;background-color:${tc};
-        border-radius:2px;transition:width .8s linear;"></div>
+      <div id="tf" class="${timerCls} ${armed ? 'tf-live' : ''}" style="height:100%;width:${tpct}%;
+        background-color:${tc};border-radius:2px;transition:width .8s linear;"></div>
     </div>
 
     <!-- Progressive photo reveal -->
     ${q.reveal ? `
     <div style="display:flex;justify-content:center;padding:2px 0 4px;">
-      <div style="width:150px;height:150px;border-radius:14px;overflow:hidden;
-        border:2px solid rgba(255,215,0,.28);box-shadow:0 6px 26px rgba(0,0,0,.65);
-        position:relative;background:#0b1a0f;">
-        <img id="revimg" src="${q.reveal}" alt=""
+      <div style="width:144px;height:144px;border-radius:14px;overflow:hidden;
+        border:2px solid rgba(255,200,69,.3);box-shadow:0 6px 26px rgba(0,0,0,.7);
+        position:relative;background:#0b1136;">
+        <img id="revimg" src="${q.reveal}" alt="" aria-hidden="true"
           style="width:100%;height:100%;object-fit:cover;object-position:top center;
             filter:blur(${sc === 'reveal' ? 0 : (20 * (tLeft / tMax)).toFixed(1)}px);
             transform:scale(1.08);transition:filter .9s linear;" />
       </div>
     </div>` : ''}
 
-    <!-- Question card -->
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-      border-radius:11px;padding:12px 14px;min-height:60px;
-      display:flex;align-items:center;gap:10px;">
-      ${portSVG}${stadSVG}${faceEl}${crestEl}${qimgEl}
-      <p style="font-size:15px;font-weight:600;color:#fff;line-height:1.48;
-        margin:0;flex:1;min-width:0;overflow-wrap:anywhere;
-        font-family:'Inter',system-ui;white-space:pre-line;">
-        ${q.t}</p>
+    <!-- The plaque -->
+    <div class="plaque">
+      <div class="plaque-in">
+        ${portSVG}${stadSVG}${faceEl}${crestEl}${qimgEl}
+        <p style="font-size:15px;font-weight:600;color:#fff;line-height:1.45;
+          margin:0;flex:1;min-width:0;overflow-wrap:anywhere;
+          font-family:'Inter',system-ui;white-space:pre-line;
+          text-shadow:0 1px 6px rgba(0,0,0,.6);">${q.t}</p>
+      </div>
     </div>
+
+    ${expertBox}
 
     <!-- Option grid — 2 wide columns for name tiles, 5 for crest/face tiles -->
     <div style="display:grid;grid-template-columns:repeat(${
@@ -2321,46 +3252,132 @@ function html() {
     </div>
 
     <!-- Footer -->
-    ${sc === 'quiz' ? `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:2px;">
-      <div style="display:flex;gap:7px;margin-bottom:1px;">
-        ${[['bhalf','50:50','✂️',lifes.half],
-           ['bfreeze','Congelar','❄️',lifes.freeze],
-           ['bskip','Pular','⏭️',lifes.skip]].map(([id,lbl,ic,on]) => `
+    ${armed ? `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px;">
+      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;">
+        ${ajudas.map(([id, lbl, ic, on]) => `
           <button id="${id}" ${on ? '' : 'disabled'} class="btn-press" style="
-            background:${on ? 'rgba(255,255,255,.07)' : 'rgba(255,255,255,.02)'};
-            border:1px solid ${on ? 'rgba(255,215,0,.3)' : 'rgba(255,255,255,.05)'};
-            color:${on ? 'rgba(255,255,255,.82)' : 'rgba(255,255,255,.18)'};
-            border-radius:14px;padding:4px 10px;font-size:10px;font-weight:700;
+            background:${on ? 'linear-gradient(180deg,rgba(255,200,69,.16),rgba(255,200,69,.05))'
+                            : 'rgba(255,255,255,.02)'};
+            border:1px solid ${on ? 'rgba(255,200,69,.38)' : 'rgba(255,255,255,.05)'};
+            color:${on ? 'rgba(255,255,255,.88)' : 'rgba(255,255,255,.16)'};
+            border-radius:12px;padding:5px 9px;font-size:9.5px;font-weight:800;
             cursor:${on ? 'pointer' : 'default'};font-family:'Inter',system-ui;
-            display:flex;align-items:center;gap:4px;">
-            <span style="font-size:11px;">${ic}</span>${lbl}</button>`).join('')}
+            display:flex;flex-direction:column;align-items:center;gap:2px;min-width:52px;
+            ${on ? '' : 'text-decoration:line-through;'}">
+            ${ic(on ? '#FFC845' : 'rgba(255,255,255,.16)', 15)}${lbl}</button>`).join('')}
       </div>
       ${frozen ? `<div style="font-size:10px;color:#4FC3F7;font-weight:700;
-        font-family:'Inter',system-ui;">❄️ Tempo congelado nesta pergunta</div>` : ''}
-      <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;
+        font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">
+        ${ICON.snow('#4FC3F7', 11)} Relógio parado nesta pergunta</div>` : ''}
+      <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;text-align:center;
         font-family:'Inter',system-ui;">
         ${q.type === 'player'
-          ? (q.a.length > 1 ? `Selecione os ${q.a.length} jogadores corretos` : 'Selecione o jogador correto')
-          : (q.a.length > 1 ? `Selecione os ${q.a.length} times corretos`     : 'Selecione o time correto')
-        } · toque para marcar</p>
-      <button id="bconf" style="
-          background:${sel.size > 0 ? qcat.col : 'rgba(255,255,255,.07)'};
-          color:${sel.size > 0 ? '#060e08' : 'rgba(255,255,255,.2)'};
-          font-size:16px;font-weight:900;padding:10px 44px;
-          border-radius:24px;border:none;
-          cursor:${sel.size > 0 ? 'pointer' : 'default'};
-          letter-spacing:2px;transition:all .18s;
-          font-family:'Bebas Neue','Impact',sans-serif;">CONFIRMAR</button>
+          ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
+          : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')
+        }</p>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;">
+        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn-press" style="
+            background:${sel.size > 0
+              ? 'linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000)'
+              : 'rgba(255,255,255,.06)'};
+            color:${sel.size > 0 ? '#0b1136' : 'rgba(255,255,255,.2)'};
+            font-size:17px;font-weight:900;padding:11px 38px;
+            border-radius:24px;border:none;
+            box-shadow:${sel.size > 0 ? '0 5px 20px rgba(255,200,69,.3)' : 'none'};
+            cursor:${sel.size > 0 ? 'pointer' : 'default'};
+            letter-spacing:2px;transition:all .18s;
+            font-family:'Bebas Neue','Impact',sans-serif;">CONFIRMAR</button>
+        ${isMil && rung > 0 ? `
+        <button id="bstop" class="btn-press" style="
+            background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+            color:rgba(255,255,255,.7);font-size:11px;font-weight:800;
+            padding:9px 15px;border-radius:22px;cursor:pointer;
+            font-family:'Inter',system-ui;display:flex;align-items:center;gap:5px;">
+          ${ICON.stop('rgba(255,255,255,.7)', 14)}PARAR · ${money(LADDER[rung - 1].v)}</button>` : ''}
+      </div>
+    </div>`
+    : sc === 'ask' ? `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:6px;">
+      <div style="font-size:22px;font-weight:900;color:var(--gold);letter-spacing:2px;
+        font-family:'Bebas Neue','Impact',sans-serif;text-align:center;">
+        ESSA É A SUA RESPOSTA FINAL?</div>
+      <p style="font-size:11px;color:rgba(255,255,255,.42);margin:0;text-align:center;
+        font-family:'Inter',system-ui;max-width:300px;line-height:1.5;">
+        Está valendo <strong style="color:var(--gold);">${money(RUNG().v)}</strong>.
+        Se errar, você sai com ${money(safetyNet())}.</p>
+      <div style="display:flex;gap:9px;">
+        <button id="bfinal" class="btn-press" style="
+          background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
+          font-size:16px;font-weight:900;padding:11px 30px;border-radius:24px;border:none;
+          box-shadow:0 5px 20px rgba(255,200,69,.32);cursor:pointer;letter-spacing:2px;
+          font-family:'Bebas Neue','Impact',sans-serif;">É ESSA</button>
+        <button id="bunlock" class="btn-press" style="
+          background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+          color:rgba(255,255,255,.7);font-size:12px;font-weight:800;
+          padding:11px 18px;border-radius:24px;cursor:pointer;
+          font-family:'Inter',system-ui;">Deixa eu pensar</button>
+      </div>
+    </div>`
+    : sc === 'lock' ? `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 0;">
+      <div class="timer-low" style="font-size:15px;font-weight:900;color:var(--gold);
+        letter-spacing:3px;font-family:'Bebas Neue','Impact',sans-serif;">RESPOSTA TRAVADA</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.3);
+        font-family:'Inter',system-ui;">${isMil ? money(RUNG().v) + ' na mesa…' : 'vamos ver…'}</div>
     </div>`
     : `<div style="text-align:center;padding:6px 0;" id="rvl"></div>`}
+
+    ${(sc === 'ask' || sc === 'lock') ? '<div class="stage-dark"></div>' : ''}
+    ${ladderOpen ? ladderOverlay() : ''}
+  </div>`;
+}
+
+/* ── The full ladder, as a sheet over the board ──────────────────
+   Opening it stops the clock: checking where you stand is not
+   something the player should have to pay for in seconds. */
+function ladderOverlay() {
+  return `
+  <div style="position:absolute;inset:0;z-index:20;
+    background:linear-gradient(180deg,#0a1030 0%,#04071a 100%);
+    display:flex;flex-direction:column;padding:14px;gap:8px;
+    animation:screenIn .18s ease-out;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:12px;font-weight:900;letter-spacing:2px;color:var(--gold);
+        font-family:'Inter',system-ui;">A ESCADA DO MILHÃO</span>
+      <button id="bladderclose" style="background:rgba(255,255,255,.08);border:none;
+        color:rgba(255,255,255,.6);padding:5px 9px;border-radius:10px;cursor:pointer;
+        display:flex;align-items:center;">${ICON.close('currentColor', 13)}</button>
+    </div>
+    <div class="scroll-y" style="flex:1;display:flex;flex-direction:column-reverse;
+      justify-content:flex-end;gap:2px;">
+      ${LADDER.map((step, i) => {
+        const state = i < rung ? 'rung-done' : i === rung ? 'rung-now'
+                    : step.safe ? 'rung-safe' : '';
+        const top = i === LADDER.length - 1 ? ' rung-top' : '';
+        return `<div class="rung ${state}${top}">
+          <span class="rung-n">${i + 1}</span>
+          ${step.safe ? ICON.shield(i < rung ? '#00e676' : 'rgba(255,255,255,.35)', 11)
+                      : '<span style="width:11px;"></span>'}
+          <span style="flex:1;">${money(step.v)}</span>
+          ${i < rung ? ICON.check('#00e676', 12) : ''}
+        </div>`;
+      }).join('')}
+    </div>
+    <p style="font-size:10px;color:rgba(255,255,255,.32);margin:0;text-align:center;
+      line-height:1.5;font-family:'Inter',system-ui;">
+      ${ICON.shield('rgba(255,255,255,.32)', 10)} são os degraus garantidos —
+      passou de um, esse dinheiro é seu aconteça o que acontecer.</p>
   </div>`;
 }
 
 
 /* ── Confetti (pure DOM, no library) ── */
 function burst(n) {
-  const cols = ['#FFD700','#00e676','#4FC3F7','#FF7043','#FFFFFF','#AB47BC'];
+  // money falls gold; everything else gets the party mix
+  const cols = isMil
+    ? ['#FFD700','#FFF0B0','#FFC845','#D9A000','#FFFFFF','#FFE469']
+    : ['#FFD700','#00e676','#4FC3F7','#FF7043','#FFFFFF','#AB47BC'];
   const frag = document.createDocumentFragment();
   for (let i = 0; i < n; i++) {
     const d = document.createElement('div');
@@ -2386,25 +3403,52 @@ function go() {
   document.getElementById('ct').innerHTML = html();
   prevPts = pts; // prevent re-fire on subsequent re-renders without score change
 
-  document.getElementById('cta-btn')?.addEventListener('click', () => { snd.swipe(); sc='difficulty'; go(); });
-  document.getElementById('daily-btn')?.addEventListener('click', () => { snd.select(); startDaily(); });
-  document.getElementById('bcred')?.addEventListener('click', () => { snd.swipe(); sc='credits'; go(); });
-  document.getElementById('surv-btn')?.addEventListener('click', () => { snd.select(); startSurvival(); });
-  document.getElementById('bmed')?.addEventListener('click',  () => { snd.swipe(); sc='medals'; go(); });
-  document.getElementById('bmute')?.addEventListener('click', () => { setMuted(!muted); snd.tap(); go(); });
-  document.getElementById('medal-strip')?.addEventListener('click', () => { snd.swipe(); sc='medals'; go(); });
+  const on = (id, fn) => document.getElementById(id)?.addEventListener('click', fn);
+
+  /* ── home ── */
+  on('mil-btn',     () => { snd.rung();   startMilhao(); });
+  on('cta-btn',     () => { snd.swipe();  sc = 'difficulty'; go(); });
+  on('daily-btn',   () => { snd.select(); startDaily(); });
+  on('surv-btn',    () => { snd.select(); startSurvival(); });
+  on('bcred',       () => { snd.swipe();  sc = 'credits'; go(); });
+  on('bmed',        () => { snd.swipe();  sc = 'medals';  go(); });
+  on('medal-strip', () => { snd.swipe();  sc = 'medals';  go(); });
+  on('bmute',       () => { setMuted(!muted); snd.tap(); go(); });
 
   if (sc === 'end' && !window._celebrated) {
-    const acc = nCorrect / Math.max(1, cat.qs.length);
-    if (acc >= 0.7) { window._celebrated = true; burst(acc >= 0.9 ? 70 : 42); }
+    if (isMil) {
+      // gold rain for the million, a modest handful for any other payout
+      if (banked >= LADDER[LADDER.length - 1].v) { window._celebrated = true; burst(120); }
+      else if (banked > 0)                       { window._celebrated = true; burst(30); }
+    } else {
+      const acc = nCorrect / Math.max(1, cat.qs.length);
+      if (acc >= 0.7) { window._celebrated = true; burst(acc >= 0.9 ? 70 : 42); }
+    }
   }
   if (sc !== 'end') window._celebrated = false;
-  document.getElementById('bshare')?.addEventListener('click', () => { snd.tap(); doShare(); });
-  document.getElementById('bhome')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='home'; go(); });
-  document.getElementById('bexit')?.addEventListener('click',   () => { snd.swipe(); clearInterval(tmr); sc='difficulty'; go(); });
-  document.getElementById('bconf')?.addEventListener('click',   () => { if (sel.size > 0) doReveal(); });
-  document.getElementById('brep')?.addEventListener('click',    () => { snd.swipe(); startGame(); });
-  document.getElementById('bdiff')?.addEventListener('click',   () => { snd.swipe(); sc='difficulty'; go(); });
+
+  /* ── run controls ── */
+  on('bshare',  () => { snd.tap(); doShare(); });
+  on('bhome',   () => { snd.swipe(); clearInterval(tmr); sc = 'home'; go(); });
+  on('bexit',   () => { snd.swipe(); clearInterval(tmr); sc = isMil ? 'home' : 'difficulty'; go(); });
+  on('bconf',   confirmAnswer);
+  on('bfinal',  lockIn);
+  on('bunlock', unlockAnswer);
+  on('brep',    () => { snd.swipe(); startGame(); });
+  on('bmilrep', () => { snd.rung();  startMilhao(); });
+  on('bdiff',   () => { snd.swipe(); sc = 'difficulty'; go(); });
+  on('bstop',   cashOut);
+
+  /* ── the ajuda cards ── */
+  on('bhalf',   useHalf);
+  on('bpoll',   usePoll);
+  on('bexpert', useExpert);
+  on('bfreeze', useFreeze);
+  on('bskip',   useSkip);
+
+  /* ── the ladder sheet (opening it holds the clock) ── */
+  on('bladder',      () => { ladderOpen = true;  snd.swipe(); go(); });
+  on('bladderclose', () => { ladderOpen = false; snd.swipe(); go(); });
 
   document.querySelectorAll('.dc').forEach(d => d.addEventListener('click', () => {
     diffKey = d.dataset.key;
@@ -2431,15 +3475,58 @@ function go() {
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
 function startGame() {
-  isDaily = false; isSurv = false; _seed = null;
+  isDaily = false; isSurv = false; isMil = false; _seed = null;
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
   nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
   resetLifes();
-  sc = 'quiz'; tMax = DCFG().time; tLeft = tMax; lastMsg = '';
+  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
   startTmr();
   go();
+}
+
+/* ── The "resposta final?" beat ────────────────────────────────
+   Confirming does not reveal straight away. The clock stops, the board
+   dims to the tiles you picked, and the answer hangs there for a moment
+   that gets longer the more money is on the line. From R$ 75.000 up the
+   host asks out loud first, and you can still take it back. */
+const ASK_FROM_RUNG = 9;
+
+function confirmAnswer() {
+  if (sel.size === 0 || sc !== 'quiz') return;
+  if (isMil && rung >= ASK_FROM_RUNG) {
+    clearInterval(tmr);
+    sc = 'ask';
+    snd.lock();
+    go();
+    return;
+  }
+  lockIn();
+}
+
+function unlockAnswer() {          // "deixa eu pensar" — back to the board
+  if (sc !== 'ask') return;
+  sc = 'quiz';
+  snd.swipe();
+  startTmr();
+  go();
+}
+
+function lockIn() {
+  clearInterval(tmr);
+  sc = 'lock';
+  snd.lock();
+  go();
+
+  const hold = isMil ? Math.min(2600, 900 + rung * 120) : 700;
+  let beats = 0;
+  const pulse = setInterval(() => {
+    if (++beats > 6 || sc !== 'lock') { clearInterval(pulse); return; }
+    snd.heartbeat();
+  }, Math.max(260, hold / 5));
+
+  setTimeout(() => { clearInterval(pulse); if (sc === 'lock') doReveal(); }, hold);
 }
 
 function doReveal() {
@@ -2465,9 +3552,18 @@ function doReveal() {
   if (p === 3) nCorrect++; else if (p === 1) nPartial++;
   runLog.push(p);
 
-  if      (p === 3) snd.correct();
-  else if (p === 1) snd.almost();
-  else              snd.wrong();
+  if (isMil) {
+    if      (p === 3 && isFinal()) snd.fanfare();
+    else if (p === 3)              snd.rung();
+    else                           snd.drop();
+    /* Settle the money now, while we know the answer. The pause that
+       follows is only there for the drama — nothing about the outcome
+       should depend on a timer firing. */
+    if (p !== 3)          banked = safetyNet();
+    else if (isFinal())   { banked = LADDER[LADDER.length - 1].v; cashed = true; }
+  } else if (p === 3) snd.correct();
+  else if (p === 1)   snd.almost();
+  else                snd.wrong();
 
   const chip = (txt, col) => `<span style="display:inline-block;background:${col}22;
       border:1px solid ${col}44;color:${col};border-radius:9px;padding:1px 7px;
@@ -2477,51 +3573,90 @@ function doReveal() {
                 + (mult > 1 ? chip('🔥 combo ×' + mult, '#FF7700') : '')
                 + (DCFG().pmul > 1 ? chip(DCFG().emoji + ' ×' + DCFG().pmul, DCFG().col) : '');
 
-  lastMsg = p === 3
-    ? `<span style="font-size:15px;font-weight:800;color:#00e676;
-        font-family:'Inter',system-ui;">✓ Perfeito! +${gained}</span>${bonuses}`
-    : p === 1
-    ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
-        font-family:'Inter',system-ui;">~ Quase! +${gained}</span>${bonuses}`
-    : `<span style="font-size:15px;font-weight:800;color:#f44336;
-        font-family:'Inter',system-ui;">✗ Errou!</span>
-       <div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;
-        font-family:'Inter',system-ui;">Resposta: <strong style="color:#00e676;">${
-          q.a.map(id => {
-            const pool = q.type === 'player' ? PL : CL;
-            const hit = pool.find(x => x.id === id);
-            return hit ? hit.n : id;
-          }).join(', ')}</strong></div>`;
+  const rightNames = q.a.map(id => {
+    const pool = q.type === 'player' ? PL : CL;
+    const hit = pool.find(x => x.id === id);
+    return hit ? hit.n : id;
+  }).join(', ');
+
+  if (isMil) {
+    /* On the ladder there is no half credit: you either climb or you fall. */
+    lastMsg = p === 3
+      ? `<span style="font-size:16px;font-weight:900;color:#00e676;
+          font-family:'Inter',system-ui;">${ICON.check('#00e676', 13)} ${
+          isFinal() ? 'É O MILHÃO!' : 'Certíssimo! ' + money(RUNG().v)}</span>`
+        + (isFinal() ? '' : `<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;
+            font-family:'Inter',system-ui;">Próximo degrau: ${money(LADDER[rung + 1].v)}</div>`)
+      : `<span style="font-size:16px;font-weight:900;color:#f44336;
+          font-family:'Inter',system-ui;">${ICON.cross('#f44336', 13)} Essa não era…</span>
+         <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;
+          font-family:'Inter',system-ui;">Era <strong style="color:#00e676;">${rightNames}</strong>
+          · você leva ${money(safetyNet())}</div>`;
+  } else {
+    lastMsg = p === 3
+      ? `<span style="font-size:15px;font-weight:800;color:#00e676;
+          font-family:'Inter',system-ui;">${ICON.check('#00e676', 12)} Perfeito! +${gained}</span>${bonuses}`
+      : p === 1
+      ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
+          font-family:'Inter',system-ui;">~ Quase! +${gained}</span>${bonuses}`
+      : `<span style="font-size:15px;font-weight:800;color:#f44336;
+          font-family:'Inter',system-ui;">${ICON.cross('#f44336', 12)} Errou!</span>
+         <div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;
+          font-family:'Inter',system-ui;">Resposta: <strong style="color:#00e676;">${rightNames}</strong></div>`;
+  }
 
   go();
+  setTimeout(() => { advanceAfterReveal(p); go(); }, isMil ? 2600 : 2200);
+}
 
-  setTimeout(() => {
-    if (isSurv && p !== 3) {          // survival: anything short of perfect ends it
+/* What happens once the reveal has been on screen long enough: either the
+   run moves to the next question or it ends. Split out of doReveal so the
+   state machine can be driven without waiting on a timer. */
+function advanceAfterReveal(p) {
+  if (isMil) {
+    if (p !== 3) {                  // fell back to the last checkpoint
       cat.qs = cat.qs.slice(0, qi + 1);
       finishRun();
-      go();
+      return;
+    }
+    /* `rung` counts rungs *cleared*, so it advances past the last one too —
+       that is what makes the end screen read 16/16 rather than 15/16. */
+    rung++;
+    if (rung >= LADDER.length) {    // took the million
+      cat.qs = cat.qs.slice(0, qi + 1);
+      finishRun();
       return;
     }
     qi++;
-    sel.clear();
-    hidden = new Set();
-    frozen = false;
-    lastMsg = '';
-    if (isSurv && qi >= cat.qs.length - 2) {
-      const more = buildGame(rnd() > .5 ? 'moderado' : 'dificil');
-      cat.qs = cat.qs.concat(more.qs);
-    }
-    if (qi >= cat.qs.length) {
-      finishRun();
-    } else {
-      sc    = 'quiz';
-      tMax  = DCFG().time;
-      tLeft = tMax;
-      disp  = getDisp(cat.qs[qi]);
-      startTmr();
-    }
-    go();
-  }, 2200);
+    sel.clear(); clearHelpers(); lastMsg = '';
+    sc = 'quiz'; tMax = qTime(); tLeft = tMax;
+    disp = getDisp(cat.qs[qi]);
+    startTmr();
+    return;
+  }
+
+  if (isSurv && p !== 3) {          // survival: anything short of perfect ends it
+    cat.qs = cat.qs.slice(0, qi + 1);
+    finishRun();
+    return;
+  }
+  qi++;
+  sel.clear();
+  clearHelpers();
+  lastMsg = '';
+  if (isSurv && qi >= cat.qs.length - 2) {
+    const more = buildGame(rnd() > .5 ? 'moderado' : 'dificil');
+    cat.qs = cat.qs.concat(more.qs);
+  }
+  if (qi >= cat.qs.length) {
+    finishRun();
+  } else {
+    sc    = 'quiz';
+    tMax  = qTime();
+    tLeft = tMax;
+    disp  = getDisp(cat.qs[qi]);
+    startTmr();
+  }
 }
 
 
@@ -2538,7 +3673,12 @@ function finishRun() {
   stats.answered += cat.qs.length;
   stats.bestStreak = Math.max(stats.bestStreak || 0, bestStreak);
   const acc = nCorrect / Math.max(1, cat.qs.length);
-  if (isSurv) {
+  if (isMil) {
+    stats.milBest  = Math.max(stats.milBest || 0, banked);
+    stats.milRung  = Math.max(stats.milRung || 0, rung);
+    if (banked >= LADDER[LADDER.length - 1].v) stats.million = (stats.million || 0) + 1;
+    if (banked > milBest()) LS.set('milBest', banked);
+  } else if (isSurv) {
     stats.survBest = Math.max(stats.survBest || 0, nCorrect);
   } else {
     if (acc === 1) stats.perfect = (stats.perfect || 0) + 1;
@@ -2551,7 +3691,7 @@ function finishRun() {
 function startTmr() {
   clearInterval(tmr);
   tmr = setInterval(() => {
-    if (frozen) return;
+    if (frozen || ladderOpen) return;
     tLeft = Math.max(0, tLeft - 1);
     const tf = document.getElementById('tf');
     if (tf) {
@@ -2559,6 +3699,8 @@ function startTmr() {
       tf.style.background = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
       if (tLeft <= 5 && !tf.classList.contains('timer-low')) tf.classList.add('timer-low');
     }
+    const cn = document.getElementById('clock-n');
+    if (cn) cn.textContent = tLeft;
     const rv = document.getElementById('revimg');
     if (rv && sc === 'quiz') rv.style.filter = 'blur(' + (20 * (tLeft / tMax)).toFixed(1) + 'px)';
     if (tLeft <= 0 && sc === 'quiz') doReveal();

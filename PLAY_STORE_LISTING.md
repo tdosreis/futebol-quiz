@@ -13,32 +13,46 @@ Futebol Quiz BR
 
 **Short description** (max 80)
 ```
-Quiz de futebol: craques, clubes e história. Desafio diário e mata-mata!
+Quiz de futebol em clima de auditório: 16 degraus até o milhão. 5 ajudas!
 ```
 
 **Full description** (max 4000)
 ```
-⚽ Você realmente entende de futebol? Prove no Futebol Quiz BR!
+⚽ Você realmente entende de futebol? Sente na cadeira e vá rumo ao milhão!
 
-Perguntas sobre craques, clubes, seleções, estádios e história — com fotos e
-escudos de verdade. Cada partida é diferente: as perguntas são montadas na
-hora, então nunca se repete.
+Um quiz de futebol brasileiro em clima de programa de auditório: refletor
+aceso, placa dourada e dezesseis degraus até R$ 1.000.000. Perguntas sobre
+craques, clubes, seleções, estádios e história — com fotos e escudos de
+verdade. Cada partida é montada na hora, então nunca se repete.
 
-🎮 MODOS DE JOGO:
-• Clássico — Fácil, Moderado e Difícil (as alternativas ficam mais parecidas
-  conforme a dificuldade: mesma posição, mesma época, mesma seleção)
+💰 RUMO AO MILHÃO:
+• 16 perguntas, uma por degrau — cada uma vale mais e é mais difícil
+• Dois degraus garantidos (R$ 5.000 e R$ 50.000): passou, o dinheiro é seu
+• Errou? Você cai para o último degrau garantido
+• PARAR a qualquer momento e levar o que já conquistou
+• A partir de R$ 75.000 o apresentador pergunta: "essa é a sua resposta final?"
+
+🆘 AS CINCO AJUDAS:
+• Cortar — queima metade das alternativas erradas
+• Placar — a plateia vota (e fica menos confiável conforme o prêmio sobe)
+• Convidado — um comentarista dá o palpite dele… e às vezes erra
+• Congelar — para o relógio nesta pergunta
+• Pular — passa a pergunta sem perder o degrau
+
+🎮 OUTROS MODOS:
 • Desafio Diário — a mesma partida para todo mundo, todo dia
 • Mata-mata — errou, acabou. Até onde você vai?
+• Treino — Fácil, Moderado e Difícil, sem apostar nada (as alternativas ficam
+  mais parecidas conforme a dificuldade: mesma posição, mesma época, mesma seleção)
 • Foto revelada — a imagem vai ficando nítida; quem responde antes ganha mais
 • Caminho na carreira — descubra o jogador pelos clubes por onde passou
 
 🔥 PARA JOGAR DE VERDADE:
 • Sequências que multiplicam seus pontos (×2 e ×3)
 • Bônus por responder rápido
-• Ajudas: 50/50, congelar o tempo e pular
-• 11 medalhas para desbloquear
+• 15 medalhas para desbloquear, incluindo a de Milionário
 • Recordes e estatísticas salvos no aparelho
-• Compartilhe seu resultado no WhatsApp
+• Compartilhe sua escalada no WhatsApp
 
 📵 SEM COMPLICAÇÃO:
 • Sem cadastro e sem login
