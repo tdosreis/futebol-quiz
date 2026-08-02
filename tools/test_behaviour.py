@@ -252,6 +252,20 @@ TESTS = r"""
        flagSVG('ZZZ', 8).length > 20 && !/undefined/.test(flagSVG('ZZZ', 8)));
     ok('icons render as svg', ICON.check('#fff',12).startsWith('<svg')
        && ICON.cut('#fff',12).startsWith('<svg'));
+
+    // Category marks are data, so guard the data: a flag belongs in `flag`
+    // (drawn) and never in `emoji` (a regional-indicator pair).
+    (function(){
+      const flagEmoji = /\uD83C[\uDDE6-\uDDFF]|🏴/;
+      const bad = CATS.filter(c => c.emoji && flagEmoji.test(c.emoji));
+      ok('no category carries a flag emoji', bad.length === 0,
+         bad.map(c=>c.id).join(',') || 'clean');
+      ok('a flag category renders a drawn flag',
+         catIcon(CATS.find(c => c.flag)).startsWith('<svg'));
+      ok('a normal category still renders its emoji',
+         catIcon(CATS.find(c => c.emoji && !c.flag)).length > 0);
+      ok('catIcon copes with a category that has neither', catIcon({}) === '');
+    })();
     // the glyphs that Android's WebView has no font for must not be in the markup
     (function(){
       const screens = [];

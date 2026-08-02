@@ -595,7 +595,9 @@ const CATS = [
     ]
   },
   {
-    id:'brasileirao', name:'Brasileirão', emoji:'🇧🇷',
+    /* `flag` instead of `emoji`: a 🇧🇷 here is a regional-indicator pair that
+       Android renders as the bare letters "BR". catIcon() draws it instead. */
+    id:'brasileirao', name:'Brasileirão', flag:'BRA',
     tag:'Campeões da Série A', col:'#1A8C3A', diff:'Médio',
     qs:[
       { t:'Campeão do Brasileirão em 2022?', a:['palmeiras'] },
@@ -995,10 +997,14 @@ function flagSVG(code, h) {
     style="${box}display:inline-block;">${art}</svg>`;
 }
 
-/* The Brasileirão chip carried a 🇧🇷 in its label — the one flag the app
-   showed outside the player tiles, and the same regional-indicator pair
-   that renders as the bare letters "BR" on Android. Swap in the drawing. */
-(CATS.find(c => c.id === 'brasileirao') || {}).emoji = flagSVG('BRA', 10);
+/* The little mark on a category chip. Most categories carry an emoji that
+   every platform has a glyph for; the ones whose natural mark is a flag set
+   `flag` instead and get the drawing, because a flag emoji would come out as
+   the bare letters "BR". */
+function catIcon(c) {
+  if (!c) return '';
+  return c.flag ? flagSVG(c.flag, 10) : (c.emoji || '');
+}
 
 /* ═══════════════════════════════════════════════════
    ICONS — drawn, not typed
@@ -3174,7 +3180,8 @@ function html() {
         <div style="background:${qcat.col}18;border:1px solid ${qcat.col}30;
           border-radius:16px;padding:3px 10px;font-size:10px;white-space:nowrap;
           overflow:hidden;text-overflow:ellipsis;
-          font-weight:700;color:${qcat.col};font-family:'Inter',system-ui;">${qcat.emoji} ${qcat.name}</div>
+          font-weight:700;color:${qcat.col};font-family:'Inter',system-ui;
+          display:flex;align-items:center;gap:4px;">${catIcon(qcat)}<span>${qcat.name}</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
         ${streak > 1
