@@ -25,7 +25,7 @@ T = r"""
   sc='credits'; go();            res.push(probe('credits'));
   diffKey='dificil'; startGame();res.push(probe('quiz-hard'));
   (function(){
-    const cq = GEN_QS(3).find(q=>/caminho/.test(q.t));
+    const cq = GEN_QS(3).find(q=>/nesta ordem/.test(q.t));
     if (cq){ cat.qs=[cq]; qi=0; sel.clear(); disp=getDisp(cq); sc='quiz'; go(); }
   })();                          res.push(probe('career'));
   const el=document.createElement('div'); el.id='OUT';

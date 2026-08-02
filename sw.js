@@ -8,7 +8,7 @@
      • images/icons  → cache-first; filenames are content-hashed so
        they can never go stale.
 ──────────────────────────────────────────────── */
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
