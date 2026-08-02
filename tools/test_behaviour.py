@@ -339,6 +339,54 @@ TESTS = r"""
          unlabelled.size === 0, [...unlabelled].join(', ') || 'all labelled');
     })();
 
+    /* ── Small screens ───────────────────────────────────────────
+       These ran in a 320px-wide iframe when written. Headless Chrome
+       clamps its own viewport to 500px no matter what --window-size
+       says, so a probe run directly in the page silently tests 500px
+       and reports a clean bill of health for sizes it never tried.
+       tools/narrow.py drives the iframe harness; these assertions hold
+       whatever width the suite happens to run at. */
+    (function(){
+      // a tile caption must never be clipped — the name is the answer
+      let clipped = [];
+      for (let n = 0; n < 6; n++) {
+        startMilhao();
+        for (let i = 0; i < cat.qs.length; i++)
+          if (cat.qs[i].type === 'player' && !cat.qs[i].textTiles) { qi = i; break; }
+        rung = 9; disp = getDisp(cat.qs[qi]); go();
+        document.querySelectorAll('.tile-name').forEach(function(nm){
+          if (nm.scrollHeight > nm.clientHeight + 1) clipped.push(nm.textContent.trim());
+        });
+      }
+      ok('no tile caption is truncated', clipped.length === 0,
+         [...new Set(clipped)].slice(0,4).join(', ') || 'all names fit');
+
+      // the vote overlay must not sit on top of the caption
+      startMilhao(); rung = 9; qi = 9; disp = getDisp(cat.qs[9]); go(); usePoll();
+      let collisions = 0;
+      document.querySelectorAll('.b').forEach(function(t){
+        const nm = t.querySelector('.tile-name'), v = t.querySelector('.vote-pct');
+        if (!nm || !v) return;
+        const a = nm.getBoundingClientRect(), b = v.getBoundingClientRect();
+        if (a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom) collisions++;
+      });
+      ok('the audience percentage never overlaps a name', collisions === 0, `${collisions} tiles`);
+
+      /* CONFIRMAR must stay reachable without scrolling — but only assert it
+         at a height a real phone actually has. This suite runs at whatever
+         viewport headless Chrome hands out (~469px tall), which is shorter
+         than any shipping device; tools/narrow.py checks the real sizes. */
+      const vh = document.documentElement.clientHeight;
+      startMilhao(); rung = 9; qi = 9; disp = getDisp(cat.qs[9]); go();
+      usePoll(); useExpert();
+      const cta = document.getElementById('bconf');
+      const bottom = cta ? Math.round(cta.getBoundingClientRect().bottom) : -1;
+      ok('the confirm button stays above the fold',
+         vh < 520 ? true : (!!cta && bottom <= vh + 1),
+         vh < 520 ? `skipped — viewport only ${vh}px tall, see tools/narrow.py`
+                  : `cta=${bottom} vh=${vh}`);
+    })();
+
     // Attribution is a licence condition, so an unattributed photo must never be
     // silent — the credits screen has to name it as unsourced.
     (function(){

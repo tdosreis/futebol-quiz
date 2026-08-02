@@ -335,11 +335,18 @@
     .b-correct .tile-letter { background: linear-gradient(180deg,#7dffb4,#00c853); }
     .b-wrong   .tile-letter { background: linear-gradient(180deg,#ff9aa4,#d32f2f); color:#fff; }
 
-    /* ── Audience vote bars, drawn over the tiles ── */
+    /* ── Audience vote bars ──
+       Anchored to the top of the tile, not the bottom. They used to sit just
+       above the caption, which on a 320px screen is where a long name wraps
+       to a second line — the percentage landed on top of "Samuel Eto'o". */
+    /* An underline along the tile's bottom edge. Anything floating *inside*
+       the tile collides with something: at the bottom it hit a wrapped player
+       name, at the top it cut through a centred text label. The edge is the
+       one place both layouts leave free. */
     .vote {
-      position: absolute; left: 3px; right: 3px; bottom: 15px;
-      height: 4px; border-radius: 2px; overflow: hidden;
-      background: rgba(0,0,0,.55); z-index: 3; pointer-events: none;
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 3px; border-radius: 0 0 8px 8px; overflow: hidden;
+      background: rgba(0,0,0,.55); z-index: 4; pointer-events: none;
     }
     .vote > i {
       display: block; height: 100%; border-radius: 2px;
@@ -348,11 +355,37 @@
     }
     @keyframes voteGrow { from { width: 0 !important; } }
     .vote-pct {
-      position: absolute; right: 2px; bottom: 20px; z-index: 4;
-      padding: 1px 3px; border-radius: 3px;
-      background: rgba(4,7,22,.8);
-      font: 900 8px/1 'Inter', system-ui, sans-serif;
+      position: absolute; right: 3px; top: 3px; z-index: 4;
+      padding: 1px 3px; border-radius: 4px;
+      background: rgba(4,7,22,.86);
+      font: 900 8.5px/1.1 'Inter', system-ui, sans-serif;
       color: #cfe6ff; pointer-events: none;
+    }
+
+    /* ── Tile caption ──
+       A name may legitimately need two lines ("Andrés Iniesta" on a narrow
+       phone). Give it a scrim so it stays readable over the photo, and cap it
+       at two lines so a third can never push out of the tile. */
+    .tile-name {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      padding: 8px 2px 3px;
+      background: linear-gradient(to top, rgba(6,10,28,.93) 42%, rgba(6,10,28,0));
+      font-size: 7.6px; font-weight: 700; line-height: 1.12;
+      color: rgba(255,255,255,.92); text-align: center;
+      font-family: 'Inter', system-ui, sans-serif;
+      /* Three lines, not two: on a 320px screen a tile is ~54px wide, and the
+         inline flag takes enough of the first line that "Cristiano Ronaldo"
+         needs a third. Two lines truncated it to "Cristiano…" — unusable when
+         the name is the answer. */
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+      overflow: hidden; overflow-wrap: anywhere;
+    }
+    .tile-name .fl { display: inline-block; vertical-align: -1px; margin-right: 2px; }
+    .tile-club { font-size: 8.6px; -webkit-line-clamp: 2; }
+    /* Roomier phones can afford the larger caption back */
+    @media (min-width: 400px) {
+      .tile-name { font-size: 8.4px; -webkit-line-clamp: 2; }
+      .tile-club { font-size: 9px; }
     }
 
     /* ── The pundit's pick ── */
@@ -421,6 +454,33 @@
       100% { transform: translateY(0)   scale(1); opacity: 1; }
     }
     .prize-pop { animation: prizeUp .55s cubic-bezier(.2,.9,.3,1); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SHORT SCREENS
+       On a 568px-tall phone the quiz screen fits — until an ajuda adds a
+       row, or the question carries a photo. Then the board grows past the
+       viewport and CONFIRMAR drops below the fold, which on a timed
+       question costs the player the round. Reclaim the height from
+       padding and gaps rather than letting the page scroll.
+       The rules need !important because the layout is inline-styled.
+    ═══════════════════════════════════════════════════════════════ */
+    @media (max-height: 660px) {
+      .qz-screen           { padding: 8px !important; gap: 5px !important; }
+      .qz-screen .plaque-in { min-height: 46px; padding: 8px 11px; gap: 8px; }
+      .qz-screen .plaque-in p { font-size: 13.5px !important; line-height: 1.35 !important; }
+      .qz-screen .ajuda    { padding: 3px 7px !important; font-size: 9px !important; }
+      .qz-screen .reveal-box { width: 96px !important; height: 96px !important; }
+      .qz-screen .stakes-v { font-size: 21px !important; }
+      .qz-screen .expert-box { padding: 4px 8px !important; }
+      .qz-screen .expert-box p { font-size: 10px !important; }
+      .qz-screen .footer-hint { display: none; }
+    }
+    /* Very short (landscape, or a small phone with a tall keyboard bar) */
+    @media (max-height: 520px) {
+      .qz-screen .reveal-box { width: 72px !important; height: 72px !important; }
+      .qz-screen .ajuda span { display: none; }
+      .qz-screen .ajuda    { min-width: 34px !important; }
+    }
 
     /* ── Misc ── */
     button { font-family: 'Inter', system-ui, sans-serif; }
@@ -2647,7 +2707,7 @@ ${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
         background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
         border:1px solid rgba(255,255,255,.08);
         display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-        padding:8px 3px 24px;
+        padding:9px 3px 29px;
         transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
       ${letter}${voteEl}
       <div style="width:68%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
@@ -2656,11 +2716,7 @@ ${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
           style="width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none;"
           onerror="this.style.opacity='.25'" />
       </div>
-      <span style="font-size:8px;color:rgba(255,255,255,.85);text-align:center;
-        font-weight:700;font-family:'Inter',system-ui;text-shadow:0 1px 4px rgba(0,0,0,1);
-        padding:0 2px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;
-        display:flex;align-items:center;justify-content:center;gap:3px;">
-        ${flagSVG(item.ctry, 7)}<span>${item.n}</span></span>
+      <span class="tile-name"><span class="fl">${flagSVG(item.ctry, 7)}</span>${item.n}</span>
     </div>`;
   }
 
@@ -2674,11 +2730,7 @@ ${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
     ${letter}${voteEl}
     ${clubArt(item.id, 'width:76%;height:76%;object-fit:contain;pointer-events:none;flex-shrink:0;')}
-    <span style="font-size:9px;color:rgba(255,255,255,.8);text-align:center;
-      font-weight:700;font-family:'Inter',system-ui;
-      text-shadow:0 1px 4px rgba(0,0,0,1);
-      padding:0 3px;line-height:1.2;position:absolute;bottom:3px;left:0;right:0;">
-      ${item.n}</span>
+    <span class="tile-name tile-club">${item.n}</span>
   </div>`;
 }
 
@@ -3126,7 +3178,7 @@ function html() {
         <div style="font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);
           font-weight:800;font-family:'Inter',system-ui;">
           PERGUNTA ${rung + 1} DE ${LADDER.length}${isFinal() ? ' · A ÚLTIMA' : ''}</div>
-        <div class="prize-pop goldgrad" style="font-size:27px;font-weight:900;line-height:1.05;
+        <div class="prize-pop goldgrad stakes-v" style="font-size:27px;font-weight:900;line-height:1.05;
           font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1.5px;">
           ${money(RUNG().v)}</div>
       </div>
@@ -3146,7 +3198,7 @@ function html() {
 
   /* ── The pundit's line, if he was called ── */
   const expertBox = !(expert && armed) ? '' : `
-    <div style="display:flex;align-items:center;gap:9px;
+    <div class="expert-box" style="display:flex;align-items:center;gap:9px;
       background:rgba(171,71,188,.12);border:1px solid rgba(171,71,188,.38);
       border-radius:11px;padding:7px 11px;">
       ${ICON.mic('#CE93D8', 16)}
@@ -3167,8 +3219,8 @@ function html() {
   ];
 
   return `
-  <div style="padding:13px;display:flex;flex-direction:column;gap:9px;min-height:500px;
-    position:relative;">
+  <div class="qz-screen" style="padding:13px;display:flex;flex-direction:column;gap:9px;
+    min-height:500px;position:relative;">
 
     <!-- Header -->
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
@@ -3229,7 +3281,7 @@ function html() {
     <!-- Progressive photo reveal -->
     ${q.reveal ? `
     <div style="display:flex;justify-content:center;padding:2px 0 4px;">
-      <div style="width:144px;height:144px;border-radius:14px;overflow:hidden;
+      <div class="reveal-box" style="width:144px;height:144px;border-radius:14px;overflow:hidden;
         border:2px solid rgba(255,200,69,.3);box-shadow:0 6px 26px rgba(0,0,0,.7);
         position:relative;background:#0b1136;">
         <img id="revimg" src="${q.reveal}" alt="" aria-hidden="true"
@@ -3263,7 +3315,7 @@ function html() {
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px;">
       <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;">
         ${ajudas.map(([id, lbl, ic, on]) => `
-          <button id="${id}" ${on ? '' : 'disabled'} class="btn-press" style="
+          <button id="${id}" ${on ? '' : 'disabled'} class="btn-press ajuda" style="
             background:${on ? 'linear-gradient(180deg,rgba(255,200,69,.16),rgba(255,200,69,.05))'
                             : 'rgba(255,255,255,.02)'};
             border:1px solid ${on ? 'rgba(255,200,69,.38)' : 'rgba(255,255,255,.05)'};
@@ -3277,8 +3329,8 @@ function html() {
       ${frozen ? `<div style="font-size:10px;color:#4FC3F7;font-weight:700;
         font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">
         ${ICON.snow('#4FC3F7', 11)} Relógio parado nesta pergunta</div>` : ''}
-      <p style="font-size:10px;color:rgba(255,255,255,.24);margin:0;text-align:center;
-        font-family:'Inter',system-ui;">
+      <p class="footer-hint" style="font-size:10px;color:rgba(255,255,255,.24);margin:0;
+        text-align:center;font-family:'Inter',system-ui;">
         ${q.type === 'player'
           ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
           : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')
