@@ -289,12 +289,23 @@ TESTS = r"""
        CL.every(c => LOGOS[c.id] || (c.c1 && c.c2)),
        CL.filter(c=>!LOGOS[c.id]&&!(c.c1&&c.c2)).map(c=>c.id).join(',') || 'all covered');
 
-    // The five clubs whose real crests are non-free must still get a *designed*
-    // badge — colours, kit pattern, founding year and monogram — not a bare box.
+    /* Sport and Bragantino have no freely-licensed mark anywhere — Commons
+       carries neither, and Bragantino's is Red Bull brand artwork. They keep
+       a *designed* badge: colours, kit pattern, founding year, monogram. */
     (function(){
       const drawn = CL.filter(c => !LOGOS[c.id]);
-      ok('the non-free clubs fall back to a drawn badge', drawn.length === 5,
+      ok('only the clubs with no free artwork fall back to a drawn badge',
+         drawn.length === 2 && drawn.every(c => ['sport','bragantino'].includes(c.id)),
          drawn.map(c=>c.id).join(',') || 'none');
+      // the three we did find must be wired up and attributed
+      ['corinthians','vasco','nautico'].forEach(function(id){
+        ok(`${id} uses a real licensed crest`,
+           !!LOGOS[id] && !!CREDITS[LOGOS[id]] && !!CREDITS[LOGOS[id]].a,
+           LOGOS[id] ? `${LOGOS[id]} — ${CREDITS[LOGOS[id]] ? CREDITS[LOGOS[id]].l : 'NO CREDIT'}` : 'missing');
+      });
+      // rectangular artwork must be framed, or it reads as a stray white box
+      ok('flat logos are framed as plaques',
+         [...FLAT_LOGOS].every(id => clubArt(id,'').indexOf('border-radius') !== -1));
       const thin = drawn.filter(c => {
         const svg = genericCrest(c.id);
         return !svg

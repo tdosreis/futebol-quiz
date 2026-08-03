@@ -382,10 +382,15 @@
     }
     .tile-name .fl { display: inline-block; vertical-align: -1px; margin-right: 2px; }
     .tile-club { font-size: 8.6px; -webkit-line-clamp: 2; }
+    /* A handful of names ("Juninho Pernambucano") are long enough to overrun
+       even three lines on a 320px tile. Shrink just those rather than making
+       every caption smaller for the sake of the outliers. */
+    .tile-name-long { font-size: 6.7px; line-height: 1.06; -webkit-line-clamp: 4; }
     /* Roomier phones can afford the larger caption back */
     @media (min-width: 400px) {
       .tile-name { font-size: 8.4px; -webkit-line-clamp: 2; }
       .tile-club { font-size: 9px; }
+      .tile-name-long { font-size: 7.4px; -webkit-line-clamp: 3; }
     }
 
     /* ── The pundit's pick ── */
@@ -1351,6 +1356,9 @@ const LOGOS = {
   criciuma:     'img/5a5e8c49ba076870.png',
   americamg:    'img/385a518b92fc0556.png',
   guarani:      'img/3565e2d188f683e3.png',
+  corinthians:  'img/73bde55c15fce63d.png',
+  vasco:        'img/948a53f754af33d7.png',
+  nautico:      'img/5e19d4beeeda7be1.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -1447,6 +1455,7 @@ const CREDITS = {
   'img/558858adda0e83fa.png': { a:'Esporte Clube Bahia', l:'Public domain' },
   'img/58802c8550ef5fa7.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/5a5e8c49ba076870.png': { a:'Criciúma Esporte Clube', l:'Public domain' },
+  'img/5e19d4beeeda7be1.png': { a:'LonEMedia', l:'CC BY-SA 3.0' },
   'img/618d79848fbbec21.jpg': { a:'Carlsberg', l:'CC BY 3.0' },
   'img/666048b495ae1438.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/66a6d28f83b53839.jpg': { a:'Wilson Dias/ABr', l:'CC BY 3.0 br' },
@@ -1459,6 +1468,7 @@ const CREDITS = {
   'img/6f6803956f2610ff.png': { a:'Botafogo de Futebol e Regatas', l:'Public domain' },
   'img/7061b6cbdc57abe7.jpg': { a:'Amir Hosseini', l:'CC BY 4.0' },
   'img/733f0792d0bcb15e.jpg': { a:'The White House', l:'Public domain' },
+  'img/73bde55c15fce63d.png': { a:'50brian', l:'Public domain' },
   'img/73da24ccdc705361.jpg': { a:'Barcex', l:'CC BY-SA 4.0' },
   'img/758326660493848f.png': { a:'Міністерство молоді та спорту України', l:'CC BY 4.0' },
   'img/763f03ab1bff5adf.jpg': { a:'Reto Stauffer, www.hopp-schwiiz.ch', l:'CC BY-SA 2.0 de' },
@@ -1478,6 +1488,7 @@ const CREDITS = {
   'img/89327837f14f3c13.jpg': { a:'Doha Stadium Plus Qatar', l:'CC BY 2.0' },
   'img/9303d0cc8b834d4f.jpg': { a:'Y.Leclercq©', l:'CC BY-SA 4.0' },
   'img/9429cb23de075033.jpg': { a:'Pavel Lebeda', l:'CC BY-SA 2.0' },
+  'img/948a53f754af33d7.png': { a:'LonEMedia', l:'CC BY-SA 3.0' },
   'img/94bf9a8f11ebefd0.jpg': { a:'Emilio Ronchini (Mondadori Publishers)', l:'Public domain' },
   'img/9564d5244c34c91c.jpg': { a:'Pedro J Pacheco', l:'CC BY-SA 4.0' },
   'img/971d29633a44b706.jpg': { a:'Real Madrid', l:'CC BY 3.0' },
@@ -2615,10 +2626,21 @@ function genericCrest(id) {
    sits right underneath it, so the crest is decorative and stays silent —
    otherwise a screen reader says every name twice. In the question header
    there is no such caption, so there the crest has to carry the name. */
+/* Most crests are transparent artwork that can float on the tile. These three
+   are not: Corinthians' free file carries its own split background, and the
+   only freely-licensed Vasco and Náutico marks on Commons are the club flags,
+   which are solid rectangles. Dropped in raw they read as stray white boxes
+   among the shields, so they get framed as deliberate emblem plaques. */
+const FLAT_LOGOS = new Set(['corinthians', 'vasco', 'nautico']);
+
 function clubArt(id, style, label) {
   const name = clubName(id);
   if (LOGOS[id]) {
-    return `<img src="${LOGOS[id]}" style="${style}"
+    const flat = FLAT_LOGOS.has(id)
+      ? 'border-radius:6px;border:1px solid rgba(255,255,255,.22);' +
+        'box-shadow:0 2px 8px rgba(0,0,0,.55);background:#fff;'
+      : '';
+    return `<img src="${LOGOS[id]}" style="${style}${flat}"
       onerror="clubFallback(this,'${id}')"
       ${label ? `alt="${name}"` : 'alt="" aria-hidden="true"'} />`;
   }
@@ -2716,7 +2738,8 @@ ${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
           style="width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none;"
           onerror="this.style.opacity='.25'" />
       </div>
-      <span class="tile-name"><span class="fl">${flagSVG(item.ctry, 7)}</span>${item.n}</span>
+      <span class="tile-name${item.n.length > 15 ? ' tile-name-long' : ''}"
+        ><span class="fl">${flagSVG(item.ctry, 7)}</span>${item.n}</span>
     </div>`;
   }
 
@@ -2729,8 +2752,10 @@ ${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
     ${letter}${voteEl}
-    ${clubArt(item.id, 'width:76%;height:76%;object-fit:contain;pointer-events:none;flex-shrink:0;')}
-    <span class="tile-name tile-club">${item.n}</span>
+    ${clubArt(item.id, (FLAT_LOGOS.has(item.id)
+        ? 'width:70%;max-height:56%;object-fit:contain;'
+        : 'width:76%;height:76%;object-fit:contain;') + 'pointer-events:none;flex-shrink:0;')}
+    <span class="tile-name tile-club${item.n.length > 15 ? ' tile-name-long' : ''}">${item.n}</span>
   </div>`;
 }
 

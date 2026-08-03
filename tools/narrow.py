@@ -79,19 +79,41 @@ PROBE = r"""
     startMilhao(); rung=16; banked=1000000; cashed=true; nCorrect=16; sc='end';
       window._newMedals=[]; go(); probe('fim - milhao');
   }catch(e){ res.push({label:'EXCEPTION',err:(e&&e.stack)||String(e)}); }
+  const payload=JSON.stringify(res);
   const el=document.createElement('div'); el.id='OUT';
-  el.textContent=JSON.stringify(res); document.body.appendChild(el);
+  el.textContent=payload; document.body.appendChild(el);
+  // postMessage rather than leaving the parent to poll contentDocument:
+  // reaching into the frame races with its document being swapped in.
+  try { parent.postMessage(payload, '*'); } catch (e) {}
 })();
 </script>
 """
 
+# Poll for the inner probe rather than waiting a fixed interval: the page has
+# 150+ images to decode and a single setTimeout races with load, which shows up
+# as one size at random reporting nothing.
 WRAP = """<body style="margin:0;background:#000">
 <iframe id=f src="_narrow_inner.html" style="width:%dpx;height:%dpx;border:0"></iframe>
 <div id=R></div>
-<script>setTimeout(function(){
-  var d=document.getElementById('f').contentDocument, o=d&&d.getElementById('OUT');
-  document.getElementById('R').textContent=o?o.textContent:'NONE';
-},7000);</script></body>"""
+<script>
+(function(){
+  var done = false;
+  function land(t){ if(!done){ done = true; document.getElementById('R').textContent = t; } }
+  window.addEventListener('message', function(e){ if (typeof e.data === 'string') land(e.data); });
+  // fallback for the case where the frame loaded before the listener attached
+  var deadline = Date.now() + 25000;
+  (function poll(){
+    if (done) return;
+    try {
+      var d = document.getElementById('f').contentDocument;
+      var o = d && d.getElementById('OUT');
+      if (o) return land(o.textContent);
+    } catch (e) {}
+    if (Date.now() > deadline) return land('NONE');
+    setTimeout(poll, 120);
+  })();
+})();
+</script></body>"""
 
 
 def run(w, h):
@@ -100,12 +122,22 @@ def run(w, h):
     src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
     io.open(inner, "w", encoding="utf-8").write(src.replace("</body>", PROBE + "</body>"))
     io.open(wrap, "w", encoding="utf-8").write(WRAP % (w, h))
+    # Chrome occasionally wedges on a headless dump; one retry rather than
+    # taking the whole suite down with it.
+    dom = ""
     try:
-        dom = subprocess.run(
-            [CHROME, "--headless", "--disable-gpu", "--window-size=1000,1000",
-             "--allow-file-access-from-files", "--virtual-time-budget=22000",
-             "--dump-dom", "file://" + wrap],
-            capture_output=True, text=True, timeout=300).stdout
+        for attempt in (1, 2):
+            try:
+                dom = subprocess.run(
+                    [CHROME, "--headless", "--disable-gpu", "--window-size=1000,1000",
+                     "--allow-file-access-from-files", "--virtual-time-budget=40000",
+                     "--dump-dom", "file://" + wrap],
+                    capture_output=True, text=True, timeout=180).stdout
+                break
+            except subprocess.TimeoutExpired:
+                if attempt == 2:
+                    print(f"   (chrome hung twice at {w}x{h})")
+                    return None
     finally:
         for f in (inner, wrap):
             if os.path.exists(f):
