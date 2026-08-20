@@ -1404,6 +1404,7 @@ const CREDITS = {
   'img/0a4e5389e07bead4.jpg': { a:'Christophe95', l:'CC BY-SA 3.0' },
   'img/0b276412bf3f5bd8.jpg': { a:'Kroon, Ron for Anefo', l:'CC BY-SA 3.0 nl' },
   'img/0d05b817ada00b01.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
+  'img/0d187854e036c104.jpg': { a:'Agência Senado from Brasilia, Brazil', l:'CC BY 2.0' },
   'img/0dc77d51638aacd6.jpg': { a:'Meghdad Madadi', l:'CC BY 4.0' },
   'img/120c643b5d10f93c.jpg': { a:'Júnior Faria/flickr (cropped by tales.ebner)', l:'CC BY-SA 2.0' },
   'img/13c70fbbcc6a2cca.jpg': { a:'Антон Зайцев', l:'CC BY-SA 3.0' },
@@ -1528,6 +1529,7 @@ const CREDITS = {
   'img/ca38a5d8fb15d1d3.jpg': { a:'Zack', l:'CC BY 4.0' },
   'img/ce2fa1c8f787f96d.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/cec165242fdd66eb.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/d024d7b6a9840505.jpg': { a:'Soccer Aid for Unicef', l:'CC BY 3.0' },
   'img/d042f2b35b5efade.jpg': { a:'David Seow', l:'CC BY-SA 4.0' },
   'img/d1eb64abf64a7ecc.jpg': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
   'img/d2c6410686305d9c.jpg': { a:'Hadi Abyar', l:'CC BY 4.0' },
@@ -1535,6 +1537,7 @@ const CREDITS = {
   'img/d609af6f47604b15.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
   'img/d984f3dc1ac2317e.png': { a:'Coritiba Foot Ball Club', l:'Public domain' },
   'img/dffa17aea5fe72c7.jpg': { a:'Marcos Corrêa/PR', l:'CC BY 2.0' },
+  'img/e24f17b1a1c19a47.jpg': { a:'Biser Todorov', l:'CC BY-SA 4.0' },
   'img/e2ec3359b334126a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/e2ed77c74290729e.jpg': { a:'BrazilianDude70', l:'CC BY-SA 4.0' },
   'img/e4338b3611dcdec3.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
@@ -2923,9 +2926,9 @@ function html() {
       </div>`;
     }).join('');
 
-    /* A handful of the oldest photos were added before the app started
-       recording where each one came from. Saying so is better than an
-       attribution list that quietly looks complete. */
+    /* Every photo currently carries a credit, so this renders nothing. It
+       stays as a guard: if a future photo lands without one, saying so beats
+       an attribution list that quietly looks complete. */
     const unsourced = PL.filter(p => p.img && !CREDITS[p.img]).map(p => p.n);
     return `
     <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
