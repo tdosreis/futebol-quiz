@@ -29,6 +29,10 @@
        still reads as special when the big numbers arrive.
     ═══════════════════════════════════════════════════════════════ */
     :root {
+      /* This app is dark end-to-end; tell the UA so native scrollbars,
+         form controls and the overscroll gutter render dark, never a
+         white flash at the edges. */
+      color-scheme: dark;
       --gold:      #FFC845;
       --gold-hi:   #FFF0B0;
       --gold-lo:   #B8860B;
