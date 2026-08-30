@@ -490,6 +490,34 @@
     /* ── Misc ── */
     button { font-family: 'Inter', system-ui, sans-serif; }
     .scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       ACCESSIBILITY
+       Keyboard / switch-access / D-pad users get a visible focus ring
+       (only on :focus-visible, so touch and mouse taps stay clean), and
+       anyone who has asked their OS for less motion gets the set held
+       still — the glows and colour changes that carry meaning survive,
+       the idle bobbing, sheen and confetti do not.
+    ═══════════════════════════════════════════════════════════════ */
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+    /* Pointer taps never need the ring; only keyboard focus does. */
+    :focus:not(:focus-visible) { outline: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+      /* Confetti and floating points are pure celebration — with motion
+         off, drop them entirely rather than leaving a frozen frame. */
+      .conf, .gain { display: none !important; }
+    }
   </style>
 </head>
 <body>
