@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-KEYSTORE="futebol-quiz-upload.keystore"
+KEYSTORE="futebol-quiz-upload-v2.keystore"
 ALIAS="futebol-quiz"
 UNSIGNED="app/build/outputs/bundle/release/app-release.aab"
 SIGNED="app-upload-v3.aab"

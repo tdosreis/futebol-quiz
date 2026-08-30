@@ -17,7 +17,7 @@
   "maskableIconUrl": "https://tdosreis.github.io/futebol-quiz/icons/icon-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
-    "path": "/Users/tiagodosreis/git/play-store/futebol-quiz/android/futebol-quiz-upload.keystore",
+    "path": "/Users/tiagodosreis/git/play-store/futebol-quiz/android/futebol-quiz-upload-v2.keystore",
     "alias": "futebol-quiz"
   },
   "appVersionName": "1.0.2",
