@@ -82,6 +82,8 @@ STATES = {
 
 def shot(name, js):
     src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    theme = os.environ.get("THEME", "")
+    if theme: src = src.replace("<html lang=\"pt-BR\">", f"<html lang=\"pt-BR\" data-theme=\"{theme}\">")
     inject = ("<script>window.addEventListener('load',function(){setTimeout(function(){"
               "try{" + js + "}catch(e){document.body.innerHTML='<pre style=\"color:red;"
               "font-size:11px\">'+(e.stack||e)+'</pre>';}},250);});</script>")
