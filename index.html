@@ -298,6 +298,10 @@
 
     /* text pockets (names only, two columns) */
     .b-text { flex-direction: row; align-items: center; justify-content: center; min-height: 44px; padding: 8px 8px 8px 20px; }
+    /* A text pocket centres its name, so on a narrow phone a long one wraps up
+       into the corner the audience figure occupies. Reserve that corner only
+       while the vote is actually on screen. */
+    .b-text.b-voted { padding-right: 30px; }
     .b-text .tile-name { -webkit-line-clamp: 3; font-size: 10.5px; min-height: 0; }
     .b-text .tile-name-long { font-size: 9.5px; }
 
@@ -501,6 +505,9 @@
       .qz-screen .board-5 { gap: 5px; }
       .qz-screen .board-2 { gap: 5px; }
       .qz-screen .b-text { min-height: 34px; padding: 4px 6px 4px 18px; }
+      /* must repeat here: same specificity as the rule above, and this block
+         comes later, so without it the reserved vote corner is undone */
+      .qz-screen .b-text.b-voted { padding-right: 30px; }
       .qz-screen .b-text .tile-name { font-size: 10px; }
       .qz-screen .ajudas { gap: 4px; }
       .qz-screen .foot { gap: 5px; }
@@ -511,6 +518,49 @@
       .qz-screen .ajuda span { display: none; }
       .qz-screen .ajuda { min-width: 34px; }
     }
+
+    /* ── The back of a sticker, shown on the reveal ── */
+    .ficha { display: flex; align-items: center; gap: 11px; text-align: left; position: relative;
+      background: var(--pocket); border: 1px solid var(--rule-2); border-radius: 10px;
+      padding: 8px 10px; margin: 8px auto 0; max-width: 420px; }
+    .ficha-new { border-color: var(--brass); background: var(--brass-soft); }
+    .ficha-art { width: 44px; height: 46px; border-radius: 6px; flex-shrink: 0; }
+    .ficha-crest { display: flex; align-items: center; justify-content: center; }
+    .ficha-crest img, .ficha-crest svg, .ficha-crest .roundel { width: 100%; height: 100%; object-fit: contain; }
+    .ficha-txt { min-width: 0; flex: 1; }
+    .ficha-n { font-size: 12.5px; font-weight: 800; line-height: 1.2; }
+    .ficha-n em { font-style: italic; font-weight: 600; color: var(--ink-3); }
+    .ficha-l { font-size: 10px; color: var(--ink-3); line-height: 1.4; margin-top: 1px; }
+    .ficha-h { font-size: 10px; color: var(--brass); font-weight: 700; line-height: 1.4; margin-top: 2px; }
+    .ficha-tag { position: absolute; top: -7px; right: 8px; background: var(--brass); color: var(--on-brass);
+      font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      padding: 2px 6px; border-radius: 7px; display: flex; align-items: center; gap: 3px; }
+
+    /* ── The album pages ── */
+    .alb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .alb-bar { height: 5px; background: var(--rule-2); border-radius: 3px; overflow: hidden; }
+    .alb-bar > i { display: block; height: 100%; background: var(--brass); border-radius: 3px; }
+    .alb-sec { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 800;
+      color: var(--ink-3); display: flex; align-items: center; gap: 7px; margin: 12px 0 6px; }
+    .alb-sec::after { content: ''; flex: 1; height: 1px; background: var(--rule-2); }
+    .alb-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    @media (min-width: 460px) { .alb-grid { grid-template-columns: repeat(6, 1fr); } }
+    .alb-slot { position: relative; background: var(--pocket); border-radius: 8px; padding: 3px 3px 4px;
+      box-shadow: inset 0 0 0 1px var(--rule-2); }
+    .alb-slot .print { border-radius: 5px; aspect-ratio: 1 / .95; }
+    .alb-slot .nm { font-size: 7px; font-weight: 700; text-align: center; line-height: 1.1; margin-top: 3px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      overflow-wrap: anywhere; min-height: 15px; }
+    @media (min-width: 400px) { .alb-slot .nm { font-size: 7.8px; } }
+    /* an empty pocket: the figurinha you have not collected yet */
+    .alb-slot.empty { background: transparent; box-shadow: none; border: 1.5px dashed var(--rule); }
+    .alb-slot.empty .ph { aspect-ratio: 1 / .95; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-style: italic; color: var(--rule); font-size: 15px; }
+    .alb-slot.empty .nm { color: var(--ink-4); font-weight: 600; }
+    .alb-n { position: absolute; top: -1px; left: -1px; z-index: 4; background: var(--ink); color: var(--stock);
+      font-size: 7px; font-weight: 800; padding: 1px 4px; border-radius: 7px 2px 6px 2px;
+      font-variant-numeric: tabular-nums; }
+    .alb-slot.empty .alb-n { background: var(--rule-2); color: var(--ink-3); }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -586,62 +636,110 @@ function setMuted(v) {
   try { localStorage.setItem('fqbr_muted', String(v)); } catch (e) {}
 }
 
-function beep(freq, dur, type='sine', vol=0.18, freqEnd=null) {
+/* ── The album's voice ──────────────────────────────────────
+   The old set was a TV studio: sawtooth buzzers, a brass fanfare, a
+   game-show sting. Against paper that reads as somebody else's app. So
+   the palette is wood, paper and a soft mallet instead: filtered noise
+   for anything physical (a sticker pressed, a page turned, the snip of
+   the scissors) and warm triangle tones, quietly, for anything musical.
+   Every cue keeps its old name so the callers do not change. */
+
+/* One tone, with a real attack so it never clicks at the edges. */
+function tone(freq, dur, opt) {
   if (muted) return;
+  opt = opt || {};
   try {
-    const ac = AC();
-    const osc = ac.createOscillator();
-    const g   = ac.createGain();
+    const ac = AC(), t0 = ac.currentTime + (opt.delay || 0);
+    const osc = ac.createOscillator(), g = ac.createGain();
+    osc.type = opt.type || 'triangle';
+    osc.frequency.setValueAtTime(freq, t0);
+    if (opt.to) osc.frequency.exponentialRampToValueAtTime(Math.max(20, opt.to), t0 + dur);
+    const vol = opt.vol === undefined ? 0.12 : opt.vol;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + Math.min(0.02, dur * 0.3));
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
     osc.connect(g); g.connect(ac.destination);
-    osc.type = type;
-    osc.frequency.setValueAtTime(freq, ac.currentTime);
-    if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, ac.currentTime + dur);
-    g.gain.setValueAtTime(vol, ac.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
-    osc.start(ac.currentTime);
-    osc.stop(ac.currentTime + dur);
-  } catch(e) {}
+    osc.start(t0); osc.stop(t0 + dur + 0.02);
+  } catch (e) {}
+}
+
+/* A burst of filtered noise — paper, wood, a crowd, a pair of scissors. */
+function noise(dur, opt) {
+  if (muted) return;
+  opt = opt || {};
+  try {
+    const ac = AC(), t0 = ac.currentTime + (opt.delay || 0);
+    const n = Math.max(1, Math.floor(ac.sampleRate * dur));
+    const buf = ac.createBuffer(1, n, ac.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+    const src = ac.createBufferSource(); src.buffer = buf;
+    const f = ac.createBiquadFilter();
+    f.type = opt.type || 'bandpass';
+    f.frequency.setValueAtTime(opt.freq || 1800, t0);
+    if (opt.to) f.frequency.exponentialRampToValueAtTime(Math.max(60, opt.to), t0 + dur);
+    f.Q.value = opt.q === undefined ? 1.2 : opt.q;
+    const g = ac.createGain();
+    const vol = opt.vol === undefined ? 0.09 : opt.vol;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + Math.min(0.012, dur * 0.25));
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(f); f.connect(g); g.connect(ac.destination);
+    src.start(t0); src.stop(t0 + dur + 0.02);
+  } catch (e) {}
+}
+
+/* kept: a few callers still want a plain tone */
+function beep(freq, dur, type, vol, freqEnd) {
+  tone(freq, dur, { type: type || 'sine', vol: vol === undefined ? 0.12 : vol, to: freqEnd });
 }
 
 const snd = {
-  tap()     { beep(520, .055, 'sine',     .12, 380); },
-  correct() {
-    [[523,.22],[659,.22],[784,.3]].forEach(([f,d],i) =>
-      setTimeout(() => beep(f, d, 'triangle', .2), i*90));
-  },
-  almost()  { beep(440, .18, 'sine', .15); },
-  wrong()   { beep(200, .32, 'sawtooth', .14, 90); },
-  select()  { beep(660, .07, 'sine', .1, 600); },
-  swipe()   { beep(300, .12, 'sine', .08, 500); },
+  /* ── paper ── */
+  tap()    { noise(.03, { freq: 1500, q: .9, vol: .055 }); },
+  select() { noise(.035, { freq: 2100, q: 1.1, vol: .06 }); },
+  swipe()  { noise(.19, { type: 'highpass', freq: 500, to: 3400, q: .5, vol: .045 }); },
 
-  /* ── studio cues ── */
-  /* the dramatic thud when an answer is locked in */
-  lock()    { beep(110, .34, 'square', .13, 62); beep(220, .16, 'triangle', .1, 150); },
-  /* the pulse under the silence while the host lets it hang */
-  heartbeat() { beep(72, .13, 'sine', .17, 50); },
-  /* the money ladder lighting up another rung */
-  rung()    {
-    [[660,.1],[880,.1],[1175,.2]].forEach(([f,d],i) =>
-      setTimeout(() => beep(f, d, 'square', .1), i*70));
+  /* ── the answer ── */
+  correct() {
+    noise(.035, { freq: 1700, q: 1, vol: .05 });               // the sticker going down
+    tone(523.25, .16, { vol: .1,  delay: .02 });
+    tone(783.99, .30, { vol: .09, delay: .12 });
   },
-  /* R$ 1.000.000 */
-  fanfare() {
-    [[523,.16],[659,.16],[784,.16],[1047,.16],[1319,.5]].forEach(([f,d],i) =>
-      setTimeout(() => { beep(f, d, 'triangle', .2); beep(f/2, d, 'sine', .12); }, i*110));
+  almost() { tone(440, .2, { vol: .09 }); noise(.03, { freq: 1400, vol: .04 }); },
+  wrong()  {                                                    // a soft wooden knock
+    tone(150, .26, { type: 'sine', vol: .11, to: 92 });
+    noise(.11, { type: 'lowpass', freq: 420, q: .7, vol: .07, delay: .01 });
   },
-  /* walking away with the money */
-  cash()    {
-    [[784,.12],[988,.12],[1319,.28]].forEach(([f,d],i) =>
-      setTimeout(() => beep(f, d, 'sine', .16), i*80));
+
+  /* ── the moment ── */
+  lock()      { noise(.07, { type: 'lowpass', freq: 700, q: .6, vol: .08 });
+                tone(196, .17, { type: 'sine', vol: .08 }); },
+  heartbeat() { tone(78, .12, { type: 'sine', vol: .09, to: 58 }); },
+
+  /* ── the ladder ── */
+  rung() {                                                      // a page turning, then two rungs
+    noise(.17, { type: 'highpass', freq: 600, to: 3000, q: .5, vol: .05 });
+    tone(659.25, .13, { vol: .085, delay: .06 });
+    tone(987.77, .22, { vol: .08,  delay: .15 });
   },
-  /* falling back down the ladder */
-  drop()    {
-    beep(320, .9, 'sawtooth', .16, 55);
-    setTimeout(() => beep(160, .7, 'square', .1, 40), 120);
+  fanfare() {                                                   // warm, not brassy
+    [523.25, 659.25, 783.99, 1046.5].forEach((f, i) =>
+      { tone(f, .5, { vol: .1, delay: i * .1 }); tone(f / 2, .5, { type: 'sine', vol: .05, delay: i * .1 }); });
+    noise(.5, { type: 'highpass', freq: 900, to: 4000, q: .4, vol: .035, delay: .1 });
   },
-  cut()     { beep(1400, .06, 'square', .1, 400); setTimeout(() => beep(900, .07, 'square', .08, 260), 70); },
-  crowd()   { beep(140, .55, 'sawtooth', .05, 260); beep(300, .5, 'triangle', .04, 520); },
-  freeze()  { [1568,1319,1047].forEach((f,i) => setTimeout(() => beep(f, .16, 'sine', .09), i*60)); },
+  cash() { [783.99, 1046.5].forEach((f, i) => tone(f, .26, { vol: .09, delay: i * .09 })); },
+  drop() {                                                      // falling back down the page
+    tone(300, .55, { type: 'sine', vol: .1, to: 70 });
+    noise(.4, { type: 'lowpass', freq: 900, to: 180, q: .6, vol: .05 });
+  },
+
+  /* ── the cards ── */
+  cut()    { noise(.035, { freq: 3600, q: 3, vol: .07 });        // two snips of the scissors
+             noise(.045, { freq: 2900, q: 3, vol: .06, delay: .07 }); },
+  crowd()  { noise(.62, { freq: 700, to: 1500, q: .35, vol: .055 });
+             noise(.62, { type: 'lowpass', freq: 300, q: .5, vol: .03 }); },
+  freeze() { [1568, 1244.5, 1046.5].forEach((f, i) => tone(f, .2, { vol: .06, delay: i * .055 })); },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -1966,6 +2064,18 @@ function qTier(q) {
   return 2;
 }
 
+/* The question's *shape* — its opening words with the variable parts
+   stripped out. Two questions share a shape when they would feel like the
+   same question asked twice, even though their text differs. */
+function qShape(q) {
+  return String(q.t || '')
+    .replace(/\d+/g, '#')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 34)
+    .toLowerCase();
+}
+
 function buildGame(key) {
   const cfg = DIFFS.find(d => d.key === key) || DIFFS[0];
   let all = CATS.flatMap(c => c.qs.map(q => ({ ...q, _cat: c })));
@@ -1976,15 +2086,35 @@ function buildGame(key) {
   const scored = shuf(all).map(q => ({ q, w: -Math.abs(q._d - cfg.tier) * 10 + rnd() * 4 }));
   scored.sort((a, b) => b.w - a.w);
 
-  // generators can emit the same wording twice (e.g. two "who was a goalkeeper?"),
-  // so de-duplicate by question text before filling the round
-  const seen = new Set();
+  /* Fill the round greedily, but charge a price for repetition: the same
+     category twice in a row, or a fourth "qual destes clubes foi fundado…",
+     makes a round feel like a worksheet even when every question is fair.
+     De-duplication by exact text is not enough — it is the *shape* that
+     repeats, so questions are also bucketed by their opening words. */
+  const seen  = new Set();
+  const byCat = {};
+  const byShape = {};
   const qs = [];
-  for (const o of scored) {
-    if (seen.has(o.q.t)) continue;
-    seen.add(o.q.t);
-    qs.push(o.q);
-    if (qs.length >= cfg.n) break;
+  while (qs.length < cfg.n) {
+    let best = null, bestI = -1, bestW = -1e9;
+    for (let i = 0; i < scored.length; i++) {
+      const o = scored[i];
+      if (!o || seen.has(o.q.t)) continue;
+      const cid   = (o.q._cat && o.q._cat.id) || '?';
+      const shape = qShape(o.q);
+      const w = o.w
+              - (byCat[cid] || 0) * 6
+              - (byShape[shape] || 0) * 14
+              - (qs.length && ((qs[qs.length - 1]._cat || {}).id === cid) ? 9 : 0);
+      if (w > bestW) { bestW = w; best = o; bestI = i; }
+    }
+    if (!best) break;
+    scored[bestI] = null;
+    seen.add(best.q.t);
+    const cid = (best.q._cat && best.q._cat.id) || '?';
+    byCat[cid] = (byCat[cid] || 0) + 1;
+    byShape[qShape(best.q)] = (byShape[qShape(best.q)] || 0) + 1;
+    qs.push(best.q);
   }
 
   return {
@@ -2448,12 +2578,25 @@ const LS = {
   set(k, v) { try { localStorage.setItem('fqbr_' + k, JSON.stringify(v)); } catch (e) {} },
 };
 let scores     = LS.get('scores', {});      // best points per difficulty
+/* ── The album proper ───────────────────────────────────────
+   Answer a player correctly and his figurinha is stuck into your album
+   for good. This is the one piece of progress that survives every run
+   and never goes down, so it is stored as a plain list of ids. */
+let album      = new Set(LS.get('album', []));
+function collect(ids) {
+  const fresh = ids.filter(id => !album.has(id) && PL.some(p => p.id === id));
+  fresh.forEach(id => album.add(id));
+  if (fresh.length) LS.set('album', [...album]);
+  return fresh;
+}
+const albumPct = () => Math.round(album.size / Math.max(1, PL.length) * 100);
 let stats      = LS.get('stats', { games:0, correct:0, answered:0, bestStreak:0 });
 let nCorrect   = 0;   // perfect answers this run
 let nPartial   = 0;
 let bestStreak = 0;
 let lastGain   = 0;
 let runLog     = [];  // per-question 3/1/0, for the share card
+let runNew     = 0;   // figurinhas collected this run
 
 /* points for one answer, with speed + combo + difficulty multipliers */
 function scoreAnswer(base) {
@@ -2532,7 +2675,7 @@ function startDaily() {
   cat.qs = cat.qs.slice(0, 10);
   cat.name = 'Desafio Diário';
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -2703,6 +2846,55 @@ function useSkip() {
 
 
 /* ═══════════════════════════════════════════════════
+   THE BACK OF THE STICKER
+
+   A Panini figurinha has the player's details printed on the reverse.
+   So does this one: when the answer is revealed, the card turns over
+   and says who he was. Built from the data we already hold, so it is
+   right by construction and there is no prose to keep in sync.
+═══════════════════════════════════════════════════ */
+function playerFacts(p) {
+  const out = [];
+  out.push(`${POS_NAME[p.pos]} · ${CTRY_NAME[p.ctry] || p.ctry}`);
+  if (p.era) out.push(`${p.era[0]}–${p.era[1]}`);
+  const honours = [];
+  if (p.wc && p.wc.length) honours.push(p.wc.length === 1 ? `Copa de ${p.wc[0]}`
+    : `${p.wc.length} Copas (${p.wc.join(', ')})`);
+  if (p.bo) honours.push(p.bo === 1 ? 'Bola de Ouro' : `${p.bo} Bolas de Ouro`);
+  /* "Ronaldo Fenômeno" already says Fenômeno — only print the nickname
+     when it is not sitting in the name already. */
+  const nick = p.nick && !p.n.toLowerCase().includes(p.nick.toLowerCase()) ? p.nick : null;
+  return { line: out.join(' · '), honours,
+           clubs: (p.clubs || []).slice(0, 5).map(clubName).join(' · '), nick };
+}
+
+function clubFacts(c) {
+  const t = [];
+  if (c.lib) t.push(c.lib === 1 ? '1 Libertadores' : `${c.lib} Libertadores`);
+  if (c.br)  t.push(c.br === 1 ? '1 Brasileirão' : `${c.br} Brasileirões`);
+  return { line: `Fundado em ${c.f} · ${c.s}`, honours: t, clubs: '', nick: c.a };
+}
+
+/* The card, turned over. `isNew` puts the brass edge on a figurinha the
+   player has just collected — the small reward for getting it right. */
+function stickerBack(item, isPlayer, isNew) {
+  const f = isPlayer ? playerFacts(item) : clubFacts(item);
+  return `
+  <div class="ficha${isNew ? ' ficha-new' : ''}">
+    ${isPlayer
+      ? `<div class="ficha-art print"><img src="${item.img}" alt="" aria-hidden="true" /></div>`
+      : `<div class="ficha-art ficha-crest">${clubArt(item.id, '', false)}</div>`}
+    <div class="ficha-txt">
+      <div class="ficha-n">${item.n}${f.nick ? ` <em>“${f.nick}”</em>` : ''}</div>
+      <div class="ficha-l">${f.line}</div>
+      ${f.clubs ? `<div class="ficha-l">${f.clubs}</div>` : ''}
+      ${f.honours.length ? `<div class="ficha-h">${f.honours.join(' · ')}</div>` : ''}
+    </div>
+    ${isNew ? `<span class="ficha-tag">${ICON.check('currentColor', 10)} nova</span>` : ''}
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
    MEDALS — long-run progression
 ═══════════════════════════════════════════════════ */
 const MEDALS = [
@@ -2722,6 +2914,13 @@ const MEDALS = [
     t: st => (st.correct || 0) >= 100 },
   { id:'c500',   ic:'book', n:'Enciclopédia',   d:'500 acertos no total',
     t: st => (st.correct || 0) >= 500 },
+  /* ── the album ── */
+  { id:'alb25',  ic:'shirt', n:'Começou a colar', d:'Colecione 25 figurinhas',
+    t: () => album.size >= 25 },
+  { id:'alb60',  ic:'book',  n:'Meio álbum',      d:'Colecione 60 figurinhas',
+    t: () => album.size >= 60 },
+  { id:'albAll', ic:'crown', n:'Álbum completo',  d:'Colecione todas as figurinhas',
+    t: () => album.size >= PL.length },
   { id:'daily3', ic:'calendar', n:'Rotina',         d:'3 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 3 },
   { id:'daily7', ic:'calendar', n:'Semana cheia',   d:'7 desafios diários seguidos',
@@ -2763,7 +2962,7 @@ function startSurvival() {
   const extra = buildGame('dificil');
   cat.qs = cat.qs.concat(extra.qs);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -2838,15 +3037,27 @@ function buildMilhao() {
   const pool = shuf(all).filter(q => { if (seen.has(q.t)) return false; seen.add(q.t); return true; });
 
   const used = new Set();
+  const byCat = {}, byShape = {};
+  let prevCat = null;
   const qs = LADDER.map(step => {
     let best = null, bestW = -1e9;
     for (let i = 0; i < pool.length; i++) {
       if (used.has(i)) continue;
-      const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3;
+      const cid = (pool[i]._cat && pool[i]._cat.id) || '?';
+      const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3
+              - (byCat[cid] || 0) * 5
+              - (byShape[qShape(pool[i])] || 0) * 12
+              - (cid === prevCat ? 8 : 0);
       if (w > bestW) { bestW = w; best = i; }
     }
+    if (best === null) return null;
     used.add(best);
-    return pool[best];
+    const q = pool[best];
+    const cid = (q._cat && q._cat.id) || '?';
+    byCat[cid] = (byCat[cid] || 0) + 1;
+    byShape[qShape(q)] = (byShape[qShape(q)] || 0) + 1;
+    prevCat = cid;
+    return q;
   }).filter(Boolean);
 
   return { id:'milhao', name:'Rumo ao Milhão', emoji:'💰',
@@ -2859,7 +3070,7 @@ function startMilhao() {
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -3130,6 +3341,7 @@ function badge(item, idx) {
 
   const tab = `<span class="tab">${NUM(idx)}</span>`;
   const votePct = poll && poll[item.id] !== undefined ? poll[item.id] : null;
+  if (votePct !== null) cls += ' b-voted';
   const voteEl  = votePct === null ? '' :
     `<span class="vote-pct">${votePct}%</span>
      <span class="vote"><i style="width:${votePct}%;animation-delay:${(idx || 0) * 45}ms;"></i></span>`;
@@ -3246,6 +3458,15 @@ function html() {
         </div>`;
       })()}
 
+      <button id="balb" class="mode" style="width:100%;max-width:340px;flex-direction:row;gap:10px;text-align:left;">
+        ${ICON.book('var(--brass)', 17)}
+        <span style="flex:1;min-width:0;">
+          <span class="mt" style="display:block;">Meu álbum</span>
+          <span class="ms" style="display:block;">${album.size} de ${PL.length} figurinhas · ${albumPct()}%</span>
+        </span>
+        <span class="alb-bar" style="width:64px;flex-shrink:0;"><i style="width:${albumPct()}%"></i></span>
+      </button>
+
       <div class="home-foot">
         <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
           muted ? ICON.mute('currentColor', 14) : ICON.sound('currentColor', 14)}</button>
@@ -3257,6 +3478,41 @@ function html() {
         ${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
         · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
         ${stats.bestStreak >= 3 ? `· ${ICON.flame('var(--brass)', 11)} ${stats.bestStreak}` : ''}</div>` : ''}
+    </div>`;
+  }
+
+  /* ── O ÁLBUM: every figurinha, collected or still missing ────
+     The album is the one thing that only ever grows. Answer a player
+     correctly and he is stuck in here for good; the empty pockets are
+     the reason to keep playing. */
+  if (sc === 'album') {
+    const groups = {};
+    PL.forEach((p, i) => { (groups[p.ctry] = groups[p.ctry] || []).push({ p, n: i + 1 }); });
+    const order = Object.keys(groups).sort((a, b) =>
+      a === 'BRA' ? -1 : b === 'BRA' ? 1 : groups[b].length - groups[a].length || a.localeCompare(b));
+
+    return `
+    <div class="pg" style="gap:8px;">
+      ${topbar('Meu álbum')}
+      <div class="alb-head">
+        <div class="display" style="font-size:26px;">${album.size}<span class="muted" style="font-size:16px;"> / ${PL.length}</span></div>
+        <div class="small muted">${albumPct()}% colado</div>
+      </div>
+      <div class="alb-bar"><i style="width:${albumPct()}%"></i></div>
+      <div class="scroll-y" style="flex:1;margin-top:2px;">
+        ${order.map(ctry => `
+          <div class="alb-sec">${flagSVG(ctry, 9)} ${CTRY_NAME[ctry] || ctry}
+            <span style="color:var(--ink-4);font-weight:700;">${groups[ctry].filter(g => album.has(g.p.id)).length}/${groups[ctry].length}</span></div>
+          <div class="alb-grid">
+            ${groups[ctry].map(({ p, n }) => album.has(p.id)
+              ? `<div class="alb-slot"><span class="alb-n">${String(n).padStart(3, '0')}</span>
+                   <div class="print"><img src="${p.img}" alt="${p.n}" /></div>
+                   <div class="nm">${p.n}</div></div>`
+              : `<div class="alb-slot empty"><span class="alb-n">${String(n).padStart(3, '0')}</span>
+                   <div class="ph" aria-hidden="true">?</div>
+                   <div class="nm">a colar</div></div>`).join('')}
+          </div>`).join('')}
+      </div>
     </div>`;
   }
 
@@ -3381,6 +3637,8 @@ function html() {
         <div><div class="v num brass">${money(Math.max(milBest(), banked))}</div><div class="k">Recorde</div></div>
       </div>
 
+      ${runNew ? `<span class="chip chip-brass">${ICON.book('currentColor', 11)} ${
+        runNew === 1 ? '1 figurinha nova' : runNew + ' figurinhas novas'}</span>` : ''}
       ${medalChips()}
 
       <div class="foot-row" style="margin-top:12px;">
@@ -3411,6 +3669,8 @@ function html() {
       <div class="bar"><i style="width:${pct}%;"></i></div>
       ${isRecord ? `<span class="chip chip-brass">${ICON.star('currentColor', 11)} Novo recorde</span>` : ''}
       ${medalChips()}
+      ${runNew ? `<span class="chip chip-brass">${ICON.book('currentColor', 11)} ${
+        runNew === 1 ? '1 figurinha nova' : runNew + ' figurinhas novas'}</span>` : ''}
       <div style="margin-top:6px;">${runlogEl()}</div>
       <div class="foot-row" style="margin-top:12px;">
         <button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>
@@ -3640,6 +3900,7 @@ function go() {
   on('surv-btn',    () => { snd.select(); startSurvival(); });
   on('bcred',       () => { snd.swipe();  sc = 'credits'; go(); });
   on('bmed',        () => { snd.swipe();  sc = 'medals';  go(); });
+  on('balb',        () => { snd.swipe();  sc = 'album';   go(); });
   on('medal-strip', () => { snd.swipe();  sc = 'medals';  go(); });
   on('bmute',       () => { setMuted(!muted); snd.tap(); go(); });
 
@@ -3700,7 +3961,7 @@ function startGame() {
   isDaily = false; isSurv = false; isMil = false; _seed = null;
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNew = 0;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -3768,6 +4029,10 @@ function doReveal() {
   if (p === 3) streak++; else streak = 0;
   bestStreak = Math.max(bestStreak, streak);
 
+  /* Getting it right sticks the figurinha in the album for good. */
+  const gotNew = (p === 3 && q.type === 'player') ? collect(q.a) : [];
+  runNew += gotNew.length;
+
   const { gained, mult, speed } = scoreAnswer(p);
   pts += gained;
   lastGain = gained;
@@ -3798,22 +4063,31 @@ function doReveal() {
     return hit ? hit.n : id;
   }).join(', ');
 
+  /* Turn the answer over: one card when there is a single answer, and
+     nothing at all on multi-answer questions, where five cards would
+     bury the board. */
+  const isPl  = q.type === 'player';
+  const backs = q.a.length === 1
+    ? (() => { const it = (isPl ? PL : CL).find(x => x.id === q.a[0]);
+               return it ? stickerBack(it, isPl, gotNew.includes(it.id)) : ''; })()
+    : '';
+
   if (isMil) {
     /* On the ladder there is no half credit: you either climb or you fall. */
     lastMsg = p === 3
       ? `<span class="display good" style="font-size:18px;">${ICON.check('currentColor', 14)} ${
           isFinal() ? 'É o milhão!' : 'Colada! ' + money(RUNG().v)}</span>`
-        + (isFinal() ? '' : `<div class="small muted" style="margin-top:3px;">Próximo degrau: ${money(LADDER[rung + 1].v)}</div>`)
+        + (isFinal() ? '' : `<div class="small muted" style="margin-top:3px;">Próximo degrau: ${money(LADDER[rung + 1].v)}</div>`) + backs
       : `<span class="display bad" style="font-size:18px;">${ICON.cross('currentColor', 14)} Essa não era…</span>
          <div class="small muted" style="margin-top:3px;">Era <b class="good">${rightNames}</b>
-          · você leva ${money(safetyNet())}</div>`;
+          · você leva ${money(safetyNet())}</div>` + backs;
   } else {
-    lastMsg = p === 3
+    lastMsg = (p === 3
       ? `<span class="display good" style="font-size:17px;">${ICON.check('currentColor', 13)} Colada! +${gained}</span>${bonuses}`
       : p === 1
       ? `<span class="display brass" style="font-size:17px;">Quase! +${gained}</span>${bonuses}`
       : `<span class="display bad" style="font-size:17px;">${ICON.cross('currentColor', 13)} Errou!</span>
-         <div class="small muted" style="margin-top:3px;">Resposta: <b class="good">${rightNames}</b></div>`;
+         <div class="small muted" style="margin-top:3px;">Resposta: <b class="good">${rightNames}</b></div>`) + backs;
   }
 
   go();
