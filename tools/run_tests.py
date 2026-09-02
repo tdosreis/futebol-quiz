@@ -37,12 +37,17 @@ TESTS = r"""
       let allOk = true, sizeOk = true, dupOk = true;
       g.qs.forEach(q => {
         const d = getDisp(q);
-        if (d.length !== 10) sizeOk = false;
+        /* A question with a `fixed` set shows exactly that set — the head-to-head
+           "quem teve a carreira mais longa?" is deliberately two tiles, which is
+           why the board has a wide layout and Cortar refuses to spend itself on
+           it. Everything else fills the ten. */
+        const want = q.fixed ? q.fixed.length : 10;
+        if (d.length !== want) sizeOk = false;
         const s = new Set(d.map(x=>x.id));
         if (s.size !== d.length) dupOk = false;
         if (!q.a.every(a => s.has(a))) allOk = false;
       });
-      ok(`[${k}] every option set has 10 tiles`, sizeOk);
+      ok(`[${k}] every option set is the size it should be`, sizeOk);
       ok(`[${k}] no duplicate tiles`, dupOk);
       ok(`[${k}] correct answers always present`, allOk);
     });
@@ -65,9 +70,18 @@ TESTS = r"""
       }
       return n ? tot / n : 0;
     }
-    const easy = avgSim('facil', 6), hard = avgSim('dificil', 6), mod = avgSim('moderado', 6);
-    ok('hard distractors more plausible than easy', hard > easy * 1.5,
-       `easy=${easy.toFixed(1)} mod=${mod.toFixed(1)} hard=${hard.toFixed(1)}`);
+    /* Six rounds each was too few: the easy figure swung by five points run to
+       run, so this assertion failed on noise rather than on a change. */
+    const easy = avgSim('facil', 16), hard = avgSim('dificil', 16), mod = avgSim('moderado', 16);
+    /* This used to demand 1.5x, from when fácil drew its wrong answers at
+       random. It no longer does: the clue quota runs at every level, because a
+       question that names a nationality and then shows one player of it is
+       unfair rather than easy, and that puts a floor under fácil's similarity
+       (~20 -> ~29). Hard is still half again as plausible, which is what the
+       assertion is actually for; 1.35 leaves room for sampling spread without
+       letting a real collapse through. */
+    ok('hard distractors more plausible than easy', hard > easy * 1.35,
+       `easy=${easy.toFixed(1)} mod=${mod.toFixed(1)} hard=${hard.toFixed(1)} ratio=${(hard/easy).toFixed(2)}`);
     ok('moderate sits between easy and hard', mod > easy && mod < hard,
        `easy=${easy.toFixed(1)} mod=${mod.toFixed(1)} hard=${hard.toFixed(1)}`);
 

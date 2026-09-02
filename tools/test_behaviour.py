@@ -308,17 +308,29 @@ TESTS = r"""
       ok('every crest sits in the standard disc',
          CL.every(c => clubArt(c.id,'').indexOf('crest-disc') !== -1),
          CL.filter(c => clubArt(c.id,'').indexOf('crest-disc') === -1).map(c=>c.id).join(',') || 'all discs');
-      ok('artwork with its own background fills the disc',
-         [...FLAT_LOGOS].every(id => /class="fill"|class="[^"]*\bfill\b/.test(clubArt(id,''))));
+      // a club whose only free artwork is a flag gets it cut to the same
+      // shield outline, so the row is one family of shapes
+      ok('flag artwork is cut to the shield',
+         [...FLAT_LOGOS].every(id => clubArt(id,'').indexOf('clipped') !== -1),
+         [...FLAT_LOGOS].filter(id => clubArt(id,'').indexOf('clipped') === -1).join(',') || 'all clipped');
+      ok('clubs with no free artwork keep the drawn badge',
+         CL.filter(c => !LOGOS[c.id]).every(c => clubArt(c.id,'').indexOf('<svg') !== -1));
+      /* The badge used to be a chrome ring with a glossy dome, which was the
+         loudest object on a board of flat printed crests. It is now cut to the
+         same shield as everything else, so what it must carry is the shield,
+         the monogram and the year — not shading. */
       const thin = drawn.filter(c => {
         const svg = genericCrest(c.id);
         return !svg
-            || svg.indexOf(c.a) === -1                      // monogram
-            || (c.f && svg.indexOf(String(c.f)) === -1)     // founding year
-            || svg.indexOf('linearGradient') === -1;        // shaded, not flat
+            || svg.indexOf(c.a) === -1                       // monogram
+            || (c.f && svg.indexOf(String(c.f)) === -1)      // founding year
+            || svg.indexOf('clipPath') === -1;               // cut to the shield
       });
-      ok('each drawn badge carries its monogram, year and shading',
+      ok('each drawn badge carries its monogram, year and shield',
          thin.length === 0, thin.map(c=>c.id).join(',') || 'all complete');
+      ok('the drawn badge is flat, like the printed crests',
+         drawn.every(c => genericCrest(c.id).indexOf('Gradient') === -1),
+         drawn.filter(c => genericCrest(c.id).indexOf('Gradient') !== -1).map(c=>c.id).join(',') || 'all flat');
       // and the kit pattern must actually differ between clubs, or Sport and
       // Náutico both come out as red-and-white stripes
       const shapes = new Set(drawn.map(c => genericCrest(c.id).replace(/[\d.]/g,'')));
