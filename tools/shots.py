@@ -64,6 +64,20 @@ STATES = {
  "s-home2b": """album=new Set(PL.slice(0,52).map(p=>p.id)); LS.set('album',[...album]);
    stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:9};
    LS.set('stats',stats); sc='home'; go();""",
+ "s-newcrests": """diffKey='facil'; cat=buildGame('facil');
+   const ids=['goias','atleticogo','avai','crb','sampaio','botafogosp','santacruz','portuguesa','remo','chapecoense'];
+   const fq={ t:'Escudos novos: Goiás, Atlético GO, Avaí, CRB, Sampaio, Botafogo-SP, Santa Cruz, Portuguesa, Remo, Chapecoense',
+              a:['goias'], fixed:ids };
+   cat.qs=[fq]; qi=0; sel.clear(); sc='quiz'; tMax=30; tLeft=25; disp=getDisp(fq); go();""",
+ "s-newcrests2": """diffKey='facil'; cat=buildGame('facil');
+   const ids=['cuiaba','csa','abc','juventude','figueirense','paysandu','mirassol','sport','bragantino','nautico'];
+   const fq={ t:'Cuiabá, CSA, ABC, Juventude, Figueirense, Paysandu, Mirassol, Sport, Bragantino, Náutico',
+              a:['cuiaba'], fixed:ids };
+   cat.qs=[fq]; qi=0; sel.clear(); sc='quiz'; tMax=30; tLeft=25; disp=getDisp(fq); go();""",
+ "s-newstad": """diffKey='facil'; cat=buildGame('facil');
+   const fq={ t:'O Morumbi é o estádio de qual clube paulista?', a:['saopaulo'], stad:'morumbi',
+              pool: CL.filter(c=>c.id!=='saopaulo').map(c=>c.id) };
+   cat.qs=[fq]; qi=0; sel.clear(); sc='quiz'; tMax=30; tLeft=22; disp=getDisp(fq); go();""",
  "s-home":       "sc='home'; go();",
  "s-difficulty": "sc='difficulty'; go();",
  "s-credits":    "sc='credits'; go();",

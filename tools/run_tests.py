@@ -88,7 +88,11 @@ TESTS = r"""
     // ---- metadata integrity at runtime ----
     ok('all players have pos', PL.every(p => ['GK','DF','MF','FW'].includes(p.pos)));
     ok('all players have era', PL.every(p => Array.isArray(p.era) && p.era[0] < p.era[1]));
-    ok('all clubs have founded year', CL.every(c => c.f > 1850 && c.f < 2000));
+    // Cuiabá EC was founded in 2001, so the old "< 2000" bound was an
+    // assumption about the squad, not a fact about football clubs.
+    ok('all clubs have founded year',
+       CL.every(c => c.f > 1850 && c.f <= new Date().getFullYear()),
+       CL.filter(c => !(c.f > 1850 && c.f <= new Date().getFullYear())).map(c=>c.id).join(',') || 'all sane');
     ok('clubName resolves all player clubs',
        PL.every(p => (p.clubs||[]).every(c => clubName(c) && clubName(c) !== c)));
 

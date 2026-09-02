@@ -771,6 +771,24 @@ const CL = [
   { id:'americamg',    n:'América MG',   a:'AME', s:'MG', c1:'#1A6B3C', c2:'#EEE' },
   { id:'guarani',      n:'Guarani',      a:'GUA', s:'SP', c1:'#1A6B3C', c2:'#EEE' },
   { id:'nautico',      n:'Náutico',      a:'NAU', s:'PE', c1:'#B80000', c2:'#EEE' },
+  /* ── segunda leva: os estados que faltavam e clubes de tradição ── */
+  { id:'goias',          n:'Goiás',           a:'GOI', s:'GO', c1:'#0A7A3C', c2:'#EEE' },
+  { id:'atleticogo',     n:'Atlético GO',     a:'ACG', s:'GO', c1:'#C00000', c2:'#111' },
+  { id:'cuiaba',         n:'Cuiabá',          a:'CUI', s:'MT', c1:'#0A6B3C', c2:'#E8B10A' },
+  { id:'juventude',      n:'Juventude',       a:'JUV', s:'RS', c1:'#0A7A3C', c2:'#EEE' },
+  { id:'chapecoense',    n:'Chapecoense',     a:'CHA', s:'SC', c1:'#0A7A3C', c2:'#EEE' },
+  { id:'avai',           n:'Avaí',            a:'AVA', s:'SC', c1:'#1B4E9B', c2:'#EEE' },
+  { id:'figueirense',    n:'Figueirense',     a:'FIG', s:'SC', c1:'#111', c2:'#EEE' },
+  { id:'paysandu',       n:'Paysandu',        a:'PAY', s:'PA', c1:'#1B4E9B', c2:'#EEE' },
+  { id:'remo',           n:'Remo',            a:'REM', s:'PA', c1:'#0B1E4B', c2:'#EEE' },
+  { id:'santacruz',      n:'Santa Cruz',      a:'STA', s:'PE', c1:'#C00000', c2:'#111' },
+  { id:'portuguesa',     n:'Portuguesa',      a:'LUS', s:'SP', c1:'#C00000', c2:'#0A7A3C' },
+  { id:'csa',            n:'CSA',             a:'CSA', s:'AL', c1:'#2B2F9B', c2:'#EEE' },
+  { id:'crb',            n:'CRB',             a:'CRB', s:'AL', c1:'#C00000', c2:'#111' },
+  { id:'abc',            n:'ABC',             a:'ABC', s:'RN', c1:'#111', c2:'#EEE' },
+  { id:'sampaio',        n:'Sampaio Corrêa',  a:'SAM', s:'MA', c1:'#C00000', c2:'#E8B10A' },
+  { id:'mirassol',       n:'Mirassol',        a:'MIR', s:'SP', c1:'#E8B10A', c2:'#0A7A3C' },
+  { id:'botafogosp',     n:'Botafogo-SP',     a:'BSP', s:'SP', c1:'#C00000', c2:'#111' },
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -799,6 +817,10 @@ const STAD = {
   arena_gre:  { name:'Arena do Grêmio',    city:'Porto Alegre',   oval:false },
   maracana:   { name:'Maracanã',           city:'Rio de Janeiro', oval:true  },
   mineirao:   { name:'Mineirão',           city:'Belo Horizonte', oval:true  },
+  morumbi:     { name:'Morumbi', city:'São Paulo', oval:false },
+  fontenova:   { name:'Arena Fonte Nova', city:'Salvador', oval:false },
+  couto:       { name:'Couto Pereira', city:'Curitiba', oval:false },
+  arruda:      { name:'Arruda', city:'Recife', oval:false },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -881,6 +903,10 @@ const CATS = [
       { t:'Qual time gaúcho joga na Arena do Grêmio?',               a:['gremio'],                  stad:'arena_gre' },
       { t:'O Maracanã é usado como mandante por quais clubes do RJ?',a:['flamengo','fluminense'],   stad:'maracana' },
       { t:'O Mineirão em BH é compartilhado por quais times?',       a:['cruzeiro','atleticomg'],   stad:'mineirao' },
+      { t:'O Morumbi é o estádio de qual clube paulista?',            a:['saopaulo'],  stad:'morumbi' },
+      { t:'A Arena Fonte Nova, em Salvador, é a casa de qual clube?', a:['bahia'],     stad:'fontenova' },
+      { t:'O Couto Pereira é o estádio de qual clube paranaense?',    a:['coritiba'],  stad:'couto' },
+      { t:'O Estádio do Arruda, em Recife, pertence a qual clube?',   a:['santacruz'], stad:'arruda' },
     ]
   },
   {
@@ -1540,6 +1566,23 @@ const CL_META = {
   vitoria:{f:1899,br:0,lib:0},    criciuma:{f:1947,br:0,lib:0},
   americamg:{f:1912,br:0,lib:0},  guarani:{f:1911,br:1,lib:0},
   nautico:{f:1901,br:0,lib:0},
+  goias:{f:1943,br:0,lib:0},
+  atleticogo:{f:1937,br:0,lib:0},
+  cuiaba:{f:2001,br:0,lib:0},
+  juventude:{f:1913,br:0,lib:0},
+  chapecoense:{f:1973,br:0,lib:0},
+  avai:{f:1923,br:0,lib:0},
+  figueirense:{f:1921,br:0,lib:0},
+  paysandu:{f:1914,br:0,lib:0},
+  remo:{f:1911,br:0,lib:0},
+  santacruz:{f:1914,br:0,lib:0},
+  portuguesa:{f:1920,br:0,lib:0},
+  csa:{f:1913,br:0,lib:0},
+  crb:{f:1912,br:0,lib:0},
+  abc:{f:1915,br:0,lib:0},
+  sampaio:{f:1923,br:0,lib:0},
+  mirassol:{f:1925,br:0,lib:0},
+  botafogosp:{f:1918,br:0,lib:0},
 };
 CL.forEach(c => Object.assign(c, CL_META[c.id] || { f:1900, br:0, lib:0 }));
 
@@ -1613,6 +1656,23 @@ const LOGOS = {
   corinthians:  'img/73bde55c15fce63d.png',
   vasco:        'img/948a53f754af33d7.png',
   nautico:      'img/5e19d4beeeda7be1.png',
+  goias:         'img/85111ae1fa5b5a12.png',
+  atleticogo:    'img/7818e6a84a5c7d6c.png',
+  cuiaba:        'img/f5bc4b8150fa5b8c.png',
+  juventude:     'img/e34b57e0740793a6.png',
+  chapecoense:   'img/f9dc035c8827dc93.png',
+  avai:          'img/5e262c90a672f57a.png',
+  figueirense:   'img/001caba4ea661db8.png',
+  paysandu:      'img/be9069fb11799f76.png',
+  remo:          'img/0246d038c4986bfd.png',
+  santacruz:     'img/eab4007591b0fcc3.png',
+  portuguesa:    'img/46d46b2dfc5184bf.png',
+  csa:           'img/e5a1d03808494f19.png',
+  crb:           'img/d4ed64e00779c976.png',
+  abc:           'img/6f4c4d9ea66eef2b.png',
+  sampaio:       'img/967c553444528675.png',
+  mirassol:      'img/b2892514e577b9ac.png',
+  botafogosp:    'img/c482668824eb5675.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -1641,6 +1701,10 @@ const STAD_IMGS = {
   arena_gre:  'img/01c9eb3147d30e5a.jpg',
   maracana:   'img/29e4bf594fcd70df.jpg',
   mineirao:   'img/c99de12758334b6d.jpg',
+  morumbi:     'img/fa3ba568751c429d.jpg',
+  fontenova:   'img/191531edb7d015c7.jpg',
+  couto:       'img/c50ad900747a1971.jpg',
+  arruda:      'img/15f878f5ef8c42f1.jpg',
 };
 
 
@@ -1811,6 +1875,27 @@ const CREDITS = {
   'img/fcd3c0654c588ded.jpg': { a:'Mehdi Bolourian', l:'CC BY 4.0' },
   'img/fdb3f78c7ce459dd.jpg': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
   'img/fe82c30b82065f32.jpg': { a:'Olga Shcherbytska', l:'CC BY-SA 4.0' },
+  'img/001caba4ea661db8.png': { a:'Figueirense Futebol Clube', l:'Public domain' },
+  'img/0246d038c4986bfd.png': { a:'Clube do Remo', l:'Public domain' },
+  'img/15f878f5ef8c42f1.jpg': { a:'Luiz79', l:'CC BY 4.0' },
+  'img/191531edb7d015c7.jpg': { a:'Matheus Pinheiro', l:'CC BY-SA 4.0' },
+  'img/46d46b2dfc5184bf.png': { a:'Associação Portuguesa de Desportos', l:'Public domain' },
+  'img/5e262c90a672f57a.png': { a:'Avaí Futebol Clube', l:'Public domain' },
+  'img/6f4c4d9ea66eef2b.png': { a:'ABC Futebol Clube', l:'Public domain' },
+  'img/7818e6a84a5c7d6c.png': { a:'Futbox', l:'Public domain' },
+  'img/85111ae1fa5b5a12.png': { a:'Goiás Esporte Clube', l:'Public domain' },
+  'img/967c553444528675.png': { a:'LonEMedia', l:'CC BY-SA 3.0' },
+  'img/b2892514e577b9ac.png': { a:'Mirassol Futebol Clube', l:'Public domain' },
+  'img/be9069fb11799f76.png': { a:'Mário Bayma', l:'Public domain' },
+  'img/c482668824eb5675.png': { a:'Botafogo Futebol Clube', l:'Public domain' },
+  'img/c50ad900747a1971.jpg': { a:'Custodiotiago1986', l:'CC BY-SA 4.0' },
+  'img/d4ed64e00779c976.png': { a:'Clube de Regatas Brasil', l:'Public domain' },
+  'img/e34b57e0740793a6.png': { a:'EC Juventude', l:'Public domain' },
+  'img/e5a1d03808494f19.png': { a:'Centro Sportivo Alagoano', l:'Public domain' },
+  'img/eab4007591b0fcc3.png': { a:'Santa Cruz Futebol Clube', l:'Public domain' },
+  'img/f5bc4b8150fa5b8c.png': { a:'Cuiabá EC', l:'Public domain' },
+  'img/f9dc035c8827dc93.png': { a:'Chapecoense', l:'Public domain' },
+  'img/fa3ba568751c429d.jpg': { a:'Arne Müseler', l:'CC BY-SA 3.0 de' },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -2280,7 +2365,11 @@ function GEN_QS(tier) {
   /* 11. Stadium → club */
   const STIDS = Object.keys(typeof STAD !== 'undefined' ? STAD : {});
   const STAD_CLUB = { allianz:'palmeiras', neoq:'corinthians', beirario:'internacional',
-    vilabelmiro:'santos', saojanua:'vasco', arena_gre:'gremio' };
+    vilabelmiro:'santos', saojanua:'vasco', arena_gre:'gremio',
+    morumbi:'saopaulo',
+    fontenova:'bahia',
+    couto:'coritiba',
+    arruda:'santacruz',  };
   pick(STIDS.filter(k => STAD_CLUB[k]), 4).forEach(k => {
     const owner = STAD_CLUB[k];
     out.push({
@@ -2296,13 +2385,23 @@ function GEN_QS(tier) {
   const byState = {};
   CL.forEach(c => { (byState[c.s] = byState[c.s] || []).push(c); });
   const ST_NAME = { RJ:'Rio de Janeiro', SP:'São Paulo', RS:'Rio Grande do Sul',
-    MG:'Minas Gerais', PR:'Paraná', BA:'Bahia', CE:'Ceará', PE:'Pernambuco', SC:'Santa Catarina' };
-  pick(Object.keys(byState).filter(st => ST_NAME[st] && byState[st].length >= 2), 4).forEach(st => {
-    const yes = rndOf(byState[st]);
+    MG:'Minas Gerais', PR:'Paraná', BA:'Bahia', CE:'Ceará', PE:'Pernambuco',
+    SC:'Santa Catarina', GO:'Goiás', MT:'Mato Grosso', PA:'Pará', AL:'Alagoas',
+    RN:'Rio Grande do Norte', MA:'Maranhão' };
+  /* Bahia is from Bahia, Ceará from Ceará, Goiás from Goiás — asking which of
+     these is from that state answers itself. Such a club stays in the pool as a
+     wrong answer elsewhere; it just cannot be the answer to its own name. */
+  const namesState = (c, st) => {
+    const a = _fold(c.n), b = _fold(ST_NAME[st] || '');
+    return !!b && (a.indexOf(b) !== -1 || b.indexOf(a) !== -1);
+  };
+  pick(Object.keys(byState).filter(st =>
+    ST_NAME[st] && byState[st].some(c => !namesState(c, st))), 5).forEach(st => {
+    const ok = byState[st].filter(c => !namesState(c, st));
     out.push({
       t: `Qual destes clubes é de ${ST_NAME[st]}?`,
-      a: [yes.id],
-      pool: CL.filter(c => c.s !== st).map(c => c.id),
+      a: [rndOf(ok).id],
+      pool: CL.filter(c => c.s !== st && !namesState(c, st)).map(c => c.id),
       _cat: GC.hist, d: 1,
     });
   });
@@ -3271,17 +3370,23 @@ function genericCrest(id) {
    which are solid rectangles. Dropped in raw they read as stray boxes among
    the shields, so they are cut as roundels — the same round badge shape,
    cropped onto the mark itself — and sit in the row like everyone else. */
-const FLAT_LOGOS = new Set(['corinthians', 'vasco', 'nautico']);
+const FLAT_LOGOS = new Set(['corinthians', 'vasco', 'nautico',
+                            'sampaio', 'botafogosp', 'crb']);
 const ROUNDEL_FOCUS = { nautico: '22% 50%', vasco: '50% 50%', corinthians: '50% 50%' };
+/* A flag fills the disc; a shield that merely arrived on an opaque background
+   is set inside it instead, or the crop would cut its point off. */
+const ROUNDEL_FIT = { botafogosp: 'contain', crb: 'contain' };
 
 function clubArt(id, style, label) {
   const name = clubName(id);
   if (LOGOS[id]) {
     if (FLAT_LOGOS.has(id)) {
+      const fit = ROUNDEL_FIT[id] || 'cover';
       return `<span class="roundel" style="${style}border-radius:50%;"
         ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}>
         <img src="${LOGOS[id]}" alt="" aria-hidden="true"
-          style="object-position:${ROUNDEL_FOCUS[id] || '50% 50%'};"
+          style="object-fit:${fit};${fit === 'contain' ? 'padding:9%;' : ''}object-position:${
+            ROUNDEL_FOCUS[id] || '50% 50%'};"
           onerror="clubFallback(this.parentElement,'${id}')" /></span>`;
     }
     return `<img src="${LOGOS[id]}" style="${style}"
