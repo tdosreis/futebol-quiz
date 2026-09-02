@@ -26,7 +26,8 @@ STATES = {
    stats={games:12,correct:74,answered:110,bestStreak:7};
    sc='end'; go();""",
 
- "s-wrong": """diffKey='moderado'; startGame();
+ "s-wrong": """advanceAfterReveal=function(){};
+   diffKey='moderado'; startGame();
    const q=cat.qs[0]; const bad=disp.find(o=>!q.a.includes(o.id));
    sel=new Set([bad.id]); tLeft=12; doReveal();""",
 
@@ -49,6 +50,20 @@ STATES = {
    cat.qs=[fq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
    sc='quiz'; tMax=30; tLeft=25; disp=getDisp(fq); go();""",
 
+ "s-album": """album=new Set(PL.slice(0,46).map(p=>p.id).concat(PL.slice(60,74).map(p=>p.id)));
+   LS.set('album',[...album]); sc='album'; go();""",
+ "s-back-hit": """advanceAfterReveal=function(){};   /* hold the reveal on screen */
+   diffKey='moderado'; startGame();
+   const q=cat.qs.find(x=>x.type==='player'&&x.a.length===1)||cat.qs[0];
+   qi=cat.qs.indexOf(q); disp=getDisp(q); sel=new Set(q.a); tLeft=14; doReveal();""",
+ "s-back-miss": """advanceAfterReveal=function(){};
+   diffKey='moderado'; startGame();
+   const q=cat.qs.find(x=>x.type==='player'&&x.a.length===1)||cat.qs[0];
+   qi=cat.qs.indexOf(q); disp=getDisp(q); album=new Set(PL.map(p=>p.id));
+   const bad=disp.find(o=>!q.a.includes(o.id)); sel=new Set([bad.id]); tLeft=9; doReveal();""",
+ "s-home2b": """album=new Set(PL.slice(0,52).map(p=>p.id)); LS.set('album',[...album]);
+   stats={games:14,correct:132,answered:190,bestStreak:6,perfect:1,hard80:1,survBest:9};
+   LS.set('stats',stats); sc='home'; go();""",
  "s-home":       "sc='home'; go();",
  "s-difficulty": "sc='difficulty'; go();",
  "s-credits":    "sc='credits'; go();",

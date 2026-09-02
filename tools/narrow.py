@@ -74,6 +74,14 @@ PROBE = r"""
     startDaily(); probe('diario');
     diffKey='dificil'; startGame(); probe('treino');
     sc='medals'; go(); probe('medalhas');
+    album=new Set(PL.slice(0,60).map(x=>x.id)); sc='album'; go(); probe('album');
+    (function(){                       // the reveal, with a sticker back on screen
+      const save=advanceAfterReveal; advanceAfterReveal=function(){};
+      diffKey='moderado'; startGame();
+      const q=cat.qs.find(x=>x.type==='player'&&x.a.length===1)||cat.qs[0];
+      qi=cat.qs.indexOf(q); disp=getDisp(q); album=new Set(); sel=new Set(q.a); doReveal();
+      probe('reveal + ficha'); advanceAfterReveal=save;
+    })();
     sc='credits'; go(); probe('creditos');
     sc='difficulty'; go(); probe('escolha');
     startMilhao(); rung=16; banked=1000000; cashed=true; nCorrect=16; sc='end';
