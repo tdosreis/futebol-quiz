@@ -668,46 +668,42 @@ const STAD = {
 /* ═══════════════════════════════════════════════════
    DATA — CATEGORIES & QUESTIONS
 ═══════════════════════════════════════════════════ */
+/* Every Brasileirão and Libertadores winner that is a club in the game.
+   Kept as tables rather than prose so a year can never be misattributed
+   twice — and so a wrong year is a one-line fix. */
+const BR_CHAMPS = {
+  2024:'botafogo', 2023:'palmeiras', 2022:'palmeiras', 2021:'atleticomg', 2020:'flamengo',
+  2019:'flamengo', 2018:'palmeiras', 2017:'corinthians', 2016:'palmeiras', 2015:'corinthians',
+  2014:'cruzeiro', 2013:'cruzeiro', 2012:'fluminense', 2011:'corinthians', 2010:'fluminense',
+  2009:'flamengo', 2008:'saopaulo', 2007:'saopaulo', 2006:'saopaulo', 2005:'corinthians',
+  2004:'santos', 2003:'cruzeiro', 2002:'santos', 2001:'atleticopr', 2000:'vasco',
+  1999:'corinthians', 1998:'corinthians', 1997:'vasco', 1996:'gremio', 1995:'botafogo',
+  1994:'palmeiras', 1993:'palmeiras', 1992:'flamengo', 1991:'saopaulo', 1990:'corinthians',
+  1989:'vasco', 1988:'bahia', 1986:'saopaulo', 1985:'coritiba', 1984:'fluminense',
+  1983:'flamengo', 1982:'flamengo', 1981:'gremio', 1980:'flamengo', 1979:'internacional',
+  1978:'guarani', 1977:'saopaulo', 1976:'internacional', 1975:'internacional', 1974:'vasco',
+  1973:'palmeiras', 1972:'palmeiras', 1971:'atleticomg',
+};
+const LIB_CHAMPS = {
+  2024:'botafogo', 2023:'fluminense', 2022:'flamengo', 2021:'palmeiras', 2020:'palmeiras',
+  2019:'flamengo', 2017:'gremio', 2013:'atleticomg', 2012:'corinthians', 2011:'santos',
+  2010:'internacional', 2006:'internacional', 2005:'saopaulo', 1999:'palmeiras', 1998:'vasco',
+  1997:'cruzeiro', 1995:'gremio', 1993:'saopaulo', 1992:'saopaulo', 1983:'gremio',
+  1981:'flamengo', 1976:'cruzeiro', 1963:'santos', 1962:'santos',
+};
+
 const CATS = [
   {
     id:'libertadores', name:'Libertadores', emoji:'🏆',
     tag:'Quem levantou a taça?', col:'#C8A400', diff:'Médio',
-    qs:[
-      { t:'Quem venceu a Libertadores em 2023?', a:['fluminense'] },
-      { t:'Quem venceu a Libertadores em 2022?', a:['flamengo'] },
-      { t:'Quem venceu a Libertadores em 2021?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 2020?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 2019?', a:['flamengo'] },
-      { t:'Quem venceu a Libertadores em 2017?', a:['gremio'] },
-      { t:'Quem venceu a Libertadores em 2013?', a:['atleticomg'] },
-      { t:'Quem venceu a Libertadores em 2012?', a:['corinthians'] },
-      { t:'Quem venceu a Libertadores em 2010?', a:['internacional'] },
-      { t:'Quem venceu a Libertadores em 2006?', a:['internacional'] },
-      { t:'Quem venceu a Libertadores em 2011?', a:['santos'] },
-      { t:'Quem venceu a Libertadores em 2005?', a:['saopaulo'] },
-      { t:'Quem venceu a Libertadores em 1999?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 1998?', a:['vasco'] },
-      { t:'Quem venceu a Libertadores em 1997?', a:['cruzeiro'] },
-      { t:'Quem venceu a Libertadores em 1995?', a:['gremio'] },
-    ]
+    qs:Object.keys(LIB_CHAMPS).map(y => ({ t:`Quem venceu a Libertadores em ${y}?`, a:[LIB_CHAMPS[y]] })),
   },
   {
     /* `flag` instead of `emoji`: a 🇧🇷 here is a regional-indicator pair that
        Android renders as the bare letters "BR". catIcon() draws it instead. */
     id:'brasileirao', name:'Brasileirão', flag:'BRA',
     tag:'Campeões da Série A', col:'#1A8C3A', diff:'Médio',
-    qs:[
-      { t:'Campeão do Brasileirão em 2022?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2021?', a:['atleticomg'] },
-      { t:'Campeão do Brasileirão em 2020?', a:['flamengo'] },
-      { t:'Campeão do Brasileirão em 2019?', a:['flamengo'] },
-      { t:'Campeão do Brasileirão em 2018?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2017?', a:['corinthians'] },
-      { t:'Campeão do Brasileirão em 2016?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2015?', a:['corinthians'] },
-      { t:'Campeão do Brasileirão em 2014?', a:['cruzeiro'] },
-      { t:'Campeão do Brasileirão em 2012?', a:['fluminense'] },
-    ]
+    qs:Object.keys(BR_CHAMPS).map(y => ({ t:`Campeão do Brasileirão em ${y}?`, a:[BR_CHAMPS[y]] })),
   },
   {
     id:'estados', name:'Por Estado', emoji:'📍',
@@ -752,6 +748,44 @@ const CATS = [
     ]
   },
   {
+    id:'copa', name:'Copa do Mundo', emoji:'🌍',
+    tag:'Os campeões do mundo', col:'#2E7D4F', diff:'Variado',
+    qs:[
+      { t:'Quem foi o capitão do Brasil no tricampeonato mundial de 1970, no México?',                 a:['carlos_alberto'], type:'player' },
+      { t:'Quem foi o capitão do Brasil no tetracampeonato mundial de 1994, nos Estados Unidos?',      a:['dunga'],          type:'player' },
+      { t:'Qual dupla de ataque do Brasil brilhou na Copa de 1994? Selecione os 2 jogadores',           a:['romario','bebeto'], type:'player' },
+      { t:'Quem marcou o gol do título da Alemanha na final da Copa de 1974, contra a Holanda?',        a:['gerd_muller'],    type:'player' },
+      { t:'Qual capitão ergueu a taça pela Alemanha em 1974 e depois foi campeão como treinador em 1990?', a:['beckenbauer'], type:'player' },
+      { t:'Qual capitão italiano levantou a Copa de 2006 e ganhou a Bola de Ouro no mesmo ano?',        a:['cannavaro'],      type:'player' },
+      { t:'Qual goleiro sofreu só 2 gols na Copa de 2006 e foi eleito o melhor goleiro do torneio?',   a:['buffon'],         type:'player' },
+      { t:'Quem marcou o gol do título da Espanha na final da Copa de 2010, na prorrogação?',           a:['iniesta'],        type:'player' },
+      { t:'Qual goleiro capitaneou a Espanha no título da Copa de 2010 e ganhou a Luva de Ouro?',       a:['casillas'],       type:'player' },
+      { t:'Qual capitão da Alemanha ergueu a Copa de 2014 no Maracanã?',                                a:['lahm'],           type:'player' },
+      { t:'Qual goleiro alemão ganhou a Luva de Ouro da Copa de 2014 jogando como "goleiro-líbero"?',   a:['neuer'],          type:'player' },
+      { t:'Qual destes ingleses foi campeão do mundo em 1966, em Wembley?',                              a:['charlton'],       type:'player' },
+      { t:'Qual capitão argentino ergueu a Copa de 1986 no Estádio Azteca?',                             a:['maradona'],       type:'player' },
+      { t:'Qual atacante de 19 anos marcou na final da Copa de 2018 e foi eleito o melhor jovem do torneio?', a:['mbappe'],    type:'player' },
+      { t:'Selecione os 2 jogadores campeões mundiais com a França em 1998',                            a:['zidane','henry'], type:'player' },
+      { t:'Qual atacante do Brasil dividiu a artilharia da Copa de 1962 e foi eleito o melhor do torneio?', a:['garrincha'],  type:'player' },
+      { t:'Qual zagueiro do Brasil foi titular na conquista da Copa de 1994 e ídolo da Roma?',           a:['aldair'],         type:'player' },
+      { t:'Qual lateral do Brasil marcou de falta contra a China na Copa de 2002?',                      a:['roberto_carlos'], type:'player' },
+      { t:'Qual volante do Brasil na Copa de 2002 foi apelidado de "Muralha Invisível" no Arsenal?',    a:['gilberto_silva'], type:'player' },
+      { t:'Qual zagueiro do Brasil na Copa de 2002 foi depois campeão da Champions pela Inter, em 2010?', a:['lucio'],        type:'player' },
+      { t:'Qual goleiro brasileiro foi o titular na conquista do pentacampeonato em 2002?',             a:['marcos'],         type:'player' },
+      { t:'Qual meia-atacante do Brasil fez o gol de falta contra a Inglaterra nas quartas de 2002?',    a:['ronaldinho'],     type:'player' },
+      { t:'Qual atacante do Brasil marcou em 5 jogos seguidos na Copa de 2002?',                         a:['rivaldo'],        type:'player' },
+      { t:'Qual holandês foi eleito o melhor jogador da Copa de 1974 mesmo perdendo a final?',           a:['cruyff'],         type:'player' },
+      { t:'Qual italiano carregou a Itália até a final de 1994 com 5 gols e perdeu o pênalti decisivo?', a:['baggio'],        type:'player' },
+      { t:'Qual atacante de Portugal foi artilheiro da Copa de 1966 com 9 gols?',                        a:['eusebio'],        type:'player' },
+      { t:'Qual goleiro soviético é o único da posição a ganhar a Bola de Ouro, em 1963?',              a:['yashin'],         type:'player' },
+    ]
+  },
+  {
+    id:'apelidos', name:'Apelidos', emoji:'🏷️',
+    tag:'Quem é quem', col:'#8E4E9E', diff:'Variado',
+    qs:[],   // built from NICK by the generators
+  },
+  {
     id:'craques', name:'Craques', emoji:'⭐',
     tag:'Lendas e curiosidades', col:'#9C27B0', diff:'Variado',
     qs:[
@@ -763,16 +797,16 @@ const CATS = [
       { t:'Qual jogador do Brasil marcou gol em todas as 6 partidas da Copa de 1970?',          a:['jairzinho'],     type:'player', qimg:'img/1942386e409ddbbc.jpg' },
       { t:'Quem marcou o 4º gol na final da Copa de 1970 e era o capitão do Brasil?',          a:['carlos_alberto'],type:'player', qimg:'img/1942386e409ddbbc.jpg' },
       { t:'Quem foi a grande revelação do Brasil na Copa de 1958, marcando 6 gols aos 17 anos?',a:['pele'],         type:'player' },
-      { t:'Quem foi o goleiro do Brasil que defendeu o pênalti de Roberto Baggio na final de 1994?', a:['taffarel'], type:'player' },
+      { t:'Quem era o goleiro do Brasil na decisão por pênaltis da final de 1994, quando Baggio chutou por cima?', a:['taffarel'], type:'player' },
       { t:'Quem foi artilheiro da Copa de 1958 com 13 gols, recorde absoluto até hoje?',       a:['fontaine'],      type:'player' },
       { t:'Quem foi eleito o melhor jogador da Copa do Mundo de 2022 no Catar?',               a:['messi'],         type:'player' },
       { t:'Quem fez a famosa comemoração de "ninar o bebê" após marcar na Copa de 1994?',      a:['bebeto'],        type:'player', qimg:'img/9d91c1374cf5c69b.jpg' },
       { t:'Qual búlgaro dividiu a artilharia da Copa de 1994 com 6 gols, mesmo nível de Salenko?', a:['stoichkov'], type:'player' },
       /* ── Bola de Ouro / Prêmios ── */
-      { t:'Quem ganhou a Bola de Ouro em 2004 e 2005 jogando pelo Barcelona?',                 a:['ronaldinho'],    type:'player' },
+      { t:'Quem foi eleito Melhor do Mundo pela FIFA em 2004 e 2005 jogando pelo Barcelona?',   a:['ronaldinho'],    type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 2007, jogando pelo AC Milan?',                        a:['kaka'],          type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 1999 pelo Barcelona, sendo eleito melhor do mundo?',  a:['rivaldo'],       type:'player' },
-      { t:'Quem ganhou a Bola de Ouro em 1994 e foi o craque do Brasil no título nos EUA?',    a:['romario'],       type:'player' },
+      { t:'Quem foi eleito Melhor do Mundo pela FIFA em 1994 e foi o craque do Brasil no título nos EUA?', a:['romario'], type:'player' },
       { t:'Quem tem o recorde histórico de 8 Bolas de Ouro na carreira?',                      a:['messi'],         type:'player' },
       { t:'Quem venceu 5 Bolas de Ouro (2008, 2013, 2014, 2016 e 2017)?',                     a:['cr7'],           type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 1988, 1989 e 1992, todos pelo AC Milan?',             a:['van_basten'],    type:'player' },
@@ -782,9 +816,9 @@ const CATS = [
       { t:'Quem é o maior artilheiro da história da Seleção Brasileira?',                      a:['neymar'],        type:'player' },
       { t:'Quem é o maior artilheiro da história do Vasco da Gama, com mais de 700 gols?',    a:['dinamite'],      type:'player' },
       { t:'Quem é o ídolo máximo do Flamengo e maior artilheiro do clube, com mais de 500 gols?', a:['zico'],      type:'player' },
-      { t:'Quem é o maior artilheiro da história do São Paulo FC, com mais de 260 gols?',     a:['muller_sp'],     type:'player' },
+      { t:'Qual atacante foi ídolo do São Paulo e bicampeão mundial de clubes em 1992 e 1993?', a:['muller_sp'],   type:'player' },
       { t:'Quem marcou os dois gols do Flamengo nos últimos minutos da Libertadores de 2019?', a:['gabigol'],       type:'player' },
-      { t:'Qual meia brasileiro foi ídolo da Roma nos anos 80, eleito o melhor do mundo em 1983?', a:['falcao'],    type:'player' },
+      { t:'Qual meia brasileiro foi ídolo da Roma nos anos 80 e campeão italiano em 1983, chamado de "Rei de Roma"?', a:['falcao'], type:'player' },
       /* ── Lendas internacionais ── */
       { t:'Qual holandês criou o "giro de Cruyff" e foi símbolo do futebol total nos anos 70?',a:['cruyff'],       type:'player' },
       { t:'Qual argentino é apelidado de "Batigol" e é o maior artilheiro da história da Fiorentina?', a:['batistuta'], type:'player' },
@@ -803,7 +837,7 @@ const CATS = [
       { t:'Quem foi artilheiro do Brasil na Copa de 1994 com 5 gols e ganhou o troféu de Melhor Jogador do torneio?',             a:['romario'],     type:'player' },
       { t:'Qual francês marcou dois gols de cabeça na final da Copa de 1998, dando o título inédito à França?',                   a:['zidane'],      type:'player' },
       { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player' },
-      { t:'Quem foi o goleiro bicampeão do Brasil nas Copas de 1994 e 1998, essencial na conquista do tetracampeonato?',          a:['taffarel'],    type:'player' },
+      { t:'Quem foi o goleiro titular do Brasil nas Copas de 1994 e 1998, campeão numa e vice na outra?',                         a:['taffarel'],    type:'player' },
       { t:'Quem ganhou a Copa do Mundo de 2022, completando o único grande título que faltava em uma das maiores carreiras do esporte?', a:['messi'], type:'player' },
       { t:'Quem ganhou a Copa América de 2021 com a Argentina, encerrando 28 anos de seca de títulos da Seleção?',                a:['messi'],       type:'player' },
       /* ── Bola de Ouro e prêmios ── */
@@ -817,7 +851,7 @@ const CATS = [
       { t:'Quem venceu a Bola de Ouro em 1988, 1989 e 1992, e marcou um voleio antológico na final da Eurocopa de 1988?',       a:['van_basten'],  type:'player' },
       /* ── Liga dos Campeões ── */
       { t:'Qual ivoriano empatou a final da Champions League de 2012 nos acréscimos, forçando a prorrogação para o Chelsea?',    a:['drogba'],      type:'player' },
-      { t:'Quem foi artilheiro da Champions League por duas temporadas seguidas (2019-20 e 2020-21), pelo Bayern de Munique?',   a:['lewandowski'], type:'player' },
+      { t:'Quem foi artilheiro da Champions League de 2019-20 com 15 gols, na campanha do título do Bayern de Munique?',          a:['lewandowski'], type:'player' },
       { t:'Quem é o maior artilheiro da história da UEFA Champions League, com mais de 140 gols na competição?',                 a:['cr7'],         type:'player' },
       { t:'Quem ganhou a Champions League de 2021-22 pelo Real Madrid e foi eleito o melhor jogador do mundo naquele ano?',      a:['benzema'],     type:'player' },
       { t:'Quem marcou um gol de bicicleta histórico contra a Juventus nas quartas de final da Champions de 2017-18?',           a:['cr7'],         type:'player' },
@@ -825,12 +859,12 @@ const CATS = [
       /* ── Artilheiros e carreiras ── */
       { t:'Qual sueco marcou mais de 600 gols na carreira e é o maior artilheiro da história da Seleção Sueca?',                 a:['ibrahimovic'], type:'player' },
       { t:'Qual polonês bateu o recorde histórico com 41 gols em uma única temporada da Bundesliga, em 2020-21?',                a:['lewandowski'], type:'player' },
-      { t:'Quem é o maior artilheiro da história do Arsenal e da Seleção Francesa, com 51 gols pela equipe nacional?',           a:['henry'],       type:'player' },
-      { t:'Qual argentino é o maior artilheiro estrangeiro da história da Serie A italiana e o ídolo máximo da Fiorentina?',     a:['batistuta'],   type:'player' },
+      { t:'Quem é o maior artilheiro da história do Arsenal, com mais de 220 gols pelo clube?',                                    a:['henry'],       type:'player' },
+      { t:'Qual argentino marcou em 11 rodadas seguidas da Serie A em 1994-95, um recorde da época?',                            a:['batistuta'],   type:'player' },
       { t:'Quem marcou 91 gols em 2012, estabelecendo o recorde mundial de gols em um único ano calendário?',                    a:['messi'],       type:'player' },
       { t:'Qual atacante ganhou títulos nacionais em 4 países diferentes — Holanda, Itália, Espanha e França?',                  a:['ibrahimovic'], type:'player' },
-      { t:'Quem ganhou 3 Bolas de Ouro (1996, 1997 e 2002) e voltou de duas lesões graves no joelho para ser campeão do mundo?', a:['ronaldo'],    type:'player' },
-      { t:'Qual meia croata passou mais de 12 anos no Real Madrid, sendo peça-chave de 4 títulos da Champions?',                 a:['modric'],      type:'player' },
+      { t:'Quem ganhou a Bola de Ouro em 1997 e 2002 e voltou de duas lesões graves no joelho para ser campeão do mundo?',        a:['ronaldo'],    type:'player' },
+      { t:'Qual meia croata passou mais de 12 anos no Real Madrid, sendo peça-chave em seis títulos da Champions?',               a:['modric'],      type:'player' },
       { t:'Qual atacante ivoriano liderou a Côte d\'Ivoire nas 3 primeiras participações do país em Copas do Mundo?',            a:['drogba'],      type:'player' },
       { t:'Qual francês ganhou a Copa do Mundo (1998), a Eurocopa (2000) e a Champions League (2002) ao longo da carreira?',     a:['zidane'],      type:'player' },
       { t:'Qual inglês ficou mundialmente famoso por suas cobranças de falta precisas e cruzamentos milimétricos?',               a:['beckham'],     type:'player' },
@@ -1364,6 +1398,49 @@ const CL_META = {
 };
 CL.forEach(c => Object.assign(c, CL_META[c.id] || { f:1900, br:0, lib:0 }));
 
+/* ── Honours ──
+   World Cups won as a squad member (`wc`), Ballon d'Or wins (`bo`) and the
+   nickname the crowd actually uses (`nick`). Facts, kept as data so the
+   generators below can build hundreds of questions that are right by
+   construction — and so each one can be checked in a single place. */
+const WC = {
+  pele:[1958,1962,1970], garrincha:[1958,1962], didi:[1958,1962], nilton_santos:[1958,1962],
+  zagallo:[1958,1962], jairzinho:[1970], carlos_alberto:[1970], tostao:[1970], gerson:[1970],
+  rivellino:[1970], leao:[1970],
+  romario:[1994], bebeto:[1994], taffarel:[1994], dunga:[1994], aldair:[1994], muller_sp:[1994],
+  cafu:[1994,2002], ronaldo:[1994,2002],
+  rivaldo:[2002], ronaldinho:[2002], kaka:[2002], roberto_carlos:[2002], marcos:[2002],
+  dida:[2002], rogerio_ceni:[2002], lucio:[2002], gilberto_silva:[2002],
+  maradona:[1986], messi:[2022], zidane:[1998], henry:[1998], mbappe:[2018],
+  beckenbauer:[1974], gerd_muller:[1974], klose:[2014], lahm:[2014], neuer:[2014], kroos:[2014],
+  cannavaro:[2006], buffon:[2006], nesta:[2006], pirlo:[2006], del_piero:[2006], totti:[2006],
+  casillas:[2010], xavi:[2010], iniesta:[2010], puyol:[2010], sergio_ramos:[2010],
+  charlton:[1966],
+};
+const BO = {
+  messi:8, cr7:5, platini:3, cruyff:3, van_basten:3, ronaldo:2, beckenbauer:2, distefano:2,
+  ronaldinho:1, kaka:1, rivaldo:1, zidane:1, baggio:1, weah:1, shevchenko:1, nedved:1, figo:1,
+  owen:1, cannavaro:1, modric:1, benzema:1, gerd_muller:1, charlton:1, eusebio:1, yashin:1,
+  stoichkov:1,
+};
+const NICK = {
+  pele:'O Rei', ronaldo:'Fenômeno', ronaldinho:'Bruxo', romario:'Baixinho', adriano:'Imperador',
+  socrates:'Doutor', zico:'Galinho de Quintino', garrincha:'Anjo das Pernas Tortas',
+  rivellino:'Reizinho do Parque', gerson:'Canhotinha de Ouro', didi:'Folha Seca',
+  nilton_santos:'Enciclopédia do Futebol', jairzinho:'Furacão da Copa', carlos_alberto:'Capita',
+  zagallo:'Velho Lobo', falcao:'Rei de Roma', dunga:'Capitão do Tetra', edmundo:'Animal',
+  marcos:'São Marcos', rogerio_ceni:'Mito', gabigol:'Gabigol', luis_fabiano:'Fabuloso',
+  thiago_silva:'Monstro', emerson:'Puma', vinicius:'Vini Jr.', cafu:'Pendolino',
+  maradona:'Pibe de Oro', messi:'La Pulga', cr7:'CR7', zidane:'Zizou', batistuta:'Batigol',
+  baggio:'Divino Codino', platini:'Le Roi', henry:'Titi', ibrahimovic:'Ibra', beckenbauer:'Kaiser',
+  gerd_muller:'Bomber', del_piero:'Pinturicchio', distefano:'Saeta Rubia', cavani:'Matador',
+  eusebio:'Pantera Negra', puskas:'Major Galopante', totti:'Il Capitano', suarez:'Pistolero',
+  salah:'Rei Egípcio', aguero:'Kun', casillas:'San Iker', yashin:'Aranha Negra', kahn:'Titã',
+  pirlo:'Maestro', nedved:'Fúria Tcheca', van_basten:'Cisne de Utrecht', weah:'King George',
+  cruyff:'Profeta do Gol', klose:'Salto Mortal', neymar:'Ney',
+};
+PL.forEach(p => { p.wc = WC[p.id] || []; p.bo = BO[p.id] || 0; p.nick = NICK[p.id] || null; });
+
 /* ═══════════════════════════════════════════════════
    IMAGES — CLUB LOGOS (Wikimedia Commons)
 ═══════════════════════════════════════════════════ */
@@ -1656,6 +1733,13 @@ function simPlayer(cand, ref) {
   return sc;
 }
 
+/* Years between two careers: 0 when they overlap, otherwise the gap. */
+function eraGap(a, b) {
+  if (!a.era || !b.era) return 99;
+  if (eraOverlap(a, b) > 0) return 0;
+  return Math.min(Math.abs(a.era[0] - b.era[1]), Math.abs(b.era[0] - a.era[1]));
+}
+
 /* Confusability between clubs */
 function simClub(cand, ref) {
   let sc = 0;
@@ -1666,6 +1750,70 @@ function simClub(cand, ref) {
   return sc;
 }
 
+/* ── Reading the question for clues ──────────────────────────
+   "Qual argentino…", "…o goleiro que…", "…na Copa de 1958" — each of
+   those hands the player a filter. If the board then shows flags, or
+   nine strikers and one keeper, the filter alone answers it. So the
+   engine reads the same clues and makes the wrong answers match them:
+   an Argentine question gets Argentines, a 1958 question gets players
+   who were actually around in 1958, and the flags come off the tiles. */
+const _fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const DEMONYM = [
+  ['brasil', 'BRA'], ['argentin', 'ARG'], ['portug', 'POR'], ['franca', 'FRA'], ['frances', 'FRA'],
+  ['holand', 'NED'], ['alema', 'GER'], ['germ', 'GER'], ['bulgar', 'BUL'], ['itali', 'ITA'],
+  ['ingl', 'ENG'], ['suec', 'SWE'], ['polon', 'POL'], ['marfim', 'CIV'], ['ivor', 'CIV'],
+  ['liberia', 'LBR'], ['croa', 'CRO'], ['colomb', 'COL'], ['espanh', 'ESP'], ['urugua', 'URU'],
+  ['egipc', 'EGY'], ['egito', 'EGY'], ['norueg', 'NOR'], ['camar', 'CMR'], ['ucran', 'UKR'],
+  ['hungar', 'HUN'], ['hungri', 'HUN'], ['belg', 'BEL'], ['tchec', 'CZE'], ['chequi', 'CZE'],
+  ['checo', 'CZE'], ['dinamarq', 'DEN'], ['russ', 'RUS'], ['mexic', 'MEX'], ['chile', 'CHI'],
+  [' gana', 'GHA'], ['ganes', 'GHA'], ['escoc', 'SCO'], ['gales', 'WAL'], ['senegal', 'SEN'],
+  ['nigeri', 'NGA'],
+];
+const POS_WORDS = [
+  ['goleiro', 'GK'],
+  ['zagueiro', 'DF'], ['lateral', 'DF'], ['defensor', 'DF'], ['beque', 'DF'],
+  ['meia', 'MF'], ['meio-campista', 'MF'], ['meio campista', 'MF'], ['volante', 'MF'], ['armador', 'MF'],
+  ['atacante', 'FW'], ['centroavante', 'FW'], ['artilheir', 'FW'], ['ponta', 'FW'],
+];
+
+function qCues(q) {
+  if (q._cues) return q._cues;
+  const t = ' ' + _fold(q.t) + ' ';
+  const cues = { ctry: null, pos: null, year: null };
+  for (const [w, code] of DEMONYM) if (t.indexOf(w) !== -1) { cues.ctry = code; break; }
+  for (const [w, pos]  of POS_WORDS) if (t.indexOf(w) !== -1) { cues.pos = pos; break; }
+  const y = /\b(19[3-9]\d|20[0-2]\d)\b/.exec(t);
+  if (y) cues.year = parseInt(y[1], 10);
+  else {
+    const d = /anos (\d0)\b/.exec(t);              // "anos 70", "anos 2000"
+    if (d) { const n = parseInt(d[1], 10); cues.year = (n >= 30 ? 1900 + n : 2000 + n) + 5; }
+  }
+  cues.any = !!(cues.ctry || cues.pos || cues.year);
+  q._cues = cues;
+  return cues;
+}
+
+/* Does this candidate fit every clue the question gives away? */
+function cueFits(p, cues) {
+  if (cues.ctry && p.ctry !== cues.ctry) return false;
+  if (cues.pos  && p.pos  !== cues.pos)  return false;
+  if (cues.year && p.era && (p.era[0] > cues.year + 2 || p.era[1] < cues.year - 2)) return false;
+  return true;
+}
+
+/* How well the candidate matches the clues, as a score to add to sim() */
+function cueSim(p, cues) {
+  let sc = 0;
+  if (cues.ctry && p.ctry === cues.ctry) sc += 30;
+  if (cues.pos  && p.pos  === cues.pos)  sc += 26;
+  if (cues.year && p.era) {
+    const gap = p.era[0] > cues.year ? p.era[0] - cues.year
+              : p.era[1] < cues.year ? cues.year - p.era[1] : 0;
+    sc += Math.max(0, 26 - gap * 2.2);
+  }
+  return sc;
+}
+
 function getDisp(q) {
   const isPlayer = q.type === 'player';
   const pool0 = isPlayer ? PL : CL;
@@ -1673,6 +1821,11 @@ function getDisp(q) {
   const cfg   = DCFG();
   const strict = (q.strict !== undefined) ? q.strict : qStrict();
   const nOpts  = q.opts || cfg.opts;
+  const cues   = isPlayer ? qCues(q) : { any: false };
+
+  /* A question that names a country would be answered by the flags on the
+     tiles, so those come off — for every difficulty. */
+  if (cues.ctry) q._noFlag = true;
 
   // `fixed` = show exactly these tiles (comparison questions)
   if (q.fixed) return shuf(q.fixed.map(id => pool0.find(x => x.id === id)).filter(Boolean));
@@ -1689,20 +1842,52 @@ function getDisp(q) {
     wrong = pool0.filter(x => !skip.has(x.id));
   }
 
-  const ref = right[0];
-  if (ref && strict > 0 && wrong.length > nOpts) {
+  const ref  = right[0];
+  const need = nOpts - right.length;
+
+  /* Even the easy level keeps the board in one era: a 1958 striker next
+     to a 2022 one is not a question, it is a calendar. The window widens
+     as the level relaxes, and only applies when enough candidates remain. */
+  if (isPlayer && ref && ref.era && wrong.length > need + 3) {
+    const win  = strict >= 0.9 ? 12 : strict >= 0.4 ? 20 : 32;
+    const near = wrong.filter(x => eraGap(x, ref) <= win);
+    if (near.length >= need + 3) wrong = near;
+  }
+
+  if (ref && wrong.length > need) {
     const jitter = 14 * (1 - strict) + 6;
-    wrong = wrong
-      .map(x => ({ x, s: sim(x, ref) + rnd() * jitter }))
+    const ranked = wrong
+      .map(x => ({ x, s: sim(x, ref) * strict + (isPlayer ? cueSim(x, cues) : 0) + rnd() * jitter }))
       .sort((a, b) => b.s - a.s)
       .map(o => o.x);
-    const need = nOpts - right.length;
-    const band = Math.max(need + 2, Math.round(wrong.length * (1 - strict * 0.72)));
-    wrong = wrong.slice(0, band);
+    // the plausible band: tighter as strictness rises, never below need+2
+    const band   = Math.max(need + 2, Math.round(ranked.length * (1 - strict * 0.8)));
+    const inBand = shuf(ranked.slice(0, band));
+    let picks;
+
+    /* Clues are honoured at every level — a share of the wrong answers must
+       fit what the question just said, or the clue is a free pass. The share
+       grows with the level: a third of the board on fácil, most of it on
+       difícil, where the question is meant to be decided by knowledge alone. */
+    if (cues.any) {
+      const fits   = shuf(wrong.filter(x => cueFits(x, cues)));
+      const quota  = Math.min(fits.length, Math.max(2, Math.round(need * (0.35 + 0.45 * strict))));
+      const chosen = fits.slice(0, quota);
+      const ids    = new Set(chosen.map(x => x.id));
+      picks = chosen.concat(inBand.filter(x => !ids.has(x.id)));
+      for (const x of ranked) {                       // top up if the band ran dry
+        if (picks.length >= need) break;
+        if (!ids.has(x.id) && picks.indexOf(x) === -1) picks.push(x);
+      }
+      picks = picks.slice(0, need);
+    } else {
+      picks = inBand.slice(0, need);
+    }
+    return shuf([...right, ...picks]);
   }
 
   wrong = shuf(wrong);
-  return shuf([...right, ...wrong.slice(0, Math.max(0, nOpts - right.length))]);
+  return shuf([...right, ...wrong.slice(0, Math.max(0, need))]);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1725,6 +1910,12 @@ function qTier(q) {
   if (cid === 'craques') {
     return q.a.some(id => FAMOUS.has(id)) ? 2 : 3;
   }
+  if (cid === 'copa') {
+    const m = /\b(19|20)\d{2}\b/.exec(q.t);
+    const y = m ? parseInt(m[0], 10) : 2000;
+    return y >= 2002 ? 2 : 3;
+  }
+  if (cid === 'apelidos') return q.a.some(id => FAMOUS.has(id)) ? 1 : 2;
   return 2;
 }
 
@@ -2018,6 +2209,161 @@ function GEN_QS(tier) {
       a: yes.map(p => p.id), type: 'player',
       fixed: yes.map(p => p.id).concat(pick(no, 8).map(p => p.id)),
       _cat: GC.nat, d: 3,
+    });
+  });
+
+  /* ═════ GEN3 — honours, nicknames, careers abroad ═════ */
+  const GC3 = {
+    copa:  { id:'copa',   name:'Copa do Mundo', emoji:'🌍', col:'#2E7D4F' },
+    bo:    { id:'g_bo',   name:'Bola de Ouro',  emoji:'🏅', col:'#B8860B' },
+    nick:  { id:'apelidos', name:'Apelidos',    emoji:'🏷️', col:'#8E4E9E' },
+    abroad:{ id:'g_abroad', name:'Europa',      emoji:'✈️', col:'#3F6FB5' },
+  };
+
+  /* 19. World champion of a given year — the year clue keeps the wrong
+         answers in that era, so this is a real memory test, not a calendar */
+  const wcYears = [...new Set(PL.flatMap(p => p.wc))];
+  pick(wcYears, 6).forEach(y => {
+    const yes = PL.filter(p => p.wc.includes(y));
+    const no  = PL.filter(p => !p.wc.includes(y));
+    if (!yes.length || no.length < 9) return;
+    out.push({
+      t: `Qual destes jogadores foi campeão do mundo em ${y}?`,
+      a: [rndOf(yes).id], type: 'player',
+      pool: no.map(p => p.id), _cat: GC3.copa,
+      d: y >= 1994 ? 2 : 3,
+    });
+  });
+
+  /* 20. Two champions of the same World Cup, among eight who were not */
+  pick(wcYears.filter(y => PL.filter(p => p.wc.includes(y)).length >= 2), 3).forEach(y => {
+    const yes = pick(PL.filter(p => p.wc.includes(y)), 2);
+    const no  = pick(PL.filter(p => !p.wc.includes(y) && p.era && Math.abs(p.era[0] - y) < 22), 8);
+    if (no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 campeões mundiais de ${y}`,
+      a: yes.map(p => p.id), type: 'player',
+      fixed: yes.concat(no).map(p => p.id), _cat: GC3.copa, d: 3,
+    });
+  });
+
+  /* 21. The one who never lifted it */
+  for (let i = 0; i < 3; i++) {
+    const champs = pick(PL.filter(p => p.wc.length), 9);
+    const never  = PL.filter(p => !p.wc.length && p.era && p.era[0] >= 1975);
+    if (champs.length < 9 || !never.length) break;
+    const odd = rndOf(never);
+    out.push({
+      t: 'Qual destes jogadores NUNCA foi campeão do mundo?',
+      a: [odd.id], type: 'player',
+      fixed: champs.map(p => p.id).concat(odd.id), _cat: GC3.copa, d: 3,
+    });
+  }
+
+  /* 22. Ballon d'Or */
+  for (let i = 0; i < 3; i++) {
+    const yes = PL.filter(p => p.bo > 0);
+    const no  = PL.filter(p => !p.bo);
+    if (yes.length < 3 || no.length < 8) break;
+    const two = pick(yes, 2);
+    out.push({
+      t: 'Selecione os 2 jogadores que JÁ venceram a Bola de Ouro',
+      a: two.map(p => p.id), type: 'player',
+      fixed: two.concat(pick(no, 8)).map(p => p.id), _cat: GC3.bo, d: 3,
+    });
+  }
+  pick(PL.filter(p => p.bo > 0), 4).forEach(p => {
+    out.push({
+      t: 'Qual destes jogadores venceu a Bola de Ouro?',
+      a: [p.id], type: 'player',
+      pool: PL.filter(x => !x.bo).map(x => x.id), _cat: GC3.bo, d: 2,
+    });
+  });
+  for (let i = 0; i < 2; i++) {
+    const set = pick(PL.filter(p => p.bo > 0), 10);
+    const top = set.reduce((a, b) => (a.bo >= b.bo ? a : b));
+    if (set.length < 10 || set.filter(p => p.bo === top.bo).length > 1) continue;
+    out.push({
+      t: 'Qual destes jogadores tem MAIS Bolas de Ouro?',
+      a: [top.id], type: 'player',
+      fixed: set.map(p => p.id), _cat: GC3.bo, d: 3,
+    });
+  }
+
+  /* 23. Nicknames — match the name the crowd uses to the face */
+  pick(PL.filter(p => p.nick && p.nick !== p.n), 8).forEach(p => {
+    out.push({
+      t: `Qual jogador é conhecido como "${p.nick}"?`,
+      a: [p.id], type: 'player',
+      pool: PL.filter(x => x.id !== p.id).map(x => x.id), _cat: GC3.nick,
+      d: FAMOUS.has(p.id) ? 1 : 2,
+    });
+  });
+
+  /* 24. Careers abroad — which of these wore this foreign club's shirt? */
+  const abroad = {};
+  PL.forEach(p => (p.clubs || []).forEach(c => {
+    if (!CIDS.has(c)) (abroad[c] = abroad[c] || []).push(p);
+  }));
+  const bigAbroad = Object.keys(abroad).filter(c => abroad[c].length >= 3 && CLUB_NAMES[c]);
+  pick(bigAbroad, 6).forEach(c => {
+    const yes = rndOf(abroad[c]);
+    out.push({
+      t: `Qual destes jogadores vestiu a camisa do ${CLUB_NAMES[c]}?`,
+      a: [yes.id], type: 'player',
+      pool: PL.filter(p => !(p.clubs || []).includes(c)).map(p => p.id), _cat: GC3.abroad,
+      d: abroad[c].length >= 6 ? 2 : 3,
+    });
+  });
+  pick(bigAbroad.filter(c => abroad[c].length >= 4), 3).forEach(c => {
+    const yes = pick(abroad[c], 2);
+    const no  = PL.filter(p => !(p.clubs || []).includes(c));
+    if (no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 jogadores que passaram pelo ${CLUB_NAMES[c]}`,
+      a: yes.map(p => p.id), type: 'player',
+      pool: no.map(p => p.id), _cat: GC3.abroad, d: 3,
+    });
+  });
+
+  /* 25. Team-mates abroad: who shared a dressing room with this player? */
+  pick(PL.filter(p => (p.clubs || []).some(c => !CIDS.has(c) && (abroad[c] || []).length >= 2)), 5).forEach(p => {
+    const cs = (p.clubs || []).filter(c => !CIDS.has(c) && (abroad[c] || []).length >= 2);
+    const c  = rndOf(cs);
+    const mates = abroad[c].filter(x => x.id !== p.id);
+    if (!mates.length) return;
+    out.push({
+      t: `Quem foi companheiro de ${p.n} no ${CLUB_NAMES[c]}?`,
+      a: [rndOf(mates).id], type: 'player',
+      pool: PL.filter(x => x.id !== p.id && !(x.clubs || []).includes(c)).map(x => x.id),
+      face: p.img, _cat: GC3.abroad, d: 3,
+    });
+  });
+
+  /* 26. Clubs: the one that never won the league, and the youngest club */
+  for (let i = 0; i < 2; i++) {
+    const winners = pick(CL.filter(c => c.br > 0), 9);
+    const never   = CL.filter(c => c.br === 0);
+    if (winners.length < 9 || !never.length) break;
+    const odd = rndOf(never);
+    out.push({ t: 'Qual destes clubes NUNCA foi campeão brasileiro?',
+               a: [odd.id], fixed: winners.map(c => c.id).concat(odd.id), _cat: GC.hist, d: 2 });
+  }
+  for (let i = 0; i < 2; i++) {
+    const set = pick(CL, 10);
+    const newest = set.reduce((a, b) => (a.f >= b.f ? a : b));
+    if (set.filter(c => c.f === newest.f).length > 1) continue;
+    out.push({ t: 'Qual destes clubes é o mais novo — fundado por último?',
+               a: [newest.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 3 });
+  }
+
+  /* 27. Same-year league and cup — who won the Brasileirão the year this club won the Libertadores? */
+  pick(Object.keys(LIB_CHAMPS).filter(y => BR_CHAMPS[y] && BR_CHAMPS[y] !== LIB_CHAMPS[y]), 3).forEach(y => {
+    out.push({
+      t: `Em ${y} o ${clubName(LIB_CHAMPS[y])} venceu a Libertadores. Quem foi o campeão brasileiro naquele ano?`,
+      a: [BR_CHAMPS[y]],
+      pool: CL.filter(c => c.id !== BR_CHAMPS[y]).map(c => c.id),
+      crest: LIB_CHAMPS[y], _cat: GC.hist, d: 3,
     });
   });
 
@@ -2774,7 +3120,7 @@ ${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
           onerror="this.style.opacity='.25'" />
       </div>
       <span class="tile-name${item.n.length > 15 ? ' tile-name-long' : ''}"
-        ><span class="fl">${flagSVG(item.ctry, 7)}</span>${item.n}</span>
+        >${curQ._noFlag ? '' : `<span class="fl">${flagSVG(item.ctry, 7)}</span>`}${item.n}</span>
     </div>`;
   }
 
