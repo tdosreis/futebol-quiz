@@ -303,8 +303,8 @@ TESTS = r"""
            !!LOGOS[id] && !!CREDITS[LOGOS[id]] && !!CREDITS[LOGOS[id]].a,
            LOGOS[id] ? `${LOGOS[id]} — ${CREDITS[LOGOS[id]] ? CREDITS[LOGOS[id]].l : 'NO CREDIT'}` : 'missing');
       });
-      // rectangular artwork must be framed, or it reads as a stray white box
-      ok('flat logos are framed as plaques',
+      // rectangular artwork is cut as a roundel, or it reads as a stray box
+      ok('flat logos are cut as roundels',
          [...FLAT_LOGOS].every(id => clubArt(id,'').indexOf('border-radius') !== -1));
       const thin = drawn.filter(c => {
         const svg = genericCrest(c.id);

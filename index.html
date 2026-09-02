@@ -7,7 +7,8 @@
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0a1030" />
+  <meta name="theme-color" content="#E9E6DB" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171A12" media="(prefers-color-scheme: dark)" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -17,107 +18,129 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
-       THE STUDIO
-       The whole app is staged like a TV quiz set: a dark arena, two
-       spotlights raking in from above, and one lit panel in the middle
-       where everything happens. Gold is the money colour and is spent
-       sparingly — on the plaque, the ladder and the prize — so that it
-       still reads as special when the big numbers arrive.
+       O ÁLBUM
+       The app is a football sticker album. Paper, ink, and the players'
+       photographs printed as screen-prints and slipped into pockets on
+       the page. One ink does the work — pitch green — and brass appears
+       only where money does. Nothing shines: no gloss, no glow, no
+       neon. On a phone that has asked for dark, the same album under a
+       reading lamp.
     ═══════════════════════════════════════════════════════════════ */
     :root {
-      /* This app is dark end-to-end; tell the UA so native scrollbars,
-         form controls and the overscroll gutter render dark, never a
-         white flash at the edges. */
-      color-scheme: dark;
-      --gold:      #FFC845;
-      --gold-hi:   #FFF0B0;
-      --gold-lo:   #B8860B;
-      --stage:     #05081a;
-      --panel:     #0a1030;
-      --panel-2:   #121a45;
-      --ink:       #ffffff;
-      --ink-dim:   rgba(255,255,255,.45);
-      --ink-faint: rgba(255,255,255,.22);
-      --win:       #00e676;
-      --lose:      #ff4d5e;
-      --line:      rgba(255,255,255,.09);
+      color-scheme: light dark;
+      --stock:     #E9E6DB;   /* the page */
+      --stock-2:   #DDD9C9;   /* the table the album lies on */
+      --pocket:    #F6F4EE;   /* a sticker pocket */
+      --pocket-2:  #EFECE2;   /* a pocket, pressed */
+      --ink:       #20241E;
+      --ink-2:     #4B4F45;
+      --ink-3:     #7E8175;
+      --ink-4:     #A6A89C;
+      --rule:      #CBC5B2;
+      --rule-2:    #DBD6C6;
+      --pitch:     #17593F;
+      --pitch-2:   #1E7150;
+      --pitch-soft:#D9E6DD;
+      --on-pitch:  #F3F1E8;
+      --brass:     #A9803B;
+      --brass-2:   #C79A4E;
+      --brass-soft:#EFE3C6;
+      --on-brass:  #2A1F08;
+      --good:      #2E7D4F;
+      --bad:       #B3402F;
+      --bad-soft:  #F0DCD6;
+      --warn:      #B8761F;
+      --shadow:    rgba(32,36,30,.14);
+      --shadow-2:  rgba(32,36,30,.28);
+      --grain:     rgba(0,0,0,.028);
+      --halftone:  rgba(18,22,16,.62);
+      --font-d: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-s: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --stock:     #171A12;
+        --stock-2:   #0F110B;
+        --pocket:    #20251B;
+        --pocket-2:  #1B2017;
+        --ink:       #ECE7D6;
+        --ink-2:     #C4C0AE;
+        --ink-3:     #8E9182;
+        --ink-4:     #62655A;
+        --rule:      #363B2D;
+        --rule-2:    #2A2F23;
+        --pitch:     #3E9C6E;
+        --pitch-2:   #55B585;
+        --pitch-soft:#1E3529;
+        --on-pitch:  #0F1A13;
+        --brass:     #C79A4E;
+        --brass-2:   #E0B968;
+        --brass-soft:#3A2F16;
+        --on-brass:  #1A1204;
+        --good:      #4CAE74;
+        --bad:       #E06A55;
+        --bad-soft:  #3A211C;
+        --warn:      #D9963A;
+        --shadow:    rgba(0,0,0,.45);
+        --shadow-2:  rgba(0,0,0,.7);
+        --grain:     rgba(255,255,255,.025);
+        --halftone:  rgba(0,0,0,.7);
+      }
+    }
+    :root[data-theme="dark"] {
+      --stock:#171A12; --stock-2:#0F110B; --pocket:#20251B; --pocket-2:#1B2017;
+      --ink:#ECE7D6; --ink-2:#C4C0AE; --ink-3:#8E9182; --ink-4:#62655A;
+      --rule:#363B2D; --rule-2:#2A2F23; --pitch:#3E9C6E; --pitch-2:#55B585;
+      --pitch-soft:#1E3529; --on-pitch:#0F1A13; --brass:#C79A4E; --brass-2:#E0B968;
+      --brass-soft:#3A2F16; --on-brass:#1A1204; --good:#4CAE74; --bad:#E06A55;
+      --bad-soft:#3A211C; --warn:#D9963A; --shadow:rgba(0,0,0,.45); --shadow-2:rgba(0,0,0,.7);
+      --grain:rgba(255,255,255,.025); --halftone:rgba(0,0,0,.7);
     }
 
     /* ── Reset & base ── */
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
+    html { background: var(--stock-2); }
     body {
-      background: var(--stage);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      min-height: 100dvh;
-      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--stock-2);
+      background-image:
+        radial-gradient(circle at 15% 12%, var(--grain) 0 1px, transparent 1px),
+        radial-gradient(circle at 62% 78%, var(--grain) 0 1px, transparent 1px);
+      background-size: 7px 7px, 11px 11px;
+      color: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; min-height: 100dvh;
+      font-family: var(--font-s);
       padding-bottom: env(safe-area-inset-bottom);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+    button { font-family: var(--font-s); color: inherit; }
 
-    /* Two spotlights raking down onto the set. Fixed, so they stay put
-       while the panel's contents change underneath them. */
-    body::before, body::after {
-      content: '';
-      position: fixed;
-      top: -30vh;
-      width: 60vw;
-      height: 130vh;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(28px);
-      opacity: .5;
-    }
-    body::before {
-      left: -18vw;
-      background: linear-gradient(160deg, rgba(255,200,69,.16), transparent 58%);
-      transform: rotate(14deg);
-    }
-    body::after {
-      right: -18vw;
-      background: linear-gradient(200deg, rgba(90,140,255,.18), transparent 58%);
-      transform: rotate(-14deg);
-    }
-
+    /* The page of the album */
     #qz {
-      background:
-        radial-gradient(120% 70% at 50% -8%, #1b2a6b 0%, transparent 62%),
-        linear-gradient(180deg, var(--panel) 0%, #060a20 100%);
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
+      background: var(--stock);
       color: var(--ink);
-      min-height: 500px;
-      width: 100%;
-      max-width: 680px;
-      box-shadow:
-        0 0 0 1px rgba(255,200,69,.14),
-        0 24px 70px rgba(0,0,0,.75),
-        0 0 90px rgba(60,90,220,.14);
+      position: relative; overflow: hidden;
+      width: 100%; max-width: 680px; min-height: 500px;
       z-index: 1;
     }
-
-    /* Floor grid — the set's perspective lines, faint enough to feel like depth */
-    #grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(120,160,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(120,160,255,.045) 1px, transparent 1px);
-      background-size: 46px 46px;
-      -webkit-mask-image: radial-gradient(115% 80% at 50% 4%, #000 12%, transparent 74%);
-      mask-image: radial-gradient(115% 80% at 50% 4%, #000 12%, transparent 74%);
-      pointer-events: none;
-      z-index: 0;
+    #qz::before {                       /* faint album rule lines */
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .55;
+      background-image: repeating-linear-gradient(0deg, transparent 0 41px, var(--rule-2) 41px 42px);
+      -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+      mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
     }
-
+    @media (min-width: 700px) {
+      #qz { border-radius: 14px; box-shadow: 0 0 0 1px var(--rule), 0 30px 60px -24px var(--shadow-2); margin: 24px 0; }
+    }
+    @media (max-width: 699px) {
+      body { align-items: stretch; }
+      #qz { min-height: 100vh; min-height: 100dvh; }
+    }
     #ct { position: relative; z-index: 1; }
 
     /* Flex/grid children default to min-width:auto, so one wide child (a long
@@ -127,406 +150,421 @@
     #ct div, #ct p { min-width: 0; }
     #ct p, #ct span { overflow-wrap: anywhere; }
 
-    /* ── Screen entrance ── */
-    @keyframes screenIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    #ct > div { animation: screenIn .22s ease-out; }
+    /* ── Screens ── */
+    @keyframes screenIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    #ct > div { animation: screenIn .2s ease-out; }
+    .pg { display: flex; flex-direction: column; min-height: 500px; padding: 16px; gap: 12px; }
+    .pg-center { align-items: center; justify-content: center; text-align: center; }
+    .scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
 
-    /* ── Badge: tap press ── */
-    .b { touch-action: manipulation; }
-    .b:active { transform: scale(0.93) !important; filter: brightness(1.2); }
+    /* ── Type ── */
+    .eyebrow { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+    .eyebrow b { color: var(--pitch); font-weight: 800; }
+    .display { font-family: var(--font-d); font-optical-sizing: auto; font-weight: 600; letter-spacing: -.02em; line-height: .95; }
+    .display em { font-style: italic; }
+    .num { font-variant-numeric: tabular-nums; font-weight: 800; letter-spacing: .01em; }
+    .muted { color: var(--ink-3); }
+    .small { font-size: 11px; line-height: 1.5; }
+    .brass { color: var(--brass); }
+    .pitch { color: var(--pitch); }
+    .good  { color: var(--good); }
+    .bad   { color: var(--bad); }
 
-    /* ── Category card hover ── */
-    .cc { touch-action: manipulation; }
-    .cc:hover  { transform: scale(1.03); background: rgba(255,255,255,.07) !important; }
-    .cc:active { transform: scale(0.97) !important; }
+    /* ── Top bar ── */
+    .topbar { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .crumb { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--ink-3);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    /* ── Difficulty card hover ── */
-    .dc { touch-action: manipulation; }
-    .dc:hover  { transform: translateY(-2px); background: rgba(255,255,255,.08) !important; }
-    .dc:active { transform: scale(0.98) !important; }
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; cursor: pointer; border-radius: 12px;
+      font-family: var(--font-s); font-weight: 700; letter-spacing: .03em; font-size: 14px;
+      padding: 13px 22px; transition: transform .12s, background .15s, opacity .15s;
+      touch-action: manipulation; user-select: none;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn:disabled { cursor: default; }
+    .btn-primary { background: var(--pitch); color: var(--on-pitch); }
+    .btn-primary:hover { background: var(--pitch-2); }
+    .btn-primary:disabled { background: var(--rule-2); color: var(--ink-4); }
+    .btn-brass { background: var(--brass); color: var(--on-brass); }
+    .btn-brass:hover { background: var(--brass-2); }
+    .btn-ghost { background: transparent; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--rule); }
+    .btn-ghost:hover { background: var(--pocket); }
+    .btn-icon { padding: 7px 9px; border-radius: 10px; }
+    .btn-lg { font-size: 15px; padding: 15px 30px; }
+    .btn-sm { font-size: 12px; padding: 9px 14px; border-radius: 10px; }
+    .btn-press { }   /* kept for the event bindings; the press lives on .btn */
 
-    /* ── Badge animations ── */
-    @keyframes badgePop {
-      0%   { transform: scale(1); }
-      35%  { transform: scale(1.14); }
-      65%  { transform: scale(1.04); }
-      100% { transform: scale(1.06); }
+    /* ── Chips ── */
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; max-width: 100%;
+      border: 1px solid var(--rule); border-radius: 20px; padding: 3px 10px 3px 8px;
+      font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; color: var(--ink-2);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    @keyframes correctGlow {
-      0%, 100% { box-shadow: 0 0 0 3px #00e676, 0 0 20px rgba(0,230,118,.45); }
-      50%       { box-shadow: 0 0 0 4px #00e676, 0 0 38px rgba(0,230,118,.8), 0 0 64px rgba(0,230,118,.25); }
-    }
-    @keyframes wrongShake {
-      0%, 100% { transform: translateX(0) scale(1); }
-      18%      { transform: translateX(-6px) scale(0.96); }
-      36%      { transform: translateX(6px) scale(0.96); }
-      54%      { transform: translateX(-4px); }
-      72%      { transform: translateX(4px); }
-      88%      { transform: translateX(-2px); }
-    }
-    @keyframes scoreUp {
-      0%, 100% { transform: scale(1); }
-      45%      { transform: scale(1.45); }
-    }
-    @keyframes fireBob {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      30%      { transform: scale(1.12) rotate(-4deg); }
-      70%      { transform: scale(1.06) rotate(4deg); }
-    }
-    @keyframes ctaBounce {
-      0%, 100% { transform: translateY(0); box-shadow: 0 4px 24px rgba(255,215,0,.25); }
-      50%      { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(255,215,0,.45); }
-    }
-    @keyframes timerPulse {
-      0%, 100% { opacity: 1; }
-      50%      { opacity: 0.55; }
-    }
-
-    .b-correct { animation: correctGlow 1.4s ease-in-out infinite !important; transform: scale(1.04) !important; }
-    .b-wrong   { animation: wrongShake .45s ease-out !important; }
-    .b-sel     { animation: badgePop .18s ease-out forwards; }
-
-    .score-up  { animation: scoreUp .28s ease-out; }
-    .fire-bob  { animation: fireBob .7s ease-in-out infinite; }
-
-    #cta-btn   { animation: ctaBounce 2.2s ease-in-out infinite; }
-    .timer-low { animation: timerPulse .55s ease-in-out infinite; }
-
-
-    /* ══════════ VISUAL POLISH ══════════ */
-
-    /* Key light from the rig above the panel */
-    #qz::before {
-      content: '';
-      position: absolute;
-      left: -25%; right: -25%; top: -30%;
-      height: 78%;
-      background: radial-gradient(ellipse at 50% 0%,
-        rgba(255,200,69,.11), rgba(70,110,255,.07) 42%, transparent 68%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    #qz::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; bottom: 0; height: 34%;
-      background: linear-gradient(to top, rgba(0,0,0,.45), transparent);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Option tiles fade in with a slight stagger */
-    @keyframes tileIn {
-      from { opacity: 0; transform: translateY(9px) scale(.94); }
-      to   { opacity: 1; transform: translateY(0)   scale(1); }
-    }
-    .b { animation: tileIn .3s cubic-bezier(.2,.8,.3,1) backwards; }
-
-    /* Points that float up off the score when you gain */
-    @keyframes floatUp {
-      0%   { opacity: 0; transform: translate(-50%, 4px)   scale(.8); }
-      18%  { opacity: 1; transform: translate(-50%, -4px)  scale(1.15); }
-      100% { opacity: 0; transform: translate(-50%, -42px) scale(1); }
-    }
-    .gain {
-      position: absolute; left: 50%; top: 0;
-      font-family: 'Bebas Neue','Impact',sans-serif;
-      font-size: 22px; font-weight: 900; color: #00e676;
-      text-shadow: 0 2px 12px rgba(0,230,118,.6);
-      pointer-events: none; z-index: 40;
-      animation: floatUp 1.05s ease-out forwards;
-    }
-
-    /* Confetti for a strong finish */
-    @keyframes confFall {
-      0%   { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
-      100% { opacity: .15; transform: translate3d(var(--dx,0px), 105vh, 0) rotate(var(--rot,720deg)); }
-    }
-    .conf {
-      position: fixed; top: -24px;
-      width: 8px; height: 13px; border-radius: 2px;
-      pointer-events: none; z-index: 999;
-      animation: confFall linear forwards;
-    }
-
-    /* Progress dots */
-    .pdot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(255,255,255,.16);
-      transition: background .25s, transform .25s;
-      flex-shrink: 0;
-    }
-    .pdot-on   { background: #FFD700; }
-    .pdot-cur  { background: #fff; transform: scale(1.55); box-shadow: 0 0 8px rgba(255,255,255,.7); }
-    .pdot-miss { background: rgba(244,67,54,.75); }
-
-    /* Timer bar gets a moving sheen so it reads as "live" */
-    @keyframes sheen { to { background-position: 240% 0; } }
-    .tf-live {
-      background-image: linear-gradient(100deg,
-        rgba(255,255,255,0) 34%, rgba(255,255,255,.5) 50%, rgba(255,255,255,0) 66%);
-      background-size: 240% 100%;
-      animation: sheen 1.9s linear infinite;
-    }
-
-    /* Home ball idle bounce */
-    @keyframes ballIdle {
-      0%,100% { transform: translateY(0) rotate(-4deg); }
-      50%     { transform: translateY(-9px) rotate(4deg); }
-    }
-    .ball-idle { animation: ballIdle 2.8s ease-in-out infinite; display: inline-block; }
-
-    /* Gold gradient wordmark */
-    .goldgrad {
-      background: linear-gradient(175deg, #FFF3B0 4%, #FFD700 42%, #E0A800 96%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent; color: transparent;
-      filter: drop-shadow(0 3px 18px rgba(255,215,0,.32));
-    }
-
-    /* Primary buttons get depth + a press response */
-    .btn-press { transition: transform .12s, box-shadow .12s, filter .12s; }
-    .btn-press:active { transform: scale(.955); filter: brightness(1.08); }
-
+    .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .chip-pitch { border-color: var(--pitch); color: var(--pitch); }
+    .chip-brass { border-color: var(--brass); color: var(--brass); background: var(--brass-soft); }
+    .chip-soft  { border-color: transparent; background: var(--pocket-2); }
 
     /* ═══════════════════════════════════════════════════════════════
-       THE PLAQUE
-       The question board. Its corners are cut on the diagonal — the
-       shape every one of these shows has used since the eighties — and
-       the gold edge is a second clipped element behind it rather than a
-       border, because a border would follow the box, not the cut.
+       THE STICKER
+       Every photograph in the album is printed, not pasted: the real
+       photo underneath, posterised to a three-ink ramp, a halftone
+       screen over it, and the paper's grain over that. Applied live by
+       an SVG filter, so all 162 pictures get the treatment at once.
     ═══════════════════════════════════════════════════════════════ */
-    .plaque {
-      position: relative;
-      padding: 2px;                 /* this is the visible gold edge */
-      background: linear-gradient(150deg, var(--gold-hi), var(--gold) 34%, var(--gold-lo) 78%, var(--gold) 100%);
-      clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-      filter: drop-shadow(0 6px 22px rgba(0,0,0,.55));
+    .print { position: relative; overflow: hidden; background: var(--rule-2); }
+    .print img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+      filter: url(#riso-pitch); pointer-events: none; }
+    .print-brass img { filter: url(#riso-brass); }
+    .print::after {                         /* halftone screen, set at a print angle */
+      content: ''; position: absolute; inset: -35%; pointer-events: none; z-index: 2;
+      background-image: radial-gradient(circle, var(--halftone) 0 24%, transparent 27%);
+      background-size: 3.4px 3.4px; transform: rotate(13deg);
+      mix-blend-mode: multiply; opacity: .2;
     }
-    .plaque-in {
-      background: linear-gradient(165deg, #1b2668 0%, #16205a 38%, #0b1136 100%);
-      clip-path: polygon(13px 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%, 0 13px);
-      padding: 13px 15px;
-      display: flex; align-items: center; gap: 11px;
-      min-height: 62px;
-    }
-    /* a slow glint travelling across the gold edge */
-    @keyframes plaqueGlint { to { background-position: 260% 0; } }
-    .plaque::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(105deg,
-        transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
-      background-size: 260% 100%;
-      animation: plaqueGlint 5.5s linear infinite;
-      pointer-events: none; mix-blend-mode: overlay;
+    .print::before {                        /* paper grain */
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay; opacity: .45;
     }
 
-    /* ── Lettered answer tiles (A … J) ── */
-    .tile-letter {
-      position: absolute; top: 3px; left: 3px;
-      min-width: 14px; height: 14px; padding: 0 3px;
-      border-radius: 4px;
-      background: linear-gradient(180deg, rgba(255,200,69,.9), rgba(184,134,11,.9));
-      color: #10142e;
-      font: 900 9px/14px 'Inter', system-ui, sans-serif;
-      text-align: center; letter-spacing: .3px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.6);
-      z-index: 3; pointer-events: none;
+    .sticker {                              /* a pocket with a print in it */
+      position: relative; background: var(--pocket); border-radius: 11px; padding: 6px 6px 8px;
+      box-shadow: inset 0 0 0 1px var(--rule-2), 0 2px 5px var(--shadow);
     }
-    .b-correct .tile-letter { background: linear-gradient(180deg,#7dffb4,#00c853); }
-    .b-wrong   .tile-letter { background: linear-gradient(180deg,#ff9aa4,#d32f2f); color:#fff; }
+    .sticker .print { border-radius: 7px; aspect-ratio: 1 / 1.06; }
+    .sticker-foil { box-shadow: inset 0 0 0 1.5px var(--brass), 0 3px 10px var(--shadow); }
+    .sticker .nm { font-size: 12px; font-weight: 700; text-align: center; margin-top: 7px; letter-spacing: .01em; }
+    .sticker .ctry { font-size: 8.5px; letter-spacing: .12em; color: var(--ink-3); text-align: center; text-transform: uppercase; font-weight: 700; margin-top: 1px; }
 
-    /* ── Audience vote bars ──
-       Anchored to the top of the tile, not the bottom. They used to sit just
-       above the caption, which on a 320px screen is where a long name wraps
-       to a second line — the percentage landed on top of "Samuel Eto'o". */
-    /* An underline along the tile's bottom edge. Anything floating *inside*
-       the tile collides with something: at the bottom it hit a wrapped player
-       name, at the top it cut through a centred text label. The edge is the
-       one place both layouts leave free. */
-    .vote {
-      position: absolute; left: 0; right: 0; bottom: 0;
-      height: 3px; border-radius: 0 0 8px 8px; overflow: hidden;
-      background: rgba(0,0,0,.55); z-index: 4; pointer-events: none;
+    /* The number tab in the pocket's corner */
+    .tab {
+      position: absolute; top: -1px; left: -1px; z-index: 4; pointer-events: none;
+      background: var(--ink); color: var(--stock);
+      font-family: var(--font-s); font-weight: 800; font-size: 8.5px; letter-spacing: .06em;
+      padding: 2px 6px; border-radius: 9px 2px 8px 2px; line-height: 1.3;
+      font-variant-numeric: tabular-nums;
     }
-    .vote > i {
-      display: block; height: 100%; border-radius: 2px;
-      background: linear-gradient(90deg, #4FC3F7, #7C4DFF);
-      animation: voteGrow .7s cubic-bezier(.2,.9,.3,1) backwards;
-    }
-    @keyframes voteGrow { from { width: 0 !important; } }
-    .vote-pct {
-      position: absolute; right: 3px; top: 3px; z-index: 4;
-      padding: 1px 3px; border-radius: 4px;
-      background: rgba(4,7,22,.86);
-      font: 900 8.5px/1.1 'Inter', system-ui, sans-serif;
-      color: #cfe6ff; pointer-events: none;
-    }
+    .tab-brass { background: var(--brass); color: var(--on-brass); }
 
-    /* ── Tile caption ──
-       A name may legitimately need two lines ("Andrés Iniesta" on a narrow
-       phone). Give it a scrim so it stays readable over the photo, and cap it
-       at two lines so a third can never push out of the tile. */
+    /* ═══════════════════════════════════════════════════════════════
+       THE BOARD — ten answer pockets
+    ═══════════════════════════════════════════════════════════════ */
+    .board { display: grid; gap: 6px; }
+    .board-5 { grid-template-columns: repeat(5, 1fr); }
+    .board-2 { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .board-big { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    @keyframes tileIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .b {
+      position: relative; cursor: pointer; user-select: none; touch-action: manipulation;
+      background: var(--pocket); border-radius: 9px; padding: 4px 4px 5px;
+      box-shadow: inset 0 0 0 1px var(--rule-2), 0 1px 3px var(--shadow);
+      display: flex; flex-direction: column; align-items: stretch; gap: 3px;
+      transition: transform .12s, box-shadow .15s, opacity .3s, filter .3s;
+      animation: tileIn .28s cubic-bezier(.2,.8,.3,1) backwards;
+    }
+    .b:active { transform: scale(.95); }
+    .b .print { border-radius: 5px; aspect-ratio: 1 / .92; flex-shrink: 0; }
+    .b-crest { }
+    /* the crest sits in a box of fixed proportion; absolute sizing keeps a tall
+       shield from stretching the box and pushing its caption below the others */
+    .crest-box { position: relative; aspect-ratio: 1 / .92; flex-shrink: 0; }
+    .crest-box > img, .crest-box > svg { position: absolute; left: 7%; top: 7%; width: 86%; height: 86%; object-fit: contain; pointer-events: none; }
+    .crest-box > .roundel { position: absolute; left: 11%; top: 11%; width: 78%; height: 78%; }
+    .roundel { display: block; border-radius: 50%; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(0,0,0,.28); background: #fff; }
+    .roundel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .qart-crest .roundel { width: 100%; height: 100%; }
+
+    /* the caption: the name is the answer, so it must never clip.
+       Three lines at 320px, two on anything roomier. */
     .tile-name {
-      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-      padding: 8px 2px 3px;
-      background: linear-gradient(to top, rgba(6,10,28,.93) 42%, rgba(6,10,28,0));
-      font-size: 7.6px; font-weight: 700; line-height: 1.12;
-      color: rgba(255,255,255,.92); text-align: center;
-      font-family: 'Inter', system-ui, sans-serif;
-      /* Three lines, not two: on a 320px screen a tile is ~54px wide, and the
-         inline flag takes enough of the first line that "Cristiano Ronaldo"
-         needs a third. Two lines truncated it to "Cristiano…" — unusable when
-         the name is the answer. */
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-      overflow: hidden; overflow-wrap: anywhere;
+      font-size: 7.6px; font-weight: 700; line-height: 1.12; text-align: center; color: var(--ink);
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      overflow-wrap: anywhere; min-height: 17px; padding: 0 1px;
     }
     .tile-name .fl { display: inline-block; vertical-align: -1px; margin-right: 2px; }
-    .tile-club { font-size: 8.6px; -webkit-line-clamp: 2; }
-    /* A handful of names ("Juninho Pernambucano") are long enough to overrun
-       even three lines on a 320px tile. Shrink just those rather than making
-       every caption smaller for the sake of the outliers. */
+    .tile-club { font-size: 8px; -webkit-line-clamp: 2; }
     .tile-name-long { font-size: 6.7px; line-height: 1.06; -webkit-line-clamp: 4; }
-    /* Roomier phones can afford the larger caption back */
     @media (min-width: 400px) {
       .tile-name { font-size: 8.4px; -webkit-line-clamp: 2; }
-      .tile-club { font-size: 9px; }
+      .tile-club { font-size: 8.8px; }
       .tile-name-long { font-size: 7.4px; -webkit-line-clamp: 3; }
     }
 
-    /* ── The pundit's pick ── */
-    .expert-ring { box-shadow: 0 0 0 2px #AB47BC, 0 0 14px rgba(171,71,188,.55) !important; }
+    /* text pockets (names only, two columns) */
+    .b-text { flex-direction: row; align-items: center; justify-content: center; min-height: 44px; padding: 8px 8px 8px 20px; }
+    .b-text .tile-name { -webkit-line-clamp: 3; font-size: 10.5px; min-height: 0; }
+    .b-text .tile-name-long { font-size: 9.5px; }
+
+    /* a burned pocket (Cortar) */
+    .b-gone { background: transparent; box-shadow: none; opacity: .45; cursor: default;
+      border: 1.5px dashed var(--rule); border-radius: 9px; }
+    .b-gone .print { visibility: hidden; }
+
+    /* states */
+    .b-sel { box-shadow: inset 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); transform: translateY(-2px); }
+    .b-sel .tab { background: var(--pitch); color: var(--on-pitch); }
+    @keyframes lockPulse { 0%,100% { box-shadow: inset 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); } 50% { box-shadow: inset 0 0 0 3px var(--ink), 0 6px 16px var(--shadow-2); } }
+    .b-locked { animation: lockPulse .9s ease-in-out infinite; transform: translateY(-2px); }
+    .b-faded  { opacity: .28; filter: grayscale(1); }
+    .b-correct { box-shadow: inset 0 0 0 2.5px var(--good), 0 4px 12px var(--shadow); transform: translateY(-2px); }
+    .b-correct .tab { background: var(--good); color: #fff; }
+    @keyframes wrongShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(3px); } }
+    .b-wrong { box-shadow: inset 0 0 0 2.5px var(--bad); animation: wrongShake .4s ease-out; }
+    .b-wrong .tab { background: var(--bad); color: #fff; }
+    .b-wrong .print img { filter: url(#riso-pitch) grayscale(1); opacity: .7; }
+    .expert-ring { outline: 2px dashed var(--brass); outline-offset: 2px; }
+
+    /* the audience vote — an underline along the pocket's bottom edge and a
+       small figure at the top right, the two places no caption ever uses */
+    .vote { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 0 0 9px 9px; overflow: hidden;
+      background: var(--rule-2); z-index: 4; pointer-events: none; }
+    .vote > i { display: block; height: 100%; background: var(--pitch); animation: voteGrow .7s cubic-bezier(.2,.9,.3,1) backwards; }
+    @keyframes voteGrow { from { width: 0 !important; } }
+    .vote-pct { position: absolute; right: 3px; top: 3px; z-index: 4; pointer-events: none;
+      padding: 1px 4px; border-radius: 4px; background: var(--ink); color: var(--stock);
+      font: 800 8px/1.2 var(--font-s); font-variant-numeric: tabular-nums; }
 
     /* ═══════════════════════════════════════════════════════════════
-       THE MOMENT
-       Confirming an answer stops the clock and drains the colour out of
-       everything you did not pick, so the board holds its breath with
-       you. The higher the rung, the longer we sit here.
+       THE QUESTION — a ficha, with a double rule
     ═══════════════════════════════════════════════════════════════ */
-    @keyframes lockPulse {
-      0%,100% { box-shadow: 0 0 0 3px var(--gold), 0 0 20px rgba(255,200,69,.45); }
-      50%     { box-shadow: 0 0 0 4px var(--gold), 0 0 44px rgba(255,200,69,.9); }
+    .qcard {
+      position: relative; background: var(--pocket); border-radius: 12px; padding: 12px 14px;
+      box-shadow: inset 0 0 0 1px var(--rule-2), 0 2px 6px var(--shadow);
+      display: flex; align-items: center; gap: 12px; min-height: 60px;
     }
-    .b-locked { animation: lockPulse .78s ease-in-out infinite !important; transform: scale(1.05) !important; }
-    .b-faded  { opacity: .2; filter: grayscale(1) brightness(.7); transition: opacity .35s, filter .35s; }
+    .qcard::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--pitch); }
+    .qcard-brass::before { background: var(--brass); }
+    .qcard p { font-family: var(--font-d); font-optical-sizing: auto; font-weight: 500; font-size: 15.5px; line-height: 1.32;
+      letter-spacing: -.005em; flex: 1; min-width: 0; white-space: pre-line; text-wrap: balance; }
+    .qart { flex-shrink: 0; border-radius: 8px; overflow: hidden; }
+    .qart-face { width: 54px; height: 54px; border-radius: 50%; }
+    .qart-wide { width: 92px; height: 60px; }
+    .qart-crest { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
 
+    /* ── Photo reveal ── */
+    .reveal-box { width: 138px; height: 138px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--rule), 0 6px 18px var(--shadow); }
+
+    /* ── Header rail: the score, the clock, the dots ── */
+    .pdot { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); transition: background .25s, transform .25s; flex-shrink: 0; }
+    .pdot-on   { background: var(--pitch); }
+    .pdot-cur  { background: var(--ink); transform: scale(1.5); }
+    .pdot-miss { background: var(--bad); }
+
+    .score { display: flex; align-items: baseline; gap: 3px; position: relative; }
+    .score .v { font-size: 20px; }
+    .score .u { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; }
+    @keyframes scoreUp { 0%,100% { transform: scale(1); } 45% { transform: scale(1.25); } }
+    .score-up .v { display: inline-block; animation: scoreUp .28s ease-out; }
+    @keyframes floatUp { 0% { opacity: 0; transform: translate(-50%, 4px); } 18% { opacity: 1; transform: translate(-50%, -4px); } 100% { opacity: 0; transform: translate(-50%, -34px); } }
+    .gain { position: absolute; left: 50%; top: -2px; font-size: 14px; font-weight: 800; color: var(--good); pointer-events: none; z-index: 40; animation: floatUp 1s ease-out forwards; white-space: nowrap; }
+
+    .clock { display: flex; align-items: center; gap: 4px; color: var(--ink-2); }
+    .clock .v { font-size: 18px; }
+    .clock.timer-low { color: var(--bad); }
+    @keyframes timerPulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+    .timer-low { animation: timerPulse .55s ease-in-out infinite; }
+
+    /* timer bar */
+    .timer { height: 4px; background: var(--rule-2); border-radius: 4px; overflow: hidden; }
+    .timer > i { display: block; height: 100%; background: var(--pitch); border-radius: 4px; transition: width .8s linear, background .3s; }
+    .timer > i.t-brass { background: var(--brass); }
+    .timer > i.t-warn { background: var(--warn); }
+    .timer > i.t-bad  { background: var(--bad); }
+
+    /* the ladder rail: sixteen notches */
+    .rail { display: flex; gap: 2px; align-items: center; }
+    .notch { flex: 1; height: 4px; border-radius: 2px; background: var(--rule-2); transition: background .3s; }
+    .notch-done { background: var(--pitch); }
+    .notch-safe { background: var(--rule); }
+    .notch-safe.notch-done { background: var(--brass); }
+    .notch-now { background: var(--ink); animation: timerPulse 1.1s ease-in-out infinite; }
+
+    /* what this question is worth */
+    .stakes { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+    .stakes-v { font-family: var(--font-d); font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -.02em; color: var(--brass); }
+    @keyframes prizeUp { 0% { transform: translateY(4px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+    .prize-pop { animation: prizeUp .4s ease-out; }
+    .safe-box { display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--rule); border-radius: 10px; padding: 5px 9px; cursor: pointer; text-align: right; flex-shrink: 0; }
+    .safe-box .k { font-size: 8px; letter-spacing: .16em; color: var(--ink-3); font-weight: 800; text-transform: uppercase; }
+    .safe-box .v { font-size: 12px; font-weight: 800; }
+
+    /* the pundit */
+    .expert-box { display: flex; align-items: center; gap: 9px; border: 1px dashed var(--brass); border-radius: 10px; padding: 7px 11px; background: var(--brass-soft); }
+    .expert-box p { font-size: 11px; line-height: 1.45; color: var(--ink-2); }
+    .expert-box em { color: var(--ink-3); }
+
+    /* the five cards */
+    .ajudas { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+    .ajuda {
+      display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px;
+      background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 6px 8px;
+      font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+      cursor: pointer;
+    }
+    .ajuda:disabled { opacity: .3; text-decoration: line-through; cursor: default; background: transparent; }
+    .footer-hint { font-size: 10px; color: var(--ink-3); text-align: center; }
+    .foot { display: flex; flex-direction: column; align-items: center; gap: 7px; padding-top: 2px; }
+    .foot-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+    /* the moment: everything not picked fades while the answer hangs */
     @keyframes stageDim { from { opacity: 0; } to { opacity: 1; } }
-    .stage-dark {
-      position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background: radial-gradient(ellipse at 50% 42%, transparent 22%, rgba(0,0,0,.62) 78%);
-      animation: stageDim .5s ease-out backwards;
-    }
+    .stage-dark { position: absolute; inset: 0; z-index: 2; pointer-events: none; animation: stageDim .4s ease-out backwards;
+      background: radial-gradient(ellipse at 50% 42%, transparent 30%, var(--stock) 95%); opacity: .55; }
 
-    /* ── The prize ladder ── */
-    .rung {
-      display: flex; align-items: center; gap: 8px;
-      padding: 4px 10px; border-radius: 7px;
-      font: 800 11px/1.2 'Inter', system-ui, sans-serif;
-      color: var(--ink-dim);
-      transition: background .25s, color .25s, transform .25s;
-    }
-    .rung-safe { color: rgba(255,255,255,.62); background: rgba(255,255,255,.035); }
-    .rung-done { color: var(--win); }
-    .rung-now  {
-      background: linear-gradient(90deg, rgba(255,200,69,.28), rgba(255,200,69,.06));
-      color: #fff; transform: scale(1.03);
-      box-shadow: inset 0 0 0 1px rgba(255,200,69,.55);
-    }
-    .rung-top  { color: var(--gold); }
-    .rung-n {
-      width: 17px; text-align: right; flex-shrink: 0;
-      font-size: 9px; color: var(--ink-faint); font-weight: 700;
-    }
+    /* ── The ladder sheet ── */
+    .sheet { position: absolute; inset: 0; z-index: 20; background: var(--stock); display: flex; flex-direction: column; padding: 14px; gap: 8px; animation: screenIn .18s ease-out; }
+    .rung { display: flex; align-items: center; gap: 8px; padding: 4px 10px; border-radius: 7px; font-size: 11.5px; font-weight: 700; color: var(--ink-3); font-variant-numeric: tabular-nums; transition: background .25s, color .25s; }
+    .rung-safe { color: var(--ink-2); background: var(--pocket); }
+    .rung-done { color: var(--good); }
+    .rung-now  { background: var(--pitch-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--pitch); }
+    .rung-top  { color: var(--brass); }
+    .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-4); font-weight: 700; }
 
-    /* The rail across the top of the quiz: one notch per rung */
-    .notch {
-      flex: 1; height: 5px; border-radius: 3px;
-      background: rgba(255,255,255,.09);
-      transition: background .3s, box-shadow .3s;
-    }
-    .notch-done { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); }
-    .notch-safe { background: rgba(255,255,255,.26); }
-    .notch-safe.notch-done { background: linear-gradient(180deg,#b9ffd4,var(--win)); }
-    .notch-now  {
-      background: #fff;
-      box-shadow: 0 0 9px rgba(255,255,255,.85);
-      animation: timerPulse 1.1s ease-in-out infinite;
-    }
+    /* ── Home ── */
+    .hero-sticker { width: 138px; margin: 0 auto; }
+    .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
+    .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 4px; transition: transform .12s, background .15s; }
+    .mode:hover { background: var(--pocket-2); }
+    .mode:active { transform: scale(.97); }
+    .mode .mt { font-size: 12px; font-weight: 800; letter-spacing: .01em; color: var(--ink); }
+    .mode .ms { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .home-foot { display: flex; gap: 14px; align-items: center; justify-content: center; }
+    .link { background: none; border: none; color: var(--pitch); font-size: 11px; font-weight: 700; cursor: pointer; padding: 2px; text-decoration: underline; text-underline-offset: 3px; }
+    .medal-strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 300px; cursor: pointer; }
+    .medal-dot { width: 26px; height: 26px; border-radius: 50%; background: var(--pocket); box-shadow: inset 0 0 0 1px var(--rule); display: flex; align-items: center; justify-content: center; color: var(--brass); }
 
-    /* Money climbing the ladder */
-    @keyframes prizeUp {
-      0%   { transform: translateY(6px) scale(.85); opacity: 0; }
-      55%  { transform: translateY(0)   scale(1.16); opacity: 1; }
-      100% { transform: translateY(0)   scale(1); opacity: 1; }
-    }
-    .prize-pop { animation: prizeUp .55s cubic-bezier(.2,.9,.3,1); }
+    /* ── Difficulty cards ── */
+    .dc { display: flex; align-items: center; gap: 14px; background: var(--pocket); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; cursor: pointer;
+      transition: transform .12s, background .15s; }
+    .dc:hover { background: var(--pocket-2); }
+    .dc:active { transform: scale(.985); }
+    .dc .ic { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: inset 0 0 0 1px var(--rule); }
+    .dc .t { font-family: var(--font-d); font-weight: 600; font-size: 20px; line-height: 1.05; letter-spacing: -.01em; }
+    .dc .d { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+    .dc .n { font-size: 18px; text-align: right; flex-shrink: 0; }
+    .dc .n small { display: block; font-size: 9px; letter-spacing: .12em; color: var(--ink-3); font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+
+    /* ── Medals ── */
+    .medal { display: flex; align-items: center; gap: 12px; background: var(--pocket); border: 1px solid var(--rule-2); border-radius: 11px; padding: 9px 12px; }
+    .medal .ic { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: inset 0 0 0 1px var(--rule); }
+    .medal-on { border-color: var(--brass); background: var(--brass-soft); }
+    .medal-on .ic { color: var(--brass); }
+    .medal-off { opacity: .55; }
+    .medal-off .ic { color: var(--ink-4); }
+    .medal .t { font-size: 13px; font-weight: 800; }
+    .medal .d { font-size: 10.5px; color: var(--ink-3); }
+
+    /* ── Result squares (the share card, drawn) ── */
+    .runlog { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; }
+    .runlog i { width: 13px; height: 13px; border-radius: 3px; display: block; background: var(--rule); }
+    .rl-3 { background: var(--pitch) !important; }
+    .rl-1 { background: var(--brass) !important; }
+    .rl-0 { background: var(--ink-3) !important; }
+
+    /* ── Stat row on the end screens ── */
+    .stats { display: flex; gap: 18px; justify-content: center; }
+    .stats .v { font-size: 17px; }
+    .stats .k { font-size: 8.5px; letter-spacing: .16em; color: var(--ink-3); font-weight: 800; text-transform: uppercase; margin-top: 2px; }
+    .bar { width: 200px; height: 5px; background: var(--rule-2); border-radius: 3px; overflow: hidden; }
+    .bar > i { display: block; height: 100%; background: var(--pitch); border-radius: 3px; transition: width 1s ease-out; }
+    .bonus { display: inline-flex; align-items: center; gap: 3px; border: 1px solid var(--rule); border-radius: 9px; padding: 1px 7px; font-size: 10px; font-weight: 700; margin-left: 4px; color: var(--ink-2); }
+
+    /* ── Credits ── */
+    .credit-row { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--rule-2); font-size: 10px; }
+    .credit-row .l { color: var(--brass); white-space: nowrap; font-size: 9px; }
+    .note { background: var(--brass-soft); border: 1px solid var(--brass); border-radius: 9px; padding: 8px 11px; font-size: 10px; line-height: 1.5; }
 
     /* ═══════════════════════════════════════════════════════════════
        SHORT SCREENS
-       On a 568px-tall phone the quiz screen fits — until an ajuda adds a
-       row, or the question carries a photo. Then the board grows past the
-       viewport and CONFIRMAR drops below the fold, which on a timed
-       question costs the player the round. Reclaim the height from
-       padding and gaps rather than letting the page scroll.
-       The rules need !important because the layout is inline-styled.
+       On a 568px-tall phone the quiz fits — until an ajuda adds a row
+       or the question carries a photo. Reclaim the height from padding
+       and the picture, never from the caption or the button.
     ═══════════════════════════════════════════════════════════════ */
     @media (max-height: 660px) {
-      .qz-screen           { padding: 8px !important; gap: 5px !important; }
-      .qz-screen .plaque-in { min-height: 46px; padding: 8px 11px; gap: 8px; }
-      .qz-screen .plaque-in p { font-size: 13.5px !important; line-height: 1.35 !important; }
-      .qz-screen .ajuda    { padding: 3px 7px !important; font-size: 9px !important; }
-      .qz-screen .reveal-box { width: 96px !important; height: 96px !important; }
-      .qz-screen .stakes-v { font-size: 21px !important; }
-      .qz-screen .expert-box { padding: 4px 8px !important; }
-      .qz-screen .expert-box p { font-size: 10px !important; }
+      .qz-screen { padding: 8px !important; gap: 6px !important; }
+      .qz-screen .qcard { min-height: 46px; padding: 8px 11px; gap: 8px; }
+      .qz-screen .qcard p { font-size: 13.5px; }
+      .qz-screen .ajuda { padding: 4px 7px; font-size: 8.5px; }
+      .qz-screen .reveal-box { width: 96px; height: 96px; }
+      .qz-screen .stakes-v { font-size: 21px; }
+      .qz-screen .expert-box { padding: 4px 8px; }
+      .qz-screen .expert-box p { font-size: 10px; }
       .qz-screen .footer-hint { display: none; }
+      .qz-screen .b .print { aspect-ratio: 1 / .8; }
+      .qz-screen .board-5 { gap: 5px; }
+      .qz-screen .board-2 { gap: 5px; }
+      .qz-screen .b-text { min-height: 34px; padding: 4px 6px 4px 18px; }
+      .qz-screen .b-text .tile-name { font-size: 10px; }
+      .qz-screen .ajudas { gap: 4px; }
+      .qz-screen .foot { gap: 5px; }
+      .qz-screen .btn-lg { padding: 11px 26px; font-size: 14px; }
     }
-    /* Very short (landscape, or a small phone with a tall keyboard bar) */
     @media (max-height: 520px) {
-      .qz-screen .reveal-box { width: 72px !important; height: 72px !important; }
+      .qz-screen .reveal-box { width: 72px; height: 72px; }
       .qz-screen .ajuda span { display: none; }
-      .qz-screen .ajuda    { min-width: 34px !important; }
+      .qz-screen .ajuda { min-width: 34px; }
     }
 
-    /* ── Misc ── */
-    button { font-family: 'Inter', system-ui, sans-serif; }
-    .scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    /* ── Paper, falling (the million only) ── */
+    @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
+      100% { opacity: .1; transform: translate3d(var(--dx,0px), 105vh, 0) rotate(var(--rot,720deg)); } }
+    .conf { position: fixed; top: -24px; width: 7px; height: 11px; border-radius: 1px; pointer-events: none; z-index: 999;
+      animation: confFall linear forwards; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
 
     /* ═══════════════════════════════════════════════════════════════
        ACCESSIBILITY
-       Keyboard / switch-access / D-pad users get a visible focus ring
-       (only on :focus-visible, so touch and mouse taps stay clean), and
-       anyone who has asked their OS for less motion gets the set held
-       still — the glows and colour changes that carry meaning survive,
-       the idle bobbing, sheen and confetti do not.
     ═══════════════════════════════════════════════════════════════ */
-    :focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 2px;
-      border-radius: 8px;
-    }
-    /* Pointer taps never need the ring; only keyboard focus does. */
+    :focus-visible { outline: 3px solid var(--pitch); outline-offset: 2px; border-radius: 8px; }
     :focus:not(:focus-visible) { outline: none; }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
+        animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important; scroll-behavior: auto !important;
       }
-      /* Confetti and floating points are pure celebration — with motion
-         off, drop them entirely rather than leaving a frozen frame. */
       .conf, .gain { display: none !important; }
     }
   </style>
 </head>
 <body>
+<!-- The screen-print inks. Real photo in, three-ink poster out; applied live
+     by CSS (`filter:url(#riso-pitch)`) so every picture in the album gets the
+     same treatment without a single asset being edited. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="riso-pitch" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0"/>
+    <feComponentTransfer>
+      <feFuncR type="discrete" tableValues="0 0.34 0.68 1"/>
+      <feFuncG type="discrete" tableValues="0 0.34 0.68 1"/>
+      <feFuncB type="discrete" tableValues="0 0.34 0.68 1"/>
+    </feComponentTransfer>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.09 0.117 0.925"/>
+      <feFuncG type="table" tableValues="0.16 0.443 0.905"/>
+      <feFuncB type="table" tableValues="0.12 0.314 0.86"/>
+    </feComponentTransfer>
+  </filter>
+  <filter id="riso-brass" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0"/>
+    <feComponentTransfer>
+      <feFuncR type="discrete" tableValues="0 0.34 0.68 1"/>
+      <feFuncG type="discrete" tableValues="0 0.34 0.68 1"/>
+      <feFuncB type="discrete" tableValues="0 0.34 0.68 1"/>
+    </feComponentTransfer>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.14 0.69 0.95"/>
+      <feFuncG type="table" tableValues="0.10 0.525 0.905"/>
+      <feFuncB type="table" tableValues="0.03 0.243 0.78"/>
+    </feComponentTransfer>
+  </filter>
+</defs></svg>
 <div id="qz">
-  <div id="grid-overlay"></div>
   <div id="ct"></div>
 </div>
 
@@ -668,46 +706,42 @@ const STAD = {
 /* ═══════════════════════════════════════════════════
    DATA — CATEGORIES & QUESTIONS
 ═══════════════════════════════════════════════════ */
+/* Every Brasileirão and Libertadores winner that is a club in the game.
+   Kept as tables rather than prose so a year can never be misattributed
+   twice — and so a wrong year is a one-line fix. */
+const BR_CHAMPS = {
+  2024:'botafogo', 2023:'palmeiras', 2022:'palmeiras', 2021:'atleticomg', 2020:'flamengo',
+  2019:'flamengo', 2018:'palmeiras', 2017:'corinthians', 2016:'palmeiras', 2015:'corinthians',
+  2014:'cruzeiro', 2013:'cruzeiro', 2012:'fluminense', 2011:'corinthians', 2010:'fluminense',
+  2009:'flamengo', 2008:'saopaulo', 2007:'saopaulo', 2006:'saopaulo', 2005:'corinthians',
+  2004:'santos', 2003:'cruzeiro', 2002:'santos', 2001:'atleticopr', 2000:'vasco',
+  1999:'corinthians', 1998:'corinthians', 1997:'vasco', 1996:'gremio', 1995:'botafogo',
+  1994:'palmeiras', 1993:'palmeiras', 1992:'flamengo', 1991:'saopaulo', 1990:'corinthians',
+  1989:'vasco', 1988:'bahia', 1986:'saopaulo', 1985:'coritiba', 1984:'fluminense',
+  1983:'flamengo', 1982:'flamengo', 1981:'gremio', 1980:'flamengo', 1979:'internacional',
+  1978:'guarani', 1977:'saopaulo', 1976:'internacional', 1975:'internacional', 1974:'vasco',
+  1973:'palmeiras', 1972:'palmeiras', 1971:'atleticomg',
+};
+const LIB_CHAMPS = {
+  2024:'botafogo', 2023:'fluminense', 2022:'flamengo', 2021:'palmeiras', 2020:'palmeiras',
+  2019:'flamengo', 2017:'gremio', 2013:'atleticomg', 2012:'corinthians', 2011:'santos',
+  2010:'internacional', 2006:'internacional', 2005:'saopaulo', 1999:'palmeiras', 1998:'vasco',
+  1997:'cruzeiro', 1995:'gremio', 1993:'saopaulo', 1992:'saopaulo', 1983:'gremio',
+  1981:'flamengo', 1976:'cruzeiro', 1963:'santos', 1962:'santos',
+};
+
 const CATS = [
   {
     id:'libertadores', name:'Libertadores', emoji:'🏆',
     tag:'Quem levantou a taça?', col:'#C8A400', diff:'Médio',
-    qs:[
-      { t:'Quem venceu a Libertadores em 2023?', a:['fluminense'] },
-      { t:'Quem venceu a Libertadores em 2022?', a:['flamengo'] },
-      { t:'Quem venceu a Libertadores em 2021?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 2020?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 2019?', a:['flamengo'] },
-      { t:'Quem venceu a Libertadores em 2017?', a:['gremio'] },
-      { t:'Quem venceu a Libertadores em 2013?', a:['atleticomg'] },
-      { t:'Quem venceu a Libertadores em 2012?', a:['corinthians'] },
-      { t:'Quem venceu a Libertadores em 2010?', a:['internacional'] },
-      { t:'Quem venceu a Libertadores em 2006?', a:['internacional'] },
-      { t:'Quem venceu a Libertadores em 2011?', a:['santos'] },
-      { t:'Quem venceu a Libertadores em 2005?', a:['saopaulo'] },
-      { t:'Quem venceu a Libertadores em 1999?', a:['palmeiras'] },
-      { t:'Quem venceu a Libertadores em 1998?', a:['vasco'] },
-      { t:'Quem venceu a Libertadores em 1997?', a:['cruzeiro'] },
-      { t:'Quem venceu a Libertadores em 1995?', a:['gremio'] },
-    ]
+    qs:Object.keys(LIB_CHAMPS).map(y => ({ t:`Quem venceu a Libertadores em ${y}?`, a:[LIB_CHAMPS[y]] })),
   },
   {
     /* `flag` instead of `emoji`: a 🇧🇷 here is a regional-indicator pair that
        Android renders as the bare letters "BR". catIcon() draws it instead. */
     id:'brasileirao', name:'Brasileirão', flag:'BRA',
     tag:'Campeões da Série A', col:'#1A8C3A', diff:'Médio',
-    qs:[
-      { t:'Campeão do Brasileirão em 2022?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2021?', a:['atleticomg'] },
-      { t:'Campeão do Brasileirão em 2020?', a:['flamengo'] },
-      { t:'Campeão do Brasileirão em 2019?', a:['flamengo'] },
-      { t:'Campeão do Brasileirão em 2018?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2017?', a:['corinthians'] },
-      { t:'Campeão do Brasileirão em 2016?', a:['palmeiras'] },
-      { t:'Campeão do Brasileirão em 2015?', a:['corinthians'] },
-      { t:'Campeão do Brasileirão em 2014?', a:['cruzeiro'] },
-      { t:'Campeão do Brasileirão em 2012?', a:['fluminense'] },
-    ]
+    qs:Object.keys(BR_CHAMPS).map(y => ({ t:`Campeão do Brasileirão em ${y}?`, a:[BR_CHAMPS[y]] })),
   },
   {
     id:'estados', name:'Por Estado', emoji:'📍',
@@ -752,6 +786,44 @@ const CATS = [
     ]
   },
   {
+    id:'copa', name:'Copa do Mundo', emoji:'🌍',
+    tag:'Os campeões do mundo', col:'#2E7D4F', diff:'Variado',
+    qs:[
+      { t:'Quem foi o capitão do Brasil no tricampeonato mundial de 1970, no México?',                 a:['carlos_alberto'], type:'player' },
+      { t:'Quem foi o capitão do Brasil no tetracampeonato mundial de 1994, nos Estados Unidos?',      a:['dunga'],          type:'player' },
+      { t:'Qual dupla de ataque do Brasil brilhou na Copa de 1994? Selecione os 2 jogadores',           a:['romario','bebeto'], type:'player' },
+      { t:'Quem marcou o gol do título da Alemanha na final da Copa de 1974, contra a Holanda?',        a:['gerd_muller'],    type:'player' },
+      { t:'Qual capitão ergueu a taça pela Alemanha em 1974 e depois foi campeão como treinador em 1990?', a:['beckenbauer'], type:'player' },
+      { t:'Qual capitão italiano levantou a Copa de 2006 e ganhou a Bola de Ouro no mesmo ano?',        a:['cannavaro'],      type:'player' },
+      { t:'Qual goleiro sofreu só 2 gols na Copa de 2006 e foi eleito o melhor goleiro do torneio?',   a:['buffon'],         type:'player' },
+      { t:'Quem marcou o gol do título da Espanha na final da Copa de 2010, na prorrogação?',           a:['iniesta'],        type:'player' },
+      { t:'Qual goleiro capitaneou a Espanha no título da Copa de 2010 e ganhou a Luva de Ouro?',       a:['casillas'],       type:'player' },
+      { t:'Qual capitão da Alemanha ergueu a Copa de 2014 no Maracanã?',                                a:['lahm'],           type:'player' },
+      { t:'Qual goleiro alemão ganhou a Luva de Ouro da Copa de 2014 jogando como "goleiro-líbero"?',   a:['neuer'],          type:'player' },
+      { t:'Qual destes ingleses foi campeão do mundo em 1966, em Wembley?',                              a:['charlton'],       type:'player' },
+      { t:'Qual capitão argentino ergueu a Copa de 1986 no Estádio Azteca?',                             a:['maradona'],       type:'player' },
+      { t:'Qual atacante de 19 anos marcou na final da Copa de 2018 e foi eleito o melhor jovem do torneio?', a:['mbappe'],    type:'player' },
+      { t:'Selecione os 2 jogadores campeões mundiais com a França em 1998',                            a:['zidane','henry'], type:'player' },
+      { t:'Qual atacante do Brasil dividiu a artilharia da Copa de 1962 e foi eleito o melhor do torneio?', a:['garrincha'],  type:'player' },
+      { t:'Qual zagueiro do Brasil foi titular na conquista da Copa de 1994 e ídolo da Roma?',           a:['aldair'],         type:'player' },
+      { t:'Qual lateral do Brasil marcou de falta contra a China na Copa de 2002?',                      a:['roberto_carlos'], type:'player' },
+      { t:'Qual volante do Brasil na Copa de 2002 foi apelidado de "Muralha Invisível" no Arsenal?',    a:['gilberto_silva'], type:'player' },
+      { t:'Qual zagueiro do Brasil na Copa de 2002 foi depois campeão da Champions pela Inter, em 2010?', a:['lucio'],        type:'player' },
+      { t:'Qual goleiro brasileiro foi o titular na conquista do pentacampeonato em 2002?',             a:['marcos'],         type:'player' },
+      { t:'Qual meia-atacante do Brasil fez o gol de falta contra a Inglaterra nas quartas de 2002?',    a:['ronaldinho'],     type:'player' },
+      { t:'Qual atacante do Brasil marcou em 5 jogos seguidos na Copa de 2002?',                         a:['rivaldo'],        type:'player' },
+      { t:'Qual holandês foi eleito o melhor jogador da Copa de 1974 mesmo perdendo a final?',           a:['cruyff'],         type:'player' },
+      { t:'Qual italiano carregou a Itália até a final de 1994 com 5 gols e perdeu o pênalti decisivo?', a:['baggio'],        type:'player' },
+      { t:'Qual atacante de Portugal foi artilheiro da Copa de 1966 com 9 gols?',                        a:['eusebio'],        type:'player' },
+      { t:'Qual goleiro soviético é o único da posição a ganhar a Bola de Ouro, em 1963?',              a:['yashin'],         type:'player' },
+    ]
+  },
+  {
+    id:'apelidos', name:'Apelidos', emoji:'🏷️',
+    tag:'Quem é quem', col:'#8E4E9E', diff:'Variado',
+    qs:[],   // built from NICK by the generators
+  },
+  {
     id:'craques', name:'Craques', emoji:'⭐',
     tag:'Lendas e curiosidades', col:'#9C27B0', diff:'Variado',
     qs:[
@@ -763,16 +835,16 @@ const CATS = [
       { t:'Qual jogador do Brasil marcou gol em todas as 6 partidas da Copa de 1970?',          a:['jairzinho'],     type:'player', qimg:'img/1942386e409ddbbc.jpg' },
       { t:'Quem marcou o 4º gol na final da Copa de 1970 e era o capitão do Brasil?',          a:['carlos_alberto'],type:'player', qimg:'img/1942386e409ddbbc.jpg' },
       { t:'Quem foi a grande revelação do Brasil na Copa de 1958, marcando 6 gols aos 17 anos?',a:['pele'],         type:'player' },
-      { t:'Quem foi o goleiro do Brasil que defendeu o pênalti de Roberto Baggio na final de 1994?', a:['taffarel'], type:'player' },
+      { t:'Quem era o goleiro do Brasil na decisão por pênaltis da final de 1994, quando Baggio chutou por cima?', a:['taffarel'], type:'player' },
       { t:'Quem foi artilheiro da Copa de 1958 com 13 gols, recorde absoluto até hoje?',       a:['fontaine'],      type:'player' },
       { t:'Quem foi eleito o melhor jogador da Copa do Mundo de 2022 no Catar?',               a:['messi'],         type:'player' },
       { t:'Quem fez a famosa comemoração de "ninar o bebê" após marcar na Copa de 1994?',      a:['bebeto'],        type:'player', qimg:'img/9d91c1374cf5c69b.jpg' },
       { t:'Qual búlgaro dividiu a artilharia da Copa de 1994 com 6 gols, mesmo nível de Salenko?', a:['stoichkov'], type:'player' },
       /* ── Bola de Ouro / Prêmios ── */
-      { t:'Quem ganhou a Bola de Ouro em 2004 e 2005 jogando pelo Barcelona?',                 a:['ronaldinho'],    type:'player' },
+      { t:'Quem foi eleito Melhor do Mundo pela FIFA em 2004 e 2005 jogando pelo Barcelona?',   a:['ronaldinho'],    type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 2007, jogando pelo AC Milan?',                        a:['kaka'],          type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 1999 pelo Barcelona, sendo eleito melhor do mundo?',  a:['rivaldo'],       type:'player' },
-      { t:'Quem ganhou a Bola de Ouro em 1994 e foi o craque do Brasil no título nos EUA?',    a:['romario'],       type:'player' },
+      { t:'Quem foi eleito Melhor do Mundo pela FIFA em 1994 e foi o craque do Brasil no título nos EUA?', a:['romario'], type:'player' },
       { t:'Quem tem o recorde histórico de 8 Bolas de Ouro na carreira?',                      a:['messi'],         type:'player' },
       { t:'Quem venceu 5 Bolas de Ouro (2008, 2013, 2014, 2016 e 2017)?',                     a:['cr7'],           type:'player' },
       { t:'Quem ganhou a Bola de Ouro em 1988, 1989 e 1992, todos pelo AC Milan?',             a:['van_basten'],    type:'player' },
@@ -782,9 +854,9 @@ const CATS = [
       { t:'Quem é o maior artilheiro da história da Seleção Brasileira?',                      a:['neymar'],        type:'player' },
       { t:'Quem é o maior artilheiro da história do Vasco da Gama, com mais de 700 gols?',    a:['dinamite'],      type:'player' },
       { t:'Quem é o ídolo máximo do Flamengo e maior artilheiro do clube, com mais de 500 gols?', a:['zico'],      type:'player' },
-      { t:'Quem é o maior artilheiro da história do São Paulo FC, com mais de 260 gols?',     a:['muller_sp'],     type:'player' },
+      { t:'Qual atacante foi ídolo do São Paulo e bicampeão mundial de clubes em 1992 e 1993?', a:['muller_sp'],   type:'player' },
       { t:'Quem marcou os dois gols do Flamengo nos últimos minutos da Libertadores de 2019?', a:['gabigol'],       type:'player' },
-      { t:'Qual meia brasileiro foi ídolo da Roma nos anos 80, eleito o melhor do mundo em 1983?', a:['falcao'],    type:'player' },
+      { t:'Qual meia brasileiro foi ídolo da Roma nos anos 80 e campeão italiano em 1983, chamado de "Rei de Roma"?', a:['falcao'], type:'player' },
       /* ── Lendas internacionais ── */
       { t:'Qual holandês criou o "giro de Cruyff" e foi símbolo do futebol total nos anos 70?',a:['cruyff'],       type:'player' },
       { t:'Qual argentino é apelidado de "Batigol" e é o maior artilheiro da história da Fiorentina?', a:['batistuta'], type:'player' },
@@ -803,7 +875,7 @@ const CATS = [
       { t:'Quem foi artilheiro do Brasil na Copa de 1994 com 5 gols e ganhou o troféu de Melhor Jogador do torneio?',             a:['romario'],     type:'player' },
       { t:'Qual francês marcou dois gols de cabeça na final da Copa de 1998, dando o título inédito à França?',                   a:['zidane'],      type:'player' },
       { t:'Quem levou cartão vermelho na final da Copa de 2006 após uma cabeçada em Marco Materazzi?',                            a:['zidane'],      type:'player' },
-      { t:'Quem foi o goleiro bicampeão do Brasil nas Copas de 1994 e 1998, essencial na conquista do tetracampeonato?',          a:['taffarel'],    type:'player' },
+      { t:'Quem foi o goleiro titular do Brasil nas Copas de 1994 e 1998, campeão numa e vice na outra?',                         a:['taffarel'],    type:'player' },
       { t:'Quem ganhou a Copa do Mundo de 2022, completando o único grande título que faltava em uma das maiores carreiras do esporte?', a:['messi'], type:'player' },
       { t:'Quem ganhou a Copa América de 2021 com a Argentina, encerrando 28 anos de seca de títulos da Seleção?',                a:['messi'],       type:'player' },
       /* ── Bola de Ouro e prêmios ── */
@@ -817,7 +889,7 @@ const CATS = [
       { t:'Quem venceu a Bola de Ouro em 1988, 1989 e 1992, e marcou um voleio antológico na final da Eurocopa de 1988?',       a:['van_basten'],  type:'player' },
       /* ── Liga dos Campeões ── */
       { t:'Qual ivoriano empatou a final da Champions League de 2012 nos acréscimos, forçando a prorrogação para o Chelsea?',    a:['drogba'],      type:'player' },
-      { t:'Quem foi artilheiro da Champions League por duas temporadas seguidas (2019-20 e 2020-21), pelo Bayern de Munique?',   a:['lewandowski'], type:'player' },
+      { t:'Quem foi artilheiro da Champions League de 2019-20 com 15 gols, na campanha do título do Bayern de Munique?',          a:['lewandowski'], type:'player' },
       { t:'Quem é o maior artilheiro da história da UEFA Champions League, com mais de 140 gols na competição?',                 a:['cr7'],         type:'player' },
       { t:'Quem ganhou a Champions League de 2021-22 pelo Real Madrid e foi eleito o melhor jogador do mundo naquele ano?',      a:['benzema'],     type:'player' },
       { t:'Quem marcou um gol de bicicleta histórico contra a Juventus nas quartas de final da Champions de 2017-18?',           a:['cr7'],         type:'player' },
@@ -825,12 +897,12 @@ const CATS = [
       /* ── Artilheiros e carreiras ── */
       { t:'Qual sueco marcou mais de 600 gols na carreira e é o maior artilheiro da história da Seleção Sueca?',                 a:['ibrahimovic'], type:'player' },
       { t:'Qual polonês bateu o recorde histórico com 41 gols em uma única temporada da Bundesliga, em 2020-21?',                a:['lewandowski'], type:'player' },
-      { t:'Quem é o maior artilheiro da história do Arsenal e da Seleção Francesa, com 51 gols pela equipe nacional?',           a:['henry'],       type:'player' },
-      { t:'Qual argentino é o maior artilheiro estrangeiro da história da Serie A italiana e o ídolo máximo da Fiorentina?',     a:['batistuta'],   type:'player' },
+      { t:'Quem é o maior artilheiro da história do Arsenal, com mais de 220 gols pelo clube?',                                    a:['henry'],       type:'player' },
+      { t:'Qual argentino marcou em 11 rodadas seguidas da Serie A em 1994-95, um recorde da época?',                            a:['batistuta'],   type:'player' },
       { t:'Quem marcou 91 gols em 2012, estabelecendo o recorde mundial de gols em um único ano calendário?',                    a:['messi'],       type:'player' },
       { t:'Qual atacante ganhou títulos nacionais em 4 países diferentes — Holanda, Itália, Espanha e França?',                  a:['ibrahimovic'], type:'player' },
-      { t:'Quem ganhou 3 Bolas de Ouro (1996, 1997 e 2002) e voltou de duas lesões graves no joelho para ser campeão do mundo?', a:['ronaldo'],    type:'player' },
-      { t:'Qual meia croata passou mais de 12 anos no Real Madrid, sendo peça-chave de 4 títulos da Champions?',                 a:['modric'],      type:'player' },
+      { t:'Quem ganhou a Bola de Ouro em 1997 e 2002 e voltou de duas lesões graves no joelho para ser campeão do mundo?',        a:['ronaldo'],    type:'player' },
+      { t:'Qual meia croata passou mais de 12 anos no Real Madrid, sendo peça-chave em seis títulos da Champions?',               a:['modric'],      type:'player' },
       { t:'Qual atacante ivoriano liderou a Côte d\'Ivoire nas 3 primeiras participações do país em Copas do Mundo?',            a:['drogba'],      type:'player' },
       { t:'Qual francês ganhou a Copa do Mundo (1998), a Eurocopa (2000) e a Champions League (2002) ao longo da carreira?',     a:['zidane'],      type:'player' },
       { t:'Qual inglês ficou mundialmente famoso por suas cobranças de falta precisas e cruzamentos milimétricos?',               a:['beckham'],     type:'player' },
@@ -1084,7 +1156,7 @@ function flagSVG(code, h) {
   const name = CTRY_NAME[code] || code || '';
   const art  = FLAGS[code];
   const box  = `width:${(h * 1.5).toFixed(1)}px;height:${h}px;flex-shrink:0;vertical-align:-1px;
-    border-radius:1.5px;box-shadow:0 0 0 .5px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.5);`;
+    border-radius:1.5px;box-shadow:0 0 0 .5px rgba(0,0,0,.35);`;
   if (!art) {
     return `<span title="${name}" style="${box}display:inline-block;background:#3a4a5a;
       font-size:${(h * .78).toFixed(0)}px;line-height:${h}px;text-align:center;color:#fff;
@@ -1100,7 +1172,8 @@ function flagSVG(code, h) {
    the bare letters "BR". */
 function catIcon(c) {
   if (!c) return '';
-  return c.flag ? flagSVG(c.flag, 10) : (c.emoji || '');
+  if (c.flag) return flagSVG(c.flag, 10);
+  return c.col ? `<span class="dot" style="background:${c.col}" aria-hidden="true"></span>` : '';
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1145,6 +1218,14 @@ const ICON = {
   flame:  _ico('M12 21c3.6 0 6-2.4 6-5.6 0-3.9-3.6-5.3-3-9.4-2.6.6-4 2.6-4 5 0 1.4-.7 2-1.4 2s-1.6-.7-1.6-2.4C6.6 12 6 13.2 6 15.4 6 18.6 8.4 21 12 21Z'),
   bolt:   _ico('M13.5 2.5 5 13.6h6.2L10.5 21.5 19 10.4h-6.2z'),
   play:   _ico('M6 4.5 19 12 6 19.5z'),
+  ball:   _ico('M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4.2 4 2.9-1.5 4.7h-5L8 10.1zM12 7.2V3.2M16 10.1l3.7-1.2M14.5 14.8l2.3 3.2M9.5 14.8l-2.3 3.2M8 10.1 4.3 8.9'),
+  shirt:  _ico('M8 3 3.5 6l2 4 2-1v12h9V9l2 1 2-4L16 3a4 4 0 0 1-8 0z'),
+  target: _ico('M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2z'),
+  rocket: _ico('M5 19l3-3M14 5c3-1.3 5.2-1 5.2-1s.3 2.2-1 5.2c-1.3 3-4.2 5.9-6.2 7.9L9 14c2-2 5-4.9 5-9zM9 14l-4 1 3-3M10 15l-1 4 3-3M15 8.5h.01'),
+  skull:  _ico('M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4 2.5 5v3h9v-3c1.3-1 2.5-2.6 2.5-5a7 7 0 0 0-7-7zM9.5 11h.01M14.5 11h.01M10 18v3M14 18v3'),
+  book:   _ico('M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M7 17h12'),
+  coins:  _ico('M14 5a6 2.5 0 1 0 0 .1M8 5v9c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V5M8 9.5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5M4 8v9c0 1 1.2 1.9 3 2.3'),
+  crown:  _ico('M3 18h18l1-10-5 4-5-7-5 7-5-4zM4 21h16'),
   calendar: _ico('M4.5 5.5h15v15h-15zM4.5 10h15M9 3v4.4M15 3v4.4'),
 };
 
@@ -1363,6 +1444,49 @@ const CL_META = {
   nautico:{f:1901,br:0,lib:0},
 };
 CL.forEach(c => Object.assign(c, CL_META[c.id] || { f:1900, br:0, lib:0 }));
+
+/* ── Honours ──
+   World Cups won as a squad member (`wc`), Ballon d'Or wins (`bo`) and the
+   nickname the crowd actually uses (`nick`). Facts, kept as data so the
+   generators below can build hundreds of questions that are right by
+   construction — and so each one can be checked in a single place. */
+const WC = {
+  pele:[1958,1962,1970], garrincha:[1958,1962], didi:[1958,1962], nilton_santos:[1958,1962],
+  zagallo:[1958,1962], jairzinho:[1970], carlos_alberto:[1970], tostao:[1970], gerson:[1970],
+  rivellino:[1970], leao:[1970],
+  romario:[1994], bebeto:[1994], taffarel:[1994], dunga:[1994], aldair:[1994], muller_sp:[1994],
+  cafu:[1994,2002], ronaldo:[1994,2002],
+  rivaldo:[2002], ronaldinho:[2002], kaka:[2002], roberto_carlos:[2002], marcos:[2002],
+  dida:[2002], rogerio_ceni:[2002], lucio:[2002], gilberto_silva:[2002],
+  maradona:[1986], messi:[2022], zidane:[1998], henry:[1998], mbappe:[2018],
+  beckenbauer:[1974], gerd_muller:[1974], klose:[2014], lahm:[2014], neuer:[2014], kroos:[2014],
+  cannavaro:[2006], buffon:[2006], nesta:[2006], pirlo:[2006], del_piero:[2006], totti:[2006],
+  casillas:[2010], xavi:[2010], iniesta:[2010], puyol:[2010], sergio_ramos:[2010],
+  charlton:[1966],
+};
+const BO = {
+  messi:8, cr7:5, platini:3, cruyff:3, van_basten:3, ronaldo:2, beckenbauer:2, distefano:2,
+  ronaldinho:1, kaka:1, rivaldo:1, zidane:1, baggio:1, weah:1, shevchenko:1, nedved:1, figo:1,
+  owen:1, cannavaro:1, modric:1, benzema:1, gerd_muller:1, charlton:1, eusebio:1, yashin:1,
+  stoichkov:1,
+};
+const NICK = {
+  pele:'O Rei', ronaldo:'Fenômeno', ronaldinho:'Bruxo', romario:'Baixinho', adriano:'Imperador',
+  socrates:'Doutor', zico:'Galinho de Quintino', garrincha:'Anjo das Pernas Tortas',
+  rivellino:'Reizinho do Parque', gerson:'Canhotinha de Ouro', didi:'Folha Seca',
+  nilton_santos:'Enciclopédia do Futebol', jairzinho:'Furacão da Copa', carlos_alberto:'Capita',
+  zagallo:'Velho Lobo', falcao:'Rei de Roma', dunga:'Capitão do Tetra', edmundo:'Animal',
+  marcos:'São Marcos', rogerio_ceni:'Mito', gabigol:'Gabigol', luis_fabiano:'Fabuloso',
+  thiago_silva:'Monstro', emerson:'Puma', vinicius:'Vini Jr.', cafu:'Pendolino',
+  maradona:'Pibe de Oro', messi:'La Pulga', cr7:'CR7', zidane:'Zizou', batistuta:'Batigol',
+  baggio:'Divino Codino', platini:'Le Roi', henry:'Titi', ibrahimovic:'Ibra', beckenbauer:'Kaiser',
+  gerd_muller:'Bomber', del_piero:'Pinturicchio', distefano:'Saeta Rubia', cavani:'Matador',
+  eusebio:'Pantera Negra', puskas:'Major Galopante', totti:'Il Capitano', suarez:'Pistolero',
+  salah:'Rei Egípcio', aguero:'Kun', casillas:'San Iker', yashin:'Aranha Negra', kahn:'Titã',
+  pirlo:'Maestro', nedved:'Fúria Tcheca', van_basten:'Cisne de Utrecht', weah:'King George',
+  cruyff:'Profeta do Gol', klose:'Salto Mortal', neymar:'Ney',
+};
+PL.forEach(p => { p.wc = WC[p.id] || []; p.bo = BO[p.id] || 0; p.nick = NICK[p.id] || null; });
 
 /* ═══════════════════════════════════════════════════
    IMAGES — CLUB LOGOS (Wikimedia Commons)
@@ -1595,13 +1719,13 @@ const CREDITS = {
    MIXED GAME BUILDER
 ═══════════════════════════════════════════════════ */
 const DIFFS = [
-  { key:'facil',    label:'Fácil',    emoji:'😊', n:10, col:'#43A047',
+  { key:'facil',    label:'Fácil',    emoji:'😊', ic:'check', n:10, col:'#2E7D4F',
     desc:'Alternativas variadas · 30s',
     time:30, strict:0.00, opts:10, tier:1, pmul:1   },
-  { key:'moderado', label:'Moderado', emoji:'⚽', n:15, col:'#FF9800',
+  { key:'moderado', label:'Moderado', emoji:'⚽', ic:'bolt',  n:15, col:'#B8761F',
     desc:'Alternativas parecidas · 25s',
     time:25, strict:0.55, opts:10, tier:2, pmul:1.5 },
-  { key:'dificil',  label:'Difícil',  emoji:'🔥', n:20, col:'#E53935',
+  { key:'dificil',  label:'Difícil',  emoji:'🔥', ic:'flame', n:20, col:'#B3402F',
     desc:'Mesma posição e era · 20s',
     time:20, strict:1.00, opts:10, tier:3, pmul:2   },
 ];
@@ -1656,6 +1780,13 @@ function simPlayer(cand, ref) {
   return sc;
 }
 
+/* Years between two careers: 0 when they overlap, otherwise the gap. */
+function eraGap(a, b) {
+  if (!a.era || !b.era) return 99;
+  if (eraOverlap(a, b) > 0) return 0;
+  return Math.min(Math.abs(a.era[0] - b.era[1]), Math.abs(b.era[0] - a.era[1]));
+}
+
 /* Confusability between clubs */
 function simClub(cand, ref) {
   let sc = 0;
@@ -1666,6 +1797,70 @@ function simClub(cand, ref) {
   return sc;
 }
 
+/* ── Reading the question for clues ──────────────────────────
+   "Qual argentino…", "…o goleiro que…", "…na Copa de 1958" — each of
+   those hands the player a filter. If the board then shows flags, or
+   nine strikers and one keeper, the filter alone answers it. So the
+   engine reads the same clues and makes the wrong answers match them:
+   an Argentine question gets Argentines, a 1958 question gets players
+   who were actually around in 1958, and the flags come off the tiles. */
+const _fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const DEMONYM = [
+  ['brasil', 'BRA'], ['argentin', 'ARG'], ['portug', 'POR'], ['franca', 'FRA'], ['frances', 'FRA'],
+  ['holand', 'NED'], ['alema', 'GER'], ['germ', 'GER'], ['bulgar', 'BUL'], ['itali', 'ITA'],
+  ['ingl', 'ENG'], ['suec', 'SWE'], ['polon', 'POL'], ['marfim', 'CIV'], ['ivor', 'CIV'],
+  ['liberia', 'LBR'], ['croa', 'CRO'], ['colomb', 'COL'], ['espanh', 'ESP'], ['urugua', 'URU'],
+  ['egipc', 'EGY'], ['egito', 'EGY'], ['norueg', 'NOR'], ['camar', 'CMR'], ['ucran', 'UKR'],
+  ['hungar', 'HUN'], ['hungri', 'HUN'], ['belg', 'BEL'], ['tchec', 'CZE'], ['chequi', 'CZE'],
+  ['checo', 'CZE'], ['dinamarq', 'DEN'], ['russ', 'RUS'], ['mexic', 'MEX'], ['chile', 'CHI'],
+  [' gana', 'GHA'], ['ganes', 'GHA'], ['escoc', 'SCO'], ['gales', 'WAL'], ['senegal', 'SEN'],
+  ['nigeri', 'NGA'],
+];
+const POS_WORDS = [
+  ['goleiro', 'GK'],
+  ['zagueiro', 'DF'], ['lateral', 'DF'], ['defensor', 'DF'], ['beque', 'DF'],
+  ['meia', 'MF'], ['meio-campista', 'MF'], ['meio campista', 'MF'], ['volante', 'MF'], ['armador', 'MF'],
+  ['atacante', 'FW'], ['centroavante', 'FW'], ['artilheir', 'FW'], ['ponta', 'FW'],
+];
+
+function qCues(q) {
+  if (q._cues) return q._cues;
+  const t = ' ' + _fold(q.t) + ' ';
+  const cues = { ctry: null, pos: null, year: null };
+  for (const [w, code] of DEMONYM) if (t.indexOf(w) !== -1) { cues.ctry = code; break; }
+  for (const [w, pos]  of POS_WORDS) if (t.indexOf(w) !== -1) { cues.pos = pos; break; }
+  const y = /\b(19[3-9]\d|20[0-2]\d)\b/.exec(t);
+  if (y) cues.year = parseInt(y[1], 10);
+  else {
+    const d = /anos (\d0)\b/.exec(t);              // "anos 70", "anos 2000"
+    if (d) { const n = parseInt(d[1], 10); cues.year = (n >= 30 ? 1900 + n : 2000 + n) + 5; }
+  }
+  cues.any = !!(cues.ctry || cues.pos || cues.year);
+  q._cues = cues;
+  return cues;
+}
+
+/* Does this candidate fit every clue the question gives away? */
+function cueFits(p, cues) {
+  if (cues.ctry && p.ctry !== cues.ctry) return false;
+  if (cues.pos  && p.pos  !== cues.pos)  return false;
+  if (cues.year && p.era && (p.era[0] > cues.year + 2 || p.era[1] < cues.year - 2)) return false;
+  return true;
+}
+
+/* How well the candidate matches the clues, as a score to add to sim() */
+function cueSim(p, cues) {
+  let sc = 0;
+  if (cues.ctry && p.ctry === cues.ctry) sc += 30;
+  if (cues.pos  && p.pos  === cues.pos)  sc += 26;
+  if (cues.year && p.era) {
+    const gap = p.era[0] > cues.year ? p.era[0] - cues.year
+              : p.era[1] < cues.year ? cues.year - p.era[1] : 0;
+    sc += Math.max(0, 26 - gap * 2.2);
+  }
+  return sc;
+}
+
 function getDisp(q) {
   const isPlayer = q.type === 'player';
   const pool0 = isPlayer ? PL : CL;
@@ -1673,6 +1868,11 @@ function getDisp(q) {
   const cfg   = DCFG();
   const strict = (q.strict !== undefined) ? q.strict : qStrict();
   const nOpts  = q.opts || cfg.opts;
+  const cues   = isPlayer ? qCues(q) : { any: false };
+
+  /* A question that names a country would be answered by the flags on the
+     tiles, so those come off — for every difficulty. */
+  if (cues.ctry) q._noFlag = true;
 
   // `fixed` = show exactly these tiles (comparison questions)
   if (q.fixed) return shuf(q.fixed.map(id => pool0.find(x => x.id === id)).filter(Boolean));
@@ -1689,20 +1889,52 @@ function getDisp(q) {
     wrong = pool0.filter(x => !skip.has(x.id));
   }
 
-  const ref = right[0];
-  if (ref && strict > 0 && wrong.length > nOpts) {
+  const ref  = right[0];
+  const need = nOpts - right.length;
+
+  /* Even the easy level keeps the board in one era: a 1958 striker next
+     to a 2022 one is not a question, it is a calendar. The window widens
+     as the level relaxes, and only applies when enough candidates remain. */
+  if (isPlayer && ref && ref.era && wrong.length > need + 3) {
+    const win  = strict >= 0.9 ? 12 : strict >= 0.4 ? 20 : 32;
+    const near = wrong.filter(x => eraGap(x, ref) <= win);
+    if (near.length >= need + 3) wrong = near;
+  }
+
+  if (ref && wrong.length > need) {
     const jitter = 14 * (1 - strict) + 6;
-    wrong = wrong
-      .map(x => ({ x, s: sim(x, ref) + rnd() * jitter }))
+    const ranked = wrong
+      .map(x => ({ x, s: sim(x, ref) * strict + (isPlayer ? cueSim(x, cues) : 0) + rnd() * jitter }))
       .sort((a, b) => b.s - a.s)
       .map(o => o.x);
-    const need = nOpts - right.length;
-    const band = Math.max(need + 2, Math.round(wrong.length * (1 - strict * 0.72)));
-    wrong = wrong.slice(0, band);
+    // the plausible band: tighter as strictness rises, never below need+2
+    const band   = Math.max(need + 2, Math.round(ranked.length * (1 - strict * 0.8)));
+    const inBand = shuf(ranked.slice(0, band));
+    let picks;
+
+    /* Clues are honoured at every level — a share of the wrong answers must
+       fit what the question just said, or the clue is a free pass. The share
+       grows with the level: a third of the board on fácil, most of it on
+       difícil, where the question is meant to be decided by knowledge alone. */
+    if (cues.any) {
+      const fits   = shuf(wrong.filter(x => cueFits(x, cues)));
+      const quota  = Math.min(fits.length, Math.max(2, Math.round(need * (0.35 + 0.45 * strict))));
+      const chosen = fits.slice(0, quota);
+      const ids    = new Set(chosen.map(x => x.id));
+      picks = chosen.concat(inBand.filter(x => !ids.has(x.id)));
+      for (const x of ranked) {                       // top up if the band ran dry
+        if (picks.length >= need) break;
+        if (!ids.has(x.id) && picks.indexOf(x) === -1) picks.push(x);
+      }
+      picks = picks.slice(0, need);
+    } else {
+      picks = inBand.slice(0, need);
+    }
+    return shuf([...right, ...picks]);
   }
 
   wrong = shuf(wrong);
-  return shuf([...right, ...wrong.slice(0, Math.max(0, nOpts - right.length))]);
+  return shuf([...right, ...wrong.slice(0, Math.max(0, need))]);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1725,6 +1957,12 @@ function qTier(q) {
   if (cid === 'craques') {
     return q.a.some(id => FAMOUS.has(id)) ? 2 : 3;
   }
+  if (cid === 'copa') {
+    const m = /\b(19|20)\d{2}\b/.exec(q.t);
+    const y = m ? parseInt(m[0], 10) : 2000;
+    return y >= 2002 ? 2 : 3;
+  }
+  if (cid === 'apelidos') return q.a.some(id => FAMOUS.has(id)) ? 1 : 2;
   return 2;
 }
 
@@ -2021,6 +2259,161 @@ function GEN_QS(tier) {
     });
   });
 
+  /* ═════ GEN3 — honours, nicknames, careers abroad ═════ */
+  const GC3 = {
+    copa:  { id:'copa',   name:'Copa do Mundo', emoji:'🌍', col:'#2E7D4F' },
+    bo:    { id:'g_bo',   name:'Bola de Ouro',  emoji:'🏅', col:'#B8860B' },
+    nick:  { id:'apelidos', name:'Apelidos',    emoji:'🏷️', col:'#8E4E9E' },
+    abroad:{ id:'g_abroad', name:'Europa',      emoji:'✈️', col:'#3F6FB5' },
+  };
+
+  /* 19. World champion of a given year — the year clue keeps the wrong
+         answers in that era, so this is a real memory test, not a calendar */
+  const wcYears = [...new Set(PL.flatMap(p => p.wc))];
+  pick(wcYears, 6).forEach(y => {
+    const yes = PL.filter(p => p.wc.includes(y));
+    const no  = PL.filter(p => !p.wc.includes(y));
+    if (!yes.length || no.length < 9) return;
+    out.push({
+      t: `Qual destes jogadores foi campeão do mundo em ${y}?`,
+      a: [rndOf(yes).id], type: 'player',
+      pool: no.map(p => p.id), _cat: GC3.copa,
+      d: y >= 1994 ? 2 : 3,
+    });
+  });
+
+  /* 20. Two champions of the same World Cup, among eight who were not */
+  pick(wcYears.filter(y => PL.filter(p => p.wc.includes(y)).length >= 2), 3).forEach(y => {
+    const yes = pick(PL.filter(p => p.wc.includes(y)), 2);
+    const no  = pick(PL.filter(p => !p.wc.includes(y) && p.era && Math.abs(p.era[0] - y) < 22), 8);
+    if (no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 campeões mundiais de ${y}`,
+      a: yes.map(p => p.id), type: 'player',
+      fixed: yes.concat(no).map(p => p.id), _cat: GC3.copa, d: 3,
+    });
+  });
+
+  /* 21. The one who never lifted it */
+  for (let i = 0; i < 3; i++) {
+    const champs = pick(PL.filter(p => p.wc.length), 9);
+    const never  = PL.filter(p => !p.wc.length && p.era && p.era[0] >= 1975);
+    if (champs.length < 9 || !never.length) break;
+    const odd = rndOf(never);
+    out.push({
+      t: 'Qual destes jogadores NUNCA foi campeão do mundo?',
+      a: [odd.id], type: 'player',
+      fixed: champs.map(p => p.id).concat(odd.id), _cat: GC3.copa, d: 3,
+    });
+  }
+
+  /* 22. Ballon d'Or */
+  for (let i = 0; i < 3; i++) {
+    const yes = PL.filter(p => p.bo > 0);
+    const no  = PL.filter(p => !p.bo);
+    if (yes.length < 3 || no.length < 8) break;
+    const two = pick(yes, 2);
+    out.push({
+      t: 'Selecione os 2 jogadores que JÁ venceram a Bola de Ouro',
+      a: two.map(p => p.id), type: 'player',
+      fixed: two.concat(pick(no, 8)).map(p => p.id), _cat: GC3.bo, d: 3,
+    });
+  }
+  pick(PL.filter(p => p.bo > 0), 4).forEach(p => {
+    out.push({
+      t: 'Qual destes jogadores venceu a Bola de Ouro?',
+      a: [p.id], type: 'player',
+      pool: PL.filter(x => !x.bo).map(x => x.id), _cat: GC3.bo, d: 2,
+    });
+  });
+  for (let i = 0; i < 2; i++) {
+    const set = pick(PL.filter(p => p.bo > 0), 10);
+    const top = set.reduce((a, b) => (a.bo >= b.bo ? a : b));
+    if (set.length < 10 || set.filter(p => p.bo === top.bo).length > 1) continue;
+    out.push({
+      t: 'Qual destes jogadores tem MAIS Bolas de Ouro?',
+      a: [top.id], type: 'player',
+      fixed: set.map(p => p.id), _cat: GC3.bo, d: 3,
+    });
+  }
+
+  /* 23. Nicknames — match the name the crowd uses to the face */
+  pick(PL.filter(p => p.nick && p.nick !== p.n), 8).forEach(p => {
+    out.push({
+      t: `Qual jogador é conhecido como "${p.nick}"?`,
+      a: [p.id], type: 'player',
+      pool: PL.filter(x => x.id !== p.id).map(x => x.id), _cat: GC3.nick,
+      d: FAMOUS.has(p.id) ? 1 : 2,
+    });
+  });
+
+  /* 24. Careers abroad — which of these wore this foreign club's shirt? */
+  const abroad = {};
+  PL.forEach(p => (p.clubs || []).forEach(c => {
+    if (!CIDS.has(c)) (abroad[c] = abroad[c] || []).push(p);
+  }));
+  const bigAbroad = Object.keys(abroad).filter(c => abroad[c].length >= 3 && CLUB_NAMES[c]);
+  pick(bigAbroad, 6).forEach(c => {
+    const yes = rndOf(abroad[c]);
+    out.push({
+      t: `Qual destes jogadores vestiu a camisa do ${CLUB_NAMES[c]}?`,
+      a: [yes.id], type: 'player',
+      pool: PL.filter(p => !(p.clubs || []).includes(c)).map(p => p.id), _cat: GC3.abroad,
+      d: abroad[c].length >= 6 ? 2 : 3,
+    });
+  });
+  pick(bigAbroad.filter(c => abroad[c].length >= 4), 3).forEach(c => {
+    const yes = pick(abroad[c], 2);
+    const no  = PL.filter(p => !(p.clubs || []).includes(c));
+    if (no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 jogadores que passaram pelo ${CLUB_NAMES[c]}`,
+      a: yes.map(p => p.id), type: 'player',
+      pool: no.map(p => p.id), _cat: GC3.abroad, d: 3,
+    });
+  });
+
+  /* 25. Team-mates abroad: who shared a dressing room with this player? */
+  pick(PL.filter(p => (p.clubs || []).some(c => !CIDS.has(c) && (abroad[c] || []).length >= 2)), 5).forEach(p => {
+    const cs = (p.clubs || []).filter(c => !CIDS.has(c) && (abroad[c] || []).length >= 2);
+    const c  = rndOf(cs);
+    const mates = abroad[c].filter(x => x.id !== p.id);
+    if (!mates.length) return;
+    out.push({
+      t: `Quem foi companheiro de ${p.n} no ${CLUB_NAMES[c]}?`,
+      a: [rndOf(mates).id], type: 'player',
+      pool: PL.filter(x => x.id !== p.id && !(x.clubs || []).includes(c)).map(x => x.id),
+      face: p.img, _cat: GC3.abroad, d: 3,
+    });
+  });
+
+  /* 26. Clubs: the one that never won the league, and the youngest club */
+  for (let i = 0; i < 2; i++) {
+    const winners = pick(CL.filter(c => c.br > 0), 9);
+    const never   = CL.filter(c => c.br === 0);
+    if (winners.length < 9 || !never.length) break;
+    const odd = rndOf(never);
+    out.push({ t: 'Qual destes clubes NUNCA foi campeão brasileiro?',
+               a: [odd.id], fixed: winners.map(c => c.id).concat(odd.id), _cat: GC.hist, d: 2 });
+  }
+  for (let i = 0; i < 2; i++) {
+    const set = pick(CL, 10);
+    const newest = set.reduce((a, b) => (a.f >= b.f ? a : b));
+    if (set.filter(c => c.f === newest.f).length > 1) continue;
+    out.push({ t: 'Qual destes clubes é o mais novo — fundado por último?',
+               a: [newest.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 3 });
+  }
+
+  /* 27. Same-year league and cup — who won the Brasileirão the year this club won the Libertadores? */
+  pick(Object.keys(LIB_CHAMPS).filter(y => BR_CHAMPS[y] && BR_CHAMPS[y] !== LIB_CHAMPS[y]), 3).forEach(y => {
+    out.push({
+      t: `Em ${y} o ${clubName(LIB_CHAMPS[y])} venceu a Libertadores. Quem foi o campeão brasileiro naquele ano?`,
+      a: [BR_CHAMPS[y]],
+      pool: CL.filter(c => c.id !== BR_CHAMPS[y]).map(c => c.id),
+      crest: LIB_CHAMPS[y], _cat: GC.hist, d: 3,
+    });
+  });
+
   // Safety net: a generator bug must never put an unanswerable question in front
   // of a player, so drop anything whose answers don't resolve.
   return out.filter(q =>
@@ -2313,36 +2706,36 @@ function useSkip() {
    MEDALS — long-run progression
 ═══════════════════════════════════════════════════ */
 const MEDALS = [
-  { id:'first',  ic:'⚽', n:'Estreia',        d:'Jogue sua primeira partida',
+  { id:'first',  ic:'ball', n:'Estreia',        d:'Jogue sua primeira partida',
     t: st => st.games >= 1 },
-  { id:'ten',    ic:'🎽', n:'Rodada',         d:'Jogue 10 partidas',
+  { id:'ten',    ic:'shirt', n:'Rodada',         d:'Jogue 10 partidas',
     t: st => st.games >= 10 },
-  { id:'perfect',ic:'🎯', n:'Perfeição',      d:'Acerte 100% de uma partida',
+  { id:'perfect',ic:'target', n:'Perfeição',      d:'Acerte 100% de uma partida',
     t: st => (st.perfect || 0) >= 1 },
-  { id:'streak5',ic:'🔥', n:'Pegando fogo',   d:'Sequência de 5 acertos',
+  { id:'streak5',ic:'flame', n:'Pegando fogo',   d:'Sequência de 5 acertos',
     t: st => (st.bestStreak || 0) >= 5 },
-  { id:'streak10',ic:'🚀', n:'Imparável',     d:'Sequência de 10 acertos',
+  { id:'streak10',ic:'rocket', n:'Imparável',     d:'Sequência de 10 acertos',
     t: st => (st.bestStreak || 0) >= 10 },
-  { id:'hard',   ic:'💀', n:'Cara de pau',    d:'80% ou mais no Difícil',
+  { id:'hard',   ic:'skull', n:'Cara de pau',    d:'80% ou mais no Difícil',
     t: st => (st.hard80 || 0) >= 1 },
-  { id:'c100',   ic:'💯', n:'Centenário',     d:'100 acertos no total',
+  { id:'c100',   ic:'medal', n:'Centenário',     d:'100 acertos no total',
     t: st => (st.correct || 0) >= 100 },
-  { id:'c500',   ic:'📖', n:'Enciclopédia',   d:'500 acertos no total',
+  { id:'c500',   ic:'book', n:'Enciclopédia',   d:'500 acertos no total',
     t: st => (st.correct || 0) >= 500 },
-  { id:'daily3', ic:'📅', n:'Rotina',         d:'3 desafios diários seguidos',
+  { id:'daily3', ic:'calendar', n:'Rotina',         d:'3 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 3 },
-  { id:'daily7', ic:'📆', n:'Semana cheia',   d:'7 desafios diários seguidos',
+  { id:'daily7', ic:'calendar', n:'Semana cheia',   d:'7 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 7 },
-  { id:'surv10', ic:'💪', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
+  { id:'surv10', ic:'shield', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
     t: st => (st.survBest || 0) >= 10 },
   /* ── the ladder ── */
-  { id:'safe1',  ic:'💵', n:'Primeiro degrau', d:'Garanta R$ 5.000 no Milhão',
+  { id:'safe1',  ic:'money', n:'Primeiro degrau', d:'Garanta R$ 5.000 no Milhão',
     t: st => (st.milBest || 0) >= 5000 },
-  { id:'safe2',  ic:'💰', n:'Meio caminho',   d:'Garanta R$ 50.000 no Milhão',
+  { id:'safe2',  ic:'coins', n:'Meio caminho',   d:'Garanta R$ 50.000 no Milhão',
     t: st => (st.milBest || 0) >= 50000 },
-  { id:'quit',   ic:'🤝', n:'Sabe a hora',    d:'Pare e leve R$ 100.000 ou mais',
+  { id:'quit',   ic:'stop', n:'Sabe a hora',    d:'Pare e leve R$ 100.000 ou mais',
     t: st => (st.milBest || 0) >= 100000 },
-  { id:'million',ic:'👑', n:'Milionário',     d:'Chegue a R$ 1.000.000',
+  { id:'million',ic:'crown', n:'Milionário',     d:'Chegue a R$ 1.000.000',
     t: st => (st.million || 0) >= 1 },
 ];
 
@@ -2639,15 +3032,15 @@ function genericCrest(id) {
     <!-- titles, then the monogram -->
     ${starRow}
     <text x="30" y="36" text-anchor="middle"
-      font-family="'Bebas Neue','Arial Black',Impact,sans-serif"
-      font-size="17" font-weight="900" letter-spacing="0.6" fill="${ink}"
+      font-family="'Archivo','Arial Black',Impact,sans-serif"
+      font-size="15" font-weight="800" letter-spacing="0.4" fill="${ink}"
       style="paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:.8px;">${c.a}</text>
 
     <!-- founding year, on its own plate so it survives a striped shirt -->
     ${c.f ? `<g opacity=".92">
       <rect x="19.5" y="39.4" width="21" height="8" rx="2.4" fill="rgba(0,0,0,.42)"/>
       <text x="30" y="45.4" text-anchor="middle"
-        font-family="'Inter',system-ui,sans-serif"
+        font-family="'Archivo',system-ui,sans-serif"
         font-size="5.8" font-weight="800" letter-spacing=".5" fill="#f2f2f2">${c.f}</text>
     </g>` : ''}
 
@@ -2661,21 +3054,26 @@ function genericCrest(id) {
    sits right underneath it, so the crest is decorative and stays silent —
    otherwise a screen reader says every name twice. In the question header
    there is no such caption, so there the crest has to carry the name. */
-/* Most crests are transparent artwork that can float on the tile. These three
+/* Most crests are transparent artwork that can float on the page. These three
    are not: Corinthians' free file carries its own split background, and the
    only freely-licensed Vasco and Náutico marks on Commons are the club flags,
-   which are solid rectangles. Dropped in raw they read as stray white boxes
-   among the shields, so they get framed as deliberate emblem plaques. */
+   which are solid rectangles. Dropped in raw they read as stray boxes among
+   the shields, so they are cut as roundels — the same round badge shape,
+   cropped onto the mark itself — and sit in the row like everyone else. */
 const FLAT_LOGOS = new Set(['corinthians', 'vasco', 'nautico']);
+const ROUNDEL_FOCUS = { nautico: '22% 50%', vasco: '50% 50%', corinthians: '50% 50%' };
 
 function clubArt(id, style, label) {
   const name = clubName(id);
   if (LOGOS[id]) {
-    const flat = FLAT_LOGOS.has(id)
-      ? 'border-radius:6px;border:1px solid rgba(255,255,255,.22);' +
-        'box-shadow:0 2px 8px rgba(0,0,0,.55);background:#fff;'
-      : '';
-    return `<img src="${LOGOS[id]}" style="${style}${flat}"
+    if (FLAT_LOGOS.has(id)) {
+      return `<span class="roundel" style="${style}border-radius:50%;"
+        ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}>
+        <img src="${LOGOS[id]}" alt="" aria-hidden="true"
+          style="object-position:${ROUNDEL_FOCUS[id] || '50% 50%'};"
+          onerror="clubFallback(this.parentElement,'${id}')" /></span>`;
+    }
+    return `<img src="${LOGOS[id]}" style="${style}"
       onerror="clubFallback(this,'${id}')"
       ${label ? `alt="${name}"` : 'alt="" aria-hidden="true"'} />`;
   }
@@ -2688,7 +3086,7 @@ function clubArt(id, style, label) {
    removed), swap in the app's own SVG crest instead of a broken-image icon. */
 function clubFallback(img, id) {
   try {
-    const alt = img.getAttribute('alt');
+    const alt = img.getAttribute('alt') || img.getAttribute('aria-label');
     img.outerHTML = `<svg viewBox="0 0 60 60" style="${img.getAttribute('style') || ''}"
       ${alt ? `role="img" aria-label="${alt}"` : 'aria-hidden="true"'}
       >${genericCrest(id)}</svg>`;
@@ -2696,13 +3094,14 @@ function clubFallback(img, id) {
 }
 
 /* ═══════════════════════════════════════════════════
-   BADGE — one answer tile
+   POCKET — one answer tile
 
-   Ten of these make the board. Each carries the show's letter marker
-   (A…J), and can be overlaid with the audience vote, the pundit's pick,
-   or the lock-in dimming, depending on what the player has spent.
+   Ten of these make the board. Each is a pocket in the album page with
+   a numbered tab in the corner, and can carry the audience vote, the
+   pundit's pick, or the lock-in dimming, depending on what the player
+   has spent.
 ═══════════════════════════════════════════════════ */
-const LETTERS = 'ABCDEFGHIJKLMNOP';
+const NUM = i => String((i || 0) + 1).padStart(2, '0');
 
 function badge(item, idx) {
   const isPlayer = 'img' in item;
@@ -2711,236 +3110,179 @@ function badge(item, idx) {
   const isAns   = (sc === 'reveal') && cat.qs[qi].a.includes(item.id);
   const isWrong = (sc === 'reveal') && isSel && !isAns;
   const curQ    = (cat && cat.qs && cat.qs[qi]) || {};
-  const delay   = `animation-delay:${Math.min(9, idx || 0) * 32}ms;`;
+  const delay   = `animation-delay:${Math.min(9, idx || 0) * 28}ms;`;
 
   if (hidden.has(item.id) && live) {
-    return `<div style="${delay}width:100%;${curQ.textTiles ? 'min-height:44px' : 'aspect-ratio:1'};
-      border-radius:9px;background:rgba(255,255,255,.015);opacity:.3;
-      border:1px dashed rgba(255,255,255,.07);"></div>`;
+    return `<div class="b-gone" style="${delay}${curQ.textTiles ? 'min-height:44px' : 'aspect-ratio:1/1.22'}"></div>`;
   }
 
-  let cls  = 'b';
-  let ring = '';
+  let cls = 'b';
   if (sc === 'reveal') {
-    if (isAns)        { cls += ' b-correct'; ring = 'box-shadow:0 0 0 3px #00e676,0 0 20px rgba(0,230,118,.45);'; }
-    else if (isWrong) { cls += ' b-wrong';   ring = 'box-shadow:0 0 0 3px #f44336,0 0 20px rgba(244,67,54,.45);'; }
+    if (isAns)        cls += ' b-correct';
+    else if (isWrong) cls += ' b-wrong';
   } else if (sc === 'ask' || sc === 'lock') {
-    // the board holds its breath: only what you picked stays lit
-    if (isSel) { cls += ' b-locked'; }
-    else       { cls += ' b-faded'; }
+    cls += isSel ? ' b-locked' : ' b-faded';       // the board holds its breath
   } else if (isSel) {
     cls += ' b-sel';
-    ring = `box-shadow:0 0 0 3px var(--gold),0 0 16px rgba(255,200,69,.5);transform:scale(1.06);`;
   } else if (expert && expert.id === item.id) {
     cls += ' expert-ring';
   }
 
-  const letter = `<span class="tile-letter">${LETTERS[idx] || '?'}</span>`;
-
+  const tab = `<span class="tab">${NUM(idx)}</span>`;
   const votePct = poll && poll[item.id] !== undefined ? poll[item.id] : null;
   const voteEl  = votePct === null ? '' :
     `<span class="vote-pct">${votePct}%</span>
      <span class="vote"><i style="width:${votePct}%;animation-delay:${(idx || 0) * 45}ms;"></i></span>`;
+  const longCls = item.n.length > 15 ? ' tile-name-long' : '';
 
   if (curQ.textTiles) {
-    return `<div class="${cls}" data-id="${item.id}" style="
-${delay}        width:100%;min-height:46px;border-radius:9px;cursor:pointer;
-        background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-        border:1px solid rgba(255,255,255,.08);
-        position:relative;user-select:none;
-        display:flex;align-items:center;justify-content:center;text-align:center;
-        padding:6px 4px 6px 18px;transition:transform .12s,box-shadow .12s;${ring}">
-      ${letter}${voteEl}
-      <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.92);
-        font-family:'Inter',system-ui;line-height:1.25;
-        text-shadow:0 1px 4px rgba(0,0,0,.9);">${item.n}</span>
-    </div>`;
+    return `<div class="${cls} b-text" data-id="${item.id}" style="${delay}">
+      ${tab}${voteEl}<span class="tile-name${longCls}">${item.n}</span></div>`;
   }
 
   if (isPlayer) {
-    return `<div class="${cls}" data-id="${item.id}" style="
-${delay}        width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
-        position:relative;user-select:none;
-        background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
-        border:1px solid rgba(255,255,255,.08);
-        display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-        padding:9px 3px 29px;
-        transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-      ${letter}${voteEl}
-      <div style="width:68%;aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;
-        border:2px solid rgba(255,200,69,.32);box-shadow:0 2px 10px rgba(0,0,0,.6);">
-        <img src="${item.img}" alt="${item.n}"
-          style="width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none;"
-          onerror="this.style.opacity='.25'" />
-      </div>
-      <span class="tile-name${item.n.length > 15 ? ' tile-name-long' : ''}"
-        ><span class="fl">${flagSVG(item.ctry, 7)}</span>${item.n}</span>
+    return `<div class="${cls}" data-id="${item.id}" style="${delay}">
+      ${tab}${voteEl}
+      <div class="print"><img src="${item.img}" alt="" aria-hidden="true"
+        onerror="this.style.opacity='.2'" /></div>
+      <span class="tile-name${longCls}">${
+        curQ._noFlag ? '' : `<span class="fl">${flagSVG(item.ctry, 7)}</span>`}${item.n}</span>
     </div>`;
   }
 
-  // ── Club tile ──
-  return `<div class="${cls}" data-id="${item.id}" style="
-${delay}      width:100%;aspect-ratio:1;border-radius:9px;cursor:pointer;
-      position:relative;overflow:hidden;user-select:none;
-      background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      transition:transform .12s,box-shadow .12s,filter .1s;${ring}">
-    ${letter}${voteEl}
-    ${clubArt(item.id, (FLAT_LOGOS.has(item.id)
-        ? 'width:70%;max-height:56%;object-fit:contain;'
-        : 'width:76%;height:76%;object-fit:contain;') + 'pointer-events:none;flex-shrink:0;')}
-    <span class="tile-name tile-club${item.n.length > 15 ? ' tile-name-long' : ''}">${item.n}</span>
+  // ── Club pocket ──
+  return `<div class="${cls} b-crest" data-id="${item.id}" style="${delay}">
+    ${tab}${voteEl}
+    <div class="crest-box">${clubArt(item.id, '', false)}</div>
+    <span class="tile-name tile-club${longCls}">${item.n}</span>
   </div>`;
 }
 
 /* ═══════════════════════════════════════════════════
    SCREENS
 ═══════════════════════════════════════════════════ */
+const topbar = (label, id) => `
+  <div class="topbar">
+    <button id="${id || 'bhome'}" class="btn btn-ghost btn-icon" aria-label="Voltar">${ICON.back('currentColor', 13)}</button>
+    <span class="crumb">${label}</span>
+  </div>`;
+
+const runlogEl = () => `<div class="runlog" aria-hidden="true">${
+  runLog.map(p => `<i class="${p === 3 ? 'rl-3' : p === 1 ? 'rl-1' : p === 0 ? 'rl-0' : ''}"></i>`).join('')}</div>`;
+
+const medalChips = () => (window._newMedals || []).length ? `
+  <div style="display:flex;flex-direction:column;gap:5px;align-items:center;margin-top:4px;">
+    ${window._newMedals.map(m => `<span class="chip chip-brass" style="text-transform:none;letter-spacing:.02em;font-size:11px;">
+      ${(ICON[m.ic] || ICON.medal)('currentColor', 12)} Nova figurinha: ${m.n}</span>`).join('')}
+  </div>` : '';
+
+/* The sticker on the cover: a different legend every day, printed in brass. */
+function heroSticker() {
+  const pool = PL.filter(p => p.wc.length || p.bo > 0);
+  const p    = pool[dayIndex() % pool.length] || PL[0];
+  const num  = PL.indexOf(p) + 1;
+  return { p, num };
+}
+
 function html() {
 
-  /* ── Home: the cold open ──────────────────────────────────────
-     One headline act — the ladder — with the other three modes as
-     supporting chips underneath, so the million is unmistakably the
-     point of the app. */
+  /* ── Home: the cover ────────────────────────────────────────── */
   if (sc === 'home') {
     const best = milBest();
-    const modeChip = (id, ic, col, label, tail) => `
-      <button id="${id}" class="btn-press" style="
-        background:linear-gradient(180deg,${col}22,${col}0e);
-        border:1px solid ${col}55;color:${col};
-        font-size:12px;font-weight:800;padding:9px 13px;border-radius:13px;
-        cursor:pointer;font-family:'Inter',system-ui;
-        display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:88px;">
-        ${ic}<span>${label}</span>
-        ${tail ? `<span style="font-size:9px;opacity:.7;font-weight:600;">${tail}</span>` : ''}
+    const done = dailyDone(), dst = dailyStreakNow(), dres = dailyInfo();
+    const { p: hero, num } = heroSticker();
+    const year = new Date().getFullYear();
+
+    const mode = (id, ic, label, tail) => `
+      <button id="${id}" class="mode">
+        ${ic}<span class="mt">${label}</span>
+        ${tail ? `<span class="ms">${tail}</span>` : ''}
       </button>`;
 
-    const done = dailyDone(), dst = dailyStreakNow(), dres = dailyInfo();
-
     return `
-    <div style="display:flex;flex-direction:column;align-items:center;
-      justify-content:center;min-height:500px;padding:26px 20px;text-align:center;gap:13px;">
+    <div class="pg pg-center" style="padding:20px 20px 24px;gap:13px;">
 
-      <div class="ball-idle" style="font-size:44px;
-        filter:drop-shadow(0 6px 20px rgba(255,200,69,.4));">⚽</div>
-
-      <div>
-        <div style="font-size:10px;letter-spacing:5px;color:rgba(255,200,69,.6);
-          font-weight:800;font-family:'Inter',system-ui;margin-bottom:2px;">RUMO AO</div>
-        <div class="goldgrad" style="font-size:52px;font-weight:900;
-          font-family:'Bebas Neue','Impact',sans-serif;
-          letter-spacing:5px;line-height:.92;">MILHÃO</div>
-        <div style="font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.42);
-          font-weight:800;font-family:'Inter',system-ui;margin-top:5px;">FUTEBOL QUIZ BR</div>
+      <div class="eyebrow" style="width:100%;display:flex;justify-content:space-between;">
+        <span>Edição ${year}</span><b>Fig. Nº ${String(num).padStart(3, '0')}</b>
       </div>
 
-      <p style="color:rgba(255,255,255,.4);font-size:12.5px;max-width:290px;line-height:1.65;
-        margin:0;font-family:'Inter',system-ui;">
+      <div>
+        <div class="eyebrow">Futebol Quiz BR</div>
+        <h1 class="display" style="font-size:38px;margin-top:6px;">Rumo ao<br>
+          <em class="brass" style="font-size:46px;">Milhão</em></h1>
+      </div>
+
+      <div class="sticker sticker-foil hero-sticker">
+        <span class="tab tab-brass">Nº ${String(num).padStart(2, '0')}</span>
+        <div class="print print-brass"><img src="${hero.img}" alt="${hero.n}" /></div>
+        <div class="nm">${hero.n}</div>
+        <div class="ctry">${CTRY_NAME[hero.ctry] || hero.ctry} · ${hero.nick || POS_NAME[hero.pos]}</div>
+      </div>
+
+      <p class="small muted" style="max-width:280px;font-size:12.5px;">
         Dezesseis perguntas separam você de
-        <strong style="color:var(--gold);white-space:nowrap;">R$ 1.000.000</strong>.
+        <b class="brass" style="white-space:nowrap;">R$ 1.000.000</b>.
         Elas ficam mais difíceis a cada degrau.</p>
 
-      ${best > 0 ? `<div style="display:flex;align-items:center;gap:6px;
-        background:rgba(255,200,69,.1);border:1px solid rgba(255,200,69,.3);
-        border-radius:16px;padding:4px 13px;">
-        ${ICON.money('#FFC845', 12)}
-        <span style="font-size:11px;font-weight:800;color:var(--gold);
-          font-family:'Inter',system-ui;">Seu recorde: ${money(best)}</span>
-      </div>` : ''}
+      ${best > 0 ? `<span class="chip chip-brass">${ICON.money('currentColor', 11)} Seu recorde · ${money(best)}</span>` : ''}
 
-      <button id="mil-btn" class="btn-press" style="margin-top:2px;
-        background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
-        font-size:20px;font-weight:900;padding:14px 42px;border-radius:30px;
-        border:none;cursor:pointer;
-        box-shadow:0 6px 26px rgba(255,200,69,.34), inset 0 -2px 0 rgba(0,0,0,.18);
-        font-family:'Bebas Neue','Impact',sans-serif;
-        letter-spacing:3px;display:flex;align-items:center;gap:10px;">
-        ${ICON.play('#0b1136', 17)}JOGAR AGORA</button>
+      <button id="mil-btn" class="btn btn-brass btn-lg">${ICON.play('currentColor', 15)} Jogar agora</button>
 
-      <div style="display:flex;gap:7px;width:100%;max-width:330px;margin-top:4px;">
-        ${modeChip('daily-btn', ICON.calendar(done ? '#8a93b8' : '#FFC845', 16),
-          done ? '#8a93b8' : '#FFC845',
-          'Diário',
+      <div class="modes">
+        ${mode('daily-btn', ICON.calendar(done ? 'var(--ink-4)' : 'var(--pitch)', 16), 'Diário',
           done ? (dres ? dres.nCorrect + '/' + dres.total : 'feito')
-               : '#' + dayIndex() + (dst > 0 ? ' · ' + dst + ' seg.' : ''))}
-        ${modeChip('surv-btn', ICON.shield('#FF6B68', 16), '#FF6B68', 'Mata-mata',
+               : 'Nº ' + dayIndex() + (dst > 0 ? ' · ' + dst + ' seg.' : ''))}
+        ${mode('surv-btn', ICON.shield('var(--bad)', 16), 'Mata-mata',
           (stats.survBest || 0) > 0 ? 'recorde ' + stats.survBest : 'até errar')}
-        ${modeChip('cta-btn', ICON.ladder('#4FC3F7', 16), '#4FC3F7', 'Treino',
-          'sem apostar')}
+        ${mode('cta-btn', ICON.ladder('var(--ink-2)', 16), 'Treino', 'sem apostar')}
       </div>
 
       ${(() => {
         const e = earnedMedals();
         if (!e.length) return '';
-        return `<div id="medal-strip" style="display:flex;gap:5px;flex-wrap:wrap;
-          justify-content:center;max-width:280px;cursor:pointer;margin-top:2px;">
-          ${e.slice(0, 11).map(m => `<span title="${m.n}" style="font-size:15px;
-            filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));">${m.ic}</span>`).join('')}
-          ${e.length > 11 ? `<span style="font-size:11px;color:rgba(255,255,255,.35);
-            align-self:center;">+${e.length - 11}</span>` : ''}
+        return `<div id="medal-strip" class="medal-strip" title="Medalhas">
+          ${e.slice(0, 11).map(m => `<span class="medal-dot" title="${m.n}">${(ICON[m.ic] || ICON.medal)('currentColor', 13)}</span>`).join('')}
+          ${e.length > 11 ? `<span class="small muted" style="align-self:center;">+${e.length - 11}</span>` : ''}
         </div>`;
       })()}
 
-      <div style="display:flex;gap:16px;align-items:center;margin-top:2px;">
-        <button id="bmute" title="Som" style="background:none;border:none;cursor:pointer;
-          opacity:.5;padding:3px;display:flex;">${
-          muted ? ICON.mute('#fff', 16) : ICON.sound('#fff', 16)}</button>
-        <button id="bmed" style="background:none;border:none;
-          color:rgba(255,255,255,.28);font-size:10px;cursor:pointer;
-          font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
-          Medalhas</button>
-        <button id="bcred" style="background:none;border:none;
-          color:rgba(255,255,255,.28);font-size:10px;cursor:pointer;
-          font-family:'Inter',system-ui;text-decoration:underline;padding:2px;">
-          Créditos</button>
+      <div class="home-foot">
+        <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
+          muted ? ICON.mute('currentColor', 14) : ICON.sound('currentColor', 14)}</button>
+        <button id="bmed"  class="link">Medalhas</button>
+        <button id="bcred" class="link">Créditos</button>
       </div>
 
-      ${stats.games > 0 ? `<div style="font-size:10px;color:rgba(255,255,255,.25);
-        font-family:'Inter',system-ui;">${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
+      ${stats.games > 0 ? `<div class="small muted" style="font-size:10.5px;display:flex;gap:5px;align-items:center;">
+        ${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
         · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
-        ${stats.bestStreak >= 3 ? ' · 🔥 ' + stats.bestStreak : ''}</div>` : ''}
+        ${stats.bestStreak >= 3 ? `· ${ICON.flame('var(--brass)', 11)} ${stats.bestStreak}` : ''}</div>` : ''}
     </div>`;
   }
 
-
-
-  /* ── MEDALS SCREEN ── */
+  /* ── Medals ── */
   if (sc === 'medals') {
     const got = new Set(earnedMedals().map(m => m.id));
     return `
-    <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
-          color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
-        <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
-          font-family:'Inter',system-ui;">Medalhas · ${got.size}/${MEDALS.length}</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:7px;flex:1;overflow-y:auto;">
+    <div class="pg" style="gap:10px;">
+      ${topbar(`Figurinhas especiais · ${got.size}/${MEDALS.length}`)}
+      <div class="scroll-y" style="display:flex;flex-direction:column;gap:7px;flex:1;">
         ${MEDALS.map(m => {
           const on = got.has(m.id);
-          return `<div style="display:flex;align-items:center;gap:11px;
-            background:${on ? 'rgba(255,215,0,.07)' : 'rgba(255,255,255,.025)'};
-            border:1px solid ${on ? 'rgba(255,215,0,.28)' : 'rgba(255,255,255,.05)'};
-            border-radius:11px;padding:9px 12px;">
-            <span style="font-size:22px;filter:${on ? 'none' : 'grayscale(1)'};
-              opacity:${on ? 1 : .3};">${m.ic}</span>
-            <div style="flex:1;">
-              <div style="font-size:13px;font-weight:800;
-                color:${on ? '#FFD700' : 'rgba(255,255,255,.45)'};
-                font-family:'Inter',system-ui;">${m.n}</div>
-              <div style="font-size:10px;color:rgba(255,255,255,.35);
-                font-family:'Inter',system-ui;">${m.d}</div>
+          return `<div class="medal ${on ? 'medal-on' : 'medal-off'}">
+            <span class="ic">${(ICON[m.ic] || ICON.medal)('currentColor', 17)}</span>
+            <div style="flex:1;min-width:0;">
+              <div class="t">${m.n}</div>
+              <div class="d">${m.d}</div>
             </div>
-            ${on ? ICON.check('#00e676', 14) : ''}
+            ${on ? ICON.check('var(--good)', 14) : ''}
           </div>`;
         }).join('')}
       </div>
     </div>`;
   }
 
-  /* ── CREDITS SCREEN ── */
+  /* ── Credits ── */
   if (sc === 'credits') {
     const pairs = {};
     Object.values(typeof CREDITS !== 'undefined' ? CREDITS : {}).forEach(c => {
@@ -2949,13 +3291,8 @@ function html() {
     });
     const rows = Object.keys(pairs).sort().map(k => {
       const [a, l] = k.split('||');
-      return `<div style="display:flex;justify-content:space-between;gap:8px;
-        padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);">
-        <span style="font-size:10px;color:rgba(255,255,255,.62);flex:1;
-          font-family:'Inter',system-ui;line-height:1.35;">${a}</span>
-        <span style="font-size:9px;color:rgba(255,200,69,.55);white-space:nowrap;
-          font-family:'Inter',system-ui;">${l}</span>
-      </div>`;
+      return `<div class="credit-row"><span style="flex:1;color:var(--ink-2);line-height:1.35;">${a}</span>
+        <span class="l">${l}</span></div>`;
     }).join('');
 
     /* Every photo currently carries a credit, so this renders nothing. It
@@ -2963,103 +3300,61 @@ function html() {
        an attribution list that quietly looks complete. */
     const unsourced = PL.filter(p => p.img && !CREDITS[p.img]).map(p => p.n);
     return `
-    <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
-          color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
-        <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
-          font-family:'Inter',system-ui;">Créditos das imagens</span>
-      </div>
-      <p style="font-size:11px;color:rgba(255,255,255,.42);line-height:1.65;margin:0;
-        font-family:'Inter',system-ui;">
-        As fotos dos jogadores vêm da <strong style="color:rgba(255,255,255,.7);">Wikimedia
-        Commons</strong> e são usadas sob licenças livres (CC / domínio público).
+    <div class="pg" style="gap:10px;">
+      ${topbar('Créditos das imagens')}
+      <p class="small muted" style="font-size:11px;">
+        As fotos vêm da <b style="color:var(--ink);">Wikimedia Commons</b> e são usadas sob
+        licenças livres (CC / domínio público), impressas aqui em serigrafia.
         Obrigado a cada autor listado abaixo.<br><br>
         Escudos dos clubes são marcas registradas de seus respectivos clubes, exibidos
         apenas para identificação dentro do quiz.
       </p>
-      <div class="scroll-y" style="flex:1;background:rgba(255,255,255,.03);
-        border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 12px;
-        max-height:${unsourced.length ? 262 : 330}px;">${
-        rows || '<span style="font-size:11px;color:#888;">—</span>'}</div>
-      ${unsourced.length ? `<div style="background:rgba(255,152,0,.08);
-        border:1px solid rgba(255,152,0,.28);border-radius:9px;padding:8px 11px;">
-        <div style="font-size:10px;font-weight:800;color:#FFB74D;margin-bottom:2px;
-          font-family:'Inter',system-ui;">Fonte ainda não registrada</div>
-        <div style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5;
-          font-family:'Inter',system-ui;">${unsourced.join(', ')} —
-          estamos rastreando a autoria dessas fotos. Se você é o autor,
-          escreva para tiagor.reis@gmail.com.</div>
+      <div class="scroll-y" style="flex:1;background:var(--pocket);border:1px solid var(--rule-2);
+        border-radius:11px;padding:8px 12px;max-height:${unsourced.length ? 262 : 330}px;">${
+        rows || '<span class="small muted">—</span>'}</div>
+      ${unsourced.length ? `<div class="note">
+        <div style="font-weight:800;color:var(--brass);margin-bottom:2px;">Fonte ainda não registrada</div>
+        <div class="muted">${unsourced.join(', ')} — estamos rastreando a autoria dessas fotos.
+          Se você é o autor, escreva para tiagor.reis@gmail.com.</div>
       </div>` : ''}
-      <p style="font-size:9px;color:rgba(255,255,255,.25);text-align:center;margin:0;
-        font-family:'Inter',system-ui;">
-        Detalhes completos: commons.wikimedia.org</p>
+      <p class="small muted" style="font-size:9.5px;text-align:center;">Detalhes completos: commons.wikimedia.org</p>
     </div>`;
   }
 
-  /* ── Treino: the old fixed-length rounds, no money at stake ── */
+  /* ── Treino: fixed-length rounds, nothing at stake ── */
   if (sc === 'difficulty') return `
-  <div style="display:flex;flex-direction:column;min-height:500px;padding:16px;gap:10px;">
-
-    <!-- Header -->
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-      <button id="bhome" style="background:rgba(255,255,255,.07);border:none;
-        color:rgba(255,255,255,.45);font-size:11px;padding:5px 11px;
-        border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">${ICON.back('currentColor',11)}Início</button>
-      <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
-        font-family:'Inter',system-ui;">Treino · escolha a dificuldade</span>
-    </div>
-
-    <!-- Difficulty cards -->
-    <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center;">
+  <div class="pg" style="gap:10px;">
+    ${topbar('Treino · escolha a dificuldade')}
+    <div style="display:flex;flex-direction:column;gap:9px;flex:1;justify-content:center;">
       ${DIFFS.map(d => `
-      <div class="dc" data-key="${d.key}" data-n="${d.n}" style="
-          background:rgba(255,255,255,.04);border:1px solid ${d.col}50;
-          border-radius:14px;padding:18px 20px;cursor:pointer;
-          display:flex;align-items:center;gap:16px;
-          transition:transform .12s,background .12s,box-shadow .12s;
-          box-shadow:0 2px 12px rgba(0,0,0,.3);">
-        <div style="font-size:36px;flex-shrink:0;
-          filter:drop-shadow(0 2px 8px ${d.col}66);">${d.emoji}</div>
+      <div class="dc" data-key="${d.key}" data-n="${d.n}">
+        <span class="ic" style="color:${d.col};">${(ICON[d.ic] || ICON.star)('currentColor', 18)}</span>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:18px;font-weight:900;color:#fff;
-            font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;
-            line-height:1.1;">${d.label.toUpperCase()}</div>
-          <div style="font-size:11px;color:rgba(255,255,255,.45);
-            font-family:'Inter',system-ui;margin-top:2px;">${d.desc}</div>
+          <div class="t">${d.label}</div>
+          <div class="d">${d.desc}</div>
         </div>
-        <div style="text-align:right;flex-shrink:0;">
-          <div style="font-size:20px;font-weight:900;color:${d.col};
-            font-family:'Bebas Neue','Impact',sans-serif;line-height:1;">
-            ${d.n}Q</div>
+        <div class="n num">${d.n}<small>perguntas</small>
           ${scores[d.key] !== undefined
-            ? `<div style="font-size:10px;color:${d.col};font-weight:700;
-                font-family:'Inter',system-ui;opacity:.8;margin-top:2px;
-                display:flex;align-items:center;gap:3px;justify-content:flex-end;">
-                ${ICON.star(d.col, 10)} ${scores[d.key]} pts</div>` : ''}
+            ? `<small style="color:${d.col};text-transform:none;letter-spacing:.02em;">recorde ${scores[d.key]} pts</small>` : ''}
         </div>
       </div>`).join('')}
     </div>
-
-    <p style="font-size:10px;color:rgba(255,255,255,.2);text-align:center;
-      margin:0;font-family:'Inter',system-ui;">
-      Rodadas de treino: sem degraus, sem prêmio, só pontos</p>
+    <p class="small muted" style="font-size:10px;text-align:center;">Rodadas de treino: sem degraus, sem prêmio, só pontos</p>
   </div>`;
 
-  /* ── The payout: how a ladder run ends ──────────────────────
+  /* ── How a ladder run ends ───────────────────────────────────
      Three different endings, and they should not look alike. Walking
-     away with money is a win and gets the gold treatment; falling to a
+     away with money is a win and gets the brass; falling to a
      checkpoint still pays, but quietly; going out with nothing is
      stated plainly rather than dressed up. */
   if (sc === 'end' && isMil) {
     const won     = banked >= LADDER[LADDER.length - 1].v;
-    const cleared = rung;                       // rungs actually banked
-    const tone    = won ? 'var(--gold)' : banked > 0 ? 'var(--win)' : 'var(--lose)';
-    const head    = won     ? 'UM MILHÃO!'
-                  : cashed  ? 'VOCÊ PAROU A TEMPO'
-                  : banked  ? 'CAIU, MAS LEVOU'
-                  :           'FIM DE JOGO';
+    const cleared = rung;
+    const tone    = won ? 'brass' : banked > 0 ? 'good' : 'bad';
+    const head    = won     ? 'Um milhão!'
+                  : cashed  ? 'Você parou a tempo'
+                  : banked  ? 'Caiu, mas levou'
+                  :           'Fim de jogo';
     const sub     = won
       ? 'Dezesseis perguntas, dezesseis acertos. Não dá pra ir mais longe.'
       : cashed
@@ -3069,383 +3364,212 @@ function html() {
       : 'Escorregou antes do primeiro degrau garantido. Da próxima, considere parar.';
 
     return `
-    <div class="scroll-y" style="display:flex;flex-direction:column;align-items:center;
-      justify-content:center;min-height:500px;padding:26px 22px;text-align:center;gap:9px;">
+    <div class="pg pg-center scroll-y" style="padding:26px 22px;gap:9px;">
+      <div class="eyebrow">Rumo ao Milhão · degrau ${cleared}/${LADDER.length}</div>
+      <div class="display ${tone}" style="font-size:30px;"><em>${head}</em></div>
+      <div class="display prize-pop ${banked > 0 ? 'brass' : 'muted'}"
+        style="font-size:${banked >= 100000 ? 44 : 52}px;letter-spacing:-.03em;">${money(banked)}</div>
+      <p class="small muted" style="max-width:290px;font-size:12px;">${sub}</p>
 
-      <div style="font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.35);
-        font-family:'Inter',system-ui;">RUMO AO MILHÃO · DEGRAU ${cleared}/${LADDER.length}</div>
-
-      <div style="font-size:26px;font-weight:900;color:${tone};letter-spacing:2px;
-        font-family:'Bebas Neue','Impact',sans-serif;">${head}</div>
-
-      <div class="prize-pop ${banked > 0 ? 'goldgrad' : ''}"
-        style="font-size:${banked >= 100000 ? 46 : 54}px;font-weight:900;line-height:1;
-        font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;
-        ${banked > 0 ? '' : 'color:rgba(255,255,255,.3);'}">${money(banked)}</div>
-
-      <p style="font-size:12px;color:rgba(255,255,255,.45);margin:2px 0 0;max-width:290px;
-        line-height:1.6;font-family:'Inter',system-ui;">${sub}</p>
-
-      <!-- the climb, rung by rung -->
-      <div style="display:flex;gap:2px;align-items:center;width:100%;max-width:300px;margin:6px 0;">
-        ${LADDER.map((step, i) => `<span class="notch${i < rung ? ' notch-done' : ''}${
-          step.safe ? ' notch-safe' : ''}"></span>`).join('')}
+      <div class="rail" style="width:100%;max-width:300px;margin:6px 0;">
+        ${LADDER.map((step, i) => `<span class="notch${i < rung ? ' notch-done' : ''}${step.safe ? ' notch-safe' : ''}"></span>`).join('')}
       </div>
 
-      <div style="display:flex;gap:16px;font-family:'Inter',system-ui;">
-        <div><div style="font-size:17px;font-weight:900;color:#fff;">${nCorrect}</div>
-          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">ACERTOS</div></div>
-        <div><div style="font-size:17px;font-weight:900;color:#fff;">${pts}</div>
-          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">PONTOS</div></div>
-        <div><div style="font-size:17px;font-weight:900;color:var(--gold);">${money(Math.max(milBest(), banked))}</div>
-          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:1px;">RECORDE</div></div>
+      <div class="stats">
+        <div><div class="v num">${nCorrect}</div><div class="k">Acertos</div></div>
+        <div><div class="v num">${pts}</div><div class="k">Pontos</div></div>
+        <div><div class="v num brass">${money(Math.max(milBest(), banked))}</div><div class="k">Recorde</div></div>
       </div>
 
-      ${(window._newMedals || []).length ? `<div style="display:flex;flex-direction:column;
-        gap:4px;margin-top:6px;align-items:center;">
-        ${window._newMedals.map(m => `<div style="display:flex;align-items:center;gap:7px;
-          background:rgba(255,200,69,.12);border:1px solid rgba(255,200,69,.4);
-          border-radius:20px;padding:4px 13px;">
-          <span style="font-size:16px;">${m.ic}</span>
-          <span style="font-size:11px;font-weight:800;color:var(--gold);
-            font-family:'Inter',system-ui;">Nova medalha: ${m.n}</span>
-        </div>`).join('')}
-      </div>` : ''}
+      ${medalChips()}
 
-      <div style="display:flex;gap:9px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
-        <button id="bshare" class="btn-press" style="background:#25D366;color:#fff;font-size:13px;
-          font-weight:900;padding:10px 20px;border-radius:20px;border:none;cursor:pointer;
-          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">COMPARTILHAR</button>
-        <button id="bmilrep" class="btn-press" style="
-          background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
-          font-size:14px;font-weight:900;padding:10px 22px;border-radius:20px;border:none;
-          cursor:pointer;font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
-          DE NOVO</button>
-        <button id="bhome" class="btn-press" style="background:rgba(255,255,255,.08);color:#fff;
-          font-size:12px;font-weight:700;padding:10px 18px;border-radius:20px;border:none;
-          cursor:pointer;font-family:'Inter',system-ui;">Início</button>
+      <div class="foot-row" style="margin-top:12px;">
+        <button id="bshare"  class="btn btn-ghost btn-sm">Compartilhar</button>
+        <button id="bmilrep" class="btn btn-brass">De novo</button>
+        <button id="bhome"   class="btn btn-ghost btn-sm">Início</button>
       </div>
     </div>`;
   }
 
-  /* ── End Screen ── */
+  /* ── End of a round ── */
   if (sc === 'end') {
     const total = cat.qs.length;
     const pct = Math.round(nCorrect / total * 100);
-    const [em, msg] = pct >= 80 ? ['🏆','Craque!'] : pct >= 50 ? ['⚽','Boa jogada!'] : ['😅','Treina mais!'];
+    const msg = pct >= 80 ? 'Craque!' : pct >= 50 ? 'Boa jogada!' : 'Treina mais!';
     const isRecord = scores[diffKey] !== undefined && pts === scores[diffKey] && pts > 0;
     const curDiff  = DIFFS.find(d => d.key === diffKey);
     return `
-    <div style="display:flex;flex-direction:column;align-items:center;
-      justify-content:center;min-height:500px;padding:2rem;text-align:center;gap:10px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;
-        color:${curDiff.col};font-family:'Inter',system-ui;">
-        ${isSurv ? `🛡️ MATA-MATA · ${nCorrect} ${nCorrect === 1 ? 'acerto' : 'acertos'} seguidos`
-                 : `${curDiff.emoji} ${curDiff.label.toUpperCase()} · ${cat.qs.length} perguntas`}</div>
-      <div style="font-size:52px;margin:4px 0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.5));">${em}</div>
-      <div style="font-size:28px;font-weight:800;color:#FFD700;
-        font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">${msg}</div>
-      <div style="font-size:68px;font-weight:900;color:#fff;line-height:1;
-        font-family:'Bebas Neue','Impact',sans-serif;">${pts}</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.35);font-family:'Inter',system-ui;">
-        pontos · ${nCorrect}/${total} acertos (${pct}%)</div>
-      ${bestStreak >= 3 ? `<div style="font-size:12px;color:#FF7700;font-weight:700;
-        font-family:'Inter',system-ui;">🔥 melhor sequência: ${bestStreak}</div>` : ''}
-      <div style="width:200px;height:6px;background:rgba(255,255,255,.1);
-        border-radius:3px;overflow:hidden;margin:4px 0;">
-        <div style="height:100%;width:${pct}%;background:${curDiff.col};border-radius:3px;
-          transition:width 1s ease-out;"></div>
-      </div>
-      ${isRecord ? `<div style="font-size:12px;font-weight:800;color:#FFD700;
-        font-family:'Inter',system-ui;">🌟 Novo recorde!</div>` : ''}
-      ${(window._newMedals || []).length ? `<div style="display:flex;flex-direction:column;
-        gap:4px;margin-top:8px;align-items:center;">
-        ${window._newMedals.map(m => `<div style="display:flex;align-items:center;gap:7px;
-          background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.4);
-          border-radius:20px;padding:4px 13px;">
-          <span style="font-size:16px;">${m.ic}</span>
-          <span style="font-size:11px;font-weight:800;color:#FFD700;
-            font-family:'Inter',system-ui;">Nova medalha: ${m.n}</span>
-        </div>`).join('')}
-      </div>` : ''}
-      <div style="display:flex;gap:3px;margin-top:8px;font-size:15px;letter-spacing:1px;">
-        ${runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('')}</div>
-      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
-        <button id="bshare" style="background:#25D366;color:#fff;font-size:13px;
-          font-weight:900;padding:10px 22px;border-radius:20px;border:none;cursor:pointer;
-          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">COMPARTILHAR</button>
-        <button id="brep" style="background:${curDiff.col};color:#fff;font-size:14px;
-          font-weight:900;padding:10px 24px;border-radius:20px;border:none;cursor:pointer;
-          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:2px;">
-          JOGAR DE NOVO</button>
-        <button id="bdiff" style="background:rgba(255,255,255,.09);color:#fff;font-size:13px;
-          font-weight:700;padding:10px 20px;border-radius:20px;border:none;cursor:pointer;
-          font-family:'Inter',system-ui;">
-          Mudar dificuldade</button>
+    <div class="pg pg-center" style="padding:28px 24px;gap:10px;">
+      <span class="chip chip-soft" style="color:${curDiff.col};">
+        ${isSurv ? `${ICON.shield('currentColor', 11)} Mata-mata · ${nCorrect} ${nCorrect === 1 ? 'acerto' : 'acertos'} seguidos`
+                 : `${(ICON[curDiff.ic] || ICON.star)('currentColor', 11)} ${curDiff.label} · ${total} perguntas`}</span>
+      <div class="display" style="font-size:34px;margin-top:6px;"><em>${msg}</em></div>
+      <div class="display num" style="font-size:64px;line-height:1;font-weight:600;">${pts}</div>
+      <div class="small muted">pontos · ${nCorrect}/${total} acertos (${pct}%)</div>
+      ${bestStreak >= 3 ? `<div class="small" style="display:flex;gap:4px;align-items:center;color:var(--brass);font-weight:700;">
+        ${ICON.flame('currentColor', 12)} melhor sequência: ${bestStreak}</div>` : ''}
+      <div class="bar"><i style="width:${pct}%;"></i></div>
+      ${isRecord ? `<span class="chip chip-brass">${ICON.star('currentColor', 11)} Novo recorde</span>` : ''}
+      ${medalChips()}
+      <div style="margin-top:6px;">${runlogEl()}</div>
+      <div class="foot-row" style="margin-top:12px;">
+        <button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>
+        <button id="brep"   class="btn btn-primary">Jogar de novo</button>
+        <button id="bdiff"  class="btn btn-ghost btn-sm">Mudar dificuldade</button>
       </div>
     </div>`;
   }
 
   /* ── Quiz / Reveal ── */
   const q    = cat.qs[qi];
-  const qcat = q._cat || cat;          // source category for label / colour
+  const qcat = q._cat || cat;
   const tpct = (tLeft / tMax) * 100;
-  // on the ladder the clock is gold like everything else that costs money
-  const tc   = tLeft > 10 ? (isMil ? '#FFC845' : qcat.col) : tLeft > 5 ? '#FF9800' : '#F44336';
-  const timerCls = tLeft <= 5 ? 'timer-low' : '';
+  const tcls = tLeft <= 5 ? 't-bad' : tLeft <= 10 ? 't-warn' : isMil ? 't-brass' : '';
+  const armed = sc === 'quiz';
 
-  const portSVG = q.port
-    ? `<div style="flex-shrink:0;width:54px;height:54px;border-radius:50%;overflow:hidden;
-        border:2px solid rgba(255,255,255,.18);box-shadow:0 2px 12px rgba(0,0,0,.5);">
-        <img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}"
-          style="width:100%;height:100%;object-fit:cover;object-position:top;" /></div>` : '';
-  const stadSVG = q.stad
-    ? `<div style="flex-shrink:0;width:88px;height:56px;border-radius:8px;overflow:hidden;
-        border:1px solid rgba(255,255,255,.12);box-shadow:0 2px 12px rgba(0,0,0,.5);">
-        <img src="${STAD_IMGS[q.stad]}" alt="${STAD[q.stad].name}"
-          style="width:100%;height:100%;object-fit:cover;" /></div>` : '';
-  const faceEl = q.face
-    ? `<div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;overflow:hidden;
-        border:2px solid rgba(255,255,255,.2);box-shadow:0 2px 12px rgba(0,0,0,.55);">
-        <img src="${q.face}" alt="" aria-hidden="true"
-          style="width:100%;height:100%;object-fit:cover;object-position:top center;"
-          onerror="this.parentElement.style.display='none'" /></div>` : '';
-  const crestEl = q.crest
-    ? `<div style="flex-shrink:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;">
-        ${clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>` : '';
-  const qimgEl = q.qimg
-    ? `<div style="flex-shrink:0;width:96px;height:64px;border-radius:8px;overflow:hidden;
-        border:1px solid rgba(255,255,255,.15);box-shadow:0 2px 12px rgba(0,0,0,.6);">
-        <img src="${q.qimg}" alt="Momento do jogo referido na pergunta"
-          style="width:100%;height:100%;object-fit:cover;"
-          onerror="this.parentElement.style.display='none'" /></div>` : '';
+  const art = q.port
+    ? `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`
+    : q.stad
+    ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="${STAD[q.stad].name}" style="object-position:center;" /></div>`
+    : q.face
+    ? `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>`
+    : q.crest
+    ? `<div class="qart qart-crest">${clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`
+    : q.qimg
+    ? `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
+        onerror="this.parentElement.style.display='none'" /></div>`
+    : '';
 
   const scoreChanged = pts !== prevPts;
-  const armed = sc === 'quiz';           // the board is accepting taps
 
-  /* ── The rail: sixteen notches, one per rung, checkpoints picked out ── */
+  /* the rail: sixteen notches, one per rung, checkpoints picked out */
   const prizeRail = !isMil ? '' : `
-    <div style="display:flex;gap:2px;align-items:center;">
-      ${LADDER.map((step, i) => `<span class="notch${
-        i < rung ? ' notch-done' : ''}${step.safe ? ' notch-safe' : ''}${
-        i === rung ? ' notch-now' : ''}"></span>`).join('')}
-    </div>`;
+    <div class="rail">${LADDER.map((step, i) => `<span class="notch${
+      i < rung ? ' notch-done' : ''}${step.safe ? ' notch-safe' : ''}${i === rung ? ' notch-now' : ''}"></span>`).join('')}</div>`;
 
-  /* ── What this question is worth, and what you keep if it goes wrong ── */
+  /* what this question is worth, and what you keep if it goes wrong */
   const stakes = !isMil ? '' : `
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;">
+    <div class="stakes">
       <div style="min-width:0;">
-        <div style="font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,.35);
-          font-weight:800;font-family:'Inter',system-ui;">
-          PERGUNTA ${rung + 1} DE ${LADDER.length}${isFinal() ? ' · A ÚLTIMA' : ''}</div>
-        <div class="prize-pop goldgrad stakes-v" style="font-size:27px;font-weight:900;line-height:1.05;
-          font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1.5px;">
-          ${money(RUNG().v)}</div>
+        <div class="eyebrow">Pergunta ${rung + 1} de ${LADDER.length}${isFinal() ? ' · a última' : ''}</div>
+        <div class="stakes-v prize-pop">${money(RUNG().v)}</div>
       </div>
-      <button id="bladder" class="btn-press" style="background:rgba(255,255,255,.05);
-        border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:5px 9px;
-        cursor:pointer;text-align:right;flex-shrink:0;
-        display:flex;align-items:center;gap:7px;">
+      <button id="bladder" class="safe-box">
         <div>
-          <div style="font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.3);
-            font-weight:800;font-family:'Inter',system-ui;">GARANTIDO</div>
-          <div style="font-size:12px;font-weight:900;color:${safetyNet() ? 'var(--win)' : 'rgba(255,255,255,.3)'};
-            font-family:'Inter',system-ui;">${safetyNet() ? money(safetyNet()) : '—'}</div>
+          <div class="k">Garantido</div>
+          <div class="v num ${safetyNet() ? 'good' : 'muted'}">${safetyNet() ? money(safetyNet()) : '—'}</div>
         </div>
-        ${ICON.ladder('rgba(255,255,255,.4)', 15)}
+        ${ICON.ladder('var(--ink-3)', 14)}
       </button>
     </div>`;
 
-  /* ── The pundit's line, if he was called ── */
   const expertBox = !(expert && armed) ? '' : `
-    <div class="expert-box" style="display:flex;align-items:center;gap:9px;
-      background:rgba(171,71,188,.12);border:1px solid rgba(171,71,188,.38);
-      border-radius:11px;padding:7px 11px;">
-      ${ICON.mic('#CE93D8', 16)}
-      <p style="font-size:11px;color:#E1BEE7;margin:0;line-height:1.45;
-        font-family:'Inter',system-ui;">
-        <em style="opacity:.75;">${expert.line}</em>
-        <strong style="color:#fff;">${expert.name}</strong>${
-        expert.sure ? '' : ' <span style="opacity:.6;">— mas é chute, hein.</span>'}</p>
+    <div class="expert-box">
+      ${ICON.mic('var(--brass)', 15)}
+      <p><em>${expert.line}</em> <b>${expert.name}</b>${expert.sure ? '' : ' <em>— mas é chute, hein.</em>'}</p>
     </div>`;
 
-  /* ── The five cards ── */
   const ajudas = [
-    ['bhalf',   'Cortar',   ICON.cut,  lifes.half && cutCount() >= 1],
-    ['bpoll',   'Placar',   ICON.crowd, lifes.poll],
-    ['bexpert', 'Convidado',ICON.mic,  lifes.expert],
-    ['bfreeze', 'Congelar', ICON.snow, lifes.freeze],
-    ['bskip',   'Pular',    ICON.skip, lifes.skip],
+    ['bhalf',   'Cortar',    ICON.cut,   lifes.half && cutCount() >= 1],
+    ['bpoll',   'Placar',    ICON.crowd, lifes.poll],
+    ['bexpert', 'Convidado', ICON.mic,   lifes.expert],
+    ['bfreeze', 'Congelar',  ICON.snow,  lifes.freeze],
+    ['bskip',   'Pular',     ICON.skip,  lifes.skip],
   ];
 
-  return `
-  <div class="qz-screen" style="padding:13px;display:flex;flex-direction:column;gap:9px;
-    min-height:500px;position:relative;">
+  const progress = isMil ? '' : `
+    <div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;justify-content:flex-end;">
+      ${cat.qs.length <= 20 ? cat.qs.map((_, i) => {
+          const cls = i < runLog.length ? (runLog[i] === 3 ? 'pdot pdot-on'
+                    : runLog[i] === 0 ? 'pdot pdot-miss' : 'pdot pdot-on')
+                    : (i === qi ? 'pdot pdot-cur' : 'pdot');
+          return `<span class="${cls}"></span>`;
+        }).join('')
+      : `<span class="small muted num">${qi + 1}/${cat.qs.length}</span>`}
+    </div>`;
 
-    <!-- Header -->
+  return `
+  <div class="pg qz-screen" style="padding:13px;gap:9px;position:relative;">
+
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
       <div style="display:flex;align-items:center;gap:7px;min-width:0;">
-        <button id="bexit" style="background:rgba(255,255,255,.07);border:none;
-          color:rgba(255,255,255,.4);font-size:11px;padding:4px 10px;
-          border-radius:12px;cursor:pointer;font-family:'Inter',system-ui;
-          display:flex;align-items:center;">${ICON.close('currentColor', 12)}</button>
-        <div style="background:${qcat.col}18;border:1px solid ${qcat.col}30;
-          border-radius:16px;padding:3px 10px;font-size:10px;white-space:nowrap;
-          overflow:hidden;text-overflow:ellipsis;
-          font-weight:700;color:${qcat.col};font-family:'Inter',system-ui;
-          display:flex;align-items:center;gap:4px;">${catIcon(qcat)}<span>${qcat.name}</span></div>
+        <button id="bexit" class="btn btn-ghost btn-icon" aria-label="Sair">${ICON.close('currentColor', 12)}</button>
+        <span class="chip">${catIcon(qcat)}<span>${qcat.name}</span></span>
       </div>
-      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
-        ${streak > 1
-          ? `<div class="fire-bob" style="background:rgba(255,100,0,.14);border:1px solid rgba(255,100,0,.22);
-              border-radius:12px;padding:2px 8px;font-size:11px;
-              color:#FF7700;font-weight:700;font-family:'Inter',system-ui;">🔥${streak}x</div>` : ''}
-        ${isMil ? '' : `<div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;
-          justify-content:flex-end;">
-          ${cat.qs.length <= 20 ? cat.qs.map((_, i) => {
-              const cls = i < runLog.length ? (runLog[i] === 3 ? 'pdot pdot-on'
-                        : runLog[i] === 0 ? 'pdot pdot-miss' : 'pdot pdot-on')
-                        : (i === qi ? 'pdot pdot-cur' : 'pdot');
-              return `<span class="${cls}"></span>`;
-            }).join('')
-          : `<span style="font-size:11px;color:rgba(255,255,255,.32);
-               font-family:'Inter',system-ui;">${qi+1}/${cat.qs.length}</span>`}
-        </div>`}
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+        ${streak > 1 ? `<span class="chip chip-brass" style="padding:2px 8px;">${ICON.flame('currentColor', 11)}${streak}x</span>` : ''}
+        ${progress}
         ${isMil
-          /* money is the score here, so the corner shows the clock instead */
-          ? `<div class="${tLeft <= 5 ? 'timer-low' : ''}" style="display:flex;align-items:center;
-              gap:4px;color:${tLeft > 5 ? 'rgba(255,255,255,.62)' : '#F44336'};">
-              ${ICON.clock('currentColor', 13)}
-              <span id="clock-n" style="font-size:17px;font-weight:900;letter-spacing:.5px;
-                font-family:'Bebas Neue','Impact',sans-serif;">${tLeft}</span>
-            </div>`
-          : `<div id="score-disp" class="${scoreChanged ? 'score-up' : ''}"
-              style="position:relative;font-size:18px;font-weight:900;color:var(--gold);
-                font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:1px;">${
-              sc === 'reveal' && lastGain > 0 ? `<span class="gain">+${lastGain}</span>` : ''}${pts}
-              <span style="font-size:9px;margin-left:1px;color:rgba(255,200,69,.45);
-                font-family:'Inter',system-ui;font-weight:600;">pts</span>
-            </div>`}
+          ? `<div class="clock ${tLeft <= 5 ? 'timer-low' : ''}">${ICON.clock('currentColor', 13)}
+               <span id="clock-n" class="v num">${tLeft}</span></div>`
+          : `<div id="score-disp" class="score ${scoreChanged ? 'score-up' : ''}">${
+               sc === 'reveal' && lastGain > 0 ? `<span class="gain">+${lastGain}</span>` : ''}
+               <span class="v num">${pts}</span><span class="u">pts</span></div>`}
       </div>
     </div>
 
     ${prizeRail}
     ${stakes}
 
-    <!-- Timer bar -->
-    <div style="height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;">
-      <div id="tf" class="${timerCls} ${armed ? 'tf-live' : ''}" style="height:100%;width:${tpct}%;
-        background-color:${tc};border-radius:2px;transition:width .8s linear;"></div>
-    </div>
+    <div class="timer"><i id="tf" class="${tcls}${tLeft <= 5 ? ' timer-low' : ''}" style="width:${tpct}%;"></i></div>
 
-    <!-- Progressive photo reveal -->
     ${q.reveal ? `
-    <div style="display:flex;justify-content:center;padding:2px 0 4px;">
-      <div class="reveal-box" style="width:144px;height:144px;border-radius:14px;overflow:hidden;
-        border:2px solid rgba(255,200,69,.3);box-shadow:0 6px 26px rgba(0,0,0,.7);
-        position:relative;background:#0b1136;">
+    <div style="display:flex;justify-content:center;padding:2px 0 2px;">
+      <div class="reveal-box print">
         <img id="revimg" src="${q.reveal}" alt="" aria-hidden="true"
-          style="width:100%;height:100%;object-fit:cover;object-position:top center;
-            filter:blur(${sc === 'reveal' ? 0 : (20 * (tLeft / tMax)).toFixed(1)}px);
+          style="filter:url(#riso-pitch) blur(${sc === 'reveal' ? 0 : (20 * (tLeft / tMax)).toFixed(1)}px);
             transform:scale(1.08);transition:filter .9s linear;" />
       </div>
     </div>` : ''}
 
-    <!-- The plaque -->
-    <div class="plaque">
-      <div class="plaque-in">
-        ${portSVG}${stadSVG}${faceEl}${crestEl}${qimgEl}
-        <p style="font-size:15px;font-weight:600;color:#fff;line-height:1.45;
-          margin:0;flex:1;min-width:0;overflow-wrap:anywhere;
-          font-family:'Inter',system-ui;white-space:pre-line;
-          text-shadow:0 1px 6px rgba(0,0,0,.6);">${q.t}</p>
-      </div>
+    <div class="qcard${isMil ? ' qcard-brass' : ''}">
+      ${art}
+      <p>${q.t}</p>
     </div>
 
     ${expertBox}
 
-    <!-- Option grid — 2 wide columns for name tiles, 5 for crest/face tiles -->
-    <div style="display:grid;grid-template-columns:repeat(${
-      q.textTiles ? 2 : disp.length <= 4 ? 2 : 5},1fr);gap:${disp.length <= 4 ? 12 : 7}px;">
+    <div class="board ${q.textTiles ? 'board-2' : disp.length <= 4 ? 'board-big' : 'board-5'}">
       ${disp.map((c, i) => badge(c, i)).join('')}
     </div>
 
-    <!-- Footer -->
     ${armed ? `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:2px;">
-      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;">
+    <div class="foot">
+      <div class="ajudas">
         ${ajudas.map(([id, lbl, ic, on]) => `
-          <button id="${id}" ${on ? '' : 'disabled'} class="btn-press ajuda" style="
-            background:${on ? 'linear-gradient(180deg,rgba(255,200,69,.16),rgba(255,200,69,.05))'
-                            : 'rgba(255,255,255,.02)'};
-            border:1px solid ${on ? 'rgba(255,200,69,.38)' : 'rgba(255,255,255,.05)'};
-            color:${on ? 'rgba(255,255,255,.88)' : 'rgba(255,255,255,.16)'};
-            border-radius:12px;padding:5px 9px;font-size:9.5px;font-weight:800;
-            cursor:${on ? 'pointer' : 'default'};font-family:'Inter',system-ui;
-            display:flex;flex-direction:column;align-items:center;gap:2px;min-width:52px;
-            ${on ? '' : 'text-decoration:line-through;'}">
-            ${ic(on ? '#FFC845' : 'rgba(255,255,255,.16)', 15)}${lbl}</button>`).join('')}
+          <button id="${id}" ${on ? '' : 'disabled'} class="ajuda btn-press">
+            ${ic(on ? 'var(--pitch)' : 'currentColor', 15)}<span>${lbl}</span></button>`).join('')}
       </div>
-      ${frozen ? `<div style="font-size:10px;color:#4FC3F7;font-weight:700;
-        font-family:'Inter',system-ui;display:flex;align-items:center;gap:4px;">
-        ${ICON.snow('#4FC3F7', 11)} Relógio parado nesta pergunta</div>` : ''}
-      <p class="footer-hint" style="font-size:10px;color:rgba(255,255,255,.24);margin:0;
-        text-align:center;font-family:'Inter',system-ui;">
+      ${frozen ? `<div class="small pitch" style="font-weight:700;display:flex;align-items:center;gap:4px;">
+        ${ICON.snow('currentColor', 11)} Relógio parado nesta pergunta</div>` : ''}
+      <p class="footer-hint">
         ${q.type === 'player'
           ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
-          : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')
-        }</p>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;">
-        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn-press" style="
-            background:${sel.size > 0
-              ? 'linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000)'
-              : 'rgba(255,255,255,.06)'};
-            color:${sel.size > 0 ? '#0b1136' : 'rgba(255,255,255,.2)'};
-            font-size:17px;font-weight:900;padding:11px 38px;
-            border-radius:24px;border:none;
-            box-shadow:${sel.size > 0 ? '0 5px 20px rgba(255,200,69,.3)' : 'none'};
-            cursor:${sel.size > 0 ? 'pointer' : 'default'};
-            letter-spacing:2px;transition:all .18s;
-            font-family:'Bebas Neue','Impact',sans-serif;">CONFIRMAR</button>
+          : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')}</p>
+      <div class="foot-row">
+        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn ${isMil ? 'btn-brass' : 'btn-primary'} btn-lg">
+          ${sel.size ? 'Colar figurinha' : 'Confirmar'}</button>
         ${isMil && rung > 0 ? `
-        <button id="bstop" class="btn-press" style="
-            background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
-            color:rgba(255,255,255,.7);font-size:11px;font-weight:800;
-            padding:9px 15px;border-radius:22px;cursor:pointer;
-            font-family:'Inter',system-ui;display:flex;align-items:center;gap:5px;">
-          ${ICON.stop('rgba(255,255,255,.7)', 14)}PARAR · ${money(LADDER[rung - 1].v)}</button>` : ''}
+        <button id="bstop" class="btn btn-ghost btn-sm">${ICON.stop('currentColor', 13)} Parar · ${money(LADDER[rung - 1].v)}</button>` : ''}
       </div>
     </div>`
     : sc === 'ask' ? `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:6px;">
-      <div style="font-size:22px;font-weight:900;color:var(--gold);letter-spacing:2px;
-        font-family:'Bebas Neue','Impact',sans-serif;text-align:center;">
-        ESSA É A SUA RESPOSTA FINAL?</div>
-      <p style="font-size:11px;color:rgba(255,255,255,.42);margin:0;text-align:center;
-        font-family:'Inter',system-ui;max-width:300px;line-height:1.5;">
-        Está valendo <strong style="color:var(--gold);">${money(RUNG().v)}</strong>.
-        Se errar, você sai com ${money(safetyNet())}.</p>
-      <div style="display:flex;gap:9px;">
-        <button id="bfinal" class="btn-press" style="
-          background:linear-gradient(180deg,#FFF0B0,#FFC845 45%,#D9A000);color:#0b1136;
-          font-size:16px;font-weight:900;padding:11px 30px;border-radius:24px;border:none;
-          box-shadow:0 5px 20px rgba(255,200,69,.32);cursor:pointer;letter-spacing:2px;
-          font-family:'Bebas Neue','Impact',sans-serif;">É ESSA</button>
-        <button id="bunlock" class="btn-press" style="
-          background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
-          color:rgba(255,255,255,.7);font-size:12px;font-weight:800;
-          padding:11px 18px;border-radius:24px;cursor:pointer;
-          font-family:'Inter',system-ui;">Deixa eu pensar</button>
+    <div class="pg-center" style="display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:4px;">
+      <div class="display brass" style="font-size:22px;text-align:center;"><em>Essa é a sua resposta final?</em></div>
+      <p class="small muted" style="text-align:center;max-width:300px;">
+        Está valendo <b class="brass">${money(RUNG().v)}</b>. Se errar, você sai com ${money(safetyNet())}.</p>
+      <div class="foot-row">
+        <button id="bfinal"  class="btn btn-brass">É essa</button>
+        <button id="bunlock" class="btn btn-ghost btn-sm">Deixa eu pensar</button>
       </div>
     </div>`
     : sc === 'lock' ? `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 0;">
-      <div class="timer-low" style="font-size:15px;font-weight:900;color:var(--gold);
-        letter-spacing:3px;font-family:'Bebas Neue','Impact',sans-serif;">RESPOSTA TRAVADA</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.3);
-        font-family:'Inter',system-ui;">${isMil ? money(RUNG().v) + ' na mesa…' : 'vamos ver…'}</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0;">
+      <div class="eyebrow timer-low" style="color:var(--brass);">Resposta travada</div>
+      <div class="small muted">${isMil ? money(RUNG().v) + ' na mesa…' : 'vamos ver…'}</div>
     </div>`
-    : `<div style="text-align:center;padding:6px 0;" id="rvl"></div>`}
+    : `<div style="text-align:center;padding:4px 0;" id="rvl"></div>`}
 
     ${(sc === 'ask' || sc === 'lock') ? '<div class="stage-dark"></div>' : ''}
     ${ladderOpen ? ladderOverlay() : ''}
@@ -3457,46 +3581,32 @@ function html() {
    something the player should have to pay for in seconds. */
 function ladderOverlay() {
   return `
-  <div style="position:absolute;inset:0;z-index:20;
-    background:linear-gradient(180deg,#0a1030 0%,#04071a 100%);
-    display:flex;flex-direction:column;padding:14px;gap:8px;
-    animation:screenIn .18s ease-out;">
+  <div class="sheet">
     <div style="display:flex;align-items:center;justify-content:space-between;">
-      <span style="font-size:12px;font-weight:900;letter-spacing:2px;color:var(--gold);
-        font-family:'Inter',system-ui;">A ESCADA DO MILHÃO</span>
-      <button id="bladderclose" style="background:rgba(255,255,255,.08);border:none;
-        color:rgba(255,255,255,.6);padding:5px 9px;border-radius:10px;cursor:pointer;
-        display:flex;align-items:center;">${ICON.close('currentColor', 13)}</button>
+      <span class="eyebrow" style="color:var(--brass);">A escada do milhão</span>
+      <button id="bladderclose" class="btn btn-ghost btn-icon" aria-label="Fechar">${ICON.close('currentColor', 13)}</button>
     </div>
-    <div class="scroll-y" style="flex:1;display:flex;flex-direction:column-reverse;
-      justify-content:flex-end;gap:2px;">
+    <div class="scroll-y" style="flex:1;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:2px;">
       ${LADDER.map((step, i) => {
-        const state = i < rung ? 'rung-done' : i === rung ? 'rung-now'
-                    : step.safe ? 'rung-safe' : '';
+        const state = i < rung ? 'rung-done' : i === rung ? 'rung-now' : step.safe ? 'rung-safe' : '';
         const top = i === LADDER.length - 1 ? ' rung-top' : '';
         return `<div class="rung ${state}${top}">
           <span class="rung-n">${i + 1}</span>
-          ${step.safe ? ICON.shield(i < rung ? '#00e676' : 'rgba(255,255,255,.35)', 11)
-                      : '<span style="width:11px;"></span>'}
+          ${step.safe ? ICON.shield(i < rung ? 'var(--good)' : 'var(--ink-4)', 11) : '<span style="width:11px;"></span>'}
           <span style="flex:1;">${money(step.v)}</span>
-          ${i < rung ? ICON.check('#00e676', 12) : ''}
+          ${i < rung ? ICON.check('var(--good)', 12) : ''}
         </div>`;
       }).join('')}
     </div>
-    <p style="font-size:10px;color:rgba(255,255,255,.32);margin:0;text-align:center;
-      line-height:1.5;font-family:'Inter',system-ui;">
-      ${ICON.shield('rgba(255,255,255,.32)', 10)} são os degraus garantidos —
+    <p class="small muted" style="font-size:10px;text-align:center;">
+      ${ICON.shield('var(--ink-3)', 10)} são os degraus garantidos —
       passou de um, esse dinheiro é seu aconteça o que acontecer.</p>
   </div>`;
 }
 
-
-/* ── Confetti (pure DOM, no library) ── */
+/* ── A shower of paper, only for the million ── */
 function burst(n) {
-  // money falls gold; everything else gets the party mix
-  const cols = isMil
-    ? ['#FFD700','#FFF0B0','#FFC845','#D9A000','#FFFFFF','#FFE469']
-    : ['#FFD700','#00e676','#4FC3F7','#FF7043','#FFFFFF','#AB47BC'];
+  const cols = ['var(--brass)', 'var(--pitch)', 'var(--ink)', 'var(--pocket)'];
   const frag = document.createDocumentFragment();
   for (let i = 0; i < n; i++) {
     const d = document.createElement('div');
@@ -3505,13 +3615,12 @@ function burst(n) {
     d.style.background = cols[(Math.random() * cols.length) | 0];
     d.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
     d.style.setProperty('--rot', ((Math.random() * 900) + 360).toFixed(0) + 'deg');
-    d.style.animationDuration = (1.9 + Math.random() * 1.5).toFixed(2) + 's';
+    d.style.animationDuration = (2.2 + Math.random() * 1.5).toFixed(2) + 's';
     d.style.animationDelay = (Math.random() * 0.5).toFixed(2) + 's';
-    if (Math.random() > .6) d.style.borderRadius = '50%';
     frag.appendChild(d);
   }
   document.body.appendChild(frag);
-  setTimeout(() => document.querySelectorAll('.conf').forEach(e => e.remove()), 4200);
+  setTimeout(() => document.querySelectorAll('.conf').forEach(e => e.remove()), 4500);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -3535,14 +3644,8 @@ function go() {
   on('bmute',       () => { setMuted(!muted); snd.tap(); go(); });
 
   if (sc === 'end' && !window._celebrated) {
-    if (isMil) {
-      // gold rain for the million, a modest handful for any other payout
-      if (banked >= LADDER[LADDER.length - 1].v) { window._celebrated = true; burst(120); }
-      else if (banked > 0)                       { window._celebrated = true; burst(30); }
-    } else {
-      const acc = nCorrect / Math.max(1, cat.qs.length);
-      if (acc >= 0.7) { window._celebrated = true; burst(acc >= 0.9 ? 70 : 42); }
-    }
+    // paper falls for the million and nothing else: the album is calm
+    if (isMil && banked >= LADDER[LADDER.length - 1].v) { window._celebrated = true; burst(48); }
   }
   if (sc !== 'end') window._celebrated = false;
 
@@ -3684,13 +3787,10 @@ function doReveal() {
   else if (p === 1)   snd.almost();
   else                snd.wrong();
 
-  const chip = (txt, col) => `<span style="display:inline-block;background:${col}22;
-      border:1px solid ${col}44;color:${col};border-radius:9px;padding:1px 7px;
-      font-size:10px;font-weight:700;margin-left:4px;
-      font-family:'Inter',system-ui;">${txt}</span>`;
-  const bonuses = (speed ? chip('⚡ rápido +' + speed, '#4FC3F7') : '')
-                + (mult > 1 ? chip('🔥 combo ×' + mult, '#FF7700') : '')
-                + (DCFG().pmul > 1 ? chip(DCFG().emoji + ' ×' + DCFG().pmul, DCFG().col) : '');
+  const chip = (ic, txt) => `<span class="bonus">${ic}${txt}</span>`;
+  const bonuses = (speed ? chip(ICON.bolt('var(--pitch)', 10), 'rápido +' + speed) : '')
+                + (mult > 1 ? chip(ICON.flame('var(--brass)', 10), 'combo ×' + mult) : '')
+                + (DCFG().pmul > 1 ? chip((ICON[DCFG().ic] || ICON.star)(DCFG().col, 10), '×' + DCFG().pmul) : '');
 
   const rightNames = q.a.map(id => {
     const pool = q.type === 'player' ? PL : CL;
@@ -3701,27 +3801,19 @@ function doReveal() {
   if (isMil) {
     /* On the ladder there is no half credit: you either climb or you fall. */
     lastMsg = p === 3
-      ? `<span style="font-size:16px;font-weight:900;color:#00e676;
-          font-family:'Inter',system-ui;">${ICON.check('#00e676', 13)} ${
-          isFinal() ? 'É O MILHÃO!' : 'Certíssimo! ' + money(RUNG().v)}</span>`
-        + (isFinal() ? '' : `<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;
-            font-family:'Inter',system-ui;">Próximo degrau: ${money(LADDER[rung + 1].v)}</div>`)
-      : `<span style="font-size:16px;font-weight:900;color:#f44336;
-          font-family:'Inter',system-ui;">${ICON.cross('#f44336', 13)} Essa não era…</span>
-         <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;
-          font-family:'Inter',system-ui;">Era <strong style="color:#00e676;">${rightNames}</strong>
+      ? `<span class="display good" style="font-size:18px;">${ICON.check('currentColor', 14)} ${
+          isFinal() ? 'É o milhão!' : 'Colada! ' + money(RUNG().v)}</span>`
+        + (isFinal() ? '' : `<div class="small muted" style="margin-top:3px;">Próximo degrau: ${money(LADDER[rung + 1].v)}</div>`)
+      : `<span class="display bad" style="font-size:18px;">${ICON.cross('currentColor', 14)} Essa não era…</span>
+         <div class="small muted" style="margin-top:3px;">Era <b class="good">${rightNames}</b>
           · você leva ${money(safetyNet())}</div>`;
   } else {
     lastMsg = p === 3
-      ? `<span style="font-size:15px;font-weight:800;color:#00e676;
-          font-family:'Inter',system-ui;">${ICON.check('#00e676', 12)} Perfeito! +${gained}</span>${bonuses}`
+      ? `<span class="display good" style="font-size:17px;">${ICON.check('currentColor', 13)} Colada! +${gained}</span>${bonuses}`
       : p === 1
-      ? `<span style="font-size:15px;font-weight:800;color:#FFD700;
-          font-family:'Inter',system-ui;">~ Quase! +${gained}</span>${bonuses}`
-      : `<span style="font-size:15px;font-weight:800;color:#f44336;
-          font-family:'Inter',system-ui;">${ICON.cross('#f44336', 12)} Errou!</span>
-         <div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;
-          font-family:'Inter',system-ui;">Resposta: <strong style="color:#00e676;">${rightNames}</strong></div>`;
+      ? `<span class="display brass" style="font-size:17px;">Quase! +${gained}</span>${bonuses}`
+      : `<span class="display bad" style="font-size:17px;">${ICON.cross('currentColor', 13)} Errou!</span>
+         <div class="small muted" style="margin-top:3px;">Resposta: <b class="good">${rightNames}</b></div>`;
   }
 
   go();
@@ -3814,14 +3906,15 @@ function startTmr() {
     tLeft = Math.max(0, tLeft - 1);
     const tf = document.getElementById('tf');
     if (tf) {
-      tf.style.width      = (tLeft / tMax * 100) + '%';
-      tf.style.background = tLeft > 10 ? cat.col : tLeft > 5 ? '#FF9800' : '#F44336';
-      if (tLeft <= 5 && !tf.classList.contains('timer-low')) tf.classList.add('timer-low');
+      tf.style.width = (tLeft / tMax * 100) + '%';
+      tf.classList.toggle('t-warn', tLeft <= 10 && tLeft > 5);
+      tf.classList.toggle('t-bad',  tLeft <= 5);
+      if (tLeft <= 5) tf.classList.add('timer-low');
     }
     const cn = document.getElementById('clock-n');
-    if (cn) cn.textContent = tLeft;
+    if (cn) { cn.textContent = tLeft; if (tLeft <= 5) cn.parentElement.classList.add('timer-low'); }
     const rv = document.getElementById('revimg');
-    if (rv && sc === 'quiz') rv.style.filter = 'blur(' + (20 * (tLeft / tMax)).toFixed(1) + 'px)';
+    if (rv && sc === 'quiz') rv.style.filter = 'url(#riso-pitch) blur(' + (20 * (tLeft / tMax)).toFixed(1) + 'px)';
     if (tLeft <= 0 && sc === 'quiz') doReveal();
   }, 1000);
 }
