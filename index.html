@@ -271,14 +271,21 @@
     .b:active { transform: scale(.95); }
     .b .print { border-radius: 5px; aspect-ratio: 1 / .92; flex-shrink: 0; }
     .b-crest { }
-    /* the crest sits in a box of fixed proportion; absolute sizing keeps a tall
-       shield from stretching the box and pushing its caption below the others */
+    /* Every crest sits in the same disc, whatever shape or background its file
+       happens to have. That is what makes a row of them read as one set — and
+       it is also what keeps a dark crest legible on a dark page. */
     .crest-box { position: relative; aspect-ratio: 1 / .92; flex-shrink: 0; }
-    .crest-box > img, .crest-box > svg { position: absolute; left: 7%; top: 7%; width: 86%; height: 86%; object-fit: contain; pointer-events: none; }
-    .crest-box > .roundel { position: absolute; left: 11%; top: 11%; width: 78%; height: 78%; }
-    .roundel { display: block; border-radius: 50%; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(0,0,0,.28); background: #fff; }
-    .roundel img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .qart-crest .roundel { width: 100%; height: 100%; }
+    .crest-disc {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 86%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+      background: #F4F1E7; box-shadow: inset 0 0 0 1px rgba(32,36,30,.16);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .crest-disc > img, .crest-disc > svg { width: 76%; height: 76%; object-fit: contain; pointer-events: none; display: block; }
+    /* artwork that came with its own background, and the drawn badge, fill the
+       disc instead of floating inside it */
+    .crest-disc > .fill { width: 100%; height: 100%; object-fit: cover; }
+    .qart-crest .crest-disc, .ficha-crest .crest-disc { position: static; transform: none; width: 100%; height: 100%; }
 
     /* the caption: the name is the answer, so it must never clip.
        Three lines at 320px, two on anything roomier. */
@@ -583,35 +590,78 @@
   </style>
 </head>
 <body>
-<!-- The screen-print inks. Real photo in, three-ink poster out; applied live
-     by CSS (`filter:url(#riso-pitch)`) so every picture in the album gets the
-     same treatment without a single asset being edited. -->
+<!-- The presses. Each photograph is redrawn, not merely tinted: the image is
+     flattened to four poster tones, and its contours are traced from a second,
+     sharper pass and laid back over the flats as ink lines. That linework is
+     what separates a print from a filter. Applied live by CSS
+     (`filter:url(#riso-pitch)`), so all 125 pictures are drawn this way
+     without a single asset being edited. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <filter id="riso-pitch" color-interpolation-filters="sRGB">
-    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0"/>
-    <feComponentTransfer>
-      <feFuncR type="discrete" tableValues="0 0.34 0.68 1"/>
-      <feFuncG type="discrete" tableValues="0 0.34 0.68 1"/>
-      <feFuncB type="discrete" tableValues="0 0.34 0.68 1"/>
+  <filter id="riso-pitch" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
+    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0" result="g"/>
+    <!-- Local contrast first, and this is the step that matters. Cutting a photo
+         into four bands of brightness only works if the subject and what is
+         behind him sit in different bands — and often they do not. Figo's face
+         and the lit stand behind him were the same brightness, so posterising
+         merged them and the portrait vanished. Subtracting a heavy blur makes
+         every face separate from its own background before any banding. -->
+    <feGaussianBlur in="g" stdDeviation="5" result="big"/>
+    <feComposite in="g" in2="big" operator="arithmetic" k2="2" k3="-1" k4="0" result="sh"/>
+    <!-- the flats: four poster tones -->
+    <feGaussianBlur in="sh" stdDeviation="1.4" result="fb"/>
+    <feComponentTransfer in="fb" result="post">
+      <feFuncR type="discrete" tableValues="0 0.333 0.667 1"/>
+      <feFuncG type="discrete" tableValues="0 0.333 0.667 1"/>
+      <feFuncB type="discrete" tableValues="0 0.333 0.667 1"/>
     </feComponentTransfer>
-    <feComponentTransfer>
-      <feFuncR type="table" tableValues="0.09 0.117 0.925"/>
-      <feFuncG type="table" tableValues="0.16 0.443 0.905"/>
-      <feFuncB type="table" tableValues="0.12 0.314 0.86"/>
+    <feComponentTransfer in="post" result="flats">
+      <feFuncR type="table" tableValues="0.22 0.36 0.66 0.97"/>
+      <feFuncG type="table" tableValues="0.40 0.68 0.86 0.96"/>
+      <feFuncB type="table" tableValues="0.31 0.52 0.74 0.91"/>
     </feComponentTransfer>
+    <!-- the linework: taken from a sharper pass, so contours stay crisp -->
+    <feGaussianBlur in="sh" stdDeviation="0.8" result="eb"/>
+    <feConvolveMatrix in="eb" order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1"
+      preserveAlpha="true" edgeMode="duplicate" result="e"/>
+    <feColorMatrix in="e" type="matrix"
+      values="0 0 0 0 0.04  0 0 0 0 0.10  0 0 0 0 0.07  1.3 1.3 1.3 0 -0.09" result="ink0"/>
+    <feComponentTransfer in="ink0" result="ink">
+      <feFuncA type="table" tableValues="0 0.45 0.88 1"/>
+    </feComponentTransfer>
+    <feComposite in="ink" in2="flats" operator="over"/>
   </filter>
-  <filter id="riso-brass" color-interpolation-filters="sRGB">
-    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0"/>
-    <feComponentTransfer>
-      <feFuncR type="discrete" tableValues="0 0.34 0.68 1"/>
-      <feFuncG type="discrete" tableValues="0 0.34 0.68 1"/>
-      <feFuncB type="discrete" tableValues="0 0.34 0.68 1"/>
+  <filter id="riso-brass" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
+    <feColorMatrix type="matrix" values="0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0.34 0.5 0.16 0 0  0 0 0 1 0" result="g"/>
+    <!-- Local contrast first, and this is the step that matters. Cutting a photo
+         into four bands of brightness only works if the subject and what is
+         behind him sit in different bands — and often they do not. Figo's face
+         and the lit stand behind him were the same brightness, so posterising
+         merged them and the portrait vanished. Subtracting a heavy blur makes
+         every face separate from its own background before any banding. -->
+    <feGaussianBlur in="g" stdDeviation="5" result="big"/>
+    <feComposite in="g" in2="big" operator="arithmetic" k2="2" k3="-1" k4="0" result="sh"/>
+    <!-- the flats: four poster tones -->
+    <feGaussianBlur in="sh" stdDeviation="1.4" result="fb"/>
+    <feComponentTransfer in="fb" result="post">
+      <feFuncR type="discrete" tableValues="0 0.333 0.667 1"/>
+      <feFuncG type="discrete" tableValues="0 0.333 0.667 1"/>
+      <feFuncB type="discrete" tableValues="0 0.333 0.667 1"/>
     </feComponentTransfer>
-    <feComponentTransfer>
-      <feFuncR type="table" tableValues="0.14 0.69 0.95"/>
-      <feFuncG type="table" tableValues="0.10 0.525 0.905"/>
-      <feFuncB type="table" tableValues="0.03 0.243 0.78"/>
+    <feComponentTransfer in="post" result="flats">
+      <feFuncR type="table" tableValues="0.30 0.55 0.82 0.99"/>
+      <feFuncG type="table" tableValues="0.22 0.42 0.70 0.95"/>
+      <feFuncB type="table" tableValues="0.10 0.20 0.44 0.86"/>
     </feComponentTransfer>
+    <!-- the linework: taken from a sharper pass, so contours stay crisp -->
+    <feGaussianBlur in="sh" stdDeviation="0.8" result="eb"/>
+    <feConvolveMatrix in="eb" order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1"
+      preserveAlpha="true" edgeMode="duplicate" result="e"/>
+    <feColorMatrix in="e" type="matrix"
+      values="0 0 0 0 0.04  0 0 0 0 0.10  0 0 0 0 0.07  1.3 1.3 1.3 0 -0.09" result="ink0"/>
+    <feComponentTransfer in="ink0" result="ink">
+      <feFuncA type="table" tableValues="0 0.45 0.88 1"/>
+    </feComponentTransfer>
+    <feComposite in="ink" in2="flats" operator="over"/>
   </filter>
 </defs></svg>
 <div id="qz">
@@ -3373,39 +3423,30 @@ function genericCrest(id) {
 const FLAT_LOGOS = new Set(['corinthians', 'vasco', 'nautico',
                             'sampaio', 'botafogosp', 'crb']);
 const ROUNDEL_FOCUS = { nautico: '22% 50%', vasco: '50% 50%', corinthians: '50% 50%' };
-/* A flag fills the disc; a shield that merely arrived on an opaque background
-   is set inside it instead, or the crop would cut its point off. */
-const ROUNDEL_FIT = { botafogosp: 'contain', crb: 'contain' };
+/* Where the interesting part of an opaque file sits, for the disc's crop. */
+const ROUNDEL_FOCUS_EXTRA = { botafogosp: '50% 42%', crb: '50% 46%' };
+Object.assign(ROUNDEL_FOCUS, ROUNDEL_FOCUS_EXTRA);
 
 function clubArt(id, style, label) {
   const name = clubName(id);
-  if (LOGOS[id]) {
-    if (FLAT_LOGOS.has(id)) {
-      const fit = ROUNDEL_FIT[id] || 'cover';
-      return `<span class="roundel" style="${style}border-radius:50%;"
-        ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}>
-        <img src="${LOGOS[id]}" alt="" aria-hidden="true"
-          style="object-fit:${fit};${fit === 'contain' ? 'padding:9%;' : ''}object-position:${
-            ROUNDEL_FOCUS[id] || '50% 50%'};"
-          onerror="clubFallback(this.parentElement,'${id}')" /></span>`;
-    }
-    return `<img src="${LOGOS[id]}" style="${style}"
-      onerror="clubFallback(this,'${id}')"
-      ${label ? `alt="${name}"` : 'alt="" aria-hidden="true"'} />`;
-  }
-  return `<svg viewBox="0 0 60 60" style="${style}"
-    ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}
-    >${genericCrest(id)}</svg>`;
+  /* A file that arrived on its own background, and the drawn badge, fill the
+     disc; a transparent shield floats inside it. Either way the disc is the
+     same, so the row reads as one set. */
+  const fills = !LOGOS[id] || FLAT_LOGOS.has(id);
+  const inner = LOGOS[id]
+    ? `<img src="${LOGOS[id]}" class="${fills ? 'fill' : ''}" alt="" aria-hidden="true"
+         style="object-position:${ROUNDEL_FOCUS[id] || '50% 50%'};"
+         onerror="clubFallback(this,'${id}')" />`
+    : `<svg viewBox="0 0 60 60" class="fill" aria-hidden="true">${genericCrest(id)}</svg>`;
+  return `<span class="crest-disc" style="${style || ''}"
+    ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}>${inner}</span>`;
 }
 
 /* If a crest file is missing (e.g. an old cached page pointing at a file we
    removed), swap in the app's own SVG crest instead of a broken-image icon. */
 function clubFallback(img, id) {
   try {
-    const alt = img.getAttribute('alt') || img.getAttribute('aria-label');
-    img.outerHTML = `<svg viewBox="0 0 60 60" style="${img.getAttribute('style') || ''}"
-      ${alt ? `role="img" aria-label="${alt}"` : 'aria-hidden="true"'}
-      >${genericCrest(id)}</svg>`;
+    img.outerHTML = `<svg viewBox="0 0 60 60" class="fill" aria-hidden="true">${genericCrest(id)}</svg>`;
   } catch (e) { img.style.opacity = '.3'; }
 }
 
@@ -3493,12 +3534,15 @@ const medalChips = () => (window._newMedals || []).length ? `
       ${(ICON[m.ic] || ICON.medal)('currentColor', 12)} Nova figurinha: ${m.n}</span>`).join('')}
   </div>` : '';
 
-/* The sticker on the cover: a different legend every day, printed in brass. */
+/* The sticker on the cover. It changes every time the album is opened — a
+   fixed face made the cover look broken — and once you have collected
+   anything it shows one of yours, so the cover is your album, not ours. */
 function heroSticker() {
-  const pool = PL.filter(p => p.wc.length || p.bo > 0);
-  const p    = pool[dayIndex() % pool.length] || PL[0];
-  const num  = PL.indexOf(p) + 1;
-  return { p, num };
+  const great = PL.filter(p => FAMOUS.has(p.id) || (p.wc && p.wc.length) || p.bo > 0);
+  const mine  = great.filter(p => album.has(p.id));
+  const pool  = mine.length ? mine : (great.length ? great : PL);
+  const p = pool[Math.floor(Math.random() * pool.length)] || PL[0];
+  return { p, num: PL.indexOf(p) + 1 };
 }
 
 function html() {

@@ -303,9 +303,13 @@ TESTS = r"""
            !!LOGOS[id] && !!CREDITS[LOGOS[id]] && !!CREDITS[LOGOS[id]].a,
            LOGOS[id] ? `${LOGOS[id]} — ${CREDITS[LOGOS[id]] ? CREDITS[LOGOS[id]].l : 'NO CREDIT'}` : 'missing');
       });
-      // rectangular artwork is cut as a roundel, or it reads as a stray box
-      ok('flat logos are cut as roundels',
-         [...FLAT_LOGOS].every(id => clubArt(id,'').indexOf('border-radius') !== -1));
+      // every crest, whatever its file, goes in the same disc — that is what
+      // makes a row of them read as one set instead of a jumble
+      ok('every crest sits in the standard disc',
+         CL.every(c => clubArt(c.id,'').indexOf('crest-disc') !== -1),
+         CL.filter(c => clubArt(c.id,'').indexOf('crest-disc') === -1).map(c=>c.id).join(',') || 'all discs');
+      ok('artwork with its own background fills the disc',
+         [...FLAT_LOGOS].every(id => /class="fill"|class="[^"]*\bfill\b/.test(clubArt(id,''))));
       const thin = drawn.filter(c => {
         const svg = genericCrest(c.id);
         return !svg
