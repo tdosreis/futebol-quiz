@@ -1,0 +1,148 @@
+<!doctype html>
+<!-- The Play listing's banner, 1024x500. Rendered, not drawn by hand:
+       python3 tools/shots.py                 # (not this file)
+       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+         --headless --disable-gpu --hide-scrollbars --window-size=1024,500 \
+         --force-device-scale-factor=1 --allow-file-access-from-files \
+         --virtual-time-budget=9000 \
+         --screenshot=store-assets/feature-graphic.png \
+         "file://$PWD/tools/feature_graphic.html"
+     so it can be regenerated whenever the album changes, instead of
+     drifting away from the app the way the last one did. -->
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@600;700;800&family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stock:#E9E6DB; --stock2:#DDD9C9; --ink:#20241E; --ink2:#4B4F45; --ink3:#7E8175;
+    --rule:#CBC5B2; --rule2:#DBD6C6; --pitch:#17593F; --brass:#A9803B;
+    --retro-card:#EFE4CA; --retro-card2:#E4D6B4; --retro-edge:#BFA97C;
+    --retro-ink:#3B2E1B; --retro-band:#B23A2E; --retro-band2:#8E2A20;
+    --modern-card:#56BEB2; --modern-card2:#3E9E96; --modern-ink:#0C2F2C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1024px;height:500px;overflow:hidden;background:var(--stock);
+    font-family:'Archivo',system-ui,sans-serif;color:var(--ink);position:relative;
+    background-image:repeating-linear-gradient(0deg,transparent 0 41px,var(--rule2) 41px 42px),
+      radial-gradient(circle at 15% 12%,rgba(0,0,0,.028) 0 1px,transparent 1px);
+    background-size:auto,7px 7px;}
+  .wrap{display:flex;height:100%;align-items:center;gap:26px;padding:0 44px}
+  .left{flex:0 0 386px}
+  .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--ink3)}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:62px;line-height:.92;
+    letter-spacing:-.02em;margin-top:8px}
+  h1 em{font-style:italic;color:var(--brass);display:block;font-size:70px}
+  .tag{margin-top:16px;font-size:16px;line-height:1.45;color:var(--ink2);max-width:340px}
+  .tag b{color:var(--ink);font-weight:700}
+  .chips{display:flex;gap:7px;margin-top:18px;flex-wrap:wrap}
+  .chip{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;
+    border:1px solid var(--rule);border-radius:20px;padding:5px 11px;color:var(--ink2)}
+  .chip-p{border-color:var(--pitch);color:var(--pitch)}
+  .chip-b{border-color:var(--brass);color:var(--brass)}
+
+  .right{flex:1;display:flex;align-items:center;justify-content:center;gap:16px;position:relative}
+  .cover{width:262px;border-radius:8px;overflow:hidden;
+    box-shadow:inset 0 0 0 1px var(--retro-edge),0 6px 18px rgba(32,36,30,.2);transform:rotate(-3deg)}
+  .fan{display:flex;gap:10px}
+  .fig{width:112px;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 5px 14px rgba(32,36,30,.22)}
+  .fig:nth-child(1){transform:rotate(2.5deg) translateY(6px)}
+  .fig:nth-child(2){transform:rotate(-1.5deg) translateY(-8px)}
+  .band{font-family:'Archivo Narrow',sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:8px;letter-spacing:.14em;text-align:center;padding:3px 4px}
+  .art{position:relative;overflow:hidden;aspect-ratio:1/1.06}
+  .art img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .cap{padding:6px 4px 7px;text-align:center}
+  .nm{display:block;font-family:'Archivo Narrow',sans-serif;font-weight:700;
+    text-transform:uppercase;font-size:11px;line-height:1.15}
+  .sub{display:block;font-size:8px;font-weight:600;opacity:.7;margin-top:2px}
+  .retro{background:var(--retro-card);color:var(--retro-ink);box-shadow:inset 0 0 0 1px var(--retro-edge),0 5px 14px rgba(32,36,30,.22)}
+  .retro .band{background:var(--retro-band);color:#F6EBD8}
+  .retro .art{background:var(--retro-card2)}
+  .retro .art img{filter:sepia(.32) saturate(.9) contrast(1.03)}
+  .retro .art::after{content:'';position:absolute;inset:0;
+    background:radial-gradient(118% 88% at 50% 38%,transparent 56%,rgba(80,60,30,.26))}
+  .modern{background:var(--modern-card);color:var(--modern-ink)}
+  .modern .band{background:var(--modern-card2);color:#F2F7F5}
+  .modern .blob{position:absolute;border-radius:999px;z-index:1}
+  .modern .art img{position:absolute;left:11%;top:7%;width:78%;height:auto;bottom:0;
+    object-fit:cover;z-index:2;border-radius:3px 3px 0 0}
+  .foot{position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--retro-band)}
+</style>
+<div class="wrap">
+  <div class="left">
+    <div class="eyebrow">Futebol Quiz BR</div>
+    <h1>Rumo ao<em>Milhão</em></h1>
+    <p class="tag">O álbum de figurinhas que faz perguntas.
+      <b>125 craques</b> pra colar, dezesseis degraus até o milhão.</p>
+    <div class="chips">
+      <span class="chip chip-p">Craques · Clubes · Copas</span>
+      <span class="chip chip-b">Grátis · sem anúncios</span>
+      <span class="chip">Offline</span>
+    </div>
+  </div>
+  <div class="right">
+    <div class="cover" id="cover"></div>
+    <div class="fan">
+      <div class="fig retro">
+        <span class="band">Brasil 50</span>
+        <span class="art"><img src="../img/d609af6f47604b15.jpg" alt=""></span>
+        <span class="cap"><span class="nm">Pelé</span><span class="sub">Santos FC</span></span>
+      </div>
+      <div class="fig modern">
+        <span class="band">Brasil 2017</span>
+        <span class="art">
+          <span class="blob" style="background:#FEDF00;width:54%;height:58%;left:0;top:10%"></span>
+          <span class="blob" style="background:#009B3A;width:42%;height:46%;right:0;top:34%"></span>
+          <img src="../img/c1a715e0c0f81882.jpg" alt="">
+        </span>
+        <span class="cap"><span class="nm">Vinícius Jr.</span><span class="sub">Flamengo</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot"></div>
+<script>
+/* the same painted cover the app opens with */
+const rays = [...Array(14)].map((_, i) => {
+  const a1 = (i * 25.7) * Math.PI / 180, a2 = a1 + .17;
+  return `<path d="M118 72 L${118 + Math.cos(a1) * 190} ${72 + Math.sin(a1) * 190}
+    L${118 + Math.cos(a2) * 190} ${72 + Math.sin(a2) * 190} Z" fill="#B23A2E" opacity=".16"/>`;
+}).join('');
+const pent = [0, 72, 144, 216, 288].map(a =>
+  `<path d="M0 -11 L0 -20" stroke="#2A1D10" stroke-width="2.6" transform="rotate(${a})"/>`).join('');
+document.getElementById('cover').innerHTML = `
+<svg viewBox="0 0 260 150" width="250" style="display:block">
+  <defs><clipPath id="cc"><rect width="260" height="150" rx="6"/></clipPath></defs>
+  <g clip-path="url(#cc)">
+    <rect width="260" height="150" fill="#EFE4CA"/>
+    ${rays}
+    <circle cx="118" cy="72" r="58" fill="#B23A2E"/>
+    <g fill="none" stroke="#2A1D10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M114 92 L104 118" stroke="#C98A5B" stroke-width="11"/>
+      <path d="M114 92 L104 118" stroke-width="3"/>
+      <path d="M100 118 L92 122" stroke="#2A1D10" stroke-width="9"/>
+      <path d="M118 90 L146 96 L166 84" stroke="#C98A5B" stroke-width="11"/>
+      <path d="M118 90 L146 96 L166 84" stroke-width="3"/>
+      <path d="M166 84 L176 79" stroke="#2A1D10" stroke-width="9"/>
+      <path d="M106 76 h24 v18 q-12 6 -24 0 Z" fill="#1E63C8" stroke-width="3"/>
+      <path d="M104 46 q14 -7 28 0 l4 30 q-18 7 -36 0 Z" fill="#F0C24A" stroke-width="3"/>
+      <path d="M112 47 q6 6 12 0" stroke-width="2.6"/>
+      <path d="M106 52 L86 66" stroke="#C98A5B" stroke-width="10"/>
+      <path d="M106 52 L86 66" stroke-width="3"/>
+      <path d="M132 52 L150 40" stroke="#C98A5B" stroke-width="10"/>
+      <path d="M132 52 L150 40" stroke-width="3"/>
+      <circle cx="120" cy="32" r="12" fill="#C98A5B" stroke-width="3"/>
+      <path d="M109 28 q7 -13 22 -6 q4 2 3 7 q-9 -7 -16 -4 q-6 2 -9 7 Z" fill="#2A1D10" stroke-width="2.4"/>
+    </g>
+    <g transform="translate(196 44)">
+      <circle r="20" fill="#F7F2E4" stroke="#2A1D10" stroke-width="3"/>
+      <path d="M0 -11 L10.5 -3.4 L6.5 9 L-6.5 9 L-10.5 -3.4 Z" fill="#2A1D10"/>
+      ${pent}
+    </g>
+    <path d="M0 130 h260 v20 h-260 Z" fill="#B23A2E"/>
+    <path d="M0 130 h260" stroke="#2A1D10" stroke-width="3"/>
+  </g>
+</svg>`;
+</script>

@@ -77,7 +77,7 @@ https://tdosreis.github.io/futebol-quiz/privacy.html
 | Asset | Spec | Notes |
 |-------|------|-------|
 | App icon | 512×512 PNG (32-bit) | You already have icons/icon-512.png |
-| Feature graphic | 1024×500 PNG/JPG | Ready: store-assets/feature-graphic.png |
+| Feature graphic | 1024×500 PNG/JPG | Ready: `store-assets/feature-graphic.png` (rebuilt for the album) |
 | Phone screenshots | 2–8, min 320px | 6 ready, 1000×1600: `shot-01-home`, `shot-02-crests`, `shot-03-question`, `shot-04-album`, `shot-05-ficha`, `shot-06-milhao` |
 | Tablet screenshots | optional | skip unless targeting tablets |
 
@@ -210,3 +210,17 @@ the paper album is the thing worth showing.
 The order tells a story and should stay in it: what the app is, that the clubs
 are really in it, that the players are too, that there is an album to fill,
 that a wrong answer teaches you something, and that the million is the point.
+
+## Regenerating the feature graphic
+
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --hide-scrollbars --window-size=1024,500 \
+      --force-device-scale-factor=1 --allow-file-access-from-files \
+      --virtual-time-budget=12000 \
+      --screenshot=store-assets/feature-graphic.png \
+      "file://$PWD/tools/feature_graphic.html"
+
+The banner is a rendered page (`tools/feature_graphic.html`), not a hand-drawn
+file, for the same reason the screenshots are: the last one sat on the listing
+showing a design the app had stopped using. It carries the painted cover and one
+figurinha of each printing, so it changes when the album does.
