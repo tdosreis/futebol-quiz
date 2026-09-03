@@ -60,7 +60,12 @@
       --halftone:  rgba(18,22,16,.62);
       --font-d: 'Fraunces', Georgia, 'Times New Roman', serif;
       --font-s: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      --font-c: 'Archivo Narrow', 'Archivo', system-ui, sans-serif;
+      /* Every fallback here is *narrow*. With a plain sans in the stack the
+         header band silently overflowed to "BRASI…" whenever the webfont had
+         not arrived yet — which on a cold, slow connection is every first
+         paint. */
+      --font-c: 'Archivo Narrow', 'Roboto Condensed', 'Arial Narrow',
+                'Helvetica Neue Condensed', 'Archivo', system-ui, sans-serif;
 
       /* ── The album has two halves ──────────────────────────────
          The old pages are printed on stock that has gone the colour of
@@ -310,7 +315,7 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,.22); line-height: 0; }
 
     /* the album page, the cover, and a tile on the board */
-    .fig-lg  .fig-band { font-size: 7.4px; padding: 2.5px 21px; }
+    .fig-lg  .fig-band { font-size: 7px; padding: 2.5px 16px; }
     .fig-lg  .fig-art  { aspect-ratio: 1 / 1.06; }
     .fig-lg  .fig-cap  { padding: 5px 3px 6px; min-height: 34px; }
     .fig-lg  .fig-nm   { font-size: 9.4px; }
@@ -318,7 +323,7 @@
     .fig-lg  .fig-sub  { font-size: 7.2px; margin-top: 2px; }
     .fig-lg  .fig-flag { width: 14px; height: 9.5px; right: 5%; top: 5%; }
 
-    .fig-sm  .fig-band { font-size: 5.4px; padding: 1.5px 2px; letter-spacing: .08em; }
+    .fig-sm  .fig-band { font-size: 5.4px; padding: 1.5px 13px; letter-spacing: .06em; }
     .fig-sm  .fig-art  { aspect-ratio: 1 / .98; }
     .fig-sm  .fig-cap  { padding: 3px 2px; min-height: 20px; }
     .fig-sm  .fig-nm   { font-size: 7.4px; }
@@ -330,7 +335,7 @@
       .fig-sm .fig-nm-long { font-size: 7.1px; }
     }
 
-    .fig-hero .fig-band { font-size: 10px; padding: 5px 40px; letter-spacing: .2em; }
+    .fig-hero .fig-band { font-size: 10px; padding: 5px 34px; letter-spacing: .16em; }
     .fig-hero .fig-art  { aspect-ratio: 1 / 1.1; }
     .fig-hero .fig-cap  { padding: 9px 6px 11px; }
     .fig-hero .fig-nm   { font-size: 16px; -webkit-line-clamp: 2; }
@@ -3815,7 +3820,11 @@ function figurinha(p, size, opts) {
   }
 
   const [c1, c2] = ctryColors(p.ctry);
-  const band = `${(CTRY_NAME[p.ctry] || p.ctry).toUpperCase()}${yr ? ' ' + yr : ''}`;
+  /* The new stock carries the country alone. It already shows the flag and
+     the club underneath, and "BRASIL 2001" is long enough to run out of band
+     and end as "BRASIL 2…" — the old stock keeps its decade because
+     "BRASIL 70" fits. */
+  const band = (CTRY_NAME[p.ctry] || p.ctry).toUpperCase();
   return `<span class="fig fig-modern fig-${size}">
     <span class="fig-band">${band}</span>
     <span class="fig-art">
