@@ -163,7 +163,10 @@ def run(w, h):
 
 
 fails = 0
-for w, h, note in SIZES:
+# ONLY=320,360 runs just those widths — useful when the machine is loaded
+_only = os.environ.get("ONLY", "")
+_sizes = [t for t in SIZES if not _only or str(t[0]) in _only.split(",")]
+for w, h, note in _sizes:
     rows = run(w, h)
     if rows is None:
         print(f"\n=== {w}x{h} — probe did not report ==="); fails += 1; continue
