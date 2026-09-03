@@ -8,6 +8,7 @@ OUT = os.path.join(ROOT, "store-assets")
 
 # name -> JS to run once the page has booted
 STATES = {
+
  # ── The six phone screenshots on the Play listing ──────────────
  # They have to carry the story in order: what the app is, that the clubs
  # and the players are really in it, that there is an album to fill, that a

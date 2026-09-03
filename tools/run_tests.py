@@ -52,38 +52,67 @@ TESTS = r"""
       ok(`[${k}] correct answers always present`, allOk);
     });
 
-    // ---- THE key test: hard distractors must be more similar than easy ----
-    function avgSim(k, samples) {
+    // ---- what actually makes a level harder ----
+    /* A board is harder when the wrong answers are harder to tell from the
+       right one, and that now has three separate parts: they play the same
+       position, they are closer in time, and the level leans on those more.
+       The old single similarity ratio hid all of it — it saturates, so
+       moderado and difícil came out equal while feeling very different. */
+    function boardStats(k, samples) {
       diffKey = k;
-      let tot = 0, n = 0;
+      let sim = 0, n = 0, samePos = 0, spans = [];
       for (let i = 0; i < samples; i++) {
         const g = buildGame(k);
         g.qs.forEach(q => {
           if (q.type !== 'player') return;
           const ref = PL.find(p => p.id === q.a[0]);
           if (!ref) return;
-          getDisp(q).forEach(o => {
+          const d = getDisp(q);
+          let worst = 0;
+          d.forEach(o => {
             if (q.a.includes(o.id)) return;
-            tot += simPlayer(o, ref); n++;
+            sim += simPlayer(o, ref); n++;
+            if (o.pos === ref.pos) samePos++;
+            if (ref.era) worst = Math.max(worst, eraGap(o, ref));
           });
+          if (ref.era && !q.fixed && !qAllTime(q)) spans.push(worst);
         });
       }
-      return n ? tot / n : 0;
+      spans.sort((x, y) => x - y);
+      return { sim: sim / n, pos: samePos / n,
+               over25: spans.filter(x => x > 25).length / Math.max(1, spans.length),
+               p90: spans[Math.floor(spans.length * 0.9)] || 0 };
     }
-    /* Six rounds each was too few: the easy figure swung by five points run to
-       run, so this assertion failed on noise rather than on a change. */
-    const easy = avgSim('facil', 16), hard = avgSim('dificil', 16), mod = avgSim('moderado', 16);
-    /* This used to demand 1.5x, from when fácil drew its wrong answers at
-       random. It no longer does: the clue quota runs at every level, because a
-       question that names a nationality and then shows one player of it is
-       unfair rather than easy, and that puts a floor under fácil's similarity
-       (~20 -> ~29). Hard is still half again as plausible, which is what the
-       assertion is actually for; 1.35 leaves room for sampling spread without
-       letting a real collapse through. */
-    ok('hard distractors more plausible than easy', hard > easy * 1.35,
-       `easy=${easy.toFixed(1)} mod=${mod.toFixed(1)} hard=${hard.toFixed(1)} ratio=${(hard/easy).toFixed(2)}`);
-    ok('moderate sits between easy and hard', mod > easy && mod < hard,
-       `easy=${easy.toFixed(1)} mod=${mod.toFixed(1)} hard=${hard.toFixed(1)}`);
+    const E = boardStats('facil', 14), M = boardStats('moderado', 14), H = boardStats('dificil', 14);
+
+    ok('hard distractors more plausible than easy', H.sim > E.sim * 1.25,
+       `easy=${E.sim.toFixed(1)} mod=${M.sim.toFixed(1)} hard=${H.sim.toFixed(1)}`);
+    ok('the harder the level, the more often the position matches',
+       H.pos > M.pos * 0.95 && M.pos > E.pos * 1.3,
+       `easy=${(E.pos*100).toFixed(0)}% mod=${(M.pos*100).toFixed(0)}% hard=${(H.pos*100).toFixed(0)}%`);
+    ok('the harder the level, the tighter the era', H.p90 <= M.p90 && M.p90 <= E.p90,
+       `p90 era gap: easy=${E.p90} mod=${M.p90} hard=${H.p90}`);
+
+    /* The point of all of it: a question that is not about the whole of
+       history must not put a 1958 striker beside a 2022 one, because then the
+       answer is whichever name is the right age. */
+    ok('moderado never spans the generations', M.over25 === 0, `${(M.over25*100).toFixed(1)}% of boards`);
+    ok('dificil never spans the generations',  H.over25 === 0, `${(H.over25*100).toFixed(1)}% of boards`);
+    ok('facil rarely spans the generations',   E.over25 <= 0.25, `${(E.over25*100).toFixed(1)}% of boards`);
+
+    /* ...but an all-time question is *about* the span, so it keeps it. */
+    (function(){
+      diffKey = 'dificil';
+      const all = CATS.flatMap(c => c.qs).filter(q => q.type === 'player' && qAllTime(q));
+      ok('all-time questions exist', all.length > 0, `${all.length} found`);
+      let widest = 0;
+      all.forEach(q => {
+        const ref = PL.find(p => p.id === q.a[0]);
+        if (!ref || !ref.era) return;
+        getDisp(q).forEach(o => { if (!q.a.includes(o.id)) widest = Math.max(widest, eraGap(o, ref)); });
+      });
+      ok('all-time questions may still cross the generations', widest > 25, `widest gap ${widest}y`);
+    })();
 
     // ---- goalkeeper sanity: the '94 keeper question should offer keepers ----
     diffKey = 'dificil';
