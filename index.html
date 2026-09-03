@@ -18,7 +18,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@400;600;700;800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
@@ -60,6 +60,26 @@
       --halftone:  rgba(18,22,16,.62);
       --font-d: 'Fraunces', Georgia, 'Times New Roman', serif;
       --font-s: 'Archivo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-c: 'Archivo Narrow', 'Archivo', system-ui, sans-serif;
+
+      /* ── The album has two halves ──────────────────────────────
+         The old pages are printed on stock that has gone the colour of
+         weak tea, with a red header band and the name set in narrow
+         caps under a warm, faded photograph. The new pages are the
+         current Panini: a mint field, big rounded shapes in the
+         player's own national colours, a flag, and his details set
+         small and clean. A player joins whichever half his career
+         belongs to, so the album reads as one collected over decades. */
+      --retro-card:  #EFE4CA;
+      --retro-card2: #E4D6B4;
+      --retro-edge:  #BFA97C;
+      --retro-ink:   #3B2E1B;
+      --retro-band:  #B23A2E;
+      --retro-band2: #8E2A20;
+      --modern-card: #56BEB2;
+      --modern-card2:#3E9E96;
+      --modern-ink:  #0C2F2C;
+      --modern-chip: #F2F7F5;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -89,6 +109,10 @@
         --shadow-2:  rgba(0,0,0,.7);
         --grain:     rgba(255,255,255,.025);
         --halftone:  rgba(0,0,0,.7);
+        --retro-card:  #2A2418; --retro-card2: #221D13; --retro-edge: #5A4C31;
+        --retro-ink:   #E8DCC0; --retro-band: #8E2A20; --retro-band2: #6E1F17;
+        --modern-card: #1C4A46; --modern-card2:#153B38; --modern-ink: #DCF0EC;
+        --modern-chip: #0E2422;
       }
     }
     :root[data-theme="dark"] {
@@ -99,6 +123,10 @@
       --brass-soft:#3A2F16; --on-brass:#1A1204; --good:#4CAE74; --bad:#E06A55;
       --bad-soft:#3A211C; --warn:#D9963A; --shadow:rgba(0,0,0,.45); --shadow-2:rgba(0,0,0,.7);
       --grain:rgba(255,255,255,.025); --halftone:rgba(0,0,0,.7);
+      --retro-card:#2A2418; --retro-card2:#221D13; --retro-edge:#5A4C31;
+      --retro-ink:#E8DCC0; --retro-band:#8E2A20; --retro-band2:#6E1F17;
+      --modern-card:#1C4A46; --modern-card2:#153B38; --modern-ink:#DCF0EC;
+      --modern-chip:#0E2422;
     }
 
     /* ── Reset & base ── */
@@ -224,6 +252,92 @@
     .print img { width: 100%; height: 100%; object-fit: cover; object-position: top center;
       display: block; pointer-events: none; }
 
+    /* ═══════════════════════════════════════════════════════════════
+       A FIGURINHA, IN TWO PRINTINGS
+       Old stock: tea-coloured card, a red header band, the photograph
+       warmed and softened the way forty-year-old ink goes, the name in
+       narrow caps underneath. New stock: a mint field with two rounded
+       shapes in the player's national colours behind him, his flag, and
+       his details set small and clean.
+    ═══════════════════════════════════════════════════════════════ */
+    /* One skeleton, two printings: band, picture, caption. Keeping the
+       three parts identical in both is what lets a page of them line up
+       even though a 1958 card and a 2024 card look nothing alike. */
+    .fig { position: relative; border-radius: 4px; overflow: hidden;
+      display: flex; flex-direction: column; height: 100%;
+      box-shadow: 0 1px 3px var(--shadow); }
+    .fig-band { flex: none; font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
+      text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fig-art { flex: none; position: relative; overflow: hidden; }
+    .fig-shot { position: relative; overflow: hidden; background: var(--rule-2); height: 100%; }
+    .fig-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      display: block; pointer-events: none; }
+    .fig-cap { flex: 1; text-align: center; line-height: 1.12;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .fig-nm { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
+      letter-spacing: .03em; overflow-wrap: anywhere;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    /* "Cristiano Ronaldo" in caps is a lot of letters for a card 90px wide,
+       so the long ones shrink instead of losing their tail. In px, not em:
+       em resolves against the parent, which is the 16px body, so .84em made
+       these names *bigger* — and clipped them. */
+    .fig-nm-long { letter-spacing: .01em; }
+    .fig-sub { font-family: var(--font-s); font-weight: 600; opacity: .72;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+
+    /* ── old stock: tea-coloured card, red band, warm faded picture ── */
+    .fig-retro { background: var(--retro-card); color: var(--retro-ink);
+      box-shadow: inset 0 0 0 1px var(--retro-edge), 0 1px 3px var(--shadow); }
+    .fig-retro .fig-band { background: var(--retro-band); color: #F6EBD8; letter-spacing: .12em; }
+    .fig-retro .fig-shot { background: var(--retro-card2); }
+    .fig-retro .fig-shot img { filter: sepia(.32) saturate(.9) contrast(1.03); }
+    .fig-retro .fig-shot::after {           /* the corners of an old card go dark */
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(118% 88% at 50% 38%, transparent 56%, rgba(80,60,30,.26));
+    }
+
+    /* ── new stock: mint field, national shapes, the picture inset ── */
+    .fig-modern { background: var(--modern-card); color: var(--modern-ink); }
+    .fig-modern .fig-band { background: var(--modern-card2); color: var(--modern-chip); letter-spacing: .1em; }
+    /* The national shapes sit inside the card rather than bleeding off it:
+       a box clipped by its parent still reports its full width, so a
+       bleeding blob shows up as a page overflow in tools/narrow.py. */
+    .fig-modern .blob { position: absolute; border-radius: 999px; pointer-events: none; z-index: 1; }
+    .fig-modern .fig-shot { position: absolute; left: 11%; right: 11%; top: 7%; bottom: 0;
+      height: auto; background: transparent; border-radius: 3px 3px 0 0; z-index: 2;
+      box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+    .fig-modern .fig-flag { position: absolute; z-index: 3; border-radius: 2px; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.22); line-height: 0; }
+
+    /* the album page, the cover, and a tile on the board */
+    .fig-lg  .fig-band { font-size: 7.4px; padding: 2.5px 21px; }
+    .fig-lg  .fig-art  { aspect-ratio: 1 / 1.06; }
+    .fig-lg  .fig-cap  { padding: 5px 3px 6px; min-height: 34px; }
+    .fig-lg  .fig-nm   { font-size: 9.4px; }
+    .fig-lg  .fig-nm-long { font-size: 8px; }
+    .fig-lg  .fig-sub  { font-size: 7.2px; margin-top: 2px; }
+    .fig-lg  .fig-flag { width: 14px; height: 9.5px; right: 5%; top: 5%; }
+
+    .fig-sm  .fig-band { font-size: 5.4px; padding: 1.5px 2px; letter-spacing: .08em; }
+    .fig-sm  .fig-art  { aspect-ratio: 1 / .98; }
+    .fig-sm  .fig-cap  { padding: 3px 2px; min-height: 20px; }
+    .fig-sm  .fig-nm   { font-size: 7.4px; }
+    .fig-sm  .fig-nm-long { font-size: 6.5px; }
+    .fig-sm  .fig-sub  { display: none; }
+    .fig-sm  .fig-flag { width: 10px; height: 7px; right: 4%; top: 4%; }
+    @media (min-width: 400px) {
+      .fig-sm .fig-nm { font-size: 8.2px; }
+      .fig-sm .fig-nm-long { font-size: 7.1px; }
+    }
+
+    .fig-hero .fig-band { font-size: 10px; padding: 5px 40px; letter-spacing: .2em; }
+    .fig-hero .fig-art  { aspect-ratio: 1 / 1.1; }
+    .fig-hero .fig-cap  { padding: 9px 6px 11px; }
+    .fig-hero .fig-nm   { font-size: 16px; -webkit-line-clamp: 2; }
+    .fig-hero .fig-nm-long { font-size: 13px; }
+    .fig-hero .fig-sub  { font-size: 10px; margin-top: 3px; }
+    .fig-hero .fig-flag { width: 22px; height: 15px; right: 5%; top: 5%; }
+
     .sticker {                              /* a pocket with a print in it */
       position: relative; background: var(--pocket); border-radius: 11px; padding: 6px 6px 8px;
       box-shadow: inset 0 0 0 1px var(--rule-2), 0 2px 5px var(--shadow);
@@ -302,7 +416,9 @@
     /* A text pocket centres its name, so on a narrow phone a long one wraps up
        into the corner the audience figure occupies. Reserve that corner only
        while the vote is actually on screen. */
-    .b-text.b-voted { padding-right: 30px; }
+    /* 44px, not 30: a crowd that votes 100% for one tile makes the badge
+       wider than a two-digit one, and the caption met it in the corner. */
+    .b-text.b-voted { padding-right: 44px; }
     .b-text .tile-name { -webkit-line-clamp: 3; font-size: 10.5px; min-height: 0; }
     .b-text .tile-name-long { font-size: 9.5px; }
 
@@ -310,6 +426,14 @@
     .b-gone { background: transparent; box-shadow: none; opacity: .45; cursor: default;
       border: 1.5px dashed var(--rule); border-radius: 9px; }
     .b-gone .print { visibility: hidden; }
+    /* a tile that *is* a card needs no pocket of its own behind it */
+    .b-fig { padding: 0; background: transparent; box-shadow: none; overflow: visible; }
+    .b-fig > .fig { width: 100%; }
+    .b-fig.b-sel   { box-shadow: 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); }
+    .b-fig.b-correct { box-shadow: 0 0 0 2.5px var(--good), 0 4px 12px var(--shadow); }
+    .b-fig.b-wrong   { box-shadow: 0 0 0 2.5px var(--bad); }
+    .b-fig.b-locked  { box-shadow: 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); }
+    .b-fig.b-wrong .fig-shot img { filter: grayscale(1); opacity: .55; }
 
     /* states */
     .b-sel { box-shadow: inset 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); transform: translateY(-2px); }
@@ -350,6 +474,8 @@
     .qart { flex-shrink: 0; border-radius: 8px; overflow: hidden; }
     .qart-face { width: 54px; height: 54px; border-radius: 50%; }
     .qart-wide { width: 92px; height: 60px; }
+    .qart-draw { display: flex; align-items: center; justify-content: center;
+      background: var(--retro-card); box-shadow: inset 0 0 0 1px var(--retro-edge); }
     .qart-crest { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
 
     /* ── Photo reveal ── */
@@ -432,6 +558,14 @@
     .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-4); font-weight: 700; }
 
     /* ── Home ── */
+    .cover-art { width: 100%; max-width: 300px; border-radius: 7px; overflow: hidden;
+      box-shadow: inset 0 0 0 1px var(--retro-edge), 0 2px 8px var(--shadow); }
+    /* The painted cover is the first thing you see, but not at the cost of the
+       button underneath it: on a short phone it gives back the height so
+       JOGAR AGORA stays above the fold. */
+    @media (max-height: 780px) { .cover-art { max-width: 208px; } }
+    @media (max-height: 700px) { .cover-art { max-width: 156px; } }
+    @media (max-height: 600px) { .cover-art { display: none; } }
     .hero-sticker { width: 138px; margin: 0 auto; }
     .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
     .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer;
@@ -508,7 +642,7 @@
       .qz-screen .b-text { min-height: 34px; padding: 4px 6px 4px 18px; }
       /* must repeat here: same specificity as the rule above, and this block
          comes later, so without it the reserved vote corner is undone */
-      .qz-screen .b-text.b-voted { padding-right: 30px; }
+      .qz-screen .b-text.b-voted { padding-right: 44px; }
       .qz-screen .b-text .tile-name { font-size: 10px; }
       .qz-screen .ajudas { gap: 4px; }
       .qz-screen .foot { gap: 5px; }
@@ -541,27 +675,45 @@
     .alb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
     .alb-bar { height: 5px; background: var(--rule-2); border-radius: 3px; overflow: hidden; }
     .alb-bar > i { display: block; height: 100%; background: var(--brass); border-radius: 3px; }
-    .alb-sec { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 800;
-      color: var(--ink-3); display: flex; align-items: center; gap: 7px; margin: 12px 0 6px; }
-    .alb-sec::after { content: ''; flex: 1; height: 1px; background: var(--rule-2); }
-    .alb-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-    @media (min-width: 460px) { .alb-grid { grid-template-columns: repeat(6, 1fr); } }
-    .alb-slot { position: relative; background: var(--pocket); border-radius: 8px; padding: 3px 3px 4px;
-      box-shadow: inset 0 0 0 1px var(--rule-2); }
-    .alb-slot .print { border-radius: 5px; aspect-ratio: 1 / .95; }
-    .alb-slot .nm { font-size: 7px; font-weight: 700; text-align: center; line-height: 1.1; margin-top: 3px;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-      overflow-wrap: anywhere; min-height: 15px; }
-    @media (min-width: 400px) { .alb-slot .nm { font-size: 7.8px; } }
-    /* an empty pocket: the figurinha you have not collected yet */
-    .alb-slot.empty { background: transparent; box-shadow: none; border: 1.5px dashed var(--rule); }
-    .alb-slot.empty .ph { aspect-ratio: 1 / .95; display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-d); font-style: italic; color: var(--rule); font-size: 15px; }
-    .alb-slot.empty .nm { color: var(--ink-4); font-weight: 600; }
-    .alb-n { position: absolute; top: -1px; left: -1px; z-index: 4; background: var(--ink); color: var(--stock);
-      font-size: 7px; font-weight: 800; padding: 1px 4px; border-radius: 7px 2px 6px 2px;
-      font-variant-numeric: tabular-nums; }
-    .alb-slot.empty .alb-n { background: var(--rule-2); color: var(--ink-3); }
+    /* ── The country band that opens each page ──────────────────
+       Straight out of the old albums: the crest, the name set large and
+       heavy, and the same name repeated small in the other languages the
+       album was printed in. */
+    .alb-sec { display: flex; align-items: center; gap: 9px; margin: 20px 0 9px; }
+    .alb-sec .crest-box { width: 34px; flex: none; }
+    .alb-sec .t { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
+      font-size: 21px; letter-spacing: .02em; line-height: 1; }
+    .alb-sec .langs { font-family: var(--font-c); font-weight: 600; font-size: 7.5px;
+      letter-spacing: .16em; text-transform: uppercase; color: #F4EDDC; background: var(--retro-band);
+      padding: 2.5px 7px; border-radius: 2px; margin-top: 3px; display: inline-block;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+    .alb-sec .cnt { margin-left: auto; font-family: var(--font-s); font-weight: 800; font-size: 11px;
+      color: var(--ink-3); font-variant-numeric: tabular-nums; flex: none; }
+
+    .alb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; align-items: stretch; }
+    @media (min-width: 380px) { .alb-grid { grid-template-columns: repeat(5, 1fr); } }
+    @media (min-width: 470px) { .alb-grid { grid-template-columns: repeat(6, 1fr); } }
+    .alb-slot { position: relative; display: flex; }
+    .alb-slot > .fig { width: 100%; }
+    /* the pocket you have not filled yet: the album prints the number and
+       waits for the sticker */
+    .alb-slot.empty { border: 1.5px dashed var(--rule); border-radius: 4px;
+      width: 100%; min-height: 118px; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px; background: transparent; }
+    @media (min-width: 400px) { .alb-slot.empty { min-height: 132px; } }
+    .alb-slot.empty .ph { font-family: var(--font-c); font-weight: 700; color: var(--rule);
+      font-size: 15px; letter-spacing: .08em; }
+    .alb-slot.empty .nm { font-family: var(--font-c); font-size: 7px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--ink-4); font-weight: 600; }
+    .alb-n { position: absolute; top: -4px; left: -4px; z-index: 5; background: var(--ink);
+      color: var(--stock); font-family: var(--font-s); font-size: 7px; font-weight: 800;
+      padding: 1.5px 4px; border-radius: 3px; font-variant-numeric: tabular-nums;
+      box-shadow: 0 1px 2px var(--shadow); }
+    .alb-slot.empty .alb-n { background: var(--rule-2); color: var(--ink-3); box-shadow: none; }
+    .alb-foot { margin-top: 18px; padding-top: 9px; border-top: 1px solid var(--rule-2);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ink-4); font-weight: 600; }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -2003,6 +2155,20 @@ function qCues(q) {
   return cues;
 }
 
+/* ── Which questions may cross the generations ───────────────
+   "Quem é o maior artilheiro de Copas de todos os tempos?" is *about*
+   the whole history, so Klose beside Pelé beside Mbappé is the question
+   working as intended. Everything else is not: asking who won a 2002
+   final and offering a board that runs from 1958 to 2024 turns a
+   football question into a date-sorting exercise, and the answer stands
+   out for being the only man of the right vintage. So only these are
+   allowed to mix eras; every other board is held to one. */
+const ALL_TIME = /(todos os tempos|de todos|da historia|na historia|recordista|maior artilheiro da|mais titulos|toda a historia)/;
+function qAllTime(q) {
+  if (q._at === undefined) q._at = ALL_TIME.test(_fold(q.t));
+  return q._at;
+}
+
 /* Does this candidate fit every clue the question gives away? */
 function cueFits(p, cues) {
   if (cues.ctry && p.ctry !== cues.ctry) return false;
@@ -2055,22 +2221,39 @@ function getDisp(q) {
   const ref  = right[0];
   const need = nOpts - right.length;
 
-  /* Harder levels keep the board inside one era: a 1958 striker beside a 2022
-     one is not a question, it is a calendar. Fácil deliberately does not do
-     this — mixing the generations is most of what makes the easy level easy,
-     and clamping it there flattened the ladder until hard was barely harder
-     than easy. The clue quota below still runs at every level, because a
-     giveaway is unfair rather than merely easy. */
-  if (isPlayer && ref && ref.era && strict >= 0.3 && wrong.length > need + 3) {
-    const win  = strict >= 0.9 ? 12 : 20;
-    const near = wrong.filter(x => eraGap(x, ref) <= win);
-    if (near.length >= need + 3) wrong = near;
+  /* ── One board, one generation ──────────────────────────────
+     Unless the question is explicitly about all of history, every wrong
+     answer has to be a contemporary of the right one. This runs at every
+     level, fácil included: a board that spans seventy years is not an
+     easier question, it is a worse one, because the answer announces
+     itself. Difficulty is carried by how tight the window is and by how
+     much the position and the country have to match, below. */
+  const generic = isPlayer ? qAllTime(q) : true;
+  if (isPlayer && ref && ref.era && !generic && wrong.length > need + 2) {
+    /* Not tighter than this at difícil: squeezing the era to a handful of
+       candidates leaves the ranking no room to also match the position and
+       the country, and the hard board ends up no harder than the moderate
+       one — just narrower. */
+    const win  = strict >= 0.9 ? 13 : strict >= 0.4 ? 17 : 26;
+    let near = wrong.filter(x => eraGap(x, ref) <= win);
+    // widen rather than give up, so a thin era still fills a board
+    if (near.length < need + 2) near = wrong.filter(x => eraGap(x, ref) <= win * 2);
+    if (near.length >= need + 2) wrong = near;
   }
 
   if (ref && wrong.length > need) {
     const jitter = 14 * (1 - strict) + 6;
+    /* On a question that is not about all of history the nation and the
+       shirt are part of what makes a board cohere, so they carry weight
+       even at fácil — the level still differs, because `strict` scales
+       everything else and the era window above is far wider. */
+    const floor = generic ? strict : Math.max(strict, 0.3);
     const ranked = wrong
-      .map(x => ({ x, s: sim(x, ref) * strict + (isPlayer ? cueSim(x, cues) : 0) + rnd() * jitter }))
+      .map(x => ({ x, s: sim(x, ref) * floor
+                       + (isPlayer && !generic && x.ctry === ref.ctry ? 16 : 0)
+                       + (isPlayer && !generic && (x.clubs || []).some(c => (ref.clubs || []).includes(c)) ? 10 : 0)
+                       + (isPlayer ? cueSim(x, cues) : 0)
+                       + rnd() * jitter }))
       .sort((a, b) => b.s - a.s)
       .map(o => o.x);
     // the plausible band: tighter as strictness rises, never below need+2
@@ -2095,6 +2278,28 @@ function getDisp(q) {
       picks = picks.slice(0, need);
     } else {
       picks = inBand.slice(0, need);
+    }
+
+    /* ── and one nationality, mostly ─────────────────────────────
+       A board of ten Brazilians of the same decade is a real question;
+       the same ten with a Norwegian and a Ghanaian dropped in is a
+       spotting exercise. Half the board is held to the answer's own
+       country whenever that many exist — the rest stay mixed, so it
+       never becomes a lineup of one nation and one nation only. */
+    if (isPlayer && !generic && ref) {
+      const kin = ranked.filter(x => x.ctry === ref.ctry);
+      const want = Math.min(kin.length, Math.round(need * (0.3 + 0.3 * strict)));
+      if (want > 0) {
+        const have = picks.filter(x => x.ctry === ref.ctry).length;
+        if (have < want) {
+          const add = kin.filter(x => !picks.some(pk => pk.id === x.id)).slice(0, want - have);
+          // drop the least plausible outsiders to make room
+          const outs = picks.filter(x => x.ctry !== ref.ctry);
+          const keep = picks.filter(x => x.ctry === ref.ctry)
+                            .concat(outs.slice(0, Math.max(0, outs.length - add.length)));
+          picks = keep.concat(add).slice(0, need);
+        }
+      }
     }
     return shuf([...right, ...picks]);
   }
@@ -3194,6 +3399,111 @@ function mkPort(p) {
 }
 
 /* ═══════════════════════════════════════════════════
+   ART — drawn, flat, and a little bit 1970
+   The old albums were sold with a painted cover, not a photograph, and
+   the inside pages carried little printed vignettes. These are that:
+   bold flat shapes, one heavy outline, no gradients, no gloss.
+═══════════════════════════════════════════════════ */
+const ART = {
+  /* The cover: a striker on a red sun, drawn the way the old albums drew
+     one — flat colour, one heavy outline, no shading. Built as a
+     pictogram (limbs are thick round-capped strokes) because a painted
+     figure at this size turns to mud. */
+  cover(w) {
+    return `<svg viewBox="0 0 260 150" width="${w || 260}" role="img"
+      aria-label="Ilustração de um jogador chutando" style="display:block;max-width:100%;height:auto;">
+      <defs><clipPath id="covclip"><rect width="260" height="150" rx="6"/></clipPath></defs>
+      <g clip-path="url(#covclip)">
+        <rect width="260" height="150" fill="var(--retro-card)"/>
+        ${[...Array(14)].map((_, i) => {
+          const a1 = (i * 25.7) * Math.PI / 180, a2 = a1 + .17;
+          return `<path d="M118 72 L${118 + Math.cos(a1) * 190} ${72 + Math.sin(a1) * 190}
+            L${118 + Math.cos(a2) * 190} ${72 + Math.sin(a2) * 190} Z"
+            fill="var(--retro-band)" opacity=".16"/>`;
+        }).join('')}
+        <circle cx="118" cy="72" r="58" fill="var(--retro-band)"/>
+        <g fill="none" stroke="#2A1D10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <!-- back leg, planted -->
+          <path d="M114 92 L104 118" stroke="#C98A5B" stroke-width="11"/>
+          <path d="M114 92 L104 118" stroke-width="3"/>
+          <path d="M100 118 L92 122" stroke="#2A1D10" stroke-width="9"/>
+          <!-- the striking leg -->
+          <path d="M118 90 L146 96 L166 84" stroke="#C98A5B" stroke-width="11"/>
+          <path d="M118 90 L146 96 L166 84" stroke-width="3"/>
+          <path d="M166 84 L176 79" stroke="#2A1D10" stroke-width="9"/>
+          <!-- shorts -->
+          <path d="M106 76 h24 v18 q-12 6 -24 0 Z" fill="#1E63C8" stroke-width="3"/>
+          <!-- shirt -->
+          <path d="M104 46 q14 -7 28 0 l4 30 q-18 7 -36 0 Z" fill="#F0C24A" stroke-width="3"/>
+          <path d="M112 47 q6 6 12 0" stroke-width="2.6"/>
+          <!-- arms -->
+          <path d="M106 52 L86 66" stroke="#C98A5B" stroke-width="10"/>
+          <path d="M106 52 L86 66" stroke-width="3"/>
+          <path d="M132 52 L150 40" stroke="#C98A5B" stroke-width="10"/>
+          <path d="M132 52 L150 40" stroke-width="3"/>
+          <!-- head -->
+          <circle cx="120" cy="32" r="12" fill="#C98A5B" stroke-width="3"/>
+          <path d="M109 28 q7 -13 22 -6 q4 2 3 7 q-9 -7 -16 -4 q-6 2 -9 7 Z" fill="#2A1D10" stroke-width="2.4"/>
+        </g>
+        <g transform="translate(196 44)">
+          <circle r="20" fill="#F7F2E4" stroke="#2A1D10" stroke-width="3"/>
+          <path d="M0 -11 L10.5 -3.4 L6.5 9 L-6.5 9 L-10.5 -3.4 Z" fill="#2A1D10"/>
+          ${[0, 72, 144, 216, 288].map(a => `<path d="M0 -11 L0 -20" stroke="#2A1D10"
+            stroke-width="2.6" transform="rotate(${a})"/>`).join('')}
+        </g>
+        <path d="M0 130 h260 v20 h-260 Z" fill="var(--retro-band)"/>
+        <path d="M0 130 h260" stroke="#2A1D10" stroke-width="3"/>
+      </g>
+    </svg>`;
+  },
+
+  /* a little printed vignette of a ground, for the stadium questions */
+  stadium(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um estádio"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round">
+        <path d="M8 46 q52 -30 104 0 l0 20 q-52 -22 -104 0 Z" fill="var(--retro-band)"/>
+        <path d="M14 44 q46 -24 92 0" fill="none" stroke-dasharray="3 4" opacity=".55"/>
+        <ellipse cx="60" cy="62" rx="44" ry="13" fill="#2E7D4F"/>
+        <ellipse cx="60" cy="62" rx="44" ry="13" fill="none" stroke="#F5EFE0" stroke-width="1.4"/>
+        <path d="M60 49 v26" stroke="#F5EFE0" stroke-width="1.2"/>
+        <ellipse cx="60" cy="62" rx="9" ry="4" fill="none" stroke="#F5EFE0" stroke-width="1.2"/>
+        <path d="M22 26 v12 M22 26 h10 v5 h-10" fill="#F0C24A"/>
+        <path d="M98 26 v12 M98 26 h-10 v5 h10" fill="#F0C24A"/>
+      </g>
+    </svg>`;
+  },
+
+  /* the cup, for the prize screens */
+  trophy(w) {
+    return `<svg viewBox="0 0 80 90" width="${w || 80}" role="img" aria-label="Ilustração de uma taça"
+      style="display:block;max-width:100%;height:auto;">
+      <g stroke="#2A1D10" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M24 12 h32 v20 q0 16 -16 20 q-16 -4 -16 -20 Z" fill="#E8B23C"/>
+        <path d="M24 16 q-12 0 -12 10 q0 10 12 12" fill="none"/>
+        <path d="M56 16 q12 0 12 10 q0 10 -12 12" fill="none"/>
+        <path d="M36 52 h8 v12 h-8 Z" fill="#C79A4E"/>
+        <path d="M26 64 h28 v8 h-28 Z" fill="#E8B23C"/>
+        <path d="M20 72 h40 v8 h-40 Z" fill="#B23A2E"/>
+        <path d="M32 22 q8 6 16 0" fill="none" opacity=".6"/>
+      </g>
+    </svg>`;
+  },
+
+  /* a ball, drawn rather than typed */
+  ball(w) {
+    return `<svg viewBox="0 0 60 60" width="${w || 60}" aria-hidden="true"
+      style="display:block;max-width:100%;height:auto;">
+      <circle cx="30" cy="30" r="26" fill="#F7F2E4" stroke="#2A1D10" stroke-width="3"/>
+      <path d="M30 14 L43 24 L38 40 L22 40 L17 24 Z" fill="#2A1D10"/>
+      ${[0, 72, 144, 216, 288].map(a => `<path d="M30 14 L30 4" stroke="#2A1D10" stroke-width="2.6"
+        transform="rotate(${a} 30 30)"/>`).join('')}
+    </svg>`;
+  },
+};
+
+/* ═══════════════════════════════════════════════════
    SVG — STADIUM ILLUSTRATION
 ═══════════════════════════════════════════════════ */
 function mkStad(s) {
@@ -3416,12 +3726,12 @@ function badge(item, idx) {
   }
 
   if (isPlayer) {
-    return `<div class="${cls}" data-id="${item.id}" style="${delay}">
+    /* The tile is the same figurinha that goes in the album — old stock or
+       new depending on the man — so picking one and later finding it stuck
+       on your page is visibly the same object. */
+    return `<div class="${cls} b-fig" data-id="${item.id}" style="${delay}">
       ${tab}${voteEl}
-      <div class="print"><img src="${item.img}" alt="" aria-hidden="true"
-        onerror="this.style.opacity='.2'" /></div>
-      <span class="tile-name${longCls}">${
-        curQ._noFlag ? '' : `<span class="fl">${flagSVG(item.ctry, 7)}</span>`}${item.n}</span>
+      ${figurinha(item, 'sm', { decorative: true, sub: '', noFlag: curQ._noFlag })}
     </div>`;
   }
 
@@ -3450,6 +3760,74 @@ const medalChips = () => (window._newMedals || []).length ? `
     ${window._newMedals.map(m => `<span class="chip chip-brass" style="text-transform:none;letter-spacing:.02em;font-size:11px;">
       ${(ICON[m.ic] || ICON.medal)('currentColor', 12)} Nova figurinha: ${m.n}</span>`).join('')}
   </div>` : '';
+
+/* ── Which printing a player belongs to ─────────────────────
+   The album was collected over fifty years, so it has two kinds of page
+   in it. A career that started before the Premier League is on the old
+   stock; anything since is on the current one. */
+/* 2000, not 1992: Ronaldo, Ronaldinho and Rivaldo belong to the old
+   pages in every way that matters, and putting them on mint stock looked
+   like a filing error. */
+const MODERN_FROM = 2000;
+const figEra = p => (p.era && p.era[0] < MODERN_FROM) ? 'retro' : 'modern';
+
+/* The two shapes behind a modern figurinha take the player's own
+   national colours, the way the real ones do. */
+const CTRY_COLORS = {
+  BRA:['#FEDF00','#009B3A'], ARG:['#74ACDF','#F6B40E'], POR:['#DA291C','#046A38'],
+  FRA:['#002395','#ED2939'], NED:['#AE1C28','#21468B'], GER:['#DD0000','#FFCE00'],
+  ITA:['#008C45','#CD212A'], ENG:['#CE1124','#0A2C6B'], ESP:['#AA151B','#F1BF00'],
+  URU:['#0038A8','#F6B40E'], BEL:['#FAE042','#ED2939'], CRO:['#FF0000','#171796'],
+  COL:['#FCD116','#003893'], SWE:['#FECC00','#006AA7'], POL:['#DC143C','#EEEEEE'],
+  EGY:['#CE1126','#111111'], CMR:['#007A5E','#FCD116'], NOR:['#BA0C2F','#00205B'],
+  UKR:['#FFDD00','#0057B7'], HUN:['#CE2939','#477050'], CZE:['#D7141A','#11457E'],
+  DEN:['#C8102E','#EEEEEE'], RUS:['#0039A6','#D52B1E'], MEX:['#006847','#CE1126'],
+  CHI:['#D52B1E','#0039A6'], GHA:['#CE1126','#006B3F'], SCO:['#0065BD','#EEEEEE'],
+  WAL:['#C8102E','#00AB39'], SEN:['#00853F','#FDEF42'], NGA:['#008751','#EEEEEE'],
+  BUL:['#00966E','#D62612'], CIV:['#F77F00','#009E60'], LBR:['#BF0A30','#002868'],
+};
+const ctryColors = c => CTRY_COLORS[c] || ['#17593F', '#B8860B'];
+
+/* One figurinha. `size` is lg (album page), sm (a tile on the board) or
+   hero (the cover). */
+function figurinha(p, size, opts) {
+  opts = opts || {};
+  const era  = figEra(p);
+  const yr   = p.era ? p.era[0] : '';
+  const sub  = opts.sub !== undefined ? opts.sub
+             : `${POS_NAME[p.pos]} · ${p.era ? p.era[0] + '–' + p.era[1] : ''}`;
+  const alt  = opts.decorative ? 'alt="" aria-hidden="true"' : `alt="${p.n}"`;
+  const nmCls = 'fig-nm' + (p.n.length > 13 ? ' fig-nm-long' : '');
+  const shot = `<div class="fig-shot"><img src="${p.img}" ${alt}
+      onerror="this.style.opacity='.2'" /></div>`;
+
+  if (era === 'retro') {
+    /* the header band carries the country and the decade, the way the old
+       albums carried the tournament */
+    const band = `${(CTRY_NAME[p.ctry] || p.ctry).toUpperCase()} ${
+      yr ? String(Math.floor(yr / 10) * 10).slice(2) : ''}`;
+    return `<span class="fig fig-retro fig-${size}">
+      <span class="fig-band">${band}</span>
+      <span class="fig-art">${shot}</span>
+      <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
+      ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
+    </span>`;
+  }
+
+  const [c1, c2] = ctryColors(p.ctry);
+  const band = `${(CTRY_NAME[p.ctry] || p.ctry).toUpperCase()}${yr ? ' ' + yr : ''}`;
+  return `<span class="fig fig-modern fig-${size}">
+    <span class="fig-band">${band}</span>
+    <span class="fig-art">
+      <span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
+      <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>
+      ${shot}
+      ${opts.noFlag ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
+    </span>
+    <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
+    ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
+  </span>`;
+}
 
 /* The sticker on the cover. It changes every time the album is opened — a
    fixed face made the cover look broken — and once you have collected
@@ -3484,17 +3862,17 @@ function html() {
         <span>Edição ${year}</span><b>Fig. Nº ${String(num).padStart(3, '0')}</b>
       </div>
 
+      <div class="cover-art">${ART.cover(300)}</div>
+
       <div>
         <div class="eyebrow">Futebol Quiz BR</div>
         <h1 class="display" style="font-size:38px;margin-top:6px;">Rumo ao<br>
           <em class="brass" style="font-size:46px;">Milhão</em></h1>
       </div>
 
-      <div class="sticker sticker-foil hero-sticker">
-        <span class="tab tab-brass">Nº ${String(num).padStart(2, '0')}</span>
-        <div class="print"><img src="${hero.img}" alt="${hero.n}" /></div>
-        <div class="nm">${hero.n}</div>
-        <div class="ctry">${CTRY_NAME[hero.ctry] || hero.ctry} · ${hero.nick || POS_NAME[hero.pos]}</div>
+      <div class="hero-sticker" style="position:relative;">
+        <span class="alb-n" style="font-size:9px;padding:2px 6px;">Nº ${String(num).padStart(3, '0')}</span>
+        ${figurinha(hero, 'hero', { sub: hero.nick || `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}` })}
       </div>
 
       <p class="small muted" style="max-width:280px;font-size:12.5px;">
@@ -3557,27 +3935,52 @@ function html() {
     const order = Object.keys(groups).sort((a, b) =>
       a === 'BRA' ? -1 : b === 'BRA' ? 1 : groups[b].length - groups[a].length || a.localeCompare(b));
 
+    /* The album was printed in several languages, and every old one prints
+       the country's name in all of them across the header band. */
+    const LANGS = {
+      BRA:'Brazil · Brasilien · Brésil · Brasile', ARG:'Argentina · Argentinien · Argentine',
+      ITA:'Italy · Italien · Italie · Italia',     GER:'Germany · Deutschland · Allemagne',
+      ENG:'England · Angleterre · Inghilterra',    FRA:'France · Frankreich · Francia',
+      ESP:'Spain · Spanien · Espagne · Spagna',    POR:'Portugal · Portogallo',
+      NED:'Holland · Niederlande · Pays-Bas',      URU:'Uruguay · Uruguai',
+    };
+    const total = PL.length;
+
     return `
     <div class="pg" style="gap:8px;">
       ${topbar('Meu álbum')}
       <div class="alb-head">
-        <div class="display" style="font-size:26px;">${album.size}<span class="muted" style="font-size:16px;"> / ${PL.length}</span></div>
+        <div class="display" style="font-size:26px;">${album.size}<span class="muted" style="font-size:16px;"> / ${total}</span></div>
         <div class="small muted">${albumPct()}% colado</div>
       </div>
       <div class="alb-bar"><i style="width:${albumPct()}%"></i></div>
+      ${album.size === 0 ? `<div style="display:flex;align-items:center;gap:12px;
+        background:var(--pocket);border:1px solid var(--rule-2);border-radius:11px;padding:11px 13px;margin-top:6px;">
+        <span style="width:44px;flex:none;">${ART.ball(44)}</span>
+        <span class="small muted">Cada resposta certa cola uma figurinha aqui.
+          As páginas começam vazias — é você que enche.</span></div>` : ''}
       <div class="scroll-y" style="flex:1;margin-top:2px;">
-        ${order.map(ctry => `
-          <div class="alb-sec">${flagSVG(ctry, 9)} ${CTRY_NAME[ctry] || ctry}
-            <span style="color:var(--ink-4);font-weight:700;">${groups[ctry].filter(g => album.has(g.p.id)).length}/${groups[ctry].length}</span></div>
+        ${order.map((ctry, pageNo) => {
+          const got = groups[ctry].filter(g => album.has(g.p.id)).length;
+          return `
+          <div class="alb-sec">
+            <span class="crest-box" style="width:34px;">${flagSVG(ctry, 22)}</span>
+            <span style="min-width:0;">
+              <span class="t">${(CTRY_NAME[ctry] || ctry).toUpperCase()}</span>
+              ${LANGS[ctry] ? `<span class="langs">${LANGS[ctry]}</span>` : ''}
+            </span>
+            <span class="cnt">${got}/${groups[ctry].length}</span>
+          </div>
           <div class="alb-grid">
-            ${groups[ctry].map(({ p, n }) => album.has(p.id)
-              ? `<div class="alb-slot"><span class="alb-n">${String(n).padStart(3, '0')}</span>
-                   <div class="print"><img src="${p.img}" alt="${p.n}" /></div>
-                   <div class="nm">${p.n}</div></div>`
-              : `<div class="alb-slot empty"><span class="alb-n">${String(n).padStart(3, '0')}</span>
-                   <div class="ph" aria-hidden="true">?</div>
-                   <div class="nm">a colar</div></div>`).join('')}
-          </div>`).join('')}
+            ${groups[ctry].map(({ p, n }) => `<div class="alb-slot${album.has(p.id) ? '' : ' empty'}">
+                <span class="alb-n">${String(n).padStart(3, '0')}</span>
+                ${album.has(p.id)
+                  ? figurinha(p, 'lg', { sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos] })
+                  : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
+              </div>`).join('')}
+          </div>`;
+        }).join('')}
+        <div class="alb-foot"><span>Futebol Quiz BR</span><span>${album.size} de ${total}</span></div>
       </div>
     </div>`;
   }
@@ -3688,6 +4091,7 @@ function html() {
     return `
     <div class="pg pg-center scroll-y" style="padding:26px 22px;gap:9px;">
       <div class="eyebrow">Rumo ao Milhão · degrau ${cleared}/${LADDER.length}</div>
+      ${banked > 0 ? `<div style="margin:2px 0 -2px;">${ART.trophy(58)}</div>` : ''}
       <div class="display ${tone}" style="font-size:30px;"><em>${head}</em></div>
       <div class="display prize-pop ${banked > 0 ? 'brass' : 'muted'}"
         style="font-size:${banked >= 100000 ? 44 : 52}px;letter-spacing:-.03em;">${money(banked)}</div>
@@ -3727,6 +4131,7 @@ function html() {
       <span class="chip chip-soft" style="color:${curDiff.col};">
         ${isSurv ? `${ICON.shield('currentColor', 11)} Mata-mata · ${nCorrect} ${nCorrect === 1 ? 'acerto' : 'acertos'} seguidos`
                  : `${(ICON[curDiff.ic] || ICON.star)('currentColor', 11)} ${curDiff.label} · ${total} perguntas`}</span>
+      ${pct >= 80 ? `<div style="margin:2px 0 -4px;">${ART.trophy(52)}</div>` : ''}
       <div class="display" style="font-size:34px;margin-top:6px;"><em>${msg}</em></div>
       <div class="display num" style="font-size:64px;line-height:1;font-weight:600;">${pts}</div>
       <div class="small muted">pontos · ${nCorrect}/${total} acertos (${pct}%)</div>
@@ -3756,7 +4161,7 @@ function html() {
   const art = q.port
     ? `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`
     : q.stad
-    ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="${STAD[q.stad].name}" style="object-position:center;" /></div>`
+    ? `<div class="qart qart-wide qart-draw">${ART.stadium(92)}</div>`
     : q.face
     ? `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`

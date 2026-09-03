@@ -381,7 +381,7 @@ TESTS = r"""
         for (let i = 0; i < cat.qs.length; i++)
           if (cat.qs[i].type === 'player' && !cat.qs[i].textTiles) { qi = i; break; }
         rung = 9; disp = getDisp(cat.qs[qi]); go();
-        document.querySelectorAll('.tile-name').forEach(function(nm){
+        document.querySelectorAll('.tile-name, .fig-nm').forEach(function(nm){
           if (nm.scrollHeight > nm.clientHeight + 1) clipped.push(nm.textContent.trim());
         });
       }

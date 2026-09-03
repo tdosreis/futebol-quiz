@@ -32,13 +32,18 @@ PROBE = r"""
     const vw=document.documentElement.clientWidth, vh=document.documentElement.clientHeight;
     const over=[], clipped=[], collide=[];
     document.querySelectorAll('#qz, #ct, #ct *').forEach(function(el){
+      /* Anything inside an <svg> is clipped by that element's own viewport, so
+         its geometry says nothing about whether the page overflows — a sunburst
+         drawn past the edge of its viewBox is the drawing working, not a bug.
+         Measure the <svg> itself; skip what is inside it. */
+      if(el.ownerSVGElement) return;
       const r=el.getBoundingClientRect();
       if(r.width<0.5 && r.height<0.5) return;
       if(r.right>vw+0.5 || r.left<-0.5)
         over.push(el.tagName+(el.className?'.'+String(el.className).split(' ')[0]:'')
                   +' w='+Math.round(r.width)+' "'+(el.textContent||'').trim().slice(0,18)+'"');
     });
-    document.querySelectorAll('.tile-name').forEach(function(nm){
+    document.querySelectorAll('.tile-name, .fig-nm').forEach(function(nm){
       if(nm.scrollHeight>nm.clientHeight+1) clipped.push(nm.textContent.trim().slice(0,20));
     });
     document.querySelectorAll('.b').forEach(function(t){
@@ -158,7 +163,10 @@ def run(w, h):
 
 
 fails = 0
-for w, h, note in SIZES:
+# ONLY=320,360 runs just those widths — useful when the machine is loaded
+_only = os.environ.get("ONLY", "")
+_sizes = [t for t in SIZES if not _only or str(t[0]) in _only.split(",")]
+for w, h, note in _sizes:
     rows = run(w, h)
     if rows is None:
         print(f"\n=== {w}x{h} — probe did not report ==="); fails += 1; continue
