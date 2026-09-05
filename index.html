@@ -1874,6 +1874,10 @@ const CTRY_BAND = { NIR:'Irl. Norte', KOR:'Coreia', WAL:'Gales', CIV:'Marfim' };
 
 /* "a seleção argentina" reads like football; "a seleção de Argentina" does not.
    Anything without an adjective here falls back to "de <país>". */
+/* "a seleção italiana", not "a seleção de Itália". Falls back to "de <país>"
+   for the countries with no adjective in the table. */
+const ctrySel = c => CTRY_ADJ[c] || ('de ' + (CTRY_NAME[c] || c));
+
 const CTRY_ADJ = {
   BRA:'brasileira', ARG:'argentina', URU:'uruguaia', CHI:'chilena', COL:'colombiana',
   PER:'peruana', PAR:'paraguaia', MEX:'mexicana', POR:'portuguesa', ESP:'espanhola',
@@ -3403,7 +3407,7 @@ function GEN_QS(tier) {
   Object.keys(byCtry).filter(c => c !== 'BRA' && byCtry[c].length >= 1).forEach(c => {
     const p = rndOf(byCtry[c]);
     out.push({
-      t: `Qual destes jogadores defendeu a seleção de ${CTRY_NAME[c] || c}?`,
+      t: `Qual destes jogadores defendeu a seleção ${ctrySel(c)}?`,
       _skip: !CTRY_NAME[c],
       a: [p.id], type: 'player',
       pool: PL.filter(x => x.ctry !== c).map(x => x.id), _cat: GC.nat,
@@ -3893,7 +3897,7 @@ function GEN_QS(tier) {
     const no  = PL.filter(p => p.ctry !== c);
     if (yes.length < 2 || no.length < 8) return;
     out.push({
-      t: `Selecione os 2 jogadores que defenderam a seleção ${CTRY_ADJ[c] || 'de ' + CTRY_NAME[c]}`,
+      t: `Selecione os 2 jogadores que defenderam a seleção ${ctrySel(c)}`,
       a: yes.map(p => p.id), type: 'player',
       fixed: yes.concat(pick(no, 8)).map(p => p.id), _cat: GC4.geracao, d: 3,
       _noFlag: true, _hideCtry: true,
@@ -4890,8 +4894,13 @@ function figurinha(p, size, opts) {
      the club underneath, and "BRASIL 2001" ran out of band whatever the font.
      (A board that must hide the era renders everyone on retro stock, so this
      branch is never the one asked to drop a decade.) */
+  /* Country alone normally — "BRASIL 2001" ran out of band whatever the font.
+     When the country is being hidden the decade takes its place, so a modern
+     card does not sit blank-headed in a row of cards showing one. */
   return `<span class="fig fig-modern fig-${size}">
-    <span class="fig-band">${(opts.hideCtry ? '' : bandCtry(p.ctry)) || '&nbsp;'}</span>
+    <span class="fig-band">${(opts.hideCtry
+      ? (opts.hideEra || !yr ? '' : String(Math.floor(yr / 10) * 10).slice(2))
+      : bandCtry(p.ctry)) || '&nbsp;'}</span>
     <span class="fig-art">
       ${opts.hideCtry ? '' : `<span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
       <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>`}
