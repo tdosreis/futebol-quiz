@@ -1262,6 +1262,107 @@ const CATS = [
     ]
   },
   {
+    /* Where the game came from. Answers here are words, not rows — a country,
+       a year, a competition — so they are `type:'txt'` and carry their own
+       choices. Every one is a fact you could look up in a minute and never
+       think to. */
+    id:'origens', name:'As Origens', emoji:'📜',
+    tag:'De onde veio o futebol', col:'#6B5B3E', diff:'Difícil',
+    qs:[
+      { t:'Em que país foram escritas as primeiras regras modernas do futebol, em 1863?',
+        type:'txt', choices:['Inglaterra','Escócia','França','Itália','Uruguai','Brasil'], a:['Inglaterra'] },
+      { t:'Que organização escreveu essas primeiras regras, em uma taverna de Londres?',
+        type:'txt', choices:['The Football Association','FIFA','UEFA','Premier League','Football League','IFAB'], a:['The Football Association'] },
+      { t:'Em que ano foi disputada a primeira Copa do Mundo?',
+        type:'txt', choices:['1930','1900','1920','1938','1950','1958'], a:['1930'] },
+      { t:'Qual país sediou e venceu a primeira Copa do Mundo?',
+        type:'txt', choices:['Uruguai','Brasil','Argentina','Itália','Inglaterra','França'], a:['Uruguai'] },
+      { t:'Quem é apontado como o pai do futebol no Brasil, por trazer bolas e regras em 1894?',
+        type:'txt', choices:['Charles Miller','Oscar Cox','Hans Nobiling','Thomas Donohoe','Charles Goodyear','John Miller'], a:['Charles Miller'] },
+      { t:'Em que cidade brasileira foi disputada a primeira partida de futebol organizada do país?',
+        type:'txt', choices:['São Paulo','Rio de Janeiro','Salvador','Recife','Santos','Porto Alegre'], a:['São Paulo'] },
+      { t:'Qual é o clube de futebol mais antigo do mundo ainda em atividade?',
+        type:'txt', choices:['Sheffield FC','Notts County','Manchester United','Real Madrid','Genoa','Aston Villa'], a:['Sheffield FC'] },
+      { t:'Que competição de clubes é a mais antiga do mundo, criada em 1871?',
+        type:'txt', choices:['Copa da Inglaterra (FA Cup)','Campeonato Inglês','Copa da Itália','Copa do Rei','Taça de Portugal','Copa da Alemanha'], a:['Copa da Inglaterra (FA Cup)'] },
+      { t:'Em que ano a FIFA foi fundada, em Paris?',
+        type:'txt', choices:['1904','1863','1890','1912','1928','1946'], a:['1904'] },
+      { t:'Quando os pênaltis foram introduzidos nas regras do futebol?',
+        type:'txt', choices:['1891','1863','1875','1905','1925','1938'], a:['1891'] },
+      { t:'Em que Copa do Mundo foram usados cartões amarelos e vermelhos pela primeira vez?',
+        type:'txt', choices:['1970','1954','1962','1978','1982','1990'], a:['1970'] },
+      { t:'Que país inventou o "WM", a formação que dominou o futebol dos anos 1930?',
+        type:'txt', choices:['Inglaterra','Hungria','Áustria','Itália','Escócia','Uruguai'], a:['Inglaterra'] },
+      { t:'Como ficou conhecida a seleção da Hungria dos anos 1950, invicta por 31 jogos?',
+        type:'txt', choices:['Time de Ouro','Laranja Mecânica','Carrossel','Wunderteam','Grande Torino','Esquadrão de Aço'], a:['Time de Ouro'] },
+      { t:'Que apelido tinha a Holanda de Cruyff, pelo modo como todos trocavam de posição?',
+        type:'txt', choices:['Laranja Mecânica','Time de Ouro','Carrossel Húngaro','Catenaccio','Tiki-taka','Jogo Bonito'], a:['Laranja Mecânica'] },
+      { t:'Qual sistema defensivo italiano marcou o futebol dos anos 1960?',
+        type:'txt', choices:['Catenaccio','Tiki-taka','Gegenpressing','WM','Total Football','Zona Mista'], a:['Catenaccio'] },
+      { t:'Que acidente aéreo, em 1958, destruiu o time jovem do Manchester United?',
+        type:'txt', choices:['Tragédia de Munique','Tragédia de Superga','Tragédia dos Andes','Tragédia de Heysel','Tragédia de Hillsborough','Tragédia de Chapecó'], a:['Tragédia de Munique'] },
+      { t:'Que tragédia aérea de 1949 dizimou o Grande Torino, então campeão italiano?',
+        type:'txt', choices:['Tragédia de Superga','Tragédia de Munique','Tragédia de Heysel','Tragédia dos Andes','Tragédia de Zurique','Tragédia de Turim'], a:['Tragédia de Superga'] },
+      { t:'Como é chamado o estádio do Maracanã em sua inauguração, para a Copa de 1950?',
+        type:'txt', choices:['Estádio Municipal do Rio de Janeiro','Estádio Nacional','Estádio da República','Estádio Getúlio Vargas','Estádio do Brasil','Estádio Mário Filho'], a:['Estádio Municipal do Rio de Janeiro'] },
+      { t:'Em que ano o Brasil disputou sua primeira Copa do Mundo?',
+        type:'txt', choices:['1930','1934','1938','1950','1954','1958'], a:['1930'] },
+      { t:'Qual foi a primeira seleção a conquistar três Copas do Mundo?',
+        type:'txt', choices:['Brasil','Itália','Alemanha','Uruguai','Argentina','Inglaterra'], a:['Brasil'] },
+    ]
+  },
+  {
+    /* Europe: the leagues, the cups and the sides that defined them. */
+    id:'europa', name:'Europa', emoji:'🇪🇺',
+    tag:'Ligas, copas e dinastias', col:'#3F6FB5', diff:'Difícil',
+    qs:[
+      { t:'Como se chama a primeira divisão do futebol inglês desde 1992?',
+        type:'txt', choices:['Premier League','Football League','Championship','First Division','Super League','League One'], a:['Premier League'] },
+      { t:'Como se chama a primeira divisão da Espanha?',
+        type:'txt', choices:['La Liga','Serie A','Bundesliga','Ligue 1','Primeira Liga','Eredivisie'], a:['La Liga'] },
+      { t:'Como se chama a primeira divisão da Alemanha?',
+        type:'txt', choices:['Bundesliga','Serie A','La Liga','Ligue 1','Eredivisie','Süper Lig'], a:['Bundesliga'] },
+      { t:'Como se chama a primeira divisão da Itália?',
+        type:'txt', choices:['Serie A','La Liga','Bundesliga','Primeira Liga','Ligue 1','Eredivisie'], a:['Serie A'] },
+      { t:'Como se chama a primeira divisão da Holanda?',
+        type:'txt', choices:['Eredivisie','Bundesliga','Serie A','Jupiler Pro League','Allsvenskan','Superliga'], a:['Eredivisie'] },
+      { t:'Como se chama a primeira divisão de Portugal?',
+        type:'txt', choices:['Primeira Liga','La Liga','Liga MX','Serie A','Segunda Liga','Liga NOS Sub-23'], a:['Primeira Liga'] },
+      { t:'Que competição europeia de clubes passou a se chamar Champions League em 1992?',
+        type:'txt', choices:['Copa dos Campeões da Europa','Copa da UEFA','Recopa Europeia','Supercopa da Europa','Copa Latina','Taça das Cidades'], a:['Copa dos Campeões da Europa'] },
+      { t:'Qual clube tem mais títulos da Copa dos Campeões / Champions League?',
+        type:'txt', choices:['Real Madrid','Milan','Bayern de Munique','Liverpool','Barcelona','Ajax'], a:['Real Madrid'] },
+      { t:'Qual clube venceu as cinco primeiras edições da Copa dos Campeões, de 1956 a 1960?',
+        type:'txt', choices:['Real Madrid','Benfica','Milan','Inter de Milão','Ajax','Bayern de Munique'], a:['Real Madrid'] },
+      { t:'Qual clube holandês venceu três Copas dos Campeões seguidas nos anos 1970?',
+        type:'txt', choices:['Ajax','PSV','Feyenoord','AZ Alkmaar','Twente','Utrecht'], a:['Ajax'] },
+      { t:'Qual clube inglês venceu a Copa dos Campeões em 1979 e 1980, sob Brian Clough?',
+        type:'txt', choices:['Nottingham Forest','Liverpool','Aston Villa','Manchester United','Leeds','Everton'], a:['Nottingham Forest'] },
+      { t:'Que clube escocês venceu a Copa dos Campeões de 1967 com um time todo nascido a 50 km de Glasgow?',
+        type:'txt', choices:['Celtic','Rangers','Aberdeen','Dundee United','Hearts','Hibernian'], a:['Celtic'] },
+      { t:'Como é chamado o clássico entre Real Madrid e Barcelona?',
+        type:'txt', choices:['El Clásico','Derby della Madonnina','Der Klassiker','O Clássico','Superclásico','Old Firm'], a:['El Clásico'] },
+      { t:'Como é chamado o clássico entre Inter de Milão e Milan?',
+        type:'txt', choices:['Derby della Madonnina','El Clásico','Derby d’Italia','Der Klassiker','Derby della Capitale','Old Firm'], a:['Derby della Madonnina'] },
+      { t:'Como é chamado o clássico entre Celtic e Rangers, em Glasgow?',
+        type:'txt', choices:['Old Firm','El Clásico','Merseyside Derby','North London Derby','Der Klassiker','Superclásico'], a:['Old Firm'] },
+      { t:'Qual clube alemão é de longe o maior campeão da Bundesliga?',
+        type:'txt', choices:['Bayern de Munique','Borussia Dortmund','Hamburgo','Schalke 04','Werder Bremen','Stuttgart'], a:['Bayern de Munique'] },
+      { t:'Qual clube inglês ficou invicto na Premier League de 2003-04?',
+        type:'txt', choices:['Arsenal','Manchester United','Chelsea','Liverpool','Manchester City','Tottenham'], a:['Arsenal'] },
+      { t:'Qual clube italiano perdeu títulos e foi rebaixado no escândalo do Calciopoli, em 2006?',
+        type:'txt', choices:['Juventus','Milan','Inter de Milão','Roma','Napoli','Lazio'], a:['Juventus'] },
+      { t:'Que estilo de jogo, baseado em posse e passes curtos, marcou o Barcelona de Guardiola?',
+        type:'txt', choices:['Tiki-taka','Catenaccio','Gegenpressing','Total Football','WM','Kick and rush'], a:['Tiki-taka'] },
+      { t:'Que país venceu a Eurocopa de 2004, sendo azarão absoluto?',
+        type:'txt', choices:['Grécia','Portugal','Espanha','Holanda','República Tcheca','Dinamarca'], a:['Grécia'] },
+      { t:'Que país entrou na Eurocopa de 1992 como substituto e acabou campeão?',
+        type:'txt', choices:['Dinamarca','Grécia','Suécia','Holanda','Alemanha','Escócia'], a:['Dinamarca'] },
+      { t:'Qual seleção europeia foi a primeira a vencer duas Eurocopas seguidas?',
+        type:'txt', choices:['Espanha','Alemanha','França','Itália','Holanda','Portugal'], a:['Espanha'] },
+    ]
+  },
+  {
     id:'apelidos', name:'Apelidos', emoji:'🏷️',
     tag:'Quem é quem', col:'#8E4E9E', diff:'Variado',
     qs:[],   // built from NICK by the generators
@@ -2847,6 +2948,15 @@ function cueSim(p, cues) {
 }
 
 function getDisp(q) {
+  /* A third kind of answer. Players and clubs are rows of data with an id, a
+     photo and a shape on screen; "onde foram escritas as primeiras regras do
+     futebol?" is answered by a word. Those questions carry their own choices
+     and become plain text tiles — the same board, the same scoring, no row in
+     PL or CL invented to hold a country's name. */
+  if (q.type === 'txt') {
+    return shuf((q.choices || []).map(c => ({ id: c, n: c })));
+  }
+
   const isPlayer = q.type === 'player';
   const pool0 = isPlayer ? PL : CL;
   const sim   = isPlayer ? simPlayer : simClub;
@@ -3006,6 +3116,8 @@ function _qBase(q) {
   if (q.d) return q.d;                       // explicit override
   const cid = (q._cat && q._cat.id) || '';
   if (cid === 'ouro') return 4;              // the older pages, by construction
+  if (cid === 'origens') return 4;           // nobody knows 1863 by accident
+  if (cid === 'europa') return 3;
   if (cid === 'estados')  return 1;
   if (cid === 'estadios') return 2;
   if (cid === 'lendas')   return 2;
@@ -3025,6 +3137,10 @@ function _qBase(q) {
   if (cid === 'apelidos') return q.a.some(id => FAMOUS.has(id)) ? 1 : 2;
   return 2;
 }
+
+/* Text tiles: either the question asked for them (photo reveal, career path)
+   or its answers are words rather than rows, which leaves nothing to draw. */
+const isTextQ = q => !!(q && (q.textTiles || q.type === 'txt'));
 
 /* The question's *shape* — its opening words with the variable parts
    stripped out. Two questions share a shape when they would feel like the
@@ -4477,7 +4593,7 @@ function badge(item, idx) {
   const delay   = `animation-delay:${Math.min(9, idx || 0) * 28}ms;`;
 
   if (hidden.has(item.id) && live) {
-    return `<div class="b-gone" style="${delay}${curQ.textTiles ? 'min-height:44px' : 'aspect-ratio:1/1.22'}"></div>`;
+    return `<div class="b-gone" style="${delay}${isTextQ(curQ) ? 'min-height:44px' : 'aspect-ratio:1/1.22'}"></div>`;
   }
 
   let cls = 'b';
@@ -4500,7 +4616,7 @@ function badge(item, idx) {
      <span class="vote"><i style="width:${votePct}%;animation-delay:${(idx || 0) * 45}ms;"></i></span>`;
   const longCls = item.n.length > 15 ? ' tile-name-long' : '';
 
-  if (curQ.textTiles) {
+  if (isTextQ(curQ)) {
     return `<div class="${cls} b-text" data-id="${item.id}" style="${delay}">
       ${tab}${voteEl}<span class="tile-name${longCls}">${item.n}</span></div>`;
   }
@@ -5112,7 +5228,7 @@ function html() {
 
     ${expertBox}
 
-    <div class="board ${q.textTiles ? 'board-2' : disp.length <= 4 ? 'board-big' : 'board-5'}">
+    <div class="board ${isTextQ(q) ? 'board-2' : disp.length <= 4 ? 'board-big' : 'board-5'}">
       ${disp.map((c, i) => badge(c, i)).join('')}
     </div>
 
@@ -5126,12 +5242,14 @@ function html() {
       ${frozen ? `<div class="small pitch" style="font-weight:700;display:flex;align-items:center;gap:4px;">
         ${ICON.snow('currentColor', 11)} Relógio parado nesta pergunta</div>` : ''}
       <p class="footer-hint">
-        ${q.type === 'player'
+        ${q.type === 'txt'
+          ? (q.a.length > 1 ? `Marque as ${q.a.length} respostas certas` : 'Marque a resposta certa')
+          : q.type === 'player'
           ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
           : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')}</p>
       <div class="foot-row">
         <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn ${isMil ? 'btn-brass' : 'btn-primary'} btn-lg${sel.size ? ' is-armed' : ''}">
-          ${sel.size ? 'Colar figurinha' : 'Confirmar'}</button>
+          ${sel.size && q.type === 'player' ? 'Colar figurinha' : 'Confirmar'}</button>
         ${isMil && rung > 0 ? `
         <button id="bstop" class="btn btn-ghost btn-sm">${ICON.stop('currentColor', 13)} Parar · ${money(LADDER[rung - 1].v)}</button>` : ''}
       </div>

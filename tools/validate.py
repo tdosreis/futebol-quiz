@@ -39,6 +39,10 @@ for name, arr in (("PL", pl_ids), ("CL", cl_ids)):
 qs = re.findall(r"\{ t:'((?:[^'\\]|\\.)*)'[^\n]*?a:\[([^\]]*)\]([^\n]*)", s)
 print(f"questions parsed={len(qs)}")
 for t, alist, rest in qs:
+    # A text question answers with a word, not a row: check its answers are
+    # among its own choices instead of looking for them in PL or CL.
+    if "type:'txt'" in rest:
+        continue
     answers = re.findall(r"'([\w_]+)'", alist)
     is_player = "type:'player'" in rest
     pool = pl_ids if is_player else cl_ids
@@ -59,6 +63,24 @@ for mid, body in re.findall(r"^\s*([\w_]+):\s*\{([^}]*)\}", meta_block, re.M):
     if a < 1925 or b > 2027: warns.append(f"{mid}: suspicious era ({a},{b})")
     if not re.search(r"pos:'(GK|DF|MF|FW)'", body): errs.append(f"{mid}: bad/missing pos")
     if not re.search(r"clubs:\[", body): errs.append(f"{mid}: missing clubs")
+
+# text questions: every answer must be one of that question's own choices,
+# and the choices must be distinct — a duplicate makes two tiles both right.
+for m in re.finditer(r"\{ t:'((?:[^'\\]|\\.)*)'[^\n]*?type:'txt'[^\n]*", s):
+    blk = m.group(0)
+    ch = re.search(r"choices:\[([^\]]*)\]", blk)
+    an = re.search(r"a:\[([^\]]*)\]", blk)
+    if not ch or not an:
+        errs.append(f"txt question missing choices or a :: {m.group(1)[:50]}"); continue
+    choices = re.findall(r"'((?:[^'\\]|\\.)*)'", ch.group(1))
+    answers = re.findall(r"'((?:[^'\\]|\\.)*)'", an.group(1))
+    if len(set(choices)) != len(choices):
+        errs.append(f"txt question has duplicate choices :: {m.group(1)[:50]}")
+    if len(choices) < 4:
+        errs.append(f"txt question has only {len(choices)} choices :: {m.group(1)[:50]}")
+    for a in answers:
+        if a not in choices:
+            errs.append(f"txt answer '{a}' not among its choices :: {m.group(1)[:50]}")
 
 # image references resolve on disk
 root = os.path.dirname(P)

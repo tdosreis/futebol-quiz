@@ -41,7 +41,11 @@ TESTS = r"""
            "quem teve a carreira mais longa?" is deliberately two tiles, which is
            why the board has a wide layout and Cortar refuses to spend itself on
            it. Everything else fills the ten. */
-        const want = q.fixed ? q.fixed.length : 10;
+        /* A `txt` question answers with a word and carries its own choices,
+           so like `fixed` it shows exactly them — six reads better than ten
+           when every tile is a sentence. */
+        const want = q.type === 'txt' ? q.choices.length
+                   : q.fixed ? q.fixed.length : 10;
         if (d.length !== want) sizeOk = false;
         const s = new Set(d.map(x=>x.id));
         if (s.size !== d.length) dupOk = false;
