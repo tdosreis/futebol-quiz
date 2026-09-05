@@ -83,6 +83,11 @@ STATES = {
    cat.qs=[fq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
    sc='quiz'; tMax=30; tLeft=25; disp=getDisp(fq); go();""",
 
+  "s-album-rest": """album=new Set(PL.filter(p=>p.ctry!=='BRA').slice(0,70).map(p=>p.id));
+   LS.set('album',[...album]); sc='album'; go();
+   setTimeout(function(){var h=document.querySelector('.scroll-y');
+     if(h) h.scrollTop=h.scrollHeight;},700);""",
+
  "s-album-fresh": """album=new Set(PL.slice(0,30).map(p=>p.id));
    runNewIds=['pele','garrincha','zico']; runNewIds.forEach(id=>album.add(id));
    LS.set('album',[...album]); sc='album'; go();""",

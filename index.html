@@ -315,7 +315,11 @@
       box-shadow: 0 0 0 1px rgba(0,0,0,.22); line-height: 0; }
 
     /* the album page, the cover, and a tile on the board */
-    .fig-lg  .fig-band { font-size: 7px; padding: 2.5px 16px; }
+    /* 16px of padding each side is a third of the card once the album grid is
+       six columns wide on a 470px phone, and every long country truncated:
+       "BULGÁRI…", "DINAMAR…", "IRL. NOR…". The band still reads as an inset
+       strip at 7px, and now "DINAMARCA 80" fits inside it. */
+    .fig-lg  .fig-band { font-size: 7px; padding: 2.5px 7px; }
     .fig-lg  .fig-art  { aspect-ratio: 1 / 1.06; }
     .fig-lg  .fig-cap  { padding: 5px 3px 6px; min-height: 34px; }
     .fig-lg  .fig-nm   { font-size: 9.4px; }
@@ -720,6 +724,7 @@
        heavy, and the same name repeated small in the other languages the
        album was printed in. */
     .alb-sec { display: flex; align-items: center; gap: 9px; margin: 20px 0 9px; }
+    .alb-globe { color: var(--ink-3); display: block; }
     .alb-sec .crest-box { width: 34px; flex: none; }
     .alb-sec .t { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
       font-size: 21px; letter-spacing: .02em; line-height: 1; }
@@ -4468,10 +4473,28 @@ function html() {
      correctly and he is stuck in here for good; the empty pockets are
      the reason to keep playing. */
   if (sc === 'album') {
+    const byCountry = {};
+    PL.forEach((p, i) => { (byCountry[p.ctry] = byCountry[p.ctry] || []).push({ p, n: i + 1 }); });
+
+    /* The album reaches thirty-nine countries, and half of them are one player.
+       Twenty-three section headers each opening onto a single card made the
+       back of the album read as a list of fragments. The old albums did what
+       this does: the countries with a full row of their own get a page, and
+       everyone else shares the last one. Each sticker still carries its own
+       flag, so nobody loses their nationality — only the header is shared. */
+    const PAGE_MIN = 3;
+    const own  = Object.keys(byCountry).filter(c => byCountry[c].length >= PAGE_MIN);
+    const rest = Object.keys(byCountry).filter(c => byCountry[c].length <  PAGE_MIN);
     const groups = {};
-    PL.forEach((p, i) => { (groups[p.ctry] = groups[p.ctry] || []).push({ p, n: i + 1 }); });
-    const order = Object.keys(groups).sort((a, b) =>
+    own.forEach(c => groups[c] = byCountry[c]);
+    const order = own.sort((a, b) =>
       a === 'BRA' ? -1 : b === 'BRA' ? 1 : groups[b].length - groups[a].length || a.localeCompare(b));
+    if (rest.length) {
+      groups.__resto = rest
+        .sort((a, b) => (CTRY_NAME[a] || a).localeCompare(CTRY_NAME[b] || b))
+        .flatMap(c => byCountry[c]);
+      order.push('__resto');
+    }
 
     /* The album was printed in several languages, and every old one prints
        the country's name in all of them across the header band. */
@@ -4500,12 +4523,17 @@ function html() {
       <div class="scroll-y" style="flex:1;margin-top:2px;">
         ${order.map((ctry, pageNo) => {
           const got = groups[ctry].filter(g => album.has(g.p.id)).length;
+          const isRest = ctry === '__resto';
           return `
           <div class="alb-sec">
-            <span class="crest-box" style="width:34px;">${flagSVG(ctry, 22)}</span>
+            <span class="crest-box" style="width:34px;">${isRest
+              ? `<span class="alb-globe">${ICON.ball('currentColor', 21)}</span>`
+              : flagSVG(ctry, 22)}</span>
             <span style="min-width:0;">
-              <span class="t">${(CTRY_NAME[ctry] || ctry).toUpperCase()}</span>
-              ${LANGS[ctry] ? `<span class="langs">${LANGS[ctry]}</span>` : ''}
+              <span class="t">${isRest ? 'RESTO DO MUNDO' : (CTRY_NAME[ctry] || ctry).toUpperCase()}</span>
+              <span class="langs">${isRest
+                ? 'Rest of the world · Rest der Welt · Reste du monde'
+                : (LANGS[ctry] || '')}</span>
             </span>
             <span class="cnt">${got}/${groups[ctry].length}</span>
           </div>
