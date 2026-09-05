@@ -167,9 +167,16 @@ fails = 0
 _only = os.environ.get("ONLY", "")
 _sizes = [t for t in SIZES if not _only or str(t[0]) in _only.split(",")]
 for w, h, note in _sizes:
+    # The probe lands by postMessage with a 25s deadline, and on a loaded
+    # machine one size at random misses it — the same run reports cleanly on a
+    # second attempt. Retry before calling it a failure, or the suite fails for
+    # a reason that has nothing to do with the layout.
     rows = run(w, h)
     if rows is None:
-        print(f"\n=== {w}x{h} — probe did not report ==="); fails += 1; continue
+        print(f"   ({w}x{h} did not report — retrying once)")
+        rows = run(w, h)
+    if rows is None:
+        print(f"\n=== {w}x{h} — probe did not report twice ==="); fails += 1; continue
     real = rows[0].get("vw")
     if real != w:
         print(f"\n!! {w}x{h}: iframe reported viewport {real}px — harness broken")
