@@ -726,6 +726,45 @@
        edge and one slow breath, so the eye finds them without the page
        turning into a light show. It lasts only while the run is on screen:
        runNewIds is cleared the moment the next game starts. */
+    /* ── Turning a figurinha over ──────────────────────────────
+       A real sticker printed the player's details on the back, and reading
+       them was half the point of peeling it off the sheet. The album held
+       all of this data and never showed it. Only collected cards turn. */
+    .alb-hint { display: flex; align-items: center; gap: 5px; font-size: 10px;
+      color: var(--ink-3); margin: 1px 0 2px; }
+    .alb-turn { cursor: pointer; perspective: 620px; -webkit-perspective: 620px; }
+    .flip { display: block; width: 100%; }
+    .flip-in { display: block; position: relative; width: 100%;
+      transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+      transition: transform .48s cubic-bezier(.3,.85,.35,1); }
+    .alb-turn.turned .flip-in { transform: rotateY(180deg); }
+    /* the pocket's own number sits over the card; the back prints its own */
+    .alb-turn.turned > .alb-n { opacity: 0; transition: opacity .12s; }
+    .flip-face { display: block; width: 100%;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .flip-back { position: absolute; inset: 0; transform: rotateY(180deg); }
+    /* the pocket has no intrinsic height, so the back is sized by the front */
+    .flip-front { position: relative; }
+
+    .figback { display: flex; flex-direction: column; height: 100%; overflow: hidden;
+      border-radius: 4px; padding: 6px 6px 7px; text-align: left;
+      background: var(--retro-card2); color: var(--retro-ink);
+      box-shadow: inset 0 0 0 1px var(--retro-edge), 0 1px 3px var(--shadow); }
+    .figback-h { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+    .figback-n { font-family: var(--font-c); font-weight: 700; font-size: 7px;
+      letter-spacing: .1em; color: var(--retro-band); }
+    .figback-nm { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
+      font-size: 8.4px; line-height: 1.1; margin-top: 3px; overflow-wrap: anywhere; }
+    .figback-nick { font-size: 7px; font-style: italic; opacity: .72; margin-top: 1px; }
+    .figback-rule { display: block; height: 1px; background: var(--retro-edge);
+      opacity: .6; margin: 4px 0 4px; }
+    .figback-l { font-size: 6.8px; line-height: 1.35; opacity: .85; }
+    .figback-l b { font-weight: 700; opacity: 1; }
+    .figback-clubs { margin-top: 2px; opacity: .68;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .figback-h2 { font-size: 6.8px; font-weight: 700; color: var(--retro-band);
+      line-height: 1.3; margin-top: auto; padding-top: 3px; }
+
     .alb-fresh > .fig { box-shadow: 0 0 0 2px var(--brass), 0 2px 8px var(--shadow); }
     .alb-fresh { animation: freshGlow 2.4s ease-in-out 3; }
     @keyframes freshGlow { 0%,100% { filter: none; } 50% { filter: brightness(1.06); } }
@@ -3898,7 +3937,7 @@ function playerFacts(p) {
      when it is not sitting in the name already. */
   const nick = p.nick && !p.n.toLowerCase().includes(p.nick.toLowerCase()) ? p.nick : null;
   return { line: out.join(' · '), honours,
-           clubs: (p.clubs || []).slice(0, 5).map(clubName).join(' · '), nick };
+           clubs: (p.clubs || []).slice(0, 4).map(clubName).join(' · '), nick };
 }
 
 function clubFacts(c) {
@@ -3906,6 +3945,30 @@ function clubFacts(c) {
   if (c.lib) t.push(c.lib === 1 ? '1 Libertadores' : `${c.lib} Libertadores`);
   if (c.br)  t.push(c.br === 1 ? '1 Brasileirão' : `${c.br} Brasileirões`);
   return { line: `Fundado em ${c.f} · ${c.s}`, honours: t, clubs: '', nick: c.a };
+}
+
+/* The reverse of an album card, shaped like the front so it can sit in the
+   same pocket and turn over into it. A real figurinha printed the player's
+   details on the back and that is the whole reason you peeled it off the
+   sheet and read it — the album had this data all along and never showed it.
+   Only collected stickers turn: an empty pocket has no back. */
+function figurinhaBack(p, num) {
+  const f = playerFacts(p);
+  const yrs = p.era ? `${p.era[0]}–${p.era[1]}` : '';
+  return `
+    <span class="figback">
+      <span class="figback-h">
+        <span class="figback-n">Nº ${String(num).padStart(3, '0')}</span>
+        ${p.ctry ? flagSVG(p.ctry, 8) : ''}
+      </span>
+      <span class="figback-nm">${p.n}</span>
+      ${f.nick ? `<span class="figback-nick">“${f.nick}”</span>` : ''}
+      <span class="figback-rule"></span>
+      <span class="figback-l"><b>${POS_NAME[p.pos]}</b> · ${CTRY_NAME[p.ctry] || p.ctry}</span>
+      ${yrs ? `<span class="figback-l">${yrs}</span>` : ''}
+      ${f.clubs ? `<span class="figback-l figback-clubs">${f.clubs}</span>` : ''}
+      ${f.honours.length ? `<span class="figback-h2">${f.honours.join(' · ')}</span>` : ''}
+    </span>`;
 }
 
 /* The card, turned over. `isNew` puts the brass edge on a figurinha the
@@ -4696,6 +4759,8 @@ function html() {
         <div class="small muted">${albumPct()}% colado</div>
       </div>
       <div class="alb-bar"><i style="width:${albumPct()}%"></i></div>
+      ${album.size ? `<div class="alb-hint">${ICON.book('currentColor', 10)}
+        Toque em uma figurinha para ver o verso</div>` : ''}
       ${album.size === 0 ? `<div style="display:flex;align-items:center;gap:12px;
         background:var(--pocket);border:1px solid var(--rule-2);border-radius:11px;padding:11px 13px;margin-top:6px;">
         <span style="width:44px;flex:none;">${ART.ball(44)}</span>
@@ -4719,13 +4784,22 @@ function html() {
             <span class="cnt">${got}/${groups[ctry].length}</span>
           </div>
           <div class="alb-grid">
-            ${groups[ctry].map(({ p, n }) => `<div class="alb-slot${album.has(p.id) ? '' : ' empty'}${
-                runNewIds.includes(p.id) ? ' alb-fresh' : ''}">
+            ${groups[ctry].map(({ p, n }) => {
+              const got = album.has(p.id);
+              return `<div class="alb-slot${got ? ' alb-turn' : ' empty'}${
+                runNewIds.includes(p.id) ? ' alb-fresh' : ''}"${
+                got ? ` data-fig="${p.id}" role="button" tabindex="0"
+                       aria-label="${p.n} — toque para virar a figurinha"` : ''}>
                 <span class="alb-n">${String(n).padStart(3, '0')}</span>
-                ${album.has(p.id)
-                  ? figurinha(p, 'lg', { sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos] })
+                ${got
+                  ? `<span class="flip"><span class="flip-in">
+                       <span class="flip-face flip-front">${figurinha(p, 'lg', {
+                         sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos] })}</span>
+                       <span class="flip-face flip-back">${figurinhaBack(p, n)}</span>
+                     </span></span>`
                   : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
-              </div>`).join('')}
+              </div>`;
+            }).join('')}
           </div>`;
         }).join('')}
         <div class="alb-foot"><span>Futebol Quiz BR</span><span>${album.size} de ${total}</span></div>
@@ -5121,6 +5195,26 @@ function go() {
   on('bcred',       () => { snd.swipe();  sc = 'credits'; go(); });
   on('bmed',        () => { snd.swipe();  sc = 'medals';  go(); });
   on('balb',        () => { snd.swipe();  sc = 'album';   go(); });
+
+  /* ── Turning a figurinha over in the album ──
+     Bound once on the page, not per card — there can be two hundred of them —
+     and it toggles a class on the element rather than re-rendering, because a
+     re-render would put every card face-up again mid-turn. */
+  if (sc === 'album') {
+    const turn = el => {
+      const slot = el.closest && el.closest('.alb-turn');
+      if (!slot) return;
+      slot.classList.toggle('turned');
+      snd.swipe();
+    };
+    const grid = document.querySelector('.scroll-y');
+    if (grid) {
+      grid.addEventListener('click', e => turn(e.target));
+      grid.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); turn(e.target); }
+      });
+    }
+  }
   on('medal-strip', () => { snd.swipe();  sc = 'medals';  go(); });
   on('bmute',       () => { setMuted(!muted); snd.tap(); go(); });
 
