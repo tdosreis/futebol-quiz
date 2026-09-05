@@ -3959,7 +3959,7 @@ function startDaily() {
   cat.qs = cat.qs.slice(0, 10);
   cat.name = 'Desafio Diário';
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -4287,7 +4287,7 @@ function startSurvival() {
   const extra = buildGame('dificil');
   cat.qs = cat.qs.concat(extra.qs);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -4398,7 +4398,7 @@ function startMilhao() {
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -5405,12 +5405,17 @@ function burst(n) {
 let _qKey = null;
 let introOn = true;
 let justCut = false;
+let gameN   = 0;   // bumped when a run starts, so two runs' question 0 differ
 
 function go() {
-  const key = sc === 'quiz' || sc === 'ask' || sc === 'lock'
-    ? `${(cat && cat.id) || ''}:${qi}:${sc === 'quiz' ? 'q' : 'a'}` : `${sc}:${qi}`;
-  introOn = key !== _qKey;
-  _qKey = key;
+  /* Only the board itself gets an entrance, and only when the question under
+     it changed. Locking in an answer (ask/lock) and the reveal are the same
+     question still on screen — re-dealing the tiles there would undo the very
+     thing the lock screen is doing. gameN separates two runs that both open on
+     question zero. */
+  const qk = `${gameN}:${qi}`;
+  introOn = sc === 'quiz' && qk !== _qKey;
+  if (sc === 'quiz') _qKey = qk;
 
   prevPts = pts; // snapshot before render (score-up only fires once)
   document.getElementById('ct').innerHTML = html();
@@ -5508,7 +5513,7 @@ function startGame() {
   isDaily = false; isSurv = false; isMil = false; _seed = null;
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
