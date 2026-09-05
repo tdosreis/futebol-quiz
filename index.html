@@ -558,6 +558,23 @@
     .rung-top  { color: var(--brass); }
     .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-4); font-weight: 700; }
 
+    /* ── The stickers a run earned, shown at the end ── */
+    .newfigs { width: 100%; max-width: 330px; display: flex; flex-direction: column;
+      align-items: center; gap: 7px; margin-top: 4px; padding: 11px 10px 13px;
+      background: var(--pocket); border: 1px solid var(--rule);
+      border-radius: 12px; }
+    .newfigs-row { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+    .newfig { width: 54px; flex: none; display: block;
+      animation: figpop .34s cubic-bezier(.2,1.5,.4,1) backwards; }
+    /* The small sticker's band is padded for a 90px answer tile. At 54px that
+       padding is most of the card, and every country truncates to "BRASI…". */
+    .newfig .fig-band { padding-left: 3px; padding-right: 3px; letter-spacing: .02em; }
+    .newfig .fig-nm   { font-size: 6.6px; }
+    .newfig-more { align-self: center; font-size: 11px; font-weight: 800;
+      color: var(--ink-3); padding: 0 2px; }
+    @keyframes figpop { from { opacity: 0; transform: scale(.72) translateY(6px) rotate(-4deg); } }
+    @media (prefers-reduced-motion: reduce) { .newfig { animation: none; } }
+
     /* ── Home ── */
     .hero-sticker { width: 138px; margin: 0 auto; }
     .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
@@ -3418,6 +3435,7 @@ let bestStreak = 0;
 let lastGain   = 0;
 let runLog     = [];  // per-question 3/1/0, for the share card
 let runNew     = 0;   // figurinhas collected this run
+let runNewIds  = [];  // and which ones, so the end screen can show them
 
 /* points for one answer, with speed + combo + difficulty multipliers */
 function scoreAnswer(base) {
@@ -3496,7 +3514,7 @@ function startDaily() {
   cat.qs = cat.qs.slice(0, 10);
   cat.name = 'Desafio Diário';
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -3783,7 +3801,7 @@ function startSurvival() {
   const extra = buildGame('dificil');
   cat.qs = cat.qs.concat(extra.qs);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -3891,7 +3909,7 @@ function startMilhao() {
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -4215,6 +4233,27 @@ const topbar = (label, id) => `
 
 const runlogEl = () => `<div class="runlog" aria-hidden="true">${
   runLog.map(p => `<i class="${p === 3 ? 'rl-3' : p === 1 ? 'rl-1' : p === 0 ? 'rl-0' : ''}"></i>`).join('')}</div>`;
+
+/* What the run actually earned you, as the objects themselves. A chip saying
+   "3 figurinhas novas" is a receipt; the stickers are the reward, and the end
+   of a run is the one moment the player wants to look at them. Capped at six
+   so a long Milhão run does not turn the screen into a second album page. */
+const newStickerStrip = () => {
+  if (!runNewIds.length) return '';
+  const got  = runNewIds.map(id => PL.find(p => p.id === id)).filter(Boolean);
+  if (!got.length) return '';
+  const show = got.slice(0, 6), rest = got.length - show.length;
+  return `
+    <div class="newfigs">
+      <div class="eyebrow" style="color:var(--brass);">${
+        got.length === 1 ? 'Nova figurinha' : `${got.length} figurinhas novas`}</div>
+      <div class="newfigs-row">
+        ${show.map((p, i) => `<span class="newfig" style="animation-delay:${i * 70}ms;">${
+          figurinha(p, 'sm', { decorative: true, sub: '' })}</span>`).join('')}
+        ${rest > 0 ? `<span class="newfig-more">+${rest}</span>` : ''}
+      </div>
+    </div>`;
+};
 
 const medalChips = () => (window._newMedals || []).length ? `
   <div style="display:flex;flex-direction:column;gap:5px;align-items:center;margin-top:4px;">
@@ -4579,8 +4618,7 @@ function html() {
         <div><div class="v num brass">${money(Math.max(milBest(), banked))}</div><div class="k">Recorde</div></div>
       </div>
 
-      ${runNew ? `<span class="chip chip-brass">${ICON.book('currentColor', 11)} ${
-        runNew === 1 ? '1 figurinha nova' : runNew + ' figurinhas novas'}</span>` : ''}
+      ${newStickerStrip()}
       ${medalChips()}
 
       <div class="foot-row" style="margin-top:12px;">
@@ -4612,8 +4650,7 @@ function html() {
       <div class="bar"><i style="width:${pct}%;"></i></div>
       ${isRecord ? `<span class="chip chip-brass">${ICON.star('currentColor', 11)} Novo recorde</span>` : ''}
       ${medalChips()}
-      ${runNew ? `<span class="chip chip-brass">${ICON.book('currentColor', 11)} ${
-        runNew === 1 ? '1 figurinha nova' : runNew + ' figurinhas novas'}</span>` : ''}
+      ${newStickerStrip()}
       <div style="margin-top:6px;">${runlogEl()}</div>
       <div class="foot-row" style="margin-top:12px;">
         <button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>
@@ -4904,7 +4941,7 @@ function startGame() {
   isDaily = false; isSurv = false; isMil = false; _seed = null;
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNew = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = [];
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -4975,6 +5012,7 @@ function doReveal() {
   /* Getting it right sticks the figurinha in the album for good. */
   const gotNew = (p === 3 && q.type === 'player') ? collect(q.a) : [];
   runNew += gotNew.length;
+  runNewIds.push(...gotNew);
 
   const { gained, mult, speed } = scoreAnswer(p);
   pts += gained;

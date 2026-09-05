@@ -130,6 +130,13 @@ STATES = {
    const fq = GEN_QS(2).find(q => q.face);
    cat.qs=[fq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
    sc='quiz'; tMax=25; tLeft=20; disp=getDisp(fq); go();""",
+ "s-end-figs": """diffKey='dificil'; cat=buildGame('dificil');
+   album=new Set(PL.slice(0,40).map(p=>p.id)); LS.set('album',[...album]);
+   cat.qs=cat.qs.slice(0,10);
+   pts=64; nCorrect=8; nPartial=1; bestStreak=5; runLog=[3,3,3,0,3,3,1,3,3,3];
+   runNewIds=['leonidas','ghiggia','zito','cubillas','banks'];
+   runNew=runNewIds.length; scores['dificil']=64; sc='end'; go();""",
+
  "s-end": """diffKey='dificil';
    cat = buildGame('dificil'); cat.qs = cat.qs.slice(0,10);
    pts=64; nCorrect=8; nPartial=1; bestStreak=5; streak=5;
