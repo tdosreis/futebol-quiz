@@ -387,8 +387,9 @@
       box-shadow: inset 0 0 0 1px var(--rule-2), 0 1px 3px var(--shadow);
       display: flex; flex-direction: column; align-items: stretch; gap: 3px;
       transition: transform .12s, box-shadow .15s, opacity .3s, filter .3s;
-      animation: tileIn .28s cubic-bezier(.2,.8,.3,1) backwards;
     }
+    /* dealt in on a new question only — see introOn */
+    .intro .b { animation: tileIn .28s cubic-bezier(.2,.8,.3,1) backwards; }
     .b:active { transform: scale(.95); }
     .b .print { border-radius: 5px; aspect-ratio: 1 / .92; flex-shrink: 0; }
     .b-crest { }
@@ -439,8 +440,8 @@
        something being removed; it fades open instead. */
     @keyframes cutAway { from { opacity: 0; transform: scale(1.04); } }
     .b-gone { background: transparent; box-shadow: none; opacity: .45; cursor: default;
-      border: 1.5px dashed var(--rule); border-radius: 9px;
-      animation: cutAway .3s ease-out; }
+      border: 1.5px dashed var(--rule); border-radius: 9px; }
+    .cut-now .b-gone { animation: cutAway .3s ease-out; }
     .b-gone .print { visibility: hidden; }
     /* a tile that *is* a card needs no pocket of its own behind it */
     .b-fig { padding: 0; background: transparent; box-shadow: none; overflow: visible; }
@@ -493,7 +494,17 @@
       box-shadow: inset 0 0 0 1px var(--rule-2), 0 2px 6px var(--shadow);
       display: flex; align-items: center; gap: 12px; min-height: 60px;
     }
-    .qcard::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--pitch); }
+    /* The board's tiles deal themselves in one by one; the question above them
+       simply swapped its text, so on a fast answer it was easy to start
+       reading the new question believing it was still the old one. It arrives
+       just ahead of the first tile. */
+    .intro .qcard { animation: qIn .32s cubic-bezier(.2,.9,.3,1); }
+    @keyframes qIn { from { opacity: 0; transform: translateY(-5px); } }
+    /* the accent rule draws itself down the side as the card lands */
+    .qcard::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px;
+      border-radius: 0 3px 3px 0; background: var(--pitch); transform-origin: top; }
+    .intro .qcard::before { animation: qRule .44s cubic-bezier(.2,.9,.3,1) .06s backwards; }
+    @keyframes qRule { from { transform: scaleY(0); } }
     .qcard-brass::before { background: var(--brass); }
     .qcard p { font-family: var(--font-d); font-optical-sizing: auto; font-weight: 500; font-size: 15.5px; line-height: 1.32;
       letter-spacing: -.005em; flex: 1; min-width: 0; white-space: pre-line; text-wrap: balance; }
@@ -4011,6 +4022,7 @@ function useHalf() {
   drop.forEach(id => { hidden.add(id); sel.delete(id); });
   lifes.half = 0;
   snd.cut();
+  justCut = true;   // one render only: the pockets open, then stay open
   go();
 }
 
@@ -5248,7 +5260,7 @@ function html() {
     </div>`;
 
   return `
-  <div class="pg qz-screen" style="padding:13px;gap:9px;position:relative;">
+  <div class="pg qz-screen${introOn ? ' intro' : ''}${justCut ? ' cut-now' : ''}" style="padding:13px;gap:9px;position:relative;">
 
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
       <div style="display:flex;align-items:center;gap:7px;min-width:0;">
@@ -5386,10 +5398,25 @@ function burst(n) {
 /* ═══════════════════════════════════════════════════
    RENDER + EVENT BINDING
 ═══════════════════════════════════════════════════ */
+/* Every tap on a tile re-renders the whole screen, which replayed the board's
+   deal-in and the question card's entrance from the top — the board reshuffled
+   itself visually each time you changed your mind. The entrances belong to a
+   new question, not to a repaint, so they run only when the question changed. */
+let _qKey = null;
+let introOn = true;
+let justCut = false;
+
 function go() {
+  const key = sc === 'quiz' || sc === 'ask' || sc === 'lock'
+    ? `${(cat && cat.id) || ''}:${qi}:${sc === 'quiz' ? 'q' : 'a'}` : `${sc}:${qi}`;
+  introOn = key !== _qKey;
+  _qKey = key;
+
   prevPts = pts; // snapshot before render (score-up only fires once)
   document.getElementById('ct').innerHTML = html();
   prevPts = pts; // prevent re-fire on subsequent re-renders without score change
+
+  justCut = false;   // consumed by the render above
 
   const on = (id, fn) => document.getElementById(id)?.addEventListener('click', fn);
 
