@@ -68,6 +68,43 @@ TESTS = r"""
       ok(`[${k}] correct answers always present`, allOk);
     });
 
+    /* ---- the tile must not answer the question ----
+       A figurinha prints where a man is from and when he played. On a question
+       about either, that is a free answer — and it leaked three ways at once:
+       the band's text, the national colours behind a modern card, and the
+       retro/modern split itself, since the two printings divide at the year
+       2000. Rendered through the real path, because badge() reads the current
+       question out of game state. */
+    (function () {
+      const leaks = new Set();
+      let boards = 0;
+      const check = q => {
+        cat = { id: 'probe', name: 'probe', qs: [q] }; qi = 0; sel = new Set(); sc = 'quiz';
+        disp = getDisp(q);
+        if (!disp.length) return;
+        boards++;
+        const h = disp.map((it, i) => badge(it, i)).join('');
+        const cues = q.type === 'player' ? qCues(q) : { ctry: null, year: null };
+        if (cues.ctry) {
+          const name = (CTRY_NAME[cues.ctry] || '').toUpperCase();
+          if (name && h.includes(name))   leaks.add('country in the band: ' + q.t.slice(0, 50));
+          if (h.includes('fig-flag'))     leaks.add('flag on the tile: ' + q.t.slice(0, 50));
+          if (h.includes('class="blob"')) leaks.add('national colours: ' + q.t.slice(0, 50));
+        }
+        if (cues.year || q._hideEra) {
+          if (/fig-band">\s*\d\d\s*</.test(h)) leaks.add('decade in the band: ' + q.t.slice(0, 50));
+          if (h.includes('fig-modern') && h.includes('fig-retro'))
+            leaks.add('both printings on one board: ' + q.t.slice(0, 50));
+        }
+      };
+      ['facil', 'moderado', 'dificil'].forEach(k => {
+        for (let r = 0; r < 6; r++) buildGame(k).qs.slice().forEach(check);
+      });
+      for (let r = 0; r < 6; r++) buildMilhao().qs.slice().forEach(q => q && check(q));
+      ok('no tile gives away its own question', leaks.size === 0,
+         `${boards} boards` + (leaks.size ? ' :: ' + [...leaks].slice(0, 3).join(' | ') : ''));
+    })();
+
     // ---- what actually makes a level harder ----
     /* A board is harder when the wrong answers are harder to tell from the
        right one, and that now has three separate parts: they play the same

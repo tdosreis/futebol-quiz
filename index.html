@@ -4967,7 +4967,7 @@ function figurinha(p, size, opts) {
       ${opts.hideCtry ? '' : `<span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
       <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>`}
       ${shot}
-      ${opts.noFlag ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
+      ${(opts.noFlag || opts.hideCtry) ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
     </span>
     <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
     ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
