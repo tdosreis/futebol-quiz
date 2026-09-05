@@ -13,7 +13,9 @@ STATES = {
  # They have to carry the story in order: what the app is, that the clubs
  # and the players are really in it, that there is an album to fill, that a
  # wrong answer teaches you something, and that the million is the point.
- #   THEME=light python3 tools/shots.py shot-01-home shot-02-crests \
+ # The listing wants all six the same size, and the set already uploaded is
+ # 1000x1800 — so H=900 (the default 940 gives 1880 and won't match).
+ #   THEME=light H=900 python3 tools/shots.py shot-01-home shot-02-crests \
  #     shot-03-question shot-04-album shot-05-ficha shot-06-milhao
 
  "shot-01-home": """album=new Set(PL.slice(0,58).map(p=>p.id)); LS.set('album',[...album]);
