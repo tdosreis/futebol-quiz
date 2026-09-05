@@ -3779,7 +3779,13 @@ function figurinha(p, size, opts) {
 
 /* The sticker on the cover. It changes every time the album is opened — a
    fixed face made the cover look broken — and once you have collected
-   anything it shows one of yours, so the cover is your album, not ours. */
+   anything it shows one of yours, so the cover is your album, not ours.
+
+   Its caption is always position · country. It used to prefer the nickname
+   where there was one, which read as an inconsistency rather than a flourish:
+   the line said "Atacante · Inglaterra" under Bobby Charlton and "Fenômeno"
+   under Ronaldo Fenômeno, so the same slot meant a different thing depending
+   on the face. The nickname still has its own place on the back of the card. */
 function heroSticker() {
   const great = PL.filter(p => FAMOUS.has(p.id) || (p.wc && p.wc.length) || p.bo > 0);
   const mine  = great.filter(p => album.has(p.id));
@@ -3818,7 +3824,7 @@ function html() {
 
       <div class="hero-sticker" style="position:relative;">
         <span class="alb-n" style="font-size:9px;padding:2px 6px;">Nº ${String(num).padStart(3, '0')}</span>
-        ${figurinha(hero, 'hero', { sub: hero.nick || `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}` })}
+        ${figurinha(hero, 'hero', { sub: `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}` })}
       </div>
 
       <p class="small muted" style="max-width:280px;font-size:12.5px;">
