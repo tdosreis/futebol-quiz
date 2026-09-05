@@ -3771,6 +3771,10 @@ function stickerBack(item, isPlayer, isNew) {
 /* ═══════════════════════════════════════════════════
    MEDALS — long-run progression
 ═══════════════════════════════════════════════════ */
+/* The album's milestones, as a share of however many players it holds. */
+const ALB_HALF = Math.round(PL.length * 0.50);
+const ALB_3Q   = Math.round(PL.length * 0.75);
+
 const MEDALS = [
   { id:'first',  ic:'ball', n:'Estreia',        d:'Jogue sua primeira partida',
     t: st => st.games >= 1 },
@@ -3788,11 +3792,23 @@ const MEDALS = [
     t: st => (st.correct || 0) >= 100 },
   { id:'c500',   ic:'book', n:'Enciclopédia',   d:'500 acertos no total',
     t: st => (st.correct || 0) >= 500 },
-  /* ── the album ── */
+  /* ── the album ──
+     Written as fractions of the album, not fixed counts. "Meio álbum" was 60
+     stickers, which was half of a 125-player album and 28% of a 215-player
+     one; the name stayed true only until the album grew. The description
+     prints the real number so the target is never a mystery. */
   { id:'alb25',  ic:'shirt', n:'Começou a colar', d:'Colecione 25 figurinhas',
     t: () => album.size >= 25 },
-  { id:'alb60',  ic:'book',  n:'Meio álbum',      d:'Colecione 60 figurinhas',
+  /* Keeps its old threshold on purpose. These are computed live from the
+     album's size, never stored, so moving 60 up to the new half would have
+     taken the medal back off everyone sitting between the two. It only loses
+     the name "Meio álbum", which stopped being true when the album grew. */
+  { id:'alb60',  ic:'ball',  n:'Sessenta coladas', d:'Colecione 60 figurinhas',
     t: () => album.size >= 60 },
+  { id:'albHalf',ic:'book',  n:'Meio álbum',      d:`Colecione ${ALB_HALF} figurinhas`,
+    t: () => album.size >= ALB_HALF },
+  { id:'alb3q',  ic:'medal', n:'Reta final',      d:`Colecione ${ALB_3Q} figurinhas`,
+    t: () => album.size >= ALB_3Q },
   { id:'albAll', ic:'crown', n:'Álbum completo',  d:'Colecione todas as figurinhas',
     t: () => album.size >= PL.length },
   { id:'daily3', ic:'calendar', n:'Rotina',         d:'3 desafios diários seguidos',
