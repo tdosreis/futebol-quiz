@@ -197,7 +197,7 @@ Steps when you're ready:
 
 ## Regenerating the screenshots
 
-    H=800 THEME=light python3 tools/shots.py \
+    H=900 THEME=light python3 tools/shots.py \
       shot-01-home shot-02-crests shot-03-question \
       shot-04-album shot-05-ficha shot-06-milhao
 
@@ -206,6 +206,10 @@ what the game actually looks like. `H` is the viewport height in CSS pixels
 (the shot is twice that, for retina) and `THEME` forces light or dark rather
 than following whatever the machine is set to — the listing uses light, because
 the paper album is the thing worth showing.
+
+Pass `H` every time. The set on the listing is 1000x1800, so it is `H=900`;
+shots.py's own default is 940, which silently produces a 1880-tall set that no
+longer matches the shots beside it.
 
 The order tells a story and should stay in it: what the app is, that the clubs
 are really in it, that the players are too, that there is an album to fill,
@@ -222,5 +226,7 @@ that a wrong answer teaches you something, and that the million is the point.
 
 The banner is a rendered page (`tools/feature_graphic.html`), not a hand-drawn
 file, for the same reason the screenshots are: the last one sat on the listing
-showing a design the app had stopped using. It carries the painted cover and one
-figurinha of each printing, so it changes when the album does.
+showing a design the app had stopped using. It carries three figurinhas — two of
+the old printing and one of the new — so it changes when the album does. It used
+to lead with the painted cover; that cover is gone from the app, so it is gone
+from here too.

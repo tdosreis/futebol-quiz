@@ -8,7 +8,9 @@
          --screenshot=store-assets/feature-graphic.png \
          "file://$PWD/tools/feature_graphic.html"
      so it can be regenerated whenever the album changes, instead of
-     drifting away from the app the way the last one did. -->
+     drifting away from the app the way the last one did. The banner leads
+     with the figurinhas because the app's home screen does; it used to open
+     on a painted cover, and that cover is gone from both. -->
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,21 +44,21 @@
   .chip-b{border-color:var(--brass);color:var(--brass)}
 
   .right{flex:1;display:flex;align-items:center;justify-content:center;gap:16px;position:relative}
-  .cover{width:262px;border-radius:8px;overflow:hidden;
-    box-shadow:inset 0 0 0 1px var(--retro-edge),0 6px 18px rgba(32,36,30,.2);transform:rotate(-3deg)}
-  .fan{display:flex;gap:10px}
-  .fig{width:112px;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;
-    box-shadow:0 5px 14px rgba(32,36,30,.22)}
-  .fig:nth-child(1){transform:rotate(2.5deg) translateY(6px)}
-  .fig:nth-child(2){transform:rotate(-1.5deg) translateY(-8px)}
+  .fan{display:flex;gap:13px}
+  .fig{width:150px;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 6px 16px rgba(32,36,30,.22)}
+  /* a hand of three, spread the way they fall out of a packet */
+  .fig:nth-child(1){transform:rotate(-3.5deg) translateY(4px)}
+  .fig:nth-child(2){transform:rotate(1deg) translateY(-11px)}
+  .fig:nth-child(3){transform:rotate(4.5deg) translateY(7px)}
   .band{font-family:'Archivo Narrow',sans-serif;font-weight:700;text-transform:uppercase;
-    font-size:8px;letter-spacing:.14em;text-align:center;padding:3px 4px}
+    font-size:10px;letter-spacing:.14em;text-align:center;padding:4px 5px}
   .art{position:relative;overflow:hidden;aspect-ratio:1/1.06}
   .art img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-  .cap{padding:6px 4px 7px;text-align:center}
+  .cap{padding:8px 5px 9px;text-align:center}
   .nm{display:block;font-family:'Archivo Narrow',sans-serif;font-weight:700;
-    text-transform:uppercase;font-size:11px;line-height:1.15}
-  .sub{display:block;font-size:8px;font-weight:600;opacity:.7;margin-top:2px}
+    text-transform:uppercase;font-size:14px;line-height:1.15}
+  .sub{display:block;font-size:10px;font-weight:600;opacity:.7;margin-top:3px}
   .retro{background:var(--retro-card);color:var(--retro-ink);box-shadow:inset 0 0 0 1px var(--retro-edge),0 5px 14px rgba(32,36,30,.22)}
   .retro .band{background:var(--retro-band);color:#F6EBD8}
   .retro .art{background:var(--retro-card2)}
@@ -83,12 +85,16 @@
     </div>
   </div>
   <div class="right">
-    <div class="cover" id="cover"></div>
     <div class="fan">
       <div class="fig retro">
         <span class="band">Brasil 50</span>
         <span class="art"><img src="../img/d609af6f47604b15.jpg" alt=""></span>
         <span class="cap"><span class="nm">Pelé</span><span class="sub">Santos FC</span></span>
+      </div>
+      <div class="fig retro">
+        <span class="band">Brasil 50</span>
+        <span class="art"><img src="../img/fa4679be155093f7.jpg" alt=""></span>
+        <span class="cap"><span class="nm">Garrincha</span><span class="sub">Botafogo</span></span>
       </div>
       <div class="fig modern">
         <span class="band">Brasil 2017</span>
@@ -103,46 +109,3 @@
   </div>
 </div>
 <div class="foot"></div>
-<script>
-/* the same painted cover the app opens with */
-const rays = [...Array(14)].map((_, i) => {
-  const a1 = (i * 25.7) * Math.PI / 180, a2 = a1 + .17;
-  return `<path d="M118 72 L${118 + Math.cos(a1) * 190} ${72 + Math.sin(a1) * 190}
-    L${118 + Math.cos(a2) * 190} ${72 + Math.sin(a2) * 190} Z" fill="#B23A2E" opacity=".16"/>`;
-}).join('');
-const pent = [0, 72, 144, 216, 288].map(a =>
-  `<path d="M0 -11 L0 -20" stroke="#2A1D10" stroke-width="2.6" transform="rotate(${a})"/>`).join('');
-document.getElementById('cover').innerHTML = `
-<svg viewBox="0 0 260 150" width="250" style="display:block">
-  <defs><clipPath id="cc"><rect width="260" height="150" rx="6"/></clipPath></defs>
-  <g clip-path="url(#cc)">
-    <rect width="260" height="150" fill="#EFE4CA"/>
-    ${rays}
-    <circle cx="118" cy="72" r="58" fill="#B23A2E"/>
-    <g fill="none" stroke="#2A1D10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M114 92 L104 118" stroke="#C98A5B" stroke-width="11"/>
-      <path d="M114 92 L104 118" stroke-width="3"/>
-      <path d="M100 118 L92 122" stroke="#2A1D10" stroke-width="9"/>
-      <path d="M118 90 L146 96 L166 84" stroke="#C98A5B" stroke-width="11"/>
-      <path d="M118 90 L146 96 L166 84" stroke-width="3"/>
-      <path d="M166 84 L176 79" stroke="#2A1D10" stroke-width="9"/>
-      <path d="M106 76 h24 v18 q-12 6 -24 0 Z" fill="#1E63C8" stroke-width="3"/>
-      <path d="M104 46 q14 -7 28 0 l4 30 q-18 7 -36 0 Z" fill="#F0C24A" stroke-width="3"/>
-      <path d="M112 47 q6 6 12 0" stroke-width="2.6"/>
-      <path d="M106 52 L86 66" stroke="#C98A5B" stroke-width="10"/>
-      <path d="M106 52 L86 66" stroke-width="3"/>
-      <path d="M132 52 L150 40" stroke="#C98A5B" stroke-width="10"/>
-      <path d="M132 52 L150 40" stroke-width="3"/>
-      <circle cx="120" cy="32" r="12" fill="#C98A5B" stroke-width="3"/>
-      <path d="M109 28 q7 -13 22 -6 q4 2 3 7 q-9 -7 -16 -4 q-6 2 -9 7 Z" fill="#2A1D10" stroke-width="2.4"/>
-    </g>
-    <g transform="translate(196 44)">
-      <circle r="20" fill="#F7F2E4" stroke="#2A1D10" stroke-width="3"/>
-      <path d="M0 -11 L10.5 -3.4 L6.5 9 L-6.5 9 L-10.5 -3.4 Z" fill="#2A1D10"/>
-      ${pent}
-    </g>
-    <path d="M0 130 h260 v20 h-260 Z" fill="#B23A2E"/>
-    <path d="M0 130 h260" stroke="#2A1D10" stroke-width="3"/>
-  </g>
-</svg>`;
-</script>
