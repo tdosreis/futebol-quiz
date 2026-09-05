@@ -38,7 +38,12 @@ CRESTS = {
     "santacruz":    ["File:Santa Cruz Futebol Clube logo.svg"],
     "abc":          ["File:ABC FC - RN.svg"],
     "crb":          ["File:CRB logo.svg"],
-    "sampaio":      ["File:Sampaio Corrêa FC.svg", "File:Sampaio Corrêa FC.png"],
+    # The .svg under this name is the club flag, not the crest; the .png is the
+    # crest itself, so it goes first.
+    "sampaio":      ["File:Sampaio Corrêa FC.png"],
+    # Likewise for these two: the file named plainly after the club is a flag.
+    "vasco":        ["File:Escudo Vasco 1903.png", "File:Escudo Vasco 1920.png"],
+    "nautico":      ["File:Náutico logo (1995-2006).png", "File:Náutico Logo (2006-2008).png"],
     "mirassol":     ["File:Mirassol Futebol Clube logo.svg"],
     "botafogosp":   ["File:Botafogo Futebol Clube (Ribeirão Preto) logo.svg"],
 }

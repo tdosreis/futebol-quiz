@@ -353,12 +353,6 @@
   "file": "Criciúma_EC_2025_crest.svg",
   "license": "Public domain"
  },
- "img/5e19d4beeeda7be1.png": {
-  "author": "LonEMedia",
-  "file": "Clube Náutico Capibaribe.svg",
-  "license": "CC BY-SA 3.0",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Clube_N%C3%A1utico_Capibaribe.svg"
- },
  "img/5e262c90a672f57a.png": {
   "a": "Avaí Futebol Clube",
   "l": "Public domain"
@@ -555,12 +549,6 @@
   "license": "CC BY-SA 2.0",
   "url": "https://commons.wikimedia.org/wiki/File:Pavel_Nedv%C4%9Bd.jpg"
  },
- "img/948a53f754af33d7.png": {
-  "author": "LonEMedia",
-  "file": "CR Vasco da Gama.svg",
-  "license": "CC BY-SA 3.0",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/CR_Vasco_da_Gama.svg"
- },
  "img/94bf9a8f11ebefd0.jpg": {
   "author": "Emilio Ronchini (Mondadori Publishers)",
   "file": "Waldir_Pereira_1958.jpg",
@@ -572,10 +560,6 @@
   "file": "Premios_Goya_2020_-_Carles_Pujol.jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Premios_Goya_2020_-_Carles_Pujol.jpg"
- },
- "img/967c553444528675.png": {
-  "a": "LonEMedia",
-  "l": "CC BY-SA 3.0"
  },
  "img/971d29633a44b706.jpg": {
   "author": "Real Madrid",
@@ -979,5 +963,23 @@
   "file": "Матч_«Реал»_-_«Ливерпуль»_3-1._26_мая_2018_года_—_873570_(Marcelo_Vieira_da_Silva_Júnior).jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%82%D1%87_%C2%AB%D0%A0%D0%B5%D0%B0%D0%BB%C2%BB_-_%C2%AB%D0%9B%D0%B8%D0%B2%D0%B5%D1%80%D0%BF%D1%83%D0%BB%D1%8C%C2%BB_3-1._26_%D0%BC%D0%B0%D1%8F_2018_%D0%B3%D0%BE%D0%B4%D0%B0_%E2%80%94_873570_%28Marcelo_Vieira_da_Silva_J%C3%BAnior%29.jpg"
+ },
+ "img/1fb43d9555285365.png": {
+  "author": "Club de Regatas Vasco da Gama",
+  "file": "Escudo Vasco 1903.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Escudo_Vasco_1903.png"
+ },
+ "img/0bd34a4355657963.png": {
+  "author": "Fefc2002",
+  "file": "Náutico logo (1995-2006).png",
+  "license": "CC0",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/N%C3%A1utico_logo_%281995-2006%29.png"
+ },
+ "img/99e7f75110951861.png": {
+  "author": "Sampaio Corrêa Futebol Clube",
+  "file": "Sampaio Corrêa FC.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Sampaio_Corr%C3%AAa_FC.png"
  }
 }
