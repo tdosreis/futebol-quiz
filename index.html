@@ -1058,6 +1058,75 @@ const CATS = [
     ]
   },
   {
+    /* The album's older pages, asked properly. Every question here is about a
+       named player and a thing he actually did, not a date to be recalled —
+       the point is the story, and the figurinha you get for knowing it. */
+    id:'ouro', name:'Era de Ouro', emoji:'🥇',
+    tag:'O Brasil de 1950 aos anos 90', col:'#B8860B', diff:'Difícil',
+    qs:[
+      /* ── 1950: o Maracanazo ── */
+      { t:'Quem marcou o gol do Uruguai que calou o Maracanã na decisão de 1950?',            a:['ghiggia'],     type:'player' },
+      { t:'Quem foi o capitão do Uruguai no Maracanazo de 1950?',                             a:['obdulio'],     type:'player' },
+      { t:'Qual meia uruguaio empatou a decisão de 1950 antes do gol da virada?',             a:['schiaffino'],  type:'player' },
+      { t:'Qual atacante do Vasco foi o artilheiro da Copa de 1950, com 8 gols?',             a:['ademir'],      type:'player' },
+      { t:'Qual meia do Flamengo foi eleito o melhor jogador da Copa de 1950?',               a:['zizinho'],     type:'player' },
+      /* ── 1958: a primeira ── */
+      { t:'Quem foi o capitão do Brasil no primeiro título mundial, em 1958, na Suécia?',     a:['bellini'],     type:'player' },
+      { t:'Qual goleiro foi campeão do mundo com o Brasil em 1958 e 1962?',                   a:['gilmar'],      type:'player' },
+      { t:'Qual lateral-direito foi campeão em 1958 e 1962 e entrou na seleção de quatro Copas?', a:['djalma_santos'], type:'player' },
+      { t:'Qual volante do Santos foi campeão do mundo em 1958 e 1962?',                      a:['zito'],        type:'player' },
+      { t:'Qual atacante marcou dois gols na final da Copa de 1958, contra a Suécia?',        a:['vava'],        type:'player' },
+      { t:'Qual meia do Botafogo criou a "folha seca" e foi eleito o melhor da Copa de 1958?', a:['didi'],       type:'player' },
+      { t:'Qual lateral-esquerdo bicampeão do mundo é chamado de "Enciclopédia do Futebol"?', a:['nilton_santos'], type:'player' },
+      /* ── 1962: o bi sem Pelé ── */
+      { t:'Com Pelé lesionado, qual atacante entrou na Copa de 1962 e marcou na final?',      a:['amarildo'],    type:'player' },
+      { t:'Qual zagueiro foi o capitão do Brasil no bicampeonato de 1962, no Chile?',         a:['mauro_ramos'], type:'player' },
+      /* ── 1970: o time do México ── */
+      { t:'Qual volante do Santos começou a jogada do quarto gol na final de 1970?',          a:['clodoaldo'],   type:'player' },
+      { t:'Quem era o goleiro do Brasil no tricampeonato de 1970?',                           a:['felix'],       type:'player' },
+      { t:'Qual zagueiro do Cruzeiro foi titular do Brasil na Copa de 1970?',                 a:['piazza'],      type:'player' },
+      { t:'Qual zagueiro campeão do mundo em 1970 foi depois ídolo do Vasco e do Flamengo?',  a:['brito'],       type:'player' },
+      /* ── o Santos de Pelé ── */
+      { t:'Qual atacante formou com Pelé o ataque do Santos bicampeão mundial dos anos 60?',  a:['coutinho'],    type:'player' },
+      { t:'Qual ponta jogou toda a carreira no Santos ao lado de Pelé e Coutinho?',           a:['pepe'],        type:'player' },
+      /* ── os anos 70 e 80 no Brasil ── */
+      { t:'Qual atacante do Atlético Mineiro foi artilheiro do Brasileirão de 1977, com 28 gols?', a:['reinaldo'], type:'player' },
+      { t:'Qual atacante canhoto marcou o gol de falta do Brasil contra a Escócia em 1982?',  a:['eder'],        type:'player' },
+      { t:'Qual volante formou o meio-campo de 1982 ao lado de Falcão, Sócrates e Zico?',     a:['cerezo'],      type:'player' },
+      { t:'Qual atacante do Corinthians foi símbolo da Democracia Corinthiana com Sócrates?', a:['casagrande'],  type:'player' },
+      { t:'Qual atacante do Grêmio decidiu o Mundial de 1983 contra o Hamburgo?',             a:['renato_gaucho'], type:'player' },
+      { t:'Qual lateral-esquerdo do Botafogo entrou na seleção da Copa de 1974?',             a:['marinho_chagas'], type:'player' },
+      /* ── 1994: o tetra ── */
+      { t:'Qual lateral-esquerdo marcou o gol de falta contra a Holanda nas quartas de 1994?', a:['branco'],     type:'player' },
+      { t:'Qual volante do Deportivo La Coruña foi titular do Brasil no tetra de 1994?',      a:['mauro_silva'], type:'player' },
+      { t:'Qual meia foi capitão do São Paulo bicampeão da Libertadores e jogou a Copa de 1994?', a:['raí'],     type:'player' },
+      { t:'Qual lateral-direito do Brasil foi titular na final da Copa de 1994?',             a:['jorginho'],    type:'player' },
+      /* ── os vizinhos ── */
+      { t:'Qual atacante argentino foi artilheiro e campeão do mundo em 1978?',               a:['kempes'],      type:'player' },
+      { t:'Qual zagueiro capitaneou a Argentina no título mundial de 1978?',                  a:['passarella'],  type:'player' },
+      { t:'Qual meia peruano marcou 10 gols em Copas do Mundo nos anos 70?',                  a:['cubillas'],    type:'player' },
+      { t:'Qual zagueiro chileno foi eleito o melhor da América do Sul três vezes nos anos 70?', a:['figueroa'], type:'player' },
+      { t:'Qual goleiro paraguaio ficou famoso por cobrar faltas e pênaltis?',                a:['chilavert'],   type:'player' },
+      { t:'Qual goleiro colombiano fez o "escorpião" em Wembley, em 1995?',                   a:['higuita'],     type:'player' },
+      { t:'Qual meia colombiano de cabeleira loira foi capitão em três Copas do Mundo?',      a:['valderrama'],  type:'player' },
+      { t:'Qual atacante uruguaio brilhou no River Plate e no Olympique de Marselha nos anos 80?', a:['francescoli'], type:'player' },
+      /* ── a Europa antiga ── */
+      { t:'Qual capitão inglês ergueu a Copa de 1966 em Wembley?',                            a:['moore'],       type:'player' },
+      { t:'Qual goleiro inglês fez a "defesa do século" contra Pelé na Copa de 1970?',        a:['banks'],       type:'player' },
+      { t:'Qual atacante norte-irlandês do Manchester United ganhou a Bola de Ouro em 1968?', a:['best'],        type:'player' },
+      { t:'Qual atacante italiano foi artilheiro e campeão do mundo em 1982?',                a:['rossi'],       type:'player' },
+      { t:'Qual goleiro italiano levantou a Copa de 1982 já com 40 anos?',                    a:['zoff'],        type:'player' },
+      { t:'Qual alemão foi capitão campeão do mundo em 1954, no "Milagre de Berna"?',         a:['fritz_walter'], type:'player' },
+      { t:'Qual alemão foi campeão do mundo em 1990 e ganhou a Bola de Ouro no mesmo ano?',   a:['matthaus'],    type:'player' },
+      { t:'Qual camaronês marcou 4 gols na Copa de 1990, já com 38 anos?',                    a:['milla'],       type:'player' },
+      { t:'Qual húngaro fez 11 gols na Copa de 1954, recorde de uma única edição?',           a:['kocsis'],      type:'player' },
+      { t:'Qual ponta do Real Madrid ganhou seis Copas da Europa entre 1956 e 1966?',         a:['gento'],       type:'player' },
+      { t:'Qual holandês ganhou a Bola de Ouro em 1987 e foi capitão da Eurocopa de 1988?',   a:['gullit'],      type:'player' },
+      { t:'Qual zagueiro da Inter foi capitão da Itália campeã da Eurocopa de 1968?',         a:['facchetti'],   type:'player' },
+      { t:'Qual tcheco cobrou o pênalti cavado que leva seu nome, na Eurocopa de 1976?',      a:['panenka'],     type:'player' },
+    ]
+  },
+  {
     id:'apelidos', name:'Apelidos', emoji:'🏷️',
     tag:'Quem é quem', col:'#8E4E9E', diff:'Variado',
     qs:[],   // built from NICK by the generators
@@ -1375,6 +1444,10 @@ const PL = [
   { id:'hazard', n:'Eden Hazard', img:'img/d30bfd48b48f8131.jpg' },
   { id:'son', n:'Son Heung-min', img:'img/e1672ea777d20d55.jpg' },
   { id:'mane', n:'Sadio Mané', img:'img/2b4e45b260f827fc.jpg' },
+  { id:'gilmar', n:'Gilmar', img:'img/91a4fe6ff67ac4e2.jpg' },
+  { id:'felix', n:'Félix', img:'img/15085c4eb23cdf4f.jpg' },
+  { id:'piazza', n:'Piazza', img:'img/c33fd612ea21fbe1.jpg' },
+  { id:'brito', n:'Brito', img:'img/c1eeb576e2f6a7d6.jpg' },
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -1396,6 +1469,19 @@ const CTRY_NAME = { BRA:'Brasil', ARG:'Argentina', POR:'Portugal', FRA:'França'
    Four countries do not fit under their own name, so the band — and only the
    band, never the caption or the flag's label — uses a short form. */
 const CTRY_BAND = { NIR:'Irl. Norte', KOR:'Coreia', WAL:'Gales', CIV:'Marfim' };
+
+/* "a seleção argentina" reads like football; "a seleção de Argentina" does not.
+   Anything without an adjective here falls back to "de <país>". */
+const CTRY_ADJ = {
+  BRA:'brasileira', ARG:'argentina', URU:'uruguaia', CHI:'chilena', COL:'colombiana',
+  PER:'peruana', PAR:'paraguaia', MEX:'mexicana', POR:'portuguesa', ESP:'espanhola',
+  ITA:'italiana', FRA:'francesa', GER:'alemã', NED:'holandesa', ENG:'inglesa',
+  SCO:'escocesa', WAL:'galesa', IRL:'irlandesa', BEL:'belga', SWE:'sueca',
+  NOR:'norueguesa', DEN:'dinamarquesa', POL:'polonesa', HUN:'húngara', CZE:'tcheca',
+  CRO:'croata', BUL:'búlgara', ROU:'romena', RUS:'russa', UKR:'ucraniana',
+  EGY:'egípcia', CMR:'camaronesa', GHA:'ganesa', NGA:'nigeriana', SEN:'senegalesa',
+  CIV:'marfinense', LBR:'liberiana', ALG:'argelina', JPN:'japonesa', KOR:'sul-coreana',
+};
 const bandCtry = c => (CTRY_BAND[c] || CTRY_NAME[c] || c).toUpperCase();
 
 /* ═══════════════════════════════════════════════════
@@ -1881,6 +1967,10 @@ const PL_META = {
   hazard:          { pos:'MF', era:[2007,2023], ctry:'BEL', clubs:['lille', 'chelsea', 'realmadrid'] },
   son:             { pos:'FW', era:[2010,2026], ctry:'KOR', clubs:['hamburger', 'leverkusen', 'tottenham'] },
   mane:            { pos:'FW', era:[2011,2026], ctry:'SEN', clubs:['salzburg', 'liverpool', 'bayern'] },
+  gilmar:          { pos:'GK', era:[1951,1969], ctry:'BRA', clubs:['corinthians', 'santos'] },
+  felix:           { pos:'GK', era:[1959,1976], ctry:'BRA', clubs:['fluminense', 'portuguesa'] },
+  piazza:          { pos:'DF', era:[1964,1979], ctry:'BRA', clubs:['cruzeiro'] },
+  brito:           { pos:'DF', era:[1964,1978], ctry:'BRA', clubs:['vasco', 'flamengo', 'botafogo'] },
 };
 PL.forEach(p => Object.assign(p, PL_META[p.id] || { pos:'FW', era:[1990,2010], ctry:'BRA', clubs:[] }));
 
@@ -1937,12 +2027,30 @@ const WC = {
   cannavaro:[2006], buffon:[2006], nesta:[2006], pirlo:[2006], del_piero:[2006], totti:[2006],
   casillas:[2010], xavi:[2010], iniesta:[2010], puyol:[2010], sergio_ramos:[2010],
   charlton:[1966],
+  /* ── as páginas antigas ── */
+  /* 1958 e 1962: a base que ganhou duas seguidas */
+  gilmar:[1958,1962], djalma_santos:[1958,1962], bellini:[1958], zito:[1958,1962],
+  vava:[1958,1962], mauro_ramos:[1962], amarildo:[1962], pepe:[1958,1962],
+  /* 1970, o time do México */
+  clodoaldo:[1970], brito:[1970], felix:[1970], piazza:[1970], paulo_cesar:[1970],
+  /* 1994, o tetra */
+  branco:[1994], mauro_silva:[1994], jorginho:[1994], zetti:[1994], raí:[1994],
+  /* o mundo */
+  ghiggia:[1950], obdulio:[1950], schiaffino:[1950],
+  moore:[1966], banks:[1966],
+  fritz_walter:[1954],
+  kempes:[1978], passarella:[1978],
+  rossi:[1982], zoff:[1982], scirea:[1982],
+  matthaus:[1990],
 };
 const BO = {
   messi:8, cr7:5, platini:3, cruyff:3, van_basten:3, ronaldo:2, beckenbauer:2, distefano:2,
   ronaldinho:1, kaka:1, rivaldo:1, zidane:1, baggio:1, weah:1, shevchenko:1, nedved:1, figo:1,
   owen:1, cannavaro:1, modric:1, benzema:1, gerd_muller:1, charlton:1, eusebio:1, yashin:1,
   stoichkov:1,
+  /* ── as páginas antigas: a Bola de Ouro antes de 1990 ── */
+  kopa:1, luis_suarez_es:1, sivori:1, masopust:1, law:1, best:1, rivera:1,
+  blokhin:1, rossi:1, gullit:1, matthaus:1,
 };
 const NICK = {
   pele:'O Rei', ronaldo:'Fenômeno', ronaldinho:'Bruxo', romario:'Baixinho', adriano:'Imperador',
@@ -1959,6 +2067,17 @@ const NICK = {
   salah:'Rei Egípcio', aguero:'Kun', casillas:'San Iker', yashin:'Aranha Negra', kahn:'Titã',
   pirlo:'Maestro', nedved:'Fúria Tcheca', van_basten:'Cisne de Utrecht', weah:'King George',
   cruyff:'Profeta do Gol', klose:'Salto Mortal', neymar:'Ney',
+  /* ── as páginas antigas ── */
+  leonidas:'Diamante Negro', domingos_guia:'Divino Mestre', zizinho:'Mestre Ziza',
+  ademir:'Queixada', julinho:'Julinho Botelho', djalma_santos:'Djalminha',
+  vava:'Peito de Aço', amarildo:'Possesso', clodoaldo:'Corintiano da Vila',
+  cerezo:'Cerezo', eder:'Canhão', reinaldo:'Rei', casagrande:'Casão',
+  renato_gaucho:'Rei do Rio', raí:'Doutor Raí', branco:'Canhão da Copa',
+  ghiggia:'El Negro Jefe', obdulio:'El Negro Jefe da Celeste',
+  best:'O Quinto Beatle', kempes:'El Matador', valderrama:'El Pibe',
+  higuita:'El Loco', chilavert:'Goleiro Artilheiro', cubillas:'Nene',
+  milla:'Vovô da Copa', rossi:'Pablito', zoff:'Dino',
+  gullit:'Tulipa Negra', matthaus:'Loddar',
 };
 PL.forEach(p => { p.wc = WC[p.id] || []; p.bo = BO[p.id] || 0; p.nick = NICK[p.id] || null; });
 
@@ -2048,6 +2167,10 @@ const STAD_IMGS = {
    CC licences require attribution; shown on the Créditos screen.
 ═══════════════════════════════════════════════════ */
 const CREDITS = {
+  'img/91a4fe6ff67ac4e2.jpg': { a:'Aftonbladet photo', l:'Public domain' },
+  'img/15085c4eb23cdf4f.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/c33fd612ea21fbe1.jpg': { a:'Panini', l:'Public domain' },
+  'img/c1eeb576e2f6a7d6.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
   /* retratos das páginas antigas */
   'img/54b6ca0aec7b9579.jpg': { a:'Christophe95', l:'CC BY-SA 3.0' },
   'img/162ebbd1b7ce35a2.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
@@ -3121,6 +3244,124 @@ function GEN_QS(tier) {
       a: [BR_CHAMPS[y]],
       pool: CL.filter(c => c.id !== BR_CHAMPS[y]).map(c => c.id),
       crest: LIB_CHAMPS[y], _cat: GC.hist, d: 3,
+    });
+  });
+
+  /* ═════ GEN4 — as gerações: quem jogou com quem, e quando ═════
+     Everything here is derived from era, position and the World Cup table, so
+     it grows on its own as the album does. Each generator refuses to emit
+     unless the answer is unique — an "odd one out" with two odd ones is worse
+     than no question at all. */
+  const GC4 = {
+    geracao: { id:'g_geracao', name:'Gerações',  emoji:'⏳', col:'#8A6D3B' },
+    elenco:  { id:'g_elenco',  name:'O elenco',  emoji:'👥', col:'#2E7D4F' },
+  };
+
+  /* 28. Who lifted it alongside him — the same squad, same year */
+  pick(PL.filter(p => p.wc.length), 6).forEach(p => {
+    const y     = rndOf(p.wc);
+    const mates = PL.filter(x => x.id !== p.id && x.wc.includes(y));
+    if (mates.length < 1) return;
+    /* wrong answers are contemporaries who never won that one, so the question
+       cannot be solved by spotting the one old photo among nine new ones */
+    const no = PL.filter(x => !x.wc.includes(y) && x.era && Math.abs(x.era[0] - y) < 18);
+    if (no.length < 9) return;
+    out.push({
+      t: `Quem foi campeão do mundo em ${y} ao lado de ${p.n}?`,
+      a: [rndOf(mates).id], type: 'player',
+      pool: no.map(x => x.id), face: p.img, _cat: GC4.elenco, d: 3,
+    });
+  });
+
+  /* 29. The man in that shirt: one position, one winning squad */
+  const POS_ASK = { GK:'o goleiro', DF:'um zagueiro', MF:'um meio-campista', FW:'um atacante' };
+  pick(wcYears, 5).forEach(y => {
+    const squad = PL.filter(p => p.wc.includes(y));
+    const pos   = rndOf(['GK', 'DF', 'MF', 'FW']);
+    const yes   = squad.filter(p => p.pos === pos);
+    /* only ask when the answer is the one man it can be */
+    if (yes.length !== 1) return;
+    const no = PL.filter(p => p.pos === pos && !p.wc.includes(y)
+                              && p.era && Math.abs(p.era[0] - y) < 20);
+    if (no.length < 9) return;
+    out.push({
+      t: `Quem era ${POS_ASK[pos]} campeão do mundo de ${y}?`,
+      a: [yes[0].id], type: 'player',
+      pool: no.map(p => p.id), _cat: GC4.elenco, d: 3,
+    });
+  });
+
+  /* 30. Oldest of the ten — the album spans seventy years, so this is a real
+         question about eras rather than a guess */
+  for (let i = 0; i < 3; i++) {
+    const set = pick(PL.filter(p => p.era), 10);
+    if (set.length < 10) break;
+    const first = set.reduce((a, b) => (a.era[0] <= b.era[0] ? a : b));
+    if (set.filter(p => p.era[0] === first.era[0]).length > 1) continue;
+    out.push({
+      t: 'Qual destes jogadores começou a carreira PRIMEIRO?',
+      a: [first.id], type: 'player',
+      fixed: set.map(p => p.id), _cat: GC4.geracao, d: 3,
+    });
+  }
+
+  /* 31. The intruder from another age */
+  for (let i = 0; i < 4; i++) {
+    const dec  = rndOf([1950, 1960, 1970, 1980, 1990, 2000]);
+    const same = PL.filter(p => p.era && Math.floor(p.era[0] / 10) * 10 === dec);
+    const far  = PL.filter(p => p.era && Math.abs(p.era[0] - dec) >= 25);
+    if (same.length < 9 || !far.length) continue;
+    const odd = rndOf(far);
+    out.push({
+      t: `Nove destes jogadores estrearam nos anos ${String(dec).slice(2)}. Qual é o intruso?`,
+      a: [odd.id], type: 'player',
+      fixed: pick(same, 9).map(p => p.id).concat(odd.id), _cat: GC4.geracao, d: 3,
+    });
+  }
+
+  /* 32. A world champion in this club's shirt.
+         Deliberately not "wore it in the 70s": the data holds a career span and
+         a set of clubs, never which club in which year, so a decade in the
+         question would be a claim the album cannot back — it would have had
+         Ronaldo at Corinthians in the 1990s, fifteen years early. Club plus
+         world title is two facts the data really does hold. */
+  for (let i = 0; i < 5; i++) {
+    const c   = rndOf(CL).id;
+    const yes = PL.filter(p => (p.clubs || []).includes(c) && p.wc.length);
+    if (!yes.length) continue;
+    const no = PL.filter(p => p.wc.length && !(p.clubs || []).includes(c));
+    if (no.length < 9) continue;
+    out.push({
+      t: `Qual destes campeões do mundo vestiu a camisa do ${clubName(c)}?`,
+      a: [rndOf(yes).id], type: 'player',
+      pool: no.map(p => p.id), crest: c, _cat: GC4.geracao, d: 3,
+    });
+  }
+
+  /* 33. More World Cups than the rest */
+  for (let i = 0; i < 2; i++) {
+    const set = pick(PL.filter(p => p.wc.length), 10);
+    if (set.length < 10) break;
+    const top = set.reduce((a, b) => (a.wc.length >= b.wc.length ? a : b));
+    if (set.filter(p => p.wc.length === top.wc.length).length > 1) continue;
+    out.push({
+      t: 'Qual destes jogadores ganhou MAIS Copas do Mundo?',
+      a: [top.id], type: 'player',
+      fixed: set.map(p => p.id), _cat: GC4.elenco, d: 3,
+    });
+  }
+
+  /* 34. Countrymen — the album reaches thirty-nine nations now */
+  pick([...new Set(PL.map(p => p.ctry))].filter(
+        c => c !== 'BRA' && PL.filter(p => p.ctry === c).length >= 3), 5).forEach(c => {
+    const yes = pick(PL.filter(p => p.ctry === c), 2);
+    const no  = PL.filter(p => p.ctry !== c);
+    if (yes.length < 2 || no.length < 8) return;
+    out.push({
+      t: `Selecione os 2 jogadores que defenderam a seleção ${CTRY_ADJ[c] || 'de ' + CTRY_NAME[c]}`,
+      a: yes.map(p => p.id), type: 'player',
+      fixed: yes.concat(pick(no, 8)).map(p => p.id), _cat: GC4.geracao, d: 3,
+      _noFlag: true,
     });
   });
 
