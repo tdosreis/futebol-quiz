@@ -8,7 +8,11 @@
      • images/icons  → cache-first; filenames are content-hashed so
        they can never go stale.
 ──────────────────────────────────────────────── */
-const VERSION = 'v6';
+/* v7: the crest set was replaced wholesale when every club moved to its
+   official escudo, and 86 players joined. Filenames are content-hashed, so
+   nothing stale can be served — but ~40 files no longer referenced by anything
+   would have sat in the old cache forever. Bumping the version drops them. */
+const VERSION = 'v7';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

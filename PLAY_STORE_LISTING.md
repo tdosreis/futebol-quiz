@@ -39,6 +39,13 @@ verdade. Cada partida é montada na hora, então nunca se repete.
 • Congelar — para o relógio nesta pergunta
 • Pular — passa a pergunta sem perder o degrau
 
+📔 O ÁLBUM DE FIGURINHAS:
+• 215 craques para colar, de Leônidas e Domingos da Guia aos dias de hoje
+• 39 seleções e 42 clubes brasileiros, cada um com seu escudo oficial
+• Acertou o jogador? A figurinha é colada no álbum para sempre
+• Duas tiragens: papel envelhecido para quem começou antes de 2000,
+  cartão novo para quem veio depois
+
 🎮 OUTROS MODOS:
 • Desafio Diário — a mesma partida para todo mundo, todo dia
 • Mata-mata — errou, acabou. Até onde você vai?
@@ -50,7 +57,7 @@ verdade. Cada partida é montada na hora, então nunca se repete.
 🔥 PARA JOGAR DE VERDADE:
 • Sequências que multiplicam seus pontos (×2 e ×3)
 • Bônus por responder rápido
-• 15 medalhas para desbloquear, incluindo a de Milionário
+• 20 medalhas para desbloquear, incluindo a de Milionário
 • Recordes e estatísticas salvos no aparelho
 • Compartilhe sua escalada no WhatsApp
 
