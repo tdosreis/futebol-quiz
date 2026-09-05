@@ -1783,7 +1783,7 @@ const LOGOS = {
   americamg:    'img/385a518b92fc0556.png',
   guarani:      'img/3565e2d188f683e3.png',
   corinthians:  'img/73bde55c15fce63d.png',
-  vasco:        'img/1fb43d9555285365.png',
+  vasco:        'img/e01e2310f4d9dc0e.png',
   nautico:      'img/0bd34a4355657963.png',
   goias:         'img/85111ae1fa5b5a12.png',
   atleticogo:    'img/7818e6a84a5c7d6c.png',
@@ -1802,6 +1802,10 @@ const LOGOS = {
   sampaio:       'img/99e7f75110951861.png',
   mirassol:      'img/b2892514e577b9ac.png',
   botafogosp:    'img/c482668824eb5675.png',
+  /* The three below are the clubs' own escudos, used for identification —
+     see NONFREE. Every other file here is freely licensed on Commons. */
+  sport:         'img/5914b8534fae14c1.png',
+  bragantino:    'img/3405db58adf3ce0a.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -1936,7 +1940,6 @@ const CREDITS = {
   'img/89327837f14f3c13.jpg': { a:'Doha Stadium Plus Qatar', l:'CC BY 2.0' },
   'img/9303d0cc8b834d4f.jpg': { a:'Y.Leclercq©', l:'CC BY-SA 4.0' },
   'img/9429cb23de075033.jpg': { a:'Pavel Lebeda', l:'CC BY-SA 2.0' },
-  'img/1fb43d9555285365.png': { a:'Club de Regatas Vasco da Gama', l:'Public domain' },
   'img/94bf9a8f11ebefd0.jpg': { a:'Emilio Ronchini (Mondadori Publishers)', l:'Public domain' },
   'img/9564d5244c34c91c.jpg': { a:'Pedro J Pacheco', l:'CC BY-SA 4.0' },
   'img/971d29633a44b706.jpg': { a:'Real Madrid', l:'CC BY 3.0' },
@@ -2017,6 +2020,9 @@ const CREDITS = {
   'img/b2892514e577b9ac.png': { a:'Mirassol Futebol Clube', l:'Public domain' },
   'img/be9069fb11799f76.png': { a:'Mário Bayma', l:'Public domain' },
   'img/c482668824eb5675.png': { a:'Botafogo Futebol Clube', l:'Public domain' },
+  'img/e01e2310f4d9dc0e.png': { a:'Club de Regatas Vasco da Gama', l:'Escudo oficial · uso de identificação' },
+  'img/5914b8534fae14c1.png': { a:'Sport Clube do Recife', l:'Escudo oficial · uso de identificação' },
+  'img/3405db58adf3ce0a.png': { a:'Red Bull Bragantino', l:'Escudo oficial · uso de identificação' },
   'img/c50ad900747a1971.jpg': { a:'Custodiotiago1986', l:'CC BY-SA 4.0' },
   'img/d4ed64e00779c976.png': { a:'Clube de Regatas Brasil', l:'Public domain' },
   'img/e34b57e0740793a6.png': { a:'EC Juventude', l:'Public domain' },
@@ -3586,6 +3592,13 @@ function genericCrest(id) {
    read as stray boxes among the shields, so they are cut to the shield
    outline, cropped onto the mark itself, and sit in the row like everyone
    else. */
+/* Three clubs have no freely-licensed crest anywhere on Commons — only the
+   club's own escudo, uploaded to pt.wikipedia as restricted content. They are
+   shipped here to identify the club inside the quiz, nothing else, and are
+   named in one place so the distinction stays auditable rather than buried in
+   a list of four hundred attributions. */
+const NONFREE_CRESTS = new Set(['vasco', 'sport', 'bragantino']);
+
 const FLAT_LOGOS = new Set(['corinthians', 'botafogosp', 'crb']);
 const ROUNDEL_FOCUS = { corinthians: '50% 50%' };
 /* Where the interesting part of an opaque file sits, for the disc's crop. */
@@ -3984,7 +3997,9 @@ function html() {
         licenças livres (CC / domínio público), impressas aqui em serigrafia.
         Obrigado a cada autor listado abaixo.<br><br>
         Escudos dos clubes são marcas registradas de seus respectivos clubes, exibidos
-        apenas para identificação dentro do quiz.
+        apenas para identificação dentro do quiz. Três deles — Vasco, Sport e
+        Bragantino — não têm versão sob licença livre; são os escudos oficiais dos
+        próprios clubes, usados aqui só para identificá-los.
       </p>
       <div class="scroll-y" style="flex:1;background:var(--pocket);border:1px solid var(--rule-2);
         border-radius:11px;padding:8px 12px;max-height:${unsourced.length ? 262 : 330}px;">${

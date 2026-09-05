@@ -964,12 +964,6 @@
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%82%D1%87_%C2%AB%D0%A0%D0%B5%D0%B0%D0%BB%C2%BB_-_%C2%AB%D0%9B%D0%B8%D0%B2%D0%B5%D1%80%D0%BF%D1%83%D0%BB%D1%8C%C2%BB_3-1._26_%D0%BC%D0%B0%D1%8F_2018_%D0%B3%D0%BE%D0%B4%D0%B0_%E2%80%94_873570_%28Marcelo_Vieira_da_Silva_J%C3%BAnior%29.jpg"
  },
- "img/1fb43d9555285365.png": {
-  "author": "Club de Regatas Vasco da Gama",
-  "file": "Escudo Vasco 1903.png",
-  "license": "Public domain",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Escudo_Vasco_1903.png"
- },
  "img/0bd34a4355657963.png": {
   "author": "Fefc2002",
   "file": "Náutico logo (1995-2006).png",
@@ -981,5 +975,23 @@
   "file": "Sampaio Corrêa FC.png",
   "license": "Public domain",
   "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Sampaio_Corr%C3%AAa_FC.png"
+ },
+ "img/e01e2310f4d9dc0e.png": {
+  "author": "Club de Regatas Vasco da Gama",
+  "file": "EscudoDoVascoDaGama.svg",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/8/8b/EscudoDoVascoDaGama.svg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/5914b8534fae14c1.png": {
+  "author": "Sport Clube do Recife",
+  "file": "Sport-clube-recife.svg",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/1/1a/Sport-clube-recife.svg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/3405db58adf3ce0a.png": {
+  "author": "Red Bull Bragantino",
+  "file": "RedBullBragantino.png",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
  }
 }
