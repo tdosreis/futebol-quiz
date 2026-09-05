@@ -2816,9 +2816,17 @@ function getDisp(q) {
   const nOpts  = q.opts || cfg.opts;
   const cues   = isPlayer ? qCues(q) : { any: false };
 
-  /* A question that names a country would be answered by the flags on the
-     tiles, so those come off — for every difficulty. */
-  if (cues.ctry) q._noFlag = true;
+  /* A tile is a figurinha, and a figurinha prints where the man is from and
+     when he played. That is the album working — and, on the wrong question, a
+     free answer. "Qual destes defendeu a seleção argentina?" is over the
+     moment the band says ARGENTINA; "qual estreou nos anos 60?" is over when
+     the band says 60, and again when eight tea-coloured cards sit beside one
+     mint one, because the two printings split at the year 2000.
+     So the cue the engine already reads for choosing distractors also decides
+     what the card is allowed to show. Generators can set either flag directly
+     when the giveaway is in the shape of the question rather than its words. */
+  if (cues.ctry) { q._noFlag = true; q._hideCtry = true; }
+  if (cues.year) q._hideEra = true;
 
   // `fixed` = show exactly these tiles (comparison questions)
   if (q.fixed) return shuf(q.fixed.map(id => pool0.find(x => x.id === id)).filter(Boolean));
@@ -3503,6 +3511,7 @@ function GEN_QS(tier) {
       t: 'Qual destes jogadores começou a carreira PRIMEIRO?',
       a: [first.id], type: 'player',
       fixed: set.map(p => p.id), _cat: GC4.geracao, d: 3,
+      _hideEra: true,   // the card's own decade and stock would answer it
     });
   }
 
@@ -3517,6 +3526,7 @@ function GEN_QS(tier) {
       t: `Nove destes jogadores estrearam nos anos ${String(dec).slice(2)}. Qual é o intruso?`,
       a: [odd.id], type: 'player',
       fixed: pick(same, 9).map(p => p.id).concat(odd.id), _cat: GC4.geracao, d: 3,
+      _hideEra: true,
     });
   }
 
@@ -3562,7 +3572,7 @@ function GEN_QS(tier) {
       t: `Selecione os 2 jogadores que defenderam a seleção ${CTRY_ADJ[c] || 'de ' + CTRY_NAME[c]}`,
       a: yes.map(p => p.id), type: 'player',
       fixed: yes.concat(pick(no, 8)).map(p => p.id), _cat: GC4.geracao, d: 3,
-      _noFlag: true,
+      _noFlag: true, _hideCtry: true,
     });
   });
 
@@ -4410,7 +4420,8 @@ function badge(item, idx) {
        on your page is visibly the same object. */
     return `<div class="${cls} b-fig" data-id="${item.id}" style="${delay}">
       ${tab}${voteEl}
-      ${figurinha(item, 'sm', { decorative: true, sub: '', noFlag: curQ._noFlag })}
+      ${figurinha(item, 'sm', { decorative: true, sub: '', noFlag: curQ._noFlag,
+                                hideCtry: curQ._hideCtry, hideEra: curQ._hideEra })}
     </div>`;
   }
 
@@ -4492,8 +4503,16 @@ const ctryColors = c => CTRY_COLORS[c] || ['#17593F', '#B8860B'];
    hero (the cover). */
 function figurinha(p, size, opts) {
   opts = opts || {};
-  const era  = figEra(p);
+  /* hideEra also flattens the two printings into one. The retro/modern split
+     is itself an era clue — one mint card among nine tea-coloured ones answers
+     "who is the intruder" before a single name is read. */
+  const era  = opts.hideEra ? 'retro' : figEra(p);
   const yr   = p.era ? p.era[0] : '';
+  /* What the header band is allowed to say on this board. */
+  const bandTxt = [
+    opts.hideCtry ? '' : bandCtry(p.ctry),
+    (opts.hideEra || !yr) ? '' : String(Math.floor(yr / 10) * 10).slice(2),
+  ].filter(Boolean).join(' ');
   const sub  = opts.sub !== undefined ? opts.sub
              : `${POS_NAME[p.pos]} · ${p.era ? p.era[0] + '–' + p.era[1] : ''}`;
   const alt  = opts.decorative ? 'alt="" aria-hidden="true"' : `alt="${p.n}"`;
@@ -4503,11 +4522,9 @@ function figurinha(p, size, opts) {
 
   if (era === 'retro') {
     /* the header band carries the country and the decade, the way the old
-       albums carried the tournament */
-    const band = `${bandCtry(p.ctry)} ${
-      yr ? String(Math.floor(yr / 10) * 10).slice(2) : ''}`;
+       albums carried the tournament — unless this board must not say so */
     return `<span class="fig fig-retro fig-${size}">
-      <span class="fig-band">${band}</span>
+      <span class="fig-band">${bandTxt || '&nbsp;'}</span>
       <span class="fig-art">${shot}</span>
       <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
       ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
@@ -4515,16 +4532,15 @@ function figurinha(p, size, opts) {
   }
 
   const [c1, c2] = ctryColors(p.ctry);
-  /* The new stock carries the country alone. It already shows the flag and
-     the club underneath, and "BRASIL 2001" is long enough to run out of band
-     and end as "BRASIL 2…" — the old stock keeps its decade because
-     "BRASIL 70" fits. */
-  const band = bandCtry(p.ctry);
+  /* The new stock carries the country alone — it already shows the flag and
+     the club underneath, and "BRASIL 2001" ran out of band whatever the font.
+     (A board that must hide the era renders everyone on retro stock, so this
+     branch is never the one asked to drop a decade.) */
   return `<span class="fig fig-modern fig-${size}">
-    <span class="fig-band">${band}</span>
+    <span class="fig-band">${(opts.hideCtry ? '' : bandCtry(p.ctry)) || '&nbsp;'}</span>
     <span class="fig-art">
-      <span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
-      <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>
+      ${opts.hideCtry ? '' : `<span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
+      <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>`}
       ${shot}
       ${opts.noFlag ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
     </span>
