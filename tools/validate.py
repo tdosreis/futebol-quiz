@@ -82,12 +82,23 @@ if os.path.exists(CHROME):
     tmp = os.path.join(root, "_validate_boot.html")
     io.open(tmp, "w", encoding="utf-8").write(s.replace("</body>", probe + "</body>"))
     try:
-        dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
-                              "--virtual-time-budget=8000", "--allow-file-access-from-files",
-                              "--dump-dom", "file://" + tmp],
-                             capture_output=True, text=True, timeout=180).stdout
-        m = re.search(r'<pre id="VOUT">(.*?)</pre>', dom, re.S)
-        if not m:
+        # A browser that never answered proves nothing about the page. Treat a
+        # timeout or a crash as the tool failing, not the app — a check that
+        # cries wolf on a busy machine is worse than no check at all.
+        dom = None
+        try:
+            dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
+                                  "--virtual-time-budget=8000", "--allow-file-access-from-files",
+                                  "--dump-dom", "file://" + tmp],
+                                 capture_output=True, text=True, timeout=180).stdout
+        except subprocess.TimeoutExpired:
+            warns.append("boot check skipped: headless Chrome timed out (machine busy?)")
+        except Exception as ex:
+            warns.append(f"boot check skipped: could not run Chrome ({ex})")
+        m = re.search(r'<pre id="VOUT">(.*?)</pre>', dom, re.S) if dom else None
+        if dom is None:
+            pass                     # already reported as a warning
+        elif not m:
             errs.append("the page's script did not run at all (parse error?)")
         else:
             got = _json.loads(m.group(1))

@@ -221,6 +221,12 @@
     .btn-primary { background: var(--pitch); color: var(--on-pitch); }
     .btn-primary:hover { background: var(--pitch-2); }
     .btn-primary:disabled { background: var(--rule-2); color: var(--ink-4); }
+    /* The button is "Confirmar" with nothing chosen and "Colar figurinha" once
+       something is — a change of meaning, not just of state, so it is worth a
+       beat rather than a repaint. */
+    .btn { transition: background .18s ease, color .18s ease, transform .12s; }
+    @keyframes armed { 0% { transform: scale(1); } 40% { transform: scale(1.035); } 100% { transform: scale(1); } }
+    .btn-lg:not(:disabled).is-armed { animation: armed .3s cubic-bezier(.3,.8,.4,1); }
     .btn-brass { background: var(--brass); color: var(--on-brass); }
     .btn-brass:hover { background: var(--brass-2); }
     .btn-ghost { background: transparent; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--rule); }
@@ -428,8 +434,13 @@
     .b-text .tile-name-long { font-size: 9.5px; }
 
     /* a burned pocket (Cortar) */
+    /* Cortar takes a card off the board. The empty pocket used to appear
+       between one frame and the next, which read as a glitch rather than as
+       something being removed; it fades open instead. */
+    @keyframes cutAway { from { opacity: 0; transform: scale(1.04); } }
     .b-gone { background: transparent; box-shadow: none; opacity: .45; cursor: default;
-      border: 1.5px dashed var(--rule); border-radius: 9px; }
+      border: 1.5px dashed var(--rule); border-radius: 9px;
+      animation: cutAway .3s ease-out; }
     .b-gone .print { visibility: hidden; }
     /* a tile that *is* a card needs no pocket of its own behind it */
     .b-fig { padding: 0; background: transparent; box-shadow: none; overflow: visible; }
@@ -4896,7 +4907,7 @@ function html() {
           ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
           : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')}</p>
       <div class="foot-row">
-        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn ${isMil ? 'btn-brass' : 'btn-primary'} btn-lg">
+        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn ${isMil ? 'btn-brass' : 'btn-primary'} btn-lg${sel.size ? ' is-armed' : ''}">
           ${sel.size ? 'Colar figurinha' : 'Confirmar'}</button>
         ${isMil && rung > 0 ? `
         <button id="bstop" class="btn btn-ghost btn-sm">${ICON.stop('currentColor', 13)} Parar · ${money(LADDER[rung - 1].v)}</button>` : ''}
