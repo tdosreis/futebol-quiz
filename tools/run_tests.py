@@ -99,7 +99,11 @@ TESTS = r"""
                over25: spans.filter(x => x > 25).length / Math.max(1, spans.length),
                p90: spans[Math.floor(spans.length * 0.9)] || 0 };
     }
-    const E = boardStats('facil', 14), M = boardStats('moderado', 14), H = boardStats('dificil', 14);
+    /* 14 boards was too few to measure this: the same-position share swung
+       between 1.12x and 1.45x of easy across runs, so the suite failed about
+       one run in eight for no reason. At 40 it settles — measured 1.43 at 40
+       samples and 1.40 at 100, against a 1.3 threshold. */
+    const E = boardStats('facil', 40), M = boardStats('moderado', 40), H = boardStats('dificil', 40);
 
     ok('hard distractors more plausible than easy', H.sim > E.sim * 1.25,
        `easy=${E.sim.toFixed(1)} mod=${M.sim.toFixed(1)} hard=${H.sim.toFixed(1)}`);
