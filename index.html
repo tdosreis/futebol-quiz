@@ -2692,13 +2692,13 @@ const CREDITS = {
 const DIFFS = [
   { key:'facil',    label:'Fácil',    emoji:'😊', ic:'check', n:10, col:'#2E7D4F',
     desc:'Alternativas variadas · 30s',
-    time:30, strict:0.00, opts:10, tier:1, pmul:1   },
+    time:30, strict:0.00, opts:10, tier:2, pmul:1   },
   { key:'moderado', label:'Moderado', emoji:'⚽', ic:'bolt',  n:15, col:'#B8761F',
     desc:'Alternativas parecidas · 25s',
-    time:25, strict:0.55, opts:10, tier:2, pmul:1.5 },
+    time:25, strict:0.55, opts:10, tier:3, pmul:1.5 },
   { key:'dificil',  label:'Difícil',  emoji:'🔥', ic:'flame', n:20, col:'#B3402F',
     desc:'Mesma posição e era · 20s',
-    time:20, strict:1.00, opts:10, tier:3, pmul:2   },
+    time:20, strict:1.00, opts:10, tier:5, pmul:2   },
 ];
 const DCFG = () => DIFFS.find(d => d.key === diffKey) || DIFFS[0];
 
@@ -2978,9 +2978,34 @@ function getDisp(q) {
 const FAMOUS = new Set(['pele','messi','cr7','ronaldo','ronaldinho','neymar',
   'maradona','zidane','romario','garrincha','zico','kaka','mbappe','vinicius','gabigol']);
 
+/* How hard a question is, on a scale of five.
+   It used to be three, which is fine for three difficulty buttons and wrong
+   for a sixteen-rung ladder: rungs 10 to 16 all asked for "tier 3" and drew
+   from one bucket, so the last seven questions of a Milhão run were no harder
+   than the tenth. The category still sets the base; what moves it is the
+   answer itself — a famous name is easier than an obscure one whatever the
+   category, a man who debuted in 1955 is harder than one playing now, and
+   being asked for two names is harder than being asked for one. */
 function qTier(q) {
+  return Math.max(1, Math.min(5, _qBase(q) + _qShift(q)));
+}
+
+function _qShift(q) {
+  if (q.type !== 'player') return 0;
+  const ans = (q.a || []).map(id => PL.find(x => x.id === id)).filter(Boolean);
+  let shift = ans.length > 1 ? 1 : 0;        // "selecione os 2" is harder
+  if (!ans.length) return shift;
+  if (ans.some(p => FAMOUS.has(p.id))) return shift - 1;
+  const debut = Math.min(...ans.map(p => (p.era ? p.era[0] : 2000)));
+  if (debut < 1960) return shift + 2;
+  if (debut < 1975) return shift + 1;
+  return shift;
+}
+
+function _qBase(q) {
   if (q.d) return q.d;                       // explicit override
   const cid = (q._cat && q._cat.id) || '';
+  if (cid === 'ouro') return 4;              // the older pages, by construction
   if (cid === 'estados')  return 1;
   if (cid === 'estadios') return 2;
   if (cid === 'lendas')   return 2;
@@ -4092,6 +4117,9 @@ function startSurvival() {
    and the run ends at your last checkpoint — so every rung above one is
    a bet, and "PARAR" is always on the table.
 ═══════════════════════════════════════════════════ */
+/* Sixteen rungs across five tiers, so the climb is a climb. The two safe
+   rungs sit at the top of a tier — you bank at the end of a plateau, then the
+   questions step up. */
 const LADDER = [
   { v:      1000, tier: 1, time: 45 },
   { v:      2000, tier: 1, time: 45 },
@@ -4100,15 +4128,15 @@ const LADDER = [
   { v:     10000, tier: 2, time: 38 },
   { v:     15000, tier: 2, time: 36 },
   { v:     20000, tier: 2, time: 34 },
-  { v:     30000, tier: 2, time: 32 },
-  { v:     50000, tier: 2, time: 30, safe: true },
+  { v:     30000, tier: 3, time: 32 },
+  { v:     50000, tier: 3, time: 30, safe: true },
   { v:     75000, tier: 3, time: 30 },
-  { v:    100000, tier: 3, time: 28 },
-  { v:    150000, tier: 3, time: 26 },
-  { v:    250000, tier: 3, time: 24 },
-  { v:    400000, tier: 3, time: 22 },
-  { v:    600000, tier: 3, time: 20 },
-  { v:   1000000, tier: 3, time: 20 },
+  { v:    100000, tier: 4, time: 28 },
+  { v:    150000, tier: 4, time: 26 },
+  { v:    250000, tier: 4, time: 24 },
+  { v:    400000, tier: 5, time: 22 },
+  { v:    600000, tier: 5, time: 20 },
+  { v:   1000000, tier: 5, time: 20 },
 ];
 
 let isMil  = false;
