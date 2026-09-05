@@ -333,16 +333,16 @@
     .fig-lg  .fig-sub  { font-size: 7.2px; margin-top: 2px; }
     .fig-lg  .fig-flag { width: 14px; height: 9.5px; right: 5%; top: 5%; }
 
-    .fig-sm  .fig-band { font-size: 5.4px; padding: 1.5px 13px; letter-spacing: .06em; }
-    .fig-sm  .fig-art  { aspect-ratio: 1 / .98; }
-    .fig-sm  .fig-cap  { padding: 3px 2px; min-height: 20px; }
-    .fig-sm  .fig-nm   { font-size: 7.4px; }
-    .fig-sm  .fig-nm-long { font-size: 6.5px; }
+    .fig-sm  .fig-band { font-size: 7px; padding: 2px 7px; letter-spacing: .06em; }
+    .fig-sm  .fig-art  { aspect-ratio: 1 / 1.02; }
+    .fig-sm  .fig-cap  { padding: 4px 3px 5px; min-height: 26px; }
+    .fig-sm  .fig-nm   { font-size: 9.2px; }
+    .fig-sm  .fig-nm-long { font-size: 8px; }
     .fig-sm  .fig-sub  { display: none; }
-    .fig-sm  .fig-flag { width: 10px; height: 7px; right: 4%; top: 4%; }
+    .fig-sm  .fig-flag { width: 13px; height: 9px; right: 4%; top: 4%; }
     @media (min-width: 400px) {
-      .fig-sm .fig-nm { font-size: 8.2px; }
-      .fig-sm .fig-nm-long { font-size: 7.1px; }
+      .fig-sm .fig-nm { font-size: 10.2px; }
+      .fig-sm .fig-nm-long { font-size: 8.8px; }
     }
 
     .fig-hero .fig-band { font-size: 10px; padding: 5px 34px; letter-spacing: .16em; }
@@ -366,8 +366,8 @@
     .tab {
       position: absolute; top: -1px; left: -1px; z-index: 4; pointer-events: none;
       background: var(--ink); color: var(--stock);
-      font-family: var(--font-s); font-weight: 800; font-size: 8.5px; letter-spacing: .06em;
-      padding: 2px 6px; border-radius: 9px 2px 8px 2px; line-height: 1.3;
+      font-family: var(--font-s); font-weight: 800; font-size: 10px; letter-spacing: .06em;
+      padding: 2.5px 7px; border-radius: 9px 2px 8px 2px; line-height: 1.3;
       font-variant-numeric: tabular-nums;
     }
     .tab-brass { background: var(--brass); color: var(--on-brass); }
@@ -375,9 +375,17 @@
     /* ═══════════════════════════════════════════════════════════════
        THE BOARD — ten answer pockets
     ═══════════════════════════════════════════════════════════════ */
-    .board { display: grid; gap: 6px; }
-    .board-5 { grid-template-columns: repeat(5, 1fr); }
-    .board-2 { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .board { display: grid; gap: 7px; }
+    /* Four across, not five. Ten cards over five columns left each one about
+       65px wide on a phone — the photograph too small to recognise a face by
+       and the name down at 7.6px. Flex, not grid, so the trailing row of two
+       centres itself instead of hanging off the left. */
+    .board-5 { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+    /* min-width:0 matters: a flex item defaults to min-width:auto, so a long
+       name ("CRISTIANO RONALDO") pushed the card past its 25% and the whole
+       board off the right edge of the phone. */
+    .board-5 > * { flex: 0 0 calc(25% - 5.25px); min-width: 0; }
+    .board-2 { grid-template-columns: repeat(2, 1fr); gap: 9px; }
     .board-big { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     @keyframes tileIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -424,15 +432,15 @@
     }
 
     /* text pockets (names only, two columns) */
-    .b-text { flex-direction: row; align-items: center; justify-content: center; min-height: 44px; padding: 8px 8px 8px 20px; }
+    .b-text { flex-direction: row; align-items: center; justify-content: center; min-height: 62px; padding: 12px 10px 12px 24px; }
     /* A text pocket centres its name, so on a narrow phone a long one wraps up
        into the corner the audience figure occupies. Reserve that corner only
        while the vote is actually on screen. */
     /* 44px, not 30: a crowd that votes 100% for one tile makes the badge
        wider than a two-digit one, and the caption met it in the corner. */
     .b-text.b-voted { padding-right: 44px; }
-    .b-text .tile-name { -webkit-line-clamp: 3; font-size: 10.5px; min-height: 0; }
-    .b-text .tile-name-long { font-size: 9.5px; }
+    .b-text .tile-name { -webkit-line-clamp: 3; font-size: 13.5px; min-height: 0; }
+    .b-text .tile-name-long { font-size: 12px; }
 
     /* a burned pocket (Cortar) */
     /* Cortar takes a card off the board. The empty pocket used to appear
@@ -506,14 +514,18 @@
     .intro .qcard::before { animation: qRule .44s cubic-bezier(.2,.9,.3,1) .06s backwards; }
     @keyframes qRule { from { transform: scaleY(0); } }
     .qcard-brass::before { background: var(--brass); }
-    .qcard p { font-family: var(--font-d); font-optical-sizing: auto; font-weight: 500; font-size: 15.5px; line-height: 1.32;
+    .qcard p { font-family: var(--font-d); font-optical-sizing: auto; font-weight: 500; font-size: 17.5px; line-height: 1.32;
       letter-spacing: -.005em; flex: 1; min-width: 0; white-space: pre-line; text-wrap: balance; }
     .qart { flex-shrink: 0; border-radius: 8px; overflow: hidden; }
-    .qart-face { width: 54px; height: 54px; border-radius: 50%; }
-    .qart-wide { width: 92px; height: 60px; }
+    .qart-face { width: 66px; height: 66px; border-radius: 50%; }
+    .qart-wide { width: 104px; height: 68px; }
+    /* a flag drawn at the size of a vignette, for the questions about a country */
+    .qart-flag { width: 78px; height: 52px; border-radius: 4px; overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(32,36,30,.3), 0 1px 3px var(--shadow); }
+    .qart-flag svg { width: 100%; height: 100%; display: block; }
     .qart-draw { display: flex; align-items: center; justify-content: center;
       background: var(--retro-card); box-shadow: inset 0 0 0 1px var(--retro-edge); }
-    .qart-crest { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+    .qart-crest { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; }
     /* When the crest *is* the question, 50px is not enough to read a club's
        mark by. Elsewhere it is an aside beside the text and stays small. */
     .qart-crest.qart-hero { width: 86px; height: 86px; }
@@ -597,6 +609,24 @@
     .rung-now  { background: var(--pitch-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--pitch); }
     .rung-top  { color: var(--brass); }
     .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-4); font-weight: 700; }
+
+    /* The pause between locking an answer in and seeing it.
+       It used to announce "Resposta travada", which told the player something
+       they had just done themselves. Three dots settling in turn say the only
+       thing worth saying there: the answer is coming. */
+    .settling { display: flex; flex-direction: column; align-items: center;
+      gap: 6px; padding: 14px 0 10px; }
+    .settle-dots { display: flex; gap: 7px; }
+    .settle-dots i { width: 7px; height: 7px; border-radius: 50%;
+      background: var(--brass); display: block;
+      animation: settle 1.05s ease-in-out infinite; }
+    .settle-dots i:nth-child(2) { animation-delay: .16s; }
+    .settle-dots i:nth-child(3) { animation-delay: .32s; }
+    @keyframes settle {
+      0%, 70%, 100% { opacity: .25; transform: translateY(0) scale(.85); }
+      35%           { opacity: 1;   transform: translateY(-3px) scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .settle-dots i { opacity: .7; } }
 
     /* ── The stickers a run earned, shown at the end ── */
     .newfigs { width: 100%; max-width: 330px; display: flex; flex-direction: column;
@@ -686,12 +716,35 @@
        or the question carries a photo. Reclaim the height from padding
        and the picture, never from the caption or the button.
     ═══════════════════════════════════════════════════════════════ */
+    /* Four across costs a row: ten cards become 4+4+2 instead of 5+5, and on a
+       320px-wide phone that pushed CONFIRMAR below the fold — the one control
+       the player must reach. Small screens keep five across and the smaller
+       type that goes with it; everything roomier gets the bigger cards. */
+    @media (max-width: 379px) {
+      .board-5 > * { flex: 0 0 calc(20% - 5.6px); }
+      .fig-sm .fig-band { font-size: 5.6px; padding: 1.5px 4px; }
+      .fig-sm .fig-cap  { padding: 3px 2px; min-height: 21px; }
+      .fig-sm .fig-nm   { font-size: 7.6px; }
+      .fig-sm .fig-nm-long { font-size: 6.7px; }
+      .fig-sm .fig-flag { width: 10px; height: 7px; }
+      .tab { font-size: 8.5px; padding: 2px 6px; }
+      .qcard p { font-size: 15.5px; }
+      .b-text { min-height: 52px; padding: 10px 9px 10px 21px; }
+      .b-text .tile-name { font-size: 11.5px; }
+      .b-text .tile-name-long { font-size: 10.5px; }
+      .qart-wide { width: 88px; height: 58px; }
+      .qart-face { width: 56px; height: 56px; }
+      .qart-flag { width: 66px; height: 44px; }
+    }
+
     @media (max-height: 660px) {
       .qz-screen { padding: 8px !important; gap: 6px !important; }
-      .qz-screen .qcard { min-height: 46px; padding: 8px 11px; gap: 8px; }
-      .qz-screen .qcard p { font-size: 13.5px; }
+      .qz-screen .qcard { min-height: 46px; padding: 9px 12px; gap: 9px; }
+      .qz-screen .qcard p { font-size: 15px; }
       .qz-screen .ajuda { padding: 4px 7px; font-size: 8.5px; }
       .qz-screen .reveal-box { width: 96px; height: 96px; }
+      .qz-screen .qart-wide { width: 88px; height: 58px; }
+      .qz-screen .qart-face { width: 56px; height: 56px; }
       .qz-screen .stakes-v { font-size: 21px; }
       .qz-screen .expert-box { padding: 4px 8px; }
       .qz-screen .expert-box p { font-size: 10px; }
@@ -1282,75 +1335,75 @@ const CATS = [
     tag:'De onde veio o futebol', col:'#6B5B3E', diff:'Difícil',
     qs:[
       { t:'Em que país foram escritas as primeiras regras modernas do futebol, em 1863?',
-        type:'txt', choices:['Inglaterra','Escócia','França','Itália','Uruguai','Brasil'], a:['Inglaterra'] },
+        type:'txt', choices:['Inglaterra','Escócia','França','Itália','Uruguai','Brasil'], a:['Inglaterra'], icon:'rules' },
       { t:'Que organização escreveu essas primeiras regras, em uma taverna de Londres?',
-        type:'txt', choices:['The Football Association','FIFA','UEFA','Premier League','Football League','IFAB'], a:['The Football Association'] },
+        type:'txt', choices:['The Football Association','FIFA','UEFA','Premier League','Football League','IFAB'], a:['The Football Association'], icon:'rules' },
       { t:'Em que ano foi disputada a primeira Copa do Mundo?',
-        type:'txt', choices:['1930','1900','1920','1938','1950','1958'], a:['1930'] },
+        type:'txt', choices:['1930','1900','1920','1938','1950','1958'], a:['1930'], icon:'trophy' },
       { t:'Qual país sediou e venceu a primeira Copa do Mundo?',
-        type:'txt', choices:['Uruguai','Brasil','Argentina','Itália','Inglaterra','França'], a:['Uruguai'] },
+        type:'txt', choices:['Uruguai','Brasil','Argentina','Itália','Inglaterra','França'], a:['Uruguai'], icon:'trophy' },
       { t:'Quem é apontado como o pai do futebol no Brasil, por trazer bolas e regras em 1894?',
-        type:'txt', choices:['Charles Miller','Oscar Cox','Hans Nobiling','Thomas Donohoe','Charles Goodyear','John Miller'], a:['Charles Miller'] },
+        type:'txt', choices:['Charles Miller','Oscar Cox','Hans Nobiling','Thomas Donohoe','Charles Goodyear','John Miller'], a:['Charles Miller'], flag:'BRA' },
       { t:'Em que cidade brasileira foi disputada a primeira partida de futebol organizada do país?',
-        type:'txt', choices:['São Paulo','Rio de Janeiro','Salvador','Recife','Santos','Porto Alegre'], a:['São Paulo'] },
+        type:'txt', choices:['São Paulo','Rio de Janeiro','Salvador','Recife','Santos','Porto Alegre'], a:['São Paulo'], flag:'BRA' },
       { t:'Qual é o clube de futebol mais antigo do mundo ainda em atividade?',
-        type:'txt', choices:['Sheffield FC','Notts County','Manchester United','Real Madrid','Genoa','Aston Villa'], a:['Sheffield FC'] },
+        type:'txt', choices:['Sheffield FC','Notts County','Manchester United','Real Madrid','Genoa','Aston Villa'], a:['Sheffield FC'], icon:'ball' },
       { t:'Que competição de clubes é a mais antiga do mundo, criada em 1871?',
-        type:'txt', choices:['Copa da Inglaterra (FA Cup)','Campeonato Inglês','Copa da Itália','Copa do Rei','Taça de Portugal','Copa da Alemanha'], a:['Copa da Inglaterra (FA Cup)'] },
+        type:'txt', choices:['Copa da Inglaterra (FA Cup)','Campeonato Inglês','Copa da Itália','Copa do Rei','Taça de Portugal','Copa da Alemanha'], a:['Copa da Inglaterra (FA Cup)'], icon:'rules' },
       { t:'Em que ano a FIFA foi fundada, em Paris?',
-        type:'txt', choices:['1904','1863','1890','1912','1928','1946'], a:['1904'] },
+        type:'txt', choices:['1904','1863','1890','1912','1928','1946'], a:['1904'], icon:'rules' },
       { t:'Quando os pênaltis foram introduzidos nas regras do futebol?',
-        type:'txt', choices:['1891','1863','1875','1905','1925','1938'], a:['1891'] },
+        type:'txt', choices:['1891','1863','1875','1905','1925','1938'], a:['1891'], icon:'rules' },
       { t:'Em que Copa do Mundo foram usados cartões amarelos e vermelhos pela primeira vez?',
-        type:'txt', choices:['1970','1954','1962','1978','1982','1990'], a:['1970'] },
+        type:'txt', choices:['1970','1954','1962','1978','1982','1990'], a:['1970'], icon:'rules' },
       { t:'Que país inventou o "WM", a formação que dominou o futebol dos anos 1930?',
-        type:'txt', choices:['Inglaterra','Hungria','Áustria','Itália','Escócia','Uruguai'], a:['Inglaterra'] },
+        type:'txt', choices:['Inglaterra','Hungria','Áustria','Itália','Escócia','Uruguai'], a:['Inglaterra'], icon:'ball' },
       { t:'Como ficou conhecida a seleção da Hungria dos anos 1950, invicta por 31 jogos?',
-        type:'txt', choices:['Time de Ouro','Laranja Mecânica','Carrossel','Wunderteam','Grande Torino','Esquadrão de Aço'], a:['Time de Ouro'] },
+        type:'txt', choices:['Time de Ouro','Laranja Mecânica','Carrossel','Wunderteam','Grande Torino','Esquadrão de Aço'], a:['Time de Ouro'], flag:'HUN' },
       { t:'Que apelido tinha a Holanda de Cruyff, pelo modo como todos trocavam de posição?',
-        type:'txt', choices:['Laranja Mecânica','Time de Ouro','Carrossel Húngaro','Catenaccio','Tiki-taka','Jogo Bonito'], a:['Laranja Mecânica'] },
+        type:'txt', choices:['Laranja Mecânica','Time de Ouro','Carrossel Húngaro','Catenaccio','Tiki-taka','Jogo Bonito'], a:['Laranja Mecânica'], flag:'NED' },
       { t:'Qual sistema defensivo italiano marcou o futebol dos anos 1960?',
-        type:'txt', choices:['Catenaccio','Tiki-taka','Gegenpressing','WM','Total Football','Zona Mista'], a:['Catenaccio'] },
+        type:'txt', choices:['Catenaccio','Tiki-taka','Gegenpressing','WM','Total Football','Zona Mista'], a:['Catenaccio'], flag:'ITA' },
       { t:'Que acidente aéreo, em 1958, destruiu o time jovem do Manchester United?',
-        type:'txt', choices:['Tragédia de Munique','Tragédia de Superga','Tragédia dos Andes','Tragédia de Heysel','Tragédia de Hillsborough','Tragédia de Chapecó'], a:['Tragédia de Munique'] },
+        type:'txt', choices:['Tragédia de Munique','Tragédia de Superga','Tragédia dos Andes','Tragédia de Heysel','Tragédia de Hillsborough','Tragédia de Chapecó'], a:['Tragédia de Munique'], icon:'plane' },
       { t:'Que tragédia aérea de 1949 dizimou o Grande Torino, então campeão italiano?',
-        type:'txt', choices:['Tragédia de Superga','Tragédia de Munique','Tragédia de Heysel','Tragédia dos Andes','Tragédia de Zurique','Tragédia de Turim'], a:['Tragédia de Superga'] },
+        type:'txt', choices:['Tragédia de Superga','Tragédia de Munique','Tragédia de Heysel','Tragédia dos Andes','Tragédia de Zurique','Tragédia de Turim'], a:['Tragédia de Superga'], icon:'plane' },
       { t:'Como é chamado o estádio do Maracanã em sua inauguração, para a Copa de 1950?',
-        type:'txt', choices:['Estádio Municipal do Rio de Janeiro','Estádio Nacional','Estádio da República','Estádio Getúlio Vargas','Estádio do Brasil','Estádio Mário Filho'], a:['Estádio Municipal do Rio de Janeiro'] },
+        type:'txt', choices:['Estádio Municipal do Rio de Janeiro','Estádio Nacional','Estádio da República','Estádio Getúlio Vargas','Estádio do Brasil','Estádio Mário Filho'], a:['Estádio Municipal do Rio de Janeiro'], icon:'stadium' },
       { t:'Em que ano o Brasil disputou sua primeira Copa do Mundo?',
-        type:'txt', choices:['1930','1934','1938','1950','1954','1958'], a:['1930'] },
+        type:'txt', choices:['1930','1934','1938','1950','1954','1958'], a:['1930'], flag:'BRA' },
       { t:'Qual foi a primeira seleção a conquistar três Copas do Mundo?',
-        type:'txt', choices:['Brasil','Itália','Alemanha','Uruguai','Argentina','Inglaterra'], a:['Brasil'] },
+        type:'txt', choices:['Brasil','Itália','Alemanha','Uruguai','Argentina','Inglaterra'], a:['Brasil'], icon:'trophy' },
       { t:'Quantos jogadores de linha um time pode ter em campo, além do goleiro?',
-        type:'txt', choices:['10','9','11','12','8','13'], a:['10'] },
+        type:'txt', choices:['10','9','11','12','8','13'], a:['10'], icon:'rules' },
       { t:'Quando a substituição de jogadores passou a ser permitida em Copas do Mundo?',
-        type:'txt', choices:['1970','1930','1950','1958','1982','1994'], a:['1970'] },
+        type:'txt', choices:['1970','1930','1950','1958','1982','1994'], a:['1970'], icon:'rules' },
       { t:'Em que Copa do Mundo a vitória passou a valer três pontos na primeira fase?',
-        type:'txt', choices:['1994','1970','1982','1986','1998','2002'], a:['1994'] },
+        type:'txt', choices:['1994','1970','1982','1986','1998','2002'], a:['1994'], icon:'rules' },
       { t:'Que regra acabou em 1992, obrigando o goleiro a não pegar o recuo com as mãos?',
-        type:'txt', choices:['O recuo para o goleiro','O impedimento','A lei da vantagem','O tiro de meta','O gol de ouro','A barreira'], a:['O recuo para o goleiro'] },
+        type:'txt', choices:['O recuo para o goleiro','O impedimento','A lei da vantagem','O tiro de meta','O gol de ouro','A barreira'], a:['O recuo para o goleiro'], icon:'rules' },
       { t:'Como se chamava a regra em que o primeiro gol da prorrogação encerrava o jogo?',
-        type:'txt', choices:['Gol de ouro','Gol de prata','Morte súbita dupla','Gol decisivo','Gol relâmpago','Gol de honra'], a:['Gol de ouro'] },
+        type:'txt', choices:['Gol de ouro','Gol de prata','Morte súbita dupla','Gol decisivo','Gol relâmpago','Gol de honra'], a:['Gol de ouro'], icon:'rules' },
       { t:'Que país foi o primeiro fora da Europa e da América a sediar uma Copa do Mundo?',
-        type:'txt', choices:['Coreia do Sul e Japão','África do Sul','México','Estados Unidos','Catar','Austrália'], a:['Coreia do Sul e Japão'] },
+        type:'txt', choices:['Coreia do Sul e Japão','África do Sul','México','Estados Unidos','Catar','Austrália'], a:['Coreia do Sul e Japão'], icon:'trophy' },
       { t:'Qual foi o primeiro país africano a sediar uma Copa do Mundo?',
-        type:'txt', choices:['África do Sul','Marrocos','Egito','Nigéria','Camarões','Senegal'], a:['África do Sul'] },
+        type:'txt', choices:['África do Sul','Marrocos','Egito','Nigéria','Camarões','Senegal'], a:['África do Sul'], icon:'trophy' },
       { t:'Em que ano a Copa do Mundo passou a ter 32 seleções?',
-        type:'txt', choices:['1998','1982','1986','1994','2002','2010'], a:['1998'] },
+        type:'txt', choices:['1998','1982','1986','1994','2002','2010'], a:['1998'], icon:'trophy' },
       { t:'Qual seleção não perdeu nenhuma partida na Copa de 1970 e ficou com a Taça Jules Rimet?',
-        type:'txt', choices:['Brasil','Itália','Alemanha','Uruguai','Inglaterra','México'], a:['Brasil'] },
+        type:'txt', choices:['Brasil','Itália','Alemanha','Uruguai','Inglaterra','México'], a:['Brasil'], icon:'trophy' },
       { t:'Por que o Brasil ficou com a Taça Jules Rimet em definitivo em 1970?',
-        type:'txt', choices:['Foi o primeiro tricampeão','Sediou a Copa','Venceu invicto','Fez mais gols','Ganhou de goleada na final','Era o país anfitrião seguinte'], a:['Foi o primeiro tricampeão'] },
+        type:'txt', choices:['Foi o primeiro tricampeão','Sediou a Copa','Venceu invicto','Fez mais gols','Ganhou de goleada na final','Era o país anfitrião seguinte'], a:['Foi o primeiro tricampeão'], flag:'BRA' },
       { t:'Que competição sul-americana de seleções é a mais antiga do mundo, criada em 1916?',
-        type:'txt', choices:['Copa América','Eurocopa','Copa Ouro','Copa das Nações Africanas','Copa das Confederações','Copa Rio Branco'], a:['Copa América'] },
+        type:'txt', choices:['Copa América','Eurocopa','Copa Ouro','Copa das Nações Africanas','Copa das Confederações','Copa Rio Branco'], a:['Copa América'], icon:'rules' },
       { t:'Em que ano foi disputada a primeira Copa Libertadores?',
-        type:'txt', choices:['1960','1930','1945','1955','1970','1975'], a:['1960'] },
+        type:'txt', choices:['1960','1930','1945','1955','1970','1975'], a:['1960'], icon:'trophy' },
       { t:'Qual clube é o maior campeão da Libertadores?',
-        type:'txt', choices:['Independiente','Boca Juniors','Peñarol','River Plate','Nacional','Santos'], a:['Independiente'] },
+        type:'txt', choices:['Independiente','Boca Juniors','Peñarol','River Plate','Nacional','Santos'], a:['Independiente'], icon:'trophy' },
       { t:'Que competição decidia o campeão mundial de clubes entre 1960 e 2004?',
-        type:'txt', choices:['Copa Intercontinental','Mundial de Clubes da FIFA','Copa Libertadores','Copa dos Campeões','Recopa Sul-Americana','Copa Rio'], a:['Copa Intercontinental'] },
+        type:'txt', choices:['Copa Intercontinental','Mundial de Clubes da FIFA','Copa Libertadores','Copa dos Campeões','Recopa Sul-Americana','Copa Rio'], a:['Copa Intercontinental'], icon:'trophy' },
       { t:'Como é chamada a área de 16,5 metros à frente do gol?',
-        type:'txt', choices:['Grande área','Pequena área','Meio-campo','Círculo central','Zona de ataque','Área técnica'], a:['Grande área'] },
+        type:'txt', choices:['Grande área','Pequena área','Meio-campo','Círculo central','Zona de ataque','Área técnica'], a:['Grande área'], icon:'rules' },
     ]
   },
   {
@@ -1359,79 +1412,79 @@ const CATS = [
     tag:'Ligas, copas e dinastias', col:'#3F6FB5', diff:'Difícil',
     qs:[
       { t:'Como se chama a primeira divisão do futebol inglês desde 1992?',
-        type:'txt', choices:['Premier League','Football League','Championship','First Division','Super League','League One'], a:['Premier League'] },
+        type:'txt', choices:['Premier League','Football League','Championship','First Division','Super League','League One'], a:['Premier League'], flag:'ENG' },
       { t:'Como se chama a primeira divisão da Espanha?',
-        type:'txt', choices:['La Liga','Serie A','Bundesliga','Ligue 1','Primeira Liga','Eredivisie'], a:['La Liga'] },
+        type:'txt', choices:['La Liga','Serie A','Bundesliga','Ligue 1','Primeira Liga','Eredivisie'], a:['La Liga'], flag:'ESP' },
       { t:'Como se chama a primeira divisão da Alemanha?',
-        type:'txt', choices:['Bundesliga','Serie A','La Liga','Ligue 1','Eredivisie','Süper Lig'], a:['Bundesliga'] },
+        type:'txt', choices:['Bundesliga','Serie A','La Liga','Ligue 1','Eredivisie','Süper Lig'], a:['Bundesliga'], flag:'GER' },
       { t:'Como se chama a primeira divisão da Itália?',
-        type:'txt', choices:['Serie A','La Liga','Bundesliga','Primeira Liga','Ligue 1','Eredivisie'], a:['Serie A'] },
+        type:'txt', choices:['Serie A','La Liga','Bundesliga','Primeira Liga','Ligue 1','Eredivisie'], a:['Serie A'], flag:'ITA' },
       { t:'Como se chama a primeira divisão da Holanda?',
-        type:'txt', choices:['Eredivisie','Bundesliga','Serie A','Jupiler Pro League','Allsvenskan','Superliga'], a:['Eredivisie'] },
+        type:'txt', choices:['Eredivisie','Bundesliga','Serie A','Jupiler Pro League','Allsvenskan','Superliga'], a:['Eredivisie'], flag:'NED' },
       { t:'Como se chama a primeira divisão de Portugal?',
-        type:'txt', choices:['Primeira Liga','La Liga','Liga MX','Serie A','Segunda Liga','Liga NOS Sub-23'], a:['Primeira Liga'] },
+        type:'txt', choices:['Primeira Liga','La Liga','Liga MX','Serie A','Segunda Liga','Liga NOS Sub-23'], a:['Primeira Liga'], flag:'POR' },
       { t:'Que competição europeia de clubes passou a se chamar Champions League em 1992?',
-        type:'txt', choices:['Copa dos Campeões da Europa','Copa da UEFA','Recopa Europeia','Supercopa da Europa','Copa Latina','Taça das Cidades'], a:['Copa dos Campeões da Europa'] },
+        type:'txt', choices:['Copa dos Campeões da Europa','Copa da UEFA','Recopa Europeia','Supercopa da Europa','Copa Latina','Taça das Cidades'], a:['Copa dos Campeões da Europa'], icon:'trophy' },
       { t:'Qual clube tem mais títulos da Copa dos Campeões / Champions League?',
-        type:'txt', choices:['Real Madrid','Milan','Bayern de Munique','Liverpool','Barcelona','Ajax'], a:['Real Madrid'] },
+        type:'txt', choices:['Real Madrid','Milan','Bayern de Munique','Liverpool','Barcelona','Ajax'], a:['Real Madrid'], icon:'trophy' },
       { t:'Qual clube venceu as cinco primeiras edições da Copa dos Campeões, de 1956 a 1960?',
-        type:'txt', choices:['Real Madrid','Benfica','Milan','Inter de Milão','Ajax','Bayern de Munique'], a:['Real Madrid'] },
+        type:'txt', choices:['Real Madrid','Benfica','Milan','Inter de Milão','Ajax','Bayern de Munique'], a:['Real Madrid'], icon:'trophy' },
       { t:'Qual clube holandês venceu três Copas dos Campeões seguidas nos anos 1970?',
-        type:'txt', choices:['Ajax','PSV','Feyenoord','AZ Alkmaar','Twente','Utrecht'], a:['Ajax'] },
+        type:'txt', choices:['Ajax','PSV','Feyenoord','AZ Alkmaar','Twente','Utrecht'], a:['Ajax'], flag:'NED' },
       { t:'Qual clube inglês venceu a Copa dos Campeões em 1979 e 1980, sob Brian Clough?',
-        type:'txt', choices:['Nottingham Forest','Liverpool','Aston Villa','Manchester United','Leeds','Everton'], a:['Nottingham Forest'] },
+        type:'txt', choices:['Nottingham Forest','Liverpool','Aston Villa','Manchester United','Leeds','Everton'], a:['Nottingham Forest'], flag:'ENG' },
       { t:'Que clube escocês venceu a Copa dos Campeões de 1967 com um time todo nascido a 50 km de Glasgow?',
-        type:'txt', choices:['Celtic','Rangers','Aberdeen','Dundee United','Hearts','Hibernian'], a:['Celtic'] },
+        type:'txt', choices:['Celtic','Rangers','Aberdeen','Dundee United','Hearts','Hibernian'], a:['Celtic'], icon:'trophy' },
       { t:'Como é chamado o clássico entre Real Madrid e Barcelona?',
-        type:'txt', choices:['El Clásico','Derby della Madonnina','Der Klassiker','O Clássico','Superclásico','Old Firm'], a:['El Clásico'] },
+        type:'txt', choices:['El Clásico','Derby della Madonnina','Der Klassiker','O Clássico','Superclásico','Old Firm'], a:['El Clásico'], icon:'ball' },
       { t:'Como é chamado o clássico entre Inter de Milão e Milan?',
-        type:'txt', choices:['Derby della Madonnina','El Clásico','Derby d’Italia','Der Klassiker','Derby della Capitale','Old Firm'], a:['Derby della Madonnina'] },
+        type:'txt', choices:['Derby della Madonnina','El Clásico','Derby d’Italia','Der Klassiker','Derby della Capitale','Old Firm'], a:['Derby della Madonnina'], icon:'ball' },
       { t:'Como é chamado o clássico entre Celtic e Rangers, em Glasgow?',
-        type:'txt', choices:['Old Firm','El Clásico','Merseyside Derby','North London Derby','Der Klassiker','Superclásico'], a:['Old Firm'] },
+        type:'txt', choices:['Old Firm','El Clásico','Merseyside Derby','North London Derby','Der Klassiker','Superclásico'], a:['Old Firm'], icon:'ball' },
       { t:'Qual clube alemão é de longe o maior campeão da Bundesliga?',
-        type:'txt', choices:['Bayern de Munique','Borussia Dortmund','Hamburgo','Schalke 04','Werder Bremen','Stuttgart'], a:['Bayern de Munique'] },
+        type:'txt', choices:['Bayern de Munique','Borussia Dortmund','Hamburgo','Schalke 04','Werder Bremen','Stuttgart'], a:['Bayern de Munique'], flag:'GER' },
       { t:'Qual clube inglês ficou invicto na Premier League de 2003-04?',
-        type:'txt', choices:['Arsenal','Manchester United','Chelsea','Liverpool','Manchester City','Tottenham'], a:['Arsenal'] },
+        type:'txt', choices:['Arsenal','Manchester United','Chelsea','Liverpool','Manchester City','Tottenham'], a:['Arsenal'], flag:'ENG' },
       { t:'Qual clube italiano perdeu títulos e foi rebaixado no escândalo do Calciopoli, em 2006?',
-        type:'txt', choices:['Juventus','Milan','Inter de Milão','Roma','Napoli','Lazio'], a:['Juventus'] },
+        type:'txt', choices:['Juventus','Milan','Inter de Milão','Roma','Napoli','Lazio'], a:['Juventus'], flag:'ITA' },
       { t:'Que estilo de jogo, baseado em posse e passes curtos, marcou o Barcelona de Guardiola?',
-        type:'txt', choices:['Tiki-taka','Catenaccio','Gegenpressing','Total Football','WM','Kick and rush'], a:['Tiki-taka'] },
+        type:'txt', choices:['Tiki-taka','Catenaccio','Gegenpressing','Total Football','WM','Kick and rush'], a:['Tiki-taka'], icon:'ball' },
       { t:'Que país venceu a Eurocopa de 2004, sendo azarão absoluto?',
-        type:'txt', choices:['Grécia','Portugal','Espanha','Holanda','República Tcheca','Dinamarca'], a:['Grécia'] },
+        type:'txt', choices:['Grécia','Portugal','Espanha','Holanda','República Tcheca','Dinamarca'], a:['Grécia'], icon:'trophy' },
       { t:'Que país entrou na Eurocopa de 1992 como substituto e acabou campeão?',
-        type:'txt', choices:['Dinamarca','Grécia','Suécia','Holanda','Alemanha','Escócia'], a:['Dinamarca'] },
+        type:'txt', choices:['Dinamarca','Grécia','Suécia','Holanda','Alemanha','Escócia'], a:['Dinamarca'], icon:'trophy' },
       { t:'Qual seleção europeia foi a primeira a vencer duas Eurocopas seguidas?',
-        type:'txt', choices:['Espanha','Alemanha','França','Itália','Holanda','Portugal'], a:['Espanha'] },
+        type:'txt', choices:['Espanha','Alemanha','França','Itália','Holanda','Portugal'], a:['Espanha'], icon:'trophy' },
       { t:'Em que estádio o Real Madrid manda seus jogos?',
-        type:'txt', choices:['Santiago Bernabéu','Camp Nou','San Siro','Anfield','Allianz Arena','Old Trafford'], a:['Santiago Bernabéu'] },
+        type:'txt', choices:['Santiago Bernabéu','Camp Nou','San Siro','Anfield','Allianz Arena','Old Trafford'], a:['Santiago Bernabéu'], icon:'stadium' },
       { t:'Em que estádio o Barcelona manda seus jogos?',
-        type:'txt', choices:['Camp Nou','Santiago Bernabéu','Mestalla','San Mamés','Metropolitano','Ramón Sánchez-Pizjuán'], a:['Camp Nou'] },
+        type:'txt', choices:['Camp Nou','Santiago Bernabéu','Mestalla','San Mamés','Metropolitano','Ramón Sánchez-Pizjuán'], a:['Camp Nou'], icon:'stadium' },
       { t:'Que estádio de Milão é dividido por Milan e Inter?',
-        type:'txt', choices:['San Siro','Allianz Stadium','Olímpico','Stadio Diego Maradona','Artemio Franchi','Marassi'], a:['San Siro'] },
+        type:'txt', choices:['San Siro','Allianz Stadium','Olímpico','Stadio Diego Maradona','Artemio Franchi','Marassi'], a:['San Siro'], icon:'stadium' },
       { t:'Qual é o estádio do Liverpool, onde se canta "You\'ll Never Walk Alone"?',
-        type:'txt', choices:['Anfield','Old Trafford','Goodison Park','Etihad','Stamford Bridge','Emirates'], a:['Anfield'] },
+        type:'txt', choices:['Anfield','Old Trafford','Goodison Park','Etihad','Stamford Bridge','Emirates'], a:['Anfield'], icon:'stadium' },
       { t:'Qual é o estádio do Manchester United?',
-        type:'txt', choices:['Old Trafford','Anfield','Etihad','Emirates','Villa Park','Elland Road'], a:['Old Trafford'] },
+        type:'txt', choices:['Old Trafford','Anfield','Etihad','Emirates','Villa Park','Elland Road'], a:['Old Trafford'], icon:'stadium' },
       { t:'Qual clube alemão joga no Signal Iduna Park, diante do "Muro Amarelo"?',
-        type:'txt', choices:['Borussia Dortmund','Bayern de Munique','Schalke 04','Werder Bremen','Hamburgo','Leipzig'], a:['Borussia Dortmund'] },
+        type:'txt', choices:['Borussia Dortmund','Bayern de Munique','Schalke 04','Werder Bremen','Hamburgo','Leipzig'], a:['Borussia Dortmund'], flag:'GER' },
       { t:'Que clube português é o maior campeão nacional?',
-        type:'txt', choices:['Benfica','Porto','Sporting','Braga','Vitória de Guimarães','Belenenses'], a:['Benfica'] },
+        type:'txt', choices:['Benfica','Porto','Sporting','Braga','Vitória de Guimarães','Belenenses'], a:['Benfica'], flag:'POR' },
       { t:'Qual clube venceu a Champions League de 2005 após estar perdendo por 3 a 0 no intervalo?',
-        type:'txt', choices:['Liverpool','Milan','Manchester United','Chelsea','Barcelona','Porto'], a:['Liverpool'] },
+        type:'txt', choices:['Liverpool','Milan','Manchester United','Chelsea','Barcelona','Porto'], a:['Liverpool'], icon:'trophy' },
       { t:'Qual clube português venceu a Champions League de 2004 sob José Mourinho?',
-        type:'txt', choices:['Porto','Benfica','Sporting','Braga','Boavista','Vitória'], a:['Porto'] },
+        type:'txt', choices:['Porto','Benfica','Sporting','Braga','Boavista','Vitória'], a:['Porto'], flag:'POR' },
       { t:'Qual clube grego é o maior campeão nacional?',
-        type:'txt', choices:['Olympiacos','Panathinaikos','AEK','PAOK','Aris','Larissa'], a:['Olympiacos'] },
+        type:'txt', choices:['Olympiacos','Panathinaikos','AEK','PAOK','Aris','Larissa'], a:['Olympiacos'], icon:'trophy' },
       { t:'Que clube turco é conhecido como "O Inferno" por sua torcida no Ali Sami Yen?',
-        type:'txt', choices:['Galatasaray','Fenerbahçe','Beşiktaş','Trabzonspor','Başakşehir','Bursaspor'], a:['Galatasaray'] },
+        type:'txt', choices:['Galatasaray','Fenerbahçe','Beşiktaş','Trabzonspor','Başakşehir','Bursaspor'], a:['Galatasaray'], icon:'ball' },
       { t:'Que país tem a liga chamada Jupiler Pro League?',
-        type:'txt', choices:['Bélgica','Holanda','Suíça','Áustria','Dinamarca','Noruega'], a:['Bélgica'] },
+        type:'txt', choices:['Bélgica','Holanda','Suíça','Áustria','Dinamarca','Noruega'], a:['Bélgica'], icon:'trophy' },
       { t:'Como é chamado o clássico entre Boca Juniors e River Plate?',
-        type:'txt', choices:['Superclásico','El Clásico','Old Firm','Derby della Madonnina','Clássico dos Milhões','Derbi Madrileño'], a:['Superclásico'] },
+        type:'txt', choices:['Superclásico','El Clásico','Old Firm','Derby della Madonnina','Clássico dos Milhões','Derbi Madrileño'], a:['Superclásico'], icon:'ball' },
       { t:'Qual seleção venceu a Copa do Mundo de 1966, em casa?',
-        type:'txt', choices:['Inglaterra','Alemanha','Brasil','Portugal','Itália','Uruguai'], a:['Inglaterra'] },
+        type:'txt', choices:['Inglaterra','Alemanha','Brasil','Portugal','Itália','Uruguai'], a:['Inglaterra'], icon:'trophy' },
       { t:'Qual seleção europeia venceu a Copa do Mundo de 2010, a primeira de sua história?',
-        type:'txt', choices:['Espanha','Holanda','Alemanha','França','Itália','Portugal'], a:['Espanha'] },
+        type:'txt', choices:['Espanha','Holanda','Alemanha','França','Itália','Portugal'], a:['Espanha'], icon:'trophy' },
     ]
   },
   {
@@ -1442,59 +1495,59 @@ const CATS = [
     qs:[
       /* ── os bancos ── */
       { t:'Qual técnico comandou o Brasil no tricampeonato de 1970?',
-        type:'txt', choices:['Zagallo','Telê Santana','João Saldanha','Parreira','Vicente Feola','Aymoré Moreira'], a:['Zagallo'] },
+        type:'txt', choices:['Zagallo','Telê Santana','João Saldanha','Parreira','Vicente Feola','Aymoré Moreira'], a:['Zagallo'], flag:'BRA' },
       { t:'Qual técnico comandou o Brasil no tetracampeonato de 1994?',
-        type:'txt', choices:['Carlos Alberto Parreira','Telê Santana','Zagallo','Felipão','Dunga','Sebastião Lazaroni'], a:['Carlos Alberto Parreira'] },
+        type:'txt', choices:['Carlos Alberto Parreira','Telê Santana','Zagallo','Felipão','Dunga','Sebastião Lazaroni'], a:['Carlos Alberto Parreira'], flag:'BRA' },
       { t:'Qual técnico comandou o Brasil no pentacampeonato de 2002?',
-        type:'txt', choices:['Luiz Felipe Scolari','Parreira','Zagallo','Dunga','Tite','Vanderlei Luxemburgo'], a:['Luiz Felipe Scolari'] },
+        type:'txt', choices:['Luiz Felipe Scolari','Parreira','Zagallo','Dunga','Tite','Vanderlei Luxemburgo'], a:['Luiz Felipe Scolari'], flag:'BRA' },
       { t:'Qual técnico comandou a seleção brasileira de 1982, lembrada pelo estilo de jogo?',
-        type:'txt', choices:['Telê Santana','Zagallo','Parreira','João Saldanha','Lazaroni','Cláudio Coutinho'], a:['Telê Santana'] },
+        type:'txt', choices:['Telê Santana','Zagallo','Parreira','João Saldanha','Lazaroni','Cláudio Coutinho'], a:['Telê Santana'], flag:'BRA' },
       { t:'Qual técnico construiu o Manchester United dos anos 1990 e 2000?',
-        type:'txt', choices:['Alex Ferguson','Arsène Wenger','José Mourinho','Bob Paisley','Brian Clough','Matt Busby'], a:['Alex Ferguson'] },
+        type:'txt', choices:['Alex Ferguson','Arsène Wenger','José Mourinho','Bob Paisley','Brian Clough','Matt Busby'], a:['Alex Ferguson'], icon:'bench' },
       { t:'Qual técnico venceu a Champions League com Porto e com a Inter de Milão?',
-        type:'txt', choices:['José Mourinho','Carlo Ancelotti','Pep Guardiola','Fabio Capello','Rafa Benítez','Marcello Lippi'], a:['José Mourinho'] },
+        type:'txt', choices:['José Mourinho','Carlo Ancelotti','Pep Guardiola','Fabio Capello','Rafa Benítez','Marcello Lippi'], a:['José Mourinho'], icon:'bench' },
       { t:'Qual técnico comandou o Barcelona do tiki-taka a partir de 2008?',
-        type:'txt', choices:['Pep Guardiola','Luis Enrique','Frank Rijkaard','Johan Cruyff','Tito Vilanova','Ernesto Valverde'], a:['Pep Guardiola'] },
+        type:'txt', choices:['Pep Guardiola','Luis Enrique','Frank Rijkaard','Johan Cruyff','Tito Vilanova','Ernesto Valverde'], a:['Pep Guardiola'], icon:'bench' },
       { t:'Qual técnico levou o gegenpressing ao Liverpool?',
-        type:'txt', choices:['Jürgen Klopp','Rafa Benítez','Brendan Rodgers','Pep Guardiola','Thomas Tuchel','Ralf Rangnick'], a:['Jürgen Klopp'] },
+        type:'txt', choices:['Jürgen Klopp','Rafa Benítez','Brendan Rodgers','Pep Guardiola','Thomas Tuchel','Ralf Rangnick'], a:['Jürgen Klopp'], icon:'bench' },
       { t:'Qual técnico é o maior vencedor da Champions League, com cinco títulos?',
-        type:'txt', choices:['Carlo Ancelotti','Alex Ferguson','Pep Guardiola','Bob Paisley','Zidane','José Mourinho'], a:['Carlo Ancelotti'] },
+        type:'txt', choices:['Carlo Ancelotti','Alex Ferguson','Pep Guardiola','Bob Paisley','Zidane','José Mourinho'], a:['Carlo Ancelotti'], icon:'bench' },
       { t:'Qual técnico comandou a Argentina campeã do mundo em 1986?',
-        type:'txt', choices:['Carlos Bilardo','César Menotti','Alfio Basile','Marcelo Bielsa','Daniel Passarella','Lionel Scaloni'], a:['Carlos Bilardo'] },
+        type:'txt', choices:['Carlos Bilardo','César Menotti','Alfio Basile','Marcelo Bielsa','Daniel Passarella','Lionel Scaloni'], a:['Carlos Bilardo'], flag:'ARG' },
       { t:'Qual técnico levou a Holanda do "futebol total" à final de 1974?',
-        type:'txt', choices:['Rinus Michels','Johan Cruyff','Ernst Happel','Guus Hiddink','Louis van Gaal','Frank Rijkaard'], a:['Rinus Michels'] },
+        type:'txt', choices:['Rinus Michels','Johan Cruyff','Ernst Happel','Guus Hiddink','Louis van Gaal','Frank Rijkaard'], a:['Rinus Michels'], flag:'NED' },
       /* ── os recordes ── */
       { t:'Qual seleção é a única a ter disputado todas as Copas do Mundo?',
-        type:'txt', choices:['Brasil','Alemanha','Itália','Argentina','Uruguai','França'], a:['Brasil'] },
+        type:'txt', choices:['Brasil','Alemanha','Itália','Argentina','Uruguai','França'], a:['Brasil'], icon:'trophy' },
       { t:'Quantas Copas do Mundo o Brasil já venceu?',
-        type:'txt', choices:['5','3','4','6','2','7'], a:['5'] },
+        type:'txt', choices:['5','3','4','6','2','7'], a:['5'], flag:'BRA' },
       { t:'Que estádio recebeu a final da Copa de 1950 e também a de 2014?',
-        type:'txt', choices:['Maracanã','Morumbi','Mineirão','Beira-Rio','Arena Corinthians','Castelão'], a:['Maracanã'] },
+        type:'txt', choices:['Maracanã','Morumbi','Mineirão','Beira-Rio','Arena Corinthians','Castelão'], a:['Maracanã'], icon:'stadium' },
       { t:'Qual foi o placar da final da Copa de 1970, Brasil x Itália?',
-        type:'txt', choices:['4 a 1','3 a 1','2 a 1','4 a 2','3 a 2','5 a 2'], a:['4 a 1'] },
+        type:'txt', choices:['4 a 1','3 a 1','2 a 1','4 a 2','3 a 2','5 a 2'], a:['4 a 1'], flag:'ITA' },
       { t:'Qual foi o placar de Brasil x Alemanha na semifinal da Copa de 2014?',
-        type:'txt', choices:['7 a 1','5 a 0','6 a 1','4 a 0','7 a 2','3 a 1'], a:['7 a 1'] },
+        type:'txt', choices:['7 a 1','5 a 0','6 a 1','4 a 0','7 a 2','3 a 1'], a:['7 a 1'], flag:'GER' },
       { t:'Em que ano foi disputada a primeira Copa do Brasil?',
-        type:'txt', choices:['1989','1959','1971','1980','1995','2000'], a:['1989'] },
+        type:'txt', choices:['1989','1959','1971','1980','1995','2000'], a:['1989'], flag:'BRA' },
       { t:'Qual é o campeonato estadual mais antigo do Brasil, disputado desde 1902?',
-        type:'txt', choices:['Campeonato Paulista','Campeonato Carioca','Campeonato Gaúcho','Campeonato Mineiro','Campeonato Baiano','Campeonato Pernambucano'], a:['Campeonato Paulista'] },
+        type:'txt', choices:['Campeonato Paulista','Campeonato Carioca','Campeonato Gaúcho','Campeonato Mineiro','Campeonato Baiano','Campeonato Pernambucano'], a:['Campeonato Paulista'], flag:'BRA' },
       { t:'Qual clube tem mais títulos do Campeonato Paulista?',
-        type:'txt', choices:['Corinthians','Palmeiras','Santos','São Paulo','Portuguesa','Guarani'], a:['Corinthians'] },
+        type:'txt', choices:['Corinthians','Palmeiras','Santos','São Paulo','Portuguesa','Guarani'], a:['Corinthians'], icon:'trophy' },
       { t:'Qual clube tem mais títulos do Campeonato Carioca?',
-        type:'txt', choices:['Flamengo','Fluminense','Vasco','Botafogo','America','Bangu'], a:['Flamengo'] },
+        type:'txt', choices:['Flamengo','Fluminense','Vasco','Botafogo','America','Bangu'], a:['Flamengo'], icon:'trophy' },
       /* ── as histórias ── */
       { t:'De que cor era a camisa da seleção brasileira antes de 1954?',
-        type:'txt', choices:['Branca','Amarela','Azul','Verde','Vermelha','Cinza'], a:['Branca'] },
+        type:'txt', choices:['Branca','Amarela','Azul','Verde','Vermelha','Cinza'], a:['Branca'], flag:'BRA' },
       { t:'O que levou o Brasil a abandonar a camisa branca?',
-        type:'txt', choices:['A derrota de 1950 no Maracanã','Uma exigência da FIFA','A cor sujava demais','Um pedido do governo','A Copa de 1938','Um concurso de 1930'], a:['A derrota de 1950 no Maracanã'] },
+        type:'txt', choices:['A derrota de 1950 no Maracanã','Uma exigência da FIFA','A cor sujava demais','Um pedido do governo','A Copa de 1938','Um concurso de 1930'], a:['A derrota de 1950 no Maracanã'], flag:'BRA' },
       { t:'Quem é a maior artilheira da história das Copas do Mundo femininas?',
-        type:'txt', choices:['Marta','Formiga','Cristiane','Birgit Prinz','Abby Wambach','Sun Wen'], a:['Marta'] },
+        type:'txt', choices:['Marta','Formiga','Cristiane','Birgit Prinz','Abby Wambach','Sun Wen'], a:['Marta'], icon:'trophy' },
       { t:'Quantas vezes Marta foi eleita a melhor jogadora do mundo pela FIFA?',
-        type:'txt', choices:['6','3','4','5','7','2'], a:['6'] },
+        type:'txt', choices:['6','3','4','5','7','2'], a:['6'], icon:'rules' },
       { t:'Como é chamada a derrota do Brasil para o Uruguai na decisão de 1950?',
-        type:'txt', choices:['Maracanaço','Mineiraço','Fatídico','Desastre de 50','Tragédia Carioca','Maracanãzinho'], a:['Maracanaço'] },
+        type:'txt', choices:['Maracanaço','Mineiraço','Fatídico','Desastre de 50','Tragédia Carioca','Maracanãzinho'], a:['Maracanaço'], flag:'BRA' },
       { t:'Como ficou conhecida a derrota do Brasil por 7 a 1 em 2014?',
-        type:'txt', choices:['Mineiraço','Maracanaço','Belorizontino','Sete-Um','Tragédia de BH','Desastre do Mineirão'], a:['Mineiraço'] },
+        type:'txt', choices:['Mineiraço','Maracanaço','Belorizontino','Sete-Um','Tragédia de BH','Desastre do Mineirão'], a:['Mineiraço'], flag:'BRA' },
     ]
   },
   {
@@ -4587,6 +4640,81 @@ function mkPort(p) {
    bold flat shapes, one heavy outline, no gradients, no gloss.
 ═══════════════════════════════════════════════════ */
 const ART = {
+  /* The vignettes a question can carry when it is not about a face or a crest.
+     Same rules as the rest of ART: flat colour, one heavy outline, no shading,
+     drawn at a size a phone can read. */
+  rules(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração das regras do futebol"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M26 20 h34 q6 4 12 0 h22 v42 h-22 q-6 -4 -12 0 h-34 Z" fill="#F5EFE0"/>
+        <path d="M60 20 v42" fill="none"/>
+        <path d="M33 31 h18 M33 39 h18 M33 47 h14" stroke-width="1.6" opacity=".55" fill="none"/>
+        <path d="M69 31 h18 M69 39 h18 M69 47 h14" stroke-width="1.6" opacity=".55" fill="none"/>
+        <circle cx="93" cy="59" r="11" fill="#F0C24A"/>
+        <path d="M86 59 q7 -6 14 0 q-7 6 -14 0 Z" fill="#2A1D10" stroke="none"/>
+      </g>
+    </svg>`;
+  },
+
+  plane(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um avião"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <path d="M0 62 q30 -10 60 0 t60 0 v18 H0 Z" fill="var(--retro-band)" opacity=".22"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M18 44 L74 32 q14 -3 22 2 q4 3 -1 5 L44 52 L30 50 L38 42 Z" fill="#F5EFE0"/>
+        <path d="M52 40 L40 22 L48 21 L66 36" fill="#DCD3BC"/>
+        <path d="M30 50 L24 58 L32 57" fill="#DCD3BC"/>
+      </g>
+    </svg>`;
+  },
+
+  boot(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de uma chuteira"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M26 26 q4 20 6 26 q2 6 10 6 h44 q10 0 10 -8 q0 -7 -10 -10 L58 36 q-8 -3 -12 -12 Z" fill="#F0C24A"/>
+        <path d="M40 58 h56" stroke-width="3"/>
+        <path d="M46 62 v5 M60 62 v5 M74 62 v5 M88 62 v5" stroke-width="2.4"/>
+        <path d="M44 38 l14 5 M48 30 l12 4" stroke-width="1.6" opacity=".6"/>
+      </g>
+    </svg>`;
+  },
+
+  bench(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um treinador à beira do campo"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <path d="M0 64 h120 v16 H0 Z" fill="#2E7D4F" opacity=".8"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="46" cy="26" r="10" fill="#C98A5B"/>
+        <path d="M36 23 q10 -9 20 0 q1 -6 -10 -7 q-11 1 -10 7 Z" fill="#2A1D10"/>
+        <path d="M34 64 q0 -22 12 -26 q12 4 12 26 Z" fill="var(--retro-band)"/>
+        <path d="M58 44 L76 36" stroke="#C98A5B" stroke-width="7"/>
+        <path d="M58 44 L76 36"/>
+        <rect x="74" y="24" width="20" height="26" rx="3" fill="#F5EFE0"/>
+        <path d="M79 32 h10 M79 38 h10 M79 44 h6" stroke-width="1.6" opacity=".55"/>
+      </g>
+    </svg>`;
+  },
+
+  globe(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um globo"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round">
+        <circle cx="60" cy="40" r="26" fill="#1E63C8"/>
+        <path d="M34 40 h52 M60 14 v52" stroke-width="1.6" opacity=".5" fill="none"/>
+        <path d="M60 14 q-14 26 0 52 M60 14 q14 26 0 52" fill="none" stroke-width="1.6" opacity=".5"/>
+        <path d="M44 28 q8 -4 12 2 q-3 7 -12 6 Z" fill="#2E7D4F"/>
+        <path d="M66 44 q10 -3 14 6 q-8 7 -16 1 Z" fill="#2E7D4F"/>
+      </g>
+    </svg>`;
+  },
+
   /* a little printed vignette of a ground, for the stadium questions */
   stadium(w) {
     return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um estádio"
@@ -4851,6 +4979,47 @@ function badge(item, idx) {
     <div class="crest-box">${clubArt(item.id, '', false)}</div>
     <span class="tile-name tile-club${longCls}">${item.n}</span>
   </div>`;
+}
+
+/* Every question carries a picture.
+   A bare question card is the one place the album stops looking like an album,
+   and the text questions — the rules, the leagues, the coaches — had nothing at
+   all. Explicit art first (a face, a crest, a flag, a drawn vignette), then a
+   fallback from the category, so a question added later can never end up bare.
+
+   The fallback must not answer anything: it is a category mark, never the
+   subject of the question. A flag is only ever set by hand, and never on a
+   question whose answer is a country. */
+const QICON = {
+  rules: w => ART.rules(w), plane: w => ART.plane(w), boot: w => ART.boot(w),
+  bench: w => ART.bench(w), globe: w => ART.globe(w), stadium: w => ART.stadium(w),
+  trophy: w => ART.trophy(w), ball: w => ART.ball(w),
+};
+
+/* what a category falls back to when a question names nothing to draw */
+const CAT_ART = {
+  origens: 'rules',  europa: 'globe',   curiosos: 'bench',
+  copa:    'trophy', ouro:   'boot',    craques: 'boot',
+  estadios:'stadium',lendas: 'trophy',  brasileirao: 'trophy',
+  libertadores:'trophy', estados: 'globe', apelidos: 'ball',
+  g_escudo:'ball',   g_conta:'ball',
+};
+
+function questionArt(q) {
+  if (q.port)  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
+  if (q.stad)  return `<div class="qart qart-wide qart-draw">${ART.stadium(92)}</div>`;
+  if (q.face)  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>`;
+  if (q.crest) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
+        clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
+  if (q.qimg)  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
+        onerror="this.parentElement.style.display='none'" /></div>`;
+  if (q.flag && FLAGS[q.flag])
+    return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[q.flag] || q.flag}">
+      <svg viewBox="0 0 9 6" preserveAspectRatio="none">${FLAGS[q.flag]}</svg></div>`;
+  const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
+  const draw = QICON[key] || QICON.ball;
+  return `<div class="qart qart-wide qart-draw">${draw(92)}</div>`;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -5343,20 +5512,7 @@ function html() {
   const tcls = tLeft <= 5 ? 't-bad' : tLeft <= 10 ? 't-warn' : isMil ? 't-brass' : '';
   const armed = sc === 'quiz';
 
-  const art = q.port
-    ? `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`
-    : q.stad
-    ? `<div class="qart qart-wide qart-draw">${ART.stadium(92)}</div>`
-    : q.face
-    ? `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
-        onerror="this.parentElement.style.display='none'" /></div>`
-    : q.crest
-    ? `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
-        clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`
-    : q.qimg
-    ? `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
-        onerror="this.parentElement.style.display='none'" /></div>`
-    : '';
+  const art = questionArt(q);
 
   const scoreChanged = pts !== prevPts;
 
@@ -5484,9 +5640,9 @@ function html() {
       </div>
     </div>`
     : sc === 'lock' ? `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0;">
-      <div class="eyebrow timer-low" style="color:var(--brass);">Resposta travada</div>
-      <div class="small muted">${isMil ? money(RUNG().v) + ' na mesa…' : 'vamos ver…'}</div>
+    <div class="settling">
+      <span class="settle-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="small muted">${isMil ? money(RUNG().v) + ' na mesa…' : ''}</span>
     </div>`
     : `<div style="text-align:center;padding:4px 0;" id="rvl"></div>`}
 
