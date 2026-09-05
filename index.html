@@ -442,8 +442,18 @@
     @keyframes lockPulse { 0%,100% { box-shadow: inset 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); } 50% { box-shadow: inset 0 0 0 3px var(--ink), 0 6px 16px var(--shadow-2); } }
     .b-locked { animation: lockPulse .9s ease-in-out infinite; transform: translateY(-2px); }
     .b-faded  { opacity: .28; filter: grayscale(1); }
-    .b-correct { box-shadow: inset 0 0 0 2.5px var(--good), 0 4px 12px var(--shadow); transform: translateY(-2px); }
+    /* A wrong answer shakes; a right one had nothing. It gets the gesture the
+       album is built on — the sticker pressed down into the page and settling.
+       One short beat, no bounce: the reveal is already carrying the moment. */
+    @keyframes stickDown {
+      0%   { transform: translateY(-2px) scale(1); }
+      38%  { transform: translateY(1px)  scale(.965); }
+      100% { transform: translateY(-2px) scale(1); }
+    }
+    .b-correct { box-shadow: inset 0 0 0 2.5px var(--good), 0 4px 12px var(--shadow);
+      transform: translateY(-2px); animation: stickDown .42s cubic-bezier(.3,.7,.3,1); }
     .b-correct .tab { background: var(--good); color: #fff; }
+    .b-fig.b-correct { animation: stickDown .42s cubic-bezier(.3,.7,.3,1); }
     @keyframes wrongShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(3px); } }
     .b-wrong { box-shadow: inset 0 0 0 2.5px var(--bad); animation: wrongShake .4s ease-out; }
     .b-wrong .tab { background: var(--bad); color: #fff; }
@@ -576,7 +586,12 @@
     @media (prefers-reduced-motion: reduce) { .newfig { animation: none; } }
 
     /* ── Home ── */
-    .hero-sticker { width: 138px; margin: 0 auto; }
+    /* The cover sticker is a different player every time the app opens. It
+       used to arrive with the rest of the page, which read as a fixed part of
+       the layout; dealing it in says it was picked for you just now. */
+    .hero-sticker { width: 138px; margin: 0 auto;
+      animation: dealIn .5s cubic-bezier(.2,.9,.3,1) 60ms backwards; }
+    @keyframes dealIn { from { opacity: 0; transform: translateY(9px) rotate(-2.2deg) scale(.965); } }
     .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
     .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 4px; transition: transform .12s, background .15s; }
@@ -587,6 +602,11 @@
     .home-foot { display: flex; gap: 14px; align-items: center; justify-content: center; }
     .link { background: none; border: none; color: var(--pitch); font-size: 11px; font-weight: 700; cursor: pointer; padding: 2px; text-decoration: underline; text-underline-offset: 3px; }
     .medal-strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 300px; cursor: pointer; }
+    .medal-strip .medal-dot { animation: tileIn .34s ease-out backwards; }
+    .medal-strip .medal-dot:nth-child(1){animation-delay:40ms} .medal-strip .medal-dot:nth-child(2){animation-delay:80ms}
+    .medal-strip .medal-dot:nth-child(3){animation-delay:120ms} .medal-strip .medal-dot:nth-child(4){animation-delay:160ms}
+    .medal-strip .medal-dot:nth-child(5){animation-delay:200ms} .medal-strip .medal-dot:nth-child(6){animation-delay:240ms}
+    .medal-strip .medal-dot:nth-child(n+7){animation-delay:280ms}
     .medal-dot { width: 26px; height: 26px; border-radius: 50%; background: var(--pocket); box-shadow: inset 0 0 0 1px var(--rule); display: flex; align-items: center; justify-content: center; color: var(--brass); }
 
     /* ── Difficulty cards ── */
@@ -684,7 +704,17 @@
     /* ── The album pages ── */
     .alb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
     .alb-bar { height: 5px; background: var(--rule-2); border-radius: 3px; overflow: hidden; }
-    .alb-bar > i { display: block; height: 100%; background: var(--brass); border-radius: 3px; }
+    .alb-bar > i { display: block; height: 100%; background: var(--brass); border-radius: 3px;
+      transition: width .9s cubic-bezier(.2,.8,.3,1); }
+    /* Open the album straight after a run and the new stickers are somewhere
+       among two hundred. These are the ones the run just earned — a brass
+       edge and one slow breath, so the eye finds them without the page
+       turning into a light show. It lasts only while the run is on screen:
+       runNewIds is cleared the moment the next game starts. */
+    .alb-fresh > .fig { box-shadow: 0 0 0 2px var(--brass), 0 2px 8px var(--shadow); }
+    .alb-fresh { animation: freshGlow 2.4s ease-in-out 3; }
+    @keyframes freshGlow { 0%,100% { filter: none; } 50% { filter: brightness(1.06); } }
+
     /* ── The country band that opens each page ──────────────────
        Straight out of the old albums: the crest, the name set large and
        heavy, and the same name repeated small in the other languages the
@@ -4061,12 +4091,12 @@ function _shade(hex, amt) {
   return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
 }
 
-/* Five clubs — Corinthians, Vasco, Sport, Bragantino and Náutico — have no
-   crest file, and that is deliberate: Wikipedia carries those marks only under
-   fair use, which cannot be redistributed inside a shipped app (see
-   tools/patch_nonfree.py). Drawing imitations of the real crests would be
-   worse than shipping none, so this badge deliberately does not resemble them.
-   It is an identification device built from public facts we already hold —
+/* Every club now ships its own official escudo, so nothing reaches this badge
+   through LOGOS any more. It stays as clubFallback's landing spot: if a crest
+   file ever 404s — an old cached page pointing at a file we replaced — a drawn
+   shield is a better answer than a broken-image icon.
+   It deliberately does not resemble any real crest. It is an identification
+   device built from public facts we already hold —
    the club's colours, its kit pattern, its founding year, its titles — and it
    is drawn with enough craft to sit beside a photographed crest without
    looking like a missing asset. */
@@ -4480,7 +4510,8 @@ function html() {
             <span class="cnt">${got}/${groups[ctry].length}</span>
           </div>
           <div class="alb-grid">
-            ${groups[ctry].map(({ p, n }) => `<div class="alb-slot${album.has(p.id) ? '' : ' empty'}">
+            ${groups[ctry].map(({ p, n }) => `<div class="alb-slot${album.has(p.id) ? '' : ' empty'}${
+                runNewIds.includes(p.id) ? ' alb-fresh' : ''}">
                 <span class="alb-n">${String(n).padStart(3, '0')}</span>
                 ${album.has(p.id)
                   ? figurinha(p, 'lg', { sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos] })

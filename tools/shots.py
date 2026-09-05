@@ -83,6 +83,10 @@ STATES = {
    cat.qs=[fq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
    sc='quiz'; tMax=30; tLeft=25; disp=getDisp(fq); go();""",
 
+ "s-album-fresh": """album=new Set(PL.slice(0,30).map(p=>p.id));
+   runNewIds=['pele','garrincha','zico']; runNewIds.forEach(id=>album.add(id));
+   LS.set('album',[...album]); sc='album'; go();""",
+
  "s-album": """album=new Set(PL.slice(0,46).map(p=>p.id).concat(PL.slice(60,74).map(p=>p.id)));
    LS.set('album',[...album]); sc='album'; go();""",
  "s-back-hit": """advanceAfterReveal=function(){};   /* hold the reveal on screen */
