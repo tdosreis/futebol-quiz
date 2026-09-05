@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Static sanity checks on the game data inside index.html."""
-import re, io, os, sys, json
+"""Sanity checks on the game data in index.html — as text, then in a real browser."""
+import io, re, os, sys, json
 
 P = os.path.join(os.path.dirname(__file__), "..", "index.html")
 s = io.open(P, encoding="utf-8").read()
@@ -54,7 +54,9 @@ for mid, body in re.findall(r"^\s*([\w_]+):\s*\{([^}]*)\}", meta_block, re.M):
     if not em: errs.append(f"{mid}: missing era"); continue
     a, b = int(em.group(1)), int(em.group(2))
     if a >= b: errs.append(f"{mid}: era start >= end ({a},{b})")
-    if a < 1940 or b > 2027: warns.append(f"{mid}: suspicious era ({a},{b})")
+    # 1925: the album now reaches Friedenreich's generation, so a 1920s debut
+    # is real data rather than a typo. Anything earlier still deserves a look.
+    if a < 1925 or b > 2027: warns.append(f"{mid}: suspicious era ({a},{b})")
     if not re.search(r"pos:'(GK|DF|MF|FW)'", body): errs.append(f"{mid}: bad/missing pos")
     if not re.search(r"clubs:\[", body): errs.append(f"{mid}: missing clubs")
 
@@ -63,6 +65,40 @@ root = os.path.dirname(P)
 for img in sorted(set(re.findall(r"img/[a-f0-9]{16}\.(?:png|jpg|jpeg)", s))):
     if not os.path.exists(os.path.join(root, img)):
         errs.append(f"missing image file: {img}")
+
+# ── does the page's script actually parse and run? ──
+# A single stray apostrophe in a name kills the whole <script>, and every
+# check above still passes because they only ever read the file as text.
+# So boot it in a real browser and ask the app to count itself.
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+if os.path.exists(CHROME):
+    import subprocess, json as _json
+    probe = ("<script>setTimeout(function(){var o={};"
+             "['PL','PL_META','LOGOS','CL','CREDITS'].forEach(function(k){"
+             "  try{var v=eval(k); o[k]=Array.isArray(v)?v.length:Object.keys(v).length;}"
+             "  catch(e){o[k]='UNDEFINED';}});"
+             "var d=document.createElement('pre');d.id='VOUT';"
+             "d.textContent=JSON.stringify(o);document.body.appendChild(d);},600);</script>")
+    tmp = os.path.join(root, "_validate_boot.html")
+    io.open(tmp, "w", encoding="utf-8").write(s.replace("</body>", probe + "</body>"))
+    try:
+        dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
+                              "--virtual-time-budget=8000", "--allow-file-access-from-files",
+                              "--dump-dom", "file://" + tmp],
+                             capture_output=True, text=True, timeout=180).stdout
+        m = re.search(r'<pre id="VOUT">(.*?)</pre>', dom, re.S)
+        if not m:
+            errs.append("the page's script did not run at all (parse error?)")
+        else:
+            got = _json.loads(m.group(1))
+            dead = [k for k, v in got.items() if v == "UNDEFINED"]
+            if dead:
+                errs.append("script failed to define: " + ", ".join(dead)
+                            + " — usually an unescaped quote in a name")
+            else:
+                print("  booted ok: " + "  ".join(f"{k}={v}" for k, v in got.items()))
+    finally:
+        if os.path.exists(tmp): os.remove(tmp)
 
 print(f"\n{len(errs)} errors, {len(warns)} warnings")
 for e in errs[:40]: print("  ERR ", e)

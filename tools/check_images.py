@@ -70,7 +70,7 @@ T = r"""
 tmp = os.path.join(ROOT, "_imgchk.html")
 io.open(tmp, "w", encoding="utf-8").write(s.replace("</body>", T + "</body>"))
 try:
-    dom = subprocess.run([CHROME, "--headless", "--disable-gpu", "--virtual-time-budget=15000",
+    dom = subprocess.run([CHROME, "--headless", "--disable-gpu", "--virtual-time-budget=45000",   # 270+ images now; 15s was not enough
                           "--allow-file-access-from-files", "--dump-dom", "file://" + tmp],
                          capture_output=True, text=True, timeout=240).stdout
 finally:
