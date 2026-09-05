@@ -53,6 +53,18 @@ TESTS = r"""
       });
       ok(`[${k}] every option set is the size it should be`, sizeOk);
       ok(`[${k}] no duplicate tiles`, dupOk);
+      /* Two questions with the same answer are the same question as far as one
+         round is concerned, however differently they are worded — "qual goleiro
+         soviético é o único a ganhar a Bola de Ouro" and "qual goleiro é o
+         único a ganhar a Bola de Ouro" are both Yashin. */
+      const ansSeen = new Set();
+      let ansOk = true;
+      g.qs.forEach(q => {
+        const key = (q.a || []).slice().sort().join('|');
+        if (ansSeen.has(key)) ansOk = false;
+        ansSeen.add(key);
+      });
+      ok(`[${k}] no two questions share an answer`, ansOk);
       ok(`[${k}] correct answers always present`, allOk);
     });
 

@@ -1260,14 +1260,11 @@ const CATS = [
       { t:'Quem marcou o milésimo gol da carreira no Maracanã, em 1969?',                     a:['pele'],        type:'player' },
       { t:'Qual ponta é o segundo maior artilheiro da história do Santos, atrás só de Pelé?', a:['pepe'],        type:'player' },
       /* ── quatro Copas ── */
-      { t:'Qual lateral disputou quatro Copas do Mundo pelo Brasil, de 1954 a 1966?',         a:['djalma_santos'], type:'player' },
       { t:'Qual zagueiro levantou a taça em 1958 e ainda jogou a Copa de 1966?',              a:['bellini'],     type:'player' },
       { t:'Qual atacante do Atlético Mineiro teve a carreira encurtada por lesões no joelho?', a:['reinaldo'],   type:'player' },
       /* ── a Europa, os grandes torneios ── */
       { t:'Qual húngaro do Real Madrid marcou 4 gols na final da Copa dos Campeões de 1960?', a:['puskas'],      type:'player' },
       { t:'Qual argentino do Real Madrid marcou nas cinco primeiras finais da Copa dos Campeões?', a:['distefano'], type:'player' },
-      { t:'Qual português foi artilheiro da Copa de 1966, com 9 gols?',                       a:['eusebio'],     type:'player' },
-      { t:'Qual goleiro é o único a ganhar a Bola de Ouro, em 1963?',                         a:['yashin'],      type:'player' },
       { t:'Qual italiano marcou 3 gols contra o Brasil na Copa de 1982?',                     a:['rossi'],       type:'player' },
       { t:'Qual holandês dá nome à finta de girar o corpo levando a bola por trás da perna?', a:['cruyff'],      type:'player' },
     ]
@@ -3273,6 +3270,11 @@ function _qBase(q) {
   return 2;
 }
 
+/* What a question is *about*, as a key: its answers, sorted. Two questions
+   with the same answer are the same question as far as one round is concerned,
+   however differently they are worded. */
+const ansKey = q => ((q && q.a) || []).slice().sort().join('|');
+
 /* Text tiles: either the question asked for them (photo reveal, career path)
    or its answers are words rather than rows, which leaves nothing to draw. */
 const isTextQ = q => !!(q && (q.textTiles || q.type === 'txt'));
@@ -3304,7 +3306,13 @@ function buildGame(key) {
      makes a round feel like a worksheet even when every question is fair.
      De-duplication by exact text is not enough — it is the *shape* that
      repeats, so questions are also bucketed by their opening words. */
+  /* Two questions can be different sentences and still be the same question:
+     "qual goleiro soviético é o único a ganhar a Bola de Ouro" and "qual
+     goleiro é o único a ganhar a Bola de Ouro" are both Yashin, and a round
+     that asked both looked broken. Text and shape were already de-duplicated;
+     the answer is the third thing that must not repeat. */
   const seen  = new Set();
+  const seenA = new Set();
   const byCat = {};
   const byShape = {};
   const qs = [];
@@ -3312,7 +3320,7 @@ function buildGame(key) {
     let best = null, bestI = -1, bestW = -1e9;
     for (let i = 0; i < scored.length; i++) {
       const o = scored[i];
-      if (!o || seen.has(o.q.t)) continue;
+      if (!o || seen.has(o.q.t) || seenA.has(ansKey(o.q))) continue;
       const cid   = (o.q._cat && o.q._cat.id) || '?';
       const shape = qShape(o.q);
       const w = o.w
@@ -3324,6 +3332,7 @@ function buildGame(key) {
     if (!best) break;
     scored[bestI] = null;
     seen.add(best.q.t);
+    seenA.add(ansKey(best.q));
     const cid = (best.q._cat && best.q._cat.id) || '?';
     byCat[cid] = (byCat[cid] || 0) + 1;
     byShape[qShape(best.q)] = (byShape[qShape(best.q)] || 0) + 1;
@@ -4429,12 +4438,13 @@ function buildMilhao() {
   const pool = shuf(all).filter(q => { if (seen.has(q.t)) return false; seen.add(q.t); return true; });
 
   const used = new Set();
+  const usedA = new Set();
   const byCat = {}, byShape = {};
   let prevCat = null;
   const qs = LADDER.map(step => {
     let best = null, bestW = -1e9;
     for (let i = 0; i < pool.length; i++) {
-      if (used.has(i)) continue;
+      if (used.has(i) || usedA.has(ansKey(pool[i]))) continue;
       const cid = (pool[i]._cat && pool[i]._cat.id) || '?';
       const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3
               - (byCat[cid] || 0) * 5
@@ -4445,6 +4455,7 @@ function buildMilhao() {
     if (best === null) return null;
     used.add(best);
     const q = pool[best];
+    usedA.add(ansKey(q));
     const cid = (q._cat && q._cat.id) || '?';
     byCat[cid] = (byCat[cid] || 0) + 1;
     byShape[qShape(q)] = (byShape[qShape(q)] || 0) + 1;
