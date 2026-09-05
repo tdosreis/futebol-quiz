@@ -393,10 +393,6 @@
       display: flex; align-items: center; justify-content: center;
     }
     .crest-disc > img, .crest-disc > svg { width: 78%; height: 78%; object-fit: contain; pointer-events: none; display: block; }
-    /* a flag has no shield of its own, so it is cut to one */
-    .crest-disc > .clipped { width: 78%; height: 78%; }
-    .crest-disc > .clipped img { width: 100%; height: 100%; object-fit: cover;
-      clip-path: url(#shield); -webkit-clip-path: url(#shield); display: block; }
     .crest-disc > .fill { width: 100%; height: 100%; object-fit: cover; }
     .qart-crest .crest-disc, .ficha-crest .crest-disc { position: static; transform: none; width: 100%; height: 100%; }
 
@@ -733,16 +729,6 @@
   </style>
 </head>
 <body>
-<!-- The shield every club's mark is cut to. Most crests are already shield
-     shaped; the three whose only freely-licensed file has an opaque square
-     background are clipped to this same outline, so a row of crests is one
-     family of shapes rather than shields beside rectangles. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <clipPath id="shield" clipPathUnits="objectBoundingBox">
-    <path d="M0.5 0.03 L0.93 0.17 L0.93 0.52 C0.93 0.76 0.73 0.92 0.5 0.985
-             C0.27 0.92 0.07 0.76 0.07 0.52 L0.07 0.17 Z"/>
-  </clipPath>
-</defs></svg>
 <div id="qz">
   <div id="ct"></div>
 </div>
@@ -1762,50 +1748,48 @@ PL.forEach(p => { p.wc = WC[p.id] || []; p.bo = BO[p.id] || 0; p.nick = NICK[p.i
    IMAGES — CLUB LOGOS (Wikimedia Commons)
 ═══════════════════════════════════════════════════ */
 const LOGOS = {
-  flamengo:     'img/83cfe7a2e3c07a6d.png',
-  fluminense:   'img/f349098ce51f3de6.png',
-  botafogo:     'img/6f6803956f2610ff.png',
-  palmeiras:    'img/09298e3b8b615c53.png',
-  saopaulo:     'img/a5bf018d3843a28a.png',
-  santos:       'img/879bfa459e4ff17e.png',
-  gremio:       'img/194767288f90128d.png',
-  internacional:'img/30714e4c8d04f3d4.png',
-  cruzeiro:     'img/c780eaab619fbae9.png',
-  atleticomg:   'img/4f0ed4152b2a54a3.png',
-  atleticopr:   'img/b60bcbe37aa5443f.png',
-  bahia:        'img/558858adda0e83fa.png',
-  fortaleza:    'img/ed806b4b2f0348ac.png',
-  ceara:        'img/1b83fed2c4cff421.png',
-  pontepreta:   'img/ef0db62d4a991d5d.png',
-  coritiba:     'img/d984f3dc1ac2317e.png',
-  vitoria:      'img/1d1a225a22dcc17f.png',
-  criciuma:     'img/5a5e8c49ba076870.png',
-  americamg:    'img/385a518b92fc0556.png',
-  guarani:      'img/3565e2d188f683e3.png',
-  corinthians:  'img/73bde55c15fce63d.png',
-  vasco:        'img/e01e2310f4d9dc0e.png',
-  nautico:      'img/0bd34a4355657963.png',
-  goias:         'img/85111ae1fa5b5a12.png',
-  atleticogo:    'img/7818e6a84a5c7d6c.png',
-  cuiaba:        'img/f5bc4b8150fa5b8c.png',
-  juventude:     'img/e34b57e0740793a6.png',
-  chapecoense:   'img/f9dc035c8827dc93.png',
-  avai:          'img/5e262c90a672f57a.png',
-  figueirense:   'img/001caba4ea661db8.png',
-  paysandu:      'img/be9069fb11799f76.png',
-  remo:          'img/0246d038c4986bfd.png',
-  santacruz:     'img/eab4007591b0fcc3.png',
-  portuguesa:    'img/46d46b2dfc5184bf.png',
-  csa:           'img/e5a1d03808494f19.png',
-  crb:           'img/d4ed64e00779c976.png',
-  abc:           'img/6f4c4d9ea66eef2b.png',
-  sampaio:       'img/99e7f75110951861.png',
-  mirassol:      'img/b2892514e577b9ac.png',
-  botafogosp:    'img/c482668824eb5675.png',
-  /* The three below are the clubs' own escudos, used for identification —
-     see NONFREE. Every other file here is freely licensed on Commons. */
-  sport:         'img/5914b8534fae14c1.png',
-  bragantino:    'img/3405db58adf3ce0a.png',
+  flamengo:       'img/8b32f27f1ca86297.png',
+  fluminense:     'img/f814d81ae4e352aa.png',
+  botafogo:       'img/c853e78c341d2daf.png',
+  palmeiras:      'img/4fb63c9df9abada7.png',
+  saopaulo:       'img/835302af3447090f.png',
+  santos:         'img/926ef1d9f55f219f.png',
+  gremio:         'img/9bc7f1ce255aa0be.png',
+  internacional:  'img/5e0a1c02009df9bc.png',
+  cruzeiro:       'img/5a55b542bbe81ce0.png',
+  atleticomg:     'img/0bac48245b5dd287.png',
+  atleticopr:     'img/e18d88fc10c333af.png',
+  bahia:          'img/33527dcb7f5d7331.png',
+  fortaleza:      'img/2739f70b22d8e24f.png',
+  ceara:          'img/2798de8a36783de1.png',
+  pontepreta:     'img/e878a5be2819c1d2.png',
+  coritiba:       'img/f5598c2644b50999.png',
+  vitoria:        'img/69819e26a22e789d.png',
+  criciuma:       'img/bdae29e2c27a7aa2.png',
+  americamg:      'img/c848da0ca86caa2b.png',
+  guarani:        'img/48c09e6d97274314.png',
+  corinthians:    'img/568356e609e297d0.png',
+  vasco:          'img/e01e2310f4d9dc0e.png',
+  nautico:        'img/df5b275e3767504f.png',
+  goias:          'img/85111ae1fa5b5a12.png',
+  atleticogo:     'img/d34e5e2c9aceae5f.png',
+  cuiaba:         'img/342786667882b482.png',
+  juventude:      'img/9541068759235c65.png',
+  chapecoense:    'img/f9dc035c8827dc93.png',
+  avai:           'img/5e262c90a672f57a.png',
+  figueirense:    'img/f187988ba5157803.png',
+  paysandu:       'img/c4a0d88c2234d88b.png',
+  remo:           'img/0246d038c4986bfd.png',
+  santacruz:      'img/eab4007591b0fcc3.png',
+  portuguesa:     'img/46d46b2dfc5184bf.png',
+  csa:            'img/b467c5b4b40977a1.png',
+  crb:            'img/d4ed64e00779c976.png',
+  abc:            'img/d3486656bf2a6e20.png',
+  sampaio:        'img/99e7f75110951861.png',
+  mirassol:       'img/b360591de96198d3.png',
+  botafogosp:     'img/8dc5f5b1763969dc.png',
+  sport:          'img/5914b8534fae14c1.png',
+  bragantino:     'img/3405db58adf3ce0a.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -1846,12 +1830,54 @@ const STAD_IMGS = {
    CC licences require attribution; shown on the Créditos screen.
 ═══════════════════════════════════════════════════ */
 const CREDITS = {
+  /* club escudos — the official mark of each club */
+  'img/d3486656bf2a6e20.png': { a:'ABC Futebol Clube', l:'Public domain' },
+  'img/c848da0ca86caa2b.png': { a:'América Futebol Clube', l:'Public domain' },
+  'img/d34e5e2c9aceae5f.png': { a:'Atlético Clube Goianiense', l:'Public domain' },
+  'img/0bac48245b5dd287.png': { a:'Clube Atlético Mineiro', l:'Public domain' },
+  'img/e18d88fc10c333af.png': { a:'Clube Athletico Paranaense', l:'Public domain' },
+  'img/5e262c90a672f57a.png': { a:'Avaí Futebol Clube', l:'Public domain' },
+  'img/33527dcb7f5d7331.png': { a:'Esporte Clube Bahia', l:'Public domain' },
+  'img/c853e78c341d2daf.png': { a:'Botafogo de Futebol e Regatas', l:'Public domain' },
+  'img/8dc5f5b1763969dc.png': { a:'Botafogo Futebol Clube', l:'Public domain' },
+  'img/3405db58adf3ce0a.png': { a:'Red Bull Bragantino', l:'Escudo oficial · uso de identificação' },
+  'img/2798de8a36783de1.png': { a:'Ceará Sporting Club', l:'Public domain' },
+  'img/f9dc035c8827dc93.png': { a:'Chapecoense', l:'Public domain' },
+  'img/568356e609e297d0.png': { a:'Sport Club Corinthians Paulista', l:'Escudo oficial · uso de identificação' },
+  'img/f5598c2644b50999.png': { a:'Coritiba Foot Ball Club', l:'Public domain' },
+  'img/d4ed64e00779c976.png': { a:'Clube de Regatas Brasil', l:'Public domain' },
+  'img/bdae29e2c27a7aa2.png': { a:'Criciúma Esporte Clube', l:'Public domain' },
+  'img/5a55b542bbe81ce0.png': { a:'Cruzeiro Esporte Clube', l:'Public domain' },
+  'img/b467c5b4b40977a1.png': { a:'Centro Sportivo Alagoano', l:'Public domain' },
+  'img/342786667882b482.png': { a:'Cuiabá Esporte Clube', l:'Public domain' },
+  'img/f187988ba5157803.png': { a:'Figueirense Futebol Clube', l:'Public domain' },
+  'img/8b32f27f1ca86297.png': { a:'Clube de Regatas do Flamengo', l:'Public domain' },
+  'img/f814d81ae4e352aa.png': { a:'Fluminense FC', l:'Public domain' },
+  'img/2739f70b22d8e24f.png': { a:'Fortaleza Esporte Clube', l:'Public domain' },
+  'img/85111ae1fa5b5a12.png': { a:'Goiás Esporte Clube', l:'Public domain' },
+  'img/9bc7f1ce255aa0be.png': { a:'Grêmio Foot-Ball Porto Alegrense', l:'Public domain' },
+  'img/48c09e6d97274314.png': { a:'Guarani Futebol Clube', l:'Public domain' },
+  'img/5e0a1c02009df9bc.png': { a:'Sport Club Internacional', l:'Public domain' },
+  'img/9541068759235c65.png': { a:'Esporte Clube Juventude', l:'Public domain' },
+  'img/b360591de96198d3.png': { a:'Mirassol Futebol Clube', l:'Public domain' },
+  'img/df5b275e3767504f.png': { a:'Desconhecido', l:'Escudo oficial · uso de identificação' },
+  'img/4fb63c9df9abada7.png': { a:'Sociedade Esportiva Palmeiras', l:'Public domain' },
+  'img/c4a0d88c2234d88b.png': { a:'Paysandu Sport Club', l:'Escudo oficial · uso de identificação' },
+  'img/e878a5be2819c1d2.png': { a:'Associação Atlética Ponte Preta', l:'Public domain' },
+  'img/46d46b2dfc5184bf.png': { a:'Associação Portuguesa de Desportos', l:'Public domain' },
+  'img/0246d038c4986bfd.png': { a:'Clube do Remo', l:'Public domain' },
+  'img/99e7f75110951861.png': { a:'Sampaio Corrêa Futebol Clube', l:'Public domain' },
+  'img/eab4007591b0fcc3.png': { a:'Santa Cruz Futebol Clube', l:'Public domain' },
+  'img/926ef1d9f55f219f.png': { a:'Santos F.C.', l:'Public domain' },
+  'img/835302af3447090f.png': { a:'São Paulo FC', l:'Public domain' },
+  'img/5914b8534fae14c1.png': { a:'Sport Clube do Recife', l:'Escudo oficial · uso de identificação' },
+  'img/e01e2310f4d9dc0e.png': { a:'Club de Regatas Vasco da Gama', l:'Escudo oficial · uso de identificação' },
+  'img/69819e26a22e789d.png': { a:'Esporte Clube Vitória', l:'Public domain' },
   'img/01c9eb3147d30e5a.jpg': { a:'Contato: clickdearaujo@gmail.com', l:'CC BY 2.0' },
   'img/0638863700c4b493.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/0738bef8f33aefe8.jpg': { a:'Todo Noticias', l:'CC BY 3.0' },
   'img/0859a19b8b37b5bf.jpg': { a:'The White House', l:'Public domain' },
   'img/09109cfa614d1185.jpg': { a:'Joerudi', l:'CC BY-SA 4.0' },
-  'img/09298e3b8b615c53.png': { a:'Sociedade Esportiva Palmeiras', l:'Public domain' },
   'img/0a4e5389e07bead4.jpg': { a:'Christophe95', l:'CC BY-SA 3.0' },
   'img/0b276412bf3f5bd8.jpg': { a:'Kroon, Ron for Anefo', l:'CC BY-SA 3.0 nl' },
   'img/0d05b817ada00b01.jpg': { a:'Júnior Faria/flickr', l:'CC BY-SA 2.0' },
@@ -1864,11 +1890,8 @@ const CREDITS = {
   'img/174077928ee92afd.jpg': { a:'Rob Mieremet / Anefo', l:'CC0' },
   'img/18923a812a393569.jpg': { a:'Panini', l:'Public domain' },
   'img/1942386e409ddbbc.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
-  'img/194767288f90128d.png': { a:'Grêmio Foot-Ball Porto Alegrense', l:'Public domain' },
   'img/1a7d080f967ddb0a.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
   'img/1a890e79166cbd6b.jpg': { a:'Segue o baile', l:'CC BY 3.0' },
-  'img/1b83fed2c4cff421.png': { a:'Ceará Sporting Club', l:'Public domain' },
-  'img/1d1a225a22dcc17f.png': { a:'Esporte Clube Vitória', l:'Public domain' },
   'img/1dcca609790e222f.jpg': { a:'Вячеслав Евдокимов', l:'CC BY-SA 3.0' },
   'img/1e59746f3b5a8618.png': { a:'History Channel', l:'CC0' },
   'img/1ed00c1d3b7c89d2.jpg': { a:'José Cruz/A Br', l:'CC BY 3.0 br' },
@@ -1879,13 +1902,10 @@ const CREDITS = {
   'img/2ab41e623ca93fd8.jpg': { a:'Chancellery of the President of the Republic of Poland', l:'GFDL 1.2' },
   'img/2c5f507afd2b35ae.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/2e086d825817e07c.jpg': { a:'Майоров Владимир', l:'CC BY-SA 3.0' },
-  'img/30714e4c8d04f3d4.png': { a:'Sport Club Internacional', l:'Public domain' },
   'img/318b44473cb72bfd.jpg': { a:'Oberlandi', l:'CC BY-SA 3.0' },
-  'img/3565e2d188f683e3.png': { a:'Guarani Futebol Clube', l:'Public domain' },
   'img/35887c152589cb9a.jpg': { a:'André Cros', l:'CC BY-SA 4.0' },
   'img/3777abb05c91c3fa.jpg': { a:'Mikhail Slain', l:'CC BY-SA 3.0' },
   'img/37e2df5c9425049f.jpg': { a:'UnknownUnknown', l:'Public domain' },
-  'img/385a518b92fc0556.png': { a:'América Futebol Clube', l:'Public domain' },
   'img/3bf77b3cfa1ac83a.jpg': { a:'Эдгар Брещанов', l:'CC BY-SA 3.0' },
   'img/3c7e7132b3e8c2da.jpg': { a:'Евгений Асмолов', l:'CC BY-SA 3.0' },
   'img/3d2301f72881532f.jpg': { a:'Marcello Casal Jr/ABr', l:'CC BY 3.0 br' },
@@ -1898,16 +1918,12 @@ const CREDITS = {
   'img/4ac976b184cc63fc.jpg': { a:'مقداد مددی', l:'CC BY 4.0' },
   'img/4ae52a3f1231575e.jpg': { a:'ANEFO', l:'CC0' },
   'img/4ef8747be0d6505e.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
-  'img/4f0ed4152b2a54a3.png': { a:'Clube Atlético Mineiro', l:'Public domain' },
   'img/516c48659ff0cdb0.jpg': { a:'Arthur Miranda', l:'CC0' },
   'img/51fdbdc7c90eb840.jpg': { a:'Panini Group', l:'Public domain' },
   'img/52657817692601d7.jpg': { a:'Wim van Rossem for Anefo', l:'CC0' },
   'img/52c0aea6ebbb0561.jpg': { a:'TV Brasil', l:'CC BY 3.0 br' },
   'img/5564dc0bb05fda53.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
-  'img/558858adda0e83fa.png': { a:'Esporte Clube Bahia', l:'Public domain' },
   'img/58802c8550ef5fa7.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
-  'img/5a5e8c49ba076870.png': { a:'Criciúma Esporte Clube', l:'Public domain' },
-  'img/0bd34a4355657963.png': { a:'Fefc2002', l:'CC0' },
   'img/618d79848fbbec21.jpg': { a:'Carlsberg', l:'CC BY 3.0' },
   'img/666048b495ae1438.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/66a6d28f83b53839.jpg': { a:'Wilson Dias/ABr', l:'CC BY 3.0 br' },
@@ -1917,10 +1933,8 @@ const CREDITS = {
   'img/6c5cbdbd0210e78e.jpg': { a:'Fotografías Archimadrid.es', l:'CC BY 2.0' },
   'img/6c878cb3f764d10d.jpg': { a:'Alexandre Breveglieri', l:'CC BY 2.0' },
   'img/6e42572899f9dce9.jpg': { a:'MichaelEmilio', l:'CC BY 4.0' },
-  'img/6f6803956f2610ff.png': { a:'Botafogo de Futebol e Regatas', l:'Public domain' },
   'img/7061b6cbdc57abe7.jpg': { a:'Amir Hosseini', l:'CC BY 4.0' },
   'img/733f0792d0bcb15e.jpg': { a:'The White House', l:'Public domain' },
-  'img/73bde55c15fce63d.png': { a:'50brian', l:'Public domain' },
   'img/73da24ccdc705361.jpg': { a:'Barcex', l:'CC BY-SA 4.0' },
   'img/758326660493848f.png': { a:'Міністерство молоді та спорту України', l:'CC BY 4.0' },
   'img/763f03ab1bff5adf.jpg': { a:'Reto Stauffer, www.hopp-schwiiz.ch', l:'CC BY-SA 2.0 de' },
@@ -1932,9 +1946,7 @@ const CREDITS = {
   'img/81c06667fa16b652.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/82d5307026607b2a.jpg': { a:'Ailura', l:'CC BY-SA 3.0 at' },
   'img/83a240d4788163b3.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
-  'img/83cfe7a2e3c07a6d.png': { a:'Clube de Regatas do Flamengo', l:'Public domain' },
   'img/8595a6ca0651c6c5.jpg': { a:'Elena Ternovaja', l:'CC BY-SA 3.0' },
-  'img/879bfa459e4ff17e.png': { a:'Santos F.C.', l:'Public domain' },
   'img/87ed4227f19deced.jpg': { a:'James Adams', l:'CC BY 2.0' },
   'img/88468c09c32948e3.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
   'img/89327837f14f3c13.jpg': { a:'Doha Stadium Plus Qatar', l:'CC BY 2.0' },
@@ -1951,7 +1963,6 @@ const CREDITS = {
   'img/a49cd1072ac4f08a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/a4a135f81bbd912b.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/a5a00230e9194c14.jpg': { a:'Paul Blank', l:'CC BY 2.5' },
-  'img/a5bf018d3843a28a.png': { a:'São Paulo FC', l:'Public domain' },
   'img/a918407d3e86de2a.jpg': { a:'Meysam Mehabadi', l:'CC BY 4.0' },
   'img/ab23500e9fe71e50.jpg': { a:'Steffen Prößdorf', l:'CC BY-SA 4.0' },
   'img/ac82278f5d3eec63.jpg': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
@@ -1964,7 +1975,6 @@ const CREDITS = {
   'img/b20f256bbc5bfbe1.jpg': { a:'Roberto Sabino', l:'CC BY 2.0' },
   'img/b24057226b77cc3d.jpg': { a:'Panini', l:'Public domain' },
   'img/b4b0af27fb90b6ad.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
-  'img/b60bcbe37aa5443f.png': { a:'Clube Athletico Paranaense', l:'Public domain' },
   'img/b8e36fbf197410f6.jpg': { a:'Empresa Brasil de Comunicação - EBC', l:'CC BY 3.0 br' },
   'img/bca7c83998971046.jpg': { a:'The White House', l:'Public domain' },
   'img/becb9d93999c12ae.jpg': { a:'محمد امین انصاری', l:'CC BY 4.0' },
@@ -1972,7 +1982,6 @@ const CREDITS = {
   'img/c0b1d021fd8cc669.jpg': { a:'Reto Stauffer, www.hopp-schwiiz.ch', l:'CC BY-SA 2.0 de' },
   'img/c19fd91ef2f23508.jpg': { a:'Amir Hosseini', l:'CC BY 4.0' },
   'img/c1a715e0c0f81882.jpg': { a:'Junta de Andalucía', l:'CC BY-SA 2.0' },
-  'img/c780eaab619fbae9.png': { a:'Cruzeiro Esporte Clube', l:'Public domain' },
   'img/c951450a110a5e28.jpg': { a:'soccerdigital', l:'Public domain' },
   'img/c99de12758334b6d.jpg': { a:'Governo Federal Brasileiro', l:'CC BY-SA 3.0' },
   'img/c9b175338e538436.jpg': { a:'Žan Kolman', l:'Public domain' },
@@ -1985,7 +1994,6 @@ const CREDITS = {
   'img/d2c6410686305d9c.jpg': { a:'Hadi Abyar', l:'CC BY 4.0' },
   'img/d3048d0dcd6295ea.jpg': { a:'All-Pro Reels from District of Columbia, USA', l:'CC BY-SA 2.0' },
   'img/d609af6f47604b15.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
-  'img/d984f3dc1ac2317e.png': { a:'Coritiba Foot Ball Club', l:'Public domain' },
   'img/dffa17aea5fe72c7.jpg': { a:'Marcos Corrêa/PR', l:'CC BY 2.0' },
   'img/e24f17b1a1c19a47.jpg': { a:'Biser Todorov', l:'CC BY-SA 4.0' },
   'img/e2ec3359b334126a.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
@@ -1995,10 +2003,7 @@ const CREDITS = {
   'img/e89e123d5b748a6e.jpg': { a:'Rufus46', l:'CC BY-SA 3.0' },
   'img/e8ed7b9d7bfb0269.jpg': { a:'Panini', l:'Public domain' },
   'img/e97089e508fffa75.jpg': { a:'Aécio Neves from Brasília, Brasil', l:'CC BY 2.0' },
-  'img/ed806b4b2f0348ac.png': { a:'Fortaleza Esporte Clube', l:'Public domain' },
   'img/edad5d0ef563881e.jpg': { a:'Sven Mandel', l:'CC BY-SA 4.0' },
-  'img/ef0db62d4a991d5d.png': { a:'Associação Atlética Ponte Preta', l:'Public domain' },
-  'img/f349098ce51f3de6.png': { a:'Fluminense FC', l:'Public domain' },
   'img/f58660371bf6d29c.jpg': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/f69a84f12e6c3e2d.jpg': { a:'Web Summit', l:'CC BY 2.0' },
   'img/f8d7cb9715893c93.jpg': { a:'SOCCER DIGITAL', l:'Public domain' },
@@ -2007,29 +2012,9 @@ const CREDITS = {
   'img/fcd3c0654c588ded.jpg': { a:'Mehdi Bolourian', l:'CC BY 4.0' },
   'img/fdb3f78c7ce459dd.jpg': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
   'img/fe82c30b82065f32.jpg': { a:'Olga Shcherbytska', l:'CC BY-SA 4.0' },
-  'img/001caba4ea661db8.png': { a:'Figueirense Futebol Clube', l:'Public domain' },
-  'img/0246d038c4986bfd.png': { a:'Clube do Remo', l:'Public domain' },
   'img/15f878f5ef8c42f1.jpg': { a:'Luiz79', l:'CC BY 4.0' },
   'img/191531edb7d015c7.jpg': { a:'Matheus Pinheiro', l:'CC BY-SA 4.0' },
-  'img/46d46b2dfc5184bf.png': { a:'Associação Portuguesa de Desportos', l:'Public domain' },
-  'img/5e262c90a672f57a.png': { a:'Avaí Futebol Clube', l:'Public domain' },
-  'img/6f4c4d9ea66eef2b.png': { a:'ABC Futebol Clube', l:'Public domain' },
-  'img/7818e6a84a5c7d6c.png': { a:'Futbox', l:'Public domain' },
-  'img/85111ae1fa5b5a12.png': { a:'Goiás Esporte Clube', l:'Public domain' },
-  'img/99e7f75110951861.png': { a:'Sampaio Corrêa Futebol Clube', l:'Public domain' },
-  'img/b2892514e577b9ac.png': { a:'Mirassol Futebol Clube', l:'Public domain' },
-  'img/be9069fb11799f76.png': { a:'Mário Bayma', l:'Public domain' },
-  'img/c482668824eb5675.png': { a:'Botafogo Futebol Clube', l:'Public domain' },
-  'img/e01e2310f4d9dc0e.png': { a:'Club de Regatas Vasco da Gama', l:'Escudo oficial · uso de identificação' },
-  'img/5914b8534fae14c1.png': { a:'Sport Clube do Recife', l:'Escudo oficial · uso de identificação' },
-  'img/3405db58adf3ce0a.png': { a:'Red Bull Bragantino', l:'Escudo oficial · uso de identificação' },
   'img/c50ad900747a1971.jpg': { a:'Custodiotiago1986', l:'CC BY-SA 4.0' },
-  'img/d4ed64e00779c976.png': { a:'Clube de Regatas Brasil', l:'Public domain' },
-  'img/e34b57e0740793a6.png': { a:'EC Juventude', l:'Public domain' },
-  'img/e5a1d03808494f19.png': { a:'Centro Sportivo Alagoano', l:'Public domain' },
-  'img/eab4007591b0fcc3.png': { a:'Santa Cruz Futebol Clube', l:'Public domain' },
-  'img/f5bc4b8150fa5b8c.png': { a:'Cuiabá EC', l:'Public domain' },
-  'img/f9dc035c8827dc93.png': { a:'Chapecoense', l:'Public domain' },
   'img/fa3ba568751c429d.jpg': { a:'Arne Müseler', l:'CC BY-SA 3.0 de' },
 };
 
@@ -3586,42 +3571,15 @@ function genericCrest(id) {
    sits right underneath it, so the crest is decorative and stays silent —
    otherwise a screen reader says every name twice. In the question header
    there is no such caption, so there the crest has to carry the name. */
-/* Most crests are transparent artwork that can float on the page. These three
-   are not — Corinthians' free file carries its own split background, and the
-   Botafogo-SP and CRB files come flattened onto white. Dropped in raw they
-   read as stray boxes among the shields, so they are cut to the shield
-   outline, cropped onto the mark itself, and sit in the row like everyone
-   else. */
-/* Three clubs have no freely-licensed crest anywhere on Commons — only the
-   club's own escudo, uploaded to pt.wikipedia as restricted content. They are
-   shipped here to identify the club inside the quiz, nothing else, and are
-   named in one place so the distinction stays auditable rather than buried in
-   a list of four hundred attributions. */
-const NONFREE_CRESTS = new Set(['vasco', 'sport', 'bragantino']);
-
-const FLAT_LOGOS = new Set(['corinthians', 'botafogosp', 'crb']);
-const ROUNDEL_FOCUS = { corinthians: '50% 50%' };
-/* Where the interesting part of an opaque file sits, for the disc's crop. */
-const ROUNDEL_FOCUS_EXTRA = { botafogosp: '50% 42%', crb: '50% 46%' };
-Object.assign(ROUNDEL_FOCUS, ROUNDEL_FOCUS_EXTRA);
-
+/* Every club now ships its own official escudo, and every one of those files
+   is transparent artwork that floats on the page. The shield clip-path this
+   used to need — for flags and for files flattened onto a background — went
+   with the last of them. */
 function clubArt(id, style, label) {
   const name = clubName(id);
-  /* Three shapes of source, one shape on screen. A normal crest is already a
-     shield and simply sits in the disc; a file that comes with an opaque
-     square background is cut to the shield outline; a club with no free
-     artwork at all keeps the drawn badge, which fills the disc. */
-  let inner;
-  if (LOGOS[id] && FLAT_LOGOS.has(id)) {
-    inner = `<span class="clipped"><img src="${LOGOS[id]}" alt="" aria-hidden="true"
-      style="object-position:${ROUNDEL_FOCUS[id] || '50% 50%'};"
-      onerror="clubFallback(this,'${id}')" /></span>`;
-  } else if (LOGOS[id]) {
-    inner = `<img src="${LOGOS[id]}" alt="" aria-hidden="true"
-      onerror="clubFallback(this,'${id}')" />`;
-  } else {
-    inner = `<svg viewBox="0 0 60 60" class="fill" aria-hidden="true">${genericCrest(id)}</svg>`;
-  }
+  const inner = LOGOS[id]
+    ? `<img src="${LOGOS[id]}" alt="" aria-hidden="true" onerror="clubFallback(this,'${id}')" />`
+    : `<svg viewBox="0 0 60 60" class="fill" aria-hidden="true">${genericCrest(id)}</svg>`;
   return `<span class="crest-disc" style="${style || ''}"
     ${label ? `role="img" aria-label="${name}"` : 'aria-hidden="true"'}>${inner}</span>`;
 }
@@ -3997,9 +3955,10 @@ function html() {
         licenças livres (CC / domínio público), impressas aqui em serigrafia.
         Obrigado a cada autor listado abaixo.<br><br>
         Escudos dos clubes são marcas registradas de seus respectivos clubes, exibidos
-        apenas para identificação dentro do quiz. Três deles — Vasco, Sport e
-        Bragantino — não têm versão sob licença livre; são os escudos oficiais dos
-        próprios clubes, usados aqui só para identificá-los.
+        apenas para identificação dentro do quiz. Todos são o escudo oficial de
+        cada clube; seis deles — Vasco, Corinthians, Náutico, Paysandu, Sport e
+        Bragantino — não têm versão sob licença livre em lugar nenhum, e estão
+        aqui só para identificar o clube.
       </p>
       <div class="scroll-y" style="flex:1;background:var(--pocket);border:1px solid var(--rule-2);
         border-radius:11px;padding:8px 12px;max-height:${unsourced.length ? 262 : 330}px;">${

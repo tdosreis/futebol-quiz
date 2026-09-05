@@ -1,16 +1,14 @@
 {
- "img/001caba4ea661db8.png": {
-  "a": "Figueirense Futebol Clube",
-  "l": "Public domain"
- },
  "img/01c9eb3147d30e5a.jpg": {
   "author": "Contato: clickdearaujo@gmail.com",
   "file": "Arena_do_Grêmio_2014.jpg",
   "license": "CC BY 2.0"
  },
  "img/0246d038c4986bfd.png": {
-  "a": "Clube do Remo",
-  "l": "Public domain"
+  "author": "Clube do Remo",
+  "file": "Clube_do_Remo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Clube_do_Remo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/0638863700c4b493.jpg": {
   "author": "Web Summit",
@@ -33,11 +31,6 @@
   "file": "Alessandro_Nesta_as_Miami_FC_Manager.jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Alessandro_Nesta_as_Miami_FC_Manager.jpg"
- },
- "img/09298e3b8b615c53.png": {
-  "author": "Sociedade Esportiva Palmeiras",
-  "file": "SE_Palmeiras_2025_crest.png",
-  "license": "Public domain"
  },
  "img/0a4e5389e07bead4.jpg": {
   "author": "Christophe95",
@@ -114,11 +107,6 @@
   "file": "Brazil_v_italy_1970_06.jpg",
   "license": "Public domain"
  },
- "img/194767288f90128d.png": {
-  "author": "Grêmio Foot-Ball Porto Alegrense",
-  "file": "Gremio_logo.svg",
-  "license": "Public domain"
- },
  "img/1a7d080f967ddb0a.jpg": {
   "author": "Unknown authorUnknown author",
   "file": "Carlos_alberto_cosmos.jpg",
@@ -129,16 +117,6 @@
   "file": "Diego_Ribas_2019_(cropped).jpg",
   "license": "CC BY 3.0",
   "url": "https://commons.wikimedia.org/wiki/File:Diego_Ribas_2019_%28cropped%29.jpg"
- },
- "img/1b83fed2c4cff421.png": {
-  "author": "Ceará Sporting Club",
-  "file": "Ceará_Sporting_Club_logo.svg",
-  "license": "Public domain"
- },
- "img/1d1a225a22dcc17f.png": {
-  "author": "Esporte Clube Vitória",
-  "file": "Esporte_Clube_Vitória_(2024).svg",
-  "license": "Public domain"
  },
  "img/1dcca609790e222f.jpg": {
   "author": "Вячеслав Евдокимов",
@@ -197,21 +175,11 @@
   "license": "CC BY-SA 3.0",
   "url": "https://commons.wikimedia.org/wiki/File:Samuel_2011.jpg"
  },
- "img/30714e4c8d04f3d4.png": {
-  "author": "Sport Club Internacional",
-  "file": "Sport_Club_Internacional_logo.svg",
-  "license": "Public domain"
- },
  "img/318b44473cb72bfd.jpg": {
   "author": "Oberlandi",
   "file": "JSP_0799_(cropped).JPG",
   "license": "CC BY-SA 3.0",
   "url": "https://commons.wikimedia.org/wiki/File:JSP_0799_%28cropped%29.JPG"
- },
- "img/3565e2d188f683e3.png": {
-  "author": "Guarani Futebol Clube",
-  "file": "Guarani_Futebol_Clube_logo.svg",
-  "license": "Public domain"
  },
  "img/35887c152589cb9a.jpg": {
   "author": "André Cros",
@@ -228,11 +196,6 @@
   "file": "Nilton_Santos_2_(1956).tif",
   "license": "Public domain",
   "url": "https://commons.wikimedia.org/wiki/File:Nilton_Santos_2_%281956%29.tif"
- },
- "img/385a518b92fc0556.png": {
-  "author": "América Futebol Clube",
-  "file": "Escudo_oficial_do_América_Futebol_Clube.svg",
-  "license": "Public domain"
  },
  "img/3bf77b3cfa1ac83a.jpg": {
   "author": "Эдгар Брещанов",
@@ -268,8 +231,10 @@
   "url": "https://commons.wikimedia.org/wiki/File:25th_Laureus_World_Sports_Awards_-_Ra%C3%BAl_-_240422_132916-2_%28cropped%29.jpg"
  },
  "img/46d46b2dfc5184bf.png": {
-  "a": "Associação Portuguesa de Desportos",
-  "l": "Public domain"
+  "author": "Associação Portuguesa de Desportos",
+  "file": "Associação_Portuguesa_de_Desportos.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Associa%C3%A7%C3%A3o_Portuguesa_de_Desportos.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/491fb1154f03a925.jpg": {
   "author": "International Federation of Football History and Statistics",
@@ -303,11 +268,6 @@
   "file": "Jairzinho_1970s.jpg",
   "license": "Public domain"
  },
- "img/4f0ed4152b2a54a3.png": {
-  "author": "Clube Atlético Mineiro",
-  "file": "Logo_of_Clube_Atlético_Mineiro.svg",
-  "license": "Public domain"
- },
  "img/516c48659ff0cdb0.jpg": {
   "author": "Arthur Miranda",
   "file": "Gabriel_Barbosa_2022.jpg",
@@ -337,25 +297,17 @@
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Erling_Haaland_Morocco_v_Norway_7_June_2026-51.jpg"
  },
- "img/558858adda0e83fa.png": {
-  "author": "Esporte Clube Bahia",
-  "file": "Logo_of_Esporte_Clube_Bahia_(2004).svg",
-  "license": "Public domain"
- },
  "img/58802c8550ef5fa7.jpg": {
   "author": "Bryan Berlin",
   "file": "Alisson_Becker_Brazil_V_Morocco_13_June_2026-117_(cropped).jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Alisson_Becker_Brazil_V_Morocco_13_June_2026-117_%28cropped%29.jpg"
  },
- "img/5a5e8c49ba076870.png": {
-  "author": "Criciúma Esporte Clube",
-  "file": "Criciúma_EC_2025_crest.svg",
-  "license": "Public domain"
- },
  "img/5e262c90a672f57a.png": {
-  "a": "Avaí Futebol Clube",
-  "l": "Public domain"
+  "author": "Avaí Futebol Clube",
+  "file": "Avaí_Futebol_Clube_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Ava%C3%AD_Futebol_Clube_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/618d79848fbbec21.jpg": {
   "author": "Carlsberg",
@@ -406,15 +358,6 @@
   "license": "CC BY 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Norway_Italy_-_June_2025_A_44_%28Gianluigi_Buffon%29.jpg"
  },
- "img/6f4c4d9ea66eef2b.png": {
-  "a": "ABC Futebol Clube",
-  "l": "Public domain"
- },
- "img/6f6803956f2610ff.png": {
-  "author": "Botafogo de Futebol e Regatas",
-  "file": "Botafogo_de_Futebol_e_Regatas_logo.svg",
-  "license": "Public domain"
- },
  "img/7061b6cbdc57abe7.jpg": {
   "author": "Amir Hosseini",
   "file": "David_Luiz_at_Baku_before_2019_UEFA_Europe_League_Final.jpg",
@@ -426,12 +369,6 @@
   "file": "Luis_Suárez_2026_(cropped).jpg",
   "license": "Public domain",
   "url": "https://commons.wikimedia.org/wiki/File:Luis_Su%C3%A1rez_2026_%28cropped%29.jpg"
- },
- "img/73bde55c15fce63d.png": {
-  "author": "50brian",
-  "file": "SC Corinthians (cropped).svg",
-  "license": "Public domain",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/SC_Corinthians_%28cropped%29.svg"
  },
  "img/73da24ccdc705361.jpg": {
   "author": "Barcex",
@@ -456,10 +393,6 @@
   "file": "Iker-Casillas-SportsTrade-2021-cropped.jpg",
   "license": "CC BY 2.0",
   "url": "https://commons.wikimedia.org/wiki/File:Iker-Casillas-SportsTrade-2021-cropped.jpg"
- },
- "img/7818e6a84a5c7d6c.png": {
-  "a": "Futbox",
-  "l": "Public domain"
  },
  "img/7a6f9e0a9d58ee6d.jpg": {
   "author": "Alex Carvalho",
@@ -501,25 +434,17 @@
   "license": "Public domain",
   "url": "https://commons.wikimedia.org/wiki/File:Gerd_M%C3%BCller_c1973_%28cropped%29.jpg"
  },
- "img/83cfe7a2e3c07a6d.png": {
-  "author": "Clube de Regatas do Flamengo",
-  "file": "Clube_de_Regatas_do_Flamengo_logo.svg",
-  "license": "Public domain"
- },
  "img/85111ae1fa5b5a12.png": {
-  "a": "Goiás Esporte Clube",
-  "l": "Public domain"
+  "author": "Goiás Esporte Clube",
+  "file": "Goiás_Esporte_Clube_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Goi%C3%A1s_Esporte_Clube_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/8595a6ca0651c6c5.jpg": {
   "author": "Elena Ternovaja",
   "file": "Philipp_Lahm_auf_der_Berlinale_2024,_Ausschnitt.jpg",
   "license": "CC BY-SA 3.0",
   "url": "https://commons.wikimedia.org/wiki/File:Philipp_Lahm_auf_der_Berlinale_2024%2C_Ausschnitt.jpg"
- },
- "img/879bfa459e4ff17e.png": {
-  "author": "Santos F.C.",
-  "file": "Santos_Futebol_Clube_logo_(with_stars_and_crown).png",
-  "license": "Public domain"
  },
  "img/87ed4227f19deced.jpg": {
   "author": "James Adams",
@@ -609,11 +534,6 @@
   "file": "Marco_van_Basten_(2)_(cropped).jpg",
   "license": "CC BY 2.5"
  },
- "img/a5bf018d3843a28a.png": {
-  "author": "São Paulo FC",
-  "file": "São_Paulo_Futebol_Clube_logo_(2022).svg",
-  "license": "Public domain"
- },
  "img/a918407d3e86de2a.jpg": {
   "author": "Meysam Mehabadi",
   "file": "Xavi,_Persepolis_vs._Al_Sadd,_20190520_02_(cropped).jpg",
@@ -677,20 +597,11 @@
   "license": "Public domain",
   "url": "https://commons.wikimedia.org/wiki/File:Ferenc_Puskas_en_1965.jpg"
  },
- "img/b2892514e577b9ac.png": {
-  "a": "Mirassol Futebol Clube",
-  "l": "Public domain"
- },
  "img/b4b0af27fb90b6ad.jpg": {
   "author": "Bryan Berlin",
   "file": "Mohamed_Salah_Argentina_v_Egypt_7_July_2026-163_(cropped).jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Mohamed_Salah_Argentina_v_Egypt_7_July_2026-163_%28cropped%29.jpg"
- },
- "img/b60bcbe37aa5443f.png": {
-  "author": "Clube Athletico Paranaense",
-  "file": "Athletico_Paranaense_(Logo_2019).svg",
-  "license": "Public domain"
  },
  "img/b8e36fbf197410f6.jpg": {
   "author": "Empresa Brasil de Comunicação - EBC",
@@ -702,10 +613,6 @@
   "author": "The White House",
   "file": "President_Donald_Trump_meets_with_Cristiano_Ronaldo_in_the_Oval_Office_(54933344262)_(cropped_and_rotated).jpg",
   "license": "Public domain"
- },
- "img/be9069fb11799f76.png": {
-  "a": "Mário Bayma",
-  "l": "Public domain"
  },
  "img/becb9d93999c12ae.jpg": {
   "author": "محمد امین انصاری",
@@ -736,18 +643,9 @@
   "file": "2023_05_06_Final_de_la_Copa_del_Rey_-_52879242230_(cropped).jpg",
   "license": "CC BY-SA 2.0"
  },
- "img/c482668824eb5675.png": {
-  "a": "Botafogo Futebol Clube",
-  "l": "Public domain"
- },
  "img/c50ad900747a1971.jpg": {
   "a": "Custodiotiago1986",
   "l": "CC BY-SA 4.0"
- },
- "img/c780eaab619fbae9.png": {
-  "author": "Cruzeiro Esporte Clube",
-  "file": "Cruzeiro_Esporte_Clube_(logo).svg",
-  "license": "Public domain"
  },
  "img/c951450a110a5e28.jpg": {
   "author": "soccerdigital",
@@ -812,17 +710,14 @@
   "url": "https://commons.wikimedia.org/wiki/File:Wayne_Rooney_%2850121495731%29_%28cropped%29.jpg"
  },
  "img/d4ed64e00779c976.png": {
-  "a": "Clube de Regatas Brasil",
-  "l": "Public domain"
+  "author": "Clube de Regatas Brasil",
+  "file": "CRB_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/CRB_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/d609af6f47604b15.jpg": {
   "author": "Unknown authorUnknown author",
   "file": "Pele_con_brasil_(cropped).jpg",
-  "license": "Public domain"
- },
- "img/d984f3dc1ac2317e.png": {
-  "author": "Coritiba Foot Ball Club",
-  "file": "Coritiba_Foot_Ball_Club_logo.svg",
   "license": "Public domain"
  },
  "img/dffa17aea5fe72c7.jpg": {
@@ -847,10 +742,6 @@
   "file": "Vila_Belmiro_pre-match_Santos_vs_Grêmio_2021.jpg",
   "license": "CC BY-SA 4.0"
  },
- "img/e34b57e0740793a6.png": {
-  "a": "EC Juventude",
-  "l": "Public domain"
- },
  "img/e4338b3611dcdec3.jpg": {
   "author": "Unknown authorUnknown author",
   "file": "Paulo_Roberto_Falcão,_Roma_1983-84.jpg",
@@ -860,10 +751,6 @@
   "author": "Кирилл Венедиктов",
   "file": "Taffarel_2018.png",
   "license": "CC BY-SA 3.0"
- },
- "img/e5a1d03808494f19.png": {
-  "a": "Centro Sportivo Alagoano",
-  "l": "Public domain"
  },
  "img/e89e123d5b748a6e.jpg": {
   "author": "Rufus46",
@@ -883,38 +770,21 @@
   "url": "https://commons.wikimedia.org/wiki/File:Aecio_Neves_e_Dunga_-_17-06-2008_%288368243127%29_%28cropped%29.jpg"
  },
  "img/eab4007591b0fcc3.png": {
-  "a": "Santa Cruz Futebol Clube",
-  "l": "Public domain"
- },
- "img/ed806b4b2f0348ac.png": {
-  "author": "Fortaleza Esporte Clube",
-  "file": "Fortaleza_Esporte_Clube_logo.png",
-  "license": "Public domain"
+  "author": "Santa Cruz Futebol Clube",
+  "file": "Santa_Cruz_Futebol_Clube_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Santa_Cruz_Futebol_Clube_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/edad5d0ef563881e.jpg": {
   "author": "Sven Mandel",
   "file": "2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_München_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_(cropped).jpg",
   "license": "CC BY-SA 4.0"
  },
- "img/ef0db62d4a991d5d.png": {
-  "author": "Associação Atlética Ponte Preta",
-  "file": "Logo_AA_Ponte_Preta.svg",
-  "license": "Public domain"
- },
- "img/f349098ce51f3de6.png": {
-  "author": "Fluminense FC",
-  "file": "Fluminense_Football_Club.svg",
-  "license": "Public domain"
- },
  "img/f58660371bf6d29c.jpg": {
   "author": "Bryan Berlin",
   "file": "Marquinhos_Brazil_V_Morocco_13_June_2026-153_(cropped).jpg",
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:Marquinhos_Brazil_V_Morocco_13_June_2026-153_%28cropped%29.jpg"
- },
- "img/f5bc4b8150fa5b8c.png": {
-  "a": "Cuiabá EC",
-  "l": "Public domain"
  },
  "img/f69a84f12e6c3e2d.jpg": {
   "author": "Web Summit",
@@ -928,8 +798,10 @@
   "url": "https://commons.wikimedia.org/wiki/File:Rogerio-Ceni-Sao-Paulo-Juventude-jun-2022_%28cropped%29.jpg"
  },
  "img/f9dc035c8827dc93.png": {
-  "a": "Chapecoense",
-  "l": "Public domain"
+  "author": "Chapecoense",
+  "file": "Logo_Associação_Chapecoense_de_Futebol.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/fa3ba568751c429d.jpg": {
   "a": "Arne Müseler",
@@ -964,17 +836,11 @@
   "license": "CC BY-SA 4.0",
   "url": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D1%82%D1%87_%C2%AB%D0%A0%D0%B5%D0%B0%D0%BB%C2%BB_-_%C2%AB%D0%9B%D0%B8%D0%B2%D0%B5%D1%80%D0%BF%D1%83%D0%BB%D1%8C%C2%BB_3-1._26_%D0%BC%D0%B0%D1%8F_2018_%D0%B3%D0%BE%D0%B4%D0%B0_%E2%80%94_873570_%28Marcelo_Vieira_da_Silva_J%C3%BAnior%29.jpg"
  },
- "img/0bd34a4355657963.png": {
-  "author": "Fefc2002",
-  "file": "Náutico logo (1995-2006).png",
-  "license": "CC0",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/N%C3%A1utico_logo_%281995-2006%29.png"
- },
  "img/99e7f75110951861.png": {
   "author": "Sampaio Corrêa Futebol Clube",
-  "file": "Sampaio Corrêa FC.png",
+  "file": "Sampaio_Corrêa_FC.png",
   "license": "Public domain",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Sampaio_Corr%C3%AAa_FC.png"
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Sampaio_Corr%C3%AAa_FC.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "img/e01e2310f4d9dc0e.png": {
   "author": "Club de Regatas Vasco da Gama",
@@ -993,5 +859,191 @@
   "file": "RedBullBragantino.png",
   "license": "Escudo oficial · uso de identificação (não livre)",
   "url": "https://upload.wikimedia.org/wikipedia/pt/9/9e/RedBullBragantino.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/d3486656bf2a6e20.png": {
+  "author": "ABC Futebol Clube",
+  "file": "ABC_FC_(E)_-_RN.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/ABC_FC_%28E%29_-_RN.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/c848da0ca86caa2b.png": {
+  "author": "América Futebol Clube",
+  "file": "Escudo_oficial_do_América_Futebol_Clube.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Escudo_oficial_do_Am%C3%A9rica_Futebol_Clube.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/d34e5e2c9aceae5f.png": {
+  "author": "Atlético Clube Goianiense",
+  "file": "Atlético_Goianiense_logo_(sem_estrelas).png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Atl%C3%A9tico_Goianiense_logo_%28sem_estrelas%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/0bac48245b5dd287.png": {
+  "author": "Clube Atlético Mineiro",
+  "file": "Logo_of_Clube_Atlético_Mineiro.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Logo_of_Clube_Atl%C3%A9tico_Mineiro.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/e18d88fc10c333af.png": {
+  "author": "Clube Athletico Paranaense",
+  "file": "Athletico_Paranaense_(Logo_2019).svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Athletico_Paranaense_%28Logo_2019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/33527dcb7f5d7331.png": {
+  "author": "Esporte Clube Bahia",
+  "file": "Esporte_Clube_Bahia_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Esporte_Clube_Bahia_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/c853e78c341d2daf.png": {
+  "author": "Botafogo de Futebol e Regatas",
+  "file": "Botafogo_de_Futebol_e_Regatas_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/8dc5f5b1763969dc.png": {
+  "author": "Botafogo Futebol Clube",
+  "file": "Botafogo_Futebol_Clube.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_Futebol_Clube.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/2798de8a36783de1.png": {
+  "author": "Ceará Sporting Club",
+  "file": "Ceará_Sporting_Club_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Cear%C3%A1_Sporting_Club_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/568356e609e297d0.png": {
+  "author": "Sport Club Corinthians Paulista",
+  "file": "Corinthians_simbolo.png",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/f5598c2644b50999.png": {
+  "author": "Coritiba Foot Ball Club",
+  "file": "Coritiba_Foot_Ball_Club_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Coritiba_Foot_Ball_Club_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/bdae29e2c27a7aa2.png": {
+  "author": "Criciúma Esporte Clube",
+  "file": "Criciúma_EC_2025_crest.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Crici%C3%BAma_EC_2025_crest.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/5a55b542bbe81ce0.png": {
+  "author": "Cruzeiro Esporte Clube",
+  "file": "Cruzeiro_Esporte_Clube_(logo).svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/b467c5b4b40977a1.png": {
+  "author": "Centro Sportivo Alagoano",
+  "file": "Centro_Sportivo_Alagoano_logo.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Centro_Sportivo_Alagoano_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/342786667882b482.png": {
+  "author": "Cuiabá Esporte Clube",
+  "file": "Cuiabá_EC_crest.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Cuiab%C3%A1_EC_crest.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/f187988ba5157803.png": {
+  "author": "Figueirense Futebol Clube",
+  "file": "Figueirense_Futebol_Clube.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Figueirense_Futebol_Clube.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/8b32f27f1ca86297.png": {
+  "author": "Clube de Regatas do Flamengo",
+  "file": "Clube_de_Regatas_do_Flamengo_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Clube_de_Regatas_do_Flamengo_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/f814d81ae4e352aa.png": {
+  "author": "Fluminense FC",
+  "file": "Fluminense_Football_Club.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Fluminense_Football_Club.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/2739f70b22d8e24f.png": {
+  "author": "Fortaleza Esporte Clube",
+  "file": "Fortaleza_Esporte_Clube_logo.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Fortaleza_Esporte_Clube_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/9bc7f1ce255aa0be.png": {
+  "author": "Grêmio Foot-Ball Porto Alegrense",
+  "file": "Gremio_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Gremio_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/48c09e6d97274314.png": {
+  "author": "Guarani Futebol Clube",
+  "file": "Guarani_Futebol_Clube_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Guarani_Futebol_Clube_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/5e0a1c02009df9bc.png": {
+  "author": "Sport Club Internacional",
+  "file": "Sport_Club_Internacional_logo.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Sport_Club_Internacional_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/9541068759235c65.png": {
+  "author": "Esporte Clube Juventude",
+  "file": "Juventude_crest.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Juventude_crest.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/b360591de96198d3.png": {
+  "author": "Mirassol Futebol Clube",
+  "file": "Mirassol_Futebol_Clube_logo_(3_stars).png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Mirassol_Futebol_Clube_logo_%283_stars%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/df5b275e3767504f.png": {
+  "author": "Desconhecido",
+  "file": "Simbolo-escudo-nautico.png",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/d/de/Simbolo-escudo-nautico.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/4fb63c9df9abada7.png": {
+  "author": "Sociedade Esportiva Palmeiras",
+  "file": "SE_Palmeiras_2025_crest.png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/SE_Palmeiras_2025_crest.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/c4a0d88c2234d88b.png": {
+  "author": "Paysandu Sport Club",
+  "file": "PaysanduSC.png",
+  "license": "Escudo oficial · uso de identificação (não livre)",
+  "url": "https://upload.wikimedia.org/wikipedia/pt/2/2f/PaysanduSC.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/e878a5be2819c1d2.png": {
+  "author": "Associação Atlética Ponte Preta",
+  "file": "Logo_AA_Ponte_Preta.svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_AA_Ponte_Preta.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/926ef1d9f55f219f.png": {
+  "author": "Santos F.C.",
+  "file": "Santos_Futebol_Clube_logo_(with_stars_and_crown).png",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Santos_Futebol_Clube_logo_%28with_stars_and_crown%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/835302af3447090f.png": {
+  "author": "São Paulo FC",
+  "file": "São_Paulo_Futebol_Clube_logo_(2022).svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/S%C3%A3o_Paulo_Futebol_Clube_logo_%282022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+ },
+ "img/69819e26a22e789d.png": {
+  "author": "Esporte Clube Vitória",
+  "file": "Esporte_Clube_Vitória_(2024).svg",
+  "license": "Public domain",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Esporte_Clube_Vit%C3%B3ria_%282024%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
  }
 }
