@@ -184,8 +184,12 @@
     #ct p, #ct span { overflow-wrap: anywhere; }
 
     /* ── Screens ── */
+    /* Arriving at a screen is worth a beat. Tapping a tile is not — and this
+       ran on every render, so the whole page slid and faded under the finger
+       each time you changed your mind about an answer. `screen-in` is added
+       only when the screen actually changed. */
     @keyframes screenIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-    #ct > div { animation: screenIn .2s ease-out; }
+    #ct.screen-in > div { animation: screenIn .2s ease-out; }
     .pg { display: flex; flex-direction: column; min-height: 500px; padding: 16px; gap: 12px; }
     .pg-center { align-items: center; justify-content: center; text-align: center; }
     .scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -6106,6 +6110,7 @@ let introOn = true;
 let justCut = false;
 let firedAid = null;   // the lifeline spent on this render, so it can flare once
 let gameN   = 0;   // bumped when a run starts, so two runs' question 0 differ
+let _lastSc = null;
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -6116,6 +6121,11 @@ function go() {
   const qk = `${gameN}:${qi}`;
   introOn = sc === 'quiz' && qk !== _qKey;
   if (sc === 'quiz') _qKey = qk;
+
+  const ct = document.getElementById('ct');
+  const movedScreen = sc !== _lastSc;
+  _lastSc = sc;
+  if (ct) ct.classList.toggle('screen-in', movedScreen);
 
   prevPts = pts; // snapshot before render (score-up only fires once)
   document.getElementById('ct').innerHTML = html();
