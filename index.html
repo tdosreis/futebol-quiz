@@ -3652,7 +3652,16 @@ function buildGame(key) {
   all.forEach(q => { q._d = qTier(q); });
 
   // prefer questions at the requested tier, then nearest tiers
-  const scored = shuf(all).map(q => ({ q, w: -Math.abs(q._d - cfg.tier) * 10 + rnd() * 4 }));
+  /* A written question outranks a generated one of the same tier.
+     The generators produce roughly two questions for every one that was
+     written by hand, so on weight alone a round came out 91% "qual destes
+     jogadores…" — the hand-written ones, which are the ones with a story in
+     them, almost never surfaced. The bonus is small enough that tier still
+     decides first: it breaks ties, it does not override the ladder. */
+  const written = q => !String((q._cat && q._cat.id) || '').startsWith('g_');
+  const scored = shuf(all).map(q => ({
+    q, w: -Math.abs(q._d - cfg.tier) * 10 + rnd() * 4 + (written(q) ? 5 : 0),
+  }));
   scored.sort((a, b) => b.w - a.w);
 
   /* Fill the round greedily, but charge a price for repetition: the same
@@ -4865,6 +4874,7 @@ function buildMilhao() {
       if (used.has(i) || usedA.has(ansKey(pool[i]))) continue;
       const cid = (pool[i]._cat && pool[i]._cat.id) || '?';
       const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3
+              + (String(cid).startsWith('g_') ? 0 : 5)   // prefer a written question
               - (byCat[cid] || 0) * 5
               - (byShape[qShape(pool[i])] || 0) * 12
               - (cid === prevCat ? 8 : 0);
