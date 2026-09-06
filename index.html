@@ -439,6 +439,13 @@
 
     /* text pockets (names only, two columns) */
     .b-text { flex-direction: row; align-items: center; justify-content: center; min-height: 62px; padding: 12px 10px 12px 24px; }
+    /* 62px was sized for a six-choice question, where every tile is a sentence.
+       The photo-reveal and career-path boards put ten names in the same space —
+       five rows — and at 62px each that plus the revealing photograph ran off
+       the bottom of a 844px phone. Ten short names need less room, not more. */
+    .board-2-tight .b-text { min-height: 46px; padding: 8px 9px 8px 21px; }
+    .board-2-tight .b-text .tile-name { font-size: 11.5px; }
+    .board-2-tight .b-text .tile-name-long { font-size: 10.5px; }
     /* A text pocket centres its name, so on a narrow phone a long one wraps up
        into the corner the audience figure occupies. Reserve that corner only
        while the vote is actually on screen. */
@@ -721,10 +728,26 @@
       animation: dealIn .5s cubic-bezier(.2,.9,.3,1) 60ms backwards; }
     @keyframes dealIn { from { opacity: 0; transform: translateY(9px) rotate(-2.2deg) scale(.965); } }
     .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
-    .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 4px; transition: transform .12s, background .15s; }
-    .mode:hover { background: var(--pocket-2); }
-    .mode:active { transform: scale(.97); }
+    .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule);
+      border-radius: 12px; padding: 11px 6px 10px; text-align: center; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      transition: transform .12s, background .15s, border-color .18s, box-shadow .18s; }
+    /* same disc the lifelines use, so the two screens read as one app */
+    .mode-disc { display: flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%; flex: none;
+      background: var(--md-soft); color: var(--md); transition: transform .18s; }
+    .mode-daily { --md: #17593F; --md-soft: rgba(23, 89, 63, .14); }
+    .mode-done  { --md: #7E8175; --md-soft: rgba(126, 129, 117, .14); }
+    .mode-surv  { --md: #B3402F; --md-soft: rgba(179, 64, 47, .14); }
+    .mode-train { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); }
+    .mode-album { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); }
+    :root[data-theme="dark"] .mode-album, :root:not([data-theme="light"]) .mode-album { --md: #D8A83C; }
+    :root[data-theme="dark"] .mode-daily, :root:not([data-theme="light"]) .mode-daily { --md: #3E9C6E; }
+    :root[data-theme="dark"] .mode-surv,  :root:not([data-theme="light"]) .mode-surv  { --md: #E06A55; }
+    :root[data-theme="dark"] .mode-train, :root:not([data-theme="light"]) .mode-train { --md: #D8A83C; }
+    .mode:hover { background: var(--pocket-2); border-color: var(--md); box-shadow: 0 2px 8px var(--shadow); }
+    .mode:hover .mode-disc { transform: scale(1.08); }
+    .mode:active { transform: translateY(1px) scale(.97); }
     .mode .mt { font-size: 12px; font-weight: 800; letter-spacing: .01em; color: var(--ink); }
     .mode .ms { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; font-variant-numeric: tabular-nums; }
     .home-foot { display: flex; gap: 14px; align-items: center; justify-content: center; }
@@ -811,7 +834,8 @@
       .qz-screen { padding: 8px !important; gap: 6px !important; }
       .qz-screen .qcard { min-height: 46px; padding: 9px 12px; gap: 9px; }
       .qz-screen .qcard p { font-size: 15px; }
-      .qz-screen .ajuda { padding: 4px 7px; font-size: 8.5px; }
+      .qz-screen .ajuda { padding: 4px 7px 3px; font-size: 8.5px; gap: 2px; }
+      .qz-screen .aj-disc { width: 21px; height: 21px; }
       .qz-screen .reveal-box { width: 96px; height: 96px; }
       .qz-screen .qart-wide { width: 88px; height: 58px; }
       .qz-screen .qart-face { width: 56px; height: 56px; }
@@ -819,6 +843,14 @@
       .qz-screen .expert-box { padding: 4px 8px; }
       .qz-screen .expert-box p { font-size: 10px; }
       .qz-screen .footer-hint { display: none; }
+      /* Ten text pockets is five rows, and on a 568px screen that plus a
+         photo-reveal image is the tightest board in the game — it was tipping
+         CONFIRMAR over the fold about half the time. The pockets give the
+         height back here; they are full size on anything taller. */
+      .qz-screen .b-text { min-height: 38px; padding: 6px 8px 6px 18px; }
+      .qz-screen .b-text .tile-name { font-size: 10px; }
+      .qz-screen .b-text .tile-name-long { font-size: 9.2px; }
+      .qz-screen .board-2 { gap: 6px; }
       .qz-screen .b .print { aspect-ratio: 1 / .8; }
       .qz-screen .board-5 { gap: 5px; }
       .qz-screen .board-2 { gap: 5px; }
@@ -831,10 +863,15 @@
       .qz-screen .foot { gap: 5px; }
       .qz-screen .btn-lg { padding: 11px 26px; font-size: 14px; }
     }
-    @media (max-height: 520px) {
+    /* 600, not 520. On a 568px screen the label under each lifeline is the
+       difference between CONFIRMAR sitting above the fold and below it, and
+       now that each icon has its own colour and disc the row still reads
+       without them. Measured: it failed about a third of runs at 520. */
+    @media (max-height: 600px) {
       .qz-screen .reveal-box { width: 72px; height: 72px; }
-      .qz-screen .ajuda span { display: none; }
-      .qz-screen .ajuda { min-width: 34px; }
+      /* label only: `span` alone would now also hide the icon's disc */
+      .qz-screen .ajuda .aj-lbl { display: none; }
+      .qz-screen .ajuda { min-width: 34px; padding: 5px; }
     }
 
     /* ── The back of a sticker, shown on the reveal ── */
@@ -880,6 +917,11 @@
     .alb-ring-n { position: relative; font-size: 8.5px; font-weight: 800;
       color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }
     .alb-ring-n i { font-style: normal; font-size: 6px; opacity: .65; }
+    /* the same ring, at the size the home screen can give it */
+    .alb-ring-lg { width: 40px; height: 40px; }
+    .alb-ring-lg::before { inset: 4px; background: var(--pocket); }
+    .alb-ring-lg .alb-ring-n { font-size: 11px; }
+    .alb-ring-lg .alb-ring-n i { font-size: 7.5px; }
 
     .alb-hint { display: flex; align-items: center; gap: 5px; font-size: 10px;
       color: var(--ink-3); margin: 1px 0 2px; }
@@ -5260,9 +5302,13 @@ function html() {
     const { p: hero, num } = heroSticker();
     const year = new Date().getFullYear();
 
-    const mode = (id, ic, label, tail) => `
-      <button id="${id}" class="mode">
-        ${ic}<span class="mt">${label}</span>
+    /* The three modes share the lifelines' language now: the icon in a disc
+       tinted with that mode's own colour, so the home screen and the board
+       look like the same app rather than two. */
+    const mode = (id, ic, label, tail, kind) => `
+      <button id="${id}" class="mode mode-${kind}">
+        <span class="mode-disc">${ic}</span>
+        <span class="mt">${label}</span>
         ${tail ? `<span class="ms">${tail}</span>` : ''}
       </button>`;
 
@@ -5294,12 +5340,12 @@ function html() {
       <button id="mil-btn" class="btn btn-brass btn-lg">${ICON.play('currentColor', 15)} Jogar agora</button>
 
       <div class="modes">
-        ${mode('daily-btn', ICON.calendar(done ? 'var(--ink-4)' : 'var(--pitch)', 16), 'Diário',
+        ${mode('daily-btn', ICON.calendar('currentColor', 16), 'Diário',
           done ? (dres ? dres.nCorrect + '/' + dres.total : 'feito')
-               : 'Nº ' + dayIndex() + (dst > 0 ? ' · ' + dst + ' seg.' : ''))}
-        ${mode('surv-btn', ICON.shield('var(--bad)', 16), 'Mata-mata',
-          (stats.survBest || 0) > 0 ? 'recorde ' + stats.survBest : 'até errar')}
-        ${mode('cta-btn', ICON.ladder('var(--ink-2)', 16), 'Treino', 'sem apostar')}
+               : 'Nº ' + dayIndex() + (dst > 0 ? ' · ' + dst + ' seg.' : ''), done ? 'done' : 'daily')}
+        ${mode('surv-btn', ICON.shield('currentColor', 16), 'Mata-mata',
+          (stats.survBest || 0) > 0 ? 'recorde ' + stats.survBest : 'até errar', 'surv')}
+        ${mode('cta-btn', ICON.ladder('currentColor', 16), 'Treino', 'sem apostar', 'train')}
       </div>
 
       ${(() => {
@@ -5311,13 +5357,15 @@ function html() {
         </div>`;
       })()}
 
-      <button id="balb" class="mode" style="width:100%;max-width:340px;flex-direction:row;gap:10px;text-align:left;">
-        ${ICON.book('var(--brass)', 17)}
+      <button id="balb" class="mode mode-album" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
+        <span class="mode-disc">${ICON.book('currentColor', 17)}</span>
         <span style="flex:1;min-width:0;">
           <span class="mt" style="display:block;">Meu álbum</span>
-          <span class="ms" style="display:block;">${album.size} de ${PL.length} figurinhas · ${albumPct()}%</span>
+          <span class="ms" style="display:block;">${album.size} de ${PL.length} figurinhas</span>
         </span>
-        <span class="alb-bar" style="width:64px;flex-shrink:0;"><i style="width:${albumPct()}%"></i></span>
+        <span class="alb-ring alb-ring-lg" style="--p:${albumPct()}">
+          <span class="alb-ring-n">${albumPct()}<i>%</i></span>
+        </span>
       </button>
 
       <div class="home-foot">
@@ -5719,7 +5767,9 @@ function html() {
 
     ${expertBox}
 
-    <div class="board ${isTextQ(q) ? 'board-2' : disp.length <= 4 ? 'board-big' : 'board-5'}">
+    <div class="board ${isTextQ(q)
+        ? 'board-2' + (disp.length > 6 ? ' board-2-tight' : '')
+        : disp.length <= 4 ? 'board-big' : 'board-5'}">
       ${disp.map((c, i) => badge(c, i)).join('')}
     </div>
 
