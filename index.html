@@ -5239,7 +5239,13 @@ const CAT_ART = {
 
 function questionArt(q) {
   if (q.port)  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
-  if (q.stad)  return `<div class="qart qart-wide qart-draw">${ART.stadium(92)}</div>`;
+  /* The app has a photograph of all twelve grounds and was drawing a generic
+     one instead. The ground is the subject of the question, so show it — the
+     drawn vignette stays as the fallback for a stadium with no photo. */
+  if (q.stad) return STAD_IMGS[q.stad]
+    ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="" aria-hidden="true"
+        onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + ART.stadium(104) + '</div>'" /></div>`
+    : `<div class="qart qart-wide qart-draw">${ART.stadium(104)}</div>`;
   if (q.face)  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
   if (q.crest) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
