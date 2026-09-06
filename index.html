@@ -952,6 +952,16 @@
        all of this data and never showed it. Only collected cards turn. */
     /* Each page of the album says how full it is. The count alone ("22/85") is
        a fact; the ring is the thing you glance at while scrolling and feel. */
+    /* A finished page is the whole point of a sticker album and looked exactly
+       like an unfinished one. The band goes brass and the ring becomes a tick. */
+    .alb-sec-done .t { color: var(--brass); }
+    .alb-sec-done .cnt { color: var(--brass); font-weight: 800; }
+    .alb-done .alb-ring { background: var(--brass); }
+    .alb-done .alb-ring-n { display: none; }
+    .alb-done .alb-ring::after { content: ''; position: relative; display: block;
+      width: 9px; height: 5px; border: 2px solid var(--brass); border-top: 0; border-right: 0;
+      transform: rotate(-45deg) translate(1px, -1px); }
+
     .alb-sec-end { display: flex; align-items: center; gap: 8px; margin-left: auto; flex: none; }
     .alb-ring { position: relative; width: 30px; height: 30px; border-radius: 50%;
       flex: none; display: flex; align-items: center; justify-content: center;
@@ -5631,7 +5641,7 @@ function html() {
           const got = groups[ctry].filter(g => album.has(g.p.id)).length;
           const isRest = ctry === '__resto';
           return `
-          <div class="alb-sec">
+          <div class="alb-sec${got === groups[ctry].length ? ' alb-sec-done' : ''}">
             <span class="crest-box" style="width:34px;">${isRest
               ? `<span class="alb-globe">${ICON.ball('currentColor', 21)}</span>`
               : flagSVG(ctry, 22)}</span>
@@ -5641,7 +5651,7 @@ function html() {
                 ? 'Rest of the world · Rest der Welt · Reste du monde'
                 : (LANGS[ctry] || '')}</span>
             </span>
-            <span class="alb-sec-end">
+            <span class="alb-sec-end${got === groups[ctry].length ? ' alb-done' : ''}">
               <span class="cnt">${got}/${groups[ctry].length}</span>
               <span class="alb-ring" style="--p:${Math.round(got / groups[ctry].length * 100)}">
                 <span class="alb-ring-n">${Math.round(got / groups[ctry].length * 100)}<i>%</i></span>
