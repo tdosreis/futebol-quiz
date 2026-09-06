@@ -120,6 +120,18 @@ C=[
  ("Avaí Leão da Ilha","pt","Avaí Futebol Clube",["leao da ilha"]),
  ("Paysandu Papão da Curuzu","pt","Paysandu Sport Club",["papao"]),
  ("Fluminense Laranjeiras","pt","Fluminense Football Club",["laranjeiras"]),
+ # ── futebol feminino e a era moderna ──
+ ("1a Copa Feminina em 1991","en","1991 FIFA Women's World Cup",["1991"]),
+ ("EUA maior campeã feminina","en","FIFA Women's World Cup",["united states"]),
+ ("Espanha campeã 2023","en","2023 FIFA Women's World Cup",["spain"]),
+ ("Brasil sedia a Copa Feminina de 2027","en","2027 FIFA Women's World Cup",["brazil"]),
+ # note: the English "Formiga (footballer)" is a disambiguation page — use pt.
+ ("Formiga em 7 Copas","pt","Formiga (futebolista)",["7 copas"]),
+ ("Argentina campeã 2022","pt","Copa do Mundo FIFA de 2022",["argentina"]),
+ ("Marrocos na semifinal de 2022","en","2022 FIFA World Cup",["morocco"]),
+ ("Mbappé hat-trick na final de 2022","en","2022 FIFA World Cup final",["hat-trick"]),
+ ("Copa 2026: EUA, Canadá, México, 48","en","2026 FIFA World Cup",["mexico","canada","48"]),
+ ("Mundial de Clubes com 32 em 2025","en","2025 FIFA Club World Cup",["32"]),
 ]
 bad=[]
 for label,lang,title,terms in C:
