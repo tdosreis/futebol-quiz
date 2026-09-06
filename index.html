@@ -508,8 +508,14 @@
     .vote > i { display: block; height: 100%; background: var(--pitch); animation: voteGrow .7s cubic-bezier(.2,.9,.3,1) backwards; }
     @keyframes voteGrow { from { width: 0 !important; } }
     .vote-pct { position: absolute; right: 3px; top: 3px; z-index: 4; pointer-events: none;
-      padding: 1px 4px; border-radius: 4px; background: var(--ink); color: var(--stock);
-      font: 800 8px/1.2 var(--font-s); font-variant-numeric: tabular-nums; }
+      padding: 1.5px 5px; border-radius: 5px; background: var(--ink); color: var(--stock);
+      font: 800 9px/1.2 var(--font-s); font-variant-numeric: tabular-nums;
+      animation: votePop .34s cubic-bezier(.2,1.4,.4,1) backwards; }
+    @keyframes votePop { from { opacity: 0; transform: scale(.6); } }
+    /* the tile the room actually backed */
+    .b-voted { transition: box-shadow .3s; }
+    .b-top-vote .vote-pct { background: var(--pitch); color: var(--on-pitch); }
+    .b-top-vote .vote > i { background: var(--pitch); }
 
     /* ═══════════════════════════════════════════════════════════════
        THE QUESTION — a ficha, with a double rule
@@ -617,7 +623,10 @@
     .safe-box .v { font-size: 12px; font-weight: 800; }
 
     /* the pundit */
-    .expert-box { display: flex; align-items: center; gap: 9px; border: 1px dashed var(--brass); border-radius: 10px; padding: 7px 11px; background: var(--brass-soft); }
+    .expert-box { display: flex; align-items: center; gap: 9px; border: 1px dashed var(--brass);
+      border-radius: 10px; padding: 7px 11px; background: var(--brass-soft);
+      animation: expertIn .4s cubic-bezier(.25,.9,.3,1); }
+    @keyframes expertIn { from { opacity: 0; transform: translateY(-6px); } }
     .expert-box p { font-size: 11px; line-height: 1.45; color: var(--ink-2); }
     .expert-box em { color: var(--ink-3); }
 
@@ -5291,7 +5300,13 @@ function badge(item, idx) {
 
   const tab = `<span class="tab">${NUM(idx)}</span>`;
   const votePct = poll && poll[item.id] !== undefined ? poll[item.id] : null;
-  if (votePct !== null) cls += ' b-voted';
+  if (votePct !== null) {
+    cls += ' b-voted';
+    /* the tile the room actually backed reads in the pitch green, so the
+       audience's answer is legible at a glance rather than by comparing ten
+       percentages */
+    if (poll && votePct === Math.max(...Object.values(poll))) cls += ' b-top-vote';
+  }
   const voteEl  = votePct === null ? '' :
     `<span class="vote-pct">${votePct}%</span>
      <span class="vote"><i style="width:${votePct}%;animation-delay:${(idx || 0) * 45}ms;"></i></span>`;
