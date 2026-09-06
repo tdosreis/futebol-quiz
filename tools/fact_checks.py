@@ -132,6 +132,19 @@ C=[
  ("Mbappé hat-trick na final de 2022","en","2022 FIFA World Cup final",["hat-trick"]),
  ("Copa 2026: EUA, Canadá, México, 48","en","2026 FIFA World Cup",["mexico","canada","48"]),
  ("Mundial de Clubes com 32 em 2025","en","2025 FIFA Club World Cup",["32"]),
+ # ── as ligas europeias por dentro ──
+ ("Premier League tem 20 clubes","en","Premier League",["20 clubs"]),
+ ("Bundesliga tem 18 clubes","en","Bundesliga",["18 "]),
+ ("Championship = 2a divisao inglesa","en","EFL Championship",["second"]),
+ ("La Liga 2 = 2a divisao espanhola","en","Segunda División",["second"]),
+ ("Liga Europa = 2o nivel","en","UEFA Europa League",["second"]),
+ ("Liga Conferencia criada em 2021","en","UEFA Conference League",["2021"]),
+ ("Man Utd venceu a 1a Premier League","en","1992–93 FA Premier League",["manchester united"]),
+ ("Leicester campeao em 2015-16","en","2015–16 Premier League",["leicester"]),
+ ("Juventus = La Vecchia Signora","en","Juventus FC",["vecchia signora"]),
+ ("Real Madrid = Los Blancos","en","Real Madrid CF",["los blancos"]),
+ ("Napoli campeao da Serie A 2023","en","2022–23 Serie A",["napoli"]),
+ ("Allianz Arena e do Bayern","en","Allianz Arena",["bayern"]),
 ]
 bad=[]
 for label,lang,title,terms in C:
