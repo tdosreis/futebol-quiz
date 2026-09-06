@@ -1721,6 +1721,52 @@ const CATS = [
     ]
   },
   {
+    /* The things a Brazilian knows without being taught: what the derbies are
+       called, which mascot belongs to whom, who plays where. */
+    id:'torcida', name:'Da Arquibancada', emoji:'📣',
+    tag:'Clássicos, mascotes e apelidos', col:'#B23A2E', diff:'Variado',
+    qs:[
+      /* ── os clássicos ── */
+      { t:'Como é chamado o clássico entre Flamengo e Vasco?',
+        type:'txt', choices:['Clássico dos Milhões','Derby Paulista','Fla-Flu','Choque-Rei','Clássico da Paz','Grenal'], a:['Clássico dos Milhões'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Flamengo e Fluminense?',
+        type:'txt', choices:['Fla-Flu','Clássico dos Milhões','Derby Paulista','Choque-Rei','Grenal','Clássico-Rei'], a:['Fla-Flu'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Grêmio e Internacional?',
+        type:'txt', choices:['Grenal','Fla-Flu','Derby Paulista','Choque-Rei','Clássico Mineiro','Clássico dos Milhões'], a:['Grenal'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Corinthians e Palmeiras?',
+        type:'txt', choices:['Derby Paulista','Choque-Rei','Majestoso','Clássico da Saudade','Fla-Flu','San-São'], a:['Derby Paulista'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre São Paulo e Palmeiras?',
+        type:'txt', choices:['Choque-Rei','Majestoso','Derby Paulista','San-São','Clássico da Saudade','Grenal'], a:['Choque-Rei'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Corinthians e São Paulo?',
+        type:'txt', choices:['Majestoso','Choque-Rei','Derby Paulista','San-São','Clássico dos Milhões','Fla-Flu'], a:['Majestoso'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Santos e São Paulo?',
+        type:'txt', choices:['San-São','Majestoso','Choque-Rei','Derby Paulista','Clássico da Saudade','Fla-Flu'], a:['San-São'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Cruzeiro e Atlético Mineiro?',
+        type:'txt', choices:['Clássico Mineiro','Grenal','Fla-Flu','Derby Paulista','Clássico-Rei','Choque-Rei'], a:['Clássico Mineiro'], flag:'BRA' },
+      { t:'Como é chamado o clássico entre Bahia e Vitória?',
+        type:'txt', choices:['Ba-Vi','Fla-Flu','Grenal','San-São','Clássico-Rei','Derby Paulista'], a:['Ba-Vi'], flag:'BRA' },
+      /* ── os mascotes ── */
+      { t:'Qual clube tem o urubu como mascote?', a:['flamengo'] },
+      { t:'Qual clube tem o porco como mascote?', a:['palmeiras'] },
+      { t:'Qual clube tem o mosqueteiro como mascote?', a:['corinthians'] },
+      { t:'Qual clube tem a raposa como mascote?', a:['cruzeiro'] },
+      { t:'Qual clube tem o galo como mascote?', a:['atleticomg'] },
+      { t:'Qual clube tem o tricolor "Guerreiro" e joga em Laranjeiras?', a:['fluminense'] },
+      /* ── os apelidos dos clubes ── */
+      { t:'Qual clube é conhecido como "Verdão"?',        a:['palmeiras'] },
+      { t:'Qual clube é conhecido como "Rubro-Negro carioca"?', a:['flamengo'] },
+      { t:'Qual clube gaúcho é o "Colorado"?',            a:['internacional'] },
+      { t:'Qual clube gaúcho é o "Imortal Tricolor"?',    a:['gremio'] },
+      { t:'Qual clube é conhecido como "Tricolor Paulista"?', a:['saopaulo'] },
+      { t:'Qual clube cearense é conhecido como "Vozão"?', a:['ceara'] },
+      { t:'Qual clube cearense é conhecido como "Leão do Pici"?', a:['fortaleza'] },
+      { t:'Qual clube baiano é o "Esquadrão de Aço"?',    a:['bahia'] },
+      { t:'Qual clube paranaense é o "Furacão"?',         a:['atleticopr'] },
+      { t:'Qual clube catarinense é o "Leão da Ilha"?',   a:['avai'] },
+      { t:'Qual clube paraense é o "Papão da Curuzu"?',   a:['paysandu'] },
+    ]
+  },
+  {
     id:'apelidos', name:'Apelidos', emoji:'🏷️',
     tag:'Quem é quem', col:'#8E4E9E', diff:'Variado',
     qs:[],   // built from NICK by the generators
@@ -3483,6 +3529,7 @@ function _qBase(q) {
   if (cid === 'origens') return 4;           // nobody knows 1863 by accident
   if (cid === 'europa') return 3;
   if (cid === 'curiosos') return 3;
+  if (cid === 'torcida') return 2;
   if (cid === 'estados')  return 1;
   if (cid === 'estadios') return 2;
   if (cid === 'lendas')   return 2;
