@@ -5639,7 +5639,8 @@ function html() {
       <div class="eyebrow">Rumo ao Milhão · degrau ${cleared}/${LADDER.length}</div>
       ${banked > 0 ? `<div style="margin:2px 0 -2px;">${ART.trophy(58)}</div>` : ''}
       <div class="display ${tone}" style="font-size:30px;"><em>${head}</em></div>
-      <div class="display prize-pop ${banked > 0 ? 'brass' : 'muted'}"
+      <div id="endcash" class="display prize-pop ${banked > 0 ? 'brass' : 'muted'}"
+        data-to="${banked}"
         style="font-size:${banked >= 100000 ? 44 : 52}px;letter-spacing:-.03em;">${money(banked)}</div>
       <p class="small muted" style="max-width:290px;font-size:12px;">${sub}</p>
 
@@ -6012,26 +6013,31 @@ function go() {
     if (rv && lastMsg) rv.innerHTML = lastMsg;
   }
 
-  /* The final score is the one number the whole run was for, and it simply
+  /* The final number is the one thing the whole run was for, and it simply
      appeared. It counts up instead — fast, under a second, easing out so the
-     last few tick slowly. Reduced motion gets the number, not the climb. */
-  const endN = document.getElementById('endpts');
+     last few tick slowly. Reduced motion gets the number, not the climb.
+     Two of these: points on a training round, reais on the ladder. */
+  const endN = document.getElementById('endpts') || document.getElementById('endcash');
   if (endN && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const asMoney = endN.id === 'endcash';
+    const show = v => endN.textContent = asMoney ? money(v) : String(v);
     const to = parseInt(endN.dataset.to, 10) || 0;
     if (to > 0) {
-      const dur = 900, t0 = performance.now();
-      endN.textContent = '0';
+      /* the ladder's number is bigger and the moment is bigger, so it takes
+         a little longer to arrive */
+      const dur = asMoney ? 1250 : 900, t0 = performance.now();
+      show(0);
       /* The true score must land whatever happens. requestAnimationFrame stops
          when the tab is backgrounded, so a player who looks away mid-count
          would come back to a number that is not their score. This timer is the
          guarantee; the animation is only the nice part. */
-      const land = setTimeout(() => { endN.textContent = to; }, dur + 120);
+      const land = setTimeout(() => show(to), dur + 120);
       const tick = now => {
         /* clamped at both ends: a rAF callback can carry a timestamp from
            before the one performance.now() handed back, and an unclamped k
            then runs the easing backwards into negative numbers. */
         const k = Math.max(0, Math.min(1, (now - t0) / dur));
-        endN.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        show(Math.round(to * (1 - Math.pow(1 - k, 3))));
         if (k < 1) requestAnimationFrame(tick);
         else clearTimeout(land);
       };
