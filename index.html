@@ -679,6 +679,14 @@
     }
     @media (prefers-reduced-motion: reduce) { .settle-dots i { opacity: .7; } }
 
+    /* how far along a locked medal is */
+    .medal-prog { height: 3px; background: var(--rule-2); border-radius: 2px;
+      overflow: hidden; margin-top: 5px; }
+    .medal-prog > i { display: block; height: 100%; background: var(--brass);
+      border-radius: 2px; transition: width .9s cubic-bezier(.2,.8,.3,1); }
+    .medal-num { font-size: 9px; font-weight: 700; color: var(--ink-3);
+      margin-top: 3px; font-variant-numeric: tabular-nums; }
+
     /* ── The stickers a run earned, shown at the end ── */
     .newfigs { width: 100%; max-width: 330px; display: flex; flex-direction: column;
       align-items: center; gap: 7px; margin-top: 4px; padding: 11px 10px 13px;
@@ -851,6 +859,19 @@
        A real sticker printed the player's details on the back, and reading
        them was half the point of peeling it off the sheet. The album held
        all of this data and never showed it. Only collected cards turn. */
+    /* Each page of the album says how full it is. The count alone ("22/85") is
+       a fact; the ring is the thing you glance at while scrolling and feel. */
+    .alb-sec-end { display: flex; align-items: center; gap: 8px; margin-left: auto; flex: none; }
+    .alb-ring { position: relative; width: 30px; height: 30px; border-radius: 50%;
+      flex: none; display: flex; align-items: center; justify-content: center;
+      background: conic-gradient(var(--brass) calc(var(--p) * 1%), var(--rule-2) 0);
+      transition: background .9s cubic-bezier(.2,.8,.3,1); }
+    .alb-ring::before { content: ''; position: absolute; inset: 3px;
+      border-radius: 50%; background: var(--stock); }
+    .alb-ring-n { position: relative; font-size: 8.5px; font-weight: 800;
+      color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }
+    .alb-ring-n i { font-style: normal; font-size: 6px; opacity: .65; }
+
     .alb-hint { display: flex; align-items: center; gap: 5px; font-size: 10px;
       color: var(--ink-3); margin: 1px 0 2px; }
     .alb-turn { cursor: pointer; perspective: 620px; -webkit-perspective: 620px; }
@@ -4464,44 +4485,44 @@ const MEDALS = [
   { id:'first',  ic:'ball', n:'Estreia',        d:'Jogue sua primeira partida',
     t: st => st.games >= 1 },
   { id:'ten',    ic:'shirt', n:'Rodada',         d:'Jogue 10 partidas',
-    t: st => st.games >= 10 },
+    t: st => st.games >= 10, p: st => [st.games || 0, 10] },
   { id:'perfect',ic:'target', n:'Perfeição',      d:'Acerte 100% de uma partida',
     t: st => (st.perfect || 0) >= 1 },
   { id:'streak5',ic:'flame', n:'Pegando fogo',   d:'Sequência de 5 acertos',
-    t: st => (st.bestStreak || 0) >= 5 },
+    t: st => (st.bestStreak || 0) >= 5, p: st => [st.bestStreak || 0, 5] },
   { id:'streak10',ic:'rocket', n:'Imparável',     d:'Sequência de 10 acertos',
-    t: st => (st.bestStreak || 0) >= 10 },
+    t: st => (st.bestStreak || 0) >= 10, p: st => [st.bestStreak || 0, 10] },
   { id:'hard',   ic:'skull', n:'Cara de pau',    d:'80% ou mais no Difícil',
     t: st => (st.hard80 || 0) >= 1 },
   { id:'c100',   ic:'medal', n:'Centenário',     d:'100 acertos no total',
-    t: st => (st.correct || 0) >= 100 },
+    t: st => (st.correct || 0) >= 100, p: st => [st.correct || 0, 100] },
   { id:'c500',   ic:'book', n:'Enciclopédia',   d:'500 acertos no total',
-    t: st => (st.correct || 0) >= 500 },
+    t: st => (st.correct || 0) >= 500, p: st => [st.correct || 0, 500] },
   /* ── the album ──
      Written as fractions of the album, not fixed counts. "Meio álbum" was 60
      stickers, which was half of a 125-player album and 28% of a 215-player
      one; the name stayed true only until the album grew. The description
      prints the real number so the target is never a mystery. */
   { id:'alb25',  ic:'shirt', n:'Começou a colar', d:'Colecione 25 figurinhas',
-    t: () => album.size >= 25 },
+    t: () => album.size >= 25, p: () => [album.size, 25] },
   /* Keeps its old threshold on purpose. These are computed live from the
      album's size, never stored, so moving 60 up to the new half would have
      taken the medal back off everyone sitting between the two. It only loses
      the name "Meio álbum", which stopped being true when the album grew. */
   { id:'alb60',  ic:'ball',  n:'Sessenta coladas', d:'Colecione 60 figurinhas',
-    t: () => album.size >= 60 },
+    t: () => album.size >= 60, p: () => [album.size, 60] },
   { id:'albHalf',ic:'book',  n:'Meio álbum',      d:`Colecione ${ALB_HALF} figurinhas`,
-    t: () => album.size >= ALB_HALF },
+    t: () => album.size >= ALB_HALF, p: () => [album.size, ALB_HALF] },
   { id:'alb3q',  ic:'medal', n:'Reta final',      d:`Colecione ${ALB_3Q} figurinhas`,
-    t: () => album.size >= ALB_3Q },
+    t: () => album.size >= ALB_3Q, p: () => [album.size, ALB_3Q] },
   { id:'albAll', ic:'crown', n:'Álbum completo',  d:'Colecione todas as figurinhas',
-    t: () => album.size >= PL.length },
+    t: () => album.size >= PL.length, p: () => [album.size, PL.length] },
   { id:'daily3', ic:'calendar', n:'Rotina',         d:'3 desafios diários seguidos',
-    t: st => LS.get('dailyStreak', 0) >= 3 },
+    t: st => LS.get('dailyStreak', 0) >= 3, p: () => [LS.get('dailyStreak', 0), 3] },
   { id:'daily7', ic:'calendar', n:'Semana cheia',   d:'7 desafios diários seguidos',
-    t: st => LS.get('dailyStreak', 0) >= 7 },
+    t: st => LS.get('dailyStreak', 0) >= 7, p: () => [LS.get('dailyStreak', 0), 7] },
   { id:'surv10', ic:'shield', n:'Sobrevivente',   d:'10 acertos seguidos no Mata-mata',
-    t: st => (st.survBest || 0) >= 10 },
+    t: st => (st.survBest || 0) >= 10, p: st => [st.survBest || 0, 10] },
   /* ── the ladder ── */
   { id:'safe1',  ic:'money', n:'Primeiro degrau', d:'Garanta R$ 5.000 no Milhão',
     t: st => (st.milBest || 0) >= 5000 },
@@ -5371,7 +5392,12 @@ function html() {
                 ? 'Rest of the world · Rest der Welt · Reste du monde'
                 : (LANGS[ctry] || '')}</span>
             </span>
-            <span class="cnt">${got}/${groups[ctry].length}</span>
+            <span class="alb-sec-end">
+              <span class="cnt">${got}/${groups[ctry].length}</span>
+              <span class="alb-ring" style="--p:${Math.round(got / groups[ctry].length * 100)}">
+                <span class="alb-ring-n">${Math.round(got / groups[ctry].length * 100)}<i>%</i></span>
+              </span>
+            </span>
           </div>
           <div class="alb-grid">
             ${groups[ctry].map(({ p, n }) => {
@@ -5406,11 +5432,24 @@ function html() {
       <div class="scroll-y" style="display:flex;flex-direction:column;gap:7px;flex:1;">
         ${MEDALS.map(m => {
           const on = got.has(m.id);
+          /* A locked medal used to show only its target. How far along you
+             are is the part worth knowing — "58 de 108" is a reason to play
+             one more round; "colecione 108 figurinhas" is a wall. */
+          let bar = '';
+          if (!on && m.p) {
+            try {
+              const [have, need] = m.p(stats);
+              const pct = Math.max(0, Math.min(100, Math.round(have / need * 100)));
+              bar = `<div class="medal-prog"><i style="width:${pct}%"></i></div>
+                     <div class="medal-num">${have} / ${need}</div>`;
+            } catch (e) { bar = ''; }
+          }
           return `<div class="medal ${on ? 'medal-on' : 'medal-off'}">
             <span class="ic">${(ICON[m.ic] || ICON.medal)('currentColor', 17)}</span>
             <div style="flex:1;min-width:0;">
               <div class="t">${m.n}</div>
               <div class="d">${m.d}</div>
+              ${bar}
             </div>
             ${on ? ICON.check('var(--good)', 14) : ''}
           </div>`;
