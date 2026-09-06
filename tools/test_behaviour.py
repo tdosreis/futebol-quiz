@@ -289,14 +289,13 @@ TESTS = r"""
        CL.every(c => LOGOS[c.id] || (c.c1 && c.c2)),
        CL.filter(c=>!LOGOS[c.id]&&!(c.c1&&c.c2)).map(c=>c.id).join(',') || 'all covered');
 
-    /* Sport and Bragantino have no freely-licensed mark anywhere — Commons
-       carries neither, and Bragantino's is Red Bull brand artwork. They keep
-       a *designed* badge: colours, kit pattern, founding year, monogram. */
+    /* Every club now ships its own official escudo, so nothing should reach
+       the drawn badge through LOGOS. It survives only as clubFallback's
+       landing spot for a file that 404s. */
     (function(){
       const drawn = CL.filter(c => !LOGOS[c.id]);
-      ok('only the clubs with no free artwork fall back to a drawn badge',
-         drawn.length === 2 && drawn.every(c => ['sport','bragantino'].includes(c.id)),
-         drawn.map(c=>c.id).join(',') || 'none');
+      ok('every club has a real crest, none falls back to the drawn badge',
+         drawn.length === 0, drawn.map(c=>c.id).join(',') || 'none');
       // the three we did find must be wired up and attributed
       ['corinthians','vasco','nautico'].forEach(function(id){
         ok(`${id} uses a real licensed crest`,
@@ -308,13 +307,29 @@ TESTS = r"""
       ok('every crest sits in the standard disc',
          CL.every(c => clubArt(c.id,'').indexOf('crest-disc') !== -1),
          CL.filter(c => clubArt(c.id,'').indexOf('crest-disc') === -1).map(c=>c.id).join(',') || 'all discs');
-      // a club whose only free artwork is a flag gets it cut to the same
-      // shield outline, so the row is one family of shapes
-      ok('flag artwork is cut to the shield',
-         [...FLAT_LOGOS].every(id => clubArt(id,'').indexOf('clipped') !== -1),
-         [...FLAT_LOGOS].filter(id => clubArt(id,'').indexOf('clipped') === -1).join(',') || 'all clipped');
-      ok('clubs with no free artwork keep the drawn badge',
-         CL.filter(c => !LOGOS[c.id]).every(c => clubArt(c.id,'').indexOf('<svg') !== -1));
+      /* FLAT_LOGOS and the #shield clip-path are gone: they existed to make
+         flags and files flattened onto white behave, and every club now ships
+         transparent official artwork. What matters instead is that the six
+         non-free escudos are named, so the licence distinction stays visible. */
+      ok('the non-free escudos are named in one place',
+         typeof NONFREE_CRESTS !== 'undefined' && NONFREE_CRESTS.size === 6,
+         typeof NONFREE_CRESTS === 'undefined' ? 'missing' : [...NONFREE_CRESTS].join(','));
+      ok('every named non-free escudo is credited',
+         [...NONFREE_CRESTS].every(id => LOGOS[id] && CREDITS[LOGOS[id]]),
+         [...NONFREE_CRESTS].filter(id => !(LOGOS[id] && CREDITS[LOGOS[id]])).join(',') || 'all credited');
+      /* The list and the licences must not drift apart: a club shipped under
+         the identification rationale but missing from the set would be an
+         undocumented non-free asset, which is exactly what the set exists to
+         prevent. This is the assertion that would have caught NONFREE_CRESTS
+         being deleted by an unrelated edit. */
+      (function(){
+         const named = [...NONFREE_CRESTS].sort().join(',');
+         const byLicence = Object.keys(LOGOS)
+           .filter(id => CREDITS[LOGOS[id]] && /identifica/i.test(CREDITS[LOGOS[id]].l || ''))
+           .sort().join(',');
+         ok('the non-free list matches the non-free licences',
+            named === byLicence, named === byLicence ? named : `set=[${named}] licences=[${byLicence}]`);
+      })();
       /* The badge used to be a chrome ring with a glossy dome, which was the
          loudest object on a board of flat printed crests. It is now cut to the
          same shield as everything else, so what it must carry is the shield,

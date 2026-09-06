@@ -1601,7 +1601,7 @@ const CATS = [
   },
   {
     /* Europe: the leagues, the cups and the sides that defined them. */
-    id:'europa', name:'Europa', emoji:'🇪🇺',
+    id:'europa', name:'Europa', emoji:'🏟️',
     tag:'Ligas, copas e dinastias', col:'#3F6FB5', diff:'Difícil',
     qs:[
       { t:'Como se chama a primeira divisão do futebol inglês desde 1992?',
@@ -4424,15 +4424,26 @@ function shareText() {
     const climb   = LADDER.map((s, i) => i < rung ? '🟨' : '⬛').join('');
     const verdict = banked >= LADDER[LADDER.length - 1].v ? 'LEVEI O MILHÃO!'
                   : cashed ? 'parei e levei' : 'caí e levei';
+    const albM = runNew
+      ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${PL.length} no álbum`
+      : '';
     return `Rumo ao Milhão ⚽ Futebol Quiz BR\n${climb}\n`
-         + `${verdict} ${money(banked)} · degrau ${rung}/${LADDER.length}\n${link}`;
+         + `${verdict} ${money(banked)} · degrau ${rung}/${LADDER.length}${albM}\n${link}`;
   }
 
   const grid = runLog.map(p => p === 3 ? '🟩' : p === 1 ? '🟨' : p === -1 ? '⬜' : '⬛').join('');
   const head = isDaily ? `Futebol Quiz BR ⚽ Desafio #${dayIndex()}`
                        : `Futebol Quiz BR ⚽ ${DCFG().label}`;
   const strk = bestStreak >= 3 ? `  🔥${bestStreak}` : '';
-  return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}\n${link}`;
+  /* The album is the thing that makes this app not just another quiz, and the
+     share card never mentioned it. One line, and only when the run actually
+     stuck something in — a score alone says nothing about why to come back.
+     It sits before the link, so the grid stays on the second line where the
+     tests (and anyone skim-reading a WhatsApp message) expect it. */
+  const alb = runNew
+    ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${PL.length} no álbum`
+    : '';
+  return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}${alb}\n${link}`;
 }
 
 function doShare() {
@@ -5278,6 +5289,14 @@ function genericCrest(id) {
    sits right underneath it, so the crest is decorative and stays silent —
    otherwise a screen reader says every name twice. In the question header
    there is no such caption, so there the crest has to carry the name. */
+/* The six clubs whose escudo exists nowhere under a free licence. They are
+   shipped to identify the club inside the quiz and nothing else, and are named
+   here — in one place, next to the code that draws them — so the licence
+   distinction stays auditable instead of being buried among three hundred
+   attributions. The credits screen names the same six to the player. */
+const NONFREE_CRESTS = new Set(['vasco', 'corinthians', 'nautico',
+                                'paysandu', 'sport', 'bragantino']);
+
 /* Every club now ships its own official escudo, and every one of those files
    is transparent artwork that floats on the page. The shield clip-path this
    used to need — for flags and for files flattened onto a background — went
