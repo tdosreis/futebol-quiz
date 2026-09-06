@@ -144,8 +144,14 @@ TESTS = r"""
 
     ok('hard distractors more plausible than easy', H.sim > E.sim * 1.25,
        `easy=${E.sim.toFixed(1)} mod=${M.sim.toFixed(1)} hard=${H.sim.toFixed(1)}`);
+    /* Threshold 1.2, not 1.3. Measured over 150 boards per level the shares are
+       32% / 45% / 59%, a ratio of 1.41 — a real and comfortable gap. But the
+       statistic is noisy at the 40 boards this suite can afford, swinging
+       roughly 1.26 to 1.51, so a 1.3 gate failed a run in ten for no reason.
+       1.2 still asserts the thing that matters: moderado is meaningfully
+       tighter than fácil, and difícil is not looser than moderado. */
     ok('the harder the level, the more often the position matches',
-       H.pos > M.pos * 0.95 && M.pos > E.pos * 1.3,
+       H.pos > M.pos * 0.95 && M.pos > E.pos * 1.2,
        `easy=${(E.pos*100).toFixed(0)}% mod=${(M.pos*100).toFixed(0)}% hard=${(H.pos*100).toFixed(0)}%`);
     ok('the harder the level, the tighter the era', H.p90 <= M.p90 && M.p90 <= E.p90,
        `p90 era gap: easy=${E.p90} mod=${M.p90} hard=${H.p90}`);
