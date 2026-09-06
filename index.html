@@ -4994,6 +4994,27 @@ const ART = {
     </svg>`;
   },
 
+  /* the terrace: a bandeirão over a crowd, for the questions about what the
+     stands call things */
+  terrace(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração da torcida"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M22 62 v-38" />
+        <path d="M22 24 q14 -7 28 0 t28 0 v20 q-14 7 -28 0 t-28 0 Z" fill="var(--retro-band)"/>
+        <path d="M36 27 v20 M50 24 v20 M64 27 v20" stroke-width="1.4" opacity=".45"/>
+        <g fill="#C98A5B">
+          <circle cx="30" cy="62" r="5"/><circle cx="46" cy="65" r="5"/>
+          <circle cx="62" cy="62" r="5"/><circle cx="78" cy="65" r="5"/>
+          <circle cx="94" cy="62" r="5"/>
+        </g>
+        <path d="M24 80 q6 -10 12 0 M40 80 q6 -10 12 0 M56 80 q6 -10 12 0
+                 M72 80 q6 -10 12 0 M88 80 q6 -10 12 0" fill="#2E7D4F"/>
+      </g>
+    </svg>`;
+  },
+
   /* a little printed vignette of a ground, for the stadium questions */
   stadium(w) {
     return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um estádio"
@@ -5271,6 +5292,7 @@ function badge(item, idx) {
    question whose answer is a country. */
 const QICON = {
   rules: w => ART.rules(w), plane: w => ART.plane(w), boot: w => ART.boot(w),
+  terrace: w => ART.terrace(w), route: w => ART.route(w), map: w => ART.mapBR(w),
   bench: w => ART.bench(w), globe: w => ART.globe(w), stadium: w => ART.stadium(w),
   trophy: w => ART.trophy(w), ball: w => ART.ball(w),
 };
@@ -5281,7 +5303,7 @@ const CAT_ART = {
   copa:    'trophy', ouro:   'boot',    craques: 'boot',
   estadios:'stadium',lendas: 'trophy',  brasileirao: 'trophy',
   libertadores:'trophy', estados: 'globe', apelidos: 'ball',
-  g_escudo:'ball',   g_conta:'ball',
+  g_escudo:'ball',   g_conta:'ball',  torcida: 'terrace',
 };
 
 function questionArt(q) {
