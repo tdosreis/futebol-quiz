@@ -569,11 +569,20 @@
 
     /* the ladder rail: sixteen notches */
     .rail { display: flex; gap: 2px; align-items: center; }
-    .notch { flex: 1; height: 4px; border-radius: 2px; background: var(--rule-2); transition: background .3s; }
+    .notch { flex: 1; height: 5px; border-radius: 3px; background: var(--rule-2);
+      transition: background .45s ease, transform .3s cubic-bezier(.3,.9,.4,1), height .3s; }
     .notch-done { background: var(--pitch); }
     .notch-safe { background: var(--rule); }
-    .notch-safe.notch-done { background: var(--brass); }
-    .notch-now { background: var(--ink); animation: timerPulse 1.1s ease-in-out infinite; }
+    /* a banked checkpoint is money you keep, so it stays brass and stands up */
+    .notch-safe.notch-done { background: var(--brass); height: 7px; }
+    /* the rung being played: taller, brass, and breathing */
+    .notch-now { background: var(--brass); height: 9px; transform: scaleX(1.06);
+      box-shadow: 0 0 0 1px var(--brass-soft); animation: notchNow 1.5s ease-in-out infinite; }
+    @keyframes notchNow { 0%,100% { opacity: .95; } 50% { opacity: .5; } }
+
+    /* the multiplier climbs; it should look like it just did */
+    @keyframes streakUp { 0% { transform: scale(1); } 40% { transform: scale(1.22); } 100% { transform: scale(1); } }
+    .streak-up { animation: streakUp .38s cubic-bezier(.3,.8,.3,1); }
 
     /* what this question is worth */
     .stakes { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
@@ -2103,8 +2112,10 @@ const FLAGS = {
      + `<path d="M3.6 1.7h.6v.6h-.6z M4.8 1.7h.6v.6h-.6z M4.2 2.3h.6v.6h-.6z M3.6 2.9h.6v.6h-.6z M4.8 2.9h.6v.6h-.6z" fill="#FF0000"/>`,
   COL: `<rect width="9" height="6" fill="#FCD116"/><rect y="3" width="9" height="1.5" fill="#003893"/>`
      + `<rect y="4.5" width="9" height="1.5" fill="#CE1126"/>`,
-  ESP: `<rect width="9" height="6" fill="#AA151B"/><rect y="1.5" width="9" height="3" fill="#F1BF00"/>`
-     + `<rect x="1.6" y="2.3" width="1.3" height="1.5" rx=".2" fill="#AA151B" opacity=".85"/>`,
+  /* The bands are the flag; the arms are detail no 9x6 box can carry. A red
+     rectangle standing in for them read as a rendering fault once the flag
+     started appearing at 78px in a question card, so it is gone. */
+  ESP: `<rect width="9" height="6" fill="#AA151B"/><rect y="1.5" width="9" height="3" fill="#F1BF00"/>`,
   URU: `<rect width="9" height="6" fill="#fff"/>`
      + [1, 3, 5, 7].map(i => `<rect y="${i * .667}" width="9" height=".667" fill="#0038A8"/>`).join('')
      + `<rect width="3.6" height="2.67" fill="#fff"/><circle cx="1.8" cy="1.33" r=".7" fill="#FCD116"/>`,
@@ -2112,7 +2123,7 @@ const FLAGS = {
      + `<rect width="9" height="2" fill="#CE1126"/><circle cx="4.5" cy="3" r=".62" fill="#C09300"/>`,
   CMR: _VERT('#007A5E', '#CE1126', '#FCD116') + _STAR(4.5, 3, .8, '#FCD116'),
   UKR: `<rect width="9" height="3" fill="#0057B7"/><rect y="3" width="9" height="3" fill="#FFDD00"/>`,
-  HUN: _HORZ('#CE2939', '#fff', '#477050'),
+  HUN: _HORZ('#CE2939', '#fff', '#436F4D'),
   BEL: _VERT('#000', '#FAE042', '#ED2939'),
   CZE: `<rect width="9" height="3" fill="#fff"/><rect y="3" width="9" height="3" fill="#D7141A"/>`
      + `<path d="M0 0 4.5 3 0 6Z" fill="#11457E"/>`,
@@ -5674,7 +5685,9 @@ function html() {
         <span class="chip">${catIcon(qcat)}<span>${qcat.name}</span></span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-        ${streak > 1 ? `<span class="chip chip-brass" style="padding:2px 8px;">${ICON.flame('currentColor', 11)}${streak}x</span>` : ''}
+        ${streak > 1 ? `<span class="chip chip-brass streak-chip${
+          introOn ? ' streak-up' : ''}" style="padding:2px 8px;">${
+          ICON.flame('currentColor', 11)}${streak}x</span>` : ''}
         ${progress}
         ${isMil
           ? `<div class="clock ${tLeft <= 5 ? 'timer-low' : ''}">${ICON.clock('currentColor', 13)}
