@@ -145,6 +145,16 @@ C=[
  ("Real Madrid = Los Blancos","en","Real Madrid CF",["los blancos"]),
  ("Napoli campeao da Serie A 2023","en","2022–23 Serie A",["napoli"]),
  ("Allianz Arena e do Bayern","en","Allianz Arena",["bayern"]),
+ # ── transferências e jogos que ninguém esquece ──
+ ("Neymar: transferencia recorde","en","Neymar",["record","barcelona","paris"]),
+ ("CR7 ao Real Madrid em 2009","en","Cristiano Ronaldo",["2009","real madrid"]),
+ ("Neymar Santos -> Barcelona 2013","en","Neymar",["2013","barcelona"]),
+ ("Istambul 2005 terminou 3-3","en","2005 UEFA Champions League final",["3–3"]),
+ ("Barcelona 6-1 PSG em 2017","en","Barcelona 6–1 Paris Saint-Germain",["6–1"]),
+ ("final de 1994 nos penaltis vs Italia","en","1994 FIFA World Cup final",["italy","penalt"]),
+ ("final de 2002 vs Alemanha, em Yokohama","en","2002 FIFA World Cup final",["germany","yokohama"]),
+ ("final de 1970: Brasil 4-1 Italia","en","1970 FIFA World Cup",["4–1","italy"]),
+ ("Copa de 1970 teve 16 selecoes","pt","Copa do Mundo FIFA de 1970",["dezesseis selecoes"]),
 ]
 bad=[]
 for label,lang,title,terms in C:
