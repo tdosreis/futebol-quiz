@@ -2225,6 +2225,13 @@ const CTRY_BAND = { NIR:'Irl. Norte', KOR:'Coreia', WAL:'Gales', CIV:'Marfim' };
    for the countries with no adjective in the table. */
 const ctrySel = c => CTRY_ADJ[c] || ('de ' + (CTRY_NAME[c] || c));
 
+/* "passou pelo Juventus" is wrong — in Portuguese the club is a Juventus, and
+   so are a Roma, a Inter, a Lazio, a Fiorentina. Everything else here takes
+   "pelo", which is why only the exceptions are listed. */
+const CLUB_FEM = new Set(['juventus', 'roma', 'inter', 'lazio', 'fiorentina',
+  'sampdoria', 'atalanta', 'portuguesa', 'ponte preta', 'chapecoense']);
+const byClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'pela ' : 'pelo ') + clubName(id);
+
 const CTRY_ADJ = {
   BRA:'brasileira', ARG:'argentina', URU:'uruguaia', CHI:'chilena', COL:'colombiana',
   PER:'peruana', PAR:'paraguaia', MEX:'mexicana', POR:'portuguesa', ESP:'espanhola',
@@ -3811,7 +3818,7 @@ function GEN_QS(tier) {
     const yes = pick(clubPlayers[c], 2);
     const no  = PL.filter(p => !(p.clubs || []).includes(c));
     out.push({
-      t: `Selecione os 2 jogadores que passaram pelo ${clubName(c)}`,
+      t: `Selecione os 2 jogadores que passaram ${byClub(c)}`,
       a: yes.map(p => p.id), type: 'player',
       pool: no.map(p => p.id),
       crest: c, _cat: GC.squad,
@@ -3976,18 +3983,12 @@ function GEN_QS(tier) {
                a: [top.id], fixed: set.map(c => c.id), _cat: GC.hist, d: 2 });
   }
 
-  /* 18. Country → multi-select */
-  Object.keys(byCtry).filter(c => byCtry[c].length >= 2 && c !== 'BRA').slice(0, 4).forEach(c => {
-    const yes = pick(byCtry[c], 2);
-    const no = PL.filter(p => p.ctry !== c);
-    if (no.length < 8) return;
-    out.push({
-      t: `Selecione os 2 jogadores de ${CTRY_NAME[c] || c}`,
-      a: yes.map(p => p.id), type: 'player',
-      fixed: yes.map(p => p.id).concat(pick(no, 8).map(p => p.id)),
-      _cat: GC.nat, d: 3,
-    });
-  });
+  /* 18 was a second "selecione os 2 jogadores que defenderam a seleção X" and
+     is gone: GEN4 #34 asks it better. That one requires a country to have at
+     least three players before it will ask — with exactly two, every one of
+     them is always the answer, so the question is the same every time and
+     answerable without knowing anything. #34 also hides the flag and the
+     country band, which this one only got by accident, through the cue reader. */
 
   /* ═════ GEN3 — honours, nicknames, careers abroad ═════ */
   const GC3 = {
@@ -4097,7 +4098,7 @@ function GEN_QS(tier) {
     const no  = PL.filter(p => !(p.clubs || []).includes(c));
     if (no.length < 8) return;
     out.push({
-      t: `Selecione os 2 jogadores que passaram pelo ${CLUB_NAMES[c]}`,
+      t: `Selecione os 2 jogadores que passaram ${byClub(c)}`,
       a: yes.map(p => p.id), type: 'player',
       pool: no.map(p => p.id), _cat: GC3.abroad, d: 3,
     });
