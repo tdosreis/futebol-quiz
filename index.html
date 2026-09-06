@@ -536,6 +536,18 @@
     .qart-flag { width: 78px; height: 52px; border-radius: 4px; overflow: hidden;
       box-shadow: inset 0 0 0 1px rgba(32,36,30,.3), 0 1px 3px var(--shadow); }
     .qart-flag svg { width: 100%; height: 100%; display: block; }
+    /* the map is portrait where the other vignettes are landscape */
+    .qart-map { width: 72px; height: 76px; }
+    @media (max-width: 360px) { .qart-map { width: 60px; height: 64px; } }
+    /* a career shown as the crests it passed through, dealt left to right */
+    .qart-path { display: flex; align-items: center; gap: 2px; width: auto; }
+    /* .crest-box gives the disc the box it positions itself against — without
+       it clubArt's absolute disc escapes and fills the screen. */
+    .qart-path .qp { display: block; width: 30px; flex: none;
+      animation: qpIn .34s cubic-bezier(.2,.9,.3,1) backwards; }
+    .qart-path .qp:nth-child(n+2) { margin-left: -6px; }
+    @keyframes qpIn { from { opacity: 0; transform: translateX(-6px) scale(.8); } }
+    @media (max-width: 360px) { .qart-path .qp { width: 25px; } }
     .qart-draw { display: flex; align-items: center; justify-content: center;
       background: var(--retro-card); box-shadow: inset 0 0 0 1px var(--retro-edge); }
     .qart-crest { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; }
@@ -1310,14 +1322,14 @@ const CATS = [
     id:'estados', name:'Por Estado', emoji:'📍',
     tag:'Onde fica o clube?', col:'#1A6B9E', diff:'Fácil',
     qs:[
-      { t:'Selecione TODOS os times do Rio de Janeiro',                         a:['flamengo','fluminense','vasco','botafogo'] },
-      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional'] },
-      { t:'Selecione TODOS os times de Minas Gerais',                           a:['cruzeiro','atleticomg','americamg'] },
-      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo'] },
-      { t:'Selecione TODOS os times do Ceará',                                  a:['fortaleza','ceara'] },
-      { t:'Selecione TODOS os times do Paraná',                                 a:['atleticopr','coritiba'] },
-      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico'] },
-      { t:'Selecione TODOS os times da Bahia',                                  a:['bahia','vitoria'] },
+      { t:'Selecione TODOS os times do Rio de Janeiro',                         a:['flamengo','fluminense','vasco','botafogo'], uf:'RJ' },
+      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional'], uf:'RS' },
+      { t:'Selecione TODOS os times de Minas Gerais',                           a:['cruzeiro','atleticomg','americamg'], uf:'MG' },
+      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo'], uf:'SP' },
+      { t:'Selecione TODOS os times do Ceará',                                  a:['fortaleza','ceara'], uf:'CE' },
+      { t:'Selecione TODOS os times do Paraná',                                 a:['atleticopr','coritiba'], uf:'PR' },
+      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico'], uf:'PE' },
+      { t:'Selecione TODOS os times da Bahia',                                  a:['bahia','vitoria'], uf:'BA' },
     ]
   },
   {
@@ -3712,6 +3724,7 @@ function GEN_QS(tier) {
     out.push({
       t: `Que jogador passou por estes clubes, nesta ordem?\n${path}`,
       a: [p.id], type: 'player',
+      path: (p.clubs || []).slice(0, 4),   // the crests, in the same order
       textTiles: true,
       pool: PL.filter(x => x.id !== p.id).map(x => x.id), _cat: GC.path,
       d: 3,
@@ -3758,7 +3771,7 @@ function GEN_QS(tier) {
     const ok = byState[st].filter(c => !namesState(c, st));
     out.push({
       t: `Qual destes clubes é de ${ST_NAME[st]}?`,
-      a: [rndOf(ok).id],
+      a: [rndOf(ok).id], uf: st,
       pool: CL.filter(c => c.s !== st && !namesState(c, st)).map(c => c.id),
       _cat: GC.hist, d: 1,
     });
@@ -4880,6 +4893,60 @@ const ART = {
     </svg>`;
   },
 
+  /* Brazil, with one state lit up. A question about which club is from Bahia
+     deserves better than a generic ball, and the map answers a second question
+     the player may not have thought to ask — where that actually is.
+     The outline is a deliberate simplification: lon/lat projected into this
+     card's box (see tools note), enough to be recognisably Brazil at 104px and
+     no more. */
+  BR_PATH: 'M51.7 4.2 L52.7 6.6 L58.7 9.2 L65 5.7 L67.7 12.5 L70 15 L76.5 18.4 '
+         + 'L87.2 22.6 L91 26.8 L88.6 33.1 L84.7 37.7 L84.6 46.7 L83.5 50.2 '
+         + 'L80.3 55 L73.1 58 L69.9 62 L67.7 67.9 L64.4 72.7 L62.5 75.8 '
+         + 'L56.1 69.4 L55.2 54.3 L56.1 43.8 L52.4 38.6 L44.3 31.8 L37.1 31.8 '
+         + 'L31.2 27.6 L37.1 21.1 L38 16.5 L41.3 10.1 L46.3 6.4 L47.2 6.6 Z',
+
+  UF_XY: { SP:[70,54.3], RJ:[78.9,54.8], MG:[76.2,47.8], BA:[80.4,36.8],
+           RS:[62.4,69], PR:[65.4,58.9], SC:[67,64], PE:[86.3,29.2],
+           CE:[83.8,23.3], PA:[63.9,21.1], GO:[68.5,43.2], MT:[58.7,37.7],
+           AL:[88.2,31.4], MA:[74.6,23], RN:[88.2,24.4] },
+
+  mapBR(w, uf) {
+    const at = this.UF_XY[uf];
+    /* cropped to the map itself: projected into the same 120x80 space as the
+       other vignettes, Brazil only fills the middle half of it, and the card
+       came out mostly empty card. */
+    return `<svg viewBox="27 0 68 80" width="${w || 120}" role="img"
+      aria-label="${at ? 'Mapa do Brasil com o estado destacado' : 'Mapa do Brasil'}"
+      style="display:block;max-width:100%;height:auto;">
+      <rect x="27" width="68" height="80" rx="5" fill="var(--retro-card)"/>
+      <path d="${this.BR_PATH}" fill="#2E7D4F" stroke="#2A1D10" stroke-width="2"
+        stroke-linejoin="round" opacity=".92"/>
+      ${at ? `<g>
+        <circle cx="${at[0]}" cy="${at[1]}" r="9" fill="var(--retro-band)" opacity=".28"/>
+        <circle cx="${at[0]}" cy="${at[1]}" r="4.6" fill="var(--retro-band)"
+          stroke="#2A1D10" stroke-width="1.8"/>
+        <circle cx="${at[0]}" cy="${at[1]}" r="1.5" fill="#F5EFE0"/>
+      </g>` : ''}
+    </svg>`;
+  },
+
+  /* a career as a journey: pins on a dotted road, for the path questions whose
+     clubs have no crest to show */
+  route(w) {
+    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de uma trajetória"
+      style="display:block;max-width:100%;height:auto;">
+      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
+      <path d="M14 62 q22 -18 44 -12 t48 -22" fill="none" stroke="#2A1D10"
+        stroke-width="2.4" stroke-linecap="round" stroke-dasharray="5 5" opacity=".65"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
+        <path d="M14 62 a7 7 0 1 1 0 -14 a7 7 0 0 1 0 14 Z" fill="#F0C24A"/>
+        <path d="M58 50 a7 7 0 1 1 0 -14 a7 7 0 0 1 0 14 Z" fill="#2E7D4F"/>
+        <path d="M106 28 c0 6 -8 12 -8 12 s-8 -6 -8 -12 a8 8 0 0 1 16 0 Z" fill="var(--retro-band)"/>
+        <circle cx="98" cy="27" r="3" fill="#F5EFE0" stroke="none"/>
+      </g>
+    </svg>`;
+  },
+
   /* a little printed vignette of a ground, for the stadium questions */
   stadium(w) {
     return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um estádio"
@@ -5182,6 +5249,21 @@ function questionArt(q) {
   if (q.flag && FLAGS[q.flag])
     return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[q.flag] || q.flag}">
       <svg viewBox="0 0 9 6" preserveAspectRatio="none">${FLAGS[q.flag]}</svg></div>`;
+  /* a question about a Brazilian state gets the map, with that state lit */
+  if (q.uf) return `<div class="qart qart-map qart-draw">${ART.mapBR(72, q.uf)}</div>`;
+  /* A career asked as a list of clubs shows those clubs' crests, in order —
+     the question is the path, so the path is what should be pictured. Only the
+     ones that actually have a crest file: a foreign club falls back to the
+     drawn badge, which is built from CL data it has no row in, so it comes out
+     as an empty disc. Fewer than two and the route vignette says it better. */
+  if (q.path && q.path.length) {
+    const shown = q.path.filter(c => LOGOS[c]).slice(0, 4);
+    if (shown.length >= 2)
+      return `<div class="qart qart-path" role="img" aria-label="Clubes da carreira">
+        ${shown.map((c, i) => `<span class="qp crest-box" style="animation-delay:${i * 90}ms">${
+          clubArt(c, '', false)}</span>`).join('')}</div>`;
+    return `<div class="qart qart-wide qart-draw">${ART.route(104)}</div>`;
+  }
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
   const draw = QICON[key] || QICON.ball;
   return `<div class="qart qart-wide qart-draw">${draw(92)}</div>`;
