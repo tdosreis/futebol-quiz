@@ -35,6 +35,21 @@ for name, arr in (("PL", pl_ids), ("CL", cl_ids)):
     dups = {x for x in arr if arr.count(x) > 1}
     if dups: errs.append(f"{name} duplicate ids: {dups}")
 
+# Two rows for the same person is worse than a duplicate id: the ids differ so
+# nothing above complains, but the album prints him twice and a generator can
+# name one and answer with the other's clubs. Caught exactly that way with
+# Juninho Pernambucano, who was added a second time as `juninho_pe`.
+pl_names = re.findall(r"\{ *id:'[\w_]+', *n:'((?:[^'\\]|\\.)*)'", pl_block)
+seen_n = {}
+for n in pl_names:
+    seen_n[n] = seen_n.get(n, 0) + 1
+dup_n = sorted(n for n, k in seen_n.items() if k > 1)
+if dup_n: errs.append(f"PL duplicate player names: {dup_n}")
+
+pl_imgs = re.findall(r"\{ *id:'[\w_]+',[^\n]*img:'(img/[^']+)'", pl_block)
+dup_i = sorted({i for i in pl_imgs if pl_imgs.count(i) > 1})
+if dup_i: errs.append(f"PL two players share a photo: {dup_i}")
+
 # every question answer id must resolve
 qs = re.findall(r"\{ t:'((?:[^'\\]|\\.)*)'[^\n]*?a:\[([^\]]*)\]([^\n]*)", s)
 print(f"questions parsed={len(qs)}")
