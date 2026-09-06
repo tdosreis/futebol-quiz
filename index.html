@@ -592,12 +592,57 @@
     /* the five cards */
     .ajudas { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
     .ajuda {
-      display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 52px;
-      background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px; padding: 6px 8px;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 56px;
+      background: var(--pocket); border: 1px solid var(--rule); border-radius: 12px; padding: 7px 8px 6px;
       font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
-      cursor: pointer;
+      cursor: pointer; transition: transform .12s, box-shadow .18s, border-color .18s, background .18s;
     }
-    .ajuda:disabled { opacity: .3; text-decoration: line-through; cursor: default; background: transparent; }
+    /* the icon sits in its own tinted disc, the way the crests do */
+    .aj-disc { display: flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 50%; flex: none;
+      background: var(--aj-soft); color: var(--aj); transition: transform .18s, background .18s; }
+    .aj-lbl { line-height: 1; }
+
+    /* Each lifeline borrows the colour the game already uses for what it does.
+       Written as rgba rather than color-mix(): that lands in Chrome 111, and
+       this ships inside whatever WebView the phone happens to have. */
+    .aj-cut  { --aj: #B3402F; --aj-soft: rgba(179, 64, 47, .14); }
+    .aj-poll { --aj: #3F6FB5; --aj-soft: rgba(63, 111, 181, .14); }
+    .aj-mic  { --aj: #8E4E9E; --aj-soft: rgba(142, 78, 158, .14); }
+    .aj-snow { --aj: #2E8BA8; --aj-soft: rgba(46, 139, 168, .14); }
+    .aj-skip { --aj: #17593F; --aj-soft: rgba(23, 89, 63, .14); }
+    :root[data-theme="dark"] .aj-cut,  :root:not([data-theme="light"]) .aj-cut  { --aj: #E06A55; }
+    :root[data-theme="dark"] .aj-poll, :root:not([data-theme="light"]) .aj-poll { --aj: #7FA9E8; }
+    :root[data-theme="dark"] .aj-mic,  :root:not([data-theme="light"]) .aj-mic  { --aj: #C58FD4; }
+    :root[data-theme="dark"] .aj-snow, :root:not([data-theme="light"]) .aj-snow { --aj: #6BC2DC; }
+    :root[data-theme="dark"] .aj-skip, :root:not([data-theme="light"]) .aj-skip { --aj: #3E9C6E; }
+
+    .ajuda:not(:disabled):hover { border-color: var(--aj); box-shadow: 0 2px 8px var(--shadow); }
+    .ajuda:not(:disabled):hover .aj-disc { transform: scale(1.08); }
+    .ajuda:not(:disabled):active { transform: translateY(1px) scale(.96); }
+
+    /* Spent. Struck-through text at 30% opacity read as a rendering fault more
+       than as a used-up card; it is greyed and stamped instead, and the disc
+       keeps its shape so the row does not jump when one goes. */
+    .ajuda:disabled { cursor: default; opacity: .55; background: transparent;
+      border-style: dashed; color: var(--ink-4); }
+    .ajuda:disabled .aj-disc { background: transparent; color: var(--ink-4);
+      box-shadow: inset 0 0 0 1px var(--rule); }
+    .ajuda:disabled .aj-lbl { text-decoration: line-through; text-decoration-thickness: 1px; }
+
+    /* the one being spent right now */
+    @keyframes ajSpend {
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    /* the one just spent: the disc flares as it hands itself in */
+    .aj-firing .aj-disc { animation: ajSpend .42s cubic-bezier(.3,.8,.3,1); }
+    .aj-firing::after { content: ''; position: absolute; inset: 0; border-radius: 12px;
+      background: var(--aj); opacity: 0; animation: ajFlash .5s ease-out; pointer-events: none; }
+    @keyframes ajFlash { 0% { opacity: .22; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .aj-firing::after { display: none; } }
     .footer-hint { font-size: 10px; color: var(--ink-3); text-align: center; }
     .foot { display: flex; flex-direction: column; align-items: center; gap: 7px; padding-top: 2px; }
     .foot-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
@@ -4223,6 +4268,7 @@ function useHalf() {
   lifes.half = 0;
   snd.cut();
   justCut = true;   // one render only: the pockets open, then stay open
+  firedAid = 'bhalf';
   go();
 }
 
@@ -4269,6 +4315,7 @@ function usePoll() {
 
   lifes.poll = 0;
   snd.crowd();
+  firedAid = 'bpoll';
   go();
 }
 
@@ -4301,6 +4348,7 @@ function useExpert() {
   };
   lifes.expert = 0;
   snd.select();
+  firedAid = 'bexpert';
   go();
 }
 
@@ -4309,6 +4357,7 @@ function useFreeze() {
   lifes.freeze = 0;
   frozen = true;
   snd.freeze();
+  firedAid = 'bfreeze';
   go();
 }
 
@@ -4326,6 +4375,7 @@ function useSkip() {
     disp = getDisp(cat.qs[qi]);
     startTmr();
   }
+  firedAid = 'bskip';
   go();
 }
 
@@ -5552,12 +5602,17 @@ function html() {
       <p><em>${expert.line}</em> <b>${expert.name}</b>${expert.sure ? '' : ' <em>— mas é chute, hein.</em>'}</p>
     </div>`;
 
+  /* Five different things to spend, and they used to look like five identical
+     grey pills. Each carries its own colour now — the same colour the game
+     already uses for what it does: the cut is the red of a wrong answer, the
+     freeze is the cold of the clock running out, the skip is the pitch green
+     of moving on. The tint only shows while the lifeline is still yours. */
   const ajudas = [
-    ['bhalf',   'Cortar',    ICON.cut,   lifes.half && cutCount() >= 1],
-    ['bpoll',   'Placar',    ICON.crowd, lifes.poll],
-    ['bexpert', 'Convidado', ICON.mic,   lifes.expert],
-    ['bfreeze', 'Congelar',  ICON.snow,  lifes.freeze],
-    ['bskip',   'Pular',     ICON.skip,  lifes.skip],
+    ['bhalf',   'Cortar',    ICON.cut,   lifes.half && cutCount() >= 1, 'cut'],
+    ['bpoll',   'Placar',    ICON.crowd, lifes.poll,                    'poll'],
+    ['bexpert', 'Convidado', ICON.mic,   lifes.expert,                  'mic'],
+    ['bfreeze', 'Congelar',  ICON.snow,  lifes.freeze,                  'snow'],
+    ['bskip',   'Pular',     ICON.skip,  lifes.skip,                    'skip'],
   ];
 
   const progress = isMil ? '' : `
@@ -5619,9 +5674,11 @@ function html() {
     ${armed ? `
     <div class="foot">
       <div class="ajudas">
-        ${ajudas.map(([id, lbl, ic, on]) => `
-          <button id="${id}" ${on ? '' : 'disabled'} class="ajuda btn-press">
-            ${ic(on ? 'var(--pitch)' : 'currentColor', 15)}<span>${lbl}</span></button>`).join('')}
+        ${ajudas.map(([id, lbl, ic, on, kind]) => `
+          <button id="${id}" ${on ? '' : 'disabled'} class="ajuda aj-${kind}${
+            on ? '' : ' aj-spent'}${firedAid === id ? ' aj-firing' : ''}">
+            <span class="aj-disc">${ic('currentColor', 15)}</span>
+            <span class="aj-lbl">${lbl}</span></button>`).join('')}
       </div>
       ${frozen ? `<div class="small pitch" style="font-weight:700;display:flex;align-items:center;gap:4px;">
         ${ICON.snow('currentColor', 11)} Relógio parado nesta pergunta</div>` : ''}
@@ -5717,6 +5774,7 @@ function burst(n) {
 let _qKey = null;
 let introOn = true;
 let justCut = false;
+let firedAid = null;   // the lifeline spent on this render, so it can flare once
 let gameN   = 0;   // bumped when a run starts, so two runs' question 0 differ
 
 function go() {
@@ -5734,6 +5792,7 @@ function go() {
   prevPts = pts; // prevent re-fire on subsequent re-renders without score change
 
   justCut = false;   // consumed by the render above
+  firedAid = null;
 
   const on = (id, fn) => document.getElementById(id)?.addEventListener('click', fn);
 
