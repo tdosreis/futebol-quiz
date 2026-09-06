@@ -6196,6 +6196,21 @@ function go() {
   on('bmed',        () => { snd.swipe();  sc = 'medals';  go(); });
   on('balb',        () => { snd.swipe();  sc = 'album';   go(); });
 
+  /* ── Opening the album on what you just won ──
+     Two hundred and forty-eight pockets, and the three you just filled are
+     somewhere among them. If the run earned anything, the album opens scrolled
+     to the first of them rather than at Brazil's first page. Only on arrival:
+     turning a card over must not yank the page around. */
+  if (sc === 'album' && runNewIds.length && movedScreen) {
+    /* scrollIntoView, not scrollTop on .scroll-y: that box is not actually the
+       scroller — it grows to fit and the page scrolls behind it, so setting its
+       scrollTop was a silent no-op. This finds whichever ancestor really
+       scrolls. Instant, not smooth: the target can be seven thousand pixels
+       down and nobody wants to watch that. */
+    const first = document.querySelector('.alb-fresh');
+    if (first && first.scrollIntoView) first.scrollIntoView({ block: 'center' });
+  }
+
   /* ── Turning a figurinha over in the album ──
      Bound once on the page, not per card — there can be two hundred of them —
      and it toggles a class on the element rather than re-rendering, because a
