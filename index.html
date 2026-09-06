@@ -891,10 +891,26 @@
     }
 
     /* ── The back of a sticker, shown on the reveal ── */
+    /* The back of the card is the payoff of getting it right — the detail you
+       only see because you knew the answer. It turns over into place rather
+       than appearing already there. */
+    @keyframes fichaIn {
+      0%   { opacity: 0; transform: perspective(600px) rotateX(-38deg) translateY(-8px); }
+      100% { opacity: 1; transform: none; }
+    }
     .ficha { display: flex; align-items: center; gap: 11px; text-align: left; position: relative;
       background: var(--pocket); border: 1px solid var(--rule-2); border-radius: 10px;
-      padding: 8px 10px; margin: 8px auto 0; max-width: 420px; }
-    .ficha-new { border-color: var(--brass); background: var(--brass-soft); }
+      padding: 8px 10px; margin: 8px auto 0; max-width: 420px;
+      transform-origin: top center;
+      animation: fichaIn .46s cubic-bezier(.25,.9,.3,1) 60ms backwards; }
+    /* a sticker you did not have yet gets the brass edge and a beat of its own */
+    @keyframes fichaGlow {
+      0%,100% { box-shadow: 0 0 0 0 rgba(184,134,11,0); }
+      45%     { box-shadow: 0 0 0 4px rgba(184,134,11,.22); }
+    }
+    .ficha-new { border-color: var(--brass); background: var(--brass-soft);
+      animation: fichaIn .46s cubic-bezier(.25,.9,.3,1) 60ms backwards,
+                 fichaGlow 1.1s ease-out .5s 2; }
     .ficha-art { width: 44px; height: 46px; border-radius: 6px; flex-shrink: 0; }
     .ficha-crest { display: flex; align-items: center; justify-content: center; }
     .ficha-crest img, .ficha-crest svg, .ficha-crest .roundel { width: 100%; height: 100%; object-fit: contain; }
@@ -903,7 +919,8 @@
     .ficha-n em { font-style: italic; font-weight: 600; color: var(--ink-3); }
     .ficha-l { font-size: 10px; color: var(--ink-3); line-height: 1.4; margin-top: 1px; }
     .ficha-h { font-size: 10px; color: var(--brass); font-weight: 700; line-height: 1.4; margin-top: 2px; }
-    .ficha-tag { position: absolute; top: -7px; right: 8px; background: var(--brass); color: var(--on-brass);
+    .ficha-tag { animation: figpop .4s cubic-bezier(.2,1.5,.4,1) .42s backwards;
+      position: absolute; top: -7px; right: 8px; background: var(--brass); color: var(--on-brass);
       font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
       padding: 2px 6px; border-radius: 7px; display: flex; align-items: center; gap: 3px; }
 
