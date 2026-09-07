@@ -1062,12 +1062,19 @@
     .alb-tabs { display: flex; gap: 5px; overflow-x: auto; padding: 2px 1px 4px;
       scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .alb-tabs::-webkit-scrollbar { display: none; }
-    .alb-tab { flex: none; display: flex; flex-direction: column; align-items: center; gap: 3px;
+    .alb-tab { flex: none; display: flex; flex-direction: column; align-items: center; gap: 2px;
       background: var(--pocket); border: 1px solid var(--rule); border-radius: 9px;
-      padding: 5px 7px 4px; cursor: pointer; transition: border-color .18s, background .18s, transform .12s; }
+      padding: 5px 7px 4px; cursor: pointer; min-width: 42px;
+      transition: border-color .18s, background .18s, transform .12s; }
     .alb-tab-fl { display: block; line-height: 0; opacity: .9; }
-    .alb-tab-n { font-size: 8px; font-weight: 800; color: var(--ink-3);
+    /* Eighteen sections is more flags than anyone recognises at 11px, and the
+       band only names the one you are already on. The code says which is which
+       while you scan. */
+    .alb-tab-c { font-family: var(--font-c); font-size: 8px; font-weight: 700;
+      letter-spacing: .08em; color: var(--ink-2); line-height: 1; }
+    .alb-tab-n { font-size: 7.5px; font-weight: 800; color: var(--ink-3);
       font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+    .alb-tab.is-on .alb-tab-c { color: var(--brass); }
     .alb-tab:active { transform: scale(.95); }
     .alb-tab.is-on { border-color: var(--brass); background: var(--brass-soft); }
     .alb-tab.is-on .alb-tab-n { color: var(--brass); }
@@ -5956,6 +5963,7 @@ function html() {
                     data-ctry="${c}" title="${c === '__resto' ? 'Resto do mundo' : (CTRY_NAME[c] || c)}">
             <span class="alb-tab-fl">${c === '__resto'
               ? ICON.ball('currentColor', 15) : flagSVG(c, 11)}</span>
+            <span class="alb-tab-c">${c === '__resto' ? 'RDM' : c}</span>
             <span class="alb-tab-n">${got}/${g.length}</span>
           </button>`;
         }).join('')}
@@ -6502,6 +6510,20 @@ function go() {
     };
     on('alb-prev', () => flip(-1));
     on('alb-next', () => flip(1));
+
+    /* the arrow keys turn the page too — the album is read on a laptop as
+       often as on a phone, and a book turns with the keys there */
+    if (!window._albKeys) {
+      window._albKeys = true;
+      document.addEventListener('keydown', e => {
+        if (sc !== 'album') return;
+        if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+        const prev = document.getElementById('alb-prev');
+        const next = document.getElementById('alb-next');
+        if (e.key === 'ArrowLeft'  && prev && !prev.disabled) { e.preventDefault(); prev.click(); }
+        if (e.key === 'ArrowRight' && next && !next.disabled) { e.preventDefault(); next.click(); }
+      });
+    }
 
     /* the same gesture the object itself would take */
     const book = document.getElementById('alb-book');
