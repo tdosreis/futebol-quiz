@@ -1113,7 +1113,10 @@
       background-image: linear-gradient(90deg, transparent 49.4%, var(--pg-edge) 49.7%,
                         var(--pg-edge) 50.3%, transparent 50.6%);
       background-size: 100% 100%; }
+    /* Above the turning leaf: rotated in 3D the page grows past its own box on
+       the near side, and swept up over the country band, which does not turn. */
     .alb-band { display: flex; align-items: center; gap: 8px; flex: none;
+      position: relative; z-index: 7;
       padding: 7px 10px; background: var(--pg-band); color: var(--pg-bandink); }
     .alb-band .t { display: block; font-family: var(--font-c); font-weight: 700;
       text-transform: uppercase; font-size: 15px; letter-spacing: .04em; line-height: 1.1; }
@@ -1128,10 +1131,42 @@
       display: flex; flex-direction: column; }
 
     /* the page arriving from the side it was turned towards */
-    @keyframes pageFwd  { from { opacity: 0; transform: translateX(16px) rotateY(-7deg); } }
-    @keyframes pageBack { from { opacity: 0; transform: translateX(-16px) rotateY(7deg); } }
-    .alb-sheet.turn-fwd  { animation: pageFwd .3s cubic-bezier(.25,.9,.3,1); }
-    .alb-sheet.turn-back { animation: pageBack .3s cubic-bezier(.25,.9,.3,1); }
+    /* ── Turning the page ───────────────────────────────────────
+       The spread that is leaving is cloned into a leaf, hinged at the spine,
+       and swung away over the spread that is arriving — which is already
+       there, underneath, the way the next page of a book always is. The
+       arriving page only settles the last of the way; the leaf is what makes
+       it read as paper rather than a slide transition. */
+    .alb-book { perspective: 1600px; -webkit-perspective: 1600px; }
+    .alb-leaf { position: absolute; z-index: 6; pointer-events: none;
+      overflow: hidden; background: var(--pg-paper);
+      box-shadow: 0 0 22px -6px rgba(0,0,0,.5);
+      backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    /* the crease darkens as the paper lifts off the spine */
+    .alb-leaf::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, rgba(0,0,0,.30), rgba(0,0,0,0) 58%); opacity: 0;
+      animation: leafShade .44s ease-in forwards; }
+    .alb-leaf.leaf-back::after { background: linear-gradient(270deg, rgba(0,0,0,.30), rgba(0,0,0,0) 58%); }
+    @keyframes leafShade { from { opacity: 0; } to { opacity: 1; } }
+    .alb-leaf.leaf-fwd  { transform-origin: left center;
+      animation: leafFwd .44s cubic-bezier(.42,0,.42,1) forwards; }
+    .alb-leaf.leaf-back { transform-origin: right center;
+      animation: leafBack .44s cubic-bezier(.42,0,.42,1) forwards; }
+    @keyframes leafFwd  { from { transform: rotateY(0deg); opacity: 1; }
+                          80% { opacity: 1; }
+                          to  { transform: rotateY(-118deg); opacity: 0; } }
+    @keyframes leafBack { from { transform: rotateY(0deg); opacity: 1; }
+                          80% { opacity: 1; }
+                          to  { transform: rotateY(118deg); opacity: 0; } }
+    /* the arriving spread only has to settle — the leaf carries the movement */
+    @keyframes pageFwd  { from { opacity: .55; transform: translateX(10px) scale(.985); } }
+    @keyframes pageBack { from { opacity: .55; transform: translateX(-10px) scale(.985); } }
+    .alb-sheet.turn-fwd  { animation: pageFwd .34s cubic-bezier(.25,.9,.3,1); }
+    .alb-sheet.turn-back { animation: pageBack .34s cubic-bezier(.25,.9,.3,1); }
+    @media (prefers-reduced-motion: reduce) {
+      .alb-leaf { display: none; }
+      .alb-sheet.turn-fwd, .alb-sheet.turn-back { animation: none; }
+    }
 
     /* turning the page */
     .alb-turnbar { flex: none; display: flex; align-items: center; justify-content: center;
@@ -1183,6 +1218,33 @@
       --pg-paper:#1D1D1C; --pg-edge:#353531; --pg-band:#3A3A38; --pg-bandink:#E6E5E1; }
     :root[data-theme="dark"] .dec-g, :root:not([data-theme="light"]) .dec-g {
       --pg-paper:#16211E; --pg-edge:#2A3C36; --pg-band:#256E61; --pg-bandink:#DEF3EC; }
+
+    /* The pages at the back have no decade, so they get papers of their own:
+       the badge sheet on the deepest card stock, the national teams on a cool
+       page, the mascots on the brightest sheet in the book. */
+    .dec-xe { --pg-paper:#EDE4CE; --pg-edge:#C0AC85; --pg-band:#7A2E22; --pg-bandink:#F6E9DA; }
+    .dec-xs { --pg-paper:#E6EDEF; --pg-edge:#A8BEC6; --pg-band:#1F5E7A; --pg-bandink:#E6F3F9; }
+    .dec-xm { --pg-paper:#F1E8D0; --pg-edge:#C8B584; --pg-band:#8E5A16; --pg-bandink:#FBF0DA; }
+    :root[data-theme="dark"] .dec-xe, :root:not([data-theme="light"]) .dec-xe {
+      --pg-paper:#231D17; --pg-edge:#3D3328; --pg-band:#63261C; --pg-bandink:#EDD9CC; }
+    :root[data-theme="dark"] .dec-xs, :root:not([data-theme="light"]) .dec-xs {
+      --pg-paper:#171F22; --pg-edge:#2B3B41; --pg-band:#194B60; --pg-bandink:#DCEDF5; }
+    :root[data-theme="dark"] .dec-xm, :root:not([data-theme="light"]) .dec-xm {
+      --pg-paper:#221E14; --pg-edge:#3D3524; --pg-band:#75490F; --pg-bandink:#F6E9D2; }
+
+    /* A crest, a flag or a mascot in the picture window a photo would fill.
+       The window keeps the photo's proportions so a row of escudos lines up
+       with a row of faces. */
+    .fig-extra .fig-art { display: flex; align-items: center; justify-content: center;
+      background: var(--retro-card2); }
+    .fig-crest, .fig-flagbox, .fig-msc { display: flex; align-items: center;
+      justify-content: center; width: 100%; height: 100%; }
+    .fig-crest .crest-disc { width: 76%; height: 76%; background: none; box-shadow: none; }
+    .fig-flagbox > span { width: 72% !important; height: auto !important;
+      box-shadow: 0 0 0 .5px rgba(0,0,0,.35) !important; border-radius: 2px !important; }
+    .fig-msc svg { width: 100%; height: 100%; }
+    .fig-x-mascote .fig-art { background: none; }
+    .fig-x-mascote .fig-msc svg rect:first-of-type { opacity: 0; }
 
     /* ── The country band that opens each page ──────────────────
        Straight out of the old albums: the crest, the name set large and
@@ -3311,6 +3373,25 @@ const LOGOS = {
   botafogosp:     'img/8dc5f5b1763969dc.png',
   sport:          'img/5914b8534fae14c1.png',
   bragantino:     'img/3405db58adf3ce0a.png',
+
+  /* Estrangeiros. Só os que têm escudo livre no Commons e são a marca
+     atual do clube — a maioria dos grandes europeus é não-livre, e um
+     escudo antigo é pior do que nenhum. */
+  ajax:           'img/c4c3276631cc848a.png',
+  atalanta:       'img/f2e784302008b5ed.png',
+  boca:           'img/158f1ffb8b410672.png',
+  feyenoord:      'img/3049667389897f3a.png',
+  fiorentina:     'img/7c74ccd679196cef.png',
+  galatasaray:    'img/7b57754671630542.png',
+  inter:          'img/9b127e8057b34e1a.png',
+  juventus:       'img/632172f8e325d492.png',
+  lagalaxy:       'img/9429f6f28aecb879.png',
+  marseille:      'img/f350571d77e5360e.png',
+  milan:          'img/41fc33985ee82deb.png',
+  nycfc:          'img/97b0f8fadbb8f1b7.png',
+  parma:          'img/399f0482d6402e61.png',
+  riverplate:     'img/b301a27e6784908d.png',
+  sporting:       'img/f1cf853e892f33cd.png',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -3712,6 +3793,21 @@ const CREDITS = {
   'img/66ad3aabf1ccec2b.jpg': { a:'Unknown authorUnknown author', l:'Public domain' },
   'img/56745fc835137c33.jpg': { a:'Istituto Storia della Resistenza e Società contemporanea Biella, Vercelli e Vals', l:'Public domain' },
   'img/e67d17b4af2458ca.jpg': { a:'Unknown authorUnknown author, re-photo by David Sedlecký', l:'Public domain' },
+  'img/41fc33985ee82deb.png': { a:'A.C. Milan Uploaded by Vargklo at en.wikipedia', l:'Public domain' },
+  'img/9b127e8057b34e1a.png': { a:'FC Internazionale Milano S.p.A. / Bureau Borsche', l:'Public domain' },
+  'img/632172f8e325d492.png': { a:'Interbrand – Global Brand Consultancy / Juventus Football Club SpA', l:'Public domain' },
+  'img/f350571d77e5360e.png': { a:'Olympique de Marseille', l:'Public domain' },
+  'img/c4c3276631cc848a.png': { a:'AFC Ajax', l:'Public domain' },
+  'img/7c74ccd679196cef.png': { a:'FutureBrand Creative Agency / ACF Fiorentina S.r.l. a socio unico', l:'Public domain' },
+  'img/399f0482d6402e61.png': { a:'Parma Calcio 1913', l:'Public domain' },
+  'img/7b57754671630542.png': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/f1cf853e892f33cd.png': { a:'Sporting CP', l:'Public domain' },
+  'img/f2e784302008b5ed.png': { a:'Atalanta BC', l:'Public domain' },
+  'img/3049667389897f3a.png': { a:'Feyenoord Rotterdam N.V.', l:'Public domain' },
+  'img/9429f6f28aecb879.png': { a:'LA Galaxy', l:'Public domain' },
+  'img/97b0f8fadbb8f1b7.png': { a:'New York City FC', l:'Public domain' },
+  'img/b301a27e6784908d.png': { a:'Unknown authorUnknown author', l:'Public domain' },
+  'img/158f1ffb8b410672.png': { a:'Club Atlético Boca Juniors', l:'Public domain' },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -4801,12 +4897,75 @@ let scores     = LS.get('scores', {});      // best points per difficulty
    and never goes down, so it is stored as a plain list of ids. */
 let album      = new Set(LS.get('album', []));
 function collect(ids) {
-  const fresh = ids.filter(id => !album.has(id) && PL.some(p => p.id === id));
+  const fresh = ids.filter(id => !album.has(id) && ALL_SET.has(id));
   fresh.forEach(id => album.add(id));
   if (fresh.length) LS.set('album', [...album]);
   return fresh;
 }
-const albumPct = () => Math.round(album.size / Math.max(1, PL.length) * 100);
+const albumPct = () => Math.round(album.size / Math.max(1, ALL_STICKERS.length) * 100);
+/* Medals were written against the player count and must keep meaning that —
+   nobody should lose a medal because the album grew a badge sheet. */
+const albPlayers = () => PL.reduce((n, p) => n + (album.has(p.id) ? 1 : 0), 0);
+
+/* What a right answer earns, beyond the points.
+     · a player question sticks the player, as it always has
+     · a club question sticks that club's escudo
+     · and once you have the escudo, getting the same club right again turns
+       up the mascote — which is why the mascots are the rare sheet: you have
+       to come back to a club you have already answered
+     · a question that carries a country's flag sticks that seleção
+   Every one of these is something the game already asks; nothing new had to
+   be invented to hand them out. */
+/* How many of a club's or a country's players you must hold before its badge
+   is printed for you. Answering the club itself is the other way in. */
+const ESC_NEED = 2, SEL_NEED = 3;
+
+function earned(q) {
+  const out = [];
+  if (q.type === 'player') out.push(...q.a);
+  else if (!q.type) {
+    q.a.forEach(id => {
+      if (!ALL_SET.has(SK.esc(id))) return;
+      out.push(SK.esc(id));
+      /* the escudo comes first and the mascote only on the way back: you have
+         to answer a club you have already answered once */
+      if (album.has(SK.esc(id)) && MASCOTS[id]) out.push(SK.msc(id));
+    });
+  }
+  if (q.flag && ALL_SET.has(SK.sel(q.flag))) out.push(SK.sel(q.flag));
+
+  /* ── The badges the questions alone would never hand out ──
+     Only nine of the thirty-nine nations have a question carrying their flag,
+     and the fifteen foreign clubs are never the answer to a club question —
+     they are only ever somebody's employer. Left at that, thirty seleções and
+     fifteen escudos were in the album and impossible to collect, and two of
+     the new medals could not be earned at all.
+
+     So a badge also comes from knowing the shirt: hold enough of a club's or
+     a country's players and you have earned it. The count includes what this
+     answer just won, which is why it runs on `got` and not on `album`. */
+  const got = new Set([...album, ...out]);
+  const nOf = ids => ids.reduce((n, id) => n + (got.has(id) ? 1 : 0), 0);
+  const touched = new Set();
+  out.forEach(sid => {
+    const pl = PL.find(x => x.id === sid);
+    if (!pl) return;
+    (pl.clubs || []).forEach(c => touched.add('e:' + c));
+    if (pl.ctry) touched.add('s:' + pl.ctry);
+  });
+  touched.forEach(sid => {
+    if (got.has(sid) || !ALL_SET.has(sid)) return;
+    const kind = sid.slice(0, 2), key = sid.slice(2);
+    if (kind === 'e:') {
+      const men = PL.filter(x => (x.clubs || []).includes(key)).map(x => x.id);
+      if (nOf(men) >= Math.min(ESC_NEED, men.length)) out.push(sid);
+    } else {
+      const men = PL.filter(x => x.ctry === key).map(x => x.id);
+      if (nOf(men) >= Math.min(SEL_NEED, men.length)) out.push(sid);
+    }
+  });
+  return out;
+}
 let stats      = LS.get('stats', { games:0, correct:0, answered:0, bestStreak:0 });
 let nCorrect   = 0;   // perfect answers this run
 let nPartial   = 0;
@@ -5161,6 +5320,347 @@ function stickerBack(item, isPlayer, isNew) {
    MEDALS — long-run progression
 ═══════════════════════════════════════════════════ */
 /* The album's milestones, as a share of however many players it holds. */
+/* ═══════════════════════════════════════════════════
+   MASCOTES — the rarest sheet in the album
+
+   A club's mascot is the club's own artwork and is never freely licensed, so
+   none of these can be a photograph or a fetched file. They are drawn here,
+   in the same flat 1970s hand as the rest of ART: one heavy outline, no
+   gradients, nothing that needs a gradient to read at seventy pixels.
+
+   One drawing serves every club that shares the animal — five clubs are a
+   Leão, two are a Galo — which is also how the terraces talk about them.
+═══════════════════════════════════════════════════ */
+const _msc = (body, bg) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="true"
+  style="display:block;width:100%;height:100%;">
+  <rect width="80" height="80" fill="${bg || 'var(--retro-card)'}"/>
+  <g stroke="#2A1D10" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">${body}</g>
+</svg>`;
+
+const MASC_ART = {
+  galo: () => _msc(`
+    <path d="M30 66 q-6 -10 -2 -20 q3 -9 12 -11 q10 -2 15 5 q4 6 1 12 l-4 14 Z" fill="#B23A2E"/>
+    <circle cx="47" cy="28" r="11" fill="#B23A2E"/>
+    <path d="M40 18 q2 -6 6 -3 q1 -6 5 -3 q2 -5 5 0 q1 4 -2 6 Z" fill="#8E2018"/>
+    <path d="M58 28 l9 3 l-9 4 Z" fill="#F0C24A"/>
+    <path d="M50 38 q4 3 1 7 q-4 2 -5 -2 Z" fill="#8E2018"/>
+    <circle cx="50" cy="26" r="1.9" fill="#2A1D10" stroke="none"/>
+    <path d="M28 48 q-10 -6 -13 -16 q9 2 14 8" fill="#8E2018"/>
+    <path d="M34 66 v7 M46 66 v7" stroke-width="2.8"/>`),
+
+  raposa: () => _msc(`
+    <path d="M24 62 q-4 -14 6 -22 l10 -8 l10 8 q10 8 6 22 Z" fill="#C4681E"/>
+    <path d="M30 40 l-4 -16 l14 8 Z" fill="#C4681E"/>
+    <path d="M50 40 l4 -16 l-14 8 Z" fill="#C4681E"/>
+    <path d="M34 54 q6 8 12 0 q-3 8 -6 8 q-3 0 -6 -8 Z" fill="#F5EFE0"/>
+    <circle cx="34" cy="46" r="2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="46" r="2" fill="#2A1D10" stroke="none"/>
+    <path d="M54 60 q14 2 16 14 q-12 2 -18 -8" fill="#C4681E"/>`),
+
+  porco: () => _msc(`
+    <path d="M22 58 q-3 -18 10 -24 q10 -5 20 0 q13 6 10 24 Z" fill="#E39AA8"/>
+    <path d="M28 36 l-4 -12 l12 5 Z" fill="#D2808F"/>
+    <path d="M52 36 l4 -12 l-12 5 Z" fill="#D2808F"/>
+    <ellipse cx="40" cy="52" rx="10" ry="7" fill="#D2808F"/>
+    <circle cx="36" cy="52" r="1.8" fill="#2A1D10" stroke="none"/>
+    <circle cx="44" cy="52" r="1.8" fill="#2A1D10" stroke="none"/>
+    <circle cx="31" cy="42" r="2" fill="#2A1D10" stroke="none"/>
+    <circle cx="49" cy="42" r="2" fill="#2A1D10" stroke="none"/>
+    <path d="M62 56 q7 2 4 8 q-3 4 -6 1" fill="none"/>`),
+
+  urubu: () => _msc(`
+    <path d="M26 64 q-6 -16 4 -26 q8 -8 18 -4 q12 5 8 20 l-3 10 Z" fill="#3A3A38"/>
+    <path d="M30 44 q-14 -4 -18 -16 q14 0 22 8" fill="#2A2A28"/>
+    <circle cx="50" cy="30" r="9" fill="#C9B79A"/>
+    <path d="M59 29 q8 1 7 5 q-5 3 -9 0 Z" fill="#F0C24A"/>
+    <circle cx="52" cy="27" r="1.9" fill="#2A1D10" stroke="none"/>
+    <path d="M34 64 v7 M46 64 v7" stroke-width="2.8"/>`),
+
+  peixe: () => _msc(`
+    <path d="M14 42 q14 -18 34 -16 q18 2 20 16 q-2 14 -20 16 q-20 2 -34 -16 Z" fill="#2E7D9E"/>
+    <path d="M68 42 l12 -12 v24 Z" fill="#24657F"/>
+    <path d="M40 26 q4 -10 10 -8 q-2 6 -4 9" fill="#24657F"/>
+    <circle cx="56" cy="37" r="2.6" fill="#F5EFE0" stroke="none"/>
+    <circle cx="56" cy="37" r="1.3" fill="#2A1D10" stroke="none"/>
+    <path d="M30 44 q8 6 18 4" fill="none" stroke-width="1.8" opacity=".6"/>`),
+
+  /* The mane has to be ragged: a regular star reads as a sun, which is what
+     the first attempt at this drawing looked like. */
+  leao: () => _msc(`
+    <path d="M40 9 q7 1 9 6 q7 -2 10 4 q7 2 6 9 q5 4 2 10 q3 6 -3 10 q0 7 -7 8
+             q-3 6 -10 5 q-4 4 -9 0 q-7 1 -10 -5 q-7 -1 -7 -8 q-6 -4 -3 -10
+             q-3 -6 2 -10 q-1 -7 6 -9 q3 -6 10 -4 q2 -5 9 -6 Z" fill="#A8681A"/>
+    <circle cx="40" cy="42" r="14" fill="#F0C24A"/>
+    <path d="M28 34 q-2 -6 3 -7 q4 -1 5 4" fill="#F0C24A"/>
+    <path d="M52 34 q2 -6 -3 -7 q-4 -1 -5 4" fill="#F0C24A"/>
+    <ellipse cx="40" cy="49" rx="9" ry="6.5" fill="#F5E3C0"/>
+    <circle cx="34" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
+    <path d="M40 45 l-3.5 3 h7 Z" fill="#2A1D10" stroke="none"/>
+    <path d="M40 48 v4 M40 52 q-4 3 -7 0 M40 52 q4 3 7 0" fill="none" stroke-width="1.9"/>`),
+
+  coelho: () => _msc(`
+    <path d="M26 64 q-4 -16 6 -22 q8 -5 16 0 q10 6 6 22 Z" fill="#E6E0D2"/>
+    <path d="M31 44 q-4 -20 1 -26 q6 -2 6 22" fill="#E6E0D2"/>
+    <path d="M49 44 q4 -20 -1 -26 q-6 -2 -6 22" fill="#E6E0D2"/>
+    <circle cx="34" cy="52" r="2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="52" r="2" fill="#2A1D10" stroke="none"/>
+    <path d="M40 57 l-2.5 2.5 h5 Z" fill="#B23A2E" stroke="none"/>
+    <path d="M32 62 h-9 M48 62 h9" stroke-width="1.6" opacity=".7"/>`),
+
+  macaca: () => _msc(`
+    <circle cx="40" cy="42" r="17" fill="#7A5230"/>
+    <circle cx="20" cy="38" r="8" fill="#8C6038"/>
+    <circle cx="60" cy="38" r="8" fill="#8C6038"/>
+    <ellipse cx="40" cy="48" rx="12" ry="10" fill="#C9A47A"/>
+    <circle cx="34" cy="38" r="2.2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="38" r="2.2" fill="#2A1D10" stroke="none"/>
+    <circle cx="36" cy="46" r="1.4" fill="#2A1D10" stroke="none"/>
+    <circle cx="44" cy="46" r="1.4" fill="#2A1D10" stroke="none"/>
+    <path d="M34 53 q6 5 12 0" fill="none" stroke-width="1.9"/>`),
+
+  tigre: () => _msc(`
+    <circle cx="40" cy="42" r="18" fill="#E08A26"/>
+    <path d="M24 28 l-3 -10 12 5 Z" fill="#E08A26"/>
+    <path d="M56 28 l3 -10 -12 5 Z" fill="#E08A26"/>
+    <ellipse cx="40" cy="50" rx="12" ry="9" fill="#F5EFE0"/>
+    <path d="M28 32 l4 6 M40 26 v7 M52 32 l-4 6" stroke-width="2.6"/>
+    <circle cx="34" cy="40" r="2.2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="40" r="2.2" fill="#2A1D10" stroke="none"/>
+    <path d="M40 48 l-3 3 h6 Z" fill="#2A1D10" stroke="none"/>
+    <path d="M34 54 q6 5 12 0" fill="none" stroke-width="1.9"/>`),
+
+  /* Horns out to the side and curling UP, well clear of the skull — drawn
+     tight to the head they just read as a second pair of ears. */
+  touro: () => _msc(`
+    <path d="M26 30 q-12 -4 -16 4 q-3 8 4 11 q3 -8 12 -7" fill="#E6E0D2"/>
+    <path d="M54 30 q12 -4 16 4 q3 8 -4 11 q-3 -8 -12 -7" fill="#E6E0D2"/>
+    <path d="M27 30 q13 -8 26 0 q7 5 5 16 q-2 12 -18 12 q-16 0 -18 -12 q-2 -11 5 -16 Z" fill="#3A3A38"/>
+    <ellipse cx="40" cy="52" rx="11" ry="8" fill="#9B6B44"/>
+    <circle cx="35" cy="52" r="1.9" fill="#2A1D10" stroke="none"/>
+    <circle cx="45" cy="52" r="1.9" fill="#2A1D10" stroke="none"/>
+    <circle cx="33" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
+    <circle cx="47" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
+    <path d="M20 62 q8 6 20 6 q12 0 20 -6" fill="none" stroke-width="1.8" opacity=".45"/>`),
+
+  /* In profile, with a snout and a flame: face-on it was a green blob. */
+  dragao: () => _msc(`
+    <path d="M58 26 q10 6 8 18 q-2 14 -16 18 q-14 4 -22 -4 q-6 -6 -2 -14
+             q4 -9 14 -12 q9 -8 18 -6 Z" fill="#2E7D4F"/>
+    <path d="M56 24 l4 -12 6 11 Z" fill="#276B44"/>
+    <path d="M42 22 l-1 -11 8 8 Z" fill="#276B44"/>
+    <path d="M28 40 q-12 1 -16 -5 q9 -3 12 -7" fill="#276B44"/>
+    <path d="M26 46 q-10 4 -18 1 q7 -6 8 -9" fill="#B23A2E"/>
+    <path d="M14 48 q-9 3 -12 -1 q6 -3 7 -5" fill="#F0C24A"/>
+    <circle cx="52" cy="34" r="2.6" fill="#F0C24A" stroke="none"/>
+    <circle cx="52" cy="34" r="1.2" fill="#2A1D10" stroke="none"/>
+    <path d="M34 44 l4 4 4 -4 4 4" fill="none" stroke-width="1.7"/>`),
+
+  /* A wide coiled body with a reared head — the first pass was a thin squiggle
+     that read as a bird. The coral banding is what names it. */
+  cobra: () => _msc(`
+    <path d="M14 66 q0 -12 14 -12 q14 0 14 -9 q0 -8 -10 -8 q-9 0 -9 7"
+      fill="none" stroke="#B23A2E" stroke-width="11" stroke-linecap="round"/>
+    <path d="M14 66 q0 -12 14 -12 q14 0 14 -9 q0 -8 -10 -8 q-9 0 -9 7"
+      fill="none" stroke="#F5EFE0" stroke-width="11" stroke-linecap="butt"
+      stroke-dasharray="3 11" opacity=".9"/>
+    <path d="M14 66 q0 -12 14 -12 q14 0 14 -9 q0 -8 -10 -8 q-9 0 -9 7"
+      fill="none" stroke="#2A1D10" stroke-width="11.6" stroke-linecap="round" opacity="0"/>
+    <path d="M23 44 q-2 -14 10 -18 q13 -4 18 6" fill="none" stroke="#B23A2E" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="55" cy="30" r="9" fill="#B23A2E"/>
+    <circle cx="58" cy="27" r="2" fill="#F5EFE0" stroke="none"/>
+    <circle cx="58" cy="27" r="1" fill="#2A1D10" stroke="none"/>
+    <path d="M63 33 l9 4 M63 33 l9 0" fill="none" stroke="#8E2018" stroke-width="2.2"/>`),
+
+  periquito: () => _msc(`
+    <path d="M30 62 q-8 -12 -2 -22 q6 -10 16 -8 q12 3 12 15 q0 12 -10 15 Z" fill="#2E9E5B"/>
+    <circle cx="46" cy="28" r="10" fill="#3FB570"/>
+    <path d="M42 18 q4 -8 9 -5 q-1 5 -4 7" fill="#F0C24A"/>
+    <path d="M56 28 q8 2 6 6 q-5 2 -8 -1 Z" fill="#F0C24A"/>
+    <circle cx="49" cy="26" r="1.9" fill="#2A1D10" stroke="none"/>
+    <path d="M32 66 v6 M44 66 v6" stroke-width="2.6"/>`),
+
+  elefante: () => _msc(`
+    <path d="M26 60 q-4 -20 8 -26 q10 -5 18 2 q9 8 4 24 Z" fill="#8C93A0"/>
+    <path d="M24 38 q-14 -4 -14 6 q0 10 14 8" fill="#7A828F"/>
+    <path d="M56 38 q14 -4 14 6 q0 10 -14 8" fill="#7A828F"/>
+    <path d="M38 58 q-2 12 4 16 q6 -2 4 -8" fill="#7A828F"/>
+    <path d="M32 60 l-5 8 M50 60 l5 8" stroke-width="2.2" stroke="#F5EFE0"/>
+    <circle cx="34" cy="46" r="2" fill="#2A1D10" stroke="none"/>
+    <circle cx="46" cy="46" r="2" fill="#2A1D10" stroke="none"/>`),
+
+  tubarao: () => _msc(`
+    <path d="M8 46 q18 -16 38 -14 q20 2 26 12 q-6 10 -26 12 q-20 2 -38 -10 Z" fill="#5B7A8C"/>
+    <path d="M40 30 l4 -16 10 14 Z" fill="#4A6675"/>
+    <path d="M72 44 l8 -10 v20 Z" fill="#4A6675"/>
+    <path d="M30 50 q18 6 34 2" fill="#F5EFE0" stroke="none"/>
+    <path d="M32 50 l3 5 3 -5 3 5 3 -5 3 5 3 -5 3 5 3 -5" fill="none" stroke-width="1.5"/>
+    <circle cx="56" cy="38" r="2.2" fill="#2A1D10" stroke="none"/>`),
+
+  timbu: () => _msc(`
+    <path d="M28 62 q-6 -14 2 -22 q7 -7 16 -3 q10 5 8 18 l-2 7 Z" fill="#9B8C74"/>
+    <path d="M50 38 l14 -6 -6 12 Z" fill="#C9B79A"/>
+    <path d="M32 36 l-4 -10 10 4 Z" fill="#C9B79A"/>
+    <path d="M46 36 l4 -10 -10 4 Z" fill="#C9B79A"/>
+    <circle cx="38" cy="44" r="2" fill="#2A1D10" stroke="none"/>
+    <circle cx="47" cy="44" r="2" fill="#2A1D10" stroke="none"/>
+    <path d="M26 60 q-14 2 -16 -8" fill="none" stroke-width="3.4"/>`),
+
+  almirante: () => _msc(`
+    <path d="M26 66 q0 -14 14 -14 q14 0 14 14 Z" fill="#111"/>
+    <circle cx="40" cy="40" r="13" fill="#C9A47A"/>
+    <path d="M18 30 q22 -14 44 0 q-8 4 -22 4 q-14 0 -22 -4 Z" fill="#111"/>
+    <path d="M34 46 q6 8 12 0 q-2 8 -6 8 q-4 0 -6 -8 Z" fill="#E6E0D2"/>
+    <circle cx="35" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
+    <circle cx="45" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
+    <path d="M32 60 l8 6 8 -6" fill="#E6E0D2"/>`),
+
+  mosqueteiro: () => _msc(`
+    <path d="M26 66 q0 -14 14 -14 q14 0 14 14 Z" fill="#B23A2E"/>
+    <circle cx="40" cy="40" r="12" fill="#C9A47A"/>
+    <path d="M20 30 q20 -12 40 0 q-10 5 -20 5 q-10 0 -20 -5 Z" fill="#3A3A38"/>
+    <path d="M58 28 q10 -10 16 -6 q-4 8 -14 10" fill="#F5EFE0"/>
+    <path d="M34 48 q6 4 12 0" fill="none" stroke-width="1.9"/>
+    <circle cx="35" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
+    <circle cx="45" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
+    <path d="M56 62 l18 -18" stroke-width="3"/>`),
+
+  saci: () => _msc(`
+    <circle cx="40" cy="34" r="12" fill="#5A3A22"/>
+    <path d="M27 26 q13 -14 26 0 Z" fill="#B23A2E"/>
+    <path d="M40 12 q4 6 -1 10" fill="none" stroke-width="2"/>
+    <circle cx="35" cy="34" r="2" fill="#F5EFE0" stroke="none"/>
+    <circle cx="45" cy="34" r="2" fill="#F5EFE0" stroke="none"/>
+    <path d="M34 41 q6 5 12 0" fill="none" stroke-width="1.9"/>
+    <path d="M32 46 h16 l-4 16 h-8 Z" fill="#3A3A38"/>
+    <path d="M40 62 v8 h6" stroke-width="3"/>
+    <path d="M54 40 q8 -2 8 -8" fill="none" stroke-width="2.2"/>`),
+};
+
+/* Which club wears which. A drawing is shared by everyone who shares the
+   animal — that is how the terraces say it too. */
+const MASCOTS = {
+  atleticomg:  { n:'Galo',            art:'galo' },
+  crb:         { n:'Galo',            art:'galo' },
+  cruzeiro:    { n:'Raposa',          art:'raposa' },
+  palmeiras:   { n:'Porco',           art:'porco' },
+  flamengo:    { n:'Urubu',           art:'urubu' },
+  santos:      { n:'Peixe',           art:'peixe' },
+  sport:       { n:'Leão',            art:'leao' },
+  vitoria:     { n:'Leão',            art:'leao' },
+  fortaleza:   { n:'Leão do Pici',    art:'leao' },
+  avai:        { n:'Leão da Ilha',    art:'leao' },
+  remo:        { n:'Leão Azul',       art:'leao' },
+  americamg:   { n:'Coelho',          art:'coelho' },
+  pontepreta:  { n:'Macaca',          art:'macaca' },
+  criciuma:    { n:'Tigre',           art:'tigre' },
+  bragantino:  { n:'Massa Bruta',     art:'touro' },
+  atleticogo:  { n:'Dragão',          art:'dragao' },
+  santacruz:   { n:'Cobra Coral',     art:'cobra' },
+  goias:       { n:'Periquito',       art:'periquito' },
+  abc:         { n:'Elefante',        art:'elefante' },
+  sampaio:     { n:'Tubarão',         art:'tubarao' },
+  nautico:     { n:'Timbu',           art:'timbu' },
+  vasco:       { n:'Almirante',       art:'almirante' },
+  corinthians: { n:'Mosqueteiro',     art:'mosqueteiro' },
+  gremio:      { n:'Mosqueteiro',     art:'mosqueteiro' },
+  internacional:{ n:'Saci',           art:'saci' },
+};
+
+/* ═══════════════════════════════════════════════════
+   THE OTHER STICKERS — escudos, seleções, mascotes
+
+   A Panini album is not only faces. It opens with the badges, it has a page
+   for the national teams, and somewhere in the middle is the sheet everyone
+   wanted and nobody finished: the mascots.
+
+   A player's sticker id has always been his own id, and a saved album is a
+   plain list of those ids, so that cannot change — an album filled last month
+   has to keep working. Everything added since is namespaced instead:
+   `e:` escudo, `s:` seleção, `m:` mascote. An id with no prefix is a player,
+   for ever.
+═══════════════════════════════════════════════════ */
+const SK = { esc: id => 'e:' + id, sel: c => 's:' + c, msc: id => 'm:' + id };
+
+/* #RRGGBB -> rgba(). color-mix() would be the modern way and needs Chrome 111,
+   which is not what every phone's WebView is. */
+function hexA(hex, a) {
+  const h = String(hex || '').replace('#', '');
+  const f = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+  const n = parseInt(f, 16);
+  if (!/^[0-9a-f]{6}$/i.test(f) || isNaN(n)) return `rgba(0,0,0,${a})`;
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
+
+/* Brazil first, then abroad — the order a Brazilian album would print them. */
+const ESCUDOS = CL.map(c => c.id)
+  .concat(Object.keys(CLUB_NAMES).filter(id => LOGOS[id]).sort(
+    (a, b) => clubName(a).localeCompare(clubName(b), 'pt')));
+
+/* Only nations the album actually has players for — a flag with nothing
+   behind it is not a sticker, it is a gap. */
+const SELECOES = [...new Set(PL.map(p => p.ctry))].filter(c => c && FLAGS[c])
+  .sort((a, b) => (CTRY_NAME[a] || a).localeCompare(CTRY_NAME[b] || b, 'pt'));
+
+const MASCOTES = Object.keys(MASCOTS);
+
+/* One descriptor for any sticker, whatever kind it is, so the album and the
+   end screen never have to branch on the prefix themselves. */
+function stk(sid) {
+  const k = sid.slice(0, 2);
+  if (k === 'e:') { const id = sid.slice(2);
+    return { kind:'escudo',  id, n: clubName(id), sub:'Escudo' }; }
+  if (k === 's:') { const c = sid.slice(2);
+    return { kind:'selecao', id: c, n: CTRY_NAME[c] || c, sub:'Seleção' }; }
+  if (k === 'm:') { const id = sid.slice(2); const m = MASCOTS[id] || {};
+    return { kind:'mascote', id, n: m.n || '', sub: clubName(id) }; }
+  const p = PL.find(x => x.id === sid);
+  return p ? { kind:'player', id: sid, n: p.n, p } : null;
+}
+
+/* Every sticker id in the album, players included. */
+const ALL_STICKERS = PL.map(p => p.id)
+  .concat(ESCUDOS.map(SK.esc), SELECOES.map(SK.sel), MASCOTES.map(SK.msc));
+const ALL_SET = new Set(ALL_STICKERS);
+
+/* An escudo, a flag or a mascot printed as a figurinha — same band / picture /
+   caption skeleton as `figurinha`, so a row of them lines up with a row of
+   players and the pocket numbers sit in the same place. */
+function figExtra(sid, size, opts) {
+  opts = opts || {};
+  const st = stk(sid);
+  if (!st) return '';
+  /* A club name eats more of the caption than a player's does — "Internacional"
+     is thirteen characters and broke across two lines at the player's
+     threshold, hyphenless, as "INTERNACIONA / L". */
+  const nmCls = 'fig-nm' + (st.n.length > 11 ? ' fig-nm-long' : '');
+  let band = '', art = '', tint = '';
+
+  if (st.kind === 'escudo') {
+    const br = CL.find(c => c.id === st.id);
+    band = br ? br.s : 'EXTERIOR';
+    art  = `<span class="fig-crest">${clubArt(st.id, '', false)}</span>`;
+  } else if (st.kind === 'selecao') {
+    band = 'SELEÇÃO';
+    art  = `<span class="fig-flagbox">${flagSVG(st.id, 60)}</span>`;
+  } else {
+    band = 'MASCOTE';
+    /* One drawing serves every club that shares the animal, so five Leões sat
+       in a row looking like a printing error. The club's own colour washed
+       behind it tells them apart without five more drawings. */
+    const br = CL.find(c => c.id === st.id);
+    tint = br ? ` style="background:${hexA(br.c1, .16)}"` : '';
+    art  = `<span class="fig-msc">${(MASC_ART[(MASCOTS[st.id] || {}).art] || (() => ''))()}</span>`;
+  }
+
+  return `<span class="fig fig-retro fig-extra fig-x-${st.kind} fig-${size}">
+    <span class="fig-band">${band}</span>
+    <span class="fig-art"${tint}>${art}</span>
+    <span class="fig-cap"><span class="${nmCls}">${st.n}</span>
+    <span class="fig-sub">${st.sub}</span></span>
+  </span>`;
+}
+
 const ALB_HALF = Math.round(PL.length * 0.50);
 const ALB_3Q   = Math.round(PL.length * 0.75);
 
@@ -5198,8 +5698,27 @@ const MEDALS = [
     t: () => album.size >= ALB_HALF, p: () => [album.size, ALB_HALF] },
   { id:'alb3q',  ic:'medal', n:'Reta final',      d:`Colecione ${ALB_3Q} figurinhas`,
     t: () => album.size >= ALB_3Q, p: () => [album.size, ALB_3Q] },
-  { id:'albAll', ic:'crown', n:'Álbum completo',  d:'Colecione todas as figurinhas',
-    t: () => album.size >= PL.length, p: () => [album.size, PL.length] },
+  /* This one used to read `album.size >= PL.length`, which was the whole album
+     when the whole album was players. Now that there are badge, national-team
+     and mascot sheets behind them it has to count players specifically, or it
+     would call the book finished with three empty sections in it. Anyone who
+     has it today has all the players, so nobody loses it. */
+  { id:'albAll', ic:'crown', n:'Todos os craques', d:'Colecione todos os jogadores',
+    t: () => albPlayers() >= PL.length, p: () => [albPlayers(), PL.length] },
+  { id:'albEsc', ic:'shield', n:'Chapa dos escudos', d:`Colecione os ${ESCUDOS.length} escudos`,
+    t: () => ESCUDOS.every(id => album.has(SK.esc(id))),
+    p: () => [ESCUDOS.filter(id => album.has(SK.esc(id))).length, ESCUDOS.length] },
+  { id:'albSel', ic:'shirt',  n:'Todas as seleções', d:`Colecione as ${SELECOES.length} seleções`,
+    t: () => SELECOES.every(c => album.has(SK.sel(c))),
+    p: () => [SELECOES.filter(c => album.has(SK.sel(c))).length, SELECOES.length] },
+  /* The mascots only turn up on a club you have already answered once, so this
+     is the one that asks you to go back through the book. */
+  { id:'albMsc', ic:'star',   n:'Folha dos mascotes', d:`Colecione os ${MASCOTES.length} mascotes`,
+    t: () => MASCOTES.every(id => album.has(SK.msc(id))),
+    p: () => [MASCOTES.filter(id => album.has(SK.msc(id))).length, MASCOTES.length] },
+  { id:'albBook',ic:'crown',  n:'Álbum completo',  d:'Complete o álbum inteiro',
+    t: () => album.size >= ALL_STICKERS.length,
+    p: () => [album.size, ALL_STICKERS.length] },
   { id:'daily3', ic:'calendar', n:'Rotina',         d:'3 desafios diários seguidos',
     t: st => LS.get('dailyStreak', 0) >= 3, p: () => [LS.get('dailyStreak', 0), 3] },
   { id:'daily7', ic:'calendar', n:'Semana cheia',   d:'7 desafios diários seguidos',
@@ -6037,6 +6556,68 @@ function figurinha(p, size, opts) {
 ═══════════════════════════════════════════════════ */
 const DEC_MIN = 6;          // fewer than this and a decade shares its spread
 
+/* The escudos, the seleções and the mascotes have no decade to be sorted by,
+   so their sections are paged the way a real album pages a badge sheet: a
+   fixed number to a spread, in the order they are printed. */
+const EXTRA_PER = 18;
+function extraPages(items, label) {
+  const out = [];
+  for (let i = 0; i < items.length; i += EXTRA_PER) {
+    out.push({ label: items.length > EXTRA_PER
+                 ? `${label} · ${out.length + 1}` : label,
+               items: items.slice(i, i + EXTRA_PER) });
+  }
+  return out;
+}
+
+/* The reverse of an escudo, a seleção or a mascote. A player's back prints his
+   career; these print what the sticker is and where it came from. */
+function figExtraBack(sid, num) {
+  const st = stk(sid);
+  if (!st) return '';
+  const lines = [];
+  if (st.kind === 'escudo') {
+    /* `cl`, not `br`: the Brasileirão count is itself the field `br`, and
+       `br.br` reads like a typo. */
+    const cl = CL.find(c => c.id === st.id);
+    lines.push(cl ? `Clube brasileiro · ${cl.s}` : 'Clube estrangeiro');
+    const tit = [];
+    if (cl && cl.lib) tit.push(`${cl.lib} ${cl.lib === 1 ? 'Libertadores' : 'Libertadores'}`);
+    if (cl && cl.br)  tit.push(`${cl.br} ${cl.br === 1 ? 'Brasileirão' : 'Brasileirões'}`);
+    if (tit.length) lines.push(tit.join(' · '));
+    if (cl && cl.f)   lines.push(`Fundado em ${cl.f}`);
+    const men = PL.filter(x => (x.clubs || []).includes(st.id));
+    if (men.length) lines.push(men.slice(0, 4).map(x => x.n).join(' · '));
+  } else if (st.kind === 'selecao') {
+    const men = PL.filter(x => x.ctry === st.id);
+    lines.push(`${men.length} ${men.length === 1 ? 'figurinha' : 'figurinhas'} no álbum`);
+    const wc = men.filter(x => (x.wc || []).length);
+    if (wc.length) lines.push(`Campeões do mundo: ${wc.length}`);
+    lines.push(men.slice(0, 4).map(x => x.n).join(' · '));
+  } else {
+    /* The same sentence printed on all twenty-five backs is filler. The club
+       behind the mascot is the thing worth reading. */
+    const cl = CL.find(c => c.id === st.id);
+    lines.push(`Mascote ${byClub(st.id)}`);
+    if (cl) {
+      lines.push([cl.s, cl.f ? `fundado em ${cl.f}` : ''].filter(Boolean).join(' · '));
+      const tit = [];
+      if (cl.lib) tit.push(`${cl.lib} Libertadores`);
+      if (cl.br)  tit.push(`${cl.br} ${cl.br === 1 ? 'Brasileirão' : 'Brasileirões'}`);
+      if (tit.length) lines.push(tit.join(' · '));
+    }
+  }
+  return `
+    <span class="figback">
+      <span class="figback-h">
+        <span class="figback-n">Nº ${String(num).padStart(3, '0')}</span>
+      </span>
+      <span class="figback-nm">${st.n}</span>
+      <span class="figback-rule"></span>
+      ${lines.filter(Boolean).map(l => `<span class="figback-l">${l}</span>`).join('')}
+    </span>`;
+}
+
 function albumPages(items) {
   if (!items.length) return [];
   const by = {};
@@ -6215,6 +6796,22 @@ function html() {
       order.push('__resto');
     }
 
+    /* ── The pages that are not faces ──
+       They come after the countries, the way the badge sheet and the mascots
+       sit at the back of a real album. Their pocket numbers carry on from the
+       players, so every sticker in the book has one number and no two share
+       it. */
+    let nx = PL.length;
+    const extraSec = [
+      ['__escudos',  ESCUDOS.map(SK.esc)],
+      ['__selecoes', SELECOES.map(SK.sel)],
+      ['__mascotes', MASCOTES.map(SK.msc)],
+    ];
+    extraSec.forEach(([key, sids]) => {
+      groups[key] = sids.map(sid => ({ sid, n: ++nx }));
+      order.push(key);
+    });
+
     /* The album was printed in several languages, and every old one prints the
        country's name in all of them across the header band. */
     const LANGS = {
@@ -6224,26 +6821,44 @@ function html() {
       ESP:'Spain · Spanien · Espagne · Spagna',    POR:'Portugal · Portogallo',
       NED:'Holland · Niederlande · Pays-Bas',      URU:'Uruguay · Uruguai',
     };
-    const total = PL.length;
+    /* Sections that are not countries: what the band, the tab and the pages
+       of each are called. */
+    const SEC = {
+      __resto:    { t:'RESTO DO MUNDO', tab:'RDM', langs:'Rest of the world · Rest der Welt',
+                    ic: () => ICON.ball('currentColor', 15) },
+      __escudos:  { t:'ESCUDOS',        tab:'ESC', langs:'Crests · Wappen · Stemmi',
+                    page:'Escudos', ic: () => ICON.shield('currentColor', 14) },
+      __selecoes: { t:'SELEÇÕES',       tab:'SEL', langs:'National teams · Nationalmannschaften',
+                    page:'Seleções', ic: () => ICON.shirt('currentColor', 14) },
+      __mascotes: { t:'MASCOTES',       tab:'MAS', langs:'Mascots · Maskottchen · Mascotte',
+                    page:'Mascotes', ic: () => ICON.star('currentColor', 14) },
+    };
+    const sidOf  = g => g.sid || g.p.id;
+    const isExtra = c => !!(SEC[c] && SEC[c].page);
+    const total  = ALL_STICKERS.length;
+    const pagesOf = c => isExtra(c)
+      ? extraPages(groups[c], SEC[c].page)
+      : albumPages(groups[c]);
 
     if (!albCtry || !groups[albCtry]) albCtry = order[0];
     /* If the run just earned something, open on the spread that sticker lives
        in — the reward is the reason they came here. */
     if (runNewIds.length && movedScreen) {
-      const fresh = PL.find(p => runNewIds.includes(p.id));
-      const home  = fresh && order.find(c => groups[c].some(g => g.p.id === fresh.id));
+      const fresh = runNewIds[0];
+      const home  = fresh && order.find(c => groups[c].some(g => sidOf(g) === fresh));
       if (home) {
         albCtry = home;
-        const i = albumPages(groups[home]).findIndex(pg => pg.items.some(g => g.p.id === fresh.id));
+        const i = pagesOf(home).findIndex(pg => pg.items.some(g => sidOf(g) === fresh));
         albPage = i < 0 ? 0 : i;
       }
     }
 
-    const pages = albumPages(groups[albCtry]);
+    const pages = pagesOf(albCtry);
     albPage = Math.max(0, Math.min(albPage, pages.length - 1));
     const spread = pages[albPage] || { from: 1990, to: 1990, items: [] };
     const isRest = albCtry === '__resto';
-    const secGot = groups[albCtry].filter(g => album.has(g.p.id)).length;
+    const sec    = SEC[albCtry];
+    const secGot = groups[albCtry].filter(g => album.has(sidOf(g))).length;
     const secAll = groups[albCtry].length;
 
     return `
@@ -6260,12 +6875,12 @@ function html() {
       <div class="alb-tabs" id="alb-tabs">
         ${order.map(c => {
           const g = groups[c];
-          const got = g.filter(x => album.has(x.p.id)).length;
+          const got = g.filter(x => album.has(sidOf(x))).length;
+          const S = SEC[c];
           return `<button class="alb-tab${c === albCtry ? ' is-on' : ''}${got === g.length ? ' is-done' : ''}"
-                    data-ctry="${c}" title="${c === '__resto' ? 'Resto do mundo' : (CTRY_NAME[c] || c)}">
-            <span class="alb-tab-fl">${c === '__resto'
-              ? ICON.ball('currentColor', 15) : flagSVG(c, 11)}</span>
-            <span class="alb-tab-c">${c === '__resto' ? 'RDM' : c}</span>
+                    data-ctry="${c}" title="${S ? S.t : (CTRY_NAME[c] || c)}">
+            <span class="alb-tab-fl">${S ? S.ic() : flagSVG(c, 11)}</span>
+            <span class="alb-tab-c">${S ? S.tab : c}</span>
             <span class="alb-tab-n">${got}/${g.length}</span>
           </button>`;
         }).join('')}
@@ -6274,40 +6889,50 @@ function html() {
       <!-- the spread -->
       <!-- a section with one spread is printed on the paper of its newest card,
            not its oldest: "todas as épocas" is not a period piece -->
-      <div class="alb-book ${decStyle(pages.length === 1 ? spread.to : spread.from)}" id="alb-book">
+      <div class="alb-book ${isExtra(albCtry) ? 'dec-x' + albCtry.slice(2, 3)
+        : decStyle(pages.length === 1 ? spread.to : spread.from)}" id="alb-book">
         <div class="alb-band">
-          <span class="crest-box" style="width:30px;flex:none;">${isRest
-            ? `<span class="alb-globe">${ICON.ball('currentColor', 19)}</span>`
+          <span class="crest-box" style="width:30px;flex:none;">${sec
+            ? `<span class="alb-globe">${sec.ic()}</span>`
             : flagSVG(albCtry, 20)}</span>
           <span style="min-width:0;flex:1;">
-            <span class="t">${isRest ? 'RESTO DO MUNDO' : (CTRY_NAME[albCtry] || albCtry).toUpperCase()}</span>
-            <span class="langs">${isRest ? 'Rest of the world · Rest der Welt' : (LANGS[albCtry] || '')}</span>
+            <span class="t">${sec ? sec.t : (CTRY_NAME[albCtry] || albCtry).toUpperCase()}</span>
+            <span class="langs">${sec ? sec.langs : (LANGS[albCtry] || '')}</span>
           </span>
-          <span class="alb-dec">${pages.length === 1 ? 'Todas as épocas' : decLabel(spread)}</span>
+          <span class="alb-dec">${isExtra(albCtry)
+            ? (spread.label || sec.page)
+            : (pages.length === 1 ? 'Todas as épocas' : decLabel(spread))}</span>
         </div>
 
         <div class="alb-sheet scroll-y${albTurning ? ' turn-' + albTurning : ''}">
           <div class="alb-grid">
-            ${spread.items.map(({ p, n }) => {
-              const got = album.has(p.id);
+            ${spread.items.map(it => {
+              const { p, n } = it;
+              const sid = it.sid || p.id;
+              const got = album.has(sid);
+              const nm  = p ? p.n : (stk(sid) || {}).n || '';
+              const front = p
+                ? figurinha(p, 'lg', {
+                    sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos],
+                    noYear: true })
+                : figExtra(sid, 'lg');
+              const back = p ? figurinhaBack(p, n) : figExtraBack(sid, n);
               return `<div class="alb-slot${got ? ' alb-turn' : ' empty'}${
-                runNewIds.includes(p.id) ? ' alb-fresh' : ''}"${
-                got ? ` data-fig="${p.id}" role="button" tabindex="0"
-                       aria-label="${p.n} — toque para virar a figurinha"` : ''}>
+                runNewIds.includes(sid) ? ' alb-fresh' : ''}"${
+                got ? ` data-fig="${sid}" role="button" tabindex="0"
+                       aria-label="${nm} — toque para virar a figurinha"` : ''}>
                 <span class="alb-n">${String(n).padStart(3, '0')}</span>
                 ${got
                   ? `<span class="flip"><span class="flip-in">
-                       <span class="flip-face flip-front">${figurinha(p, 'lg', {
-                         sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos],
-                         noYear: true })}</span>
-                       <span class="flip-face flip-back">${figurinhaBack(p, n)}</span>
+                       <span class="flip-face flip-front">${front}</span>
+                       <span class="flip-face flip-back">${back}</span>
                      </span></span>`
                   : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
               </div>`;
             }).join('')}
           </div>
           <div class="alb-foot">
-            <span>${isRest ? 'Resto do mundo' : (CTRY_NAME[albCtry] || albCtry)}</span>
+            <span>${sec ? sec.t.toLowerCase() : (CTRY_NAME[albCtry] || albCtry)}</span>
             <span>${secGot} de ${secAll}</span>
           </div>
         </div>
@@ -6319,7 +6944,7 @@ function html() {
           aria-label="Página anterior">${ICON.back('currentColor', 15)}</button>
         <div class="alb-pips" aria-hidden="true">
           ${pages.map((pg, i) => `<span class="alb-pip${i === albPage ? ' is-on' : ''}${
-            pg.items.every(g => album.has(g.p.id)) ? ' is-full' : ''}"></span>`).join('')}
+            pg.items.every(g => album.has(sidOf(g))) ? ' is-full' : ''}"></span>`).join('')}
         </div>
         <button id="alb-next" class="alb-arrow alb-fwd" ${albPage >= pages.length - 1 ? 'disabled' : ''}
           aria-label="Próxima página">${ICON.back('currentColor', 15)}</button>
@@ -6394,7 +7019,14 @@ function html() {
         apenas para identificação dentro do quiz. Todos são o escudo oficial de
         cada clube; seis deles — Vasco, Corinthians, Náutico, Paysandu, Sport e
         Bragantino — não têm versão sob licença livre em lugar nenhum, e estão
-        aqui só para identificar o clube.
+        aqui só para identificar o clube.<br><br>
+        Dos clubes de fora, só entram os que têm escudo sob licença livre no
+        Commons e que seja a marca atual do clube. A maioria dos grandes
+        europeus não tem — por isso o álbum traz o Milan e a Juventus, e não
+        traz o Real Madrid nem o Barcelona.<br><br>
+        Os mascotes são desenhados aqui. Mascote de clube é arte do próprio
+        clube e não existe sob licença livre; nenhum destes é a arte oficial de
+        ninguém.
       </p>
       <!-- The cap was a flat 330px, from when the page never filled the sheet;
            on a tall phone that wasted half the screen. It has to stay a cap of
@@ -6740,6 +7372,7 @@ let _lastSc = null;
 let albCtry = null;
 let albPage = 0;
 let albTurning = null;   // 'fwd' | 'back', consumed by the next render
+let albLeaf    = null;   // a copy of the spread being turned away from
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -6812,6 +7445,19 @@ function go() {
        `albTurning` carries which way it went into the next render, so the new
        spread comes in from the side the page was turned towards. */
     const flip = dir => {
+      /* Photograph the spread before it goes. `go()` replaces the sheet
+         outright, so the only way to show the page leaving is to keep a copy
+         of it — measured against the book, because the sheet sits below the
+         country band and a leaf pinned to the whole book would swing the band
+         away too. */
+      const bk = document.getElementById('alb-book');
+      const sh = bk && bk.querySelector('.alb-sheet');
+      if (bk && sh && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const b = bk.getBoundingClientRect(), r = sh.getBoundingClientRect();
+        albLeaf = { html: sh.outerHTML, dir: dir > 0 ? 'fwd' : 'back',
+                    top: r.top - b.top, left: r.left - b.left,
+                    w: r.width, h: r.height };
+      }
       albTurning = dir > 0 ? 'fwd' : 'back';
       albPage += dir;
       snd.swipe(); go();
@@ -6852,6 +7498,29 @@ function go() {
         if (dx < 0 && next && !next.disabled) flip(1);
         if (dx > 0 && prev && !prev.disabled) flip(-1);
       }, { passive: true });
+    }
+
+    /* plant the page that is leaving over the one that arrived */
+    if (albLeaf) {
+      const L = albLeaf; albLeaf = null;
+      const bk = document.getElementById('alb-book');
+      if (bk) {
+        const leaf = document.createElement('div');
+        leaf.className = 'alb-leaf leaf-' + L.dir;
+        leaf.setAttribute('aria-hidden', 'true');
+        leaf.style.cssText = `top:${L.top}px;left:${L.left}px;width:${L.w}px;height:${L.h}px;`;
+        leaf.innerHTML = L.html;
+        /* it is a picture of a page, not a page: nothing in it should scroll,
+           take focus, or be read out a second time */
+        const inner = leaf.firstElementChild;
+        if (inner) { inner.style.overflow = 'hidden'; inner.classList.remove('turn-fwd', 'turn-back'); }
+        leaf.querySelectorAll('[tabindex],[role="button"]').forEach(el => {
+          el.removeAttribute('tabindex'); el.removeAttribute('role'); });
+        bk.appendChild(leaf);
+        const done = () => leaf.remove();
+        leaf.addEventListener('animationend', done);
+        setTimeout(done, 900);        // a backgrounded tab never fires the event
+      }
     }
 
     /* the index runs wider than the screen, so the section you are reading has
@@ -7041,7 +7710,7 @@ function doReveal() {
   bestStreak = Math.max(bestStreak, streak);
 
   /* Getting it right sticks the figurinha in the album for good. */
-  const gotNew = (p === 3 && q.type === 'player') ? collect(q.a) : [];
+  const gotNew = p === 3 ? collect(earned(q)) : [];
   runNew += gotNew.length;
   runNewIds.push(...gotNew);
 

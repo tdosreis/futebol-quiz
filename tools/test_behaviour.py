@@ -232,8 +232,39 @@ TESTS = r"""
     // ---- medals ----
     stats={games:1,correct:0,answered:10,bestStreak:0};
     ok('first-game medal unlocks', earnedMedals().some(m=>m.id==='first'));
-    stats={games:0,correct:0,answered:0,bestStreak:0};
+    // The album is a separate store from stats, and the album medals have
+    // always been keyed to it alone. Zeroing only stats left whatever the
+    // rounds above collected, which used to stay under 25 and now does not —
+    // a run also earns escudos, selecoes and mascotes. "No games" has to mean
+    // both stores empty or the assertion is not testing what it says.
+    stats={games:0,correct:0,answered:0,bestStreak:0}; album=new Set();
     ok('no medals with no games', earnedMedals().length===0, `${earnedMedals().length}`);
+
+    // ---- every sticker in the album can actually be collected ----
+    // The escudos, selecoes and mascotes are printed in the album whether or
+    // not any rule hands them out. The first cut shipped 30 selecoes and 15
+    // escudos that no question could ever produce: the sections were there,
+    // the medals were there, and neither could be finished. Simulate the two
+    // routes and require every id to be reachable.
+    album = new Set();
+    const reach = new Set();
+    // route 1: whatever a right answer hands over, for every question in the pool
+    let pool = [];
+    CATS.forEach(c => c.qs.forEach(q => pool.push(q)));
+    for (let i = 0; i < 12; i++) pool = pool.concat(GEN_QS(2));
+    // run it twice: the mascote needs the escudo to already be held
+    for (let pass = 0; pass < 2; pass++) {
+      pool.forEach(q => { try { collect(earned(q)); } catch (e) {} });
+    }
+    album.forEach(id => reach.add(id));
+    // route 2: holding the players themselves earns the badges behind them
+    collect(PL.map(p => p.id));
+    pool.forEach(q => { try { collect(earned(q)); } catch (e) {} });
+    album.forEach(id => reach.add(id));
+    const unreachable = ALL_STICKERS.filter(id => !reach.has(id));
+    ok('every sticker in the album can be collected', unreachable.length === 0,
+       `${unreachable.length} unreachable: ${unreachable.slice(0,6).join(', ')}`);
+    album = new Set();
 
     // ---- share card ----
     diffKey='facil'; startGame(); runLog=[3,1,0,-1];

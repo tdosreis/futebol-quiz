@@ -41,8 +41,10 @@ futebol feminino. Cada partida é montada na hora, então nunca se repete.
 • Pular — passa a pergunta sem perder o degrau
 
 📔 O ÁLBUM DE FIGURINHAS:
-• 298 craques para colar, de Ricardo Zamora e Domingos da Guia aos dias de hoje
-• 39 seleções e 42 clubes brasileiros, cada um com seu escudo oficial
+• 419 figurinhas: 298 craques, 57 escudos, 39 seleções e 25 mascotes
+• De Ricardo Zamora e Domingos da Guia aos dias de hoje
+• A chapa dos escudos, a folha das seleções e — a mais difícil — a dos
+  mascotes: o Galo, a Raposa, o Porco, o Urubu, o Peixe, o Timbu, o Saci
 • Um álbum de verdade: as seleções em abas no alto, e você vira a página
   década por década, cada uma impressa no seu próprio papel — sépia nos
   anos 20, o creme e vermelho dos anos 50, cartão novo nos anos 2000
