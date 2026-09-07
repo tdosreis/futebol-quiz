@@ -75,6 +75,22 @@ STATES = {
    sel.clear(); sc='quiz'; tMax=qTime(); tLeft=21; disp=getDisp(cat.qs[11]); go();""",
 
 
+ # The mascots are the thing no other football quiz has: 41 drawings, none of
+ # them anybody's licensed artwork. Worth a shot of its own on the listing.
+ "shot-07-mascotes": """(function(){
+     // An album part-filled, the way anyone's actually looks. Filling everything
+     // but the mascots made the header read "96% colado", which is a state a new
+     // player never sees and undersells how much there is to collect.
+     album = new Set();
+     PL.slice(0, 96).forEach(function(p){ album.add(p.id); });
+     ESCUDOS.slice(0, 34).forEach(function(id){ album.add(SK.esc(id)); });
+     SELECOES.slice(0, 14).forEach(function(c){ album.add(SK.sel(c)); });
+     MASCOTES.slice(0, 15).forEach(function(id){ album.add(SK.msc(id)); });
+     MASCOTES.slice(18, 21).forEach(function(id){ album.add(SK.msc(id)); });
+     LS.set('album', [...album]);
+   })();
+   albCtry='__mascotes'; albPage=0; sc='album'; go();""",
+
  "s-wrong": """advanceAfterReveal=function(){};
    diffKey='moderado'; startGame();
    const q=cat.qs[0]; const bad=disp.find(o=>!q.a.includes(o.id));

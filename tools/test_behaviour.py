@@ -342,9 +342,13 @@ TESTS = r"""
          flags and files flattened onto white behave, and every club now ships
          transparent official artwork. What matters instead is that the six
          non-free escudos are named, so the licence distinction stays visible. */
+      // This used to assert `size === 6`, which was the count on the day it was
+      // written and went stale the moment the user approved the foreign crests.
+      // What matters is that the set exists and is not empty — whether it holds
+      // the right ids is the drift assertion below, which cannot go stale.
       ok('the non-free escudos are named in one place',
-         typeof NONFREE_CRESTS !== 'undefined' && NONFREE_CRESTS.size === 6,
-         typeof NONFREE_CRESTS === 'undefined' ? 'missing' : [...NONFREE_CRESTS].join(','));
+         typeof NONFREE_CRESTS !== 'undefined' && NONFREE_CRESTS.size > 0,
+         typeof NONFREE_CRESTS === 'undefined' ? 'missing' : `${NONFREE_CRESTS.size} named`);
       ok('every named non-free escudo is credited',
          [...NONFREE_CRESTS].every(id => LOGOS[id] && CREDITS[LOGOS[id]]),
          [...NONFREE_CRESTS].filter(id => !(LOGOS[id] && CREDITS[LOGOS[id]])).join(',') || 'all credited');

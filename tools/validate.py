@@ -93,6 +93,23 @@ if os.path.isdir(_img_dir):
     if _orphans:
         warns.append(f"{len(_orphans)} image(s) nothing references: {_orphans[:4]}")
 
+# A mascote keyed to a club id that does not exist prints the raw id as its
+# caption and can never be collected — `athleticopr` for `atleticopr` cost one
+# sticker before this existed. Same for a crest.
+_cl = re.search(r"const CL = \[(.*?)\n\];", s, re.S)
+_cn = re.search(r"const CLUB_NAMES = \{(.*?)\n\};", s, re.S)
+_known = set()
+if _cl: _known |= set(re.findall(r"\{ *id:'([\w_]+)'", _cl.group(1)))
+if _cn: _known |= set(re.findall(r"([\w_]+):\s*'", _cn.group(1)))
+if _known:
+    for name, pat in (("MASCOTS", r"const MASCOTS = \{(.*?)\n\};"),
+                      ("LOGOS",   r"const LOGOS = \{(.*?)\n\};")):
+        blk = re.search(pat, s, re.S)
+        if not blk: continue
+        for cid in re.findall(r"^\s*([\w_]+):\s*[\{']", blk.group(1), re.M):
+            if cid not in _known:
+                errs.append(f"{name}['{cid}'] names no club in CL or CLUB_NAMES")
+
 # One club under two ids reads fine everywhere — both render the same crest and
 # the same name — but it silently splits the club's squad in two, and the
 # team-mate generators then offer a man who played there as a wrong answer.
