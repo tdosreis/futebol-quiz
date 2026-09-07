@@ -37,6 +37,15 @@ PROBE = r"""
          drawn past the edge of its viewBox is the drawing working, not a bug.
          Measure the <svg> itself; skip what is inside it. */
       if(el.ownerSVGElement) return;
+      /* A deliberate horizontal scroller — the album's row of country tabs —
+         has content wider than the screen on purpose; that is what makes it
+         scroll. Content escaping the *page* is the bug; content inside a box
+         that scrolls sideways is the feature. Skip anything with such an
+         ancestor, and measure the scroller itself instead. */
+      for(let a=el.parentElement; a && a!==document.body; a=a.parentElement){
+        const ox=getComputedStyle(a).overflowX;
+        if(ox==='auto'||ox==='scroll') return;
+      }
       const r=el.getBoundingClientRect();
       if(r.width<0.5 && r.height<0.5) return;
       if(r.right>vw+0.5 || r.left<-0.5)

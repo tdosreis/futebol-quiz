@@ -852,6 +852,22 @@
        320px-wide phone that pushed CONFIRMAR below the fold — the one control
        the player must reach. Small screens keep five across and the smaller
        type that goes with it; everything roomier gets the bigger cards. */
+    /* Four across costs a row of card height, and on a 390-420px phone the
+       tightest board there is — a Milhão question with the audience and the
+       pundit both on screen — sits about 45px above the fold. A question that
+       runs to three lines spends that. This gives it back where it is cheapest:
+       the padding around the stakes and the pundit, not the cards. */
+    @media (min-width: 380px) and (max-width: 430px) {
+      .qz-screen { gap: 7px !important; }
+      .qz-screen .stakes { padding-bottom: 1px; }
+      .qz-screen .expert-box { padding: 5px 9px; }
+      .qz-screen .expert-box p { font-size: 10.5px; line-height: 1.35; }
+      .qz-screen .ajuda { padding: 6px 7px 5px; }
+      .qz-screen .aj-disc { width: 23px; height: 23px; }
+      .qz-screen .board { gap: 6px; }
+      .qz-screen .board-5 > * { flex: 0 0 calc(25% - 4.5px); }
+    }
+
     @media (max-width: 379px) {
       .board-5 > * { flex: 0 0 calc(20% - 5.6px); }
       .fig-sm .fig-band { font-size: 5.6px; padding: 1.5px 4px; }
@@ -1029,6 +1045,99 @@
     .alb-fresh > .fig { box-shadow: 0 0 0 2px var(--brass), 0 2px 8px var(--shadow); }
     .alb-fresh { animation: freshGlow 2.4s ease-in-out 3; }
     @keyframes freshGlow { 0%,100% { filter: none; } 50% { filter: brightness(1.06); } }
+
+    /* ═══════════════════════════════════════════════════════════════
+       THE ALBUM AS A BOOK
+
+       A section per country along the top, a spread per era underneath, and
+       you turn the page. Each era is printed on its own paper: the twenties
+       are a foxed sepia, the fifties the cream-and-red of the albums this is
+       modelled on, and the last two decades are the mint card the modern
+       stickers already use. The tokens are per-spread, so the band, the paper
+       and the rules all move together.
+    ═══════════════════════════════════════════════════════════════ */
+    .alb-pg { min-height: 0; }
+
+    /* the index */
+    .alb-tabs { display: flex; gap: 5px; overflow-x: auto; padding: 2px 1px 4px;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .alb-tabs::-webkit-scrollbar { display: none; }
+    .alb-tab { flex: none; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      background: var(--pocket); border: 1px solid var(--rule); border-radius: 9px;
+      padding: 5px 7px 4px; cursor: pointer; transition: border-color .18s, background .18s, transform .12s; }
+    .alb-tab-fl { display: block; line-height: 0; opacity: .9; }
+    .alb-tab-n { font-size: 8px; font-weight: 800; color: var(--ink-3);
+      font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+    .alb-tab:active { transform: scale(.95); }
+    .alb-tab.is-on { border-color: var(--brass); background: var(--brass-soft); }
+    .alb-tab.is-on .alb-tab-n { color: var(--brass); }
+    .alb-tab.is-done .alb-tab-n { color: var(--good); }
+    .alb-tab.is-on.is-done .alb-tab-n { color: var(--brass); }
+
+    /* the spread */
+    .alb-book { flex: 1; min-height: 0; display: flex; flex-direction: column;
+      border-radius: 12px; overflow: hidden; background: var(--pg-paper);
+      box-shadow: inset 0 0 0 1px var(--pg-edge), 0 2px 10px var(--shadow);
+      /* the gutter, where the two halves of a real spread meet */
+      background-image: linear-gradient(90deg, transparent 49.4%, var(--pg-edge) 49.7%,
+                        var(--pg-edge) 50.3%, transparent 50.6%);
+      background-size: 100% 100%; }
+    .alb-band { display: flex; align-items: center; gap: 8px; flex: none;
+      padding: 7px 10px; background: var(--pg-band); color: var(--pg-bandink); }
+    .alb-band .t { display: block; font-family: var(--font-c); font-weight: 700;
+      text-transform: uppercase; font-size: 15px; letter-spacing: .04em; line-height: 1.1; }
+    .alb-band .langs { display: block; font-size: 7.5px; letter-spacing: .1em;
+      text-transform: uppercase; opacity: .72; margin-top: 1px; }
+    .alb-dec { flex: none; font-family: var(--font-c); font-weight: 700; font-size: 9.5px;
+      letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+      background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
+    .alb-sheet { flex: 1; min-height: 0; padding: 9px 8px 6px; }
+
+    /* the page arriving from the side it was turned towards */
+    @keyframes pageFwd  { from { opacity: 0; transform: translateX(16px) rotateY(-7deg); } }
+    @keyframes pageBack { from { opacity: 0; transform: translateX(-16px) rotateY(7deg); } }
+    .alb-sheet.turn-fwd  { animation: pageFwd .3s cubic-bezier(.25,.9,.3,1); }
+    .alb-sheet.turn-back { animation: pageBack .3s cubic-bezier(.25,.9,.3,1); }
+
+    /* turning the page */
+    .alb-turnbar { flex: none; display: flex; align-items: center; justify-content: center;
+      gap: 12px; padding-top: 1px; }
+    .alb-arrow { width: 34px; height: 34px; border-radius: 50%; flex: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--pocket); border: 1px solid var(--rule); color: var(--ink-2);
+      transition: transform .12s, border-color .18s, opacity .18s; }
+    .alb-arrow.alb-fwd { transform: rotate(180deg); }
+    .alb-arrow:not(:disabled):hover { border-color: var(--brass); color: var(--brass); }
+    .alb-arrow:not(:disabled):active { transform: scale(.9); }
+    .alb-arrow.alb-fwd:not(:disabled):active { transform: rotate(180deg) scale(.9); }
+    .alb-arrow:disabled { opacity: .28; cursor: default; }
+    .alb-pips { display: flex; gap: 5px; align-items: center; flex-wrap: wrap;
+      justify-content: center; max-width: 190px; }
+    .alb-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--rule);
+      transition: background .25s, transform .25s; }
+    .alb-pip.is-full { background: var(--good); }
+    .alb-pip.is-on { background: var(--brass); transform: scale(1.5); }
+
+    /* ── the papers, oldest to newest ── */
+    .dec-a { --pg-paper:#E4D5B4; --pg-edge:#B9A277; --pg-band:#6B4B2A; --pg-bandink:#F3E7CE; }
+    .dec-b { --pg-paper:#EFE4CA; --pg-edge:#BFA97C; --pg-band:#B23A2E; --pg-bandink:#F6EBD8; }
+    .dec-c { --pg-paper:#F0E3C2; --pg-edge:#C4A96E; --pg-band:#B4691E; --pg-bandink:#FBF0DA; }
+    .dec-d { --pg-paper:#EDE6D2; --pg-edge:#BDB394; --pg-band:#1F6E63; --pg-bandink:#EAF6F2; }
+    .dec-e { --pg-paper:#EDE9DC; --pg-edge:#B9B4A0; --pg-band:#2B5EA8; --pg-bandink:#EAF1FB; }
+    .dec-f { --pg-paper:#EDEBE4; --pg-edge:#B6B3A8; --pg-band:#3C3B39; --pg-bandink:#F2F1EE; }
+    .dec-g { --pg-paper:#E6EFEB; --pg-edge:#A9C4BB; --pg-band:#2E8B7A; --pg-bandink:#ECFAF5; }
+    /* Under lamplight the papers stay distinguishable but stop glowing: a
+       cream page on a dark screen is a torch, and the album is meant to be
+       read in bed. */
+    :root[data-theme="dark"] .alb-book, :root:not([data-theme="light"]) .alb-book {
+      --pg-paper:#1B1E19; --pg-edge:#333A31; }
+    :root[data-theme="dark"] .dec-a, :root:not([data-theme="light"]) .dec-a { --pg-band:#5A4029; --pg-bandink:#E8DAC0; }
+    :root[data-theme="dark"] .dec-b, :root:not([data-theme="light"]) .dec-b { --pg-band:#8E2F26; --pg-bandink:#F2E2D2; }
+    :root[data-theme="dark"] .dec-c, :root:not([data-theme="light"]) .dec-c { --pg-band:#8C5218; --pg-bandink:#F6E9D2; }
+    :root[data-theme="dark"] .dec-d, :root:not([data-theme="light"]) .dec-d { --pg-band:#1A574F; --pg-bandink:#DDF0EA; }
+    :root[data-theme="dark"] .dec-e, :root:not([data-theme="light"]) .dec-e { --pg-band:#254B83; --pg-bandink:#DCE8F8; }
+    :root[data-theme="dark"] .dec-f, :root:not([data-theme="light"]) .dec-f { --pg-band:#3A3A38; --pg-bandink:#E6E5E1; }
+    :root[data-theme="dark"] .dec-g, :root:not([data-theme="light"]) .dec-g { --pg-band:#256E61; --pg-bandink:#DEF3EC; }
 
     /* ── The country band that opens each page ──────────────────
        Straight out of the old albums: the crest, the name set large and
@@ -5595,6 +5704,63 @@ function figurinha(p, size, opts) {
   </span>`;
 }
 
+/* ═══════════════════════════════════════════════════
+   THE ALBUM AS A BOOK
+
+   A Panini album is not a scroll. It is a section per country and a spread per
+   era, and you turn the page. This builds that: for one country, the decades
+   its players debuted in, merged where a decade is too thin to be worth a page
+   of its own — two men from the 1930s share a spread with the 1940s the way a
+   real album opens on "os primeiros anos" rather than giving each a page.
+═══════════════════════════════════════════════════ */
+const DEC_MIN = 6;          // fewer than this and a decade shares its spread
+
+function albumPages(items) {
+  if (!items.length) return [];
+  const by = {};
+  items.forEach(g => {
+    const d = g.p.era ? Math.floor(g.p.era[0] / 10) * 10 : 1990;
+    (by[d] = by[d] || []).push(g);
+  });
+  const pages = [];
+  Object.keys(by).map(Number).sort((a, b) => a - b).forEach(d => {
+    const last = pages[pages.length - 1];
+    /* merge forward while the previous spread is still thin — this is what
+       keeps a country with one man per decade from becoming eight pages of a
+       single sticker */
+    if (last && last.items.length < DEC_MIN) {
+      last.to = d;
+      last.items = last.items.concat(by[d]);
+    } else {
+      pages.push({ from: d, to: d, items: by[d].slice() });
+    }
+  });
+  /* The forward pass cannot help the last decade: Brazil's 2020s is one man,
+     and the 2010s before it was full, so he was left alone on a page of his
+     own. A thin final spread folds back into the one before it. */
+  if (pages.length > 1 && pages[pages.length - 1].items.length < 3) {
+    const tail = pages.pop();
+    const prev = pages[pages.length - 1];
+    prev.to = tail.to;
+    prev.items = prev.items.concat(tail.items);
+  }
+  return pages;
+}
+
+/* What a spread is called. Two digits up to the nineties, four from 2000 on —
+   which is both how Portuguese says it and the only way to tell "anos 20" the
+   decade of Domingos da Guia from "anos 2020" the decade of Endrick. */
+const decName = d => d >= 2000 ? `${d}` : String(d).slice(2);
+const decLabel = pg => pg.from === pg.to
+  ? `Anos ${decName(pg.from)}`
+  : `Anos ${decName(pg.from)} – ${decName(pg.to)}`;
+
+/* Which paper the spread is printed on. The album spans a century, and a page
+   of 1950s cards has no business looking like a page of 2020s ones. */
+const decStyle = d => d <= 1940 ? 'dec-a' : d <= 1960 ? 'dec-b'
+                    : d <= 1970 ? 'dec-c' : d <= 1980 ? 'dec-d'
+                    : d <= 1990 ? 'dec-e' : d <= 2000 ? 'dec-f' : 'dec-g';
+
 /* The sticker on the cover. It changes every time the album is opened — a
    fixed face made the cover look broken — and once you have collected
    anything it shows one of yours, so the cover is your album, not ours.
@@ -5709,12 +5875,10 @@ function html() {
     const byCountry = {};
     PL.forEach((p, i) => { (byCountry[p.ctry] = byCountry[p.ctry] || []).push({ p, n: i + 1 }); });
 
-    /* The album reaches thirty-nine countries, and half of them are one player.
-       Twenty-three section headers each opening onto a single card made the
-       back of the album read as a list of fragments. The old albums did what
-       this does: the countries with a full row of their own get a page, and
-       everyone else shares the last one. Each sticker still carries its own
-       flag, so nobody loses their nationality — only the header is shared. */
+    /* Thirty-nine countries and half of them are one player. Countries with a
+       section of their own get one; everyone else shares the last section.
+       Each sticker still carries its own flag, so nobody loses their
+       nationality — only the section is shared. */
     const PAGE_MIN = 3;
     const own  = Object.keys(byCountry).filter(c => byCountry[c].length >= PAGE_MIN);
     const rest = Object.keys(byCountry).filter(c => byCountry[c].length <  PAGE_MIN);
@@ -5729,8 +5893,8 @@ function html() {
       order.push('__resto');
     }
 
-    /* The album was printed in several languages, and every old one prints
-       the country's name in all of them across the header band. */
+    /* The album was printed in several languages, and every old one prints the
+       country's name in all of them across the header band. */
     const LANGS = {
       BRA:'Brazil · Brasilien · Brésil · Brasile', ARG:'Argentina · Argentinien · Argentine',
       ITA:'Italy · Italien · Italie · Italia',     GER:'Germany · Deutschland · Allemagne',
@@ -5740,45 +5904,68 @@ function html() {
     };
     const total = PL.length;
 
+    if (!albCtry || !groups[albCtry]) albCtry = order[0];
+    /* If the run just earned something, open on the spread that sticker lives
+       in — the reward is the reason they came here. */
+    if (runNewIds.length && movedScreen) {
+      const fresh = PL.find(p => runNewIds.includes(p.id));
+      const home  = fresh && order.find(c => groups[c].some(g => g.p.id === fresh.id));
+      if (home) {
+        albCtry = home;
+        const i = albumPages(groups[home]).findIndex(pg => pg.items.some(g => g.p.id === fresh.id));
+        albPage = i < 0 ? 0 : i;
+      }
+    }
+
+    const pages = albumPages(groups[albCtry]);
+    albPage = Math.max(0, Math.min(albPage, pages.length - 1));
+    const spread = pages[albPage] || { from: 1990, to: 1990, items: [] };
+    const isRest = albCtry === '__resto';
+    const secGot = groups[albCtry].filter(g => album.has(g.p.id)).length;
+    const secAll = groups[albCtry].length;
+
     return `
-    <div class="pg" style="gap:8px;">
+    <div class="pg alb-pg" style="gap:7px;">
       ${topbar('Meu álbum')}
+
       <div class="alb-head">
-        <div class="display" style="font-size:26px;">${album.size}<span class="muted" style="font-size:16px;"> / ${total}</span></div>
+        <div class="display" style="font-size:24px;">${album.size}<span class="muted" style="font-size:15px;"> / ${total}</span></div>
         <div class="small muted">${albumPct()}% colado</div>
       </div>
       <div class="alb-bar"><i style="width:${albumPct()}%"></i></div>
-      ${album.size ? `<div class="alb-hint">${ICON.book('currentColor', 10)}
-        Toque em uma figurinha para ver o verso</div>` : ''}
-      ${album.size === 0 ? `<div style="display:flex;align-items:center;gap:12px;
-        background:var(--pocket);border:1px solid var(--rule-2);border-radius:11px;padding:11px 13px;margin-top:6px;">
-        <span style="width:44px;flex:none;">${ART.ball(44)}</span>
-        <span class="small muted">Cada resposta certa cola uma figurinha aqui.
-          As páginas começam vazias — é você que enche.</span></div>` : ''}
-      <div class="scroll-y" style="flex:1;margin-top:2px;">
-        ${order.map((ctry, pageNo) => {
-          const got = groups[ctry].filter(g => album.has(g.p.id)).length;
-          const isRest = ctry === '__resto';
-          return `
-          <div class="alb-sec${got === groups[ctry].length ? ' alb-sec-done' : ''}">
-            <span class="crest-box" style="width:34px;">${isRest
-              ? `<span class="alb-globe">${ICON.ball('currentColor', 21)}</span>`
-              : flagSVG(ctry, 22)}</span>
-            <span style="min-width:0;">
-              <span class="t">${isRest ? 'RESTO DO MUNDO' : (CTRY_NAME[ctry] || ctry).toUpperCase()}</span>
-              <span class="langs">${isRest
-                ? 'Rest of the world · Rest der Welt · Reste du monde'
-                : (LANGS[ctry] || '')}</span>
-            </span>
-            <span class="alb-sec-end${got === groups[ctry].length ? ' alb-done' : ''}">
-              <span class="cnt">${got}/${groups[ctry].length}</span>
-              <span class="alb-ring" style="--p:${Math.round(got / groups[ctry].length * 100)}">
-                <span class="alb-ring-n">${Math.round(got / groups[ctry].length * 100)}<i>%</i></span>
-              </span>
-            </span>
-          </div>
+
+      <!-- the index: every section of the album, as a row of tabs -->
+      <div class="alb-tabs" id="alb-tabs">
+        ${order.map(c => {
+          const g = groups[c];
+          const got = g.filter(x => album.has(x.p.id)).length;
+          return `<button class="alb-tab${c === albCtry ? ' is-on' : ''}${got === g.length ? ' is-done' : ''}"
+                    data-ctry="${c}" title="${c === '__resto' ? 'Resto do mundo' : (CTRY_NAME[c] || c)}">
+            <span class="alb-tab-fl">${c === '__resto'
+              ? ICON.ball('currentColor', 15) : flagSVG(c, 11)}</span>
+            <span class="alb-tab-n">${got}/${g.length}</span>
+          </button>`;
+        }).join('')}
+      </div>
+
+      <!-- the spread -->
+      <!-- a section with one spread is printed on the paper of its newest card,
+           not its oldest: "todas as épocas" is not a period piece -->
+      <div class="alb-book ${decStyle(pages.length === 1 ? spread.to : spread.from)}" id="alb-book">
+        <div class="alb-band">
+          <span class="crest-box" style="width:30px;flex:none;">${isRest
+            ? `<span class="alb-globe">${ICON.ball('currentColor', 19)}</span>`
+            : flagSVG(albCtry, 20)}</span>
+          <span style="min-width:0;flex:1;">
+            <span class="t">${isRest ? 'RESTO DO MUNDO' : (CTRY_NAME[albCtry] || albCtry).toUpperCase()}</span>
+            <span class="langs">${isRest ? 'Rest of the world · Rest der Welt' : (LANGS[albCtry] || '')}</span>
+          </span>
+          <span class="alb-dec">${pages.length === 1 ? 'Todas as épocas' : decLabel(spread)}</span>
+        </div>
+
+        <div class="alb-sheet scroll-y${albTurning ? ' turn-' + albTurning : ''}">
           <div class="alb-grid">
-            ${groups[ctry].map(({ p, n }) => {
+            ${spread.items.map(({ p, n }) => {
               const got = album.has(p.id);
               return `<div class="alb-slot${got ? ' alb-turn' : ' empty'}${
                 runNewIds.includes(p.id) ? ' alb-fresh' : ''}"${
@@ -5794,10 +5981,29 @@ function html() {
                   : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
               </div>`;
             }).join('')}
-          </div>`;
-        }).join('')}
-        <div class="alb-foot"><span>Futebol Quiz BR</span><span>${album.size} de ${total}</span></div>
+          </div>
+          <div class="alb-foot">
+            <span>${isRest ? 'Resto do mundo' : (CTRY_NAME[albCtry] || albCtry)}</span>
+            <span>${secGot} de ${secAll}</span>
+          </div>
+        </div>
       </div>
+
+      <!-- turning the page -->
+      <div class="alb-turnbar">
+        <button id="alb-prev" class="alb-arrow" ${albPage === 0 ? 'disabled' : ''}
+          aria-label="Página anterior">${ICON.back('currentColor', 15)}</button>
+        <div class="alb-pips" aria-hidden="true">
+          ${pages.map((pg, i) => `<span class="alb-pip${i === albPage ? ' is-on' : ''}${
+            pg.items.every(g => album.has(g.p.id)) ? ' is-full' : ''}"></span>`).join('')}
+        </div>
+        <button id="alb-next" class="alb-arrow alb-fwd" ${albPage >= pages.length - 1 ? 'disabled' : ''}
+          aria-label="Próxima página">${ICON.back('currentColor', 15)}</button>
+      </div>
+
+      <div class="alb-hint" style="justify-content:center;">${album.size === 0
+        ? `${ICON.ball('currentColor', 12)} Cada resposta certa cola uma figurinha aqui.`
+        : `${ICON.book('currentColor', 10)} Toque em uma figurinha para ver o verso`}</div>
     </div>`;
   }
 
@@ -6200,6 +6406,10 @@ let justCut = false;
 let firedAid = null;   // the lifeline spent on this render, so it can flare once
 let gameN   = 0;   // bumped when a run starts, so two runs' question 0 differ
 let _lastSc = null;
+/* which section of the album is open, and which spread within it */
+let albCtry = null;
+let albPage = 0;
+let albTurning = null;   // 'fwd' | 'back', consumed by the next render
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -6222,6 +6432,7 @@ function go() {
 
   justCut = false;   // consumed by the render above
   firedAid = null;
+  albTurning = null;
 
   const on = (id, fn) => document.getElementById(id)?.addEventListener('click', fn);
 
@@ -6239,33 +6450,71 @@ function go() {
      somewhere among them. If the run earned anything, the album opens scrolled
      to the first of them rather than at Brazil's first page. Only on arrival:
      turning a card over must not yank the page around. */
-  if (sc === 'album' && runNewIds.length && movedScreen) {
-    /* scrollIntoView, not scrollTop on .scroll-y: that box is not actually the
-       scroller — it grows to fit and the page scrolls behind it, so setting its
-       scrollTop was a silent no-op. This finds whichever ancestor really
-       scrolls. Instant, not smooth: the target can be seven thousand pixels
-       down and nobody wants to watch that. */
-    const first = document.querySelector('.alb-fresh');
-    if (first && first.scrollIntoView) first.scrollIntoView({ block: 'center' });
-  }
-
-  /* ── Turning a figurinha over in the album ──
-     Bound once on the page, not per card — there can be two hundred of them —
-     and it toggles a class on the element rather than re-rendering, because a
-     re-render would put every card face-up again mid-turn. */
   if (sc === 'album') {
+    /* ── Turning a figurinha over ──
+       Bound once on the sheet, not per card, and it toggles a class rather than
+       re-rendering: a re-render would put every card face-up again mid-turn. */
     const turn = el => {
       const slot = el.closest && el.closest('.alb-turn');
       if (!slot) return;
       slot.classList.toggle('turned');
       snd.swipe();
     };
-    const grid = document.querySelector('.scroll-y');
-    if (grid) {
-      grid.addEventListener('click', e => turn(e.target));
-      grid.addEventListener('keydown', e => {
+    const sheet = document.querySelector('.alb-sheet');
+    if (sheet) {
+      sheet.addEventListener('click', e => turn(e.target));
+      sheet.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); turn(e.target); }
       });
+    }
+
+    /* ── Choosing a section ── */
+    const tabs = document.getElementById('alb-tabs');
+    if (tabs) tabs.addEventListener('click', e => {
+      const b = e.target.closest && e.target.closest('.alb-tab');
+      if (!b) return;
+      if (b.dataset.ctry === albCtry) return;
+      albCtry = b.dataset.ctry; albPage = 0;
+      snd.swipe(); go();
+    });
+
+    /* ── Turning the page ──
+       `albTurning` carries which way it went into the next render, so the new
+       spread comes in from the side the page was turned towards. */
+    const flip = dir => {
+      albTurning = dir > 0 ? 'fwd' : 'back';
+      albPage += dir;
+      snd.swipe(); go();
+    };
+    on('alb-prev', () => flip(-1));
+    on('alb-next', () => flip(1));
+
+    /* the same gesture the object itself would take */
+    const book = document.getElementById('alb-book');
+    if (book) {
+      let x0 = null, y0 = null;
+      book.addEventListener('touchstart', e => {
+        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+      }, { passive: true });
+      book.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        const dy = e.changedTouches[0].clientY - y0;
+        x0 = null;
+        /* a swipe, not a scroll: mostly sideways and far enough to mean it */
+        if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
+        const prev = document.getElementById('alb-prev');
+        const next = document.getElementById('alb-next');
+        if (dx < 0 && next && !next.disabled) flip(1);
+        if (dx > 0 && prev && !prev.disabled) flip(-1);
+      }, { passive: true });
+    }
+
+    /* a fresh sticker is on the spread the album opened to; bring it into view
+       inside the sheet rather than moving the whole page */
+    if (runNewIds.length && movedScreen) {
+      const first = document.querySelector('.alb-fresh');
+      if (first && first.scrollIntoView) first.scrollIntoView({ block: 'nearest' });
     }
   }
   on('medal-strip', () => { snd.swipe();  sc = 'medals';  go(); });
