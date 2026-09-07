@@ -159,6 +159,10 @@
       color: var(--ink);
       position: relative; overflow: hidden;
       width: 100%; max-width: 680px; min-height: 500px;
+      /* the sheet is a column so the screen inside it can claim the whole
+         page — otherwise the album's book stops short and leaves bare stock
+         under it on a tall phone */
+      display: flex; flex-direction: column;
       z-index: 1;
     }
     #qz::before {                       /* faint album rule lines */
@@ -174,7 +178,8 @@
       body { align-items: stretch; }
       #qz { min-height: 100vh; min-height: 100dvh; }
     }
-    #ct { position: relative; z-index: 1; }
+    #ct { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
+    #ct > div { flex: 1; }
 
     /* Flex/grid children default to min-width:auto, so one wide child (a long
        author name, a club-career path) stretches the screen past the viewport
@@ -765,7 +770,10 @@
     .mode-done  { --md: #7E8175; --md-soft: rgba(126, 129, 117, .14); }
     .mode-surv  { --md: #B3402F; --md-soft: rgba(179, 64, 47, .14); }
     .mode-train { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); }
-    .mode-album { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); }
+    /* `.mode` grows to share the three-across row it was written for. The
+       album button reuses the look but stands alone in a column, where
+       growing would stretch it down the whole page. */
+    .mode-album { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); flex: none; }
     :root[data-theme="dark"] .mode-album, :root:not([data-theme="light"]) .mode-album { --md: #D8A83C; }
     :root[data-theme="dark"] .mode-daily, :root:not([data-theme="light"]) .mode-daily { --md: #3E9C6E; }
     :root[data-theme="dark"] .mode-surv,  :root:not([data-theme="light"]) .mode-surv  { --md: #E06A55; }
@@ -1023,10 +1031,18 @@
     /* the pocket has no intrinsic height, so the back is sized by the front */
     .flip-front { position: relative; }
 
-    .figback { display: flex; flex-direction: column; height: 100%; overflow: hidden;
+    .figback { position: relative; display: flex; flex-direction: column; height: 100%;
+      overflow: hidden;
       border-radius: 4px; padding: 6px 6px 7px; text-align: left;
       background: var(--retro-card2); color: var(--retro-ink);
       box-shadow: inset 0 0 0 1px var(--retro-edge), 0 1px 3px var(--shadow); }
+    .figback-wm { position: absolute; right: -14px; bottom: -12px; width: 54%;
+      opacity: .08; filter: grayscale(1) contrast(1.3); pointer-events: none; }
+    /* on dark paper the crest sits under the honours line, so it has to stay
+       below the ink rather than beside it */
+    :root[data-theme="dark"] .figback-wm,
+    :root:not([data-theme="light"]) .figback-wm { opacity: .1; }
+    .figback > span { position: relative; }
     .figback-h { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
     .figback-n { font-family: var(--font-c); font-weight: 700; font-size: 7px;
       letter-spacing: .1em; color: var(--retro-band); }
@@ -1060,8 +1076,16 @@
 
     /* the index */
     .alb-tabs { display: flex; gap: 5px; overflow-x: auto; padding: 2px 1px 4px;
-      scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      -webkit-mask-image: var(--tabs-mask, none); mask-image: var(--tabs-mask, none); }
     .alb-tabs::-webkit-scrollbar { display: none; }
+    /* The index holds far more sections than fit across a phone. Fading the
+       side that still has sections on it is the only cue that there are more —
+       there is no scrollbar to see. Neither end fades when it is the end. */
+    .alb-tabs.fade-l { --tabs-mask: linear-gradient(90deg, transparent 0, #000 24px, #000 100%); }
+    .alb-tabs.fade-r { --tabs-mask: linear-gradient(90deg, #000 0, #000 calc(100% - 24px), transparent 100%); }
+    .alb-tabs.fade-l.fade-r { --tabs-mask: linear-gradient(90deg, transparent 0, #000 24px,
+      #000 calc(100% - 24px), transparent 100%); }
     .alb-tab { flex: none; display: flex; flex-direction: column; align-items: center; gap: 2px;
       background: var(--pocket); border: 1px solid var(--rule); border-radius: 9px;
       padding: 5px 7px 4px; cursor: pointer; min-width: 42px;
@@ -1098,7 +1122,10 @@
     .alb-dec { flex: none; font-family: var(--font-c); font-weight: 700; font-size: 9.5px;
       letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
       background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
-    .alb-sheet { flex: 1; min-height: 0; padding: 9px 8px 6px; }
+    /* a column, so the page number can sink to the foot of the page the way
+       a printed one does rather than floating under the last row */
+    .alb-sheet { flex: 1; min-height: 0; padding: 9px 8px 6px;
+      display: flex; flex-direction: column; }
 
     /* the page arriving from the side it was turned towards */
     @keyframes pageFwd  { from { opacity: 0; transform: translateX(16px) rotateY(-7deg); } }
@@ -1138,13 +1165,24 @@
        read in bed. */
     :root[data-theme="dark"] .alb-book, :root:not([data-theme="light"]) .alb-book {
       --pg-paper:#1B1E19; --pg-edge:#333A31; }
-    :root[data-theme="dark"] .dec-a, :root:not([data-theme="light"]) .dec-a { --pg-band:#5A4029; --pg-bandink:#E8DAC0; }
-    :root[data-theme="dark"] .dec-b, :root:not([data-theme="light"]) .dec-b { --pg-band:#8E2F26; --pg-bandink:#F2E2D2; }
-    :root[data-theme="dark"] .dec-c, :root:not([data-theme="light"]) .dec-c { --pg-band:#8C5218; --pg-bandink:#F6E9D2; }
-    :root[data-theme="dark"] .dec-d, :root:not([data-theme="light"]) .dec-d { --pg-band:#1A574F; --pg-bandink:#DDF0EA; }
-    :root[data-theme="dark"] .dec-e, :root:not([data-theme="light"]) .dec-e { --pg-band:#254B83; --pg-bandink:#DCE8F8; }
-    :root[data-theme="dark"] .dec-f, :root:not([data-theme="light"]) .dec-f { --pg-band:#3A3A38; --pg-bandink:#E6E5E1; }
-    :root[data-theme="dark"] .dec-g, :root:not([data-theme="light"]) .dec-g { --pg-band:#256E61; --pg-bandink:#DEF3EC; }
+    /* Every dark page used to be the same near-black, which threw away the era
+       the light pages carry. These keep the same low brightness — the album is
+       still read in bed — but each holds its decade's tint, so a 60s spread is
+       warm and a 2000s spread is cool even at night. */
+    :root[data-theme="dark"] .dec-a, :root:not([data-theme="light"]) .dec-a {
+      --pg-paper:#221D16; --pg-edge:#3B3227; --pg-band:#5A4029; --pg-bandink:#E8DAC0; }
+    :root[data-theme="dark"] .dec-b, :root:not([data-theme="light"]) .dec-b {
+      --pg-paper:#241C18; --pg-edge:#3E302A; --pg-band:#8E2F26; --pg-bandink:#F2E2D2; }
+    :root[data-theme="dark"] .dec-c, :root:not([data-theme="light"]) .dec-c {
+      --pg-paper:#241E15; --pg-edge:#3F3524; --pg-band:#8C5218; --pg-bandink:#F6E9D2; }
+    :root[data-theme="dark"] .dec-d, :root:not([data-theme="light"]) .dec-d {
+      --pg-paper:#182120; --pg-edge:#2C3B38; --pg-band:#1A574F; --pg-bandink:#DDF0EA; }
+    :root[data-theme="dark"] .dec-e, :root:not([data-theme="light"]) .dec-e {
+      --pg-paper:#191D24; --pg-edge:#2E3542; --pg-band:#254B83; --pg-bandink:#DCE8F8; }
+    :root[data-theme="dark"] .dec-f, :root:not([data-theme="light"]) .dec-f {
+      --pg-paper:#1D1D1C; --pg-edge:#353531; --pg-band:#3A3A38; --pg-bandink:#E6E5E1; }
+    :root[data-theme="dark"] .dec-g, :root:not([data-theme="light"]) .dec-g {
+      --pg-paper:#16211E; --pg-edge:#2A3C36; --pg-band:#256E61; --pg-bandink:#DEF3EC; }
 
     /* ── The country band that opens each page ──────────────────
        Straight out of the old albums: the crest, the name set large and
@@ -1162,7 +1200,8 @@
     .alb-sec .cnt { margin-left: auto; font-family: var(--font-s); font-weight: 800; font-size: 11px;
       color: var(--ink-3); font-variant-numeric: tabular-nums; flex: none; }
 
-    .alb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; align-items: stretch; }
+    .alb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px;
+      align-items: stretch; flex: none; margin-bottom: 16px; }
     @media (min-width: 380px) { .alb-grid { grid-template-columns: repeat(5, 1fr); } }
     @media (min-width: 470px) { .alb-grid { grid-template-columns: repeat(6, 1fr); } }
     .alb-slot { position: relative; display: flex; }
@@ -1189,7 +1228,7 @@
        already says the era, and "ARGÉLIA 70" would not fit where "ARGÉLIA"
        does. The exact years are on the back of the card. */
     .alb-slot .fig-band { padding-left: 21px; padding-right: 5px; }
-    .alb-foot { margin-top: 18px; padding-top: 9px; border-top: 1px solid var(--rule-2);
+    .alb-foot { margin-top: auto; padding-top: 9px; border-top: 1px solid var(--rule-2);
       display: flex; justify-content: space-between; align-items: center;
       font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
       color: var(--ink-4); font-weight: 600; }
@@ -1983,6 +2022,96 @@ const CATS = [
       { t:'Qual clube paranaense é o "Furacão"?',         a:['atleticopr'] },
       { t:'Qual clube catarinense é o "Leão da Ilha"?',   a:['avai'] },
       { t:'Qual clube paraense é o "Papão da Curuzu"?',   a:['paysandu'] },
+    ]
+  },
+  {
+    /* The album had no women's page at all, which is a hole where some of the
+       best-known football in Brazil lives: Marta's six world-player awards,
+       Formiga's seven World Cups, and the thirty-eight years the game was
+       banned here outright. */
+    id:'feminino', name:'Futebol Feminino', emoji:'🥅',
+    tag:'A outra metade do jogo', col:'#8E2F6B', diff:'Médio',
+    qs:[
+      /* ── Marta e as brasileiras ── */
+      { t:'Quem é a maior artilheira da história das Copas do Mundo, somando a masculina e a feminina?',
+        type:'txt', choices:['Marta','Miroslav Klose','Cristiane','Ronaldo','Abby Wambach','Birgit Prinz'], a:['Marta'], icon:'trophy' },
+      { t:'Quantas vezes Marta foi eleita a melhor jogadora do mundo pela FIFA?',
+        type:'txt', choices:['Seis','Duas','Três','Quatro','Cinco','Sete'], a:['Seis'], icon:'trophy' },
+      { t:'Qual jogadora brasileira disputou sete Copas do Mundo, um recorde no futebol?',
+        type:'txt', choices:['Formiga','Marta','Cristiane','Sissi','Tamires','Katéia'], a:['Formiga'], icon:'boot' },
+      { t:'Quem é a maior artilheira da história da seleção brasileira feminina?',
+        type:'txt', choices:['Marta','Cristiane','Formiga','Sissi','Pretinha','Debinha'], a:['Marta'], icon:'boot' },
+      { t:'Em que ano o futebol feminino deixou de ser proibido por lei no Brasil?',
+        type:'txt', choices:['1979','1941','1950','1964','1971','1988'], a:['1979'], icon:'rules' },
+      /* ── as Copas ── */
+      { t:'Qual seleção venceu a primeira Copa do Mundo Feminina, em 1991?',
+        type:'txt', choices:['Estados Unidos','Noruega','Alemanha','China','Suécia','Brasil'], a:['Estados Unidos'], icon:'trophy' },
+      { t:'Qual seleção é a maior campeã da Copa do Mundo Feminina?',
+        type:'txt', choices:['Estados Unidos','Alemanha','Noruega','Japão','Suécia','Espanha'], a:['Estados Unidos'], icon:'trophy' },
+      { t:'Qual seleção venceu a Copa do Mundo Feminina de 2023?',
+        type:'txt', choices:['Espanha','Inglaterra','Estados Unidos','Alemanha','Suécia','Austrália'], a:['Espanha'], icon:'trophy' },
+      { t:'Qual seleção venceu a Copa do Mundo Feminina de 2019, na França?',
+        type:'txt', choices:['Estados Unidos','Holanda','Inglaterra','Suécia','Alemanha','França'], a:['Estados Unidos'], icon:'trophy' },
+      { t:'Quais países sediaram juntos a Copa do Mundo Feminina de 2023?',
+        type:'txt', choices:['Austrália e Nova Zelândia','Canadá e Estados Unidos','França e Bélgica','Japão e Coreia do Sul','Alemanha e Áustria','Suécia e Noruega'],
+        a:['Austrália e Nova Zelândia'], icon:'globe' },
+      { t:'Qual país vai sediar a Copa do Mundo Feminina de 2027?',
+        type:'txt', choices:['Brasil','Estados Unidos','México','Alemanha','África do Sul','Argentina'], a:['Brasil'], icon:'globe' },
+      /* ── clubes e Olimpíadas ── */
+      { t:'Qual clube brasileiro é o maior campeão da Libertadores Feminina?',
+        type:'txt', choices:['Corinthians','São Paulo','Santos','Palmeiras','Flamengo','Internacional'], a:['Corinthians'], icon:'trophy' },
+      { t:'Em que ano foi disputada a primeira Copa Libertadores Feminina?',
+        type:'txt', choices:['2009','1999','2004','2013','2016','2001'], a:['2009'], icon:'trophy' },
+      { t:'Em qual Olimpíada a seleção brasileira feminina ganhou sua primeira medalha de prata?',
+        type:'txt', choices:['Atenas 2004','Sydney 2000','Pequim 2008','Londres 2012','Atlanta 1996','Rio 2016'], a:['Atenas 2004'], icon:'trophy' },
+      { t:'Qual seleção venceu o ouro olímpico do futebol feminino em Paris 2024?',
+        type:'txt', choices:['Estados Unidos','Brasil','Alemanha','Espanha','Canadá','Japão'], a:['Estados Unidos'], icon:'trophy' },
+      { t:'Qual seleção venceu a primeira Eurocopa Feminina em que a Inglaterra foi campeã, em 2022?',
+        type:'txt', choices:['Inglaterra','Alemanha','Holanda','Suécia','França','Espanha'], a:['Inglaterra'], icon:'trophy' },
+    ]
+  },
+  {
+    /* South America asks about itself. The Libertadores beyond the roll of
+       champions, the Copa América, and the clubs on the other side of the
+       border that every Brazilian knows by name. */
+    id:'sulamerica', name:'Sul-Americana', emoji:'🌎',
+    tag:'A América do Sul joga', col:'#1F6E63', diff:'Médio',
+    qs:[
+      /* ── a Copa América ── */
+      { t:'Qual seleção é a maior campeã da Copa América?',
+        type:'txt', choices:['Argentina','Uruguai','Brasil','Chile','Paraguai','Peru'], a:['Argentina'], icon:'trophy' },
+      { t:'Em que ano o Brasil venceu a Copa América no Maracanã, contra o Peru?',
+        type:'txt', choices:['2019','2004','2007','2015','2021','1999'], a:['2019'], icon:'trophy' },
+      { t:'Qual seleção venceu a Copa América de 2021, no Maracanã?',
+        type:'txt', choices:['Argentina','Brasil','Uruguai','Colômbia','Peru','Chile'], a:['Argentina'], icon:'trophy' },
+      { t:'Qual seleção venceu a Copa América em 2015 e 2016, as duas nos pênaltis?',
+        type:'txt', choices:['Chile','Argentina','Brasil','Uruguai','Colômbia','Peru'], a:['Chile'], icon:'trophy' },
+      { t:'Qual país sediou a primeira Copa América, em 1916?',
+        type:'txt', choices:['Argentina','Uruguai','Brasil','Chile','Peru','Paraguai'], a:['Argentina'], icon:'globe' },
+      /* ── a Libertadores por dentro ── */
+      { t:'Qual clube argentino tem sete Libertadores, mais que qualquer outro?',
+        type:'txt', choices:['Independiente','Boca Juniors','River Plate','Racing','Estudiantes','Vélez'], a:['Independiente'], icon:'trophy' },
+      { t:'Qual clube uruguaio é o maior campeão da Libertadores do seu país?',
+        type:'txt', choices:['Peñarol','Nacional','Defensor','Danubio','Wanderers','Liverpool'], a:['Peñarol'], icon:'trophy' },
+      { t:'Em que estádio o Boca Juniors manda seus jogos?',
+        type:'txt', choices:['La Bombonera','El Monumental','Estadio Centenario','El Cilindro','La Doble Visera','Libertadores de América'], a:['La Bombonera'], icon:'stadium' },
+      { t:'Em que estádio o River Plate manda seus jogos?',
+        type:'txt', choices:['El Monumental','La Bombonera','Estadio Centenario','El Cilindro','El Gasómetro','José Amalfitani'], a:['El Monumental'], icon:'stadium' },
+      { t:'Em que estádio foi disputada a final da Copa do Mundo de 1930, em Montevidéu?',
+        type:'txt', choices:['Estadio Centenario','La Bombonera','El Monumental','Maracanã','Estadio Nacional','Parque Central'], a:['Estadio Centenario'], icon:'stadium' },
+      /* ── os vizinhos que todo brasileiro conhece ── */
+      { t:'De que país é o clube Colo-Colo?',
+        type:'txt', choices:['Chile','Argentina','Peru','Uruguai','Colômbia','Paraguai'], a:['Chile'], icon:'globe' },
+      { t:'De que país é o clube Olimpia, campeão da Libertadores três vezes?',
+        type:'txt', choices:['Paraguai','Uruguai','Chile','Bolívia','Peru','Equador'], a:['Paraguai'], icon:'globe' },
+      { t:'De que país é o Atlético Nacional, campeão da Libertadores em 1989 e 2016?',
+        type:'txt', choices:['Colômbia','Venezuela','Equador','Peru','Chile','Bolívia'], a:['Colômbia'], icon:'globe' },
+      { t:'De que país é o clube Alianza Lima?',
+        type:'txt', choices:['Peru','Bolívia','Equador','Chile','Colômbia','Paraguai'], a:['Peru'], icon:'globe' },
+      { t:'Qual competição sul-americana é o segundo nível, abaixo da Libertadores?',
+        type:'txt', choices:['Copa Sul-Americana','Recopa','Copa Mercosul','Copa Conmebol','Supercopa','Copa Ouro'], a:['Copa Sul-Americana'], icon:'trophy' },
+      { t:'Como se chama a entidade que organiza o futebol sul-americano?',
+        type:'txt', choices:['Conmebol','UEFA','Concacaf','FIFA','AFC','CAF'], a:['Conmebol'], icon:'globe' },
     ]
   },
   {
@@ -3753,6 +3882,8 @@ function _qBase(q) {
   if (cid === 'europa') return 3;
   if (cid === 'curiosos') return 3;
   if (cid === 'torcida') return 2;
+  if (cid === 'sulamerica') return 3;
+  if (cid === 'feminino')   return 3;
   if (cid === 'estados')  return 1;
   if (cid === 'estadios') return 2;
   if (cid === 'lendas')   return 2;
@@ -4822,8 +4953,12 @@ function clubFacts(c) {
 function figurinhaBack(p, num) {
   const f = playerFacts(p);
   const yrs = p.era ? `${p.era[0]}–${p.era[1]}` : '';
+  /* a real sticker back carries the club's crest printed faint behind the
+     text — the ink the printer had left over */
+  const wm = p.clubs && p.clubs[0] && LOGOS[p.clubs[0]];
   return `
     <span class="figback">
+      ${wm ? `<img class="figback-wm" src="${wm}" alt="" aria-hidden="true" />` : ''}
       <span class="figback-h">
         <span class="figback-n">Nº ${String(num).padStart(3, '0')}</span>
         ${p.ctry ? flagSVG(p.ctry, 8) : ''}
@@ -5574,8 +5709,10 @@ function questionArt(q) {
   if (q.qimg)  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
         onerror="this.parentElement.style.display='none'" /></div>`;
   if (q.flag && FLAGS[q.flag])
+    /* the wrapper carries the label, so the drawing inside it is decorative —
+       otherwise a screen reader announces the flag twice */
     return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[q.flag] || q.flag}">
-      <svg viewBox="0 0 9 6" preserveAspectRatio="none">${FLAGS[q.flag]}</svg></div>`;
+      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[q.flag]}</svg></div>`;
   /* a question about a Brazilian state gets the map, with that state lit */
   if (q.uf) return `<div class="qart qart-map qart-draw">${ART.mapBR(72, q.uf)}</div>`;
   /* A career asked as a list of clubs shows those clubs' crests, in order —
@@ -6094,15 +6231,21 @@ function html() {
         Bragantino — não têm versão sob licença livre em lugar nenhum, e estão
         aqui só para identificar o clube.
       </p>
+      <!-- The cap was a flat 330px, from when the page never filled the sheet;
+           on a tall phone that wasted half the screen. It has to stay a cap of
+           some kind — #qz is only min-height:100dvh, so with no definite height
+           to divide, a flex child cannot shrink and the list would push the
+           footnote off the bottom — but measured against the screen it now
+           grows with it. -->
       <div class="scroll-y" style="flex:1;background:var(--pocket);border:1px solid var(--rule-2);
-        border-radius:11px;padding:8px 12px;max-height:${unsourced.length ? 262 : 330}px;">${
+        border-radius:11px;padding:8px 12px;max-height:${unsourced.length ? 46 : 58}vh;">${
         rows || '<span class="small muted">—</span>'}</div>
       ${unsourced.length ? `<div class="note">
         <div style="font-weight:800;color:var(--brass);margin-bottom:2px;">Fonte ainda não registrada</div>
         <div class="muted">${unsourced.join(', ')} — estamos rastreando a autoria dessas fotos.
           Se você é o autor, escreva para tiagor.reis@gmail.com.</div>
       </div>` : ''}
-      <p class="small muted" style="font-size:9.5px;text-align:center;">Detalhes completos: commons.wikimedia.org</p>
+      <p class="small muted" style="font-size:9.5px;text-align:center;margin-top:auto;">Detalhes completos: commons.wikimedia.org</p>
     </div>`;
   }
 
@@ -6544,6 +6687,25 @@ function go() {
         if (dx < 0 && next && !next.disabled) flip(1);
         if (dx > 0 && prev && !prev.disabled) flip(-1);
       }, { passive: true });
+    }
+
+    /* the index runs wider than the screen, so the section you are reading has
+       to be brought under your thumb — otherwise opening on a fresh sticker
+       from Uruguay leaves the strip sitting on Brazil */
+    if (tabs) {
+      const cur = tabs.querySelector('.alb-tab.is-on');
+      if (cur) {
+        const want = cur.offsetLeft - (tabs.clientWidth - cur.offsetWidth) / 2;
+        const max  = tabs.scrollWidth - tabs.clientWidth;
+        tabs.scrollLeft = Math.max(0, Math.min(want, max));
+      }
+      const edges = () => {
+        tabs.classList.toggle('fade-l', tabs.scrollLeft > 4);
+        tabs.classList.toggle('fade-r',
+          tabs.scrollLeft + tabs.clientWidth < tabs.scrollWidth - 4);
+      };
+      tabs.addEventListener('scroll', edges, { passive: true });
+      edges();
     }
 
     /* a fresh sticker is on the spread the album opened to; bring it into view

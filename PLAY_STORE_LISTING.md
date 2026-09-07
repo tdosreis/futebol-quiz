@@ -23,7 +23,8 @@ Quiz de futebol em clima de auditório: 16 degraus até o milhão. 5 ajudas!
 Um quiz de futebol brasileiro em clima de programa de auditório: refletor
 aceso, placa dourada e dezesseis degraus até R$ 1.000.000. Perguntas sobre
 craques, clubes, seleções, estádios e história — com fotos e escudos de
-verdade. Cada partida é montada na hora, então nunca se repete.
+verdade. Quinze temas, do Brasileirão à Era de Ouro, da Sul-Americana ao
+futebol feminino. Cada partida é montada na hora, então nunca se repete.
 
 💰 RUMO AO MILHÃO:
 • 16 perguntas, uma por degrau — cada uma vale mais e é mais difícil
@@ -40,11 +41,14 @@ verdade. Cada partida é montada na hora, então nunca se repete.
 • Pular — passa a pergunta sem perder o degrau
 
 📔 O ÁLBUM DE FIGURINHAS:
-• 215 craques para colar, de Leônidas e Domingos da Guia aos dias de hoje
+• 247 craques para colar, de Leônidas e Domingos da Guia aos dias de hoje
 • 39 seleções e 42 clubes brasileiros, cada um com seu escudo oficial
+• Um álbum de verdade: as seleções em abas no alto, e você vira a página
+  década por década, cada uma impressa no seu próprio papel — sépia nos
+  anos 20, o creme e vermelho dos anos 50, cartão novo nos anos 2000
 • Acertou o jogador? A figurinha é colada no álbum para sempre
-• Duas tiragens: papel envelhecido para quem começou antes de 2000,
-  cartão novo para quem veio depois
+• Toque na figurinha e ela vira: posição, clubes, títulos e o escudo do
+  time impresso no verso
 
 🎮 OUTROS MODOS:
 • Desafio Diário — a mesma partida para todo mundo, todo dia
