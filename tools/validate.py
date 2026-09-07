@@ -75,9 +75,27 @@ for mid, body in re.findall(r"^\s*([\w_]+):\s*\{([^}]*)\}", meta_block, re.M):
     if a >= b: errs.append(f"{mid}: era start >= end ({a},{b})")
     # 1925: the album now reaches Friedenreich's generation, so a 1920s debut
     # is real data rather than a typo. Anything earlier still deserves a look.
-    if a < 1925 or b > 2027: warns.append(f"{mid}: suspicious era ({a},{b})")
+    # 1919 is Ricardo Zamora's debut and the earliest the album goes on purpose;
+    # anything before that is a typo, not a pioneer.
+    if a < 1919 or b > 2027: warns.append(f"{mid}: suspicious era ({a},{b})")
     if not re.search(r"pos:'(GK|DF|MF|FW)'", body): errs.append(f"{mid}: bad/missing pos")
     if not re.search(r"clubs:\[", body): errs.append(f"{mid}: missing clubs")
+
+# One club under two ids reads fine everywhere — both render the same crest and
+# the same name — but it silently splits the club's squad in two, and the
+# team-mate generators then offer a man who played there as a wrong answer.
+# River Plate was 'river' and 'riverplate' for months before a board put Kempes
+# next to a Crespo question and test_generators caught it.
+cn = re.search(r"const CLUB_NAMES = \{(.*?)\n\};", s, re.S)
+if cn:
+    seen_c = {}
+    for cid, label in re.findall(r"([\w_]+):\s*'((?:[^'\\]|\\.)*)'", cn.group(1)):
+        seen_c.setdefault(label, []).append(cid)
+    for label, ids in sorted(seen_c.items()):
+        if len(set(ids)) > 1:
+            errs.append(f"club '{label}' has {len(set(ids))} ids: {sorted(set(ids))} — fold them into one")
+        elif len(ids) > 1:
+            warns.append(f"CLUB_NAMES lists '{ids[0]}' twice")
 
 # text questions: every answer must be one of that question's own choices,
 # and the choices must be distinct — a duplicate makes two tiles both right.

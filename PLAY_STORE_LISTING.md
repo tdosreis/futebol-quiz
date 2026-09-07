@@ -41,7 +41,7 @@ futebol feminino. Cada partida é montada na hora, então nunca se repete.
 • Pular — passa a pergunta sem perder o degrau
 
 📔 O ÁLBUM DE FIGURINHAS:
-• 247 craques para colar, de Leônidas e Domingos da Guia aos dias de hoje
+• 298 craques para colar, de Ricardo Zamora e Domingos da Guia aos dias de hoje
 • 39 seleções e 42 clubes brasileiros, cada um com seu escudo oficial
 • Um álbum de verdade: as seleções em abas no alto, e você vira a página
   década por década, cada uma impressa no seu próprio papel — sépia nos
