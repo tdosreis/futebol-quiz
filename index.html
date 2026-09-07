@@ -1175,6 +1175,13 @@
       padding: 1.5px 4px; border-radius: 3px; font-variant-numeric: tabular-nums;
       box-shadow: 0 1px 2px var(--shadow); }
     .alb-slot.empty .alb-n { background: var(--rule-2); color: var(--ink-3); box-shadow: none; }
+    /* The pocket number sits over the card's top-left corner, which is where
+       the country band starts, so the band keeps clear of it. An album card is
+       only about 70px wide and that padding is expensive — which is why the
+       album drops the decade from the band (`noYear`): the spread's own title
+       already says the era, and "ARGÉLIA 70" would not fit where "ARGÉLIA"
+       does. The exact years are on the back of the card. */
+    .alb-slot .fig-band { padding-left: 21px; padding-right: 5px; }
     .alb-foot { margin-top: 18px; padding-top: 9px; border-top: 1px solid var(--rule-2);
       display: flex; justify-content: space-between; align-items: center;
       font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
@@ -5660,7 +5667,13 @@ function figurinha(p, size, opts) {
   /* What the header band is allowed to say on this board. */
   const bandTxt = [
     opts.hideCtry ? '' : bandCtry(p.ctry),
-    (opts.hideEra || !yr) ? '' : String(Math.floor(yr / 10) * 10).slice(2),
+    /* `noYear` drops the decade without touching the printing, which is what
+       `hideEra` would also do. On an album spread already titled "Anos 70",
+       every card repeating "70" is redundancy that costs the country's name
+       its room — "ARGÉLIA 70" truncated to "ARGÉLIA…". A merged spread keeps
+       the year, because there it is the thing that tells the cards apart. */
+    (opts.hideEra || opts.noYear || !yr) ? ''
+      : String(Math.floor(yr / 10) * 10).slice(2),
   ].filter(Boolean).join(' ');
   const sub  = opts.sub !== undefined ? opts.sub
              : `${POS_NAME[p.pos]} · ${p.era ? p.era[0] + '–' + p.era[1] : ''}`;
@@ -5975,7 +5988,8 @@ function html() {
                 ${got
                   ? `<span class="flip"><span class="flip-in">
                        <span class="flip-face flip-front">${figurinha(p, 'lg', {
-                         sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos] })}</span>
+                         sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos],
+                         noYear: true })}</span>
                        <span class="flip-face flip-back">${figurinhaBack(p, n)}</span>
                      </span></span>`
                   : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
