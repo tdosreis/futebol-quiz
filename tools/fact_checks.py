@@ -188,6 +188,22 @@ C=[
  ("Brasil: prata em Atenas 2004","en","Brazil women's national football team",["2004"]),
  ("EUA: ouro olimpico em 2024","en","Football at the 2024 Summer Olympics \u2013 Women's tournament",["united states","gold"]),
  ("Inglaterra campea da Euro de 2022","en","UEFA Women's Euro 2022",["england"]),
+ # ── WC: os bicampeões e o tricampeão ──
+ # Generator 37 asks "quantas Copas venceu como jogador" and derives the answer
+ # from WC[].length, so a missing year there ships a wrong answer. These are the
+ # only entries where the count is more than one.
+ ("Pele: 1958, 1962 e 1970","pt","Pelé",["1958","1962","1970"]),
+ ("Garrincha: 1958 e 1962","pt","Garrincha",["1958","1962"]),
+ ("Didi: 1958 e 1962","pt","Didi (futebolista)",["1958","1962"]),
+ ("Nilton Santos: 1958 e 1962","pt","Nílton Santos",["1958","1962"]),
+ ("Zagallo: 1958 e 1962 como jogador","pt","Mário Zagallo",["1958","1962"]),
+ ("Cafu: 1994 e 2002","pt","Cafu",["1994","2002"]),
+ ("Ronaldo: 1994 e 2002","pt","Ronaldo Nazário",["1994","2002"]),
+ ("Gilmar: 1958 e 1962","pt","Gilmar dos Santos Neves",["1958","1962"]),
+ ("Djalma Santos: 1958 e 1962","pt","Djalma Santos",["1958","1962"]),
+ ("Zito: 1958 e 1962","pt","Zito (futebolista)",["1958","1962"]),
+ ("Vava: 1958 e 1962","pt","Vavá",["1958","1962"]),
+ ("Pepe: 1958 e 1962","pt","Pepe (futebolista brasileiro)",["1958","1962"]),
 ]
 bad=[]
 for label,lang,title,terms in C:

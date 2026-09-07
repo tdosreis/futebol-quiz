@@ -1244,6 +1244,10 @@
       box-shadow: 0 0 0 .5px rgba(0,0,0,.35) !important; border-radius: 2px !important; }
     .fig-msc svg { width: 100%; height: 100%; }
     .fig-x-mascote .fig-art { background: none; }
+    /* the mascot as a question: square, and on plain card so the club's own
+       colours do not answer it */
+    .qart-msc { display: flex; align-items: center; justify-content: center; }
+    .qart-msc svg { width: 100%; height: 100%; }
     .fig-x-mascote .fig-msc svg rect:first-of-type { opacity: 0; }
 
     /* ── The country band that opens each page ──────────────────
@@ -2620,6 +2624,9 @@ const ctrySel = c => CTRY_ADJ[c] || ('de ' + (CTRY_NAME[c] || c));
 const CLUB_FEM = new Set(['juventus', 'roma', 'inter', 'lazio', 'fiorentina',
   'sampdoria', 'atalanta', 'portuguesa', 'ponte preta', 'chapecoense']);
 const byClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'pela ' : 'pelo ') + clubName(id);
+/* "passaram PELO Bahia" but "o mascote DO Bahia" — same gender, different
+   preposition, and byClub only knows the first one. */
+const ofClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'da ' : 'do ') + clubName(id);
 
 const CTRY_ADJ = {
   BRA:'brasileira', ARG:'argentina', URU:'uruguaia', CHI:'chilena', COL:'colombiana',
@@ -4885,6 +4892,7 @@ function GEN_QS(tier) {
   const GC5 = {
     escudo: { id:'g_escudo', name:'Escudos',  emoji:'🛡️', col:'#B23A2E' },
     conta:  { id:'g_conta',  name:'Contas',   emoji:'🔢', col:'#6B5B3E' },
+    msc:    { id:'g_msc',    name:'Mascotes', emoji:'🥅', col:'#8E5A16' },
   };
 
   /* 35. Whose crest is this?
@@ -4903,6 +4911,68 @@ function GEN_QS(tier) {
       d: (c.br || 0) + (c.lib || 0) > 0 ? 2 : 4,
     });
   });
+
+  /* 35b. The other ninety-six escudos.
+          Generator 35 answers with a club id, and a club board draws its tiles
+          from CL — so it can only ever ask about the forty-two Brazilian ones.
+          The foreign crests were sitting in the album and never once in a
+          question. Asked as text, the answer is the club's NAME, so the board
+          does not need a row for it. */
+  (function () {
+    const foreign = Object.keys(CLUB_NAMES).filter(id => LOGOS[id]);
+    pick(foreign, 6).forEach(id => {
+      const others = pick(foreign.filter(x => x !== id), 5).map(clubName);
+      if (others.length < 5) return;
+      out.push({
+        t: 'De que clube é este escudo?',
+        type: 'txt', choices: shuf([clubName(id)].concat(others)),
+        a: [clubName(id)],
+        crest: id, _crestIsQ: true,
+        _cat: GC5.escudo, d: 3,
+      });
+    });
+  })();
+
+  /* 37. The mascots, both ways round.
+         Forty-one drawings that the quiz had never asked about. Same rule as
+         the crest question: when the picture is the question the tiles have to
+         be words, or it stops being a football question. */
+  (function () {
+    const ids = Object.keys(MASCOTS).filter(id => MASC_ART[(MASCOTS[id] || {}).art]);
+    if (ids.length < 6) return;
+
+    /* the drawing is the question, the answer is the club */
+    pick(ids, 5).forEach(id => {
+      /* Never offer two clubs that share the drawing — five clubs are a Leão,
+         and "de que clube é este leão?" has five right answers. */
+      const art  = MASCOTS[id].art;
+      const safe = ids.filter(x => x !== id && MASCOTS[x].art !== art);
+      const others = pick(safe, 5).map(clubName);
+      if (others.length < 5) return;
+      out.push({
+        t: 'De que clube é este mascote?',
+        type: 'txt', choices: shuf([clubName(id)].concat(others)),
+        a: [clubName(id)],
+        msc: id, _cat: GC5.msc,
+        /* a Galo or a Porco is common knowledge; a Timbu is not */
+        d: (CL.find(c => c.id === id) || {}).br ? 2 : 4,
+      });
+    });
+
+    /* and the other way: the club is the question, the answer is the name */
+    pick(ids, 5).forEach(id => {
+      const mine = MASCOTS[id].n;
+      const others = pick(ids.filter(x => MASCOTS[x].n !== mine), 5)
+        .map(x => MASCOTS[x].n);
+      if (new Set(others).size < 5) return;
+      out.push({
+        t: `Qual é o mascote ${ofClub(id)}?`,
+        type: 'txt', choices: shuf([mine].concat(others)),
+        a: [mine],
+        crest: id, _cat: GC5.msc, d: 3,
+      });
+    });
+  })();
 
   /* 36. Which decade did he start in? Answers are decades, so the tiles are
          words and the card cannot show its own band. */
@@ -4941,10 +5011,23 @@ function GEN_QS(tier) {
 
   // Safety net: a generator bug must never put an unanswerable question in front
   // of a player, so drop anything whose answers don't resolve.
+  /* The last gate: a question whose answer names a row that does not exist
+     cannot be drawn, so it is dropped rather than shipped broken.
+
+     A `txt` question is the exception, and used not to be. Its answer is its
+     own words — "Milan", "1970", "Cinco" — not an id, so checking it against
+     CL threw away every generated text question ever written. Generators 36
+     and 37 produced nothing at all for that reason. For those the guarantee
+     is the one validate.py makes of the hand-written ones: the answers must
+     be among the choices, and there must be enough choices to fill a board. */
   return out.filter(q =>
     !q._skip &&
     q.a && q.a.length &&
-    q.a.every(id => (q.type === 'player' ? PL : CL).some(x => x.id === id)));
+    (q.type === 'txt'
+      ? Array.isArray(q.choices) && q.choices.length >= 4 &&
+        new Set(q.choices).size === q.choices.length &&
+        q.a.every(a => q.choices.includes(a))
+      : q.a.every(id => (q.type === 'player' ? PL : CL).some(x => x.id === id))));
 }
 
 /* ═══════════════════════════════════════════════════
@@ -6658,6 +6741,11 @@ function questionArt(q) {
     : `<div class="qart qart-wide qart-draw">${ART.stadium(104)}</div>`;
   if (q.face)  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
+  /* A mascot question shows the drawing and nothing else — the club's colours
+     behind it would name the club, which is the whole question. */
+  if (q.msc && MASCOTS[q.msc] && MASC_ART[MASCOTS[q.msc].art])
+    return `<div class="qart qart-crest qart-hero qart-msc" role="img"
+      aria-label="Mascote de um clube brasileiro">${MASC_ART[MASCOTS[q.msc].art]()}</div>`;
   if (q.crest) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
         clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   if (q.qimg)  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"

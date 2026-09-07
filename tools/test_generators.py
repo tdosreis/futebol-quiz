@@ -25,10 +25,24 @@ TESTS = r"""
     ok('all generated have text + answers',
        gen.every(q => q.t && q.t.length>5 && Array.isArray(q.a) && q.a.length>0));
 
-    // every answer id must resolve in the right pool
-    ok('generated answers resolve',
-       gen.every(q => q.a.every(id => (q.type==='player'? P(id): C(id)))),
-       'unresolvable answer id');
+    // Every answer must resolve in the right pool — except a txt question,
+    // whose answer is its own words ("Milan", "Anos 70", "2 Copas") and not an
+    // id at all. Requiring an id here is the same mistake GEN_QS's own final
+    // filter made, and it silently threw away every generated text question
+    // ever written, two whole generators included. For txt the guarantee is
+    // the one validate.py makes of the hand-written ones.
+    const badId = gen.filter(q => q.type !== 'txt' &&
+       !q.a.every(id => (q.type==='player'? P(id): C(id))));
+    ok('generated answers resolve', badId.length === 0,
+       badId.length ? `${badId.length} unresolvable, e.g. ${badId[0].a.join(',')}` : 'all resolve');
+
+    const badTxt = gen.filter(q => q.type === 'txt' && !(
+       Array.isArray(q.choices) && q.choices.length >= 4 &&
+       new Set(q.choices).size === q.choices.length &&
+       q.a.every(a => q.choices.includes(a))));
+    ok('generated txt questions answer from their own choices',
+       badTxt.length === 0,
+       badTxt.length ? `${badTxt.length} bad, e.g. "${badTxt[0].t}"` : `${gen.filter(q=>q.type==='txt').length} checked`);
 
     // --- semantic check: "por qual clube X jogou" ---
     const cq = gen.filter(q => /Por qual destes clubes/.test(q.t));
