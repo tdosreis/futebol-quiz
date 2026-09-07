@@ -81,6 +81,18 @@ for mid, body in re.findall(r"^\s*([\w_]+):\s*\{([^}]*)\}", meta_block, re.M):
     if not re.search(r"pos:'(GK|DF|MF|FW)'", body): errs.append(f"{mid}: bad/missing pos")
     if not re.search(r"clubs:\[", body): errs.append(f"{mid}: missing clubs")
 
+# An image nothing references is dead weight the TWA still ships. They come
+# from interrupted fetch runs, which write the file before deciding the licence
+# is unusable — one rode along in the 298-player commit before this existed.
+_img_dir = os.path.join(os.path.dirname(__file__), "..", "img")
+if os.path.isdir(_img_dir):
+    _refs = set(re.findall(r"img/[0-9a-f]{16}\.(?:jpg|jpeg|png)", s))
+    _orphans = sorted(f for f in os.listdir(_img_dir)
+                      if re.fullmatch(r"[0-9a-f]{16}\.(jpg|jpeg|png)", f)
+                      and "img/" + f not in _refs)
+    if _orphans:
+        warns.append(f"{len(_orphans)} image(s) nothing references: {_orphans[:4]}")
+
 # One club under two ids reads fine everywhere — both render the same crest and
 # the same name — but it silently splits the club's squad in two, and the
 # team-mate generators then offer a man who played there as a wrong answer.
