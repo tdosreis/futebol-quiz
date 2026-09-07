@@ -41,15 +41,22 @@ STATES = {
 
  # The album is a book now: the listing shot should open on a spread with
  # stickers actually in it, not on whichever page the app happens to start on.
- # Brazil's 70s is the page a Brazilian would want to see.
- "shot-04-album": """album=new Set(PL.filter(function(p){
-     return p.ctry==='BRA' && p.era && p.era[0]<1990; }).map(p=>p.id)
-     .concat(PL.slice(0,40).map(p=>p.id)));
-   LS.set('album',[...album]);
-   albCtry='BRA';
-   (function(){ var b=[]; PL.forEach(function(p,i){ if(p.ctry==='BRA') b.push({p:p,n:i+1}); });
+ # Brazil's 80s is the page that fills — the 70s runs to eleven cards and
+ # leaves two thirds of the paper bare. Three slots are left open on purpose:
+ # a page with gaps in it is the whole reason to keep playing.
+ "shot-04-album": """(function(){
+     var b=[]; PL.forEach(function(p,i){ if(p.ctry==='BRA') b.push({p:p,n:i+1}); });
      var pgs=albumPages(b);
-     albPage=Math.max(0, pgs.findIndex(function(pg){ return pg.from===1970; })); })();
+     var i=pgs.findIndex(function(pg){ return pg.from===1980; });
+     albPage=Math.max(0,i);
+     var page=pgs[albPage]||{items:[]};
+     var hold=new Set(page.items.slice(4,7).map(function(g){ return g.p.id; }));
+     album=new Set(PL.filter(function(p){
+       return p.ctry==='BRA' && p.era && p.era[0]<1990 && !hold.has(p.id); }).map(p=>p.id)
+       .concat(PL.slice(0,40).map(p=>p.id).filter(function(id){ return !hold.has(id); })));
+     LS.set('album',[...album]);
+   })();
+   albCtry='BRA';
    sc='album'; go();""",
 
  "shot-05-ficha": """advanceAfterReveal=function(){};
