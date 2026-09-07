@@ -39,9 +39,18 @@ STATES = {
    cat.qs=[fq]; qi=0; sel.clear(); pts=72; streak=6; runLog=[3,3,3,3,3,3];
    sc='quiz'; tMax=20; tLeft=14; disp=getDisp(fq); go();""",
 
- "shot-04-album": """album=new Set(PL.slice(0,22).map(p=>p.id)
-     .concat(PL.slice(30,38).map(p=>p.id)).concat(PL.slice(45,52).map(p=>p.id)));
-   LS.set('album',[...album]); sc='album'; go();""",
+ # The album is a book now: the listing shot should open on a spread with
+ # stickers actually in it, not on whichever page the app happens to start on.
+ # Brazil's 70s is the page a Brazilian would want to see.
+ "shot-04-album": """album=new Set(PL.filter(function(p){
+     return p.ctry==='BRA' && p.era && p.era[0]<1990; }).map(p=>p.id)
+     .concat(PL.slice(0,40).map(p=>p.id)));
+   LS.set('album',[...album]);
+   albCtry='BRA';
+   (function(){ var b=[]; PL.forEach(function(p,i){ if(p.ctry==='BRA') b.push({p:p,n:i+1}); });
+     var pgs=albumPages(b);
+     albPage=Math.max(0, pgs.findIndex(function(pg){ return pg.from===1970; })); })();
+   sc='album'; go();""",
 
  "shot-05-ficha": """advanceAfterReveal=function(){};
    album=new Set(); diffKey='moderado'; cat=buildGame('moderado');
