@@ -15,8 +15,12 @@
    v7: the crest set was replaced wholesale when every club moved to its
    official escudo, and 86 players joined. Filenames are content-hashed, so
    nothing stale can be served — but ~40 files no longer referenced by anything
-   would have sat in the old cache forever. Bumping the version drops them. */
-const VERSION = 'v8';
+   would have sat in the old cache forever. Bumping the version drops them.
+
+   v9: the album's page turn is now driven by the finger rather than played
+   back as an animation, and the leaf is lit differently. Nothing but
+   index.html changed, but a cached shell would keep serving the old turn. */
+const VERSION = 'v9';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

@@ -464,6 +464,72 @@ TESTS = r"""
                   : `cta=${bottom} vh=${vh}`);
     })();
 
+    /* ---- dragging a page of the album ----
+       The turn follows the finger, which means the gesture spans a re-render:
+       taking the page calls go(), and go() builds a brand new #alb-book. Any
+       gesture state kept in that render's closure is therefore lost with the
+       old element, and the touchend arrives at a fresh handler that thinks no
+       drag is in progress — the page then hangs half-turned for ever and
+       `albTurn` never clears, locking the album against any further turn.
+       That is exactly what happened; these assertions are synchronous on
+       purpose, because the bug is in the bookkeeping and not in the arc. */
+    (function(){
+      ALL_STICKERS.forEach(id => album.add(id));
+      sc = 'album'; albCtry = 'BRA'; albPage = 2; albTurn = null; albDrag = false;
+      albG = { x0: null, y0: null, dir: 0, live: false };
+      go();
+      const B = () => document.getElementById('alb-book');
+      const T = (t, x, y) => {
+        const el = B(), o = { clientX: x, clientY: y, identifier: 1, target: el };
+        const e = new Event(t, { bubbles: true });
+        e.touches = t === 'touchend' ? [] : [o]; e.changedTouches = [o];
+        el.dispatchEvent(e);
+      };
+      const r = B().getBoundingClientRect(), y = r.top + r.height * 0.35;
+      const page0 = albPage;
+
+      /* a mostly-vertical move is a scroll and must not take the page */
+      T('touchstart', r.right - 40, y); T('touchmove', r.right - 52, y + 120);
+      ok('a vertical swipe does not turn the album page',
+         albTurn === null && albPage === page0, `albPage=${albPage}`);
+      T('touchend', r.right - 52, y + 120);
+
+      /* a sideways drag takes the page straight away and hands over the leaf */
+      T('touchstart', r.right - 24, y); T('touchmove', r.right - 90, y);
+      const p1 = albTurn ? albTurn.progress : -1;
+      ok('dragging sideways puts a turning leaf under the finger',
+         !!albTurn && !!B().querySelector('.alb-turnwrap') && p1 > 0,
+         `progress=${p1}`);
+      ok('the page it turns to is rendered before the turn, not after',
+         albPage === page0 + 1, `albPage=${albPage}`);
+
+      /* pulling back brings it back down rather than driving it further over */
+      T('touchmove', r.right - 24 - 320, y);
+      const far = albTurn ? albTurn.progress : -1;
+      T('touchmove', r.right - 24 - 60, y);
+      const near = albTurn ? albTurn.progress : -1;
+      ok('the leaf follows the finger back', near < far, `${far} -> ${near}`);
+
+      /* THE regression: touchend lands on the element go() built, not the one
+         the drag started on. It has to find the gesture anyway. */
+      T('touchend', r.right - 24 - 60, y);
+      ok('releasing after the re-render still ends the drag',
+         albG.live === false && albDrag === false,
+         `live=${albG.live} drag=${albDrag}`);
+
+      /* No assertion here for the "run() always lands" guard: this suite is
+         synchronous and the arc needs frames, so anything checkable at this
+         point would pass whatever the code did. (`typeof albTurn === 'object'`
+         was written here first and is true of null as well — a test that
+         watches nothing is worse than no test.) */
+
+      const w = B() && B().querySelector('.alb-turnwrap');
+      if (w) w.remove();
+      albTurn = null; albDrag = false;
+      albG = { x0: null, y0: null, dir: 0, live: false };
+      album = new Set(); sc = 'home'; go();
+    })();
+
     // Attribution is a licence condition, so an unattributed photo must never be
     // silent — the credits screen has to name it as unsourced.
     (function(){

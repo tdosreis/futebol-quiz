@@ -1179,23 +1179,42 @@
     .alb-leaf.leaf-fwd  { left: 50%; transform-origin: left center; }
     .alb-leaf.leaf-back { left: 0;   transform-origin: right center; }
 
+    /* box-shadow, not a filter: a filter on anything inside the leaf flattens
+       the 3D group and the reverse side stops existing */
     .alb-face { position: absolute; inset: 0; overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,.42);
       background: var(--pg-paper);
       backface-visibility: hidden; -webkit-backface-visibility: hidden; }
     .alb-face.is-back { transform: rotateY(180deg); }
 
     /* One gradient across the whole leaf, not one per strip. Paper going away
        from the lamp darkens towards the spine; the free edge keeps the light. */
+    /* Paper does not glint. The white stop at the free edge read as a
+       reflection, and because the back face mirrors the gradient it appeared
+       on the opposite side of the turn — which is exactly the artefact it
+       looked like. Shadow only now, and gentler. */
+    /* How the light falls on the leaf. Two rules, learned the hard way:
+       a page lying flat has no shading on it at all, and a page you can see
+       is a page you can read. The old version drove both faces off one curve
+       that peaked at half-turn, which painted the leaf almost black for the
+       whole middle of the arc — the part you actually watch. Now each face
+       fades against its own distance from flat, and neither goes past a
+       gentle dimming. Deepest at the spine, where the paper bends. */
     .alb-shade { position: absolute; inset: 0; pointer-events: none; opacity: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.12) 45%,
-                                          rgba(255,255,255,.30) 100%); }
-    .leaf-back .alb-shade { background: linear-gradient(270deg, rgba(0,0,0,.55) 0%,
-      rgba(0,0,0,.12) 45%, rgba(255,255,255,.30) 100%); }
+      background: linear-gradient(90deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.20) 46%,
+                                          rgba(0,0,0,.08) 100%); }
+    .leaf-back .alb-shade { background: linear-gradient(270deg, rgba(0,0,0,.50) 0%,
+      rgba(0,0,0,.20) 46%, rgba(0,0,0,.08) 100%); }
+    /* mirrored again on the reverse: its spine is on the other side */
+    .alb-face.is-back .alb-shade { background: linear-gradient(270deg, rgba(0,0,0,.50) 0%,
+      rgba(0,0,0,.20) 46%, rgba(0,0,0,.08) 100%); }
+    .leaf-back .alb-face.is-back .alb-shade { background: linear-gradient(90deg,
+      rgba(0,0,0,.50) 0%, rgba(0,0,0,.20) 46%, rgba(0,0,0,.08) 100%); }
 
     /* the shadow the raised page throws across the one it uncovers */
     .alb-cast { position: absolute; top: 0; bottom: 0; width: 50%; pointer-events: none; }
-    .alb-cast.side-l { left: 0;   background: linear-gradient(270deg, rgba(0,0,0,.38), rgba(0,0,0,0) 62%); }
-    .alb-cast.side-r { left: 50%; background: linear-gradient(90deg,  rgba(0,0,0,.38), rgba(0,0,0,0) 62%); }
+    .alb-cast.side-l { left: 0;   background: linear-gradient(270deg, rgba(0,0,0,.34), rgba(0,0,0,0) 58%); }
+    .alb-cast.side-r { left: 50%; background: linear-gradient(90deg,  rgba(0,0,0,.34), rgba(0,0,0,0) 58%); }
 
     @keyframes pageFwd  { from { opacity: .85; } }
     @keyframes pageBack { from { opacity: .85; } }
@@ -1458,12 +1477,18 @@ const snd = {
      the air, and the soft slap as it lands on the other side. Nothing tonal —
      paper has no pitch. */
   page()   {
-    /* One rustle and a settle. The version before this had a peel, seven
-       randomised crackles and a landing, and it sounded like static rather
-       than paper — too many events for something that takes half a second. */
-    noise(.26, { type: 'highpass', freq: 800,  to: 2400, q: .4, vol: .05 });
-    noise(.12, { type: 'lowpass',  freq: 520,  to: 170,  q: .6, vol: .045, delay: .30 });
+    /* No low end. The settle used to sweep down to 170Hz, which is a knock on
+       something hard — the user heard metal or stone. Paper landing on paper is
+       a soft, high, short sound with no pitch to it at all. */
+    snd.peel();
+    snd.land(.20);
   },
+  /* Dragged, the page makes its noise in two halves an unknown time apart —
+     the peel when your thumb lifts it, the landing when you let go. A tap
+     plays both back to back; that is all `page` is. */
+  peel()   { noise(.22, { type: 'highpass', freq: 900,  to: 2600, q: .4, vol: .05 }); },
+  land(d)  { noise(.09, { type: 'bandpass', freq: 1500, to: 900,  q: .7, vol: .035,
+                          delay: d || 0 }); },
 
   /* ── the answer ── */
   correct() {
@@ -7806,6 +7831,13 @@ let albCtry = null;
 let albPage = 0;
 let albTurning = null;   // 'fwd' | 'back', consumed by the next render
 let albLeaf    = null;   // a copy of the spread being turned away from
+let albDrag    = false;  // true while a finger is driving the turn
+let albTurn    = null;   // the live turn's controls, handed over to the drag
+/* The gesture has to outlive the render. Taking the page calls go(), which
+   builds a new #alb-book — so the element the touch started on is detached
+   before the finger lifts, and a closure holding the gesture would take its
+   touchend on an element nobody is touching any more. Kept out here instead. */
+let albG = { x0: null, y0: null, dir: 0, live: false };
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -7893,7 +7925,10 @@ function go() {
       }
       albTurning = dir > 0 ? 'fwd' : 'back';
       albPage += dir;
-      snd.page(); go();
+      /* a dragged page makes its noise when it actually goes over, not when
+         your thumb first touches it — the drag plays it on release */
+      if (!albDrag) snd.page();
+      go();
     };
     on('alb-prev', () => flip(-1));
     on('alb-next', () => flip(1));
@@ -7912,25 +7947,67 @@ function go() {
       });
     }
 
-    /* the same gesture the object itself would take */
+    /* ── Turning it with your thumb ──────────────────────────────
+       The old gesture waited for the whole swipe, then played an animation.
+       That is what made it feel fake: a page you push does not sit still and
+       then leap. Now the page is on the finger from the first few pixels —
+       drag it half over and stop, and it hangs there half over.
+
+       Starting the drag commits the page change straight away, because the
+       back of the leaf has to show the spread you are turning TO, and that
+       spread has to be rendered to be copied. Let go too early and the change
+       is put back. */
     const book = document.getElementById('alb-book');
     if (book) {
-      let x0 = null, y0 = null;
+      const width = () => Math.max(120, book.getBoundingClientRect().width * .55);
+
+      const end = commit => {
+        const G = albG;
+        if (!G.live) { G.x0 = null; G.dir = 0; return; }
+        const T = albTurn; G.live = false; albDrag = false; G.x0 = null;
+        if (!T) { G.dir = 0; return; }
+        const now = T.progress || 0;
+        if (commit) { snd.land(); T.run(now, 1, Math.max(160, (1 - now) * 460)); }
+        else {
+          const back = G.dir;                     // undo the page we committed
+          T.run(now, 0, Math.max(140, now * 380), () => { albPage -= back; go(); });
+        }
+        G.dir = 0;
+      };
+
       book.addEventListener('touchstart', e => {
-        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+        if (albTurn) return;                      // one turn at a time
+        albG = { x0: e.touches[0].clientX, y0: e.touches[0].clientY, dir: 0, live: false };
       }, { passive: true });
-      book.addEventListener('touchend', e => {
-        if (x0 === null) return;
-        const dx = e.changedTouches[0].clientX - x0;
-        const dy = e.changedTouches[0].clientY - y0;
-        x0 = null;
-        /* a swipe, not a scroll: mostly sideways and far enough to mean it */
-        if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
-        const prev = document.getElementById('alb-prev');
-        const next = document.getElementById('alb-next');
-        if (dx < 0 && next && !next.disabled) flip(1);
-        if (dx > 0 && prev && !prev.disabled) flip(-1);
+
+      book.addEventListener('touchmove', e => {
+        const G = albG;
+        if (G.x0 === null) return;
+        const dx = e.touches[0].clientX - G.x0, dy = e.touches[0].clientY - G.y0;
+        if (!G.live) {
+          /* sideways and meant: a few pixels is enough to take the page */
+          if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+          const want = dx < 0 ? 1 : -1;
+          const btn = document.getElementById(want > 0 ? 'alb-next' : 'alb-prev');
+          if (!btn || btn.disabled) { G.x0 = null; return; }
+          G.dir = want; G.live = true; albDrag = true; snd.peel();
+          flip(want);                             // renders the new spread and builds the leaf
+          albDrag = false;                        // the leaf is built; the flag has done its job
+          if (!albTurn) { G.live = false; G.x0 = null; return; }
+        }
+        /* measured along the direction the page is going, so pulling your
+           thumb back brings the page back down instead of driving it further
+           over; and net of the 10px it took to decide, so it does not jump */
+        const along = (G.dir > 0 ? -dx : dx) - 10;
+        const p = Math.min(1, Math.max(0, along / width()));
+        albTurn.progress = p;
+        albTurn.at(p);
       }, { passive: true });
+
+      /* past a third of the way it wants to fall over; short of that it falls back */
+      book.addEventListener('touchend',    () => end((albTurn && albTurn.progress || 0) > .33),
+                            { passive: true });
+      book.addEventListener('touchcancel', () => end(false), { passive: true });
     }
 
     /* Build the turning page out of the two spreads. Forward, the right half
@@ -7973,24 +8050,66 @@ function go() {
            like a gate. */
         const DUR = 480, ROLL = 7;
         const leaf  = wrap.querySelector('.alb-leaf');
-        const shades = wrap.querySelectorAll('.alb-shade');
         const cast  = wrap.querySelector('.alb-cast');
-        let t0 = 0, raf = 0;
-        const frame = now => {
-          if (!t0) t0 = now;
-          const t = Math.min(1, (now - t0) / DUR);
-          /* leaves quickly, lands softly */
-          const e = 1 - Math.pow(1 - t, 2.1);
-          const lift = Math.sin(Math.PI * t);          // nought at both ends
+
+        /* `at` is the whole turn expressed as one number: 0 lying flat, 1 fully
+           over. A tap runs it on a clock; a finger drives it directly. That is
+           the difference between a page that turns and a page you turn. */
+        const front = wrap.querySelector('.is-front .alb-shade');
+        const back  = wrap.querySelector('.is-back  .alb-shade');
+        const at = e => {
+          e = Math.min(1, Math.max(0, e));
+          const lift = Math.sin(Math.PI * e);
+          const c = Math.cos(Math.PI * e);       // +1 flat, 0 edge-on, -1 landed
           leaf.style.transform =
-            `rotateY(${sign * e * 180}deg) rotateZ(${sign * ROLL * lift}deg)` +
-            ` translateZ(${lift * 26}px)`;
-          shades.forEach(x => { x.style.opacity = String(.25 + lift * .75); });
-          if (cast) cast.style.opacity = String(Math.max(0, 1 - e * 1.8));
-          if (t < 1) raf = requestAnimationFrame(frame); else wrap.remove();
+            `rotateY(${sign * e * 180}deg) rotateZ(${sign * ROLL * lift}deg)`;
+          /* each face dims by how far it has swung off the table, so whichever
+             one you are looking at is lit when it is flat and never worse than
+             half-shaded as it passes edge-on */
+          if (front) front.style.opacity = String(.62 * (1 - c) / 2);
+          if (back)  back.style.opacity  = String(.62 * (1 + c) / 2);
+          /* the shadow the raised leaf throws on the page it uncovers: it
+             arrives as the page lifts and leaves as the page lands on top */
+          if (cast) cast.style.opacity = String(Math.min(1, e * 3) * (1 - e));
         };
-        raf = requestAnimationFrame(() => { raf = requestAnimationFrame(frame); });
-        setTimeout(() => { cancelAnimationFrame(raf); wrap.remove(); }, DUR + 700);
+        at(0);
+
+        let raf = 0;
+        /* run from wherever it is now to `to`, then either drop the leaf or,
+           if the turn was abandoned, put the page back */
+        const run = (from, to, ms, after) => {
+          const t0 = performance.now();
+          let done = false;
+          /* The turn must end even if the frames never come. rAF stops in a
+             backgrounded tab, and a half-turned page whose `albTurn` is never
+             cleared locks the album — every later swipe bails out on "one turn
+             at a time". This timer is the guarantee; the frames are the nice
+             part. (Same reason the end-screen score has one.) */
+          const land = () => {
+            if (done) return;
+            done = true;
+            cancelAnimationFrame(raf); clearTimeout(bell);
+            at(to); wrap.remove(); albTurn = null; if (after) after();
+          };
+          const bell = setTimeout(land, ms + 260);
+          const step = now => {
+            if (done) return;
+            const t = Math.min(1, (now - t0) / ms);
+            const k = 1 - Math.pow(1 - t, 2.1);            // leaves fast, lands soft
+            at(from + (to - from) * k);
+            if (t < 1) raf = requestAnimationFrame(step);
+            else land();
+          };
+          raf = requestAnimationFrame(step);
+        };
+
+        if (albDrag) {
+          /* a finger is on it: hand over the controls and wait */
+          albTurn = { at, run, wrap, dir: L.dir,
+                      stop: () => cancelAnimationFrame(raf) };
+        } else {
+          run(0, 1, DUR);
+        }
       }
     }
 
