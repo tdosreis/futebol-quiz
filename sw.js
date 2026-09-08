@@ -19,8 +19,12 @@
 
    v9: the album's page turn is now driven by the finger rather than played
    back as an animation, and the leaf is lit differently. Nothing but
-   index.html changed, but a cached shell would keep serving the old turn. */
-const VERSION = 'v9';
+   index.html changed, but a cached shell would keep serving the old turn.
+
+   v10: the turning page is sliced and bends now, instead of swinging as one
+   rigid plane. index.html again — and v9 has already gone out, so it needs
+   its own version or anyone already on v9 keeps the flat one. */
+const VERSION = 'v10';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
