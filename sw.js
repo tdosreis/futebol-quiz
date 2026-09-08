@@ -31,8 +31,10 @@
 
    v12: the turn is slower and eased differently — it had been flicking.
 
-   v13: the page trails the thumb now instead of being welded to it. */
-const VERSION = 'v13';
+   v13: the page trails the thumb now instead of being welded to it.
+
+   v14: the fall is slower again and the sheet bends a little further. */
+const VERSION = 'v14';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
