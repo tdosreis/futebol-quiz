@@ -1192,10 +1192,17 @@
     .alb-leaf.leaf-back, .leaf-back .alb-strip { transform-origin: right center; }
     .leaf-back .alb-strip { left: auto; right: 100%; }
 
+    /* Sixteen rotated siblings do not meet exactly — sub-pixel rounding leaves
+       hairlines between them, which over blank paper read as ruled lines.
+       Painting a bar of paper colour into the gap was worse: it sat on top of
+       the shading, so where the sheet was darkest the seams turned into light
+       lines. Widening each FACE by a few percent instead makes neighbours
+       overlap, shading and all. It has to be the face and not the strip —
+       strips are nested, so a scale on one compounds down the whole chain. */
     .alb-face { position: absolute; inset: 0; overflow: hidden;
-      background: var(--pg-paper);
+      background: var(--pg-paper); transform: scaleX(1.02);
       backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    .alb-face.is-back { transform: rotateY(180deg); }
+    .alb-face.is-back { transform: rotateY(180deg) scaleX(1.02); }
 
     /* Each strip is shaded by how edge-on it is, so the curve is visible as
        light falling across paper rather than as a set of flat facets. */
@@ -1474,9 +1481,17 @@ const snd = {
      the air, and the soft slap as it lands on the other side. Nothing tonal —
      paper has no pitch. */
   page()   {
-    noise(.09, { type: 'highpass', freq: 1400, to: 3200, q: .5,  vol: .05  });
-    noise(.30, { type: 'bandpass', freq: 1500, to: 520,  q: .45, vol: .055, delay: .05 });
-    noise(.13, { type: 'lowpass',  freq: 900,  to: 260,  q: .7,  vol: .05,  delay: .30 });
+    /* The first version was three smooth sweeps and sounded like wind. Paper
+       is not smooth — it is a peel, then a run of tiny irregular crackles as
+       the sheet flexes, then a soft landing. And the landing has to arrive
+       when the page actually lands: it was at .30s of a .62s turn, so the
+       sound finished while the page was still in the air. */
+    noise(.06, { type: 'highpass', freq: 2300, to: 4400, q: .6,  vol: .05 });
+    noise(.40, { type: 'bandpass', freq: 1000, to: 430,  q: .5,  vol: .042, delay: .04 });
+    [0, .05, .11, .17, .24, .31, .38].forEach(d =>
+      noise(.045, { type: 'bandpass', freq: 950 + Math.random() * 1500,
+                    q: 2.4, vol: .028, delay: .05 + d }));
+    noise(.17, { type: 'lowpass',  freq: 760,  to: 190,  q: .8,  vol: .062, delay: .43 });
   },
 
   /* ── the answer ── */
@@ -7957,16 +7972,26 @@ function go() {
       const sheet = bk && bk.querySelector(':scope > .alb-sheet');
       if (bk && sheet) {
         const fwd  = L.dir === 'fwd';
-        const N    = 7;                        // strips across the half-page
-        const Hw   = L.w / 2;                  // a half-page
-        const sw   = Hw / N;                   // one strip
+        const N    = 16;                       // strips across the half-page
+        const Hw   = L.w / 2;
+        const sw   = Hw / N;
         const sign = fwd ? -1 : 1;
 
-        /* No pruning. The obvious optimisation is to drop the cards a strip
-           does not overlap, and it cannot be done: the spread is a CSS grid,
-           so removing an item reflows every item after it into the empty cell
-           and each strip shows a different, wrong page. A spread is 400 nodes;
-           fourteen of them for six hundred milliseconds is the cheaper problem. */
+        /* Seven strips banded — you could see the facets. Sixteen do not, but
+           sixteen whole spreads is far too much DOM, and the cards cannot be
+           pruned out of a grid because removing one reflows the rest into the
+           empty cell. So the grid is measured once and then taken apart: every
+           card is pinned at the exact position the grid gave it, the container
+           keeps its height, and after that a strip can drop the cards it does
+           not touch without moving the ones it keeps. */
+        const grid  = sheet.querySelector('.alb-grid');
+        const gRect = grid && grid.getBoundingClientRect();
+        const boxes = grid ? [...grid.querySelectorAll('.alb-slot')].map(el => {
+          const b = el.getBoundingClientRect();
+          return { x: b.left - gRect.left, y: b.top - gRect.top, w: b.width, h: b.height };
+        }) : [];
+        const gH = gRect ? gRect.height : 0;
+        const gX = gRect ? gRect.left - sheet.getBoundingClientRect().left : 0;
 
         const wrap = document.createElement('div');
         wrap.className = 'alb-turnwrap';
@@ -7977,13 +8002,25 @@ function go() {
              <div class="alb-clip half-${fwd ? 'l' : 'r'}">${L.out}</div></div>
            <div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>`;
 
-        /* one face = a clone of a spread, slid so the strip's own slice of it
-           is what shows through */
+        /* one face: a clone slid so this strip's slice shows, carrying only the
+           cards that slice actually crosses */
         const face = (html, offset) => {
           const d = document.createElement('div');
           d.className = 'alb-clip';
           d.style.cssText = `width:${L.w}px;left:${-offset}px;`;
           d.innerHTML = html;
+          const g = d.querySelector('.alb-grid');
+          if (g && boxes.length) {
+            g.style.cssText += `;display:block;position:relative;height:${gH}px;`;
+            const x0 = offset - gX, x1 = x0 + sw;
+            [...g.querySelectorAll('.alb-slot')].forEach((el, i) => {
+              const b = boxes[i];
+              if (!b) { el.remove(); return; }
+              if (b.x + b.w < x0 - 1 || b.x > x1 + 1) { el.remove(); return; }
+              el.style.cssText += `;position:absolute;margin:0;left:${b.x}px;top:${b.y}px;` +
+                                  `width:${b.w}px;height:${b.h}px;`;
+            });
+          }
           const inner = d.querySelector('.alb-sheet');
           if (inner) { inner.style.overflow = 'hidden'; inner.classList.remove('turn-fwd', 'turn-back'); }
           return d;
@@ -7996,10 +8033,6 @@ function go() {
           el.className = k === 0 ? `alb-leaf leaf-${L.dir}` : 'alb-strip';
           el.style.width = sw + 'px';
           if (k === 0) el.style[fwd ? 'left' : 'right'] = '50%';
-
-          /* front: the outgoing half, counted out from the spine.
-             back: the incoming half — strip k lands k strips from the spine on
-             the far side, which is column N-1-k of that half. */
           const fx0 = fwd ? Hw + k * sw : Hw - (k + 1) * sw;
           const bJ  = N - 1 - k;
           const bx0 = fwd ? bJ * sw : Hw + bJ * sw;
@@ -8021,39 +8054,68 @@ function go() {
         bk.appendChild(wrap);
 
         /* ── the turn ──
-           Θ is how far the whole page has gone. `bow` is zero at both ends and
-           one in the middle, so the sheet is flat when it is lying down and at
-           its most curved halfway over. Within that, the strips nearer the
-           free edge take a bigger share of the angle, which is what makes the
-           corner lead and the spine end lag. */
-        const DUR = 620, BOW = 1.7;
+           Θ is how far the page has gone; `bow` is nought at both ends and one
+           halfway, so the sheet is flat lying down and curved in the air. The
+           strips near the free edge take a bigger share of Θ, which is what
+           makes the outer corner lead. CURL adds a little roll about the other
+           axis, so the leading edge tilts instead of staying a perfect ruled
+           rectangle — a page lifts at the corner, not along a straight line. */
+        const DUR = 540, BEND = 72, CURL = 26;
+        const LX = -.45, LZ = .89;            // the lamp, up and to the left
         const cast = wrap.querySelector('.alb-cast');
-        const t0 = performance.now();
-        let raf = 0;
+        let t0 = 0, raf = 0;
         const frame = now => {
+          if (!t0) t0 = now;
           const t = Math.min(1, (now - t0) / DUR);
-          const e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // easeInOutCubic
+          /* out fast, settle slow — paper leaves quickly and lands softly. 2.4
+             put it through sixty degrees in the first sixth of the turn, which
+             reads as a snap rather than a flick. */
+          const e = 1 - Math.pow(1 - t, 1.9);
           const total = e * 180, bow = Math.sin(Math.PI * t);
+          /* The rotations chain, so sharing the total between the strips gives
+             a rolled tube — every frame of the first version was a scroll, not
+             a page. The page's own pivot belongs to the first strip alone; the
+             others carry only the BEND, which is nought at both ends, so the
+             sheet is genuinely flat when it lies down and flat again when it
+             lands. The bend is weighted towards the free edge, so the corner
+             runs ahead of the spine. */
+          const bendTotal = BEND * bow;
           let wsum = 0; const wk = [];
-          for (let k = 0; k < N; k++) {
-            const w = 1 + BOW * bow * ((k / (N - 1)) - .5);
-            wk.push(w); wsum += w;
-          }
+          for (let k = 1; k < N; k++) { const w = .35 + (k / (N - 1)); wk.push(w); wsum += w; }
           let cum = 0;
           for (let k = 0; k < N; k++) {
-            const d = total * wk[k] / wsum;
-            strips[k].style.transform = `rotateY(${sign * d}deg)`;
+            const d = k === 0 ? total : bendTotal * wk[k - 1] / wsum;
+            const rz = sign * CURL * bow / N;
+            strips[k].style.transform = `rotateY(${sign * d}deg) rotateZ(${rz}deg)`;
             cum += d;
-            /* edge-on paper is dark; face-on paper is not */
-            const sh = Math.min(.38, Math.abs(Math.sin(cum * Math.PI / 180)) * .34 + bow * .08);
+            /* Light, not just shadow. A gradient inside each strip repeats
+               sixteen times and reads as corrugated card; a single flat tone
+               per strip does not, because the tone itself varies smoothly from
+               one strip to the next. So each strip gets one colour, from how
+               its surface faces the lamp: the crest of the bend catches white,
+               the parts turning away go black. That is what makes it paper
+               rather than a grey slab. */
+            /* The angle has to be SIGNED — with the unsigned one the sheet can
+               only ever turn away from the lamp, never towards it, so there is
+               no highlight and the whole page just darkens into a grey slab.
+               And the bias is the lamp's own z, so a page lying flat carries no
+               overlay at all: tone appears only as it starts to turn. */
+            const rad = sign * cum * Math.PI / 180;
+            const lam = Math.sin(rad) * LX + Math.cos(rad) * LZ;
+            const dev = lam - LZ;
+            const lit = dev > 0;
+            const a = Math.min(.30, lit ? dev * 2.4 : -dev * .34);
             strips[k].querySelectorAll(':scope > .alb-face > .alb-shade')
-              .forEach(s => { s.style.opacity = sh; });
+              .forEach(x => { x.style.background = lit ? '#fff' : '#000';
+                              x.style.opacity = a; });
           }
-          if (cast) cast.style.opacity = String(Math.max(0, 1 - e * 1.6));
+          if (cast) cast.style.opacity = String(Math.max(0, 1 - e * 1.7));
           if (t < 1) raf = requestAnimationFrame(frame); else wrap.remove();
         };
-        raf = requestAnimationFrame(frame);
-        setTimeout(() => { cancelAnimationFrame(raf); wrap.remove(); }, DUR + 700);
+        /* start on the next frame: building the leaf is the most expensive
+           thing here, and it must not be charged to the turn's first frame */
+        raf = requestAnimationFrame(() => { raf = requestAnimationFrame(frame); });
+        setTimeout(() => { cancelAnimationFrame(raf); wrap.remove(); }, DUR + 800);
       }
     }
 
