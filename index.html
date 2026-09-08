@@ -7953,10 +7953,10 @@ function go() {
         const T = albTurn; G.live = false; albDrag = false; G.x0 = null;
         if (!T) { G.dir = 0; return; }
         const now = T.progress || 0;
-        if (commit) { snd.page(); T.run(now, 1, Math.max(380, (1 - now) * 900)); }
+        if (commit) { snd.page(); T.run(now, 1, Math.max(420, (1 - now) * 1000)); }
         else {
           const back = G.dir;                     // undo the page we committed
-          T.run(now, 0, Math.max(320, now * 740), () => { albPage -= back; go(); });
+          T.run(now, 0, Math.max(360, now * 820), () => { albPage -= back; go(); });
         }
         G.dir = 0;
       };
@@ -7985,13 +7985,15 @@ function go() {
            thumb back brings the page back down instead of driving it further
            over; and net of the 10px it took to decide, so it does not jump */
         const along = (G.dir > 0 ? -dx : dx) - 10;
-        const p = Math.min(1, Math.max(0, along / width()));
-        albTurn.progress = p;
-        albTurn.at(p);
+        albTurn.drive(Math.min(1, Math.max(0, along / width())));
       }, { passive: true });
 
       /* past a third of the way it wants to fall over; short of that it falls back */
-      book.addEventListener('touchend',    () => end((albTurn && albTurn.progress || 0) > .33),
+      /* judged on where the thumb finished, not on where the page has caught
+         up to — the page is deliberately behind, and a firm swipe that lands
+         past the tipping point should go over even if the paper is still
+         travelling. */
+      book.addEventListener('touchend',    () => end((albTurn && albTurn.target || 0) > .33),
                             { passive: true });
       book.addEventListener('touchcancel', () => end(false), { passive: true });
     }
@@ -8091,9 +8093,10 @@ function go() {
            free edge passes vertical early enough that half the leaf shows its
            front and half its back for most of the arc, which reads as two
            spreads at once rather than one page bending. */
-        /* 820ms, not 480. A page has weight: it does not leave the table the
-           instant you let go and it does not arrive all at once. */
-        const DUR = 820, BOW = 30 * Math.PI / 180;
+        /* A page has weight: it does not leave the table the instant you let
+           go and it does not arrive all at once. 480 was a flick, 820 was
+           still brisk. */
+        const DUR = 950, BOW = 30 * Math.PI / 180;
         const cast   = wrap.querySelector('.alb-cast');
         const fEls   = [...wrap.querySelectorAll('.alb-strip.is-front')];
         const bEls   = [...wrap.querySelectorAll('.alb-strip.is-back')];
@@ -8143,6 +8146,7 @@ function go() {
         /* run from wherever it is now to `to`, then either drop the leaf or,
            if the turn was abandoned, put the page back */
         const run = (from, to, ms, after) => {
+          chasing = false; cancelAnimationFrame(raf);   // the finger is off it now
           const t0 = performance.now();
           let done = false;
           /* The turn must end even if the frames never come. rAF stops in a
@@ -8173,10 +8177,41 @@ function go() {
           raf = requestAnimationFrame(step);
         };
 
+        /* ── the paper lags the thumb ──────────────────────────────────
+           Driving `at` straight from the finger means a quick swipe gives a
+           quick page: the sheet is welded to your skin and stops dead the
+           instant you do. Paper does neither. So the finger sets a target and
+           the page eases towards it on its own clock — it trails you slightly
+           on the way out, and keeps drifting for a moment after you stop.
+
+           TAU is how far behind it runs. Much below 100ms and the lag stops
+           reading as weight; much above and the page feels detached from the
+           hand moving it. */
+        const TAU = 130;
+        let cur = 0, target = 0, chasing = false, last = 0;
+        const chase = now => {
+          if (!chasing || !albTurn) return;
+          const dt = Math.min(64, now - last); last = now;
+          cur += (target - cur) * (1 - Math.exp(-dt / TAU));
+          if (Math.abs(target - cur) < .0004) cur = target;
+          at(cur);
+          albTurn.progress = cur;
+          raf = requestAnimationFrame(chase);
+        };
+
         if (albDrag) {
           /* a finger is on it: hand over the controls and wait */
-          albTurn = { at, run, wrap, dir: L.dir,
-                      stop: () => cancelAnimationFrame(raf) };
+          albTurn = {
+            at, run, wrap, dir: L.dir, progress: 0, target: 0,
+            /* where the thumb says the page should be; it gets there in
+               its own time */
+            drive: p => {
+              target = albTurn.target = p;
+              if (!chasing) { chasing = true; last = performance.now();
+                              raf = requestAnimationFrame(chase); }
+            },
+            stop: () => { chasing = false; cancelAnimationFrame(raf); }
+          };
         } else {
           run(0, 1, DUR);
         }

@@ -494,20 +494,24 @@ TESTS = r"""
          albTurn === null && albPage === page0, `albPage=${albPage}`);
       T('touchend', r.right - 52, y + 120);
 
-      /* a sideways drag takes the page straight away and hands over the leaf */
+      /* a sideways drag takes the page straight away and hands over the leaf.
+         The thumb sets a target; the paper eases towards it on its own clock,
+         so `target` is what the gesture controls and `progress` is where the
+         sheet has got to. Only the first is testable here — the second moves
+         on animation frames, which this harness does not run. */
       T('touchstart', r.right - 24, y); T('touchmove', r.right - 90, y);
-      const p1 = albTurn ? albTurn.progress : -1;
+      const p1 = albTurn ? albTurn.target : -1;
       ok('dragging sideways puts a turning leaf under the finger',
          !!albTurn && !!B().querySelector('.alb-turnwrap') && p1 > 0,
-         `progress=${p1}`);
+         `target=${p1}`);
       ok('the page it turns to is rendered before the turn, not after',
          albPage === page0 + 1, `albPage=${albPage}`);
 
       /* pulling back brings it back down rather than driving it further over */
       T('touchmove', r.right - 24 - 320, y);
-      const far = albTurn ? albTurn.progress : -1;
+      const far = albTurn ? albTurn.target : -1;
       T('touchmove', r.right - 24 - 60, y);
-      const near = albTurn ? albTurn.progress : -1;
+      const near = albTurn ? albTurn.target : -1;
       ok('the leaf follows the finger back', near < far, `${far} -> ${near}`);
 
       /* THE regression: touchend lands on the element go() built, not the one

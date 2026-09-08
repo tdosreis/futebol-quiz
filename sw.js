@@ -29,8 +29,10 @@
    was the likeliest reason the bend rendered here and not on a real phone.
    And the page-turn sound is one quiet rustle instead of three parts.
 
-   v12: the turn is slower and eased differently — it had been flicking. */
-const VERSION = 'v12';
+   v12: the turn is slower and eased differently — it had been flicking.
+
+   v13: the page trails the thumb now instead of being welded to it. */
+const VERSION = 'v13';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
