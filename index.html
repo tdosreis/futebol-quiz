@@ -38,8 +38,10 @@
       --pocket-2:  #EFECE2;   /* a pocket, pressed */
       --ink:       #20241E;
       --ink-2:     #4B4F45;
-      --ink-3:     #7E8175;
-      --ink-4:     #A6A89C;
+      --ink-3:     #5B5D54;   /* was #7E8175 — 2.76:1 on the retro card */
+      --ink-4:     #A6A89C;   /* the faint tone: disabled controls only.
+                                    WCAG exempts those, and anything you are
+                                    meant to read belongs on --ink-3. */
       --rule:      #CBC5B2;
       --rule-2:    #DBD6C6;
       --pitch:     #17593F;
@@ -47,6 +49,8 @@
       --pitch-soft:#D9E6DD;
       --on-pitch:  #F3F1E8;
       --brass:     #A9803B;
+      --brass-ink: #735728;   /* brass as TEXT: the fill tone is 2.5:1 on paper */
+      --good-ink:  #266842;   /* likewise the green, for a finished section */
       --brass-2:   #C79A4E;
       --brass-soft:#EFE3C6;
       --on-brass:  #2A1F08;
@@ -82,7 +86,7 @@
       --retro-band:  #B23A2E;
       --retro-band2: #8E2A20;
       --modern-card: #56BEB2;
-      --modern-card2:#3E9E96;
+      --modern-card2:#2A736C;   /* was #3E9E96 — the band's white sat at 2.97:1 */
       --modern-ink:  #0C2F2C;
       --modern-chip: #F2F7F5;
     }
@@ -103,6 +107,8 @@
         --pitch-soft:#1E3529;
         --on-pitch:  #0F1A13;
         --brass:     #C79A4E;
+        --brass-ink: #C79A4E;   /* already 6:1 on the dark page */
+        --good-ink:  #4CAE74;
         --brass-2:   #E0B968;
         --brass-soft:#3A2F16;
         --on-brass:  #1A1204;
@@ -117,7 +123,9 @@
         --retro-card:  #2A2418; --retro-card2: #221D13; --retro-edge: #5A4C31;
         --retro-ink:   #E8DCC0; --retro-band: #8E2A20; --retro-band2: #6E1F17;
         --modern-card: #1C4A46; --modern-card2:#153B38; --modern-ink: #DCF0EC;
-        --modern-chip: #0E2422;
+        --modern-chip: #CFEDE6;   /* was #0E2422 — a dark chip on the dark
+                                     card is 1.32:1, so the country band on a
+                                     post-2000 figurinha was all but invisible */
       }
     }
     :root[data-theme="dark"] {
@@ -125,13 +133,14 @@
       --ink:#ECE7D6; --ink-2:#C4C0AE; --ink-3:#8E9182; --ink-4:#62655A;
       --rule:#363B2D; --rule-2:#2A2F23; --pitch:#3E9C6E; --pitch-2:#55B585;
       --pitch-soft:#1E3529; --on-pitch:#0F1A13; --brass:#C79A4E; --brass-2:#E0B968;
+      --brass-ink:#C79A4E; --good-ink:#4CAE74;
       --brass-soft:#3A2F16; --on-brass:#1A1204; --good:#4CAE74; --bad:#E06A55;
       --bad-soft:#3A211C; --warn:#D9963A; --shadow:rgba(0,0,0,.45); --shadow-2:rgba(0,0,0,.7);
       --grain:rgba(255,255,255,.025); --halftone:rgba(0,0,0,.7);
       --retro-card:#2A2418; --retro-card2:#221D13; --retro-edge:#5A4C31;
       --retro-ink:#E8DCC0; --retro-band:#8E2A20; --retro-band2:#6E1F17;
       --modern-card:#1C4A46; --modern-card2:#153B38; --modern-ink:#DCF0EC;
-      --modern-chip:#0E2422;
+      --modern-chip:#CFEDE6;
     }
 
     /* ── Reset & base ── */
@@ -207,7 +216,9 @@
     .num { font-variant-numeric: tabular-nums; font-weight: 800; letter-spacing: .01em; }
     .muted { color: var(--ink-3); }
     .small { font-size: 11px; line-height: 1.5; }
-    .brass { color: var(--brass); }
+    /* the utility class is text, so it takes the text tone; --brass itself
+       stays as it is for rings, pips and borders */
+    .brass { color: var(--brass-ink); }
     .pitch { color: var(--pitch); }
     .good  { color: var(--good); }
     .bad   { color: var(--bad); }
@@ -308,7 +319,7 @@
        em resolves against the parent, which is the 16px body, so .84em made
        these names *bigger* — and clipped them. */
     .fig-nm-long { letter-spacing: .01em; }
-    .fig-sub { font-family: var(--font-s); font-weight: 600; opacity: .72;
+    .fig-sub { font-family: var(--font-s); font-weight: 600; opacity: .9;
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
 
     /* ── old stock: tea-coloured card, red band, warm faded picture ── */
@@ -620,7 +631,7 @@
 
     /* what this question is worth */
     .stakes { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
-    .stakes-v { font-family: var(--font-d); font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -.02em; color: var(--brass); }
+    .stakes-v { font-family: var(--font-d); font-weight: 600; font-size: 26px; line-height: 1; letter-spacing: -.02em; color: var(--brass-ink); }
     @keyframes prizeUp { 0% { transform: translateY(4px); opacity: 0; } 100% { transform: none; opacity: 1; } }
     .prize-pop { animation: prizeUp .4s ease-out; }
     .safe-box { display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--rule); border-radius: 10px; padding: 5px 9px; cursor: pointer; text-align: right; flex-shrink: 0; }
@@ -705,7 +716,7 @@
     .rung-done { color: var(--good); }
     .rung-now  { background: var(--pitch-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--pitch); }
     .rung-top  { color: var(--brass); }
-    .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-4); font-weight: 700; }
+    .rung-n { width: 17px; text-align: right; flex-shrink: 0; font-size: 9px; color: var(--ink-3); font-weight: 700; }
 
     /* The pause between locking an answer in and seeing it.
        It used to announce "Resposta travada", which told the player something
@@ -825,10 +836,14 @@
     .medal .ic { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: inset 0 0 0 1px var(--rule); }
     .medal-on { border-color: var(--brass); background: var(--brass-soft); }
     .medal-on .ic { color: var(--brass); }
-    .medal-off { opacity: .55; }
+    /* A locked medal is not a disabled control — the whole point of the row is
+       to read what it asks and how far along you are. .55 put that text at
+       2.4:1; the lock now reads from the icon and the missing brass, not from
+       making the words hard to see. */
+    .medal-off { opacity: 1; }
     .medal-off .ic { color: var(--ink-4); }
     .medal .t { font-size: 13px; font-weight: 800; }
-    .medal .d { font-size: 10.5px; color: var(--ink-3); }
+    .medal .d { font-size: 10.5px; color: var(--ink-2); }
 
     /* ── Result squares (the share card, drawn) ── */
     .runlog { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; }
@@ -847,7 +862,7 @@
 
     /* ── Credits ── */
     .credit-row { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--rule-2); font-size: 10px; }
-    .credit-row .l { color: var(--brass); white-space: nowrap; font-size: 9px; }
+    .credit-row .l { color: var(--brass-ink); white-space: nowrap; font-size: 9px; }
     .note { background: var(--brass-soft); border: 1px solid var(--brass); border-radius: 9px; padding: 8px 11px; font-size: 10px; line-height: 1.5; }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -1008,7 +1023,7 @@
       border-radius: 50%; background: var(--stock); }
     .alb-ring-n { position: relative; font-size: 8.5px; font-weight: 800;
       color: var(--ink-2); font-variant-numeric: tabular-nums; line-height: 1; }
-    .alb-ring-n i { font-style: normal; font-size: 6px; opacity: .65; }
+    .alb-ring-n i { font-style: normal; font-size: 6px; opacity: 1; }
     /* the same ring, at the size the home screen can give it */
     .alb-ring-lg { width: 40px; height: 40px; }
     .alb-ring-lg::before { inset: 4px; background: var(--pocket); }
@@ -1031,7 +1046,7 @@
     /* the pocket has no intrinsic height, so the back is sized by the front */
     .flip-front { position: relative; }
 
-    .figback { position: relative; display: flex; flex-direction: column; height: 100%;
+    .figback { --figback-acc: #8E2A20; position: relative; display: flex; flex-direction: column; height: 100%;
       overflow: hidden;
       border-radius: 4px; padding: 6px 6px 7px; text-align: left;
       background: var(--retro-card2); color: var(--retro-ink);
@@ -1044,18 +1059,23 @@
     :root:not([data-theme="light"]) .figback-wm { opacity: .1; }
     .figback > span { position: relative; }
     .figback-h { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+    /* --retro-band is a deep red made for a band with white on it; as text on
+       the card itself it measured 2.0:1 in dark. The back gets its own accent,
+       kept red but lifted until it is legible on both papers. */
     .figback-n { font-family: var(--font-c); font-weight: 700; font-size: 7px;
-      letter-spacing: .1em; color: var(--retro-band); }
+      letter-spacing: .1em; color: var(--figback-acc); }
     .figback-nm { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
       font-size: 8.4px; line-height: 1.1; margin-top: 3px; overflow-wrap: anywhere; }
-    .figback-nick { font-size: 7px; font-style: italic; opacity: .72; margin-top: 1px; }
+    .figback-nick { font-size: 7px; font-style: italic; opacity: .85; margin-top: 1px; }
+    :root[data-theme="dark"] .figback, :root:not([data-theme="light"]) .figback {
+      --figback-acc: #DB6B60; }   /* #8E2A20 is 2.0:1 on the dark card */
     .figback-rule { display: block; height: 1px; background: var(--retro-edge);
       opacity: .6; margin: 4px 0 4px; }
     .figback-l { font-size: 6.8px; line-height: 1.35; opacity: .85; }
     .figback-l b { font-weight: 700; opacity: 1; }
-    .figback-clubs { margin-top: 2px; opacity: .68;
+    .figback-clubs { margin-top: 2px; opacity: .82;
       display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .figback-h2 { font-size: 6.8px; font-weight: 700; color: var(--retro-band);
+    .figback-h2 { font-size: 6.8px; font-weight: 700; color: var(--figback-acc);
       line-height: 1.3; margin-top: auto; padding-top: 3px; }
 
     .alb-fresh > .fig { box-shadow: 0 0 0 2px var(--brass), 0 2px 8px var(--shadow); }
@@ -1096,14 +1116,14 @@
        while you scan. */
     .alb-tab-c { font-family: var(--font-c); font-size: 8px; font-weight: 700;
       letter-spacing: .08em; color: var(--ink-2); line-height: 1; }
-    .alb-tab-n { font-size: 7.5px; font-weight: 800; color: var(--ink-3);
+    .alb-tab-n { font-size: 7.5px; font-weight: 800; color: var(--ink-2);
       font-variant-numeric: tabular-nums; letter-spacing: .02em; }
-    .alb-tab.is-on .alb-tab-c { color: var(--brass); }
+    .alb-tab.is-on .alb-tab-c { color: var(--brass-ink); }
     .alb-tab:active { transform: scale(.95); }
     .alb-tab.is-on { border-color: var(--brass); background: var(--brass-soft); }
-    .alb-tab.is-on .alb-tab-n { color: var(--brass); }
-    .alb-tab.is-done .alb-tab-n { color: var(--good); }
-    .alb-tab.is-on.is-done .alb-tab-n { color: var(--brass); }
+    .alb-tab.is-on .alb-tab-n { color: var(--brass-ink); }
+    .alb-tab.is-done .alb-tab-n { color: var(--good-ink); }
+    .alb-tab.is-on.is-done .alb-tab-n { color: var(--brass-ink); }
 
     /* the spread */
     .alb-book { flex: 1; min-height: 0; display: flex; flex-direction: column;
@@ -1121,7 +1141,7 @@
     .alb-band .t { display: block; font-family: var(--font-c); font-weight: 700;
       text-transform: uppercase; font-size: 15px; letter-spacing: .04em; line-height: 1.1; }
     .alb-band .langs { display: block; font-size: 7.5px; letter-spacing: .1em;
-      text-transform: uppercase; opacity: .72; margin-top: 1px; }
+      text-transform: uppercase; opacity: .95; margin-top: 1px; }
     .alb-dec { flex: none; font-family: var(--font-c); font-weight: 700; font-size: 9.5px;
       letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
       background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
@@ -1281,7 +1301,7 @@
     .alb-slot.empty .ph { font-family: var(--font-c); font-weight: 700; color: var(--rule);
       font-size: 15px; letter-spacing: .08em; }
     .alb-slot.empty .nm { font-family: var(--font-c); font-size: 7px; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink-4); font-weight: 600; }
+      text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
     .alb-n { position: absolute; top: -4px; left: -4px; z-index: 5; background: var(--ink);
       color: var(--stock); font-family: var(--font-s); font-size: 7px; font-weight: 800;
       padding: 1.5px 4px; border-radius: 3px; font-variant-numeric: tabular-nums;
@@ -1297,7 +1317,7 @@
     .alb-foot { margin-top: auto; padding-top: 9px; border-top: 1px solid var(--rule-2);
       display: flex; justify-content: space-between; align-items: center;
       font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--ink-4); font-weight: 600; }
+      color: var(--ink-3); font-weight: 600; }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -5187,7 +5207,7 @@ function shareText() {
     const verdict = banked >= LADDER[LADDER.length - 1].v ? 'LEVEI O MILHÃO!'
                   : cashed ? 'parei e levei' : 'caí e levei';
     const albM = runNew
-      ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${PL.length} no álbum`
+      ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${ALL_STICKERS.length} no álbum`
       : '';
     return `Rumo ao Milhão ⚽ Futebol Quiz BR\n${climb}\n`
          + `${verdict} ${money(banked)} · degrau ${rung}/${LADDER.length}${albM}\n${link}`;
@@ -5203,7 +5223,7 @@ function shareText() {
      It sits before the link, so the grid stays on the second line where the
      tests (and anyone skim-reading a WhatsApp message) expect it. */
   const alb = runNew
-    ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${PL.length} no álbum`
+    ? `\n📔 ${runNew} ${runNew === 1 ? 'figurinha nova' : 'figurinhas novas'} · ${album.size}/${ALL_STICKERS.length} no álbum`
     : '';
   return `${head}\n${grid}\n${nCorrect}/${cat.qs.length} acertos · ${pts} pts${strk}${alb}\n${link}`;
 }
@@ -6039,9 +6059,15 @@ const MEDALS = [
      the name "Meio álbum", which stopped being true when the album grew. */
   { id:'alb60',  ic:'ball',  n:'Sessenta coladas', d:'Colecione 60 figurinhas',
     t: () => album.size >= 60, p: () => [album.size, 60] },
-  { id:'albHalf',ic:'book',  n:'Meio álbum',      d:`Colecione ${ALB_HALF} figurinhas`,
+  /* These two are half and three quarters of the PLAYERS, which is what the
+     whole album was when they were written. The thresholds stay where they are
+     — moving them up would take the medal back off anyone sitting between the
+     old mark and the new one — but "Meio álbum" is no longer true of 149 out
+     of 474, so they are named for what they are instead of for a fraction that
+     goes stale every time the album grows. */
+  { id:'albHalf',ic:'book',  n:'Colecionador',    d:`Colecione ${ALB_HALF} figurinhas`,
     t: () => album.size >= ALB_HALF, p: () => [album.size, ALB_HALF] },
-  { id:'alb3q',  ic:'medal', n:'Reta final',      d:`Colecione ${ALB_3Q} figurinhas`,
+  { id:'alb3q',  ic:'medal', n:'Arquivista',      d:`Colecione ${ALB_3Q} figurinhas`,
     t: () => album.size >= ALB_3Q, p: () => [album.size, ALB_3Q] },
   /* This one used to read `album.size >= PL.length`, which was the whole album
      when the whole album was players. Now that there are badge, national-team
@@ -7107,7 +7133,10 @@ function html() {
         <span class="mode-disc">${ICON.book('currentColor', 17)}</span>
         <span style="flex:1;min-width:0;">
           <span class="mt" style="display:block;">Meu álbum</span>
-          <span class="ms" style="display:block;">${album.size} de ${PL.length} figurinhas</span>
+          <!-- ALL_STICKERS, not PL: the home button was still counting only
+               the players while the album screen counted the whole book, so
+               the ring said 0% next to "0 de 298" of 474. -->
+          <span class="ms" style="display:block;">${album.size} de ${ALL_STICKERS.length} figurinhas</span>
         </span>
         <span class="alb-ring alb-ring-lg" style="--p:${albumPct()}">
           <span class="alb-ring-n">${albumPct()}<i>%</i></span>

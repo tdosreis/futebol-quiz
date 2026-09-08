@@ -22,6 +22,7 @@ FAST = [
     ("test_generators",  ["tools/test_generators.py"], "generated questions are answerable"),
     ("test_behaviour",   ["tools/test_behaviour.py"],  "modes, symbols, artwork, licences"),
     ("check_images",     ["tools/check_images.py"],    "every image resolves and decodes"),
+    ("check_contrast",   ["tools/check_contrast.py"],  "text contrast on the rendered page"),
 ]
 SLOW = [
     ("narrow",           ["tools/narrow.py"],          "layout at four phone sizes"),
