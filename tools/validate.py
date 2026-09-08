@@ -86,9 +86,9 @@ for mid, body in re.findall(r"^\s*([\w_]+):\s*\{([^}]*)\}", meta_block, re.M):
 # is unusable — one rode along in the 298-player commit before this existed.
 _img_dir = os.path.join(os.path.dirname(__file__), "..", "img")
 if os.path.isdir(_img_dir):
-    _refs = set(re.findall(r"img/[0-9a-f]{16}\.(?:jpg|jpeg|png)", s))
+    _refs = set(re.findall(r"img/[0-9a-f]{16}\.(?:jpg|jpeg|png|webp)", s))
     _orphans = sorted(f for f in os.listdir(_img_dir)
-                      if re.fullmatch(r"[0-9a-f]{16}\.(jpg|jpeg|png)", f)
+                      if re.fullmatch(r"[0-9a-f]{16}\.(jpg|jpeg|png|webp)", f)
                       and "img/" + f not in _refs)
     if _orphans:
         warns.append(f"{len(_orphans)} image(s) nothing references: {_orphans[:4]}")
@@ -146,7 +146,7 @@ for m in re.finditer(r"\{ t:'((?:[^'\\]|\\.)*)'[^\n]*?type:'txt'[^\n]*", s):
 
 # image references resolve on disk
 root = os.path.dirname(P)
-for img in sorted(set(re.findall(r"img/[a-f0-9]{16}\.(?:png|jpg|jpeg)", s))):
+for img in sorted(set(re.findall(r"img/[a-f0-9]{16}\.(?:png|jpg|jpeg|webp)", s))):
     if not os.path.exists(os.path.join(root, img)):
         errs.append(f"missing image file: {img}")
 

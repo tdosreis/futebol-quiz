@@ -6,7 +6,11 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 s = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 
-refs = sorted(set(re.findall(r"img/[0-9a-f]{16}\.(?:png|jpg|jpeg)", s)))
+# .webp is in this list because the day the images became WebP this regex
+# matched nothing, the file-level checks below ran over an empty list, and
+# the suite still reported "suspiciously small: 0". A check that silently
+# stops checking is worse than no check.
+refs = sorted(set(re.findall(r"img/[0-9a-f]{16}\.(?:png|jpg|jpeg|webp)", s)))
 print(f"{len(refs)} image references in index.html")
 
 # ── file level ──
@@ -17,7 +21,9 @@ for r in refs:
     n = os.path.getsize(p)
     if n < 1500: tiny.append((r, n)); continue
     head = io.open(p, "rb").read(12)
-    if not (head.startswith(b"\x89PNG") or head.startswith(b"\xff\xd8")):
+    ok_hdr = (head.startswith(b"\x89PNG") or head.startswith(b"\xff\xd8")
+              or (head[:4] == b"RIFF" and head[8:12] == b"WEBP"))
+    if not ok_hdr:
         bad.append((r, head[:8]))
 print(f"  missing={len(missing)} tiny={len(tiny)} bad-header={len(bad)}")
 for x in missing[:10]: print("   MISSING", x)
