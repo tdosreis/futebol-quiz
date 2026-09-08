@@ -1152,39 +1152,85 @@
 
     /* the page arriving from the side it was turned towards */
     /* ── Turning the page ───────────────────────────────────────
-       The spread that is leaving is cloned into a leaf, hinged at the spine,
-       and swung away over the spread that is arriving — which is already
-       there, underneath, the way the next page of a book always is. The
-       arriving page only settles the last of the way; the leaf is what makes
-       it read as paper rather than a slide transition. */
-    .alb-book { perspective: 1600px; -webkit-perspective: 1600px; }
-    .alb-leaf { position: absolute; z-index: 6; pointer-events: none;
-      overflow: hidden; background: var(--pg-paper);
-      box-shadow: 0 0 22px -6px rgba(0,0,0,.5);
+       A spread is two half-pages meeting at a spine, and what turns is one
+       half, not the whole thing. It swings around the spine and lands on the
+       other side, and because it is a sheet of paper it has a back: the front
+       of the leaf is the half you were reading, the back of it is the half you
+       are about to read. The half that is NOT turning has to keep showing the
+       old spread until the leaf covers it, so it is held there separately —
+       the sheet underneath has already been replaced by then.
+
+       Everything is a clone. Nothing here is live: no scrolling, no focus, no
+       screen reader. It is a photograph of a page, mid-air. */
+    .alb-book { perspective: 1500px; -webkit-perspective: 1500px; }
+    .alb-turnwrap { position: absolute; z-index: 6; pointer-events: none;
+      transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
+    /* the half that stays put, still showing the spread you are leaving */
+    .alb-under { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden;
+      background: var(--pg-paper); }
+    .alb-under.side-l { left: 0; } .alb-under.side-r { left: 50%; }
+    /* the sheet inside a half is twice its width and slid sideways, so the
+       half you want is the part that shows */
+    .alb-clip { position: absolute; top: 0; height: 100%; width: 200%; }
+    .alb-clip.half-l { left: 0; } .alb-clip.half-r { left: -100%; }
+
+    .alb-leaf { position: absolute; top: 0; bottom: 0; width: 50%;
+      transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+      will-change: transform; }
+    .alb-leaf.leaf-fwd  { left: 50%; transform-origin: left center;
+      animation: leafFwd .62s cubic-bezier(.46,.03,.34,1) forwards; }
+    .alb-leaf.leaf-back { left: 0;   transform-origin: right center;
+      animation: leafBack .62s cubic-bezier(.46,.03,.34,1) forwards; }
+    @keyframes leafFwd  { from { transform: rotateY(0deg); }   to { transform: rotateY(-180deg); } }
+    @keyframes leafBack { from { transform: rotateY(0deg); }   to { transform: rotateY(180deg); } }
+
+    .alb-face { position: absolute; inset: 0; overflow: hidden;
+      background: var(--pg-paper);
       backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    /* the crease darkens as the paper lifts off the spine */
-    .alb-leaf::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(90deg, rgba(0,0,0,.30), rgba(0,0,0,0) 58%); opacity: 0;
-      animation: leafShade .44s ease-in forwards; }
-    .alb-leaf.leaf-back::after { background: linear-gradient(270deg, rgba(0,0,0,.30), rgba(0,0,0,0) 58%); }
-    @keyframes leafShade { from { opacity: 0; } to { opacity: 1; } }
-    .alb-leaf.leaf-fwd  { transform-origin: left center;
-      animation: leafFwd .44s cubic-bezier(.42,0,.42,1) forwards; }
-    .alb-leaf.leaf-back { transform-origin: right center;
-      animation: leafBack .44s cubic-bezier(.42,0,.42,1) forwards; }
-    @keyframes leafFwd  { from { transform: rotateY(0deg); opacity: 1; }
-                          80% { opacity: 1; }
-                          to  { transform: rotateY(-118deg); opacity: 0; } }
-    @keyframes leafBack { from { transform: rotateY(0deg); opacity: 1; }
-                          80% { opacity: 1; }
-                          to  { transform: rotateY(118deg); opacity: 0; } }
+    .alb-face.is-back { transform: rotateY(180deg); }
+
+    /* Paper is not a mirror and it is not flat while it turns. The gloss darkens
+       towards the spine as the sheet lifts and washes out again as it lands,
+       which is most of what sells the fold. */
+    .alb-gloss { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+    .leaf-fwd  .is-front .alb-gloss { background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,0) 62%);
+      animation: glossIn .62s ease-in forwards; }
+    .leaf-fwd  .is-back  .alb-gloss { background: linear-gradient(90deg, rgba(0,0,0,0) 38%, rgba(0,0,0,.42));
+      animation: glossOut .62s ease-out forwards; }
+    .leaf-back .is-front .alb-gloss { background: linear-gradient(270deg, rgba(0,0,0,.42), rgba(0,0,0,0) 62%);
+      animation: glossIn .62s ease-in forwards; }
+    .leaf-back .is-back  .alb-gloss { background: linear-gradient(270deg, rgba(0,0,0,0) 38%, rgba(0,0,0,.42));
+      animation: glossOut .62s ease-out forwards; }
+    @keyframes glossIn  { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes glossOut { from { opacity: 1; } to { opacity: 0; } }
+
+    /* and the shadow the raised page throws across the one it uncovers */
+    .alb-cast { position: absolute; top: 0; bottom: 0; width: 50%; pointer-events: none; }
+    .alb-cast.side-l { left: 0;   background: linear-gradient(270deg, rgba(0,0,0,.34), rgba(0,0,0,0) 55%); }
+    .alb-cast.side-r { left: 50%; background: linear-gradient(90deg,  rgba(0,0,0,.34), rgba(0,0,0,0) 55%); }
+    .alb-cast { animation: castOff .62s ease-out forwards; }
+    @keyframes castOff { from { opacity: 1; } to { opacity: 0; } }
+
     /* the arriving spread only has to settle — the leaf carries the movement */
-    @keyframes pageFwd  { from { opacity: .55; transform: translateX(10px) scale(.985); } }
-    @keyframes pageBack { from { opacity: .55; transform: translateX(-10px) scale(.985); } }
-    .alb-sheet.turn-fwd  { animation: pageFwd .34s cubic-bezier(.25,.9,.3,1); }
-    .alb-sheet.turn-back { animation: pageBack .34s cubic-bezier(.25,.9,.3,1); }
+    @keyframes pageFwd  { from { opacity: .82; } }
+    @keyframes pageBack { from { opacity: .82; } }
+    .alb-sheet.turn-fwd  { animation: pageFwd .3s ease-out; }
+    .alb-sheet.turn-back { animation: pageBack .3s ease-out; }
+
+    /* The block of pages still to come, stacked at the fore-edge. A real album
+       is visibly thicker on the side you have not read yet, and that is the
+       cheapest possible cue for where you are in it. */
+    .alb-edge { position: absolute; top: 7px; bottom: 7px; pointer-events: none; z-index: 4;
+      background: repeating-linear-gradient(90deg,
+        var(--pg-edge) 0 1px, transparent 1px 3px);
+      opacity: .55; }
+    .alb-edge-l { left: 0;  border-radius: 12px 0 0 12px;
+      box-shadow: inset -3px 0 5px -3px rgba(0,0,0,.4); }
+    .alb-edge-r { right: 0; border-radius: 0 12px 12px 0;
+      box-shadow: inset 3px 0 5px -3px rgba(0,0,0,.4); }
+
     @media (prefers-reduced-motion: reduce) {
-      .alb-leaf { display: none; }
+      .alb-turnwrap { display: none; }
       .alb-sheet.turn-fwd, .alb-sheet.turn-back { animation: none; }
     }
 
@@ -1425,6 +1471,15 @@ const snd = {
   tap()    { noise(.03, { freq: 1500, q: .9, vol: .055 }); },
   select() { noise(.035, { freq: 2100, q: 1.1, vol: .06 }); },
   swipe()  { noise(.19, { type: 'highpass', freq: 500, to: 3400, q: .5, vol: .045 }); },
+  /* A page being turned, in three parts, because that is what it sounds like:
+     the sheet peeling off the one under it, the long dry rustle while it is in
+     the air, and the soft slap as it lands on the other side. Nothing tonal —
+     paper has no pitch. */
+  page()   {
+    noise(.09, { type: 'highpass', freq: 1400, to: 3200, q: .5,  vol: .05  });
+    noise(.30, { type: 'bandpass', freq: 1500, to: 520,  q: .45, vol: .055, delay: .05 });
+    noise(.13, { type: 'lowpass',  freq: 900,  to: 260,  q: .7,  vol: .05,  delay: .30 });
+  },
 
   /* ── the answer ── */
   correct() {
@@ -7278,6 +7333,16 @@ function html() {
            not its oldest: "todas as épocas" is not a period piece -->
       <div class="alb-book ${isExtra(albCtry) ? 'dec-x' + albCtry.slice(2, 3)
         : decStyle(pages.length === 1 ? spread.to : spread.from)}" id="alb-book">
+        <!-- The block of pages either side of the one you are on. A book is
+             visibly thicker on the side you have not read yet, and nothing
+             says "you are four spreads in with three to go" faster. -->
+        ${(() => {
+          const px = n => Math.min(9, n) * 1.6;
+          const edge = (side, n) => n <= 0 ? '' :
+            `<span class="alb-edge alb-edge-${side}" aria-hidden="true"
+               style="width:${px(n)}px"></span>`;
+          return edge('l', albPage) + edge('r', pages.length - 1 - albPage);
+        })()}
         <div class="alb-band">
           <span class="crest-box" style="width:30px;flex:none;">${sec
             ? `<span class="alb-globe">${sec.ic()}</span>`
@@ -7835,16 +7900,16 @@ function go() {
          country band and a leaf pinned to the whole book would swing the band
          away too. */
       const bk = document.getElementById('alb-book');
-      const sh = bk && bk.querySelector('.alb-sheet');
+      const sh = bk && bk.querySelector(':scope > .alb-sheet');
       if (bk && sh && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const b = bk.getBoundingClientRect(), r = sh.getBoundingClientRect();
-        albLeaf = { html: sh.outerHTML, dir: dir > 0 ? 'fwd' : 'back',
+        albLeaf = { out: sh.outerHTML, dir: dir > 0 ? 'fwd' : 'back',
                     top: r.top - b.top, left: r.left - b.left,
                     w: r.width, h: r.height };
       }
       albTurning = dir > 0 ? 'fwd' : 'back';
       albPage += dir;
-      snd.swipe(); go();
+      snd.page(); go();
     };
     on('alb-prev', () => flip(-1));
     on('alb-next', () => flip(1));
@@ -7884,26 +7949,54 @@ function go() {
       }, { passive: true });
     }
 
-    /* plant the page that is leaving over the one that arrived */
+    /* Build the turning page out of the two spreads. Forward, the right half
+       of the old spread swings across and lands as the left half of the new
+       one — so that is exactly what goes on its two faces. Backward is the
+       same move mirrored. */
     if (albLeaf) {
       const L = albLeaf; albLeaf = null;
       const bk = document.getElementById('alb-book');
-      if (bk) {
-        const leaf = document.createElement('div');
-        leaf.className = 'alb-leaf leaf-' + L.dir;
-        leaf.setAttribute('aria-hidden', 'true');
-        leaf.style.cssText = `top:${L.top}px;left:${L.left}px;width:${L.w}px;height:${L.h}px;`;
-        leaf.innerHTML = L.html;
-        /* it is a picture of a page, not a page: nothing in it should scroll,
-           take focus, or be read out a second time */
-        const inner = leaf.firstElementChild;
-        if (inner) { inner.style.overflow = 'hidden'; inner.classList.remove('turn-fwd', 'turn-back'); }
-        leaf.querySelectorAll('[tabindex],[role="button"]').forEach(el => {
-          el.removeAttribute('tabindex'); el.removeAttribute('role'); });
-        bk.appendChild(leaf);
-        const done = () => leaf.remove();
-        leaf.addEventListener('animationend', done);
-        setTimeout(done, 900);        // a backgrounded tab never fires the event
+      const sheet = bk && bk.querySelector(':scope > .alb-sheet');
+      if (bk && sheet) {
+        const fwd = L.dir === 'fwd';
+        /* the clip is 200% of the half it sits in — that is one whole sheet —
+           and half-r slides it left by its own container's width. Setting a
+           pixel width here made it twice the sheet and the halves came out
+           wrong. */
+        const half = (html, which) => `<div class="alb-clip half-${which}">${html}</div>`;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'alb-turnwrap';
+        wrap.setAttribute('aria-hidden', 'true');
+        wrap.style.cssText = `top:${L.top}px;left:${L.left}px;width:${L.w}px;height:${L.h}px;`;
+        wrap.innerHTML =
+          /* the half that does not move, still on the old spread */
+          `<div class="alb-under side-${fwd ? 'l' : 'r'}">${half(L.out, fwd ? 'l' : 'r')}</div>` +
+          /* the shadow the lifted page throws on what it uncovers */
+          `<div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>` +
+          `<div class="alb-leaf leaf-${L.dir}">
+             <div class="alb-face is-front">${half(L.out, fwd ? 'r' : 'l')}<div class="alb-gloss"></div></div>
+             <div class="alb-face is-back">${half(sheet.outerHTML, fwd ? 'l' : 'r')}<div class="alb-gloss"></div></div>
+           </div>`;
+
+        /* a photograph of a page: nothing in it scrolls, takes focus or is read out */
+        wrap.querySelectorAll('.alb-sheet').forEach(el => {
+          el.style.overflow = 'hidden';
+          el.classList.remove('turn-fwd', 'turn-back');
+        });
+        wrap.querySelectorAll('[tabindex],[role="button"],[id]').forEach(el => {
+          el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('id');
+        });
+        bk.appendChild(wrap);
+        const leaf = wrap.querySelector('.alb-leaf');
+        const done = () => wrap.remove();
+        /* animationend BUBBLES, and the cloned spread brings its own animated
+           nodes with it — any one of them finishing was tearing the page out of
+           the air the instant it was put there. Only the leaf's own turn counts. */
+        leaf.addEventListener('animationend', e => {
+          if (e.target === leaf && /^leaf/.test(e.animationName)) done();
+        });
+        setTimeout(done, 1400);   // a backgrounded tab never fires the event
       }
     }
 
