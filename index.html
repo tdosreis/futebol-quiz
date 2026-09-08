@@ -1474,7 +1474,7 @@ const snd = {
      and splitting it across the drag left half a sound hanging whenever a turn
      was abandoned. Synthesised paper that is not convincing is worse than no
      paper at all, so there is now as little of it as possible. */
-  page()   { noise(.16, { type: 'highpass', freq: 1200, to: 2800, q: .4, vol: .022 }); },
+  page()   { noise(.28, { type: 'highpass', freq: 1200, to: 2800, q: .4, vol: .022 }); },
 
   /* ── the answer ── */
   correct() {
@@ -7953,10 +7953,10 @@ function go() {
         const T = albTurn; G.live = false; albDrag = false; G.x0 = null;
         if (!T) { G.dir = 0; return; }
         const now = T.progress || 0;
-        if (commit) { snd.page(); T.run(now, 1, Math.max(160, (1 - now) * 460)); }
+        if (commit) { snd.page(); T.run(now, 1, Math.max(380, (1 - now) * 900)); }
         else {
           const back = G.dir;                     // undo the page we committed
-          T.run(now, 0, Math.max(140, now * 380), () => { albPage -= back; go(); });
+          T.run(now, 0, Math.max(320, now * 740), () => { albPage -= back; go(); });
         }
         G.dir = 0;
       };
@@ -8091,7 +8091,9 @@ function go() {
            free edge passes vertical early enough that half the leaf shows its
            front and half its back for most of the arc, which reads as two
            spreads at once rather than one page bending. */
-        const DUR = 480, BOW = 30 * Math.PI / 180;
+        /* 820ms, not 480. A page has weight: it does not leave the table the
+           instant you let go and it does not arrive all at once. */
+        const DUR = 820, BOW = 30 * Math.PI / 180;
         const cast   = wrap.querySelector('.alb-cast');
         const fEls   = [...wrap.querySelectorAll('.alb-strip.is-front')];
         const bEls   = [...wrap.querySelectorAll('.alb-strip.is-back')];
@@ -8158,7 +8160,12 @@ function go() {
           const step = now => {
             if (done) return;
             const t = Math.min(1, (now - t0) / ms);
-            const k = 1 - Math.pow(1 - t, 2.1);            // leaves fast, lands soft
+            /* Smootherstep: flat at both ends in speed *and* in acceleration,
+               so the page eases away from rest and settles into the landing
+               instead of snapping into it. The old curve left at 2.1x speed
+               from a standstill, which is what made the turn feel flicked
+               rather than let go of. */
+            const k = t * t * t * (t * (t * 6 - 15) + 10);
             at(from + (to - from) * k);
             if (t < 1) raf = requestAnimationFrame(step);
             else land();

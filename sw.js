@@ -27,8 +27,10 @@
 
    v11: the slices sit in a single 3D context now, because nested preserve-3d
    was the likeliest reason the bend rendered here and not on a real phone.
-   And the page-turn sound is one quiet rustle instead of three parts. */
-const VERSION = 'v11';
+   And the page-turn sound is one quiet rustle instead of three parts.
+
+   v12: the turn is slower and eased differently — it had been flicking. */
+const VERSION = 'v12';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
