@@ -1174,35 +1174,33 @@
     .alb-clip { position: absolute; top: 0; height: 100%; width: 200%; }
     .alb-clip.half-l { left: 0; } .alb-clip.half-r { left: -100%; }
 
-    .alb-leaf { position: absolute; top: 0; bottom: 0; width: 50%;
+    /* A sheet of paper does not stay flat while you turn it, and a plane that
+       rotates rigidly reads as a rotating rectangle no matter how it is shaded.
+       So the half-page is cut into strips, each one hinged on the trailing edge
+       of the one before it. Rotate each by a little and the chain traces a
+       curve: the outer edge — the corner you are actually holding — leads, and
+       the paper near the spine lags behind and catches up. That lag is the
+       whole effect.
+
+       The angles are driven per frame from script, because the bend has to
+       grow and flatten again over the turn and no keyframe can express "each
+       strip gets a different share of an angle that is itself changing". */
+    .alb-leaf, .alb-strip { position: absolute; top: 0; bottom: 0;
       transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
-      will-change: transform; }
-    .alb-leaf.leaf-fwd  { left: 50%; transform-origin: left center;
-      animation: leafFwd .62s cubic-bezier(.46,.03,.34,1) forwards; }
-    .alb-leaf.leaf-back { left: 0;   transform-origin: right center;
-      animation: leafBack .62s cubic-bezier(.46,.03,.34,1) forwards; }
-    @keyframes leafFwd  { from { transform: rotateY(0deg); }   to { transform: rotateY(-180deg); } }
-    @keyframes leafBack { from { transform: rotateY(0deg); }   to { transform: rotateY(180deg); } }
+      transform-origin: left center; will-change: transform; }
+    .alb-strip { left: 100%; }
+    .alb-leaf.leaf-back, .leaf-back .alb-strip { transform-origin: right center; }
+    .leaf-back .alb-strip { left: auto; right: 100%; }
 
     .alb-face { position: absolute; inset: 0; overflow: hidden;
       background: var(--pg-paper);
       backface-visibility: hidden; -webkit-backface-visibility: hidden; }
     .alb-face.is-back { transform: rotateY(180deg); }
 
-    /* Paper is not a mirror and it is not flat while it turns. The gloss darkens
-       towards the spine as the sheet lifts and washes out again as it lands,
-       which is most of what sells the fold. */
-    .alb-gloss { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-    .leaf-fwd  .is-front .alb-gloss { background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,0) 62%);
-      animation: glossIn .62s ease-in forwards; }
-    .leaf-fwd  .is-back  .alb-gloss { background: linear-gradient(90deg, rgba(0,0,0,0) 38%, rgba(0,0,0,.42));
-      animation: glossOut .62s ease-out forwards; }
-    .leaf-back .is-front .alb-gloss { background: linear-gradient(270deg, rgba(0,0,0,.42), rgba(0,0,0,0) 62%);
-      animation: glossIn .62s ease-in forwards; }
-    .leaf-back .is-back  .alb-gloss { background: linear-gradient(270deg, rgba(0,0,0,0) 38%, rgba(0,0,0,.42));
-      animation: glossOut .62s ease-out forwards; }
-    @keyframes glossIn  { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes glossOut { from { opacity: 1; } to { opacity: 0; } }
+    /* Each strip is shaded by how edge-on it is, so the curve is visible as
+       light falling across paper rather than as a set of flat facets. */
+    .alb-shade { position: absolute; inset: 0; pointer-events: none;
+      background: #000; opacity: 0; }
 
     /* and the shadow the raised page throws across the one it uncovers */
     .alb-cast { position: absolute; top: 0; bottom: 0; width: 50%; pointer-events: none; }
@@ -7958,45 +7956,104 @@ function go() {
       const bk = document.getElementById('alb-book');
       const sheet = bk && bk.querySelector(':scope > .alb-sheet');
       if (bk && sheet) {
-        const fwd = L.dir === 'fwd';
-        /* the clip is 200% of the half it sits in — that is one whole sheet —
-           and half-r slides it left by its own container's width. Setting a
-           pixel width here made it twice the sheet and the halves came out
-           wrong. */
-        const half = (html, which) => `<div class="alb-clip half-${which}">${html}</div>`;
+        const fwd  = L.dir === 'fwd';
+        const N    = 7;                        // strips across the half-page
+        const Hw   = L.w / 2;                  // a half-page
+        const sw   = Hw / N;                   // one strip
+        const sign = fwd ? -1 : 1;
+
+        /* No pruning. The obvious optimisation is to drop the cards a strip
+           does not overlap, and it cannot be done: the spread is a CSS grid,
+           so removing an item reflows every item after it into the empty cell
+           and each strip shows a different, wrong page. A spread is 400 nodes;
+           fourteen of them for six hundred milliseconds is the cheaper problem. */
 
         const wrap = document.createElement('div');
         wrap.className = 'alb-turnwrap';
         wrap.setAttribute('aria-hidden', 'true');
         wrap.style.cssText = `top:${L.top}px;left:${L.left}px;width:${L.w}px;height:${L.h}px;`;
         wrap.innerHTML =
-          /* the half that does not move, still on the old spread */
-          `<div class="alb-under side-${fwd ? 'l' : 'r'}">${half(L.out, fwd ? 'l' : 'r')}</div>` +
-          /* the shadow the lifted page throws on what it uncovers */
-          `<div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>` +
-          `<div class="alb-leaf leaf-${L.dir}">
-             <div class="alb-face is-front">${half(L.out, fwd ? 'r' : 'l')}<div class="alb-gloss"></div></div>
-             <div class="alb-face is-back">${half(sheet.outerHTML, fwd ? 'l' : 'r')}<div class="alb-gloss"></div></div>
-           </div>`;
+          `<div class="alb-under side-${fwd ? 'l' : 'r'}">
+             <div class="alb-clip half-${fwd ? 'l' : 'r'}">${L.out}</div></div>
+           <div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>`;
 
-        /* a photograph of a page: nothing in it scrolls, takes focus or is read out */
-        wrap.querySelectorAll('.alb-sheet').forEach(el => {
-          el.style.overflow = 'hidden';
-          el.classList.remove('turn-fwd', 'turn-back');
-        });
+        /* one face = a clone of a spread, slid so the strip's own slice of it
+           is what shows through */
+        const face = (html, offset) => {
+          const d = document.createElement('div');
+          d.className = 'alb-clip';
+          d.style.cssText = `width:${L.w}px;left:${-offset}px;`;
+          d.innerHTML = html;
+          const inner = d.querySelector('.alb-sheet');
+          if (inner) { inner.style.overflow = 'hidden'; inner.classList.remove('turn-fwd', 'turn-back'); }
+          return d;
+        };
+
+        const strips = [];
+        let host = wrap;
+        for (let k = 0; k < N; k++) {
+          const el = document.createElement('div');
+          el.className = k === 0 ? `alb-leaf leaf-${L.dir}` : 'alb-strip';
+          el.style.width = sw + 'px';
+          if (k === 0) el.style[fwd ? 'left' : 'right'] = '50%';
+
+          /* front: the outgoing half, counted out from the spine.
+             back: the incoming half — strip k lands k strips from the spine on
+             the far side, which is column N-1-k of that half. */
+          const fx0 = fwd ? Hw + k * sw : Hw - (k + 1) * sw;
+          const bJ  = N - 1 - k;
+          const bx0 = fwd ? bJ * sw : Hw + bJ * sw;
+
+          const f = document.createElement('div'); f.className = 'alb-face is-front';
+          f.appendChild(face(L.out, fx0));
+          f.insertAdjacentHTML('beforeend', '<div class="alb-shade"></div>');
+          const b = document.createElement('div'); b.className = 'alb-face is-back';
+          b.appendChild(face(sheet.outerHTML, bx0));
+          b.insertAdjacentHTML('beforeend', '<div class="alb-shade"></div>');
+          el.appendChild(f); el.appendChild(b);
+          host.appendChild(el); host = el;
+          strips.push(el);
+        }
+
         wrap.querySelectorAll('[tabindex],[role="button"],[id]').forEach(el => {
           el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('id');
         });
         bk.appendChild(wrap);
-        const leaf = wrap.querySelector('.alb-leaf');
-        const done = () => wrap.remove();
-        /* animationend BUBBLES, and the cloned spread brings its own animated
-           nodes with it — any one of them finishing was tearing the page out of
-           the air the instant it was put there. Only the leaf's own turn counts. */
-        leaf.addEventListener('animationend', e => {
-          if (e.target === leaf && /^leaf/.test(e.animationName)) done();
-        });
-        setTimeout(done, 1400);   // a backgrounded tab never fires the event
+
+        /* ── the turn ──
+           Θ is how far the whole page has gone. `bow` is zero at both ends and
+           one in the middle, so the sheet is flat when it is lying down and at
+           its most curved halfway over. Within that, the strips nearer the
+           free edge take a bigger share of the angle, which is what makes the
+           corner lead and the spine end lag. */
+        const DUR = 620, BOW = 1.7;
+        const cast = wrap.querySelector('.alb-cast');
+        const t0 = performance.now();
+        let raf = 0;
+        const frame = now => {
+          const t = Math.min(1, (now - t0) / DUR);
+          const e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;   // easeInOutCubic
+          const total = e * 180, bow = Math.sin(Math.PI * t);
+          let wsum = 0; const wk = [];
+          for (let k = 0; k < N; k++) {
+            const w = 1 + BOW * bow * ((k / (N - 1)) - .5);
+            wk.push(w); wsum += w;
+          }
+          let cum = 0;
+          for (let k = 0; k < N; k++) {
+            const d = total * wk[k] / wsum;
+            strips[k].style.transform = `rotateY(${sign * d}deg)`;
+            cum += d;
+            /* edge-on paper is dark; face-on paper is not */
+            const sh = Math.min(.38, Math.abs(Math.sin(cum * Math.PI / 180)) * .34 + bow * .08);
+            strips[k].querySelectorAll(':scope > .alb-face > .alb-shade')
+              .forEach(s => { s.style.opacity = sh; });
+          }
+          if (cast) cast.style.opacity = String(Math.max(0, 1 - e * 1.6));
+          if (t < 1) raf = requestAnimationFrame(frame); else wrap.remove();
+        };
+        raf = requestAnimationFrame(frame);
+        setTimeout(() => { cancelAnimationFrame(raf); wrap.remove(); }, DUR + 700);
       }
     }
 
