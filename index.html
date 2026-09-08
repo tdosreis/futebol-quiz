@@ -1173,10 +1173,14 @@
     .alb-clip { position: absolute; top: 0; height: 100%; width: 200%; }
     .alb-clip.half-l { left: 0; } .alb-clip.half-r { left: -100%; }
 
-    .alb-leaf { position: absolute; top: 0; bottom: 0; width: 50%;
-      transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
-    .alb-leaf.leaf-fwd  { left: 50%; transform-origin: left center; }
-    .alb-leaf.leaf-back { left: 0;   transform-origin: right center; }
+    /* No wrapper element around the slices. It used to hold a small rotateZ
+       so the page tipped as it went over, but it also made the slices three
+       preserve-3d levels deep (wrap > leaf > slice > face), and nested
+       preserve-3d is the first thing Android WebView gives up on. When it
+       flattens, every slice collapses into one plane and the bend disappears
+       — the page turns as a rigid plate, which is exactly what it looked
+       like on a real phone while these screenshots showed a curve. Two
+       levels now, and the tip is not worth a third. */
 
     /* ── why the leaf is sliced ──────────────────────────────────────────
        A single plane cannot bend, and a page that cannot bend reads as a
@@ -1191,12 +1195,9 @@
        makes corrugated cardboard, because the gradient repeats every slice;
        shading here is one flat value per slice taken from that slice's own
        angle, which varies smoothly across the leaf and so reads as a curve. */
-    .alb-strip { position: absolute; top: 0; bottom: 0;
-      transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
-    .alb-face { position: absolute; inset: 0; overflow: hidden;
+    .alb-strip { position: absolute; top: 0; bottom: 0; overflow: hidden;
       background: var(--pg-paper);
       backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    .alb-face.is-back { transform: rotateY(180deg); }
     /* flat black; the angle of the slice it sits on sets how much of it shows */
     .alb-lit { position: absolute; inset: 0; pointer-events: none;
       background: #000; opacity: 0; }
@@ -1466,19 +1467,14 @@ const snd = {
      the sheet peeling off the one under it, the long dry rustle while it is in
      the air, and the soft slap as it lands on the other side. Nothing tonal —
      paper has no pitch. */
-  page()   {
-    /* No low end. The settle used to sweep down to 170Hz, which is a knock on
-       something hard — the user heard metal or stone. Paper landing on paper is
-       a soft, high, short sound with no pitch to it at all. */
-    snd.peel();
-    snd.land(.20);
-  },
-  /* Dragged, the page makes its noise in two halves an unknown time apart —
-     the peel when your thumb lifts it, the landing when you let go. A tap
-     plays both back to back; that is all `page` is. */
-  peel()   { noise(.22, { type: 'highpass', freq: 900,  to: 2600, q: .4, vol: .05 }); },
-  land(d)  { noise(.09, { type: 'bandpass', freq: 1500, to: 900,  q: .7, vol: .035,
-                          delay: d || 0 }); },
+  /* One short, faint rustle when the page actually goes over, and nothing
+     else. This started as a three-part thing — a peel as the thumb lifted the
+     sheet, a rustle through the air, a landing as it came down — and every
+     version of it was wrong: the settle swept to 170Hz and knocked like stone,
+     and splitting it across the drag left half a sound hanging whenever a turn
+     was abandoned. Synthesised paper that is not convincing is worse than no
+     paper at all, so there is now as little of it as possible. */
+  page()   { noise(.16, { type: 'highpass', freq: 1200, to: 2800, q: .4, vol: .022 }); },
 
   /* ── the answer ── */
   correct() {
@@ -7957,7 +7953,7 @@ function go() {
         const T = albTurn; G.live = false; albDrag = false; G.x0 = null;
         if (!T) { G.dir = 0; return; }
         const now = T.progress || 0;
-        if (commit) { snd.land(); T.run(now, 1, Math.max(160, (1 - now) * 460)); }
+        if (commit) { snd.page(); T.run(now, 1, Math.max(160, (1 - now) * 460)); }
         else {
           const back = G.dir;                     // undo the page we committed
           T.run(now, 0, Math.max(140, now * 380), () => { albPage -= back; go(); });
@@ -7980,7 +7976,7 @@ function go() {
           const want = dx < 0 ? 1 : -1;
           const btn = document.getElementById(want > 0 ? 'alb-next' : 'alb-prev');
           if (!btn || btn.disabled) { G.x0 = null; return; }
-          G.dir = want; G.live = true; albDrag = true; snd.peel();
+          G.dir = want; G.live = true; albDrag = true;
           flip(want);                             // renders the new spread and builds the leaf
           albDrag = false;                        // the leaf is built; the flag has done its job
           if (!albTurn) { G.live = false; G.x0 = null; return; }
@@ -8032,30 +8028,40 @@ function go() {
         /* Each slice is a window onto the whole spread, shifted so the pieces
            line up into one continuous page. The reverse of a slice is the
            mirror of the leaf, not the mirror of the slice, which is why the
-           two clips are offset from opposite ends. */
+           two clips are offset from opposite ends.
+
+           Front and back are separate, side-by-side slices rather than two
+           faces inside one — which is the whole point. A slice holding two
+           faces has to be preserve-3d itself, and that puts the geometry two
+           levels deep inside another preserve-3d; nested preserve-3d is the
+           first thing Android WebView abandons, and when it does, every slice
+           collapses into a single plane and the page turns as a rigid board.
+           Laid out flat like this there is exactly one 3D context, the wrap,
+           and each slice carries its whole placement in one transform. */
         const wide = [], mid = [];        // each slice's length, and where it sits
-        let strips = '';
+        let front = '', back = '';
         for (let j = 0; j < N; j++) {
           const near = cut(j), far = cut(j + 1);
           wide.push(far - near);
           mid.push((near + far) / 2 / LW);
-          const left  = fwd ? near : LW - far - OV;
+          /* placed straight into the wrap, so the page's own offset is
+             carried here rather than by a wrapper */
+          const left  = fwd ? LW + near : LW - far - OV;
           const fClip = fwd ? -(LW + near) : -(LW - far - OV);
           const bClip = fwd ? -(LW - far - OV) : -(LW + near);
-          const clip = (html, off) =>
-            `<div class="alb-clip" style="left:${off}px;width:${L.w}px">${html}</div>`;
-          strips +=
-            `<div class="alb-strip" style="left:${left}px;width:${far - near + OV}px;` +
-              `transform-origin:${fwd ? '0' : '100%'} 50%">
-               <div class="alb-face is-front">${clip(L.out, fClip)}<div class="alb-lit"></div></div>
-               <div class="alb-face is-back">${clip(sheet.outerHTML, bClip)}<div class="alb-lit"></div></div>
-             </div>`;
+          const box = (cls, off, html) =>
+            `<div class="alb-strip ${cls}" style="left:${left}px;` +
+              `width:${far - near + OV}px;transform-origin:${fwd ? '0' : '100%'} 50%">` +
+              `<div class="alb-clip" style="left:${off}px;width:${L.w}px">${html}</div>` +
+              `<div class="alb-lit"></div></div>`;
+          front += box('is-front', fClip, L.out);
+          back  += box('is-back',  bClip, sheet.outerHTML);
         }
 
         wrap.innerHTML =
           `<div class="alb-under side-${fwd ? 'l' : 'r'}">${half(L.out, fwd ? 'l' : 'r')}</div>
            <div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>
-           <div class="alb-leaf leaf-${L.dir}">${strips}</div>`;
+           ${front}${back}`;
 
         wrap.querySelectorAll('.alb-sheet').forEach(el => {
           el.style.overflow = 'hidden'; el.classList.remove('turn-fwd', 'turn-back');
@@ -8085,20 +8091,25 @@ function go() {
            free edge passes vertical early enough that half the leaf shows its
            front and half its back for most of the arc, which reads as two
            spreads at once rather than one page bending. */
-        const DUR = 480, ROLL = 7, BOW = 30 * Math.PI / 180;
-        const leaf   = wrap.querySelector('.alb-leaf');
+        const DUR = 480, BOW = 30 * Math.PI / 180;
         const cast   = wrap.querySelector('.alb-cast');
-        const sEls   = [...wrap.querySelectorAll('.alb-strip')];
-        const fLit   = sEls.map(el => el.querySelector('.is-front .alb-lit'));
-        const bLit   = sEls.map(el => el.querySelector('.is-back  .alb-lit'));
+        const fEls   = [...wrap.querySelectorAll('.alb-strip.is-front')];
+        const bEls   = [...wrap.querySelectorAll('.alb-strip.is-back')];
+        const fLit   = fEls.map(el => el.querySelector('.alb-lit'));
+        const bLit   = bEls.map(el => el.querySelector('.alb-lit'));
         const dirX   = fwd ? 1 : -1;
+        /* A slice's reverse is the same plane facing the other way. Rotating
+           180 about the slice's own pivot would swing it somewhere else, so
+           it steps to its far edge first: translateX then rotateY(180) maps
+           the slice onto itself reversed, which is what a sheet of paper does
+           and why the two clips can stay as they are. */
+        const flipX  = fwd ? 1 : -1;
 
         const at = e => {
           e = Math.min(1, Math.max(0, e));
           const lift = Math.sin(Math.PI * e);
           const A    = sign * Math.PI * e;
           const bow  = sign * BOW * lift;
-          leaf.style.transform = `rotateZ(${sign * ROLL * lift}deg)`;
 
           let x = fwd ? 0 : LW, z = 0, run = 0;
           for (let j = 0; j < N; j++) {
@@ -8106,8 +8117,10 @@ function go() {
                page gives most */
             const th = A + bow * Math.pow(mid[j], 1.35);
             const flat = fwd ? run : LW - run;
-            sEls[j].style.transform =
-              `translate3d(${x - flat}px,0,${z}px) rotateY(${th}rad)`;
+            const place = `translate3d(${x - flat}px,0,${z}px) rotateY(${th}rad)`;
+            fEls[j].style.transform = place;
+            bEls[j].style.transform =
+              `${place} translateX(${flipX * (wide[j] + OV)}px) rotateY(180deg)`;
             /* how square this slice is to the light. Both faces come off the
                same angle, so whichever one you can see is the lit one. */
             const c = Math.cos(th);

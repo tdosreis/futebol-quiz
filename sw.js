@@ -23,8 +23,12 @@
 
    v10: the turning page is sliced and bends now, instead of swinging as one
    rigid plane. index.html again — and v9 has already gone out, so it needs
-   its own version or anyone already on v9 keeps the flat one. */
-const VERSION = 'v10';
+   its own version or anyone already on v9 keeps the flat one.
+
+   v11: the slices sit in a single 3D context now, because nested preserve-3d
+   was the likeliest reason the bend rendered here and not on a real phone.
+   And the page-turn sound is one quiet rustle instead of three parts. */
+const VERSION = 'v11';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
