@@ -1126,17 +1126,15 @@
     .alb-tab.is-on.is-done .alb-tab-n { color: var(--brass-ink); }
 
     /* the spread */
-    .alb-book { flex: 1; min-height: 0; display: flex; flex-direction: column;
+    .alb-book { position: relative; flex: 1; min-height: 0; display: flex;
+      flex-direction: column;
       border-radius: 12px; overflow: hidden; background: var(--pg-paper);
       box-shadow: inset 0 0 0 1px var(--pg-edge), 0 2px 10px var(--shadow);
       /* the gutter, where the two halves of a real spread meet */
       background-image: linear-gradient(90deg, transparent 49.4%, var(--pg-edge) 49.7%,
                         var(--pg-edge) 50.3%, transparent 50.6%);
       background-size: 100% 100%; }
-    /* Above the turning leaf: rotated in 3D the page grows past its own box on
-       the near side, and swept up over the country band, which does not turn. */
     .alb-band { display: flex; align-items: center; gap: 8px; flex: none;
-      position: relative; z-index: 7;
       padding: 7px 10px; background: var(--pg-band); color: var(--pg-bandink); }
     .alb-band .t { display: block; font-family: var(--font-c); font-weight: 700;
       text-transform: uppercase; font-size: 15px; letter-spacing: .04em; line-height: 1.1; }
@@ -1150,75 +1148,15 @@
     .alb-sheet { flex: 1; min-height: 0; padding: 9px 8px 6px;
       display: flex; flex-direction: column; }
 
-    /* the page arriving from the side it was turned towards */
     /* ── Turning the page ───────────────────────────────────────
-       This was sixteen strips hinged end to end, approximating a curve. It
-       looked like a barcode: thirty-two clipped faces cannot meet cleanly, and
-       for most of the turn the page was a grey mass crossed by bright vertical
-       seams. A curve built from facets is not worth having if you can see the
-       facets, so it is one solid leaf again — and everything that was being
-       spent on geometry now goes on perspective, light and timing, which is
-       what actually sells it.
-
-       The half-page still turns about the spine and still has two faces: the
-       half you were reading on the front, the half you are about to read on
-       the back. */
-    .alb-book { perspective: 760px; -webkit-perspective: 760px;
-      perspective-origin: 50% 42%; }
-    .alb-turnwrap { position: absolute; z-index: 6; pointer-events: none;
-      transform-style: preserve-3d; -webkit-transform-style: preserve-3d; }
-    .alb-under { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden;
-      background: var(--pg-paper); }
-    .alb-under.side-l { left: 0; } .alb-under.side-r { left: 50%; }
-    .alb-clip { position: absolute; top: 0; height: 100%; width: 200%; }
-    .alb-clip.half-l { left: 0; } .alb-clip.half-r { left: -100%; }
-
-    /* No wrapper element around the slices. It used to hold a small rotateZ
-       so the page tipped as it went over, but it also made the slices three
-       preserve-3d levels deep (wrap > leaf > slice > face), and nested
-       preserve-3d is the first thing Android WebView gives up on. When it
-       flattens, every slice collapses into one plane and the bend disappears
-       — the page turns as a rigid plate, which is exactly what it looked
-       like on a real phone while these screenshots showed a curve. Two
-       levels now, and the tip is not worth a third. */
-
-    /* ── why the leaf is sliced ──────────────────────────────────────────
-       A single plane cannot bend, and a page that cannot bend reads as a
-       rigid plate however nicely it is lit. So the leaf is cut into slices
-       and each one is placed along a curve, in JS, by arc length.
-
-       Two things killed the first attempt at this and are deliberately not
-       done here. Chaining the slices — each one a child of the last, sharing
-       a pivot — always rolls the page into a tube, because the rotations
-       compound; every slice is instead an absolutely-placed sibling with its
-       own computed position. And giving each slice its own light gradient
-       makes corrugated cardboard, because the gradient repeats every slice;
-       shading here is one flat value per slice taken from that slice's own
-       angle, which varies smoothly across the leaf and so reads as a curve. */
-    .alb-strip { position: absolute; top: 0; bottom: 0; overflow: hidden;
-      background: var(--pg-paper);
-      backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    /* flat black; the angle of the slice it sits on sets how much of it shows */
-    .alb-lit { position: absolute; inset: 0; pointer-events: none;
-      background: #000; opacity: 0; }
-    /* the catch-light along the curl: paper is shiny enough that the part of
-       it turned edge-on to you throws back more light than the flat page
-       around it, which is what actually reads as a curve rather than a
-       crease. Flat white at low opacity rather than a blend mode — the
-       nested preserve-3d note above is a reminder that anything fancier is a
-       gamble on an old Android WebView, and plain alpha never is. */
-    .alb-shine { position: absolute; inset: 0; pointer-events: none;
-      background: #fff; opacity: 0; }
-
-    /* the shadow the raised page throws across the one it uncovers */
-    .alb-cast { position: absolute; top: 0; bottom: 0; width: 50%; pointer-events: none; }
-    .alb-cast.side-l { left: 0;   background: linear-gradient(270deg, rgba(0,0,0,.34), rgba(0,0,0,0) 58%); }
-    .alb-cast.side-r { left: 50%; background: linear-gradient(90deg,  rgba(0,0,0,.34), rgba(0,0,0,0) 58%); }
-
-    @keyframes pageFwd  { from { opacity: .85; } }
-    @keyframes pageBack { from { opacity: .85; } }
-    .alb-sheet.turn-fwd  { animation: pageFwd .28s ease-out; }
-    .alb-sheet.turn-back { animation: pageBack .28s ease-out; }
+       A plain slide: the incoming spread moves in from the side it was
+       turned towards and settles. No curl, no perspective, no dragging it
+       open by hand — tapping or swiping just changes the page, the way the
+       rest of the app changes screens. */
+    @keyframes pageSlideFwd  { from { transform: translateX(28px); opacity: 0; } }
+    @keyframes pageSlideBack { from { transform: translateX(-28px); opacity: 0; } }
+    .alb-sheet.turn-fwd  { animation: pageSlideFwd .22s ease-out; }
+    .alb-sheet.turn-back { animation: pageSlideBack .22s ease-out; }
 
     .alb-edge { position: absolute; top: 7px; bottom: 7px; pointer-events: none; z-index: 4;
       background: repeating-linear-gradient(90deg,
@@ -1230,7 +1168,6 @@
       box-shadow: inset 3px 0 5px -3px rgba(0,0,0,.4); }
 
     @media (prefers-reduced-motion: reduce) {
-      .alb-turnwrap { display: none; }
       .alb-sheet.turn-fwd, .alb-sheet.turn-back { animation: none; }
     }
 
@@ -7824,14 +7761,6 @@ let _lastSc = null;
 let albCtry = null;
 let albPage = 0;
 let albTurning = null;   // 'fwd' | 'back', consumed by the next render
-let albLeaf    = null;   // a copy of the spread being turned away from
-let albDrag    = false;  // true while a finger is driving the turn
-let albTurn    = null;   // the live turn's controls, handed over to the drag
-/* The gesture has to outlive the render. Taking the page calls go(), which
-   builds a new #alb-book — so the element the touch started on is detached
-   before the finger lifts, and a closure holding the gesture would take its
-   touchend on an element nobody is touching any more. Kept out here instead. */
-let albG = { x0: null, y0: null, dir: 0, live: false };
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -7901,27 +7830,12 @@ function go() {
     });
 
     /* ── Turning the page ──
-       `albTurning` carries which way it went into the next render, so the new
-       spread comes in from the side the page was turned towards. */
+       `albTurning` carries which way it went into the next render, so the
+       new spread slides in from the side it was turned towards. */
     const flip = dir => {
-      /* Photograph the spread before it goes. `go()` replaces the sheet
-         outright, so the only way to show the page leaving is to keep a copy
-         of it — measured against the book, because the sheet sits below the
-         country band and a leaf pinned to the whole book would swing the band
-         away too. */
-      const bk = document.getElementById('alb-book');
-      const sh = bk && bk.querySelector(':scope > .alb-sheet');
-      if (bk && sh && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const b = bk.getBoundingClientRect(), r = sh.getBoundingClientRect();
-        albLeaf = { out: sh.outerHTML, dir: dir > 0 ? 'fwd' : 'back',
-                    top: r.top - b.top, left: r.left - b.left,
-                    w: r.width, h: r.height };
-      }
       albTurning = dir > 0 ? 'fwd' : 'back';
       albPage += dir;
-      /* a dragged page makes its noise when it actually goes over, not when
-         your thumb first touches it — the drag plays it on release */
-      if (!albDrag) snd.page();
+      snd.page();
       go();
     };
     on('alb-prev', () => flip(-1));
@@ -7941,304 +7855,25 @@ function go() {
       });
     }
 
-    /* ── Turning it with your thumb ──────────────────────────────
-       The old gesture waited for the whole swipe, then played an animation.
-       That is what made it feel fake: a page you push does not sit still and
-       then leap. Now the page is on the finger from the first few pixels —
-       drag it half over and stop, and it hangs there half over.
-
-       Starting the drag commits the page change straight away, because the
-       back of the leaf has to show the spread you are turning TO, and that
-       spread has to be rendered to be copied. Let go too early and the change
-       is put back. */
+    /* ── Turning it with a swipe ──
+       Read as one gesture on release, the same as tapping an arrow — not
+       driven frame by frame. A short or mostly-vertical move is a scroll
+       and leaves the page alone. */
     const book = document.getElementById('alb-book');
     if (book) {
-      const width = () => Math.max(120, book.getBoundingClientRect().width * .55);
-
-      const end = commit => {
-        const G = albG;
-        if (!G.live) { G.x0 = null; G.dir = 0; return; }
-        const T = albTurn; G.live = false; albDrag = false; G.x0 = null;
-        if (!T) { G.dir = 0; return; }
-        const now = T.progress || 0;
-        if (commit) { snd.page(); T.run(now, 1, Math.max(560, (1 - now) * 1350)); }
-        else {
-          const back = G.dir;                     // undo the page we committed
-          T.run(now, 0, Math.max(460, now * 1050), () => { albPage -= back; go(); });
-        }
-        G.dir = 0;
-      };
-
+      let x0 = null, y0 = null;
       book.addEventListener('touchstart', e => {
-        if (albTurn) return;                      // one turn at a time
-        albG = { x0: e.touches[0].clientX, y0: e.touches[0].clientY, dir: 0, live: false };
+        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
       }, { passive: true });
-
-      book.addEventListener('touchmove', e => {
-        const G = albG;
-        if (G.x0 === null) return;
-        const dx = e.touches[0].clientX - G.x0, dy = e.touches[0].clientY - G.y0;
-        if (!G.live) {
-          /* sideways and meant: a few pixels is enough to take the page */
-          if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-          const want = dx < 0 ? 1 : -1;
-          const btn = document.getElementById(want > 0 ? 'alb-next' : 'alb-prev');
-          if (!btn || btn.disabled) { G.x0 = null; return; }
-          G.dir = want; G.live = true; albDrag = true;
-          flip(want);                             // renders the new spread and builds the leaf
-          albDrag = false;                        // the leaf is built; the flag has done its job
-          if (!albTurn) { G.live = false; G.x0 = null; return; }
-        }
-        /* measured along the direction the page is going, so pulling your
-           thumb back brings the page back down instead of driving it further
-           over; and net of the 10px it took to decide, so it does not jump */
-        const along = (G.dir > 0 ? -dx : dx) - 10;
-        albTurn.drive(Math.min(1, Math.max(0, along / width())));
+      book.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - x0, dy = t.clientY - y0;
+        x0 = null;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+        const btn = document.getElementById(dx < 0 ? 'alb-next' : 'alb-prev');
+        if (btn && !btn.disabled) btn.click();
       }, { passive: true });
-
-      /* past a third of the way it wants to fall over; short of that it falls back */
-      /* judged on where the thumb finished, not on where the page has caught
-         up to — the page is deliberately behind, and a firm swipe that lands
-         past the tipping point should go over even if the paper is still
-         travelling. */
-      book.addEventListener('touchend',    () => end((albTurn && albTurn.target || 0) > .33),
-                            { passive: true });
-      book.addEventListener('touchcancel', () => end(false), { passive: true });
-    }
-
-    /* Build the turning page out of the two spreads. Forward, the right half
-       of the old spread swings across and lands as the left half of the new
-       one — so that is exactly what goes on its two faces. Backward is the
-       same move mirrored. */
-    if (albLeaf) {
-      const L = albLeaf; albLeaf = null;
-      const bk = document.getElementById('alb-book');
-      const sheet = bk && bk.querySelector(':scope > .alb-sheet');
-      if (bk && sheet) {
-        const fwd  = L.dir === 'fwd';
-        const sign = fwd ? -1 : 1;
-        const half = (html, which) => `<div class="alb-clip half-${which}">${html}</div>`;
-
-        /* Every slice is a full copy of the spread behind a narrow window, so
-           slices are not free: ten of them put 5700 nodes on the page in the
-           same instant the thumb starts moving. But the page only bends near
-           its free edge — by the spine it is almost straight — so the slices
-           are cut fine there and coarse at the gutter, which buys the same
-           curve for a good deal less. */
-        const N  = 6, TAPER = 1.6;   // 8 is smoother, and a third more to build
-        const LW = L.w / 2;               // a page: half the spread
-        const OV = 0.5;                   // slices overlap so no seam shows
-        const cut = j => LW * (1 - Math.pow(1 - j / N, TAPER));   // arc length at slice j
-
-        const wrap = document.createElement('div');
-        wrap.className = 'alb-turnwrap';
-        wrap.setAttribute('aria-hidden', 'true');
-        wrap.style.cssText = `top:${L.top}px;left:${L.left}px;width:${L.w}px;height:${L.h}px;`;
-
-        /* Each slice is a window onto the whole spread, shifted so the pieces
-           line up into one continuous page. The reverse of a slice is the
-           mirror of the leaf, not the mirror of the slice, which is why the
-           two clips are offset from opposite ends.
-
-           Front and back are separate, side-by-side slices rather than two
-           faces inside one — which is the whole point. A slice holding two
-           faces has to be preserve-3d itself, and that puts the geometry two
-           levels deep inside another preserve-3d; nested preserve-3d is the
-           first thing Android WebView abandons, and when it does, every slice
-           collapses into a single plane and the page turns as a rigid board.
-           Laid out flat like this there is exactly one 3D context, the wrap,
-           and each slice carries its whole placement in one transform. */
-        const wide = [], mid = [];        // each slice's length, and where it sits
-        let front = '', back = '';
-        for (let j = 0; j < N; j++) {
-          const near = cut(j), far = cut(j + 1);
-          wide.push(far - near);
-          mid.push((near + far) / 2 / LW);
-          /* placed straight into the wrap, so the page's own offset is
-             carried here rather than by a wrapper */
-          const left  = fwd ? LW + near : LW - far - OV;
-          const fClip = fwd ? -(LW + near) : -(LW - far - OV);
-          const bClip = fwd ? -(LW - far - OV) : -(LW + near);
-          const box = (cls, off, html) =>
-            `<div class="alb-strip ${cls}" style="left:${left}px;` +
-              `width:${far - near + OV}px;transform-origin:${fwd ? '0' : '100%'} 50%">` +
-              `<div class="alb-clip" style="left:${off}px;width:${L.w}px">${html}</div>` +
-              `<div class="alb-lit"></div><div class="alb-shine"></div></div>`;
-          front += box('is-front', fClip, L.out);
-          back  += box('is-back',  bClip, sheet.outerHTML);
-        }
-
-        wrap.innerHTML =
-          `<div class="alb-under side-${fwd ? 'l' : 'r'}">${half(L.out, fwd ? 'l' : 'r')}</div>
-           <div class="alb-cast side-${fwd ? 'r' : 'l'}"></div>
-           ${front}${back}`;
-
-        wrap.querySelectorAll('.alb-sheet').forEach(el => {
-          el.style.overflow = 'hidden'; el.classList.remove('turn-fwd', 'turn-back');
-        });
-        wrap.querySelectorAll('[tabindex],[role="button"],[id]').forEach(el => {
-          el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('id');
-        });
-        bk.appendChild(wrap);
-
-        /* ── the turn ──
-           `at` is the whole turn expressed as one number: 0 lying flat, 1
-           fully over. A tap runs it on a clock; a finger drives it directly.
-           That is the difference between a page that turns and a page you
-           turn.
-
-           The shape of the bend: every slice shares a base angle A — that is
-           the page swinging on the spine — and adds a share of `bow` on top,
-           growing towards the free edge, which is the paper flexing away from
-           the thumb holding it. `bow` is zero flat and zero landed and widest
-           halfway over, so the page leaves the table straight, bends through
-           the middle of the arc, and settles straight again.
-
-           Slices are then walked along that curve one at a time, each starting
-           where the last one ended, so the page keeps its length instead of
-           stretching or opening gaps. */
-        /* 30 degrees of bow, chosen by eye against 20 and 46. Past about 35 the
-           free edge passes vertical early enough that half the leaf shows its
-           front and half its back for most of the arc, which reads as two
-           spreads at once rather than one page bending. */
-        /* A page has weight: it does not leave the table the instant you let
-           go and it does not arrive all at once. 480 was a flick; 820 and 950
-           were both still brisk.
-
-           38 degrees of bow, up from 30. Checked against 46, which starts
-           wrapping the free edge past vertical and narrows the visible page
-           into a band rather than curving it — that is the ceiling, and this
-           sits below it. */
-        const DUR = 1250, BOW = 38 * Math.PI / 180;
-        const cast   = wrap.querySelector('.alb-cast');
-        const fEls   = [...wrap.querySelectorAll('.alb-strip.is-front')];
-        const bEls   = [...wrap.querySelectorAll('.alb-strip.is-back')];
-        const fLit   = fEls.map(el => el.querySelector('.alb-lit'));
-        const bLit   = bEls.map(el => el.querySelector('.alb-lit'));
-        const fShine = fEls.map(el => el.querySelector('.alb-shine'));
-        const bShine = bEls.map(el => el.querySelector('.alb-shine'));
-        const dirX   = fwd ? 1 : -1;
-        /* A slice's reverse is the same plane facing the other way. Rotating
-           180 about the slice's own pivot would swing it somewhere else, so
-           it steps to its far edge first: translateX then rotateY(180) maps
-           the slice onto itself reversed, which is what a sheet of paper does
-           and why the two clips can stay as they are. */
-        const flipX  = fwd ? 1 : -1;
-
-        const at = e => {
-          e = Math.min(1, Math.max(0, e));
-          const lift = Math.sin(Math.PI * e);
-          const A    = sign * Math.PI * e;
-          const bow  = sign * BOW * lift;
-
-          let x = fwd ? 0 : LW, z = 0, run = 0;
-          for (let j = 0; j < N; j++) {
-            /* a little more of the bend towards the free edge, where a real
-               page gives most */
-            const th = A + bow * Math.pow(mid[j], 1.35);
-            const flat = fwd ? run : LW - run;
-            const place = `translate3d(${x - flat}px,0,${z}px) rotateY(${th}rad)`;
-            fEls[j].style.transform = place;
-            bEls[j].style.transform =
-              `${place} translateX(${flipX * (wide[j] + OV)}px) rotateY(180deg)`;
-            /* how square this slice is to the light. Both faces come off the
-               same angle, so whichever one you can see is the lit one. */
-            const c = Math.cos(th);
-            const gutter = .14 * lift * (1 - mid[j]);
-            fLit[j].style.opacity = String(.60 * (1 - c) / 2 + gutter);
-            bLit[j].style.opacity = String(.60 * (1 + c) / 2 + gutter);
-            /* the catch-light: brightest when the slice is turned edge-on
-               (c near 0, whichever face you're on), fades in and out with
-               the same lift envelope as the bend so it only shows while the
-               page is actually curved, and grows towards the free edge where
-               the paper is bending the most and so catching the most light. */
-            const rim = .32 * lift * Math.pow(mid[j], 1.15) * (1 - c * c);
-            fShine[j].style.opacity = String(rim);
-            bShine[j].style.opacity = String(rim);
-            x +=  dirX * wide[j] * Math.cos(th);
-            z += -dirX * wide[j] * Math.sin(th);
-            run += wide[j];
-          }
-          /* the shadow the raised leaf throws on the page it uncovers: it
-             arrives as the page lifts and leaves as the page lands on top */
-          if (cast) cast.style.opacity = String(Math.min(1, e * 3) * (1 - e));
-        };
-        at(0);
-
-        let raf = 0;
-        /* run from wherever it is now to `to`, then either drop the leaf or,
-           if the turn was abandoned, put the page back */
-        const run = (from, to, ms, after) => {
-          chasing = false; cancelAnimationFrame(raf);   // the finger is off it now
-          const t0 = performance.now();
-          let done = false;
-          /* The turn must end even if the frames never come. rAF stops in a
-             backgrounded tab, and a half-turned page whose `albTurn` is never
-             cleared locks the album — every later swipe bails out on "one turn
-             at a time". This timer is the guarantee; the frames are the nice
-             part. (Same reason the end-screen score has one.) */
-          const land = () => {
-            if (done) return;
-            done = true;
-            cancelAnimationFrame(raf); clearTimeout(bell);
-            at(to); wrap.remove(); albTurn = null; if (after) after();
-          };
-          const bell = setTimeout(land, ms + 260);
-          const step = now => {
-            if (done) return;
-            const t = Math.min(1, (now - t0) / ms);
-            /* Smootherstep: flat at both ends in speed *and* in acceleration,
-               so the page eases away from rest and settles into the landing
-               instead of snapping into it. The old curve left at 2.1x speed
-               from a standstill, which is what made the turn feel flicked
-               rather than let go of. */
-            const k = t * t * t * (t * (t * 6 - 15) + 10);
-            at(from + (to - from) * k);
-            if (t < 1) raf = requestAnimationFrame(step);
-            else land();
-          };
-          raf = requestAnimationFrame(step);
-        };
-
-        /* ── the paper lags the thumb ──────────────────────────────────
-           Driving `at` straight from the finger means a quick swipe gives a
-           quick page: the sheet is welded to your skin and stops dead the
-           instant you do. Paper does neither. So the finger sets a target and
-           the page eases towards it on its own clock — it trails you slightly
-           on the way out, and keeps drifting for a moment after you stop.
-
-           TAU is how far behind it runs. Much below 100ms and the lag stops
-           reading as weight; much above and the page feels detached from the
-           hand moving it. */
-        const TAU = 130;
-        let cur = 0, target = 0, chasing = false, last = 0;
-        const chase = now => {
-          if (!chasing || !albTurn) return;
-          const dt = Math.min(64, now - last); last = now;
-          cur += (target - cur) * (1 - Math.exp(-dt / TAU));
-          if (Math.abs(target - cur) < .0004) cur = target;
-          at(cur);
-          albTurn.progress = cur;
-          raf = requestAnimationFrame(chase);
-        };
-
-        if (albDrag) {
-          /* a finger is on it: hand over the controls and wait */
-          albTurn = {
-            at, run, wrap, dir: L.dir, progress: 0, target: 0,
-            /* where the thumb says the page should be; it gets there in
-               its own time */
-            drive: p => {
-              target = albTurn.target = p;
-              if (!chasing) { chasing = true; last = performance.now();
-                              raf = requestAnimationFrame(chase); }
-            },
-            stop: () => { chasing = false; cancelAnimationFrame(raf); }
-          };
-        } else {
-          run(0, 1, DUR);
-        }
-      }
     }
 
     /* the index runs wider than the screen, so the section you are reading has

@@ -464,20 +464,13 @@ TESTS = r"""
                   : `cta=${bottom} vh=${vh}`);
     })();
 
-    /* ---- dragging a page of the album ----
-       The turn follows the finger, which means the gesture spans a re-render:
-       taking the page calls go(), and go() builds a brand new #alb-book. Any
-       gesture state kept in that render's closure is therefore lost with the
-       old element, and the touchend arrives at a fresh handler that thinks no
-       drag is in progress — the page then hangs half-turned for ever and
-       `albTurn` never clears, locking the album against any further turn.
-       That is exactly what happened; these assertions are synchronous on
-       purpose, because the bug is in the bookkeeping and not in the arc. */
+    /* ---- swiping a page of the album ----
+       The turn is a plain slide now: release decides the whole gesture at
+       once, rather than a drag whose state has to survive the re-render
+       taking the page does (go() replaces #alb-book on every turn). */
     (function(){
       ALL_STICKERS.forEach(id => album.add(id));
-      sc = 'album'; albCtry = 'BRA'; albPage = 2; albTurn = null; albDrag = false;
-      albG = { x0: null, y0: null, dir: 0, live: false };
-      go();
+      sc = 'album'; albCtry = 'BRA'; albPage = 2; go();
       const B = () => document.getElementById('alb-book');
       const T = (t, x, y) => {
         const el = B(), o = { clientX: x, clientY: y, identifier: 1, target: el };
@@ -488,49 +481,26 @@ TESTS = r"""
       const r = B().getBoundingClientRect(), y = r.top + r.height * 0.35;
       const page0 = albPage;
 
-      /* a mostly-vertical move is a scroll and must not take the page */
-      T('touchstart', r.right - 40, y); T('touchmove', r.right - 52, y + 120);
+      /* a mostly-vertical move is a scroll and must not turn the page */
+      T('touchstart', r.right - 40, y); T('touchend', r.right - 52, y + 120);
       ok('a vertical swipe does not turn the album page',
-         albTurn === null && albPage === page0, `albPage=${albPage}`);
-      T('touchend', r.right - 52, y + 120);
+         albPage === page0, `albPage=${albPage}`);
 
-      /* a sideways drag takes the page straight away and hands over the leaf.
-         The thumb sets a target; the paper eases towards it on its own clock,
-         so `target` is what the gesture controls and `progress` is where the
-         sheet has got to. Only the first is testable here — the second moves
-         on animation frames, which this harness does not run. */
-      T('touchstart', r.right - 24, y); T('touchmove', r.right - 90, y);
-      const p1 = albTurn ? albTurn.target : -1;
-      ok('dragging sideways puts a turning leaf under the finger',
-         !!albTurn && !!B().querySelector('.alb-turnwrap') && p1 > 0,
-         `target=${p1}`);
-      ok('the page it turns to is rendered before the turn, not after',
+      /* a short sideways move is not a swipe either — under the 40px floor */
+      T('touchstart', r.right - 40, y); T('touchend', r.right - 60, y);
+      ok('a short sideways move does not turn the album page',
+         albPage === page0, `albPage=${albPage}`);
+
+      /* a real sideways swipe turns the page on release */
+      T('touchstart', r.right - 24, y); T('touchend', r.right - 90, y);
+      ok('a sideways swipe turns the album page forward',
          albPage === page0 + 1, `albPage=${albPage}`);
 
-      /* pulling back brings it back down rather than driving it further over */
-      T('touchmove', r.right - 24 - 320, y);
-      const far = albTurn ? albTurn.target : -1;
-      T('touchmove', r.right - 24 - 60, y);
-      const near = albTurn ? albTurn.target : -1;
-      ok('the leaf follows the finger back', near < far, `${far} -> ${near}`);
+      const r2 = B().getBoundingClientRect(), y2 = r2.top + r2.height * 0.35;
+      T('touchstart', r2.left + 24, y2); T('touchend', r2.left + 90, y2);
+      ok('swiping the other way turns the album page back',
+         albPage === page0, `albPage=${albPage}`);
 
-      /* THE regression: touchend lands on the element go() built, not the one
-         the drag started on. It has to find the gesture anyway. */
-      T('touchend', r.right - 24 - 60, y);
-      ok('releasing after the re-render still ends the drag',
-         albG.live === false && albDrag === false,
-         `live=${albG.live} drag=${albDrag}`);
-
-      /* No assertion here for the "run() always lands" guard: this suite is
-         synchronous and the arc needs frames, so anything checkable at this
-         point would pass whatever the code did. (`typeof albTurn === 'object'`
-         was written here first and is true of null as well — a test that
-         watches nothing is worse than no test.) */
-
-      const w = B() && B().querySelector('.alb-turnwrap');
-      if (w) w.remove();
-      albTurn = null; albDrag = false;
-      albG = { x0: null, y0: null, dir: 0, live: false };
       album = new Set(); sc = 'home'; go();
     })();
 
