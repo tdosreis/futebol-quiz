@@ -1201,6 +1201,14 @@
     /* flat black; the angle of the slice it sits on sets how much of it shows */
     .alb-lit { position: absolute; inset: 0; pointer-events: none;
       background: #000; opacity: 0; }
+    /* the catch-light along the curl: paper is shiny enough that the part of
+       it turned edge-on to you throws back more light than the flat page
+       around it, which is what actually reads as a curve rather than a
+       crease. Flat white at low opacity rather than a blend mode — the
+       nested preserve-3d note above is a reminder that anything fancier is a
+       gamble on an old Android WebView, and plain alpha never is. */
+    .alb-shine { position: absolute; inset: 0; pointer-events: none;
+      background: #fff; opacity: 0; }
 
     /* the shadow the raised page throws across the one it uncovers */
     .alb-cast { position: absolute; top: 0; bottom: 0; width: 50%; pointer-events: none; }
@@ -8055,7 +8063,7 @@ function go() {
             `<div class="alb-strip ${cls}" style="left:${left}px;` +
               `width:${far - near + OV}px;transform-origin:${fwd ? '0' : '100%'} 50%">` +
               `<div class="alb-clip" style="left:${off}px;width:${L.w}px">${html}</div>` +
-              `<div class="alb-lit"></div></div>`;
+              `<div class="alb-lit"></div><div class="alb-shine"></div></div>`;
           front += box('is-front', fClip, L.out);
           back  += box('is-back',  bClip, sheet.outerHTML);
         }
@@ -8107,6 +8115,8 @@ function go() {
         const bEls   = [...wrap.querySelectorAll('.alb-strip.is-back')];
         const fLit   = fEls.map(el => el.querySelector('.alb-lit'));
         const bLit   = bEls.map(el => el.querySelector('.alb-lit'));
+        const fShine = fEls.map(el => el.querySelector('.alb-shine'));
+        const bShine = bEls.map(el => el.querySelector('.alb-shine'));
         const dirX   = fwd ? 1 : -1;
         /* A slice's reverse is the same plane facing the other way. Rotating
            180 about the slice's own pivot would swing it somewhere else, so
@@ -8137,6 +8147,14 @@ function go() {
             const gutter = .14 * lift * (1 - mid[j]);
             fLit[j].style.opacity = String(.60 * (1 - c) / 2 + gutter);
             bLit[j].style.opacity = String(.60 * (1 + c) / 2 + gutter);
+            /* the catch-light: brightest when the slice is turned edge-on
+               (c near 0, whichever face you're on), fades in and out with
+               the same lift envelope as the bend so it only shows while the
+               page is actually curved, and grows towards the free edge where
+               the paper is bending the most and so catching the most light. */
+            const rim = .32 * lift * Math.pow(mid[j], 1.15) * (1 - c * c);
+            fShine[j].style.opacity = String(rim);
+            bShine[j].style.opacity = String(rim);
             x +=  dirX * wide[j] * Math.cos(th);
             z += -dirX * wide[j] * Math.sin(th);
             run += wide[j];

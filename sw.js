@@ -33,8 +33,13 @@
 
    v13: the page trails the thumb now instead of being welded to it.
 
-   v14: the fall is slower again and the sheet bends a little further. */
-const VERSION = 'v14';
+   v14: the fall is slower again and the sheet bends a little further.
+
+   v15: the curl now catches a highlight as it turns, instead of just
+   darkening — paper is shiny enough to throw back light at the fold, and
+   without it the page read as flat cardboard mid-turn rather than a
+   curving sheet. */
+const VERSION = 'v15';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
