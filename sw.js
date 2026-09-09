@@ -38,8 +38,15 @@
    v15: the curl now catches a highlight as it turns, instead of just
    darkening — paper is shiny enough to throw back light at the fold, and
    without it the page read as flat cardboard mid-turn rather than a
-   curving sheet. */
-const VERSION = 'v15';
+   curving sheet.
+
+   v16: the curl is gone. Six versions of bend, light and drag physics never
+   read right on every phone this actually runs on, and a book that turns
+   wrong is worse than one that just slides — so the page now slides in from
+   the side it was turned towards and nothing more. index.html again, for
+   the same reason as every version above it: the shell has to stop serving
+   the old turn. */
+const VERSION = 'v16';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
