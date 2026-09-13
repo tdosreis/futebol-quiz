@@ -1390,8 +1390,13 @@ function noise(dur, opt) {
     f.Q.value = opt.q === undefined ? 1.2 : opt.q;
     const g = ac.createGain();
     const vol = opt.vol === undefined ? 0.09 : opt.vol;
+    /* most callers want the old snap — a tap, a snip — but a screen change
+       held it too, and a broadband burst with a 12ms attack reads as a
+       knock rather than a swish. `attack` lets a caller ask for a softer
+       rise without changing anyone else's sound. */
+    const atk = opt.attack === undefined ? Math.min(0.012, dur * 0.25) : opt.attack;
     g.gain.setValueAtTime(0.0001, t0);
-    g.gain.exponentialRampToValueAtTime(vol, t0 + Math.min(0.012, dur * 0.25));
+    g.gain.exponentialRampToValueAtTime(vol, t0 + atk);
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
     src.connect(f); f.connect(g); g.connect(ac.destination);
     src.start(t0); src.stop(t0 + dur + 0.02);
@@ -1407,7 +1412,13 @@ const snd = {
   /* ── paper ── */
   tap()    { noise(.03, { freq: 1500, q: .9, vol: .055 }); },
   select() { noise(.035, { freq: 2100, q: 1.1, vol: .06 }); },
-  swipe()  { noise(.19, { type: 'highpass', freq: 500, to: 3400, q: .5, vol: .045 }); },
+  /* Every screen change plays this, so its onset matters more than any other
+     cue's: the old version rose to full volume in 12ms like everything else
+     here, and a burst of noise that loud that fast reads as a knock, not a
+     page changing. A slower attack and a touch less volume is the whole fix
+     — same paper-ish sweep, no thump at the front of it. */
+  swipe()  { noise(.22, { type: 'highpass', freq: 700, to: 3200, q: .6,
+                           vol: .032, attack: .05 }); },
   /* A page being turned, in three parts, because that is what it sounds like:
      the sheet peeling off the one under it, the long dry rustle while it is in
      the air, and the soft slap as it lands on the other side. Nothing tonal —
