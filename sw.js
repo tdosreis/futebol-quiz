@@ -62,8 +62,11 @@
    v21: a page of the album fits on one screen, arrows in its foot.
 
    v22: every screen was taller than the phone by the navigation bar, and a
-   short screen now fits the album page too. */
-const VERSION = 'v22';
+   short screen now fits the album page too.
+
+   v23: 851 new written questions, and the champion tables brought up to
+   2025-26. */
+const VERSION = 'v23';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
