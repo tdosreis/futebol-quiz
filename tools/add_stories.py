@@ -55,6 +55,8 @@ def main():
             q = cat["qs"][int(k) - 1]
             q["x"] = v[0]
             q["xs"] = v[1] if len(v) > 1 else []
+            # a rewritten story must not keep the old one's sources
+            q.pop("xsrc", None)
             if len(v) > 2 and v[2]: q["xsrc"] = v[2]
             if len(v) > 3 and v[3]: q["t"] = v[3]
             if not q["xs"]: q.pop("xs")
