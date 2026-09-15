@@ -598,6 +598,61 @@
     .qart-crest.qart-hero { width: 86px; height: 86px; }
     @media (max-width: 360px) { .qart-crest.qart-hero { width: 70px; height: 70px; } }
 
+    /* ── The era of the question, in the frame around its picture ── */
+    /* rings drawn as shadows, so a frame never takes space from the question */
+    .qart.era-vintage {
+      box-shadow: 0 0 0 2px #F1E6CB, 0 0 0 3px #A88A55, 0 0 0 5px #F1E6CB,
+                  0 0 0 6px rgba(168,138,85,.55), 0 6px 12px rgba(60,40,15,.24); }
+    .qart.era-retro {
+      box-shadow: 0 0 0 2px var(--retro-card), 0 0 0 4px var(--retro-band), 0 5px 10px var(--shadow); }
+    .qart.era-modern {
+      box-shadow: 0 0 0 2px var(--pocket), 0 0 0 3px var(--modern-card), 0 8px 16px -6px var(--shadow-2); }
+    .qart-draw.era-vintage { background: #EADBB8; }
+    .qart-draw.era-modern { background: var(--pocket); }
+    :root[data-theme="dark"] .qart.era-vintage, :root:not([data-theme="light"]) .qart.era-vintage {
+      box-shadow: 0 0 0 2px #3A3222, 0 0 0 3px #8C7448, 0 0 0 5px #3A3222,
+                  0 0 0 6px rgba(140,116,72,.5), 0 6px 12px rgba(0,0,0,.45); }
+    :root[data-theme="dark"] .qart-draw.era-vintage, :root:not([data-theme="light"]) .qart-draw.era-vintage {
+      background: #33291B; }
+
+    /* ── Held up to the light ── */
+    .zoom { position: fixed; inset: 0; z-index: 900; }
+    .zoom-scrim { position: absolute; inset: 0; background: rgba(18,16,10,.66);
+      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); animation: zoomFade .3s ease-out both; }
+    .zoom.is-closing .zoom-scrim { animation: zoomFadeOut .28s ease-in both; }
+    @keyframes zoomFade { from { opacity: 0; } }
+    @keyframes zoomFadeOut { to { opacity: 0; } }
+    .zoom-card { position: absolute; left: 50%; top: 50%; perspective: 900px; cursor: pointer;
+      transform-origin: 50% 50%; outline: none; }
+    /* the focus ring would be scaled up with the card into a thick band */
+    .zoom-card:focus, .zoom-card:focus-visible { outline: none; }
+    .zoom-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d; transition: transform .56s cubic-bezier(.3,.85,.35,1); }
+    .zoom.is-turned .zoom-in { transform: rotateY(180deg); }
+    .zoom-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,.35)); }
+    .zoom-back { transform: rotateY(180deg); }
+    .zoom-face > .alb-slot, .zoom-face > .ins { width: 100%; height: 100%; aspect-ratio: auto; }
+    .zoom-face > .alb-slot > .fig { width: 100%; height: 100%; }
+    .zoom-x { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px;
+      width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.16); color: #FFF; animation: zoomFade .3s ease-out both; }
+    .zoom-hint { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+      text-align: center; color: #F3EEDC; font: 600 12px/1.3 var(--font-s); letter-spacing: .04em;
+      animation: zoomFade .5s ease-out both; }
+    .zoom.is-closing .zoom-x, .zoom.is-closing .zoom-hint { opacity: 0; transition: opacity .2s; }
+    @media (prefers-reduced-motion: reduce) { .zoom-in { transition: none; } }
+    /* the back of a figurinha especial */
+    .ins-back { -webkit-mask: none; mask: none; }
+    .insb-set { margin-top: 10px; font: 800 8px/1 var(--font-c); letter-spacing: .16em;
+      text-transform: uppercase; color: var(--ink-3); }
+    .insb-nm { margin-top: 6px; font: 600 14px/1.15 var(--font-d); color: var(--ink); text-wrap: balance; }
+    .insb-rule { align-self: stretch; margin: 8px 4px 7px; border-top: 1.5px dashed var(--rule); }
+    .insb-d { font-size: 10.5px; line-height: 1.35; color: var(--ink-2); font-weight: 600; }
+    .insb-st { margin-top: 8px; font-size: 9.5px; font-weight: 700; color: var(--ink-3); }
+    .insb-pr { margin-top: 7px; font-size: 10.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
     /* ── Photo reveal ── */
     .reveal-box { width: 138px; height: 138px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--rule), 0 6px 18px var(--shadow); }
 
@@ -1196,14 +1251,7 @@
       flex-direction: column;
       border-radius: 12px; overflow: hidden; background-color: var(--pg-paper);
       box-shadow: inset 0 0 0 1px var(--pg-edge), 0 2px 10px var(--shadow);
-      /* the gutter, where the two halves of a real spread meet: a crease, with
-         the paper curving down into it from both sides */
-      background-image: linear-gradient(90deg, transparent 44%, rgba(0,0,0,var(--pg-fold)) 49.2%,
-                        var(--pg-edge) 49.8%, var(--pg-edge) 50.2%,
-                        rgba(0,0,0,var(--pg-fold)) 50.8%, transparent 56%);
-      /* the crease stops at the foot, so it does not run through the page number */
-      background-repeat: no-repeat; background-size: 100% calc(100% - 42px);
-      --pg-fold: .08; }
+}
     /* The paper itself: a fine fibre over the whole sheet and, on the older
        stock, edges gone darker with age. One small tile, drawn once. */
     .alb-book::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -1211,7 +1259,6 @@
         radial-gradient(135% 100% at 50% 42%, transparent 52%, rgba(70,45,15,var(--pg-age, .05))),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E"); }
     .alb-band, .alb-sheet { position: relative; z-index: 1; }
-    :root[data-theme="dark"] .alb-book, :root:not([data-theme="light"]) .alb-book { --pg-fold: .32; }
     .alb-band { display: flex; align-items: center; gap: 8px; flex: none;
       padding: 7px 10px; background-color: var(--pg-band); color: var(--pg-bandink);
       /* printed, not flat: a fine diagonal screen and a darker rule under it */
@@ -1234,10 +1281,17 @@
        turned towards and settles. No curl, no perspective, no dragging it
        open by hand — tapping or swiping just changes the page, the way the
        rest of the app changes screens. */
-    @keyframes pageSlideFwd  { from { transform: translateX(28px); opacity: 0; } }
-    @keyframes pageSlideBack { from { transform: translateX(-28px); opacity: 0; } }
-    .alb-sheet.turn-fwd  { animation: pageSlideFwd .22s ease-out; }
-    .alb-sheet.turn-back { animation: pageSlideBack .22s ease-out; }
+    @keyframes pageSlideFwd  { from { transform: translateX(16%); opacity: 0; } }
+    @keyframes pageSlideBack { from { transform: translateX(-16%); opacity: 0; } }
+    @keyframes pageOutFwd    { to { transform: translateX(-16%); opacity: 0; } }
+    @keyframes pageOutBack   { to { transform: translateX(16%); opacity: 0; } }
+    .alb-sheet.turn-fwd  { animation: pageSlideFwd .44s cubic-bezier(.22,.8,.24,1) both; }
+    .alb-sheet.turn-back { animation: pageSlideBack .44s cubic-bezier(.22,.8,.24,1) both; }
+    /* the page being turned away, laid over the new one while it leaves, so the
+       two cross instead of one simply replacing the other */
+    .alb-ghost { position: absolute; left: 0; right: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+    .alb-ghost.out-fwd  { animation: pageOutFwd .44s cubic-bezier(.22,.8,.24,1) forwards; }
+    .alb-ghost.out-back { animation: pageOutBack .44s cubic-bezier(.22,.8,.24,1) forwards; }
 
     .alb-edge { position: absolute; top: 7px; bottom: 7px; pointer-events: none; z-index: 4;
       background: repeating-linear-gradient(90deg,
@@ -1250,6 +1304,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .alb-sheet.turn-fwd, .alb-sheet.turn-back { animation: none; }
+      .alb-ghost { display: none; }
     }
 
     .alb-arrow { width: 34px; height: 34px; border-radius: 50%; flex: none; cursor: pointer;
@@ -1348,14 +1403,12 @@
       color: var(--ink-3); font-variant-numeric: tabular-nums; flex: none; }
 
     /* Every page is the same twenty pockets, four across and five down, with
-       the spine running between the second and third columns the way it does
-       on a printed spread. The pocket has a fixed shape, so a page of faces, a
+       nothing drawn down the middle to cut the page in two. The pocket has a fixed shape, so a page of faces, a
        page of crests and a page still waiting for its stickers are all the
        same size, and every row lines up whatever the names underneath. */
     .alb-grid { position: relative; display: grid; flex: none; margin: auto 0;
-      grid-template-columns: 1fr 1fr 8px 1fr 1fr; grid-template-rows: repeat(5, auto);
-      column-gap: 5px; row-gap: 8px; }
-    .alb-grid > .alb-slot:nth-child(4n+3) { grid-column: 4; }
+      grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, auto);
+      column-gap: 7px; row-gap: 8px; }
     .alb-slot { position: relative; display: flex; aspect-ratio: 29 / 50;
       min-width: 0; min-height: 0; align-self: start; }
     .alb-slot > .fig, .alb-slot > .flip { width: 100%; height: 100%; }
@@ -1373,8 +1426,8 @@
        longer a face, does the page scroll rather than shrink. */
     @supports (height: 1cqh) {
       .alb-sheet { container-type: size; }
-      .alb-grid { --pw: max(40px, min((100cqw - 23px) / 4, (100cqh - 34px) / 5 * .58));
-        grid-template-columns: var(--pw) var(--pw) 8px var(--pw) var(--pw);
+      .alb-grid { --pw: max(40px, min((100cqw - 21px) / 4, (100cqh - 34px) / 5 * .58));
+        grid-template-columns: repeat(4, var(--pw));
         justify-content: center; }
       .alb-slot .fig-cap { height: clamp(30px, calc(var(--pw) * .6), 40px); padding: 2px 3px 3px; }
       /* The name is set to the pocket, not to the screen: a word the width of
@@ -1459,7 +1512,6 @@
       .alb-band .langs { display: none; }
       .alb-foot { padding: 3px 0 4px; }
       .alb-foot .alb-arrow { width: 28px; height: 28px; }
-      .alb-book { background-size: 100% calc(100% - 36px); }
     }
 
     /* ── Paper, falling (the million only) ── */
@@ -3404,6 +3456,35 @@ const CATS = [
     ]
   },
   {
+    id:"europa_mais", name:"França, Portugal e Mais", emoji:"🧭",
+    tag:"Ligue 1, Portugal, Holanda, Turquia e além", col:"#1F3C88", diff:"Variado",
+    qs:[
+      {"t": "Qual clube francês venceu a Recopa Europeia de 1996, contra o Rapid Viena?", "a": ["PSG"], "type": "txt", "choices": ["PSG", "Olympique de Marselha", "Monaco", "Bordeaux", "Lyon", "Nantes"], "d": 4, "flag": "FRA"},
+      {"t": "Como é chamado o clássico entre Lyon e Saint-Étienne?", "a": ["Derby du Rhône"], "type": "txt", "choices": ["Derby du Rhône", "Le Classique", "Derby de la Côte d'Azur", "Derby du Nord", "Derby Breton", "Choc des Olympiques"], "d": 4, "crest": "lyon"},
+      {"t": "Qual clube francês é chamado de 'Les Verts'?", "a": ["Saint-Étienne"], "type": "txt", "choices": ["Saint-Étienne", "Nantes", "Lens", "Rennes", "Nice", "Toulouse"], "d": 3, "flag": "FRA"},
+      {"t": "Qual clube francês é chamado de 'Les Canaris'?", "a": ["Nantes"], "type": "txt", "choices": ["Nantes", "Saint-Étienne", "Lens", "Rennes", "Sochaux", "Metz"], "d": 4, "flag": "FRA"},
+      {"t": "Qual clube francês é chamado de 'Les Dogues'?", "a": ["Lille"], "type": "txt", "choices": ["Lille", "Lens", "Nantes", "Metz", "Reims", "Le Havre"], "d": 4, "flag": "FRA"},
+      {"t": "Qual atacante é o maior artilheiro da história do PSG?", "a": ["mbappe"], "type": "player", "d": 2, "crest": "psg"},
+      {"t": "Qual atacante francês ganhou a Bola de Ouro de 2025, pelo PSG?", "a": ["Ousmane Dembélé"], "type": "txt", "choices": ["Ousmane Dembélé", "Désiré Doué", "Bradley Barcola", "Michael Olise", "Marcus Thuram", "Randal Kolo Muani"], "d": 2, "crest": "psg"},
+      {"t": "Qual clube venceu o Campeonato Francês de 2020-21, interrompendo a sequência do PSG?", "a": ["Lille"], "type": "txt", "choices": ["Lille", "Monaco", "Lyon", "Olympique de Marselha", "Rennes", "Nice"], "d": 3, "crest": "psg"},
+      {"t": "Qual clube venceu o Campeonato Francês de 2016-17, com um Mbappé de 18 anos?", "a": ["Monaco"], "type": "txt", "choices": ["Monaco", "PSG", "Nice", "Lyon", "Olympique de Marselha", "Bordeaux"], "d": 3, "who": "mbappe"},
+      {"t": "Qual clube português é o 'Leão' de Alvalade?", "a": ["Sporting"], "type": "txt", "choices": ["Sporting", "Benfica", "Porto", "Braga", "Boavista", "Belenenses"], "d": 2, "flag": "POR"},
+      {"t": "Qual clube português é chamado de 'Águias'?", "a": ["Benfica"], "type": "txt", "choices": ["Benfica", "Sporting", "Porto", "Braga", "Vitória de Guimarães", "Marítimo"], "d": 2, "flag": "POR"},
+      {"t": "Qual clube português é chamado de 'Dragões'?", "a": ["Porto"], "type": "txt", "choices": ["Porto", "Benfica", "Sporting", "Braga", "Boavista", "Estoril"], "d": 2, "flag": "POR"},
+      {"t": "Qual clube português venceu a final portuguesa da Liga Europa de 2011, contra o Braga?", "a": ["Porto"], "type": "txt", "choices": ["Porto", "Benfica", "Sporting", "Vitória de Guimarães", "Boavista", "Marítimo"], "d": 3, "flag": "POR"},
+      {"t": "Qual técnico português ganhou a Liga Europa com o Porto em 2011 e depois foi para o Chelsea?", "a": ["André Villas-Boas"], "type": "txt", "choices": ["André Villas-Boas", "José Mourinho", "Jorge Jesus", "Paulo Fonseca", "Rúben Amorim", "Sérgio Conceição"], "d": 3, "crest": "porto"},
+      {"t": "Qual técnico português deixou o Sporting pelo Manchester United em 2024?", "a": ["Rúben Amorim"], "type": "txt", "choices": ["Rúben Amorim", "André Villas-Boas", "Paulo Fonseca", "Sérgio Conceição", "Jorge Jesus", "Bruno Lage"], "d": 2, "crest": "manutd"},
+      {"t": "Qual clube holandês é chamado de 'Boeren', os fazendeiros?", "a": ["PSV"], "type": "txt", "choices": ["PSV", "Ajax", "Feyenoord", "AZ Alkmaar", "Twente", "Vitesse"], "d": 4, "flag": "NED"},
+      {"t": "Qual clube holandês venceu a Copa da UEFA de 2002 no próprio estádio, contra o Borussia Dortmund?", "a": ["Feyenoord"], "type": "txt", "choices": ["Feyenoord", "PSV", "Ajax", "AZ Alkmaar", "Twente", "Heerenveen"], "d": 3, "crest": "dortmund"},
+      {"t": "Qual clube belga chegou à final da Copa dos Campeões de 1978, contra o Liverpool?", "a": ["Club Brugge"], "type": "txt", "choices": ["Club Brugge", "Anderlecht", "Standard Liège", "Gent", "Genk", "Antwerp"], "d": 4, "crest": "liverpool"},
+      {"t": "Qual clube austríaco de Salzburgo é conhecido como 'Die Roten Bullen'?", "a": ["Red Bull Salzburg"], "type": "txt", "choices": ["Red Bull Salzburg", "Rapid Viena", "Austria Viena", "Sturm Graz", "LASK", "Wolfsberger"], "d": 3, "icon": "globe"},
+      {"t": "Qual clube ucraniano revelou Oleh Blokhin e Andriy Shevchenko?", "a": ["Dínamo de Kiev"], "type": "txt", "choices": ["Dínamo de Kiev", "Shakhtar Donetsk", "Dnipro", "Metalist Kharkiv", "Chornomorets", "Karpaty Lviv"], "d": 3, "who": "shevchenko"},
+      {"t": "Qual clube escocês ganhou nove campeonatos seguidos, de 1966 a 1974, com Jock Stein?", "a": ["Celtic"], "type": "txt", "choices": ["Celtic", "Rangers", "Aberdeen", "Hearts", "Hibernian", "Dundee United"], "d": 3, "flag": "SCO"},
+      {"t": "Qual clube turco é chamado de 'Canários Amarelos'?", "a": ["Fenerbahçe"], "type": "txt", "choices": ["Fenerbahçe", "Galatasaray", "Beşiktaş", "Trabzonspor", "Bursaspor", "Göztepe"], "d": 3, "icon": "globe"},
+      {"t": "Qual clube turco é chamado de 'Águias Negras'?", "a": ["Beşiktaş"], "type": "txt", "choices": ["Beşiktaş", "Fenerbahçe", "Galatasaray", "Trabzonspor", "Başakşehir", "Kasımpaşa"], "d": 3, "crest": "galatasaray"},
+    ]
+  },
+  {
     id:"craques_europa", name:"Lendas da Europa", emoji:"🏅",
     tag:"Quem é quem nos grandes clubes europeus", col:"#2B5EA8", diff:"Variado",
     qs:[
@@ -3441,6 +3522,64 @@ const CATS = [
       {"t": "Qual belga foi eleito o jogador da temporada 2014-15 da Premier League, pelo Chelsea?", "a": ["hazard"], "type": "player", "d": 3, "crest": "chelsea"},
       {"t": "Qual atacante norueguês marcou cinco gols num jogo da Champions contra o RB Leipzig, em 2023?", "a": ["haaland"], "type": "player", "d": 3, "crest": "mancity"},
       {"t": "Qual meia inglês marcou de bicicleta nos acréscimos contra a Eslováquia, na Eurocopa de 2024?", "a": ["bellingham"], "type": "player", "d": 2, "flag": "ENG"},
+    ]
+  },
+  {
+    id:"europa_extra", name:"Bastidores da Europa", emoji:"💼",
+    tag:"Donos, taças europeias e contratações", col:"#4B2E83", diff:"Variado",
+    qs:[
+      {"t": "Qual clube inglês ganhou a tríplice coroa de 1999, com Alex Ferguson?", "a": ["Manchester United"], "type": "txt", "choices": ["Manchester United", "Arsenal", "Liverpool", "Chelsea", "Leeds United", "Newcastle United"], "d": 2, "flag": "ENG"},
+      {"t": "Em que ano o bilionário russo Roman Abramovich comprou o Chelsea?", "a": ["2003"], "type": "txt", "choices": ["2003", "2000", "2005", "2008", "1998", "2010"], "d": 3, "crest": "chelsea"},
+      {"t": "Em que ano o Manchester City foi comprado por um grupo de Abu Dhabi?", "a": ["2008"], "type": "txt", "choices": ["2008", "2005", "2010", "2003", "2012", "2000"], "d": 3, "crest": "mancity"},
+      {"t": "Em que ano o PSG foi comprado pelo Qatar Sports Investments?", "a": ["2011"], "type": "txt", "choices": ["2011", "2008", "2013", "2009", "2015", "2006"], "d": 3, "crest": "psg"},
+      {"t": "Qual clube espanhol ficou conhecido como 'Galácticos' no início dos anos 2000?", "a": ["Real Madrid"], "type": "txt", "choices": ["Real Madrid", "Barcelona", "Valencia", "Deportivo La Coruña", "Atlético de Madrid", "Sevilla"], "d": 2, "flag": "ESP"},
+      {"t": "Qual presidente do Real Madrid criou a política dos 'Galácticos'?", "a": ["Florentino Pérez"], "type": "txt", "choices": ["Florentino Pérez", "Ramón Calderón", "Joan Laporta", "Santiago Bernabéu", "Lorenzo Sanz", "Josep Maria Bartomeu"], "d": 3, "crest": "realmadrid"},
+      {"t": "Qual clube venceu a final inglesa da Liga Europa de 2019, em Baku, contra o Arsenal?", "a": ["Chelsea"], "type": "txt", "choices": ["Chelsea", "Tottenham", "Manchester United", "Liverpool", "Manchester City", "Everton"], "d": 3, "crest": "arsenal"},
+      {"t": "Qual clube venceu a Liga Europa de 2020, na final contra a Inter de Milão?", "a": ["Sevilla"], "type": "txt", "choices": ["Sevilla", "Manchester United", "Shakhtar Donetsk", "Bayer Leverkusen", "Wolverhampton", "Basel"], "d": 3, "crest": "inter"},
+      {"t": "Qual clube venceu a Liga Europa de 2018, contra o Olympique de Marselha?", "a": ["Atlético de Madrid"], "type": "txt", "choices": ["Atlético de Madrid", "Arsenal", "Salzburg", "Lazio", "Sporting", "CSKA Moscou"], "d": 3, "crest": "marseille"},
+      {"t": "Qual clube venceu a Supercopa da UEFA de 2024, contra a Atalanta?", "a": ["Real Madrid"], "type": "txt", "choices": ["Real Madrid", "Manchester City", "Sevilla", "Bayern de Munique", "Liverpool", "Chelsea"], "d": 3, "crest": "atalanta"},
+      {"t": "Qual clube venceu a primeira Copa Intercontinental da FIFA, em 2024, contra o Pachuca?", "a": ["Real Madrid"], "type": "txt", "choices": ["Real Madrid", "Botafogo", "Al Ahly", "Manchester City", "River Plate", "Monterrey"], "d": 3, "icon": "trophy"},
+      {"t": "Qual clube brasileiro enfrentou o PSG na decisão da Copa Intercontinental da FIFA de 2025?", "a": ["flamengo"], "d": 3, "crest": "psg"},
+      {"t": "Qual clube escocês chegou à final da Copa da UEFA de 2003, contra o Porto de Mourinho?", "a": ["Celtic"], "type": "txt", "choices": ["Celtic", "Rangers", "Aberdeen", "Hearts", "Dundee United", "Hibernian"], "d": 4, "crest": "porto"},
+      {"t": "Qual clube inglês venceu a Copa da UEFA de 2001 com um 5 a 4 no gol de ouro, contra o Alavés?", "a": ["Liverpool"], "type": "txt", "choices": ["Liverpool", "Arsenal", "Leeds United", "Chelsea", "Tottenham", "Ipswich Town"], "d": 3, "icon": "trophy"},
+      {"t": "Qual clube espanhol venceu a Copa da UEFA de 2004, contra o Olympique de Marselha?", "a": ["Valencia"], "type": "txt", "choices": ["Valencia", "Villarreal", "Deportivo La Coruña", "Mallorca", "Sevilla", "Espanyol"], "d": 4, "crest": "marseille"},
+      {"t": "Qual clube inglês chegou à final da Copa da UEFA de 2006, contra o Sevilla?", "a": ["Middlesbrough"], "type": "txt", "choices": ["Middlesbrough", "Fulham", "Arsenal", "Tottenham", "Newcastle United", "Aston Villa"], "d": 4, "crest": "sevilla"},
+      {"t": "Qual clube de Londres chegou à final da Liga Europa de 2010, contra o Atlético de Madrid?", "a": ["Fulham"], "type": "txt", "choices": ["Fulham", "West Ham", "Tottenham", "Chelsea", "Arsenal", "Crystal Palace"], "d": 4, "crest": "atletico"},
+      {"t": "Qual jogador tem mais títulos da Premier League?", "a": ["Ryan Giggs"], "type": "txt", "choices": ["Ryan Giggs", "Paul Scholes", "Gary Neville", "Kyle Walker", "Kevin De Bruyne", "Fernandinho"], "d": 3, "crest": "manutd"},
+      {"t": "Qual goleiro se tornou o mais caro da história ao trocar o Athletic Bilbao pelo Chelsea, em 2018?", "a": ["Kepa Arrizabalaga"], "type": "txt", "choices": ["Kepa Arrizabalaga", "Alisson", "Ederson", "Thibaut Courtois", "David de Gea", "Jan Oblak"], "d": 3, "crest": "chelsea"},
+      {"t": "Qual zagueiro se tornou em 2018 o defensor mais caro do mundo ao ir para o Liverpool?", "a": ["van_dijk"], "type": "player", "d": 3, "crest": "liverpool"},
+      {"t": "Em que cidade italiana fica a Atalanta?", "a": ["Bérgamo"], "type": "txt", "choices": ["Bérgamo", "Brescia", "Verona", "Údine", "Bolonha", "Parma"], "d": 3, "crest": "atalanta"},
+      {"t": "Qual clube francês manda seus jogos no Stade Bollaert-Delelis?", "a": ["Lens"], "type": "txt", "choices": ["Lens", "Lille", "Metz", "Reims", "Amiens", "Valenciennes"], "d": 4, "flag": "FRA"},
+    ]
+  },
+  {
+    id:"copas_premios", name:"Chuteiras e Bolas de Ouro", emoji:"👟",
+    tag:"Artilheiros, melhores jogadores e sedes das Copas", col:"#8C5218", diff:"Variado",
+    qs:[
+      {"t": "Qual campeã do mundo sofreu apenas um gol em toda a Copa de 2026?", "a": ["Espanha"], "type": "txt", "choices": ["Espanha", "Argentina", "França", "Inglaterra", "Brasil", "Portugal"], "d": 3, "icon": "trophy"},
+      {"t": "Em quantos países foi disputada a Copa do Mundo de 2026?", "a": ["3"], "type": "txt", "choices": ["3", "2", "1", "4", "5", "6"], "d": 1, "icon": "trophy"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 2022, no Catar?", "a": ["mbappe"], "type": "player", "d": 2, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 2018, na Rússia?", "a": ["kane"], "type": "player", "d": 2, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 2010, na África do Sul?", "a": ["thomas_muller"], "type": "player", "d": 3, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 2006, na Alemanha?", "a": ["klose"], "type": "player", "d": 3, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 1998, com 6 gols?", "a": ["Davor Šuker"], "type": "txt", "choices": ["Davor Šuker", "Gabriel Batistuta", "Christian Vieri", "Ronaldo", "Marcelo Salas", "Luis Hernández"], "d": 3, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 1986, com 6 gols?", "a": ["Gary Lineker"], "type": "txt", "choices": ["Gary Lineker", "Diego Maradona", "Emilio Butragueño", "Careca", "Igor Belanov", "Preben Elkjær"], "d": 3, "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 1970, com 10 gols?", "a": ["gerd_muller"], "type": "player", "d": 3, "icon": "boot"},
+      {"t": "Qual goleiro argentino ganhou a Luva de Ouro da Copa de 2022?", "a": ["Emiliano Martínez"], "type": "txt", "choices": ["Emiliano Martínez", "Dominik Livaković", "Yassine Bounou", "Hugo Lloris", "Thibaut Courtois", "Alisson"], "d": 3, "icon": "trophy"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 2014?", "a": ["messi"], "type": "player", "d": 2, "flag": "GER"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 2006?", "a": ["zidane"], "type": "player", "d": 3, "flag": "ITA"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 1998?", "a": ["ronaldo"], "type": "player", "d": 3, "flag": "FRA"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 1986?", "a": ["maradona"], "type": "player", "d": 2, "flag": "GER"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 1982?", "a": ["rossi"], "type": "player", "d": 3, "flag": "BRA"},
+      {"t": "Quem ganhou a Bola de Ouro de melhor jogador da Copa do Mundo de 1978?", "a": ["kempes"], "type": "player", "d": 3, "flag": "NED"},
+      {"t": "Qual país sediou as Copas do Mundo de 1934 e 1990?", "a": ["Itália"], "type": "txt", "choices": ["Itália", "França", "Alemanha", "México", "Brasil", "Inglaterra"], "d": 2, "icon": "trophy"},
+      {"t": "Qual país sediou as Copas do Mundo de 1938 e 1998?", "a": ["França"], "type": "txt", "choices": ["França", "Itália", "Alemanha", "Espanha", "Suíça", "Inglaterra"], "d": 2, "icon": "trophy"},
+      {"t": "Qual país sediou as Copas do Mundo de 1950 e 2014?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Argentina", "Uruguai", "Chile", "México", "Alemanha"], "d": 1, "icon": "trophy"},
+      {"t": "Qual país sediou as Copas do Mundo de 1974 e 2006?", "a": ["Alemanha"], "type": "txt", "choices": ["Alemanha", "Itália", "França", "Suíça", "Holanda", "Áustria"], "d": 2, "icon": "trophy"},
+      {"t": "Qual país recebeu jogos das Copas de 1970, 1986 e 2026?", "a": ["México"], "type": "txt", "choices": ["México", "Estados Unidos", "Brasil", "Argentina", "Canadá", "Espanha"], "d": 1, "icon": "stadium"},
+      {"t": "Qual seleção venceu a primeira disputa por pênaltis da história das Copas, contra a França, em 1982?", "a": ["Alemanha Ocidental"], "type": "txt", "choices": ["Alemanha Ocidental", "Itália", "Polônia", "Brasil", "Inglaterra", "Espanha"], "d": 4, "flag": "FRA"},
+      {"t": "Qual seleção perdeu três finais de Copa do Mundo, em 1974, 1978 e 2010?", "a": ["Holanda"], "type": "txt", "choices": ["Holanda", "Hungria", "Tchecoslováquia", "Croácia", "Suécia", "Bélgica"], "d": 2, "icon": "trophy"},
+      {"t": "Qual seleção chegou à final da Copa de 2018 e terminou em terceiro em 2022?", "a": ["Croácia"], "type": "txt", "choices": ["Croácia", "Bélgica", "Inglaterra", "Marrocos", "Holanda", "Uruguai"], "d": 2, "icon": "trophy"},
     ]
   },
   /* NEW-QS:END */
@@ -7329,6 +7468,106 @@ function medalProgress(m) {
 const fmtDay = iso => iso ? iso.split('-').reverse().join('/') : '';
 
 /* One figurinha especial, as printed on its own screen. */
+/* The back of a figurinha especial, seen only when it is held up and turned. */
+function medalBack(m, on) {
+  const set = medalSet(m), tier = MEDAL_TIER[m.id] || 1;
+  const pr = on ? null : medalProgress(m);
+  const at = on ? LS.get('medalAt', {})[m.id] : null;
+  return `<div class="ins ins-r${tier} ${on ? 'is-on' : 'is-off'} ins-back">
+    <span class="ins-band"><span>${set.tag}</span><span>Nº ${String(MEDALS.indexOf(m) + 1).padStart(2, '0')}</span></span>
+    <span class="insb-set">${set.n}</span>
+    <span class="insb-nm">${m.n}</span>
+    <span class="insb-rule"></span>
+    <span class="insb-d">${m.d}</span>
+    <span class="insb-st">${on ? (at ? `Conquistada em ${fmtDay(at)}` : 'Conquistada') : 'Ainda não conquistada'}</span>
+    ${pr ? `<span class="insb-pr"><b>${pr.have}</b> de ${pr.need}</span>
+      <span class="ins-prog"><i style="width:${pr.pct}%"></i></span>` : ''}
+    <span class="ins-rar"><span class="ins-pips">${
+      [1, 2, 3, 4].map(k => `<i${k <= tier ? ' class="on"' : ''}></i>`).join('')}</span>${TIER_NAME[tier]}</span>
+  </div>`;
+}
+
+/* ── Held up to the light ─────────────────────────────────────
+   A tap lifts the card off the page and brings it to the middle of the
+   screen, big enough to read; the next tap turns it over, the one after
+   turns it back. Tapping outside, the close button or Escape puts it back
+   where it came from. The card is scaled rather than re-laid-out, so it is
+   the same card, just closer. */
+let _zoom = null;
+function openZoom(src, front, back, lookFrom) {
+  if (_zoom || !src) return;
+  const r = src.getBoundingClientRect();
+  if (!r.width || !r.height) return;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const k = Math.max(1, Math.min(Math.min(vw * 0.8, 340) / r.width, (vh * 0.68) / r.height));
+  const z = document.createElement('div');
+  z.className = 'zoom';
+  z.setAttribute('role', 'dialog');
+  z.setAttribute('aria-modal', 'true');
+  z.setAttribute('aria-label', 'Figurinha ampliada');
+  z.innerHTML = `<div class="zoom-scrim"></div>
+    <div class="zoom-card" tabindex="0" role="button" aria-label="Virar a figurinha"
+      style="width:${r.width}px;height:${r.height}px">
+      <div class="zoom-in">
+        <div class="zoom-face zoom-front">${front}</div>
+        <div class="zoom-face zoom-back">${back}</div>
+      </div>
+    </div>
+    <button class="zoom-x" type="button" aria-label="Fechar">${ICON.close ? ICON.close('currentColor', 16) : '×'}</button>
+    <div class="zoom-hint">Toque na figurinha para virar</div>`;
+  document.body.appendChild(z);
+  const card = z.querySelector('.zoom-card');
+  /* the album shrinks its lettering on small pockets with container queries;
+     the copy is outside that container, so it takes the sizes it had */
+  if (lookFrom) {
+    const dst = z.querySelector('.zoom-front');
+    ['.fig-band', '.fig-nm', '.fig-sub', '.fig-cap'].forEach(sel => {
+      const a = lookFrom.querySelectorAll(sel), b = dst.querySelectorAll(sel);
+      a.forEach((el, i) => {
+        if (!b[i]) return;
+        const cs = getComputedStyle(el);
+        ['fontSize', 'letterSpacing', 'paddingLeft', 'paddingRight', 'display', 'height', 'lineHeight']
+          .forEach(p => { b[i].style[p] = cs[p]; });
+      });
+    });
+  }
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cx = vw / 2, cy = vh / 2;
+  const at = rect => `translate(calc(-50% + ${rect.left + rect.width / 2 - cx}px), calc(-50% + ${rect.top + rect.height / 2 - cy}px)) scale(1)`;
+  const big = `translate(-50%, -50%) scale(${k})`;
+  card.style.transform = big;
+  if (!still && card.animate) card.animate([{ transform: at(r) }, { transform: big }],
+    { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
+  src.style.visibility = 'hidden';
+  const turnOver = () => { z.classList.toggle('is-turned'); snd.swipe(); };
+  const onKey = e => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if ((e.key === 'Enter' || e.key === ' ') && document.activeElement === card) { e.preventDefault(); turnOver(); }
+  };
+  const close = () => {
+    if (!_zoom) return;
+    _zoom = null;
+    document.removeEventListener('keydown', onKey);
+    const done = () => { z.remove(); src.style.visibility = ''; };
+    z.classList.add('is-closing');
+    z.classList.remove('is-turned');
+    const home = src.isConnected ? src.getBoundingClientRect() : r;
+    if (!still && card.animate) {
+      const a = card.animate([{ transform: big }, { transform: at(home) }],
+        { duration: 300, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' });
+      a.onfinish = done;
+      setTimeout(done, 600);
+    } else done();
+  };
+  card.addEventListener('click', turnOver);
+  z.querySelector('.zoom-scrim').addEventListener('click', close);
+  z.querySelector('.zoom-x').addEventListener('click', close);
+  document.addEventListener('keydown', onKey);
+  _zoom = { close };
+  snd.swipe();
+  try { card.focus({ preventScroll: true }); } catch (e) {}
+}
+
 function medalCard(m, on) {
   const set = medalSet(m), tier = MEDAL_TIER[m.id] || 1;
   const shape = INS_SHAPE[set.shape];
@@ -7998,7 +8237,7 @@ const CAT_ART = {
   g_escudo:'ball',   g_conta:'ball',  torcida: 'terrace',
 };
 
-function questionArt(q) {
+function questionArtRaw(q) {
   if (q.port)  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
   /* The app has a photograph of all twelve grounds and was drawing a generic
      one instead. The ground is the subject of the question, so show it — the
@@ -8046,9 +8285,78 @@ function questionArt(q) {
           clubArt(c, '', false)}</span>`).join('')}</div>`;
     return `<div class="qart qart-wide qart-draw">${ART.route(104)}</div>`;
   }
+  if (!q.icon) { const named = inferArt(q); if (named) return named; }
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
   const draw = QICON[key] || QICON.ball;
   return `<div class="qart qart-wide qart-draw">${draw(92)}</div>`;
+}
+
+/* A question with nothing of its own to show still names someone: a player,
+   a club, a country. It is pictured with the first of them that cannot be
+   its answer — the answers and the choices are skipped, so the picture never
+   gives the question away. Surnames only count when no other player in the
+   album shares them ("Müller", "Silva" do not). */
+let _artIdx = null;
+function artIndex() {
+  if (_artIdx) return _artIdx;
+  const word = w => new RegExp('(^|[^a-z0-9])' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^a-z0-9]|$)');
+  const COMMON = new Set(['silva', 'santos', 'junior', 'souza', 'costa', 'lima', 'ferreira', 'fernandes',
+    'rodriguez', 'martinez', 'garcia', 'gomez', 'lopez', 'perez', 'muller', 'alves', 'pereira', 'oliveira',
+    'gonzalez', 'marcelo', 'diego', 'alex', 'marcos', 'branco', 'felix', 'brito', 'zinho', 'eder', 'cesar',
+    'julio', 'carlos', 'roberto', 'ronaldo', 'neto', 'dida', 'didi', 'pepe', 'gilmar', 'jorginho', 'emerson']);
+  const last = {};
+  PL.forEach(p => { const w = _fold(p.n).split(/\s+/).pop(); last[w] = (last[w] || 0) + 1; });
+  const players = [];
+  PL.forEach(p => {
+    if (!p.img || !p.n) return;
+    const full = _fold(p.n), pats = [];
+    if (full.length >= 4 && !COMMON.has(full)) pats.push(word(full));
+    const w = full.split(/\s+/).pop();
+    if (w !== full && w.length >= 5 && last[w] === 1 && !COMMON.has(w)) pats.push(word(w));
+    if (pats.length) players.push({ p, full, pats });
+  });
+  const clubs = Object.keys(LOGOS).map(id => ({ id, n: _fold(clubName(id) || '') }))
+    .filter(c => c.n.length >= 4).map(c => ({ ...c, pat: word(c.n) }));
+  return (_artIdx = { players, clubs });
+}
+function inferArt(q) {
+  if (!q || !q.t || typeof PL === 'undefined') return '';
+  const t = ' ' + _fold(q.t) + ' ';
+  const ans = new Set(q.a || []);
+  const ch = (q.choices || []).map(_fold);
+  const chosen = n => ch.some(c => c === n || c.indexOf(n) !== -1 || n.indexOf(c) !== -1);
+  const { players, clubs } = artIndex();
+  for (const x of players) {
+    if (ans.has(x.p.id) || chosen(x.full)) continue;
+    if (x.pats.some(r => r.test(t)))
+      return `<div class="qart qart-face print"><img src="${x.p.img}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>`;
+  }
+  for (const c of clubs) {
+    if (ans.has(c.id) || chosen(c.n)) continue;
+    if (c.pat.test(t))
+      return `<div class="qart qart-crest">${clubArt(c.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
+  }
+  const cc = qCues(q).ctry;
+  if (cc && FLAGS[cc] && !(q.type === 'txt' && chosen(_fold(CTRY_NAME[cc] || ''))))
+    return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[cc] || cc}">
+      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[cc]}</svg></div>`;
+  return '';
+}
+
+/* The frame is the era, never the photograph: a cream mat with a sepia rule
+   before 1970, the cream card and red band of the Panini years up to 1999,
+   and a clean modern mount after that. */
+function qEra(q) {
+  const m = /(^|\D)(18[6-9]\d|19\d\d|20[0-3]\d)(\D|$)/.exec(q.t || '');
+  if (!m) return '';
+  const y = +m[2];
+  return y < 1970 ? 'era-vintage' : y < 2000 ? 'era-retro' : 'era-modern';
+}
+function questionArt(q) {
+  const html = questionArtRaw(q);
+  const era = qEra(q);
+  return era ? html.replace('class="qart', `class="qart ${era}`) : html;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -8577,7 +8885,7 @@ function html() {
               return `<div class="alb-slot${got ? ' alb-turn' : ' empty'}${
                 runNewIds.includes(sid) ? ' alb-fresh' : ''}"${
                 got ? ` data-fig="${sid}" role="button" tabindex="0"
-                       aria-label="${nm} — toque para virar a figurinha"` : ''}>
+                       aria-label="${nm} — toque para ampliar"` : ''}>
                 <span class="alb-n">${String(n).padStart(3, '0')}</span>
                 ${got
                   ? `<span class="flip"><span class="flip-in">
@@ -8621,7 +8929,7 @@ function html() {
             <span class="alb-folio">${album.size === 0
               ? 'cada acerto cola uma figurinha'
               : !LS.get('albFlipped', false)
-                ? 'toque numa figurinha para virá-la'
+                ? 'toque numa figurinha para ampliá-la'
                 : `pág. ${albPage + 1} de ${pages.length} · ${secGot} de ${secAll}`}</span>
           </div>
           <button id="alb-next" class="alb-arrow alb-fwd" ${albPage >= pages.length - 1 ? 'disabled' : ''}
@@ -9081,9 +9389,14 @@ function go() {
     const turn = el => {
       const slot = el.closest && el.closest('.alb-turn');
       if (!slot) return;
-      slot.classList.toggle('turned');
+      const f = slot.querySelector('.flip-front'), b = slot.querySelector('.flip-back');
+      if (!f || !b) return;
+      const pw = slot.getBoundingClientRect().width + 'px';
+      const tab = (slot.querySelector('.alb-n') || {}).outerHTML || '';
+      const wrap = (face, withTab) => `<div class="alb-slot zoom-slot" style="--pw:${pw}">${
+        withTab ? tab : ''}${face.innerHTML}</div>`;
       LS.set('albFlipped', true);
-      snd.swipe();
+      openZoom(slot, wrap(f, true), wrap(b, false), f);
     };
     const sheet = document.querySelector('.alb-sheet');
     if (sheet) {
@@ -9107,10 +9420,25 @@ function go() {
        `albTurning` carries which way it went into the next render, so the
        new spread slides in from the side it was turned towards. */
     const flip = dir => {
+      const old = document.querySelector('.alb-sheet');
+      const ghost = old && !matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? old.cloneNode(true) : null;
       albTurning = dir > 0 ? 'fwd' : 'back';
       albPage += dir;
       snd.page();
       go();
+      const fresh = document.querySelector('.alb-sheet');
+      const bk = document.getElementById('alb-book');
+      if (ghost && fresh && bk) {
+        ghost.classList.remove('turn-fwd', 'turn-back');
+        ghost.classList.add('alb-ghost', dir > 0 ? 'out-fwd' : 'out-back');
+        ghost.style.top = fresh.offsetTop + 'px';
+        ghost.style.height = fresh.offsetHeight + 'px';
+        bk.appendChild(ghost);
+        const drop = () => ghost.remove();
+        ghost.addEventListener('animationend', drop);
+        setTimeout(drop, 800);
+      }
     };
     on('alb-prev', () => flip(-1));
     on('alb-next', () => flip(1));
@@ -9120,7 +9448,7 @@ function go() {
     if (!window._albKeys) {
       window._albKeys = true;
       document.addEventListener('keydown', e => {
-        if (sc !== 'album') return;
+        if (sc !== 'album' || _zoom) return;
         if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
         const prev = document.getElementById('alb-prev');
         const next = document.getElementById('alb-next');
@@ -9183,6 +9511,18 @@ function go() {
     medalFocus = dot ? dot.dataset.medal : null;
     snd.swipe(); sc = 'medals'; go();
   });
+  /* the same held-up-to-the-light view for a figurinha especial: its back
+     says what it asks for and how far along you are */
+  if (sc === 'medals') {
+    const sets = document.querySelector('.ins-sets');
+    if (sets) sets.addEventListener('click', e => {
+      const card = e.target.closest && e.target.closest('.ins');
+      const m = card && MEDALS.find(x => x.id === card.dataset.medal);
+      if (!m) return;
+      const front = card.outerHTML.replace(' is-focus', '');
+      openZoom(card, front, medalBack(m, card.classList.contains('is-on')));
+    });
+  }
   if (sc === 'medals' && medalFocus) {
     const card = document.querySelector(`.ins[data-medal="${medalFocus}"]`);
     medalFocus = null;

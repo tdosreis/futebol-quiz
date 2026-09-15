@@ -65,8 +65,12 @@
    short screen now fits the album page too.
 
    v23: 851 new written questions, and the champion tables brought up to
-   2025-26. */
-const VERSION = 'v23';
+   2025-26.
+
+   v24: a figurinha is held up and turned over, the album has no middle
+   line and its pages cross as they turn, and every question has a picture
+   framed for its era. */
+const VERSION = 'v24';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
