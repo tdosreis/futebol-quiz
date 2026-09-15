@@ -51,8 +51,11 @@
    and on their own. index.html again.
 
    v18: home goes back to the small symbols; the cards live only on their
-   own screen, opened on the one you tapped. */
-const VERSION = 'v18';
+   own screen, opened on the one you tapped.
+
+   v19: the page is fetched past the HTTP cache, so a deploy shows on the
+   next open instead of up to ten minutes later. */
+const VERSION = 'v19';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
@@ -98,9 +101,11 @@ self.addEventListener('fetch', e => {
              || url.pathname.endsWith('/');
 
   if (isDoc) {
-    // network-first: always try to pick up a new build
+    // network-first: always try to pick up a new build. Pages sends
+    // max-age=600, so without no-cache the browser's own HTTP cache hands
+    // back the previous build for ten minutes after a deploy.
     e.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then(res => {
           if (res && res.status === 200) {
             const clone = res.clone();
