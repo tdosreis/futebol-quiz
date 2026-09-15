@@ -15,6 +15,9 @@ A row is
            {"stad": key} {"icon": key} {"map": UF} — what the question is illustrated with
   src      [lang, article, [terms]] — the Wikipedia article that settles it and
            the words that must appear there (tools/check_questions.py)
+  x        optional: the "Você sabia?" line shown after the answer
+  xs       the words that line adds, checked against the same article
+  xsrc     or [lang, article, [terms]] when the story rests on another article
 
 The rows go between the NEW-QS markers inside CATS, so a re-run replaces what
 the last run wrote. The ids it checks against are read from the page itself in
@@ -137,6 +140,10 @@ def main():
             if typ: row["type"] = typ
             if typ == "txt": row["choices"] = q["choices"]
             row["d"] = q.get("d")
+            x_ = q.get("x")
+            if x_ is not None:
+                if not isinstance(x_, str) or not (20 <= len(x_) <= 240): bad("x must be a story of 20-240 characters")
+                row["x"] = x_
             row.update({("uf" if k == "map" else k): v for k, v in art.items()})
             rows.append(row)
         total += len(rows)

@@ -70,7 +70,11 @@ def main():
                 bad += 1
                 print(f"  ?? {where}: article not found ({lang}:{title}) :: {q['t'][:70]}")
                 continue
-            miss = [x for x in terms if fold(x) not in body]
+            miss = [x for x in terms + q.get("xs", []) if fold(x) not in body]
+            if q.get("xsrc"):
+                l2, t2, te2 = q["xsrc"]
+                b2 = fold(article(l2, t2))
+                miss += [f"{x} ({t2})" for x in te2 if fold(x) not in b2]
             if miss:
                 bad += 1
                 print(f"  ?? {where}: {miss} not in {lang}:{title} :: {q['t'][:70]}")
