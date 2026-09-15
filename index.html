@@ -1549,6 +1549,43 @@ function AC() {
   return _AC;
 }
 
+/* Every cue goes through one soft bus: a low-pass that files the edge off
+   anything bright before it reaches a phone speaker, and a gentle compressor
+   so two cues landing together never stack into a hard peak. */
+let _BUS = null, _BUS_AC = null;
+function bus() {
+  const ac = AC();
+  if (_BUS_AC !== ac) {
+    const lp = ac.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.value = 4200; lp.Q.value = 0.5;
+    const cmp = ac.createDynamicsCompressor();
+    cmp.threshold.value = -20; cmp.knee.value = 12; cmp.ratio.value = 4;
+    cmp.attack.value = 0.003; cmp.release.value = 0.15;
+    lp.connect(cmp); cmp.connect(ac.destination);
+    _BUS = lp; _BUS_AC = ac;
+  }
+  return _BUS;
+}
+
+/* Pink noise, made once. White noise is what made the taps and page turns
+   sound like gravel: all its energy is up where a small speaker rattles.
+   Pink noise falls away with pitch, so filtered it breathes instead. */
+let _PINK = null;
+function pinkNoise(ac) {
+  if (_PINK && _PINK.sampleRate === ac.sampleRate) return _PINK;
+  const n = ac.sampleRate * 2, buf = ac.createBuffer(1, n, ac.sampleRate), d = buf.getChannelData(0);
+  let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+  for (let i = 0; i < n; i++) {
+    const w = Math.random() * 2 - 1;
+    b0 = .99886 * b0 + w * .0555179; b1 = .99332 * b1 + w * .0750759;
+    b2 = .969 * b2 + w * .153852;    b3 = .8665 * b3 + w * .3104856;
+    b4 = .55 * b4 + w * .5329522;    b5 = -.7616 * b5 - w * .016898;
+    d[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * .5362) * .11;
+    b6 = w * .115926;
+  }
+  return (_PINK = buf);
+}
+
 /* MUTE — read straight from storage so it survives a reload */
 let muted = (() => { try { return localStorage.getItem('fqbr_muted') === 'true'; }
                      catch (e) { return false; } })();
@@ -1579,7 +1616,7 @@ function tone(freq, dur, opt) {
     g.gain.setValueAtTime(0.0001, t0);
     g.gain.exponentialRampToValueAtTime(vol, t0 + Math.min(0.02, dur * 0.3));
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-    osc.connect(g); g.connect(ac.destination);
+    osc.connect(g); g.connect(bus());
     osc.start(t0); osc.stop(t0 + dur + 0.02);
   } catch (e) {}
 }
@@ -1590,11 +1627,7 @@ function noise(dur, opt) {
   opt = opt || {};
   try {
     const ac = AC(), t0 = ac.currentTime + (opt.delay || 0);
-    const n = Math.max(1, Math.floor(ac.sampleRate * dur));
-    const buf = ac.createBuffer(1, n, ac.sampleRate);
-    const d = buf.getChannelData(0);
-    for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
-    const src = ac.createBufferSource(); src.buffer = buf;
+    const src = ac.createBufferSource(); src.buffer = pinkNoise(ac);
     const f = ac.createBiquadFilter();
     f.type = opt.type || 'bandpass';
     f.frequency.setValueAtTime(opt.freq || 1800, t0);
@@ -1610,8 +1643,8 @@ function noise(dur, opt) {
     g.gain.setValueAtTime(0.0001, t0);
     g.gain.exponentialRampToValueAtTime(vol, t0 + atk);
     g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-    src.connect(f); f.connect(g); g.connect(ac.destination);
-    src.start(t0); src.stop(t0 + dur + 0.02);
+    src.connect(f); f.connect(g); g.connect(bus());
+    src.start(t0, Math.random() * 1.2); src.stop(t0 + dur + 0.02);
   } catch (e) {}
 }
 
@@ -1621,28 +1654,18 @@ function beep(freq, dur, type, vol, freqEnd) {
 }
 
 const snd = {
-  /* ── paper ── */
-  tap()    { noise(.03, { freq: 1500, q: .9, vol: .055 }); },
-  select() { noise(.035, { freq: 2100, q: 1.1, vol: .06 }); },
-  /* Every screen change plays this, so its onset matters more than any other
-     cue's: the old version rose to full volume in 12ms like everything else
-     here, and a burst of noise that loud that fast reads as a knock, not a
-     page changing. A slower attack and a touch less volume is the whole fix
-     — same paper-ish sweep, no thump at the front of it. */
-  swipe()  { noise(.22, { type: 'highpass', freq: 700, to: 3200, q: .6,
-                           vol: .032, attack: .05 }); },
-  /* A page being turned, in three parts, because that is what it sounds like:
-     the sheet peeling off the one under it, the long dry rustle while it is in
-     the air, and the soft slap as it lands on the other side. Nothing tonal —
-     paper has no pitch. */
-  /* One short, faint rustle when the page actually goes over, and nothing
-     else. This started as a three-part thing — a peel as the thumb lifted the
-     sheet, a rustle through the air, a landing as it came down — and every
-     version of it was wrong: the settle swept to 170Hz and knocked like stone,
-     and splitting it across the drag left half a sound hanging whenever a turn
-     was abandoned. Synthesised paper that is not convincing is worse than no
-     paper at all, so there is now as little of it as possible. */
-  page()   { noise(.40, { type: 'highpass', freq: 1200, to: 2800, q: .4, vol: .022 }); },
+  /* ── touch ──
+     These four play all the time, on every tap and every page, and they were
+     bursts of white noise: on a phone speaker that is a scrape of gravel.
+     A tap is now a tiny rounded drop in pitch, felt more than heard, and a
+     page is a breath of pink noise that swells and fades with no hard front.
+     Quiet on purpose — they are there to confirm, not to announce. */
+  tap()    { tone(1180, .07, { type: 'sine', vol: .028, to: 820 }); },
+  select() { tone(990, .09, { type: 'sine', vol: .034, to: 740 });
+             tone(1480, .06, { type: 'sine', vol: .012, delay: .012 }); },
+  swipe()  { noise(.28, { type: 'bandpass', freq: 520, to: 1100, q: .5, vol: .03, attack: .1 }); },
+  page()   { noise(.36, { type: 'bandpass', freq: 650, to: 1500, q: .45, vol: .042, attack: .13 });
+             tone(392, .22, { type: 'sine', vol: .012, delay: .1, to: 330 }); },
 
   /* ── the answer ── */
   correct() {
@@ -2723,7 +2746,7 @@ const CATS = [
       {"t": "Qual clube brasileiro venceu a Copa Sul-Americana de 2018 nos pênaltis, contra o Junior Barranquilla?", "a": ["atleticopr"], "d": 3, "icon": "trophy"},
       {"t": "Qual clube brasileiro perdeu a final da Copa Sul-Americana de 2023 para a LDU Quito?", "a": ["fortaleza"], "d": 3, "icon": "trophy"},
       {"t": "Qual clube brasileiro venceu a primeira Copa Conmebol, em 1992?", "a": ["atleticomg"], "d": 4, "icon": "trophy"},
-      {"t": "Qual clube venceu a primeira Copa do Nordeste, em 1994?", "a": ["sport"], "d": 4, "uf": "PE"},
+      {"t": "Qual clube venceu a primeira Copa do Nordeste, em 1994?", "a": ["sport"], "d": 4, "icon": "trophy"},
       {"t": "Qual clube conquistou a tríplice coroa de 2003: Campeonato Mineiro, Copa do Brasil e Brasileirão?", "a": ["cruzeiro"], "d": 3, "icon": "trophy"},
       {"t": "Qual clube venceu a Libertadores e o Campeonato Brasileiro no mesmo ano de 2024?", "a": ["botafogo"], "d": 2, "icon": "trophy"},
       {"t": "Qual clube paulista foi rebaixado pela primeira vez na história em 2023?", "a": ["santos"], "d": 2, "who": "pele"},
@@ -3209,7 +3232,7 @@ const CATS = [
       {"t": "Qual clube venceu a Copa do Brasil de 2017, contra o Flamengo nos pênaltis?", "a": ["cruzeiro"], "d": 3, "crest": "flamengo"},
       {"t": "Qual clube venceu a Copa do Brasil de 2020, na final contra o Grêmio?", "a": ["palmeiras"], "d": 3, "crest": "gremio"},
       {"t": "Qual clube venceu a Copa do Brasil de 2022, nos pênaltis contra o Corinthians?", "a": ["flamengo"], "d": 3, "crest": "corinthians"},
-      {"t": "Qual clube venceu a Série B do Brasileirão de 2023?", "a": ["vitoria"], "d": 4, "uf": "BA"},
+      {"t": "Qual clube venceu a Série B do Brasileirão de 2023?", "a": ["vitoria"], "d": 4, "icon": "trophy"},
       {"t": "Qual clube paulista venceu a Série B de 2024, logo depois do primeiro rebaixamento?", "a": ["santos"], "d": 3, "uf": "SP"},
       {"t": "Qual clube mineiro foi rebaixado pela primeira vez em 2019 e voltou à Série A em 2023?", "a": ["cruzeiro"], "d": 3, "uf": "MG"},
       {"t": "Qual clube carioca foi rebaixado para a Série B pela primeira vez em 2008?", "a": ["vasco"], "d": 3, "uf": "RJ"},
@@ -5312,6 +5335,38 @@ const CREDITS = {
   'img/05bedb59167cb4c8.webp': { a:'Desconhecido', l:'Escudo oficial · uso de identificação' },
   'img/f6b4434cffde5e27.webp': { a:'Desconhecido', l:'Escudo oficial · uso de identificação' },
   'img/36336499711eb4c0.webp': { a:'AAAJ', l:'Escudo oficial · uso de identificação' },
+  'img/ee4f53bf49bbfde3.webp': { a:'Melon5541', l:'CC BY-SA 4.0' },
+  'img/0af4923731c6c0f0.webp': { a:'Palácio do Planalto from Brasilia, Brasil', l:'CC BY 2.0' },
+  'img/1bf59fab37c46525.webp': { a:'Кирилл Венедиктов', l:'CC BY-SA 3.0' },
+  'img/aba3465fd14e7872.webp': { a:'Ank Kumar', l:'CC BY-SA 4.0' },
+  'img/d97760d70ea2740b.webp': { a:'Carlos yo', l:'CC BY-SA 4.0' },
+  'img/ac4c800e276855e1.webp': { a:'Lewis Clarke', l:'CC BY-SA 2.0' },
+  'img/f6ba49be6897d616.webp': { a:'Mutari 09:33, 21 September 2007 (UTC)', l:'Public domain' },
+  'img/ca576f8bf1e8f522.webp': { a:'Footballkickit at English Wikipedia', l:'CC BY 3.0' },
+  'img/22d9e5a73e8ef0f1.webp': { a:'Arne Müseler', l:'CC BY-SA 3.0 de' },
+  'img/98677d44da74f8c0.webp': { a:'Martin Falbisoner', l:'CC BY-SA 3.0' },
+  'img/43d1a33ec0c374c8.webp': { a:'Carlos Valenzuela Montuy', l:'CC BY-SA 4.0' },
+  'img/5fb317064cc396f4.webp': { a:'Stefano Vigorelli', l:'CC BY-SA 4.0' },
+  'img/59189ea99ce53818.webp': { a:'Uwebart', l:'CC BY-SA 3.0' },
+  'img/db3f19fe5fbec233.webp': { a:'Suicasmo', l:'CC BY-SA 4.0' },
+  'img/0be967c3d2359f38.webp': { a:'Thecoolone1223', l:'CC BY 4.0' },
+  'img/6d2c67844a137963.webp': { a:'Tobi 87', l:'CC BY 3.0' },
+  'img/ab0a0d60a0088003.webp': { a:'Darthvadrouw', l:'CC BY-SA 4.0' },
+  'img/96e17095e1771549.webp': { a:'Ted Eytan', l:'CC BY-SA 2.0' },
+  'img/c9abb6aecf57f6f8.webp': { a:'Arne Müseler / www.arne-mueseler.com', l:'CC BY-SA 3.0 de' },
+  'img/a95907be7a97c55c.webp': { a:'Валерий Дед', l:'CC BY 3.0' },
+  'img/70c669a9f5e3f5f1.webp': { a:'Vincenzo.togni', l:'CC BY-SA 4.0' },
+  'img/5212ed260009b2fd.webp': { a:'Edoderoo', l:'CC BY-SA 4.0' },
+  'img/dcf6b2526723c65a.webp': { a:'Dronepicr', l:'CC BY 3.0' },
+  'img/f81fa4decaf6183b.webp': { a:'romazone', l:'CC BY 2.0' },
+  'img/b074d06c7b8f1587.webp': { a:'Валерий Дед', l:'CC BY 3.0' },
+  'img/7a9c76f82c35acb6.webp': { a:'Richard Humphrey', l:'CC BY-SA 2.0' },
+  'img/2199b7b7f22e4fdd.webp': { a:'Arne Müseler', l:'CC BY-SA 3.0 de' },
+  'img/688a4a475f46f22b.webp': { a:'Mr.ちゅらさん', l:'CC0' },
+  'img/719acf8812ed57bb.webp': { a:'Cismaciew', l:'CC BY-SA 4.0' },
+  'img/d0954e948b6c5b08.webp': { a:'Goodreg3', l:'CC BY-SA 4.0' },
+  'img/fd49175bd81940cc.webp': { a:'Peter Glaser baraida', l:'CC0' },
+  'img/c1ae333ad2891227.webp': { a:'Ank Kumar', l:'CC BY-SA 4.0' },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -8344,6 +8399,53 @@ const QICON = {
   trophy: w => ART.trophy(w), ball: w => ART.ball(w),
 };
 
+/* The real thing, where a question names it: the trophy it is played for,
+   the ground it is played in. Each is skipped when it would be a clue — the
+   question is about that ground, or the answer is the club that plays there
+   (its colours are in the stands) — so a photograph only ever sets the scene. */
+const PHOTO_ART = [
+  { img:'img/ee4f53bf49bbfde3.webp', q:/champions league|liga dos campeoes|copa dos campeoes/, clue:/^$/, not:/feminin/ },
+  { img:'img/0af4923731c6c0f0.webp', q:/copa america/, clue:/^$/, not:/feminin/ },
+  { img:'img/1bf59fab37c46525.webp', q:/eurocopa|\beuro (19|20)\d\d/, clue:/^$/, not:/feminin/ },
+  { img:'img/aba3465fd14e7872.webp', q:/premier league/, clue:/manchester city/, not:/^$/ },
+  { img:'img/d97760d70ea2740b.webp', q:/\bfa cup\b|copa da inglaterra/, clue:/^$/, not:/^$/ },
+  { img:'img/c1ae333ad2891227.webp', q:/recopa europeia|recopa da uefa|recopa de 19[6-9]\d, (contra|com)|venceu a recopa de 19[6-9]\d/, clue:/^$/, not:/sul-americana|libertadores/ },
+  { img:'img/f6ba49be6897d616.webp', q:/camp nou/, clue:/barcelona/, not:/^$/ },
+  { img:'img/ca576f8bf1e8f522.webp', q:/bernabeu/, clue:/real madrid/, not:/^$/ },
+  { img:'img/22d9e5a73e8ef0f1.webp', q:/anfield/, clue:/liverpool/, not:/^$/ },
+  { img:'img/98677d44da74f8c0.webp', q:/allianz arena/, clue:/bayern/, not:/^$/ },
+  { img:'img/43d1a33ec0c374c8.webp', q:/azteca/, clue:/america|mexico/, not:/^$/ },
+  { img:'img/5fb317064cc396f4.webp', q:/monumental de nunez|\bmonumental\b.{0,40}\briver\b|\briver\b.{0,40}\bmonumental\b/, clue:/river/, not:/^$/ },
+  { img:'img/59189ea99ce53818.webp', q:/estadio centenario|centenario, em montevideu|centenario de montevideu/, clue:/uruguai|penarol|nacional/, not:/^$/ },
+  { img:'img/db3f19fe5fbec233.webp', q:/luzhniki/, clue:/^$/, not:/^$/ },
+  { img:'img/0be967c3d2359f38.webp', q:/metlife/, clue:/^$/, not:/^$/ },
+  { img:'img/6d2c67844a137963.webp', q:/olympiastadion|olimpico de berlim/, clue:/hertha/, not:/^$/ },
+  { img:'img/ab0a0d60a0088003.webp', q:/stade de france/, clue:/^$/, not:/^$/ },
+  { img:'img/96e17095e1771549.webp', q:/rose bowl/, clue:/^$/, not:/^$/ },
+  { img:'img/c9abb6aecf57f6f8.webp', q:/signal iduna|westfalenstadion/, clue:/dortmund/, not:/^$/ },
+  { img:'img/a95907be7a97c55c.webp', q:/parc des princes/, clue:/psg|paris/, not:/^$/ },
+  { img:'img/70c669a9f5e3f5f1.webp', q:/de kuip/, clue:/feyenoord/, not:/^$/ },
+  { img:'img/5212ed260009b2fd.webp', q:/johan cruyff arena|amsterdam arena/, clue:/ajax/, not:/^$/ },
+  { img:'img/dcf6b2526723c65a.webp', q:/velodrome/, clue:/marselha|marseille/, not:/^$/ },
+  { img:'img/f81fa4decaf6183b.webp', q:/olimpico de roma|stadio olimpico/, clue:/roma|lazio/, not:/^$/ },
+  { img:'img/b074d06c7b8f1587.webp', q:/ataturk/, clue:/^$/, not:/^$/ },
+  { img:'img/7a9c76f82c35acb6.webp', q:/stamford bridge/, clue:/chelsea/, not:/^$/ },
+  { img:'img/2199b7b7f22e4fdd.webp', q:/emirates/, clue:/arsenal/, not:/^$/ },
+  { img:'img/ac4c800e276855e1.webp', q:/wembley/, clue:/^$/, not:/^$/ },
+  { img:'img/719acf8812ed57bb.webp', q:/estadio da luz/, clue:/benfica/, not:/^$/ },
+  { img:'img/d0954e948b6c5b08.webp', q:/hampden/, clue:/queen's park|queens park/, not:/^$/ },
+  { img:'img/688a4a475f46f22b.webp', q:/arbitr|cartao (amarelo|vermelho)|\bvar\b|impedimento/, clue:/^$/, not:/^$/ }
+];
+/* two of the drawn fallbacks have a real photograph that says the same */
+const FALLBACK_PHOTO = { ball: 'img/fd49175bd81940cc.webp', rules: 'img/688a4a475f46f22b.webp' };
+function photoArt(q) {
+  const t = _fold(q.t || '');
+  const ans = (q.a || []).map(a => _fold(clubName(a) || a)).join(' | ');
+  const hit = PHOTO_ART.find(p => p.q.test(t) && !p.not.test(t) && !p.q.test(ans) && !p.clue.test(ans));
+  return hit ? `<div class="qart qart-wide print"><img src="${hit.img}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>` : '';
+}
+
 /* what a category falls back to when a question names nothing to draw */
 const CAT_ART = {
   origens: 'rules',  europa: 'globe',   curiosos: 'bench',
@@ -8354,7 +8456,7 @@ const CAT_ART = {
 };
 
 function questionArtRaw(q) {
-  if (q.port)  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
+  if (q.port && !artReveals(q, { player: q.port }))  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
   /* The app has a photograph of all twelve grounds and was drawing a generic
      one instead. The ground is the subject of the question, so show it — the
      drawn vignette stays as the fallback for a stadium with no photo. */
@@ -8362,12 +8464,12 @@ function questionArtRaw(q) {
     ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + ART.stadium(104) + '</div>'" /></div>`
     : `<div class="qart qart-wide qart-draw">${ART.stadium(104)}</div>`;
-  if (q.face)  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
+  if (q.face && !artReveals(q, { img: q.face }))  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
   /* A written question can name the player it is about, and his photograph
      illustrates it. tools/merge_questions.py refuses a row whose pictured
      player is also its answer, so the picture never answers the question. */
-  if (q.who) {
+  if (q.who && !artReveals(q, { player: q.who })) {
     const w = PL.find(p => p.id === q.who);
     if (w && w.img) return `<div class="qart qart-face print"><img src="${w.img}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
@@ -8377,11 +8479,12 @@ function questionArtRaw(q) {
   if (q.msc && MASCOTS[q.msc] && MASC_ART[MASCOTS[q.msc].art])
     return `<div class="qart qart-crest qart-hero qart-msc" role="img"
       aria-label="Mascote de um clube brasileiro">${MASC_ART[MASCOTS[q.msc].art]()}</div>`;
-  if (q.crest) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
+  if (q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest }))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
         clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
-  if (q.qimg)  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
+  /* a match photograph can have the man who answers standing in it */
+  if (q.qimg && q.type !== 'player')  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
         onerror="this.parentElement.style.display='none'" /></div>`;
-  if (q.flag && FLAGS[q.flag])
+  if (q.flag && FLAGS[q.flag] && !artReveals(q, { ctry: q.flag }))
     /* the wrapper carries the label, so the drawing inside it is decorative —
        otherwise a screen reader announces the flag twice */
     return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[q.flag] || q.flag}">
@@ -8401,8 +8504,11 @@ function questionArtRaw(q) {
           clubArt(c, '', false)}</span>`).join('')}</div>`;
     return `<div class="qart qart-wide qart-draw">${ART.route(104)}</div>`;
   }
-  if (!q.icon) { const named = inferArt(q); if (named) return named; }
+  { const named = inferArt(q); if (named) return named; }
+  { const shot = photoArt(q); if (shot) return shot; }
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
+  if (FALLBACK_PHOTO[key]) return `<div class="qart qart-wide print"><img src="${FALLBACK_PHOTO[key]}" alt="" aria-hidden="true"
+        onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + QICON['${key}'](92) + '</div>'" /></div>`;
   const draw = QICON[key] || QICON.ball;
   return `<div class="qart qart-wide qart-draw">${draw(92)}</div>`;
 }
@@ -8412,6 +8518,51 @@ function questionArtRaw(q) {
    its answer — the answers and the choices are skipped, so the picture never
    gives the question away. Surnames only count when no other player in the
    album shares them ("Müller", "Silva" do not). */
+/* Would this picture answer the question? Its own face, crest or flag plainly
+   would. So would a man who played for the club or the country that is the
+   answer, a crest from the answer's own career, or a flag of the answer's
+   country — unless the question already names that man, club or country,
+   in which case the picture only shows what the text has said. Every
+   picture a question can carry passes through here. */
+function artReveals(q, e) {
+  const F = _fold, A = q.a || [], ans = A.map(F);
+  const t = ' ' + F(q.t) + ' ';
+  const named = s => {
+    if (!s) return false;
+    const n = F(s);
+    if (t.indexOf(n) !== -1) return true;
+    return n.split(/\s+/).some(w => w.length >= 5 && new RegExp('(^|[^a-z0-9])' + w + '([^a-z0-9]|$)').test(t));
+  };
+  if (e.player || e.img) {
+    const p = e.player ? PL.find(x => x.id === e.player) : PL.find(x => x.img === e.img);
+    if (!p) return false;
+    if (A.includes(p.id) || ans.includes(F(p.n))) return true;
+    /* his shirt says which club or country he played for, so naming him in
+       the question does not make his picture safe when that is the answer */
+    const clubs = p.clubs || [];
+    if (A.some(a => clubs.includes(a))) return true;
+    if (q.type === 'txt' && (ans.includes(F(CTRY_NAME[p.ctry] || '')) ||
+        clubs.some(c => ans.includes(F(clubName(c) || ''))))) return true;
+    if (t.indexOf(' ' + F(p.n) + ' ') !== -1) return false;
+    if (q.type === 'player' && !qCues(q).ctry &&
+        A.some(a => (PL.find(x => x.id === a) || {}).ctry === p.ctry)) return true;
+    return false;
+  }
+  if (e.club) {
+    const cn = F(clubName(e.club) || '');
+    if (A.includes(e.club) || (cn && ans.includes(cn))) return true;
+    if (named(clubName(e.club))) return false;
+    return q.type === 'player' &&
+      A.some(a => ((PL.find(x => x.id === a) || {}).clubs || []).includes(e.club));
+  }
+  if (e.ctry) {
+    if (ans.includes(F(CTRY_NAME[e.ctry] || ''))) return true;
+    if (qCues(q).ctry === e.ctry || named(CTRY_NAME[e.ctry])) return false;
+    return q.type === 'player' && A.some(a => (PL.find(x => x.id === a) || {}).ctry === e.ctry);
+  }
+  return false;
+}
+
 let _artIdx = null;
 function artIndex() {
   if (_artIdx) return _artIdx;
@@ -8443,18 +8594,18 @@ function inferArt(q) {
   const chosen = n => ch.some(c => c === n || c.indexOf(n) !== -1 || n.indexOf(c) !== -1);
   const { players, clubs } = artIndex();
   for (const x of players) {
-    if (ans.has(x.p.id) || chosen(x.full)) continue;
+    if (ans.has(x.p.id) || chosen(x.full) || artReveals(q, { player: x.p.id })) continue;
     if (x.pats.some(r => r.test(t)))
       return `<div class="qart qart-face print"><img src="${x.p.img}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
   }
   for (const c of clubs) {
-    if (ans.has(c.id) || chosen(c.n)) continue;
+    if (ans.has(c.id) || chosen(c.n) || artReveals(q, { club: c.id })) continue;
     if (c.pat.test(t))
       return `<div class="qart qart-crest">${clubArt(c.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   }
   const cc = qCues(q).ctry;
-  if (cc && FLAGS[cc] && !(q.type === 'txt' && chosen(_fold(CTRY_NAME[cc] || ''))))
+  if (cc && FLAGS[cc] && !(q.type === 'txt' && chosen(_fold(CTRY_NAME[cc] || ''))) && !artReveals(q, { ctry: cc }))
     return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[cc] || cc}">
       <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[cc]}</svg></div>`;
   return '';

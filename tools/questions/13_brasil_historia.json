@@ -35,7 +35,7 @@
     { "t": "Qual clube brasileiro venceu a primeira Copa Conmebol, em 1992?", "a": ["atleticomg"],
       "d": 4, "art": { "icon": "trophy" }, "src": ["pt", "Copa Conmebol de 1992", ["Atlético"]] },
     { "t": "Qual clube venceu a primeira Copa do Nordeste, em 1994?", "a": ["sport"],
-      "d": 4, "art": { "map": "PE" }, "src": ["pt", "Copa do Nordeste", ["1994", "Sport"]] },
+      "d": 4, "art": { "icon": "trophy" }, "src": ["pt", "Copa do Nordeste", ["1994", "Sport"]] },
     { "t": "Qual clube conquistou a tríplice coroa de 2003: Campeonato Mineiro, Copa do Brasil e Brasileirão?", "a": ["cruzeiro"],
       "d": 3, "art": { "icon": "trophy" }, "src": ["pt", "Cruzeiro Esporte Clube", ["tríplice coroa", "2003"]] },
     { "t": "Qual clube venceu a Libertadores e o Campeonato Brasileiro no mesmo ano de 2024?", "a": ["botafogo"],

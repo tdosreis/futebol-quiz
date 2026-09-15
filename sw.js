@@ -73,7 +73,7 @@
 
    v25: over a thousand written questions, with rounds kept about a third
    generated. */
-const VERSION = 'v25';
+const VERSION = 'v26';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

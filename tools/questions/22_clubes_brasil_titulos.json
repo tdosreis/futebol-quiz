@@ -73,7 +73,7 @@
     { "t": "Qual clube venceu a Copa do Brasil de 2022, nos pênaltis contra o Corinthians?", "a": ["flamengo"],
       "d": 3, "art": { "crest": "corinthians" }, "src": ["pt", "Copa do Brasil de Futebol de 2022", ["Flamengo", "Corinthians"]] },
     { "t": "Qual clube venceu a Série B do Brasileirão de 2023?", "a": ["vitoria"],
-      "d": 4, "art": { "map": "BA" }, "src": ["en", "2023 Campeonato Brasileiro Série B", ["Vitória"]] },
+      "d": 4, "art": { "icon": "trophy" }, "src": ["en", "2023 Campeonato Brasileiro Série B", ["Vitória"]] },
     { "t": "Qual clube paulista venceu a Série B de 2024, logo depois do primeiro rebaixamento?", "a": ["santos"],
       "d": 3, "art": { "map": "SP" }, "src": ["en", "2024 Campeonato Brasileiro Série B", ["Santos"]] },
     { "t": "Qual clube mineiro foi rebaixado pela primeira vez em 2019 e voltou à Série A em 2023?", "a": ["cruzeiro"],
