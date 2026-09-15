@@ -69,8 +69,11 @@
 
    v24: a figurinha is held up and turned over, the album has no middle
    line and its pages cross as they turn, and every question has a picture
-   framed for its era. */
-const VERSION = 'v24';
+   framed for its era.
+
+   v25: over a thousand written questions, with rounds kept about a third
+   generated. */
+const VERSION = 'v25';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
