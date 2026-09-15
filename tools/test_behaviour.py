@@ -239,6 +239,11 @@ TESTS = r"""
     // both stores empty or the assertion is not testing what it says.
     stats={games:0,correct:0,answered:0,bestStreak:0}; album=new Set();
     ok('no medals with no games', earnedMedals().length===0, `${earnedMedals().length}`);
+    // every card is printed in exactly one set and has a tier, or it would
+    // silently fall off the medals screen
+    ok('every figurinha especial is in one set and has a tier',
+       MEDALS.every(m => MEDAL_SETS.filter(s => s.ids.includes(m.id)).length === 1 && MEDAL_TIER[m.id]),
+       MEDALS.filter(m => MEDAL_SETS.filter(s => s.ids.includes(m.id)).length !== 1 || !MEDAL_TIER[m.id]).map(m => m.id).join(','));
 
     // ---- every sticker in the album can actually be collected ----
     // The escudos, selecoes and mascotes are printed in the album whether or

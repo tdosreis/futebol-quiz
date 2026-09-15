@@ -45,8 +45,11 @@
    wrong is worse than one that just slides — so the page now slides in from
    the side it was turned towards and nothing more. index.html again, for
    the same reason as every version above it: the shell has to stop serving
-   the old turn. */
-const VERSION = 'v16';
+   the old turn.
+
+   v17: the figurinhas especiais are printed cards now, on the home screen
+   and on their own. index.html again. */
+const VERSION = 'v17';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
