@@ -799,6 +799,13 @@
     .mode .ms { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; font-variant-numeric: tabular-nums; }
     .home-foot { display: flex; gap: 14px; align-items: center; justify-content: center; }
     .link { background: none; border: none; color: var(--pitch); font-size: 11px; font-weight: 700; cursor: pointer; padding: 2px; text-decoration: underline; text-underline-offset: 3px; }
+    .medal-strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; max-width: 300px; cursor: pointer; }
+    .medal-strip .medal-dot { animation: tileIn .34s ease-out backwards; }
+    .medal-strip .medal-dot:nth-child(1){animation-delay:40ms} .medal-strip .medal-dot:nth-child(2){animation-delay:80ms}
+    .medal-strip .medal-dot:nth-child(3){animation-delay:120ms} .medal-strip .medal-dot:nth-child(4){animation-delay:160ms}
+    .medal-strip .medal-dot:nth-child(5){animation-delay:200ms} .medal-strip .medal-dot:nth-child(6){animation-delay:240ms}
+    .medal-strip .medal-dot:nth-child(n+7){animation-delay:280ms}
+    .medal-dot { width: 26px; height: 26px; border-radius: 50%; background: var(--pocket); box-shadow: inset 0 0 0 1px var(--rule); display: flex; align-items: center; justify-content: center; color: var(--brass); }
 
     /* ── Difficulty cards ── */
     .dc { display: flex; align-items: center; gap: 14px; background: var(--pocket); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; cursor: pointer;
@@ -882,18 +889,10 @@
     .ins-pips i { width: 5px; height: 5px; transform: rotate(45deg); background: var(--rule); }
     .ins-pips i.on { background: var(--ic); }
 
-    /* the home row: the newest ones you hold, then the nearest to hand */
-    .ins-home { width: 100%; max-width: 340px; cursor: pointer; }
-    .ins-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; text-align: left; }
-    .ins-ct { font-size: 10px; font-weight: 800; color: var(--brass-ink); font-variant-numeric: tabular-nums; }
-    .ins-head .link { margin-left: auto; }
-    .ins-row { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity;
-      margin: 0 -20px; padding: 2px 20px 4px; scrollbar-width: none; }
-    .ins-row::-webkit-scrollbar { display: none; }
-    .ins-row .ins { flex: 0 0 104px; scroll-snap-align: start; animation: tileIn .34s ease-out backwards; }
-    .ins-row .ins:nth-child(2) { animation-delay: 50ms; }
-    .ins-row .ins:nth-child(3) { animation-delay: 100ms; }
-    .ins-row .ins:nth-child(n+4) { animation-delay: 150ms; }
+    /* the card you tapped on the home strip, found for you */
+    .ins.is-focus { border-color: var(--brass); animation: insFocus 1.2s ease-out 1; }
+    @keyframes insFocus { 0% { transform: scale(1); } 18% { transform: scale(1.07); } 100% { transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { .ins.is-focus { animation: none; } }
 
     /* the full screen, set by set */
     .ins-sets { display: flex; flex-direction: column; gap: 18px; padding-bottom: 8px; }
@@ -6240,16 +6239,15 @@ function medalProgress(m) {
 }
 const fmtDay = iso => iso ? iso.split('-').reverse().join('/') : '';
 
-/* One figurinha especial. `compact` is the home row, where a locked card
-   gives its description up for the count: 104px will not hold both. */
-function medalCard(m, on, compact) {
+/* One figurinha especial, as printed on its own screen. */
+function medalCard(m, on) {
   const set = medalSet(m), tier = MEDAL_TIER[m.id] || 1;
   const shape = INS_SHAPE[set.shape];
   const pr = on ? null : medalProgress(m);
   const at = on ? LS.get('medalAt', {})[m.id] : null;
   const sub = on ? (at ? `Conquistada ${fmtDay(at)}` : 'Conquistada')
-            : (compact && pr ? `${pr.have} / ${pr.need}` : m.d);
-  return `<div class="ins ins-r${tier} ${on ? 'is-on' : 'is-off'}" role="img"
+            : m.d;
+  return `<div class="ins ins-r${tier} ${on ? 'is-on' : 'is-off'}" data-medal="${m.id}" role="img"
       aria-label="${m.n}: ${on ? 'conquistada' : 'ainda não'}. ${m.d}. ${TIER_NAME[tier]}.">
     <span class="ins-band"><span>${set.tag}</span><span>Nº ${String(MEDALS.indexOf(m) + 1).padStart(2, '0')}</span></span>
     <span class="ins-emb">
@@ -6270,21 +6268,6 @@ function medalCard(m, on, compact) {
     <span class="ins-rar"><span class="ins-pips">${
       [1, 2, 3, 4].map(k => `<i${k <= tier ? ' class="on"' : ''}></i>`).join('')}</span>${TIER_NAME[tier]}</span>
   </div>`;
-}
-
-/* The home row: the newest you hold, and always the two nearest to hand, so
-   a full shelf still points at something to play for. */
-function medalShowcase(limit) {
-  const got = new Set(earnedMedals().map(m => m.id));
-  const at = LS.get('medalAt', {});
-  const won = MEDALS.filter(m => got.has(m.id)).sort((a, b) =>
-    (at[b.id] || '').localeCompare(at[a.id] || '') || MEDAL_TIER[b.id] - MEDAL_TIER[a.id]);
-  const next = MEDALS.filter(m => !got.has(m.id))
-    .map(m => ({ m, pct: (medalProgress(m) || { pct: -1 }).pct }))
-    .sort((a, b) => b.pct - a.pct || MEDAL_TIER[a.m.id] - MEDAL_TIER[b.m.id])
-    .map(x => x.m);
-  const keep = limit - Math.min(2, next.length);
-  return { got, cards: won.slice(0, keep).concat(next).slice(0, limit) };
 }
 
 /* ═══════════════════════════════════════════════════
@@ -7290,6 +7273,15 @@ function html() {
         ${mode('cta-btn', ICON.ladder('currentColor', 16), 'Treino', 'sem apostar', 'train')}
       </div>
 
+      ${(() => {
+        const e = earnedMedals();
+        if (!e.length) return '';
+        return `<div id="medal-strip" class="medal-strip" title="Medalhas">
+          ${e.slice(0, 11).map(m => `<span class="medal-dot" data-medal="${m.id}" title="${m.n}">${(ICON[m.ic] || ICON.medal)('currentColor', 13)}</span>`).join('')}
+          ${e.length > 11 ? `<span class="small muted" style="align-self:center;">+${e.length - 11}</span>` : ''}
+        </div>`;
+      })()}
+
       <button id="balb" class="mode mode-album" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
         <span class="mode-disc">${ICON.book('currentColor', 17)}</span>
         <span style="flex:1;min-width:0;">
@@ -7304,21 +7296,10 @@ function html() {
         </span>
       </button>
 
-      ${(() => {
-        const { got, cards } = medalShowcase(8);
-        return `<div id="medal-strip" class="ins-home">
-          <div class="ins-head">
-            <span class="eyebrow">Figurinhas especiais</span>
-            <span class="ins-ct">${got.size}/${MEDALS.length}</span>
-            <button class="link" type="button">Ver todas</button>
-          </div>
-          <div class="ins-row">${cards.map(m => medalCard(m, got.has(m.id), true)).join('')}</div>
-        </div>`;
-      })()}
-
       <div class="home-foot">
         <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
           muted ? ICON.mute('currentColor', 14) : ICON.sound('currentColor', 14)}</button>
+        <button id="bmed"  class="link">Medalhas</button>
         <button id="bcred" class="link">Créditos</button>
       </div>
 
@@ -7542,7 +7523,7 @@ function html() {
           return `<section>
             <div class="ins-set-h"><span class="ins-set-t">${set.n}</span>
               <span class="ins-set-n">${n} de ${ms.length}</span></div>
-            <div class="ins-grid">${ms.map(m => medalCard(m, got.has(m.id), false)).join('')}</div>
+            <div class="ins-grid">${ms.map(m => medalCard(m, got.has(m.id))).join('')}</div>
           </section>`;
         }).join('')}
       </div>
@@ -7927,6 +7908,7 @@ let _lastSc = null;
 let albCtry = null;
 let albPage = 0;
 let albTurning = null;   // 'fwd' | 'back', consumed by the next render
+let medalFocus = null;   // the figurinha especial tapped on home, found on arrival
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -8068,7 +8050,18 @@ function go() {
       if (first && first.scrollIntoView) first.scrollIntoView({ block: 'nearest' });
     }
   }
-  on('medal-strip', () => { snd.swipe();  sc = 'medals';  go(); });
+  /* The strip stays a row of small symbols; tapping one opens the full
+     screen on that symbol's card. */
+  on('medal-strip', e => {
+    const dot = e.target.closest && e.target.closest('.medal-dot');
+    medalFocus = dot ? dot.dataset.medal : null;
+    snd.swipe(); sc = 'medals'; go();
+  });
+  if (sc === 'medals' && medalFocus) {
+    const card = document.querySelector(`.ins[data-medal="${medalFocus}"]`);
+    medalFocus = null;
+    if (card) { card.scrollIntoView({ block: 'center' }); card.classList.add('is-focus'); }
+  }
   on('bmute',       () => { setMuted(!muted); snd.tap(); go(); });
 
   if (sc === 'end' && !window._celebrated) {

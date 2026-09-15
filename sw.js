@@ -48,8 +48,11 @@
    the old turn.
 
    v17: the figurinhas especiais are printed cards now, on the home screen
-   and on their own. index.html again. */
-const VERSION = 'v17';
+   and on their own. index.html again.
+
+   v18: home goes back to the small symbols; the cards live only on their
+   own screen, opened on the one you tapped. */
+const VERSION = 'v18';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
