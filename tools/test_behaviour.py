@@ -469,6 +469,30 @@ TESTS = r"""
                   : `cta=${bottom} vh=${vh}`);
     })();
 
+    /* ---- every page of the album is the same twenty pockets ---- */
+    (function(){
+      album = new Set(ALL_STICKERS.filter((id, i) => i % 2));
+      sc = 'album'; albCtry = null; albPage = 0; go();
+      const secs = [...document.querySelectorAll('.alb-tab')].map(b => b.dataset.ctry);
+      const bad = [], shapes = [];
+      secs.forEach(c => {
+        albCtry = c; albPage = 0; go();
+        const n = document.querySelectorAll('.alb-pip').length;
+        for (let i = 0; i < n; i++) {
+          albPage = i; go();
+          const slots = [...document.querySelectorAll('.alb-grid > .alb-slot')];
+          if (slots.length !== ALB_PER) bad.push(`${c}:${i + 1}=${slots.length}`);
+          const hs = new Set(slots.map(el => Math.round(el.getBoundingClientRect().height)));
+          if (hs.size !== 1) shapes.push(`${c}:${i + 1}=${[...hs].join('/')}`);
+        }
+      });
+      ok('every album page holds exactly twenty pockets', bad.length === 0,
+         bad.slice(0, 4).join(', ') || `${secs.length} sections`);
+      ok('every pocket on an album page is the same size', shapes.length === 0,
+         shapes.slice(0, 4).join(', ') || 'filled, empty and blank all match');
+      album = new Set(); sc = 'home'; go();
+    })();
+
     /* ---- swiping a page of the album ----
        The turn is a plain slide now: release decides the whole gesture at
        once, rather than a drag whose state has to survive the re-render

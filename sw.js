@@ -54,8 +54,11 @@
    own screen, opened on the one you tapped.
 
    v19: the page is fetched past the HTTP cache, so a deploy shows on the
-   next open instead of up to ten minutes later. */
-const VERSION = 'v19';
+   next open instead of up to ten minutes later.
+
+   v20: every page of the album is twenty pockets of one shape, on printed
+   paper. index.html again. */
+const VERSION = 'v20';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

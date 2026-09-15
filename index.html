@@ -1186,14 +1186,27 @@
     /* the spread */
     .alb-book { position: relative; flex: 1; min-height: 0; display: flex;
       flex-direction: column;
-      border-radius: 12px; overflow: hidden; background: var(--pg-paper);
+      border-radius: 12px; overflow: hidden; background-color: var(--pg-paper);
       box-shadow: inset 0 0 0 1px var(--pg-edge), 0 2px 10px var(--shadow);
-      /* the gutter, where the two halves of a real spread meet */
-      background-image: linear-gradient(90deg, transparent 49.4%, var(--pg-edge) 49.7%,
-                        var(--pg-edge) 50.3%, transparent 50.6%);
-      background-size: 100% 100%; }
+      /* the gutter, where the two halves of a real spread meet: a crease, with
+         the paper curving down into it from both sides */
+      background-image: linear-gradient(90deg, transparent 44%, rgba(0,0,0,var(--pg-fold)) 49.2%,
+                        var(--pg-edge) 49.8%, var(--pg-edge) 50.2%,
+                        rgba(0,0,0,var(--pg-fold)) 50.8%, transparent 56%);
+      --pg-fold: .08; }
+    /* The paper itself: a fine fibre over the whole sheet and, on the older
+       stock, edges gone darker with age. One small tile, drawn once. */
+    .alb-book::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        radial-gradient(135% 100% at 50% 42%, transparent 52%, rgba(70,45,15,var(--pg-age, .05))),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)'/%3E%3C/svg%3E"); }
+    .alb-band, .alb-sheet { position: relative; z-index: 1; }
+    :root[data-theme="dark"] .alb-book, :root:not([data-theme="light"]) .alb-book { --pg-fold: .32; }
     .alb-band { display: flex; align-items: center; gap: 8px; flex: none;
-      padding: 7px 10px; background: var(--pg-band); color: var(--pg-bandink); }
+      padding: 7px 10px; background-color: var(--pg-band); color: var(--pg-bandink);
+      /* printed, not flat: a fine diagonal screen and a darker rule under it */
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 5px);
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,.16); }
     .alb-band .t { display: block; font-family: var(--font-c); font-weight: 700;
       text-transform: uppercase; font-size: 15px; letter-spacing: .04em; line-height: 1.1; }
     .alb-band .langs { display: block; font-size: 7.5px; letter-spacing: .1em;
@@ -1249,10 +1262,10 @@
     .alb-pip.is-on { background: var(--brass); transform: scale(1.5); }
 
     /* ── the papers, oldest to newest ── */
-    .dec-a { --pg-paper:#E4D5B4; --pg-edge:#B9A277; --pg-band:#6B4B2A; --pg-bandink:#F3E7CE; }
-    .dec-b { --pg-paper:#EFE4CA; --pg-edge:#BFA97C; --pg-band:#B23A2E; --pg-bandink:#F6EBD8; }
-    .dec-c { --pg-paper:#F0E3C2; --pg-edge:#C4A96E; --pg-band:#B4691E; --pg-bandink:#FBF0DA; }
-    .dec-d { --pg-paper:#EDE6D2; --pg-edge:#BDB394; --pg-band:#1F6E63; --pg-bandink:#EAF6F2; }
+    .dec-a { --pg-age:.2; --pg-paper:#E4D5B4; --pg-edge:#B9A277; --pg-band:#6B4B2A; --pg-bandink:#F3E7CE; }
+    .dec-b { --pg-age:.14; --pg-paper:#EFE4CA; --pg-edge:#BFA97C; --pg-band:#B23A2E; --pg-bandink:#F6EBD8; }
+    .dec-c { --pg-age:.1; --pg-paper:#F0E3C2; --pg-edge:#C4A96E; --pg-band:#B4691E; --pg-bandink:#FBF0DA; }
+    .dec-d { --pg-age:.07; --pg-paper:#EDE6D2; --pg-edge:#BDB394; --pg-band:#1F6E63; --pg-bandink:#EAF6F2; }
     .dec-e { --pg-paper:#EDE9DC; --pg-edge:#B9B4A0; --pg-band:#2B5EA8; --pg-bandink:#EAF1FB; }
     .dec-f { --pg-paper:#EDEBE4; --pg-edge:#B6B3A8; --pg-band:#3C3B39; --pg-bandink:#F2F1EE; }
     .dec-g { --pg-paper:#E6EFEB; --pg-edge:#A9C4BB; --pg-band:#2E8B7A; --pg-bandink:#ECFAF5; }
@@ -1327,22 +1340,65 @@
     .alb-sec .cnt { margin-left: auto; font-family: var(--font-s); font-weight: 800; font-size: 11px;
       color: var(--ink-3); font-variant-numeric: tabular-nums; flex: none; }
 
-    .alb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px;
-      align-items: stretch; flex: none; margin-bottom: 16px; }
-    @media (min-width: 380px) { .alb-grid { grid-template-columns: repeat(5, 1fr); } }
-    @media (min-width: 470px) { .alb-grid { grid-template-columns: repeat(6, 1fr); } }
-    .alb-slot { position: relative; display: flex; }
-    .alb-slot > .fig { width: 100%; }
+    /* Every page is the same twenty pockets, four across and five down, with
+       the spine running between the second and third columns the way it does
+       on a printed spread. The pocket has a fixed shape, so a page of faces, a
+       page of crests and a page still waiting for its stickers are all the
+       same size, and every row lines up whatever the names underneath. */
+    .alb-grid { position: relative; display: grid; flex: none; margin: 3px 0 12px;
+      grid-template-columns: 1fr 1fr 8px 1fr 1fr; grid-template-rows: repeat(5, auto);
+      column-gap: 5px; row-gap: 10px; }
+    .alb-grid > .alb-slot:nth-child(4n+3) { grid-column: 4; }
+    .alb-slot { position: relative; display: flex; aspect-ratio: 29 / 50;
+      min-width: 0; min-height: 0; align-self: start; }
+    .alb-slot > .fig, .alb-slot > .flip { width: 100%; height: 100%; }
+    .alb-slot .flip-in, .alb-slot .flip-front { height: 100%; }
+    /* a sticker sits on the page, a hair above it */
+    .alb-slot .fig { box-shadow: 0 1px 1px rgba(0,0,0,.1), 0 3px 7px -3px var(--shadow-2); }
+    .alb-slot .fig-retro { box-shadow: inset 0 0 0 1px var(--retro-edge),
+      0 1px 1px rgba(0,0,0,.1), 0 3px 7px -3px var(--shadow-2); }
+    .alb-slot .fig-art { aspect-ratio: auto; flex: 1 1 0; min-height: 0; }
+    .alb-slot .fig-cap { flex: none; height: 39px; min-height: 0; padding: 3px 3px 4px; }
+    .alb-slot .fig-nm { -webkit-line-clamp: 2; }
     /* the pocket you have not filled yet: the album prints the number and
        waits for the sticker */
-    .alb-slot.empty { border: 1.5px dashed var(--rule); border-radius: 4px;
-      width: 100%; min-height: 118px; flex-direction: column;
-      align-items: center; justify-content: center; gap: 3px; background: transparent; }
-    @media (min-width: 400px) { .alb-slot.empty { min-height: 132px; } }
-    .alb-slot.empty .ph { font-family: var(--font-c); font-weight: 700; color: var(--rule);
-      font-size: 15px; letter-spacing: .08em; }
-    .alb-slot.empty .nm { font-family: var(--font-c); font-size: 7px; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+    .alb-slot.empty { border-radius: 4px; flex-direction: column;
+      align-items: center; justify-content: center; gap: 7px;
+      /* printed on the page: a frame inside a frame, like a real pocket */
+      box-shadow: inset 0 0 0 1px var(--pg-edge), inset 0 0 0 3px var(--pg-paper),
+                  inset 0 0 0 3.6px var(--pg-edge); }
+    .alb-slot.empty .ph { display: flex; justify-content: center; width: 100%;
+      color: var(--pg-edge); line-height: 0; margin-top: 10px; }
+    .alb-slot.empty .ph svg { width: 42%; height: auto; }
+    .alb-slot.empty .nm { font-family: var(--font-c); font-size: 7px; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
+    /* the end of a section: the page keeps its shape and prints its close */
+    .alb-colo { position: absolute; inset: 0; grid-column: 1 / -1; margin: 4px 2px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; text-align: center; border-radius: 6px; pointer-events: none;
+      box-shadow: inset 0 0 0 1px var(--pg-edge), inset 0 0 0 4px var(--pg-paper),
+                  inset 0 0 0 4.6px var(--pg-edge); }
+    .alb-pitch { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px);
+      fill: none; stroke: var(--pg-edge); stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .alb-pitch * { vector-effect: non-scaling-stroke; }
+    .alb-colo > span { position: relative; }
+    .alb-colo-em { display: flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 50%; color: var(--pg-edge);
+      background: var(--pg-paper);
+      box-shadow: inset 0 0 0 1px var(--pg-edge), inset 0 0 0 3px var(--pg-paper),
+                  inset 0 0 0 3.6px var(--pg-edge); }
+    .alb-colo-em > svg { width: 22px; height: 22px; }
+    .alb-colo-txt { display: flex; flex-direction: column; align-items: center; gap: 3px;
+      background: var(--pg-paper); padding: 2px 8px; border-radius: 4px; }
+    /* Down a tall panel the halfway line runs across the middle, so the circle
+       has to sit exactly on it and the words go underneath, not beside. */
+    .alb-colo.is-tall .alb-colo-em { position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); }
+    .alb-colo.is-tall .alb-colo-txt { position: absolute; top: calc(50% + 42px);
+      left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    .alb-colo-t { font-family: var(--font-c); font-weight: 700; font-size: 13px;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+    .alb-colo-s { font-family: var(--font-d); font-style: italic; font-size: 11px; color: var(--ink-3); }
     .alb-n { position: absolute; top: -4px; left: -4px; z-index: 5; background: var(--ink);
       color: var(--stock); font-family: var(--font-s); font-size: 7px; font-weight: 800;
       padding: 1.5px 4px; border-radius: 3px; font-variant-numeric: tabular-nums;
@@ -1359,6 +1415,8 @@
       display: flex; justify-content: space-between; align-items: center;
       font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
       color: var(--ink-3); font-weight: 600; }
+    .alb-folio { font-family: var(--font-d); font-style: italic; font-size: 11px;
+      letter-spacing: 0; text-transform: none; font-weight: 400; }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -7087,22 +7145,22 @@ function figurinha(p, size, opts) {
 
    A Panini album is not a scroll. It is a section per country and a spread per
    era, and you turn the page. This builds that: for one country, the decades
-   its players debuted in, merged where a decade is too thin to be worth a page
-   of its own — two men from the 1930s share a spread with the 1940s the way a
-   real album opens on "os primeiros anos" rather than giving each a page.
+   its players debuted in, oldest first, printed twenty to a page. Every page
+   of every section is the same size: a decade that runs past the end of a
+   page carries on over the next one under the same name, rather than the
+   page growing or shrinking to fit it.
 ═══════════════════════════════════════════════════ */
-const DEC_MIN = 6;          // fewer than this and a decade shares its spread
+const ALB_PER  = 20;        // pockets on every page of the album
+const ALB_COLS = 4;         // four across, five down
 
 /* The escudos, the seleções and the mascotes have no decade to be sorted by,
-   so their sections are paged the way a real album pages a badge sheet: a
-   fixed number to a spread, in the order they are printed. */
-const EXTRA_PER = 18;
+   so they are paged the same way, in the order they are printed. */
 function extraPages(items, label) {
   const out = [];
-  for (let i = 0; i < items.length; i += EXTRA_PER) {
-    out.push({ label: items.length > EXTRA_PER
+  for (let i = 0; i < items.length; i += ALB_PER) {
+    out.push({ label: items.length > ALB_PER
                  ? `${label} · ${out.length + 1}` : label,
-               items: items.slice(i, i + EXTRA_PER) });
+               items: items.slice(i, i + ALB_PER) });
   }
   return out;
 }
@@ -7157,32 +7215,17 @@ function figExtraBack(sid, num) {
 
 function albumPages(items) {
   if (!items.length) return [];
-  const by = {};
-  items.forEach(g => {
-    const d = g.p.era ? Math.floor(g.p.era[0] / 10) * 10 : 1990;
-    (by[d] = by[d] || []).push(g);
-  });
+  const dec = g => g.p.era ? Math.floor(g.p.era[0] / 10) * 10 : 1990;
+  const sorted = items.slice().sort((a, b) => dec(a) - dec(b) || a.n - b.n);
   const pages = [];
-  Object.keys(by).map(Number).sort((a, b) => a - b).forEach(d => {
-    const last = pages[pages.length - 1];
-    /* merge forward while the previous spread is still thin — this is what
-       keeps a country with one man per decade from becoming eight pages of a
-       single sticker */
-    if (last && last.items.length < DEC_MIN) {
-      last.to = d;
-      last.items = last.items.concat(by[d]);
-    } else {
-      pages.push({ from: d, to: d, items: by[d].slice() });
-    }
-  });
-  /* The forward pass cannot help the last decade: Brazil's 2020s is one man,
-     and the 2010s before it was full, so he was left alone on a page of his
-     own. A thin final spread folds back into the one before it. */
-  if (pages.length > 1 && pages[pages.length - 1].items.length < 3) {
-    const tail = pages.pop();
-    const prev = pages[pages.length - 1];
-    prev.to = tail.to;
-    prev.items = prev.items.concat(tail.items);
+  for (let i = 0; i < sorted.length; i += ALB_PER) {
+    const its = sorted.slice(i, i + ALB_PER);
+    const ds = its.map(dec);
+    /* the page is printed on the paper of the decade most of it belongs to */
+    const tally = {};
+    ds.forEach(d => { tally[d] = (tally[d] || 0) + 1; });
+    const main = +Object.keys(tally).sort((a, b) => tally[b] - tally[a] || a - b)[0];
+    pages.push({ from: ds[0], to: ds[ds.length - 1], main, items: its });
   }
   return pages;
 }
@@ -7197,6 +7240,30 @@ const decLabel = pg => pg.from === pg.to
 
 /* Which paper the spread is printed on. The album spans a century, and a page
    of 1950s cards has no business looking like a page of 2020s ones. */
+/* The end of a section is printed as a pitch across the spread: the halfway
+   line lies on the spine and the section's emblem sits in the centre circle.
+   Across a short panel the pitch runs sideways, down a tall one it stands up,
+   so neither is squashed. The circle is drawn in HTML, since the lines stretch
+   with the panel and a stretched circle is an oval. */
+const albPitch = wide => {
+  const r = wide
+    ? [[0, 22, 17, 56], [0, 36, 6.5, 28], [83, 22, 17, 56], [93.5, 36, 6.5, 28]]
+    : [[22, 0, 56, 14], [36, 0, 28, 5.5], [22, 86, 56, 14], [36, 94.5, 28, 5.5]];
+  const half = wide ? '<line x1="50" y1="0" x2="50" y2="100"/>' : '<line x1="0" y1="50" x2="100" y2="50"/>';
+  return `<svg class="alb-pitch" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0" y="0" width="100" height="100"/>${half}
+    ${r.map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}"/>`).join('')}</svg>`;
+};
+
+/* What an empty pocket has printed in it: the outline of what goes there. */
+const albGhost = kind =>
+    kind === 'escudo'  ? ICON.shield('currentColor', 30)
+  : kind === 'selecao' ? ICON.shirt('currentColor', 30)
+  : kind === 'mascote' ? ICON.star('currentColor', 30)
+  : `<svg viewBox="0 0 40 46" width="34" height="39" aria-hidden="true">
+       <circle cx="20" cy="13.5" r="8.5" fill="currentColor"/>
+       <path d="M3 46c0-11 7.6-18.5 17-18.5S37 35 37 46z" fill="currentColor"/></svg>`;
+
 const decStyle = d => d <= 1940 ? 'dec-a' : d <= 1960 ? 'dec-b'
                     : d <= 1970 ? 'dec-c' : d <= 1980 ? 'dec-d'
                     : d <= 1990 ? 'dec-e' : d <= 2000 ? 'dec-f' : 'dec-g';
@@ -7395,7 +7462,7 @@ function html() {
 
     const pages = pagesOf(albCtry);
     albPage = Math.max(0, Math.min(albPage, pages.length - 1));
-    const spread = pages[albPage] || { from: 1990, to: 1990, items: [] };
+    const spread = pages[albPage] || { from: 1990, to: 1990, main: 1990, items: [] };
     const isRest = albCtry === '__resto';
     const sec    = SEC[albCtry];
     const secGot = groups[albCtry].filter(g => album.has(sidOf(g))).length;
@@ -7430,7 +7497,7 @@ function html() {
       <!-- a section with one spread is printed on the paper of its newest card,
            not its oldest: "todas as épocas" is not a period piece -->
       <div class="alb-book ${isExtra(albCtry) ? 'dec-x' + albCtry.slice(2, 3)
-        : decStyle(pages.length === 1 ? spread.to : spread.from)}" id="alb-book">
+        : decStyle(pages.length === 1 ? spread.to : spread.main)}" id="alb-book">
         <!-- The block of pages either side of the one you are on. A book is
              visibly thicker on the side you have not read yet, and nothing
              says "you are four spreads in with three to go" faster. -->
@@ -7477,12 +7544,33 @@ function html() {
                        <span class="flip-face flip-front">${front}</span>
                        <span class="flip-face flip-back">${back}</span>
                      </span></span>`
-                  : `<span class="ph" aria-hidden="true">?</span><span class="nm">a colar</span>`}
+                  : `<span class="ph" aria-hidden="true">${albGhost(p ? 'player' : (stk(sid) || {}).kind)}</span>
+                     <span class="nm">a colar</span>`}
               </div>`;
             }).join('')}
+            ${(() => {
+              /* The last page of a section keeps the shape of every other page.
+                 Pockets with no sticker to take are left as paper, and whole
+                 rows of them carry the section's printed end mark. */
+              const left = ALB_PER - spread.items.length;
+              if (left <= 0) return '';
+              const used = Math.ceil(spread.items.length / ALB_COLS);
+              const rows = ALB_PER / ALB_COLS - used;
+              return Array.from({ length: left },
+                  () => '<div class="alb-slot alb-blank" aria-hidden="true"></div>').join('')
+                + (rows > 0 ? `<div class="alb-colo${rows <= 2 ? '' : ' is-tall'}" style="grid-row:${used + 1} / span ${rows}" aria-hidden="true">
+                    ${albPitch(rows <= 2)}
+                    <span class="alb-colo-em">${sec ? sec.ic() : flagSVG(albCtry, 14)}</span>
+                    <span class="alb-colo-txt">
+                      <span class="alb-colo-t">${sec ? sec.t : (CTRY_NAME[albCtry] || albCtry)}</span>
+                      <span class="alb-colo-s">fim da seção</span>
+                    </span>
+                  </div>` : '');
+            })()}
           </div>
           <div class="alb-foot">
             <span>${sec ? sec.t.toLowerCase() : (CTRY_NAME[albCtry] || albCtry)}</span>
+            <span class="alb-folio">${albPage + 1} / ${pages.length}</span>
             <span>${secGot} de ${secAll}</span>
           </div>
         </div>
