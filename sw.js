@@ -59,8 +59,11 @@
    v20: every page of the album is twenty pockets of one shape, on printed
    paper. index.html again.
 
-   v21: a page of the album fits on one screen, arrows in its foot. */
-const VERSION = 'v21';
+   v21: a page of the album fits on one screen, arrows in its foot.
+
+   v22: every screen was taller than the phone by the navigation bar, and a
+   short screen now fits the album page too. */
+const VERSION = 'v22';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

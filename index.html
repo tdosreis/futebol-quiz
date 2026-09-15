@@ -196,7 +196,12 @@
     }
     @media (max-width: 699px) {
       body { align-items: stretch; }
-      #qz { min-height: 100vh; min-height: 100dvh; }
+      /* The body already pads itself by the bottom inset (viewport-fit=cover,
+         and the Android app draws edge to edge), so a full 100dvh sheet on
+         top of that padding made every screen taller than the phone by
+         exactly the navigation bar. */
+      #qz { min-height: calc(100vh - env(safe-area-inset-bottom, 0px));
+            min-height: calc(100dvh - env(safe-area-inset-bottom, 0px)); }
     }
     #ct { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
     #ct > div { flex: 1; }
@@ -1148,7 +1153,7 @@
        stickers already use. The tokens are per-spread, so the band, the paper
        and the rules all move together.
     ═══════════════════════════════════════════════════════════════ */
-    .alb-pg { min-height: 0; }
+    .alb-pg { min-height: 0; gap: 7px; }
     /* on a desktop the sheet is not a phone screen tall, so give the album one */
     @media (min-width: 700px) { .alb-pg { height: min(calc(100dvh - 48px), 980px); } }
     .alb-top { display: flex; align-items: center; justify-content: space-between;
@@ -1364,15 +1369,27 @@
     .alb-slot .fig-nm { -webkit-line-clamp: 2; }
     /* One page, one screen. The sheet measures itself, and a pocket is as wide
        as the narrower of two limits: four across the page, or five rows down
-       it at the pocket's own proportions. Under 54px a face stops being a
-       face, so on a very short screen the page scrolls rather than shrinks. */
+       it at the pocket's own proportions. Only under 40px, where a face is no
+       longer a face, does the page scroll rather than shrink. */
     @supports (height: 1cqh) {
       .alb-sheet { container-type: size; }
-      .alb-grid { --pw: max(54px, min((100cqw - 23px) / 4, (100cqh - 34px) / 5 * .58));
+      .alb-grid { --pw: max(40px, min((100cqw - 23px) / 4, (100cqh - 34px) / 5 * .58));
         grid-template-columns: var(--pw) var(--pw) 8px var(--pw) var(--pw);
         justify-content: center; }
-      .alb-slot .fig-cap { height: clamp(30px, calc(var(--pw) * .58), 40px); padding: 2px 3px 3px; }
+      .alb-slot .fig-cap { height: clamp(30px, calc(var(--pw) * .6), 40px); padding: 2px 3px 3px; }
+      /* The name is set to the pocket, not to the screen: a word the width of
+         the card has to fit on its own line at every size, or "BECKENBAUER"
+         breaks as "BECKENBAU / ER". Long names get a third line instead. */
+      .alb-slot .fig-nm { font-size: clamp(5.4px, calc(var(--pw) * .126), 9.4px); }
+      .alb-slot .fig-nm-long { font-size: clamp(5px, calc(var(--pw) * .104), 8px);
+        -webkit-line-clamp: 3; line-height: 1.05; letter-spacing: 0; }
       @container (max-height: 560px) { .alb-slot .fig-sub { display: none; } }
+      /* On the smallest pockets the band's lettering shrinks too, so it keeps
+         its country instead of "BRA…". */
+      @container (max-height: 540px) {
+        .alb-slot .fig-band { font-size: 5.6px; letter-spacing: .04em;
+          padding-left: 18px; padding-right: 2px; }
+      }
     }
     /* the pocket you have not filled yet: the album prints the number and
        waits for the sticker */
@@ -1433,6 +1450,17 @@
       align-items: center; gap: 4px; }
     .alb-folio { font-family: var(--font-d); font-style: italic; font-size: 11px; color: var(--ink-3);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+    /* A short screen (a phone with its bars showing, or a large display size)
+       gives the stickers what the furniture around them can spare. */
+    @media (max-height: 760px) {
+      .alb-pg { padding: 10px 12px; gap: 5px; }
+      .alb-tab { padding: 3px 6px 2px; gap: 1px; }
+      .alb-band { padding: 5px 10px; }
+      .alb-band .langs { display: none; }
+      .alb-foot { padding: 3px 0 4px; }
+      .alb-foot .alb-arrow { width: 28px; height: 28px; }
+      .alb-book { background-size: 100% calc(100% - 36px); }
+    }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -7485,7 +7513,7 @@ function html() {
     const secAll = groups[albCtry].length;
 
     return `
-    <div class="pg alb-pg" style="gap:7px;">
+    <div class="pg alb-pg">
       <div class="alb-top">
         ${topbar('Meu álbum')}
         <div class="alb-head">
