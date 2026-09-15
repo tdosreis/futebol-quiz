@@ -1088,8 +1088,6 @@
     .alb-ring-lg .alb-ring-n { font-size: 11px; }
     .alb-ring-lg .alb-ring-n i { font-size: 7.5px; }
 
-    .alb-hint { display: flex; align-items: center; gap: 5px; font-size: 10px;
-      color: var(--ink-3); margin: 1px 0 2px; }
     .alb-turn { cursor: pointer; perspective: 620px; -webkit-perspective: 620px; }
     .flip { display: block; width: 100%; }
     .flip-in { display: block; position: relative; width: 100%;
@@ -1151,6 +1149,11 @@
        and the rules all move together.
     ═══════════════════════════════════════════════════════════════ */
     .alb-pg { min-height: 0; }
+    /* on a desktop the sheet is not a phone screen tall, so give the album one */
+    @media (min-width: 700px) { .alb-pg { height: min(calc(100dvh - 48px), 980px); } }
+    .alb-top { display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; min-width: 0; }
+    .alb-top .alb-head { flex: none; }
 
     /* the index */
     .alb-tabs { display: flex; gap: 5px; overflow-x: auto; padding: 2px 1px 4px;
@@ -1193,6 +1196,8 @@
       background-image: linear-gradient(90deg, transparent 44%, rgba(0,0,0,var(--pg-fold)) 49.2%,
                         var(--pg-edge) 49.8%, var(--pg-edge) 50.2%,
                         rgba(0,0,0,var(--pg-fold)) 50.8%, transparent 56%);
+      /* the crease stops at the foot, so it does not run through the page number */
+      background-repeat: no-repeat; background-size: 100% calc(100% - 42px);
       --pg-fold: .08; }
     /* The paper itself: a fine fibre over the whole sheet and, on the older
        stock, edges gone darker with age. One small tile, drawn once. */
@@ -1216,7 +1221,7 @@
       background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }
     /* a column, so the page number can sink to the foot of the page the way
        a printed one does rather than floating under the last row */
-    .alb-sheet { flex: 1; min-height: 0; padding: 9px 8px 6px;
+    .alb-sheet { flex: 1; min-height: 0; padding: 8px 8px 6px;
       display: flex; flex-direction: column; }
 
     /* ── Turning the page ───────────────────────────────────────
@@ -1242,9 +1247,6 @@
       .alb-sheet.turn-fwd, .alb-sheet.turn-back { animation: none; }
     }
 
-    /* turning the page */
-    .alb-turnbar { flex: none; display: flex; align-items: center; justify-content: center;
-      gap: 12px; padding-top: 1px; }
     .alb-arrow { width: 34px; height: 34px; border-radius: 50%; flex: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       background: var(--pocket); border: 1px solid var(--rule); color: var(--ink-2);
@@ -1345,9 +1347,9 @@
        on a printed spread. The pocket has a fixed shape, so a page of faces, a
        page of crests and a page still waiting for its stickers are all the
        same size, and every row lines up whatever the names underneath. */
-    .alb-grid { position: relative; display: grid; flex: none; margin: 3px 0 12px;
+    .alb-grid { position: relative; display: grid; flex: none; margin: auto 0;
       grid-template-columns: 1fr 1fr 8px 1fr 1fr; grid-template-rows: repeat(5, auto);
-      column-gap: 5px; row-gap: 10px; }
+      column-gap: 5px; row-gap: 8px; }
     .alb-grid > .alb-slot:nth-child(4n+3) { grid-column: 4; }
     .alb-slot { position: relative; display: flex; aspect-ratio: 29 / 50;
       min-width: 0; min-height: 0; align-self: start; }
@@ -1360,6 +1362,18 @@
     .alb-slot .fig-art { aspect-ratio: auto; flex: 1 1 0; min-height: 0; }
     .alb-slot .fig-cap { flex: none; height: 39px; min-height: 0; padding: 3px 3px 4px; }
     .alb-slot .fig-nm { -webkit-line-clamp: 2; }
+    /* One page, one screen. The sheet measures itself, and a pocket is as wide
+       as the narrower of two limits: four across the page, or five rows down
+       it at the pocket's own proportions. Under 54px a face stops being a
+       face, so on a very short screen the page scrolls rather than shrinks. */
+    @supports (height: 1cqh) {
+      .alb-sheet { container-type: size; }
+      .alb-grid { --pw: max(54px, min((100cqw - 23px) / 4, (100cqh - 34px) / 5 * .58));
+        grid-template-columns: var(--pw) var(--pw) 8px var(--pw) var(--pw);
+        justify-content: center; }
+      .alb-slot .fig-cap { height: clamp(30px, calc(var(--pw) * .58), 40px); padding: 2px 3px 3px; }
+      @container (max-height: 560px) { .alb-slot .fig-sub { display: none; } }
+    }
     /* the pocket you have not filled yet: the album prints the number and
        waits for the sticker */
     .alb-slot.empty { border-radius: 4px; flex-direction: column;
@@ -1411,12 +1425,14 @@
        already says the era, and "ARGÉLIA 70" would not fit where "ARGÉLIA"
        does. The exact years are on the back of the card. */
     .alb-slot .fig-band { padding-left: 21px; padding-right: 5px; }
-    .alb-foot { margin-top: auto; padding-top: 9px; border-top: 1px solid var(--rule-2);
-      display: flex; justify-content: space-between; align-items: center;
-      font-family: var(--font-c); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--ink-3); font-weight: 600; }
-    .alb-folio { font-family: var(--font-d); font-style: italic; font-size: 11px;
-      letter-spacing: 0; text-transform: none; font-weight: 400; }
+    .alb-foot { flex: none; position: relative; z-index: 1; margin: 0 8px;
+      padding: 5px 0 6px; border-top: 1px solid var(--pg-edge);
+      display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .alb-foot .alb-arrow { width: 30px; height: 30px; }
+    .alb-foot-mid { flex: 1; min-width: 0; display: flex; flex-direction: column;
+      align-items: center; gap: 4px; }
+    .alb-folio { font-family: var(--font-d); font-style: italic; font-size: 11px; color: var(--ink-3);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 
     /* ── Paper, falling (the million only) ── */
     @keyframes confFall { 0% { opacity: 1; transform: translate3d(0,-24px,0) rotate(0deg); }
@@ -7470,11 +7486,12 @@ function html() {
 
     return `
     <div class="pg alb-pg" style="gap:7px;">
-      ${topbar('Meu álbum')}
-
-      <div class="alb-head">
-        <div class="display" style="font-size:24px;">${album.size}<span class="muted" style="font-size:15px;"> / ${total}</span></div>
-        <div class="small muted">${albumPct()}% colado</div>
+      <div class="alb-top">
+        ${topbar('Meu álbum')}
+        <div class="alb-head">
+          <span class="small muted">${albumPct()}% colado</span>
+          <span class="display" style="font-size:20px;">${album.size}<span class="muted" style="font-size:13px;"> / ${total}</span></span>
+        </div>
       </div>
       <div class="alb-bar"><i style="width:${albumPct()}%"></i></div>
 
@@ -7568,29 +7585,26 @@ function html() {
                   </div>` : '');
             })()}
           </div>
-          <div class="alb-foot">
-            <span>${sec ? sec.t.toLowerCase() : (CTRY_NAME[albCtry] || albCtry)}</span>
-            <span class="alb-folio">${albPage + 1} / ${pages.length}</span>
-            <span>${secGot} de ${secAll}</span>
+        </div>
+        <!-- the foot of the page: turn back, where you are, turn on -->
+        <div class="alb-foot">
+          <button id="alb-prev" class="alb-arrow" ${albPage === 0 ? 'disabled' : ''}
+            aria-label="Página anterior">${ICON.back('currentColor', 14)}</button>
+          <div class="alb-foot-mid">
+            <div class="alb-pips" aria-hidden="true">
+              ${pages.map((pg, i) => `<span class="alb-pip${i === albPage ? ' is-on' : ''}${
+                pg.items.every(g => album.has(sidOf(g))) ? ' is-full' : ''}"></span>`).join('')}
+            </div>
+            <span class="alb-folio">${album.size === 0
+              ? 'cada acerto cola uma figurinha'
+              : !LS.get('albFlipped', false)
+                ? 'toque numa figurinha para virá-la'
+                : `pág. ${albPage + 1} de ${pages.length} · ${secGot} de ${secAll}`}</span>
           </div>
+          <button id="alb-next" class="alb-arrow alb-fwd" ${albPage >= pages.length - 1 ? 'disabled' : ''}
+            aria-label="Próxima página">${ICON.back('currentColor', 14)}</button>
         </div>
       </div>
-
-      <!-- turning the page -->
-      <div class="alb-turnbar">
-        <button id="alb-prev" class="alb-arrow" ${albPage === 0 ? 'disabled' : ''}
-          aria-label="Página anterior">${ICON.back('currentColor', 15)}</button>
-        <div class="alb-pips" aria-hidden="true">
-          ${pages.map((pg, i) => `<span class="alb-pip${i === albPage ? ' is-on' : ''}${
-            pg.items.every(g => album.has(sidOf(g))) ? ' is-full' : ''}"></span>`).join('')}
-        </div>
-        <button id="alb-next" class="alb-arrow alb-fwd" ${albPage >= pages.length - 1 ? 'disabled' : ''}
-          aria-label="Próxima página">${ICON.back('currentColor', 15)}</button>
-      </div>
-
-      <div class="alb-hint" style="justify-content:center;">${album.size === 0
-        ? `${ICON.ball('currentColor', 12)} Cada resposta certa cola uma figurinha aqui.`
-        : `${ICON.book('currentColor', 10)} Toque em uma figurinha para ver o verso`}</div>
     </div>`;
   }
 
@@ -8045,6 +8059,7 @@ function go() {
       const slot = el.closest && el.closest('.alb-turn');
       if (!slot) return;
       slot.classList.toggle('turned');
+      LS.set('albFlipped', true);
       snd.swipe();
     };
     const sheet = document.querySelector('.alb-sheet');

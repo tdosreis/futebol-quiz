@@ -57,8 +57,10 @@
    next open instead of up to ten minutes later.
 
    v20: every page of the album is twenty pockets of one shape, on printed
-   paper. index.html again. */
-const VERSION = 'v20';
+   paper. index.html again.
+
+   v21: a page of the album fits on one screen, arrows in its foot. */
+const VERSION = 'v21';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
