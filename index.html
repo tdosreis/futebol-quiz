@@ -341,8 +341,13 @@
     /* ── old stock: tea-coloured card, red band, warm faded picture ── */
     .fig-retro { background: var(--retro-card); color: var(--retro-ink);
       box-shadow: inset 0 0 0 1px var(--retro-edge), 0 1px 3px var(--shadow); }
-    .fig-retro .fig-band { background: var(--retro-band); color: #F6EBD8; letter-spacing: .12em; }
-    .fig-retro .fig-shot { background: var(--retro-card2); }
+    .fig-retro .fig-band { background: var(--retro-band); color: #F6EBD8; letter-spacing: .12em;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,.2); }
+    /* the photograph sits inside a printed margin, the way the old stock was
+       cut: a thin border of card all round and a hairline where the ink stops */
+    .fig-retro .fig-art { padding: 5% 6% 0; }
+    .fig-retro .fig-shot { background: var(--retro-card2); border-radius: 1px;
+      box-shadow: 0 0 0 1px var(--retro-edge); }
     .fig-retro .fig-shot img { filter: sepia(.32) saturate(.9) contrast(1.03); }
     .fig-retro .fig-shot::after {           /* the corners of an old card go dark */
       content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -355,10 +360,19 @@
     /* The national shapes sit inside the card rather than bleeding off it:
        a box clipped by its parent still reports its full width, so a
        bleeding blob shows up as a page overflow in tools/narrow.py. */
-    .fig-modern .blob { position: absolute; border-radius: 999px; pointer-events: none; z-index: 1; }
-    .fig-modern .fig-shot { position: absolute; left: 11%; right: 11%; top: 7%; bottom: 0;
-      height: auto; background: transparent; border-radius: 3px 3px 0 0; z-index: 2;
-      box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+    /* New stock, pared back: the two round shapes that poked out either side
+       of the picture are now one soft wash of the national colours, and a
+       two-colour rule under the photo says the country again, quietly. */
+    .fig-modern .fig-art {
+      background:
+        linear-gradient(155deg, color-mix(in srgb, var(--c1, transparent) 34%, transparent) 0%, transparent 58%),
+        linear-gradient(335deg, color-mix(in srgb, var(--c2, transparent) 28%, transparent) 0%, transparent 52%); }
+    .fig-modern .fig-shot { position: absolute; left: 9%; right: 9%; top: 7%; bottom: 10%;
+      height: auto; background: transparent; border-radius: 4px; z-index: 2;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 2px 7px rgba(0,0,0,.22); }
+    .fig-modern .fig-art::after { content: ''; position: absolute; z-index: 2; left: 30%; right: 30%;
+      bottom: 4%; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--c1) 0 50%, var(--c2) 50% 100%); }
     .fig-modern .fig-flag { position: absolute; z-index: 3; border-radius: 2px; overflow: hidden;
       box-shadow: 0 0 0 1px rgba(0,0,0,.22); line-height: 0; }
 
@@ -924,6 +938,10 @@
     .ins-emb .ins-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
     .ins-emb > svg:last-child { position: relative; }
     .ins.is-on  .ins-shape { fill: var(--ic); }
+    /* earned: a printed keyline just inside the edge, and the emblem's ink
+       sitting a hair off its own shadow, as a stamped thing does */
+    .ins.is-on { box-shadow: inset 0 0 0 3px var(--pocket), inset 0 0 0 4px color-mix(in srgb, var(--ic) 16%, transparent); }
+    .ins.is-on .ins-svg { filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--ic) 22%, transparent)); }
     .ins.is-off .ins-shape { fill: var(--pocket-2); stroke: var(--rule); stroke-width: 1.5;
       stroke-dasharray: 3 2.5; }
     .ins.is-off .ins-emb { color: var(--ink-4); }
@@ -5367,6 +5385,8 @@ const CREDITS = {
   'img/d0954e948b6c5b08.webp': { a:'Goodreg3', l:'CC BY-SA 4.0' },
   'img/fd49175bd81940cc.webp': { a:'Peter Glaser baraida', l:'CC0' },
   'img/c1ae333ad2891227.webp': { a:'Ank Kumar', l:'CC BY-SA 4.0' },
+  'img/9d58e5483683d4ec.webp': { a:'Ank Kumar', l:'CC BY-SA 4.0' },
+  'img/03d8d3ecd7ebb46e.webp': { a:'Gabrielhsp', l:'CC BY-SA 4.0' },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -8404,6 +8424,8 @@ const QICON = {
    question is about that ground, or the answer is the club that plays there
    (its colours are in the stands) — so a photograph only ever sets the scene. */
 const PHOTO_ART = [
+  { img:'img/9d58e5483683d4ec.webp', q:/copa do mundo|copa de (19|20)\d\d|copas de (19|20)\d\d|mundial de (19[3-9]|20[0-3])\d\b/, clue:/^$/, not:/feminin|clubes|sub-(17|20)/ },
+  { img:'img/03d8d3ecd7ebb46e.webp', q:/libertadores/, clue:/^$/, not:/feminin/ },
   { img:'img/ee4f53bf49bbfde3.webp', q:/champions league|liga dos campeoes|copa dos campeoes/, clue:/^$/, not:/feminin/ },
   { img:'img/0af4923731c6c0f0.webp', q:/copa america/, clue:/^$/, not:/feminin/ },
   { img:'img/1bf59fab37c46525.webp', q:/eurocopa|\beuro (19|20)\d\d/, clue:/^$/, not:/feminin/ },
@@ -8743,9 +8765,7 @@ function figurinha(p, size, opts) {
     : bandCtry(p.ctry);
   return `<span class="fig fig-modern fig-${size}">
     <span class="fig-band${mBand ? '' : ' fig-band-mute'}">${mBand}</span>
-    <span class="fig-art">
-      ${opts.hideCtry ? '' : `<span class="blob" style="background:${c1};width:54%;height:58%;left:0;top:10%;"></span>
-      <span class="blob" style="background:${c2};width:42%;height:46%;right:0;top:34%;"></span>`}
+    <span class="fig-art"${opts.hideCtry ? '' : ` style="--c1:${c1};--c2:${c2};"`}>
       ${shot}
       ${(opts.noFlag || opts.hideCtry) ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
     </span>

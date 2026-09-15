@@ -20,16 +20,12 @@ SKIP = re.compile(r"(logo|\.svg|map|diagram|plan|chart|drawing|kit|badge|crest|e
 
 # key -> Commons searches, best first. Each must actually show the thing.
 WANT = {
-    "t_worldcup": ["FIFA World Cup trophy close", "Copa do Mundo FIFA taça", "World Cup trophy Brazil tour"],
     "t_ucl":        ["UEFA Champions League trophy", "European Champion Clubs' Cup trophy"],
-    "t_libert": ["Copa Libertadores trofeo museo", "Libertadores trophy CONMEBOL museum", "Trofeo de la Copa Libertadores de América"],
     "t_copaam":     ["Copa América trophy", "Trofeo Copa América"],
     "t_euro":       ["Henri Delaunay Trophy", "UEFA European Championship trophy"],
-    "t_ballon": ["Ballon d'Or golden ball trophy museum", "Ballon d'Or trophy"],
     "t_premier":    ["Premier League trophy"],
     "t_uel": ["UEFA Cup trophy museum", "UEFA Europa League trophy Sevilla"],
     "t_clubwc": ["FIFA Club World Cup trophy close", "Club World Cup trophy"],
-    "t_wwc": ["Women's World Cup trophy close up", "FIFA Women's World Cup trophy tour"],
     "t_fa":         ["FA Cup trophy"],
     "s_wembley":    ["Wembley Stadium interior", "Wembley Stadium"],
     "s_campnou":    ["Camp Nou interior", "Camp Nou"],
@@ -64,6 +60,12 @@ WANT = {
     "s_mestalla": ["Mestalla stadium exterior", "Estadio de Mestalla Valencia exterior"],
     "g_ball": ["association football ball on grass", "soccer ball grass pitch"],
     "g_referee":    ["football referee yellow card", "referee showing card football"],
+    "t_worldcup": ["intitle:\"World Cup Trophy\"", "intitle:\"FIFA World Cup\" intitle:trophy", "intitle:\"Copa do Mundo\" intitle:taça"],
+    "t_wwc": ["intitle:\"Women's World Cup\" intitle:trophy", "intitle:\"Women World Cup Trophy\""],
+    "t_libert": ["intitle:\"Copa Libertadores\" intitle:trofeo", "intitle:\"Libertadores\" intitle:trophy", "intitle:\"Taça Libertadores\""],
+    "t_ballon": ["intitle:\"Ballon d'Or\" -Zidane -Messi -Ronaldo", "intitle:\"Ballon d'Or\" trophy"],
+    "t_rimet": ["intitle:\"Jules Rimet\"", "Jules Rimet trophy replica"],
+    "g_oldball": ["intitle:\"leather football\" vintage", "antique leather soccer ball", "intitle:\"old football\" leather"],
 }
 
 def api(params):
