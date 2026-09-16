@@ -861,6 +861,33 @@
     /* `.mode` grows to share the three-across row it was written for. The
        album button reuses the look but stands alone in a column, where
        growing would stretch it down the whole page. */
+    .mode-who { --md: #6A4BA8; --md-soft: rgba(106, 75, 168, .14); }
+    .mode-tl   { --md: #0F7B6C; --md-soft: rgba(15, 123, 108, .14); }
+    :root[data-theme="dark"] .mode-who, :root:not([data-theme="light"]) .mode-who { --md: #B49BE6; }
+    :root[data-theme="dark"] .mode-tl,  :root:not([data-theme="light"]) .mode-tl  { --md: #5FC2B0; }
+    /* the clues, handed over one at a time */
+    .qcard-clue { flex-direction: column; align-items: flex-start; gap: 7px; }
+    .qcard-clue > p { font-size: 15px; font-weight: 600; }
+    .clues { list-style: none; display: flex; flex-direction: column; gap: 5px; width: 100%; }
+    .clues li { position: relative; padding-left: 15px; font-size: 13.5px; line-height: 1.34; color: var(--ink-2);
+      animation: qIn .3s cubic-bezier(.2,.9,.3,1) backwards; }
+    .clues li::before { content: ''; position: absolute; left: 3px; top: 7px; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--brass); }
+    .clue-more { align-self: flex-start; padding: 6px 11px; }
+    /* the cards of a timeline round */
+    .board-ord { display: flex; flex-direction: column; gap: 7px; }
+    .b-ord { display: flex; flex-direction: row; align-items: center; gap: 10px;
+      padding: 9px 11px; text-align: left; aspect-ratio: auto; min-height: 0; }
+    .b-ord-on { border-color: var(--pitch); }
+    .ord-n { flex: none; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font: 800 12px/1 var(--font-c); background: var(--pocket-2); color: var(--ink-3); }
+    .b-ord-on .ord-n { background: var(--pitch); color: var(--on-pitch); }
+    .ord-art { flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    .ord-art svg, .ord-art img { width: 100%; height: 100%; object-fit: contain; }
+    .ord-t { flex: 1; min-width: 0; font-size: 13px; font-weight: 700; line-height: 1.2; }
+    .ord-t em { display: block; font-style: normal; font-size: 10.5px; font-weight: 600; color: var(--ink-3); margin-top: 1px; }
+    .ord-y { flex: none; font-size: 13px; font-weight: 800; color: var(--ink-2); }
+
     .mode-party { --md: #2F6FA8; --md-soft: rgba(47, 111, 168, .14); flex: none; }
     :root[data-theme="dark"] .mode-party, :root:not([data-theme="light"]) .mode-party { --md: #7FA9E8; }
     /* how many are playing, and what they are called */
@@ -5620,6 +5647,8 @@ function getDisp(q) {
      futebol?" is answered by a word. Those questions carry their own choices
      and become plain text tiles — the same board, the same scoring, no row in
      PL or CL invented to hold a country's name. */
+  /* an ordering question deals its own cards, already shuffled */
+  if (q.order) return q.order;
   if (q.type === 'txt') {
     return shuf((q.choices || []).map(c => ({ id: c, n: c })));
   }
@@ -6785,7 +6814,7 @@ function doShare() {
 }
 
 function startDaily() {
-  isDaily = true; isSurv = false; isMil = false;
+  isDaily = true; isSurv = false; isMil = false; modeTime = null;
   diffKey = 'moderado';
   runSeed = dayIndex();
   seedFrom(runSeed);
@@ -7857,7 +7886,7 @@ function medalCard(m, on) {
 let isSurv = false;
 
 function startSurvival() {
-  isSurv = true; isDaily = false; isMil = false; _seed = null; runSeed = null;
+  isSurv = true; isDaily = false; isMil = false; _seed = null; runSeed = null; modeTime = null;
   diffKey = 'moderado';
   cat = buildGame('moderado');
   cat.name = 'Mata-mata';
@@ -7927,7 +7956,7 @@ function safetyNet() {
 }
 
 /* seconds on the clock and distractor strictness for the current question */
-function qTime()   { return isMil ? RUNG().time : DCFG().time; }
+function qTime()   { return modeTime ? modeTime : isMil ? RUNG().time : DCFG().time; }
 function qStrict() { return isMil ? Math.min(1, rung / (LADDER.length - 1) * 1.15) : DCFG().strict; }
 
 /* One question per rung, each matched to that rung's tier. Built in one pass
@@ -7978,7 +8007,7 @@ function buildMilhao() {
 }
 
 function startMilhao() {
-  isMil = true; isDaily = false; isSurv = false; _seed = null; runSeed = null;
+  isMil = true; isDaily = false; isSurv = false; _seed = null; runSeed = null; modeTime = null;
   diffKey = 'moderado';                  // only used for the score multiplier
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
@@ -8431,6 +8460,20 @@ function badge(item, idx) {
     cls += ' expert-ring';
   }
 
+  /* ── a card to be placed in order: its number is the place you gave it ── */
+  if (curQ.order) {
+    const at = [...sel].indexOf(item.id);
+    let oc = 'b b-ord' + (at >= 0 ? ' b-ord-on' : '');
+    if (sc === 'reveal') oc += curQ.a[at] === item.id ? ' b-correct' : ' b-wrong';
+    return `<div class="${oc}" data-id="${item.id}" style="${delay}">
+      <span class="ord-n">${at >= 0 ? at + 1 : ''}</span>
+      ${item.crest ? `<span class="ord-art crest-box">${clubArt(item.crest, '', false)}</span>`
+                   : `<span class="ord-art ord-draw">${ART.trophy(24)}</span>`}
+      <span class="ord-t">${item.label}${item.sub ? `<em>${item.sub}</em>` : ''}</span>
+      ${sc === 'reveal' ? `<span class="ord-y num">${item.y}</span>` : ''}
+    </div>`;
+  }
+
   const tab = `<span class="tab">${NUM(idx)}</span>`;
   const votePct = poll && poll[item.id] !== undefined ? poll[item.id] : null;
   if (votePct !== null) {
@@ -8544,6 +8587,7 @@ const CAT_ART = {
 };
 
 function questionArtRaw(q) {
+  if (q.order) return '';   // the cards themselves are the question
   if (q.port && !artReveals(q, { player: q.port }))  return `<div class="qart qart-face print"><img src="${PORT_IMGS[q.port]}" alt="${PORT[q.port].name}" /></div>`;
   /* The app has a photograph of all twelve grounds and was drawing a generic
      one instead. The ground is the subject of the question, so show it — the
@@ -9048,6 +9092,11 @@ function html() {
           ${e.length > 11 ? `<span class="small muted" style="align-self:center;">+${e.length - 11}</span>` : ''}
         </div>`;
       })()}
+
+      <div class="modes">
+        ${mode('who-btn', ICON.target('currentColor', 16), 'Quem sou eu?',   'pistas',   'who')}
+        ${mode('tl-btn',  ICON.clock('currentColor', 16),  'Linha do tempo', 'em ordem', 'tl')}
+      </div>
 
       <button id="party-btn" class="mode mode-party" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
         <span class="mode-disc">${ICON.crowd('currentColor', 17)}</span>
@@ -9664,14 +9713,22 @@ function html() {
       </div>
     </div>` : ''}
 
+    ${q.clues ? `
+    <div class="qcard qcard-clue">
+      <p>Quem sou eu?</p>
+      <ol class="clues">${q.clues.slice(0, q._shown || 1).map((c, i) =>
+        `<li style="animation-delay:${i * 50}ms">${c}</li>`).join('')}</ol>
+      ${armed && (q._shown || 1) < q.clues.length
+        ? `<button id="bclue" class="btn btn-ghost btn-sm clue-more">+ pista <span class="small muted">−2 pts</span></button>` : ''}
+    </div>` : `
     <div class="qcard${isMil ? ' qcard-brass' : ''}">
       ${art}
       <p>${q.t}</p>
-    </div>
+    </div>`}
 
     ${expertBox}
 
-    <div class="board ${isTextQ(q)
+    <div class="board ${q.order ? 'board-ord' : isTextQ(q)
         ? 'board-2' + (disp.length > 6 ? ' board-2-tight' : '')
         : disp.length <= 4 ? 'board-big' : 'board-5'}">
       ${disp.map((c, i) => badge(c, i)).join('')}
@@ -9689,14 +9746,16 @@ function html() {
       ${frozen ? `<div class="small pitch" style="font-weight:700;display:flex;align-items:center;gap:4px;">
         ${ICON.snow('currentColor', 11)} Relógio parado nesta pergunta</div>` : ''}
       <p class="footer-hint">
-        ${q.type === 'txt'
+        ${q.order ? 'Toque na ordem: do mais antigo para o mais recente'
+          : q.type === 'txt'
           ? (q.a.length > 1 ? `Marque as ${q.a.length} respostas certas` : 'Marque a resposta certa')
           : q.type === 'player'
           ? (q.a.length > 1 ? `Marque os ${q.a.length} jogadores certos` : 'Marque o jogador certo')
           : (q.a.length > 1 ? `Marque os ${q.a.length} times certos`     : 'Marque o time certo')}</p>
       <div class="foot-row">
-        <button id="bconf" ${sel.size ? '' : 'disabled'} class="btn ${isMil ? 'btn-brass' : 'btn-primary'} btn-lg${sel.size ? ' is-armed' : ''}">
-          ${sel.size && q.type === 'player' ? 'Colar figurinha' : 'Confirmar'}</button>
+        <button id="bconf" ${(q.order ? sel.size === q.order.length : sel.size > 0) ? '' : 'disabled'} class="btn ${
+          isMil ? 'btn-brass' : 'btn-primary'} btn-lg${sel.size ? ' is-armed' : ''}">
+          ${q.order ? 'Confirmar ordem' : sel.size && q.type === 'player' ? 'Colar figurinha' : 'Confirmar'}</button>
         ${isMil && rung > 0 ? `
         <button id="bstop" class="btn btn-ghost btn-sm">${ICON.stop('currentColor', 13)} Parar · ${money(LADDER[rung - 1].v)}</button>` : ''}
       </div>
@@ -9986,6 +10045,15 @@ function go() {
   on('bshare',  () => { snd.tap(); doShare(); });
   on('bhome',   () => { snd.swipe(); clearInterval(tmr); party = null; challenge = null; sc = 'home'; go(); });
   on('bchal',     () => { snd.tap();    doChallenge(); });
+  on('who-btn',   () => { snd.select(); startMode(buildWho(8)); });
+  on('tl-btn',    () => { snd.select(); startMode(buildTimeline(8)); });
+  /* one more clue, and the question is worth a little less */
+  on('bclue',     () => {
+    const q = cat.qs[qi];
+    if (!q || !q.clues) return;
+    q._shown = Math.min(q.clues.length, (q._shown || 1) + 1);
+    snd.select(); go();
+  });
   on('baccept',   () => { snd.rung();   acceptChallenge(); });
   on('party-btn', () => { snd.select(); sc = 'party'; go(); });
   on('bpstart',   () => { snd.select(); startParty(); });
@@ -10084,7 +10152,7 @@ function go() {
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
 function startGame() {
-  isDaily = false; isSurv = false; isMil = false;
+  isDaily = false; isSurv = false; isMil = false; modeTime = null;
   /* Every training round is seeded, even a solo one: that is what lets it be
      handed to somebody else afterwards without replaying anything. */
   runSeed = pendingSeed !== null ? pendingSeed : ((Math.random() * 2147483647) | 0);
@@ -10096,6 +10164,112 @@ function startGame() {
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = dealDisp(0);
+  startTmr();
+  go();
+}
+
+/* ═══════════════════════════════════════════════════
+   QUEM SOU EU?  ·  LINHA DO TEMPO
+
+   Two rounds built from the album's own data, played on the same board as
+   everything else. The first hands out clues one at a time and charges for
+   each one; the second asks only for an order, which is a different kind of
+   knowing — you can place a club's founding without knowing its year.
+═══════════════════════════════════════════════════ */
+const GC_WHO = { id:'g_who', name:'Quem sou eu?',   emoji:'🕵️', col:'#7E57C2' };
+const GC_TL  = { id:'g_tl',  name:'Linha do tempo', emoji:'⏳', col:'#0F7B6C' };
+
+/* Copas do Mundo: ano → [sede, campeã]. The Linha do tempo deals from here. */
+const WC_ED = {
+  1930:['Uruguai','Uruguai'],      1934:['Itália','Itália'],        1938:['França','Itália'],
+  1950:['Brasil','Uruguai'],       1954:['Suíça','Alemanha'],       1958:['Suécia','Brasil'],
+  1962:['Chile','Brasil'],         1966:['Inglaterra','Inglaterra'],1970:['México','Brasil'],
+  1974:['Alemanha','Alemanha'],    1978:['Argentina','Argentina'],  1982:['Espanha','Itália'],
+  1986:['México','Argentina'],     1990:['Itália','Alemanha'],      1994:['Estados Unidos','Brasil'],
+  1998:['França','França'],        2002:['Coreia e Japão','Brasil'],2006:['Alemanha','Itália'],
+  2010:['África do Sul','Espanha'],2014:['Brasil','Alemanha'],      2018:['Rússia','França'],
+  2022:['Catar','Argentina'],      2026:['Estados Unidos, México e Canadá','Espanha'],
+};
+
+/* `pick` lives inside the generators, so these rounds carry their own. */
+const pickN = (arr, n) => shuf(arr).slice(0, n);
+
+/* The clues, cheapest first: what he was and roughly when, where he was from,
+   the clubs, and only at the end the trophies that all but name him. */
+function whoClues(p) {
+  const cl = [];
+  /* "anos 10" is not how anyone says 2010 — a decade of this century keeps
+     all four digits, one of the last keeps the two it is known by. */
+  const dec = p.era ? Math.floor(p.era[0] / 10) * 10 : 0;
+  cl.push(`${POS_NAME[p.pos]}${dec ? `, começou nos anos ${dec >= 2000 ? dec : String(dec).slice(2)}` : ''}`);
+  cl.push(`Defendeu a seleção: ${CTRY_NAME[p.ctry] || p.ctry}`);
+  const clubs = (p.clubs || []).slice(0, 3).map(clubName).filter(Boolean);
+  if (clubs.length) cl.push(`Passou por ${clubs.join(', ')}`);
+  const h = [];
+  if (p.wc && p.wc.length) h.push(p.wc.length === 1 ? `Campeão do mundo em ${p.wc[0]}` : `Campeão do mundo em ${p.wc.join(' e ')}`);
+  if (p.bo) h.push(p.bo === 1 ? 'Ganhou uma Bola de Ouro' : `Ganhou ${p.bo} Bolas de Ouro`);
+  if (p.nick) h.push(`Ficou conhecido como “${p.nick}”`);
+  if (h.length) cl.push(h.join(' · '));
+  return cl;
+}
+function buildWho(n) {
+  const rich = PL.filter(p => p.img && p.era && (p.clubs || []).length >= 2);
+  const qs = pickN(rich, n).map(p => ({
+    t: 'Quem sou eu?', type: 'player', a: [p.id], clues: whoClues(p), _shown: 1,
+    opts: 6, strict: 1, _cat: GC_WHO, _noFlag: true, _hideCtry: true, _hideEra: true,
+  }));
+  return { id:'who', name:'Quem sou eu?', emoji:'🕵️', tag:'Pistas, uma de cada vez',
+           col:'#7E57C2', diff:'Variado', qs };
+}
+
+/* Every card the timeline can deal: a World Cup, a club's founding, a club's
+   first Libertadores — all from tables the app already tests. */
+function tlEvents() {
+  const ev = [];
+  Object.keys(WC_ED).forEach(y => ev.push({
+    id: 'wc' + y, y: +y, label: `${WC_ED[y][1]} campeã do mundo`, sub: `Sede: ${WC_ED[y][0]}` }));
+  Object.keys(CL_META).forEach(c => {
+    const f = CL_META[c].f, nm = clubName(c);
+    if (f && nm) ev.push({ id: 'f' + c, y: f, label: `Fundação do ${nm}`, crest: c });
+  });
+  const first = {};
+  Object.keys(LIB_CHAMPS).forEach(y => {
+    const c = LIB_CHAMPS[y];
+    if (!first[c] || +y < first[c]) first[c] = +y;
+  });
+  Object.keys(first).forEach(c => {
+    const nm = clubName(c);
+    if (nm) ev.push({ id: 'l' + c, y: first[c], label: `1ª Libertadores do ${nm}`, crest: c });
+  });
+  return ev;
+}
+function buildTimeline(n) {
+  const all = tlEvents(), used = new Set(), qs = [];
+  for (let guard = 0; qs.length < n && guard < 300; guard++) {
+    const four = pickN(all.filter(e => !used.has(e.id)), 4);
+    if (four.length < 4) break;
+    const ys = four.map(e => e.y).sort((a, b) => a - b);
+    if (ys.some((y, i) => i && y - ys[i - 1] < 4)) continue;   // too close to be fair
+    four.forEach(e => used.add(e.id));
+    qs.push({ t: 'Coloque em ordem, do mais antigo para o mais recente', type: 'order',
+              order: shuf(four), a: four.slice().sort((a, b) => a.y - b.y).map(e => e.id), _cat: GC_TL });
+  }
+  return { id:'tl', name:'Linha do tempo', emoji:'⏳', tag:'Do mais antigo ao mais novo',
+           col:'#0F7B6C', diff:'Variado', qs };
+}
+
+/* Both run on the ordinary machinery: same board, same reveal, same album.
+   Only the clock is their own — reading four clues takes time. */
+let modeTime = null;
+function startMode(built) {
+  isDaily = false; isSurv = false; isMil = false; challenge = null;
+  runSeed = null; _seed = null; modeTime = 45;
+  cat = built;
+  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
+  resetLifes();
+  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
+  disp = getDisp(cat.qs[0]);
   startTmr();
   go();
 }
@@ -10269,11 +10443,12 @@ function doReveal() {
   const sa    = [...sel];
   const wrong = sa.filter(id => !rs.has(id)).length;
   const right = sa.filter(id =>  rs.has(id)).length;
-  const p     = wrong === 0 && right === rs.size ? 3
+  let p       = wrong === 0 && right === rs.size ? 3
               : wrong === 0 && right > 0          ? 1
               :                                     0;
 
   prevPts = pts;
+  const prevStreak = streak;
   if (p === 3) streak++; else streak = 0;
   bestStreak = Math.max(bestStreak, streak);
 
@@ -10282,9 +10457,22 @@ function doReveal() {
   runNew += gotNew.length;
   runNewIds.push(...gotNew);
 
+  /* An ordering answer is scored by how many cards sit in the right place. */
+  if (q.order) {
+    const given = [...sel], hits = given.filter((id, i) => q.a[i] === id).length;
+    /* and the cards fall into the true order, so the row reads as a timeline;
+       each one still carries the number the player gave it */
+    disp = q.order.slice().sort((a, b) => a.y - b.y);
+    p = hits === q.a.length ? 3 : hits >= 2 ? 1 : 0;
+    streak = p === 3 ? prevStreak + 1 : 0;
+    bestStreak = Math.max(bestStreak, streak);
+  }
+
   const { gained, mult, speed } = scoreAnswer(p);
-  pts += gained;
-  lastGain = gained;
+  /* every extra clue taken costs two points, so the first guess is worth most */
+  const gain = q.clues && p === 3 ? Math.max(1, gained - ((q._shown || 1) - 1) * 2) : gained;
+  pts += gain;
+  lastGain = gain;
   if (p === 3) nCorrect++; else if (p === 1) nPartial++;
   runLog.push(p);
 
@@ -10306,7 +10494,9 @@ function doReveal() {
                 + (mult > 1 ? chip(ICON.flame('var(--brass)', 10), 'combo ×' + mult) : '')
                 + (DCFG().pmul > 1 ? chip((ICON[DCFG().ic] || ICON.star)(DCFG().col, 10), '×' + DCFG().pmul) : '');
 
-  const rightNames = q.a.map(id => {
+  const rightNames = q.order
+    ? q.a.map(id => { const e = q.order.find(x => x.id === id); return e ? `${e.label} (${e.y})` : id; }).join(' · ')
+    : q.a.map(id => {
     const pool = q.type === 'player' ? PL : CL;
     const hit = pool.find(x => x.id === id);
     return hit ? hit.n : id;
@@ -10332,9 +10522,10 @@ function doReveal() {
           · você leva ${money(safetyNet())}</div>` + backs;
   } else {
     lastMsg = (p === 3
-      ? `<span class="display good" style="font-size:17px;">${ICON.check('currentColor', 13)} Colada! +${gained}</span>${bonuses}`
+      ? `<span class="display good" style="font-size:17px;">${ICON.check('currentColor', 13)} ${
+          q.order ? 'Na ordem certa!' : 'Colada!'} +${gain}</span>${bonuses}`
       : p === 1
-      ? `<span class="display brass" style="font-size:17px;">Quase! +${gained}</span>${bonuses}`
+      ? `<span class="display brass" style="font-size:17px;">Quase! +${gain}</span>${bonuses}`
       : `<span class="display bad" style="font-size:17px;">${ICON.cross('currentColor', 13)} Errou!</span>
          <div class="small muted" style="margin-top:3px;">Resposta: <b class="good">${rightNames}</b></div>`) + backs;
   }
