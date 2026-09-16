@@ -910,12 +910,6 @@
       border: 1px solid var(--rule-2); border-radius: 10px; padding: 9px 12px; font-size: 13px; font-weight: 700; }
     .pod-win { border-color: var(--brass); background: var(--brass-soft); }
     .pod-p { color: var(--ink-3); font-size: 11px; }
-    /* two numbers side by side: yours and theirs */
-    .chal-cmp { display: flex; gap: 10px; width: 100%; max-width: 300px; }
-    .chal-cmp > div { flex: 1; background: var(--pocket); border: 1px solid var(--rule-2);
-      border-radius: 12px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .chal-cmp .k { font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); font-weight: 800; }
-    .chal-cmp b { font-size: 24px; font-weight: 700; }
 
     .mode-album { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); flex: none; }
     :root[data-theme="dark"] .mode-album, :root:not([data-theme="light"]) .mode-album { --md: #D8A83C; }
@@ -9430,26 +9424,6 @@ function html() {
     </div>`;
   }
 
-  /* ── A friend's challenge, opened from a link ──
-     The seed in the link deals them the same round, so the only thing that
-     differs is what each of them knew. */
-  if (sc === 'challenge' && chalPending) {
-    const d = DIFFS.find(x => x.key === chalPending.key) || DIFFS[0];
-    return `
-    <div class="pg pg-center" style="padding:26px 22px;gap:12px;">
-      <div class="eyebrow">Desafio de um amigo</div>
-      <div class="display" style="font-size:30px;"><em>Consegue passar?</em></div>
-      <div class="chal-cmp">
-        <div><span class="k">Ele fez</span><b class="num">${chalPending.pts}</b></div>
-        <div><span class="k">Acertos</span><b class="num">${chalPending.nCorrect}/${chalPending.total}</b></div>
-      </div>
-      <p class="small muted" style="max-width:300px;font-size:12.5px;">
-        Suas perguntas serão exatamente as mesmas, na mesma ordem · <b>${d.label}</b></p>
-      <button id="baccept" class="btn btn-primary btn-lg">${ICON.play('currentColor', 15)} Aceitar desafio</button>
-      <button id="bhome" class="btn btn-ghost btn-sm">Agora não</button>
-    </div>`;
-  }
-
   /* ── Passa o celular: two to four people, one phone, one round ── */
   if (sc === 'party') {
     return `
@@ -9597,12 +9571,6 @@ function html() {
       <div id="endpts" class="display num" style="font-size:64px;line-height:1;font-weight:600;"
         data-to="${pts}">${pts}</div>
       <div class="small muted">pontos · ${nCorrect}/${total} acertos (${pct}%)</div>
-      ${challenge ? `<div class="chal-cmp" style="margin-top:4px;">
-        <div><span class="k">Você</span><b class="num">${pts}</b></div>
-        <div><span class="k">Seu amigo</span><b class="num">${challenge.pts}</b></div>
-      </div>
-      <div class="display ${pts > challenge.pts ? 'good' : pts === challenge.pts ? 'brass' : 'bad'}" style="font-size:19px;">
-        <em>${pts > challenge.pts ? 'Você passou!' : pts === challenge.pts ? 'Empate!' : 'Seu amigo levou essa'}</em></div>` : ''}
       ${bestStreak >= 3 ? `<div class="small" style="display:flex;gap:4px;align-items:center;color:var(--brass);font-weight:700;">
         ${ICON.flame('currentColor', 12)} melhor sequência: ${bestStreak}</div>` : ''}
       <div class="bar"><i style="width:${pct}%;"></i></div>
@@ -9611,9 +9579,7 @@ function html() {
       ${newStickerStrip()}
       <div style="margin-top:6px;">${runlogEl()}</div>
       <div class="foot-row" style="margin-top:12px;">
-        ${isDaily
-          ? '<button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>'
-          : '<button id="bchal"  class="btn btn-ghost btn-sm">Desafiar amigo</button>'}
+        <button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>
         <button id="brep"   class="btn btn-primary">Jogar de novo</button>
         <button id="bdiff"  class="btn btn-ghost btn-sm">Mudar dificuldade</button>
       </div>
@@ -10048,8 +10014,7 @@ function go() {
 
   /* ── run controls ── */
   on('bshare',  () => { snd.tap(); doShare(); });
-  on('bhome',   () => { snd.swipe(); clearInterval(tmr); party = null; challenge = null; sc = 'home'; go(); });
-  on('bchal',     () => { snd.tap();    doChallenge(); });
+  on('bhome',   () => { snd.swipe(); clearInterval(tmr); party = null; sc = 'home'; go(); });
   on('who-btn',   () => { snd.select(); startMode(buildWho(8)); });
   on('tl-btn',    () => { snd.select(); startMode(buildTimeline(8)); });
   /* one more clue, and the question is worth a little less */
@@ -10059,7 +10024,6 @@ function go() {
     q._shown = Math.min(q.clues.length, (q._shown || 1) + 1);
     snd.select(); go();
   });
-  on('baccept',   () => { snd.rung();   acceptChallenge(); });
   on('party-btn', () => { snd.select(); sc = 'party'; go(); });
   on('bpstart',   () => { snd.select(); startParty(); });
   on('bready',    () => { snd.select(); partyPlay(); });
@@ -10267,7 +10231,7 @@ function buildTimeline(n) {
    Only the clock is their own — reading four clues takes time. */
 let modeTime = null;
 function startMode(built) {
-  isDaily = false; isSurv = false; isMil = false; challenge = null;
+  isDaily = false; isSurv = false; isMil = false;
   runSeed = null; _seed = null; modeTime = 45;
   cat = built;
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
@@ -10280,16 +10244,14 @@ function startMode(built) {
 }
 
 /* ═══════════════════════════════════════════════════
-   DESAFIAR UM AMIGO · PASSA O CELULAR
+   PASSA O CELULAR
 
-   A run is a seed. The same seed deals the same questions, in the same
-   order, with the same tiles on every phone — so a link can carry a round
-   from one person to another, and four people can take turns on one device
-   and still be compared fairly at the end.
+   A run is a seed: the same seed deals the same questions, in the same
+   order, with the same tiles — which is what lets four people take turns on
+   one phone and still be compared fairly at the end. The daily uses it too,
+   with the date as its seed.
 ═══════════════════════════════════════════════════ */
 let runSeed = null, pendingSeed = null;
-let challenge = null;      // the friend's result, while playing their round
-let chalPending = null;    // a link opened, not yet accepted
 let party = null;          // { names, scores, i, seed } while passing the phone
 let partyN = 2, partyNames = [];
 
@@ -10298,30 +10260,6 @@ let partyN = 2, partyNames = [];
 function dealDisp(i) {
   if (runSeed !== null) seedFrom(runSeed + i * 7919);
   return getDisp(cat.qs[i]);
-}
-
-function challengeLink() {
-  return `${location.origin}${location.pathname}#d=${diffKey}.${runSeed}.${pts}.${nCorrect}.${cat.qs.length}`;
-}
-function doChallenge() {
-  const txt = `Fiz ${pts} pontos (${nCorrect}/${cat.qs.length}) no Futebol Quiz BR.\n`
-            + `Suas perguntas serão exatamente as mesmas. Consegue passar?\n${challengeLink()}`;
-  if (navigator.share) { navigator.share({ text: txt }).catch(() => {}); return; }
-  if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => {
-    const b = document.getElementById('bchal');
-    if (b) { b.textContent = 'Link copiado!'; setTimeout(() => { b.textContent = 'Desafiar amigo'; }, 1800); }
-  }).catch(() => {});
-}
-function readChallenge() {
-  const m = /[#&]d=([a-z]+)\.(-?\d+)\.(\d+)\.(\d+)\.(\d+)/.exec(location.hash || '');
-  if (!m || !DIFFS.some(d => d.key === m[1])) return null;
-  return { key: m[1], seed: +m[2], pts: +m[3], nCorrect: +m[4], total: +m[5] };
-}
-function acceptChallenge() {
-  challenge = chalPending; chalPending = null;
-  diffKey = challenge.key; pendingSeed = challenge.seed;
-  try { history.replaceState(null, '', location.pathname); } catch (e) {}
-  startGame();
 }
 
 function startParty() {
@@ -10335,7 +10273,7 @@ function startParty() {
   sc = 'pass'; go();
 }
 function partyPlay() {
-  challenge = null; pendingSeed = party.seed; diffKey = 'moderado';
+  pendingSeed = party.seed; diffKey = 'moderado';
   startGame();
 }
 
@@ -10654,8 +10592,6 @@ function startTmr() {
 }
 
 /* ── Boot ── */
-chalPending = readChallenge();
-if (chalPending) sc = 'challenge';
 go();
 
 /* ── Service Worker registration ── */
