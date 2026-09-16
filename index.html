@@ -401,7 +401,7 @@
       .fig-sm .fig-nm-long { font-size: 8.8px; }
     }
 
-    .fig-hero .fig-band { font-size: 10px; padding: 5px 34px; letter-spacing: .16em; }
+    .fig-hero .fig-band { font-size: 10px; padding: 5px 12px; letter-spacing: .12em; }
     .fig-hero .fig-art  { aspect-ratio: 1 / 1.1; }
     .fig-hero .fig-cap  { padding: 9px 6px 11px; }
     .fig-hero .fig-nm   { font-size: 16px; -webkit-line-clamp: 2; }
@@ -861,6 +861,12 @@
     /* `.mode` grows to share the three-across row it was written for. The
        album button reuses the look but stands alone in a column, where
        growing would stretch it down the whole page. */
+    @media (max-height: 900px) {
+      .home-intro { display: none; }
+      .hero-sticker { width: 138px; }
+      .hero-sticker .fig-hero .fig-nm { font-size: 13px; }
+      .hero-sticker .fig-hero .fig-sub { font-size: 9px; }
+    }
     .mode-who { --md: #6A4BA8; --md-soft: rgba(106, 75, 168, .14); }
     .mode-tl   { --md: #0F7B6C; --md-soft: rgba(15, 123, 108, .14); }
     :root[data-theme="dark"] .mode-who, :root:not([data-theme="light"]) .mode-who { --md: #B49BE6; }
@@ -9049,7 +9055,7 @@ function html() {
       </button>`;
 
     return `
-    <div class="pg pg-center" style="padding:20px 20px 24px;gap:13px;">
+    <div class="pg pg-center" style="padding:14px 20px 14px;gap:10px;">
 
       <div class="eyebrow" style="width:100%;display:flex;justify-content:space-between;">
         <span>Edição ${year}</span><b>Fig. Nº ${String(num).padStart(3, '0')}</b>
@@ -9066,10 +9072,9 @@ function html() {
         ${figurinha(hero, 'hero', { sub: `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}` })}
       </div>
 
-      <p class="small muted" style="max-width:280px;font-size:12.5px;">
-        Dezesseis perguntas separam você de
-        <b class="brass" style="white-space:nowrap;">R$ 1.000.000</b>.
-        Elas ficam mais difíceis a cada degrau.</p>
+      <p class="small muted home-intro" style="max-width:300px;font-size:12.5px;">
+        Dezesseis perguntas até <b class="brass" style="white-space:nowrap;">R$ 1.000.000</b>,
+        cada uma mais difícil.</p>
 
       ${best > 0 ? `<span class="chip chip-brass">${ICON.money('currentColor', 11)} Seu recorde · ${money(best)}</span>` : ''}
 
