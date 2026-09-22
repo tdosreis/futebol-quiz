@@ -525,6 +525,11 @@
     .opt-face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block;
       filter: sepia(.18) contrast(1.04); }
     .opt-mono { font: 800 13px/1 var(--font-b, Archivo, system-ui); letter-spacing: .02em; color: #6B6A60; }
+    .opt-ink svg { width: 100%; height: 100%; display: block; }
+    /* a rivalry: the two sides overlapping, the way the fixture list prints them */
+    .opt-pair { gap: 0; }
+    .opt-pair .opt-art { width: 32px; height: 32px; box-shadow: 0 0 0 2px var(--pocket), inset 0 0 0 1px rgba(32,36,30,.16); }
+    .opt-pair .opt-art + .opt-art { margin-left: -7px; }
     .opt-flags { gap: 4px; }
     .opt-flag { display: block; width: 40px; height: 30px; border-radius: 3px; object-fit: cover;
       box-shadow: 0 0 0 1px rgba(32,36,30,.28), 0 1px 3px var(--shadow); }
@@ -8825,6 +8830,141 @@ const CLUB_ALIAS = {
   'deportivo la coruna':'deportivo', 'bayern de munique':'bayern',
 };
 
+/* Clubs the album has no crest file for, as their colours: first colour,
+   second colour, and the pattern of the shirt — s solid, v stripes, h halves,
+   o hoops, d sash, c chequers. Drawn as a badge with the initials on it, the
+   way the app draws every other club it has no licensed crest for. */
+const CLUB_INK = {
+  'aston villa':'670E36 95BFE5 h', 'independiente':'D5001C FFFFFF s', 'racing':'6CACE4 FFFFFF v',
+  'az alkmaar':'DB0021 FFFFFF s', 'twente':'E3001B FFFFFF s', 'rangers':'1B458F FFFFFF s',
+  'aberdeen':'E2001A FFFFFF s', 'hearts':'7A2135 FFFFFF s', 'schalke 04':'004D9D FFFFFF s',
+  'hamburgo':'0A3F86 FFFFFF h', 'newcastle united':'241F20 FFFFFF v', 'newcastle':'241F20 FFFFFF v',
+  'real sociedad':'0067B1 FFFFFF v', 'dundee united':'F58025 000000 s', 'hibernian':'006B3F FFFFFF s',
+  'braga':'D6001C FFFFFF s', 'real betis':'00954C FFFFFF v', 'betis':'00954C FFFFFF v',
+  'athletic bilbao':'EE2523 FFFFFF v', 'nottingham forest':'DD0000 FFFFFF s',
+  'colonia':'ED1C24 FFFFFF h', 'estudiantes':'E30613 FFFFFF v', 'leeds united':'FFFFFF 1D428A s',
+  'leeds':'FFFFFF 1D428A s', 'velez sarsfield':'FFFFFF 0A3A8C d', 'velez':'FFFFFF 0A3A8C d',
+  'vitoria de guimaraes':'FFFFFF 111111 s', 'boavista':'111111 FFFFFF c', 'brighton':'0057B8 FFFFFF v',
+  'villarreal':'FFE667 005187 s', 'crystal palace':'1B458F C4122E v', 'utrecht':'E30613 FFFFFF s',
+  'west ham':'7A263A 1BB1E7 h', 'wolfsburg':'65B32E FFFFFF s', 'nantes':'FCD405 00843D s',
+  'besiktas':'111111 FFFFFF v', 'trabzonspor':'7A1E3A 6CACE4 v', 'leicester city':'003090 FDBE11 s',
+  'nacional':'FFFFFF 0038A8 s', 'espanyol':'007FC8 FFFFFF v', 'osasuna':'D91A21 0A346F s',
+  'san lorenzo':'1E3C8C D6001C v', 'al-hilal':'1B4E9B FFFFFF s', 'al-ittihad':'F6D300 111111 v',
+  'rennes':'E13327 111111 h', 'basaksehir':'F37021 1D2C5E h', 'bursaspor':'00A651 FFFFFF v',
+  'southampton':'D71920 FFFFFF v', 'ipswich town':'0033A0 FFFFFF s', 'dinamo de kiev':'FFFFFF 0055A5 s',
+  'rb leipzig':'FFFFFF DD0741 s', 'leipzig':'FFFFFF DD0741 s', 'sunderland':'EB172B FFFFFF v',
+  'wolverhampton':'FDB913 231F20 s', 'eibar':'8B1E3F 0A346F v', 'alaves':'0761AF FFFFFF v',
+  'al ahly':'C8102E FFFFFF s', 'zamalek':'FFFFFF C8102E d', 'tp mazembe':'111111 FFFFFF s',
+  'esperance':'C8102E F6D300 v', 'al-nassr':'F6D300 1B3F8B s', 'al-ahli':'00843D FFFFFF s',
+  'al-shabab':'FFFFFF 111111 s', 'urawa reds':'E6002D 111111 s', 'brentford':'E30613 FFFFFF v',
+  'elche':'FFFFFF 00843D o', 'mallorca':'E20613 111111 s', 'shakhtar donetsk':'F37021 111111 v',
+  'hansa rostock':'004B9B FFFFFF s', 'saint-etienne':'009A44 FFFFFF s', 'reims':'E30613 FFFFFF h',
+  'nice':'D0021B 111111 v', 'lens':'EE2223 FFD600 v', 'genoa':'C8102E 0B2A5B h',
+  'belenenses':'0055A5 FFFFFF s', 'olympiacos':'E30613 FFFFFF v', 'danubio':'FFFFFF 111111 d',
+  'estoril':'FFD600 0055A5 v', 'middlesbrough':'E11B22 FFFFFF s', 'celta de vigo':'8AC3EE FFFFFF s',
+  'ldu quito':'FFFFFF C8102E s', 'barcelona de guayaquil':'FFD600 111111 s', 'emelec':'0055A5 FFFFFF s',
+  'independiente del valle':'111111 0055A5 v', 'el nacional':'FFFFFF C8102E s',
+  'raja casablanca':'00843D FFFFFF s', 'wydad casablanca':'C8102E FFFFFF s',
+  'kashima antlers':'B8002E 0A1F44 s', 'seattle sounders':'5D9741 005595 s', 'getafe':'005999 FFFFFF s',
+  'levante':'B4053F 0A346F v', 'cska moscou':'D6001C 0033A0 h', 'spartak moscou':'D6001C FFFFFF s',
+  'cadiz':'FFE000 0045A7 s', 'granada':'C8102E FFFFFF o', 'eintracht frankfurt':'E1000F 111111 v',
+  'frankfurt':'E1000F 111111 v', 'union berlin':'EB1923 FFFFFF s', 'hertha bsc':'005CA9 FFFFFF s',
+  'hertha berlim':'005CA9 FFFFFF s', 'toulouse':'5A2A82 FFFFFF s', 'metz':'8B1D3F FFFFFF s',
+  'lille':'E01E13 20325F s', 'club brugge':'0055A5 111111 v', 'anderlecht':'5A2A82 FFFFFF s',
+  'standard liege':'D6001C FFFFFF s', 'gent':'0055A5 FFFFFF s', 'genk':'0055A5 FFFFFF s',
+  'panathinaikos':'007A3D FFFFFF s', 'paok':'111111 FFFFFF v', 'aris':'FFD600 111111 s',
+  'aek':'FFD600 111111 s', 'aek atenas':'FFD600 111111 s', 'borussia monchengladbach':'FFFFFF 00843D s',
+  'steaua bucareste':'0033A0 D6001C h', 'estrela vermelha':'D6001C FFFFFF v',
+  'vitesse':'FFD600 111111 v', 'basel':'D6001C 0033A0 h', 'bochum':'005CA9 FFFFFF s',
+  'olimpia':'FFFFFF 111111 o', 'once caldas':'FFFFFF 111111 s', 'atletico nacional':'00843D FFFFFF v',
+  'america de cali':'D6001C FFFFFF s', 'millonarios':'0033A0 FFFFFF s',
+  'deportivo cali':'00843D FFFFFF s', 'deportivo quito':'0033A0 D6001C h', 'huracan':'FFFFFF D6001C s',
+  "newell's old boys":'D6001C 111111 h', 'rosario central':'0033A0 FFD600 v',
+  'defensor sporting':'5A2A82 FFFFFF s', 'defensor':'5A2A82 FFFFFF s',
+  'montevideo wanderers':'111111 FFFFFF v', 'wanderers':'111111 FFFFFF v',
+  'liverpool de montevideu':'111111 0033A0 v', 'al-ettifaq':'00843D D6001C s',
+  'vissel kobe':'8B0027 FFFFFF s', 'nagoya grampus':'D6001C F6D300 s',
+  'los angeles fc':'111111 C39E6D s', 'orlando city':'633492 FFFFFF s',
+  'new york red bulls':'FFFFFF D6001C s', 'sparta roterda':'D6001C FFFFFF v',
+  'kilmarnock':'0033A0 FFFFFF v', 'blackburn rovers':'009EE0 FFFFFF h', '1860 munique':'6CACE4 FFFFFF s',
+  'zenit':'0072CE FFFFFF s', 'lokomotiv moscou':'E30613 00843D h', 'rubin kazan':'8B1D3F 00843D s',
+  'dinamo moscou':'0033A0 FFFFFF s', 'west bromwich':'122F67 FFFFFF v', 'derby county':'FFFFFF 111111 s',
+  'norwich city':'FFF200 00A650 s', 'bournemouth':'DA291C 111111 v', 'portsmouth':'001489 FFFFFF s',
+  'queens park rangers':'1D5BA4 FFFFFF o', 'millwall':'001D5E FFFFFF s', 'wimbledon':'0033A0 FFD600 s',
+  'malaga':'0055A5 FFFFFF v', 'girona':'E30613 FFFFFF v', 'hoffenheim':'1961B5 FFFFFF s',
+  'mainz':'C3141E FFFFFF s', 'freiburg':'111111 E30613 s', 'augsburg':'BA3733 46714D v',
+  'maritimo':'D6001C 00843D h', 'preston north end':'FFFFFF 0A1F44 s', 'pachuca':'0033A0 FFFFFF v',
+  'monterrey':'0A1F44 FFFFFF v', 'tigres':'FDB913 0A3A8C s', 'cruz azul':'0033A0 FFFFFF s',
+  'ifk goteborg':'0033A0 FFFFFF v', 'malmo':'6CACE4 FFFFFF s', 'aik':'111111 FFD600 s',
+  'djurgarden':'6CACE4 0A1F44 v', 'hammarby':'00843D FFFFFF v', 'dinamo zagreb':'0033A0 FFFFFF s',
+  'hajduk split':'FFFFFF 0033A0 s', 'partizan':'111111 FFFFFF v', 'ferencvaros':'00843D FFFFFF v',
+  'cska sofia':'D6001C FFFFFF s', 'colo-colo':'FFFFFF 111111 s',
+  'universidad de chile':'0033A0 D6001C s', 'universidad catolica':'FFFFFF 0033A0 s',
+  'cerro porteno':'0033A0 D6001C v', 'libertad':'FFFFFF 111111 v', 'alianza lima':'0A1F44 FFFFFF v',
+  'universitario':'F5EFE0 8B1D3F s', 'sporting cristal':'6CACE4 FFFFFF s', 'lanus':'8B1D3F FFFFFF s',
+  'bangu':'FFFFFF D6001C v', 'madureira':'FFD600 0033A0 s', 'motherwell':'FDB913 8B1D3F o',
+  'celtic':'00843D FFFFFF o', 'fiorentina':'5A2A82 FFFFFF s', 'bologna':'A21C26 1A2F48 v',
+  'cagliari':'A21C26 1A2F48 h', 'brescia':'0033A0 FFFFFF s', 'venezia':'111111 F37021 s',
+  'palermo':'F4A7B9 111111 s', 'bari':'FFFFFF D6001C s', 'salernitana':'8B1D3F FFFFFF s',
+  'udinese':'111111 FFFFFF v', 'montpellier':'0A3A8C F37021 s', 'sochaux':'FFD600 0A3A8C s',
+  'le havre':'6CACE4 0A3A8C h', 'heerenveen':'0033A0 FFFFFF v', 'antwerp':'D6001C FFFFFF s',
+  'red bull salzburg':'FFFFFF D6001C s', 'rapid viena':'00843D FFFFFF s',
+  'austria viena':'5A2A82 FFFFFF s', 'sturm graz':'111111 FFFFFF s', 'burnley':'6C1D45 99D6EA s',
+  'bolton wanderers':'FFFFFF 0A1F44 s', 'blackpool':'F68712 FFFFFF s',
+  'birmingham city':'0033A0 FFFFFF s', 'stoke city':'E03A3E FFFFFF v',
+  'sheffield united':'EE2737 FFFFFF v', 'rayo vallecano':'FFFFFF E30613 d',
+  'las palmas':'FFE400 0055A5 s', 'st. pauli':'6C4B3A FFFFFF s', 'hannover 96':'D6001C 111111 s',
+  'nuremberg':'AA1124 111111 s', 'torpedo moscou':'FFFFFF 111111 s', 'magdeburg':'0033A0 FFFFFF s',
+  'dynamo dresden':'FFD600 111111 s', 'steaua':'0033A0 D6001C h',
+};
+/* the rivalries, as the two sides that play them */
+const DERBY = {
+  'el clasico':['realmadrid','barcelona'], 'derby della madonnina':['milan','inter'],
+  'der klassiker':['bayern','dortmund'], 'old firm':['celtic','rangers'],
+  'o classico':['benfica','porto'], 'superclasico':['boca','riverplate'],
+  'superclassico':['boca','riverplate'], "derby d'italia":['inter','juventus'],
+  'derby d\u2019italia':['inter','juventus'], 'derby della capitale':['roma','lazio'],
+  'derby della mole':['juventus','torino'], 'merseyside derby':['liverpool','everton'],
+  'north london derby':['arsenal','tottenham'], 'revierderby':['dortmund','schalke 04'],
+  'derbi madrileno':['realmadrid','atletico'], 'derby della lanterna':['genoa','sampdoria'],
+  'derby del sole':['roma','napoli'], 'le classique':['psg','marseille'],
+  'de klassieker':['ajax','feyenoord'], 'nordderby':['werder','hamburgo'],
+  'rheinderby':['colonia','borussia monchengladbach'], 'el gran derbi':['sevilla','real betis'],
+  'derbi basco':['athletic bilbao','real sociedad'], 'derbi barceloni':['barcelona','espanyol'],
+  'derby de lisboa':['benfica','sporting'], 'derby do minho':['braga','vitoria de guimaraes'],
+  'derby du rhone':['lyon','saint-etienne'], 'manchester derby':['manutd','mancity'],
+  'fla-flu':['flamengo','fluminense'], 'choque-rei':['palmeiras','saopaulo'],
+  'derby paulista':['corinthians','palmeiras'], 'majestoso':['corinthians','saopaulo'],
+  'san-sao':['santos','saopaulo'], 'classico dos milhoes':['flamengo','vasco'],
+  'grenal':['gremio','internacional'], 'gre-nal':['gremio','internacional'],
+  'ba-vi':['bahia','vitoria'], 'classico mineiro':['atleticomg','cruzeiro'],
+  'atletiba':['atleticopr','coritiba'], 'classico-rei':['fortaleza','ceara'],
+  're-pa':['remo','paysandu'], 'classico das multidoes':['sport','santacruz'],
+  'classico dos classicos':['sport','nautico'], 'classico de avellaneda':['independiente','racing'],
+  'classico de rosario':["newell's old boys",'rosario central'], 'classico uruguaio':['penarol','nacional'],
+};
+/* a league is the country it is played in */
+const LEAGUE_OF = {
+  'premier league':'gb-eng', 'la liga':'es', 'bundesliga':'de', 'serie a':'it', 'ligue 1':'fr',
+  'eredivisie':'nl', 'primeira liga':'pt', 'liga mx':'mx', 'mls':'us', 'jupiler pro league':'be',
+  'super lig':'tr', 'allsvenskan':'se', 'scottish premiership':'gb-sct', 'brasileirao':'br',
+  'saudi pro league':'sa', 'j-league':'jp', 'j1 league':'jp', 'k-league':'kr',
+  'liga portugal':'pt', 'ligue 2':'fr', '2. bundesliga':'de', 'serie b':'it', 'la liga 2':'es',
+};
+/* how a question names a country without naming it: "Qual liga inglesa..." */
+const CTRY_WORDS = { 'gb-eng':'ingl', es:'espanh', de:'alem', it:'italia', fr:'franc', nl:'holand',
+  pt:'portug', mx:'mexic', us:'american|estados unidos|eua', be:'belg', tr:'turc|turquia',
+  se:'sue', 'gb-sct':'escoc', br:'brasil', sa:'saudi|arabia', jp:'japo|japao', kr:'corea|coreia' };
+
+/* one club named in a written choice: its crest, or its colours */
+function optClub(f) {
+  const X = optIndex();
+  if (X.club[f]) return { k: 'club', id: X.club[f] };
+  if (CLUB_INK[f]) { const [a, b, pat] = CLUB_INK[f].split(' ');
+    return { k: 'club', ink: ['#' + a, '#' + b, pat], n: f }; }
+  return null;
+}
+
 let _optIdx = null;
 function optIndex() {
   if (_optIdx) return _optIdx;
@@ -8856,7 +8996,13 @@ function optIndex() {
 /* What one written choice is a picture of, if anything. */
 function optResolve(text) {
   const f = _fold(text).trim(), X = optIndex();
-  if (X.club[f]) return { k: 'club', id: X.club[f] };
+  const one = optClub(f);
+  if (one) return one;
+  /* a rivalry, by name ("Fla-Flu") or spelled out ("Bayern x Schalke 04") */
+  const duo = DERBY[f] ? DERBY[f].map(c => LOGOS[c] ? { k: 'club', id: c } : optClub(c))
+            : f.split(/\s+x\s+/).length === 2 ? f.split(/\s+x\s+/).map(optClub) : null;
+  if (duo && duo[0] && duo[1]) return { k: 'club', pair: duo };
+  if (LEAGUE_OF[f]) return { k: 'ctry', iso: [LEAGUE_OF[f]], league: true };
   if (X.flag[f]) return { k: 'ctry', iso: [X.flag[f]] };
   /* "Coreia do Sul e Japão": a shared hosting is two flags */
   const two = f.split(/\s+e\s+/);
@@ -8905,8 +9051,16 @@ function optArtFor(q) {
                 (q.who && !artReveals(q, { player: q.who }) && (PL.find(p => p.id === q.who) || {}).img);
   const qCrest = q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest })) && q.crest;
   const qFlag  = q.flag && !artReveals(q, { ctry: q.flag }) && CTRY_ISO[q.flag];
-  const shown = (kind === 'club' && (q._crestIsQ || q.msc)) ||
-                onTile('club', r => r.id === qCrest) ||
+  /* A rivalry pictured by its two clubs is answered by a question that names
+     either of them; a league by its flag, by one that names its country. */
+  const word = s => new RegExp('(^|[^a-z0-9])(' + s + ')');
+  const named = s => !!s && word(_fold(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)').test(t);
+  const pairTold = res.some(r => r && r.pair && r.pair.some(c => named(c.id ? clubName(c.id) : c.n) ||
+    (c.id && Object.keys(CLUB_ALIAS).some(a => CLUB_ALIAS[a] === c.id && named(a)))));
+  const leagueTold = res.some(r => r && r.league && ((CTRY_WORDS[r.iso[0]] && word(CTRY_WORDS[r.iso[0]]).test(t)) ||
+    (qFlag && r.iso[0] === qFlag)));
+  const shown = pairTold || leagueTold || (kind === 'club' && (q._crestIsQ || q.msc)) ||
+                onTile('club', r => !!qCrest && r.id === qCrest) ||
                 onTile('ctry', r => qFlag && r.iso.includes(qFlag)) ||
                 onTile('face', r => !!qFace && r.img === qFace) ||
                 (kind === 'stad' && (q.stad || q.qimg));
@@ -8936,8 +9090,38 @@ function qFlagInner(code) {
     onerror="this.outerHTML=this.nextElementSibling.innerHTML" /><template>${svg}</template>`;
 }
 
+/* A club's colours as a round badge: the shirt's pattern in its two colours,
+   a plate across the middle, and the initials on the plate. */
+function optBadge(ink, name) {
+  const [a, b, pat] = ink, P = {
+    s: `<rect width="40" height="40" fill="${a}"/>`,
+    v: `<rect width="40" height="40" fill="${a}"/>` + [5, 15, 25, 35].map(x =>
+         `<rect x="${x}" width="5" height="40" fill="${b}"/>`).join(''),
+    h: `<rect width="40" height="40" fill="${a}"/><rect x="20" width="20" height="40" fill="${b}"/>`,
+    o: `<rect width="40" height="40" fill="${a}"/>` + [0, 10, 20, 30].map(y =>
+         `<rect y="${y}" width="40" height="5" fill="${b}"/>`).join(''),
+    d: `<rect width="40" height="40" fill="${a}"/><path d="M-4 30 L30 -4 L44 10 L10 44 Z" fill="${b}"/>`,
+    c: `<rect width="40" height="40" fill="${a}"/>` + [0, 1, 2, 3].map(i => [0, 1, 2, 3].map(j =>
+         (i + j) % 2 ? `<rect x="${i * 10}" y="${j * 10}" width="10" height="10" fill="${b}"/>` : '').join('')).join(''),
+  };
+  return `<svg viewBox="0 0 40 40" aria-hidden="true">${P[pat] || P.s}
+    <rect x="4" y="13.5" width="32" height="13" rx="2.5" fill="#F4F1E7" stroke="#20241E" stroke-width="1"/>
+    <text x="20" y="23.6" text-anchor="middle" font-size="9.6" font-weight="800"
+      font-family="Archivo, system-ui" fill="#20241E" letter-spacing=".3">${optMono(name)}</text>
+    <circle cx="20" cy="20" r="19.4" fill="none" stroke="#20241E" stroke-opacity=".35" stroke-width="1.2"/></svg>`;
+}
+
+/* one club's disc on a tile: the crest file, or its colours */
+function optClubDisc(r) {
+  if (r.ink) return `<span class="opt-art opt-crest opt-ink">${optBadge(r.ink, r.n)}</span>`;
+  return `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
+        onerror="this.parentElement.innerHTML='<span class=\'opt-mono\'>${optMono(clubName(r.id))}</span>'" /></span>`;
+}
+
 function optArtHtml(r) {
   if (!r) return '';
+  if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
+  if (r.k === 'club' && r.ink) return optClubDisc(r);
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest"><span class="opt-mono">${optMono(r.n)}</span></span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
