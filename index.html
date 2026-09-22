@@ -513,6 +513,33 @@
     .b-text .tile-name { -webkit-line-clamp: 3; font-size: 13.5px; min-height: 0; }
     .b-text .tile-name-long { font-size: 12px; }
 
+    /* A written choice with a picture of its own: the crest, the flag, the
+       face or the ground sits above the words, the way it does on a club
+       pocket, and the tile keeps the height it had. */
+    .b-text.b-art { flex-direction: column; gap: 6px; padding: 10px 10px 9px; }
+    .b-text.b-art.b-voted { padding-right: 10px; padding-top: 22px; }
+    .opt-art { flex: none; display: flex; align-items: center; justify-content: center; }
+    .opt-crest, .opt-face { width: 38px; height: 38px; border-radius: 50%; overflow: hidden;
+      background: #F4F1E7; box-shadow: inset 0 0 0 1px rgba(32,36,30,.16); }
+    .opt-crest img { width: 80%; height: 80%; object-fit: contain; display: block; }
+    .opt-face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block;
+      filter: sepia(.18) contrast(1.04); }
+    .opt-mono { font: 800 13px/1 var(--font-b, Archivo, system-ui); letter-spacing: .02em; color: #6B6A60; }
+    .opt-flags { gap: 4px; }
+    .opt-flag { display: block; width: 40px; height: 30px; border-radius: 3px; object-fit: cover;
+      box-shadow: 0 0 0 1px rgba(32,36,30,.28), 0 1px 3px var(--shadow); }
+    .opt-flags .opt-flag + .opt-flag { width: 30px; height: 22px; }
+    .opt-flags .opt-flag:first-child:not(:last-child) { width: 30px; height: 22px; }
+    .opt-flag-blank { background: var(--pocket-2); }
+    .opt-stad { width: 58px; height: 36px; border-radius: 5px; overflow: hidden; background: var(--pocket-2);
+      box-shadow: 0 0 0 1px rgba(32,36,30,.2); }
+    .opt-stad img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .board-2-tight .b-text.b-art { gap: 4px; padding: 7px 8px 6px; }
+    .board-2-tight .opt-crest, .board-2-tight .opt-face { width: 30px; height: 30px; }
+    .board-2-tight .opt-flag { width: 32px; height: 24px; }
+    /* a wrong tile at the reveal fades its picture with its words */
+    .b-faded .opt-art { opacity: .55; }
+
     /* a burned pocket (Cortar) */
     /* Cortar takes a card off the board. The empty pocket used to appear
        between one frame and the next, which read as a glitch rather than as
@@ -599,7 +626,7 @@
     /* a flag drawn at the size of a vignette, for the questions about a country */
     .qart-flag { width: 78px; height: 52px; border-radius: 4px; overflow: hidden;
       box-shadow: inset 0 0 0 1px rgba(32,36,30,.3), 0 1px 3px var(--shadow); }
-    .qart-flag svg { width: 100%; height: 100%; display: block; }
+    .qart-flag svg, .qart-flag img { width: 100%; height: 100%; display: block; object-fit: cover; }
     /* the map is portrait where the other vignettes are landscape */
     .qart-map { width: 72px; height: 76px; }
     @media (max-width: 360px) { .qart-map { width: 60px; height: 64px; } }
@@ -1176,6 +1203,12 @@
          comes later, so without it the reserved vote corner is undone */
       .qz-screen .b-text.b-voted { padding-right: 44px; }
       .qz-screen .b-text .tile-name { font-size: 10px; }
+      /* a pictured pocket keeps its picture, just smaller */
+      .qz-screen .b-text.b-art { gap: 3px; padding: 5px 6px 4px; }
+      .qz-screen .b-text.b-art.b-voted { padding: 16px 6px 4px; }
+      .qz-screen .opt-crest, .qz-screen .opt-face { width: 26px; height: 26px; }
+      .qz-screen .opt-flag { width: 28px; height: 21px; }
+      .qz-screen .opt-stad { width: 42px; height: 26px; }
       .qz-screen .ajudas { gap: 4px; }
       .qz-screen .foot { gap: 5px; }
       .qz-screen .btn-lg { padding: 11px 26px; font-size: 14px; }
@@ -8243,78 +8276,139 @@ function mkPort(p) {
 ═══════════════════════════════════════════════════ */
 const ART = {
   /* The vignettes a question can carry when it is not about a face or a crest.
-     Same rules as the rest of ART: flat colour, one heavy outline, no shading,
-     drawn at a size a phone can read. */
+     Screen-printed scenes rather than icons: each fills its card edge to edge,
+     built from flat inks laid over one another — a darker ink for shadow, a
+     paler one for the light, a halftone for the crowd — with the one heavy
+     outline the rest of ART uses. Still no gradients and no gloss. */
+  _frame(w, label, body, vb) {
+    return `<svg viewBox="${vb || '0 0 120 80'}" width="${w || 120}" role="img" aria-label="${label}"
+      style="display:block;max-width:100%;height:auto;">${body}</svg>`;
+  },
+  /* a stand full of people, as rows of heads in the album's inks */
+  _crowd(y0, rows, step, r, seed) {
+    const ink = ['#C98A5B', '#E8B23C', '#F5EFE0', '#B23A2E', '#8FA3B8', '#A56B45', '#2E7D4F'];
+    let s = '', i = (seed || 0) * 131;
+    for (let j = 0; j < rows; j++)
+      for (let x = (j % 2 ? step / 2 : 0) + 2; x < 120; x += step) {
+        const k = (Math.imul(++i, 2654435761) >>> 0) >>> 13;
+        s += `<circle cx="${x.toFixed(1)}" cy="${(y0 + j * step * .82).toFixed(1)}" r="${r}" fill="${ink[k % ink.length]}"/>`;
+      }
+    return s;
+  },
+  /* mown stripes, drawn as flat bands of a second green */
+  _pitch(y, h) {
+    let s = `<rect y="${y}" width="120" height="${h}" fill="#2E7D4F"/>`;
+    for (let x = 0; x < 120; x += 24) s += `<rect x="${x}" y="${y}" width="12" height="${h}" fill="#358A59"/>`;
+    return s;
+  },
+
   rules(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração das regras do futebol"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M26 20 h34 q6 4 12 0 h22 v42 h-22 q-6 -4 -12 0 h-34 Z" fill="#F5EFE0"/>
-        <path d="M60 20 v42" fill="none"/>
-        <path d="M33 31 h18 M33 39 h18 M33 47 h14" stroke-width="1.6" opacity=".55" fill="none"/>
-        <path d="M69 31 h18 M69 39 h18 M69 47 h14" stroke-width="1.6" opacity=".55" fill="none"/>
-        <circle cx="93" cy="59" r="11" fill="#F0C24A"/>
-        <path d="M86 59 q7 -6 14 0 q-7 6 -14 0 Z" fill="#2A1D10" stroke="none"/>
+    return this._frame(w, 'Ilustração das regras do futebol', `
+      <rect width="120" height="80" fill="#2E7D4F"/>
+      <path d="M0 0h120v80H0z" fill="none"/>
+      <path d="M-4 66 L124 50" stroke="#F5EFE0" stroke-width="1.6" opacity=".55"/>
+      <circle cx="104" cy="16" r="20" fill="none" stroke="#F5EFE0" stroke-width="1.6" opacity=".45"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M14 22 q20 -6 42 2 v44 q-22 -8 -42 -2 Z" fill="#E4D6B4"/>
+        <path d="M56 24 q22 -8 42 -2 v44 q-20 -6 -42 2 Z" fill="#F5EFE0"/>
+        <path d="M56 24 v44" />
+        <path d="M22 32 q14 -3 28 1 M22 40 q14 -3 28 1 M22 48 q14 -3 28 1 M22 56 q10 -2 20 0"
+          stroke-width="1.3" opacity=".5" fill="none"/>
+        <path d="M63 32 q14 -4 28 -1 M63 40 q14 -4 28 -1 M63 48 q9 -3 18 -1" stroke-width="1.3" opacity=".5" fill="none"/>
+        <rect x="80" y="44" width="15" height="21" rx="2" fill="#F0C24A" transform="rotate(-14 87 54)"/>
+        <rect x="90" y="42" width="15" height="21" rx="2" fill="#C7372B" transform="rotate(10 97 52)"/>
+        <path d="M8 70 q10 -4 18 -1" fill="none" stroke-width="1.6"/>
+        <path d="M24 64 h12 a6 6 0 0 1 0 12 h-8 a6 6 0 0 1 -4 -2 Z" fill="#D7D2C4"/>
+        <circle cx="34" cy="70" r="2.2" fill="#2A1D10" stroke="none"/>
       </g>
-    </svg>`;
+      <path d="M30 66 h6" stroke="#fff" stroke-width="1.2" opacity=".8"/>`);
   },
 
   plane(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um avião"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <path d="M0 62 q30 -10 60 0 t60 0 v18 H0 Z" fill="var(--retro-band)" opacity=".22"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M18 44 L74 32 q14 -3 22 2 q4 3 -1 5 L44 52 L30 50 L38 42 Z" fill="#F5EFE0"/>
-        <path d="M52 40 L40 22 L48 21 L66 36" fill="#DCD3BC"/>
-        <path d="M30 50 L24 58 L32 57" fill="#DCD3BC"/>
+    return this._frame(w, 'Ilustração de um avião', `
+      <rect width="120" height="80" fill="#9FB7C9"/>
+      <rect y="50" width="120" height="30" fill="#B9CCD8"/>
+      <circle cx="98" cy="18" r="9" fill="#F0C24A"/>
+      <g fill="#F5EFE0">
+        <path d="M6 64 q6 -9 16 -5 q6 -8 16 -2 q10 -2 10 7 Z"/>
+        <path d="M70 72 q6 -8 14 -4 q7 -7 15 0 q9 -1 9 6 Z"/>
+        <path d="M84 40 q4 -6 11 -3 q5 -5 11 0 q6 0 6 5 Z" opacity=".85"/>
       </g>
-    </svg>`;
+      <path d="M0 50 q18 -6 36 -10" stroke="#F5EFE0" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="1 6"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M34 42 L86 28 q12 -3 18 1 q3 3 -2 5 L48 50 L38 49 Z" fill="#F5EFE0"/>
+        <path d="M60 38 L50 18 L58 17 L74 34 Z" fill="#B23A2E"/>
+        <path d="M60 44 L66 58 L73 57 L70 41 Z" fill="#8E2A20"/>
+        <path d="M40 48 L30 58 L38 57 L46 49" fill="#B23A2E"/>
+        <path d="M88 30 q6 -1 10 1" fill="none" stroke-width="1.4"/>
+      </g>
+      <g fill="#2A1D10" opacity=".7"><circle cx="70" cy="36" r="1.3"/><circle cx="76" cy="34.4" r="1.3"/><circle cx="82" cy="32.8" r="1.3"/></g>`);
   },
 
   boot(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de uma chuteira"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M26 26 q4 20 6 26 q2 6 10 6 h44 q10 0 10 -8 q0 -7 -10 -10 L58 36 q-8 -3 -12 -12 Z" fill="#F0C24A"/>
-        <path d="M40 58 h56" stroke-width="3"/>
-        <path d="M46 62 v5 M60 62 v5 M74 62 v5 M88 62 v5" stroke-width="2.4"/>
-        <path d="M44 38 l14 5 M48 30 l12 4" stroke-width="1.6" opacity=".6"/>
+    return this._frame(w, 'Ilustração de uma chuteira e uma bola', `
+      ${this._pitch(0, 80)}
+      <ellipse cx="58" cy="70" rx="44" ry="5" fill="#1F5A38" opacity=".7"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M14 22 q4 22 6 30 q2 8 12 8 h48 q12 0 12 -9 q0 -8 -12 -11 L50 32 q-10 -4 -14 -14 Z" fill="#20241E"/>
+        <path d="M20 50 q2 8 12 8 h48 q10 0 12 -7" fill="none" stroke="#F5EFE0" stroke-width="1.2" opacity=".5"/>
+        <path d="M44 44 l20 -8 M50 50 l20 -8 M56 55 l18 -7" stroke="#F5EFE0" stroke-width="3.2"/>
+        <path d="M30 26 l12 5 M32 32 l12 4 M34 38 l11 3" stroke="#F5EFE0" stroke-width="1.6"/>
+        <path d="M26 60 h66" stroke-width="3"/>
+        <path d="M32 62 v6 M46 62 v6 M62 62 v6 M78 62 v6 M88 61 v6" stroke-width="3"/>
+        <circle cx="100" cy="30" r="13" fill="#F7F2E4"/>
+        <path d="M100 22 l6 4.5 -2.3 7 h-7.4 l-2.3 -7 Z" fill="#2A1D10"/>
+        <path d="M100 22 v-5 M106 26.5 l5 -1.6 M103.7 33.5 l3 4 M96.3 33.5 l-3 4 M94 26.5 l-5 -1.6" stroke-width="1.6"/>
       </g>
-    </svg>`;
+      <path d="M92 24 q2 -5 7 -6" stroke="#fff" stroke-width="1.6" fill="none" opacity=".9"/>`);
   },
 
   bench(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um treinador à beira do campo"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <path d="M0 64 h120 v16 H0 Z" fill="#2E7D4F" opacity=".8"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <circle cx="46" cy="26" r="10" fill="#C98A5B"/>
-        <path d="M36 23 q10 -9 20 0 q1 -6 -10 -7 q-11 1 -10 7 Z" fill="#2A1D10"/>
-        <path d="M34 64 q0 -22 12 -26 q12 4 12 26 Z" fill="var(--retro-band)"/>
-        <path d="M58 44 L76 36" stroke="#C98A5B" stroke-width="7"/>
-        <path d="M58 44 L76 36"/>
-        <rect x="74" y="24" width="20" height="26" rx="3" fill="#F5EFE0"/>
-        <path d="M79 32 h10 M79 38 h10 M79 44 h6" stroke-width="1.6" opacity=".55"/>
-      </g>
-    </svg>`;
+    return this._frame(w, 'Ilustração de um treinador à beira do campo', `
+      <rect width="120" height="40" fill="#3A3F36"/>
+      ${this._crowd(5, 5, 6.5, 2.3, 3)}
+      <rect y="36" width="120" height="7" fill="#B23A2E"/>
+      <path d="M6 39.5 h18 M34 39.5 h22 M66 39.5 h16 M92 39.5 h22" stroke="#F5EFE0" stroke-width="1.6" opacity=".85"/>
+      ${this._pitch(43, 37)}
+      <path d="M0 52 H120" stroke="#F5EFE0" stroke-width="1.3" opacity=".8"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M76 26 h42 v6 q-21 -4 -42 0 Z" fill="#DCD3BC"/>
+        <path d="M80 31 v20 M114 31 v20" />
+        <rect x="82" y="40" width="30" height="9" fill="#5B5D54"/>
+        <circle cx="90" cy="38" r="3.2" fill="#C98A5B"/><circle cx="102" cy="38" r="3.2" fill="#A56B45"/>
+        <path d="M30 78 l4 -22 h14 l4 22" fill="#2A2F3A"/>
+        <path d="M26 58 q0 -18 15 -21 q15 3 15 21 Z" fill="#2A2F3A"/>
+        <path d="M37 38 l4 8 4 -8" fill="#F5EFE0"/>
+        <path d="M41 41 v10" stroke="#B23A2E" stroke-width="2.2"/>
+        <circle cx="41" cy="27" r="8.5" fill="#C98A5B"/>
+        <path d="M32.6 25 q8 -10 16.8 0 q1 -7 -8.4 -8 q-9.4 1 -8.4 8 Z" fill="#2A1D10"/>
+        <path d="M54 44 L70 30" stroke="#2A2F3A" stroke-width="6"/>
+        <path d="M54 44 L70 30" />
+        <circle cx="71" cy="29" r="3" fill="#C98A5B"/>
+        <path d="M28 46 L20 56" stroke="#2A2F3A" stroke-width="6"/>
+        <rect x="8" y="50" width="16" height="20" rx="2" fill="#F5EFE0" transform="rotate(-8 16 60)"/>
+        <g stroke-width="1.3" fill="none"><circle cx="13" cy="56" r="1.6"/><circle cx="19" cy="64" r="1.6"/><path d="M13 58 L18 62"/></g>
+      </g>`);
   },
 
   globe(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um globo"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round">
-        <circle cx="60" cy="40" r="26" fill="#1E63C8"/>
-        <path d="M34 40 h52 M60 14 v52" stroke-width="1.6" opacity=".5" fill="none"/>
-        <path d="M60 14 q-14 26 0 52 M60 14 q14 26 0 52" fill="none" stroke-width="1.6" opacity=".5"/>
-        <path d="M44 28 q8 -4 12 2 q-3 7 -12 6 Z" fill="#2E7D4F"/>
-        <path d="M66 44 q10 -3 14 6 q-8 7 -16 1 Z" fill="#2E7D4F"/>
+    return this._frame(w, 'Ilustração de um globo', `
+      <rect width="120" height="80" fill="#243248"/>
+      <g fill="#F5EFE0"><circle cx="12" cy="12" r="1"/><circle cx="104" cy="10" r="1.3"/><circle cx="20" cy="66" r=".9"/>
+        <circle cx="108" cy="62" r="1"/><circle cx="92" cy="30" r=".8"/><circle cx="26" cy="36" r=".8"/></g>
+      <ellipse cx="60" cy="42" rx="50" ry="11" fill="none" stroke="#E8B23C" stroke-width="1.6" opacity=".55"
+        transform="rotate(-14 60 42)" stroke-dasharray="3 3"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
+        <circle cx="60" cy="40" r="29" fill="#2F6FC0"/>
+        <path d="M60 11 a29 29 0 0 1 0 58 a22 29 0 0 0 0 -58 Z" fill="#245AA0" stroke="none"/>
+        <path d="M46 20 q10 -4 16 3 q-2 6 -8 7 q-2 8 4 12 q-2 10 -10 14 q-4 -8 -2 -16 q-6 -6 0 -20 Z" fill="#3C9A60"/>
+        <path d="M66 18 q10 0 14 6 q-6 2 -8 6 q8 4 6 14 q-6 8 -10 12 q-4 -10 -2 -18 q-6 -4 -2 -12 Z" fill="#3C9A60"/>
+        <path d="M31 40 h58 M60 11 v58" stroke-width="1.2" opacity=".35" fill="none"/>
+        <path d="M60 11 q-16 29 0 58 M60 11 q16 29 0 58" fill="none" stroke-width="1.2" opacity=".35"/>
       </g>
-    </svg>`;
+      <path d="M40 22 q6 -7 14 -9" stroke="#F5EFE0" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".8"/>
+      <g stroke="#2A1D10" stroke-width="1.6"><circle cx="106" cy="31" r="6" fill="#F7F2E4"/>
+        <path d="M106 27.5 l3 2.2 -1.1 3.4 h-3.8 l-1.1 -3.4 Z" fill="#2A1D10"/></g>`);
   },
 
   /* Brazil, with one state lit up. A question about which club is from Bahia
@@ -8354,76 +8448,115 @@ const ART = {
     </svg>`;
   },
 
-  /* a career as a journey: pins on a dotted road, for the path questions whose
-     clubs have no crest to show */
+  /* a career as a journey: pins on a dotted road across a folded map, for the
+     path questions whose clubs have no crest to show */
   route(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de uma trajetória"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <path d="M14 62 q22 -18 44 -12 t48 -22" fill="none" stroke="#2A1D10"
-        stroke-width="2.4" stroke-linecap="round" stroke-dasharray="5 5" opacity=".65"/>
+    return this._frame(w, 'Ilustração de uma trajetória', `
+      <rect width="120" height="80" fill="#E4D6B4"/>
+      <path d="M0 0 h40 v80 H0 Z M80 0 h40 v80 H80 Z" fill="#EFE4CA"/>
+      <path d="M40 0 v80 M80 0 v80" stroke="#BFA97C" stroke-width="1"/>
+      <path d="M-4 30 q20 -12 36 -4 q14 8 30 -6 q16 -12 30 -2 q12 10 32 2 V-4 H-4 Z" fill="#9FB7C9" opacity=".75"/>
+      <path d="M6 70 q10 -14 26 -10 q10 3 14 12 Z M90 80 q4 -14 18 -14 q10 0 14 6 V80 Z" fill="#B9C79A" opacity=".8"/>
+      <path d="M14 64 q22 -18 44 -12 t48 -24" fill="none" stroke="#2A1D10"
+        stroke-width="2.4" stroke-linecap="round" stroke-dasharray="4 5" opacity=".7"/>
       <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
-        <path d="M14 62 a7 7 0 1 1 0 -14 a7 7 0 0 1 0 14 Z" fill="#F0C24A"/>
-        <path d="M58 50 a7 7 0 1 1 0 -14 a7 7 0 0 1 0 14 Z" fill="#2E7D4F"/>
-        <path d="M106 28 c0 6 -8 12 -8 12 s-8 -6 -8 -12 a8 8 0 0 1 16 0 Z" fill="var(--retro-band)"/>
-        <circle cx="98" cy="27" r="3" fill="#F5EFE0" stroke="none"/>
+        <circle cx="14" cy="64" r="6" fill="#F0C24A"/>
+        <circle cx="58" cy="52" r="6" fill="#2E7D4F"/>
+        <path d="M106 30 c0 7 -9 14 -9 14 s-9 -7 -9 -14 a9 9 0 0 1 18 0 Z" fill="#B23A2E"/>
+        <circle cx="97" cy="29" r="3.2" fill="#F5EFE0"/>
       </g>
-    </svg>`;
+      <g stroke="#2A1D10" stroke-width="1.4" fill="none" opacity=".6">
+        <path d="M100 66 l6 -6 M106 66 l-6 -6"/><circle cx="18" cy="16" r="7"/><path d="M18 9 v14 M11 16 h14"/>
+      </g>`);
   },
 
-  /* the terrace: a bandeirão over a crowd, for the questions about what the
-     stands call things */
+  /* the terrace: a bandeirão over a packed stand, flares going, for the
+     questions about what the stands call things */
   terrace(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração da torcida"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M22 62 v-38" />
-        <path d="M22 24 q14 -7 28 0 t28 0 v20 q-14 7 -28 0 t-28 0 Z" fill="var(--retro-band)"/>
-        <path d="M36 27 v20 M50 24 v20 M64 27 v20" stroke-width="1.4" opacity=".45"/>
-        <g fill="#C98A5B">
-          <circle cx="30" cy="62" r="5"/><circle cx="46" cy="65" r="5"/>
-          <circle cx="62" cy="62" r="5"/><circle cx="78" cy="65" r="5"/>
-          <circle cx="94" cy="62" r="5"/>
-        </g>
-        <path d="M24 80 q6 -10 12 0 M40 80 q6 -10 12 0 M56 80 q6 -10 12 0
-                 M72 80 q6 -10 12 0 M88 80 q6 -10 12 0" fill="#2E7D4F"/>
+    return this._frame(w, 'Ilustração da torcida', `
+      <rect width="120" height="80" fill="#3A3F36"/>
+      ${this._crowd(34, 7, 7, 2.8, 11)}
+      <g>
+        <path d="M14 44 l-3 -12 M30 42 l2 -13 M52 46 l-2 -12 M74 44 l3 -12 M96 46 l-2 -13 M108 42 l3 -11" stroke-width="3" stroke="#C98A5B"/>
       </g>
-    </svg>`;
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M-2 8 q16 -6 32 2 t32 0 t32 2 t30 -2 v22 q-15 5 -30 1 t-32 -2 t-32 2 t-32 -2 Z" fill="#B23A2E"/>
+        <path d="M-2 18 q16 -6 32 2 t32 0 t32 2 t30 -2" fill="none" stroke="#F5EFE0" stroke-width="5"/>
+        <path d="M10 30 v-26 M110 30 v-26" />
+      </g>
+      <g><circle cx="40" cy="19" r="5" fill="#F0C24A" stroke="#2A1D10" stroke-width="1.6"/>
+        <path d="M37 19 h6 M40 16 v6" stroke="#2A1D10" stroke-width="1.4"/></g>
+      <g fill="#F5EFE0" opacity=".55">
+        <circle cx="22" cy="54" r="6"/><circle cx="28" cy="50" r="5"/><circle cx="18" cy="48" r="4"/>
+        <circle cx="94" cy="56" r="6"/><circle cx="100" cy="51" r="5"/><circle cx="89" cy="50" r="4"/>
+      </g>
+      <g stroke="#2A1D10" stroke-width="1.4">
+        <path d="M23 70 v-12" stroke="#5B5D54" stroke-width="2.4"/><path d="M20 58 q3 -8 6 0 Z" fill="#F07A3A"/>
+        <path d="M95 72 v-12" stroke="#5B5D54" stroke-width="2.4"/><path d="M92 60 q3 -8 6 0 Z" fill="#F07A3A"/>
+      </g>`);
   },
 
-  /* a little printed vignette of a ground, for the stadium questions */
+  /* a ground at night under its floodlights, for the stadium questions */
   stadium(w) {
-    return `<svg viewBox="0 0 120 80" width="${w || 120}" role="img" aria-label="Ilustração de um estádio"
-      style="display:block;max-width:100%;height:auto;">
-      <rect width="120" height="80" rx="5" fill="var(--retro-card)"/>
-      <g stroke="#2A1D10" stroke-width="2.2" stroke-linejoin="round">
-        <path d="M8 46 q52 -30 104 0 l0 20 q-52 -22 -104 0 Z" fill="var(--retro-band)"/>
-        <path d="M14 44 q46 -24 92 0" fill="none" stroke-dasharray="3 4" opacity=".55"/>
-        <ellipse cx="60" cy="62" rx="44" ry="13" fill="#2E7D4F"/>
-        <ellipse cx="60" cy="62" rx="44" ry="13" fill="none" stroke="#F5EFE0" stroke-width="1.4"/>
-        <path d="M60 49 v26" stroke="#F5EFE0" stroke-width="1.2"/>
-        <ellipse cx="60" cy="62" rx="9" ry="4" fill="none" stroke="#F5EFE0" stroke-width="1.2"/>
-        <path d="M22 26 v12 M22 26 h10 v5 h-10" fill="#F0C24A"/>
-        <path d="M98 26 v12 M98 26 h-10 v5 h10" fill="#F0C24A"/>
+    return this._frame(w, 'Ilustração de um estádio', `
+      <rect width="120" height="80" fill="#243248"/>
+      <g fill="#F5EFE0"><circle cx="60" cy="8" r=".9"/><circle cx="46" cy="14" r=".7"/><circle cx="76" cy="12" r=".8"/></g>
+      <g fill="#F0C24A" opacity=".22"><path d="M12 12 L0 60 H40 Z"/><path d="M108 12 L80 60 H120 Z"/></g>
+      <g stroke="#2A1D10" stroke-width="1.8" stroke-linejoin="round">
+        <path d="M12 12 v34 M108 12 v34" stroke="#8C8E84" stroke-width="2.4"/>
+        <rect x="6" y="6" width="12" height="7" fill="#F5EFE0"/><rect x="102" y="6" width="12" height="7" fill="#F5EFE0"/>
+        <path d="M4 44 q56 -30 112 0 v24 q-56 -22 -112 0 Z" fill="#B23A2E"/>
       </g>
-    </svg>`;
+      <clipPath id="art-stad-c"><path d="M4 44 q56 -30 112 0 v24 q-56 -22 -112 0 Z"/></clipPath>
+      <g clip-path="url(#art-stad-c)" opacity=".85">${this._crowd(24, 6, 5.5, 1.7, 5)}</g>
+      <g stroke="#2A1D10" stroke-width="1.8">
+        <path d="M4 44 q56 -30 112 0" fill="none"/>
+        <ellipse cx="60" cy="64" rx="48" ry="13" fill="#2E7D4F"/>
+      </g>
+      <clipPath id="art-stad-p"><ellipse cx="60" cy="64" rx="47" ry="12"/></clipPath>
+      <g clip-path="url(#art-stad-p)">
+        <path d="M24 52 h10 v26 h-10 Z M44 52 h10 v26 h-10 Z M66 52 h10 v26 h-10 Z M86 52 h10 v26 h-10 Z" fill="#358A59"/>
+        <g fill="none" stroke="#F5EFE0" stroke-width="1.1">
+          <path d="M60 51 v26"/><ellipse cx="60" cy="64" rx="8" ry="3.4"/>
+          <path d="M16 58 h10 v12 h-10 M104 58 h-10 v12 h10"/>
+        </g>
+      </g>`);
+  },
+
+  /* the cup on its podium under the confetti, for a question card: the
+     prize-screen cup is portrait and a landscape card cut it in half */
+  trophyScene(w) {
+    const bits = [[10,10,'#F0C24A',20],[22,26,'#F5EFE0',-30],[98,12,'#B23A2E',40],[108,30,'#F0C24A',-10],
+                  [16,48,'#B23A2E',60],[104,50,'#F5EFE0',15],[30,8,'#2E7D4F',-45],[88,26,'#2E7D4F',30]];
+    return this._frame(w, 'Ilustração de uma taça', `
+      <rect width="120" height="80" fill="#243248"/>
+      <g fill="#F0C24A" opacity=".16"><path d="M60 0 L30 80 H90 Z"/></g>
+      ${bits.map(([x, y, c, a]) => `<rect x="${x}" y="${y}" width="5" height="2.6" fill="${c}" transform="rotate(${a} ${x} ${y})"/>`).join('')}
+      <g stroke="#2A1D10" stroke-width="1.8" stroke-linejoin="round">
+        <path d="M20 66 h80 v14 h-80 Z" fill="#B23A2E"/>
+        <path d="M34 58 h52 v8 h-52 Z" fill="#8E2A20"/>
+      </g>
+      <g transform="translate(35 7.5) scale(.62)">${this.trophy(80).replace(/^[\s\S]*?style="[^"]*">/, '').replace(/<\/svg>\s*$/, '')}</g>`);
   },
 
   /* the cup, for the prize screens */
   trophy(w) {
-    return `<svg viewBox="0 0 80 90" width="${w || 80}" role="img" aria-label="Ilustração de uma taça"
-      style="display:block;max-width:100%;height:auto;">
+    return this._frame(w || 80, 'Ilustração de uma taça', `
       <g stroke="#2A1D10" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M24 12 h32 v20 q0 16 -16 20 q-16 -4 -16 -20 Z" fill="#E8B23C"/>
-        <path d="M24 16 q-12 0 -12 10 q0 10 12 12" fill="none"/>
-        <path d="M56 16 q12 0 12 10 q0 10 -12 12" fill="none"/>
-        <path d="M36 52 h8 v12 h-8 Z" fill="#C79A4E"/>
-        <path d="M26 64 h28 v8 h-28 Z" fill="#E8B23C"/>
-        <path d="M20 72 h40 v8 h-40 Z" fill="#B23A2E"/>
-        <path d="M32 22 q8 6 16 0" fill="none" opacity=".6"/>
+        <path d="M24 16 q-13 0 -13 11 q0 11 14 13" fill="none" stroke-width="4.2"/>
+        <path d="M56 16 q13 0 13 11 q0 11 -14 13" fill="none" stroke-width="4.2"/>
+        <path d="M22 8 h36 v22 q0 18 -18 22 q-18 -4 -18 -22 Z" fill="#E8B23C"/>
+        <path d="M46 8 h12 v22 q0 18 -18 22 q12 -8 6 -44 Z" fill="#C79A4E" stroke="none"/>
+        <path d="M22 8 h36 v22 q0 18 -18 22 q-18 -4 -18 -22 Z" fill="none"/>
+        <path d="M22 14 h36" stroke-width="1.8"/>
+        <path d="M35 52 h10 l2 12 h-14 Z" fill="#C79A4E"/>
+        <path d="M24 64 h32 v8 h-32 Z" fill="#E8B23C"/>
+        <path d="M18 72 h44 v10 h-44 Z" fill="#2E7D4F"/>
+        <path d="M30 77 h20" stroke="#F0C24A" stroke-width="1.8"/>
       </g>
-    </svg>`;
+      <path d="M29 14 v14 q1 8 6 13" stroke="#FFF3CF" stroke-width="3" fill="none" stroke-linecap="round" opacity=".85"/>
+      <g fill="#F0C24A" stroke="#2A1D10" stroke-width="1"><path d="M8 6 l1.6 3.4 3.6 .4 -2.7 2.4 .8 3.6 -3.3 -1.9 -3.3 1.9 .8 -3.6 -2.7 -2.4 3.6 -.4 Z"/>
+        <path d="M70 48 l1.2 2.5 2.7 .3 -2 1.8 .6 2.7 -2.5 -1.4 -2.5 1.4 .6 -2.7 -2 -1.8 2.7 -.3 Z"/></g>`, '0 0 80 90');
   },
 
   /* a ball, drawn rather than typed */
@@ -8431,9 +8564,15 @@ const ART = {
     return `<svg viewBox="0 0 60 60" width="${w || 60}" aria-hidden="true"
       style="display:block;max-width:100%;height:auto;">
       <circle cx="30" cy="30" r="26" fill="#F7F2E4" stroke="#2A1D10" stroke-width="3"/>
-      <path d="M30 14 L43 24 L38 40 L22 40 L17 24 Z" fill="#2A1D10"/>
-      ${[0, 72, 144, 216, 288].map(a => `<path d="M30 14 L30 4" stroke="#2A1D10" stroke-width="2.6"
-        transform="rotate(${a} 30 30)"/>`).join('')}
+      <path d="M30 4 a26 26 0 0 1 0 52 a20 26 0 0 0 0 -52 Z" fill="#E4D6B4"/>
+      <path d="M30 17 L41 25 L37 38 L23 38 L19 25 Z" fill="#2A1D10"/>
+      <g stroke="#2A1D10" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <path d="M30 17 V5 M41 25 L53 21 M37 38 L44 49 M23 38 L16 49 M19 25 L7 21"/>
+      </g>
+      <g fill="#2A1D10"><path d="M24 4.6 q6 -1.6 12 0 L30 8 Z"/><path d="M55 24 q1.4 6 -1 12 L50 30 Z"/>
+        <path d="M5 24 q-1.4 6 1 12 L10 30 Z"/><path d="M38 55 q-8 2.6 -16 0 l4 -4 h8 Z"/></g>
+      <circle cx="30" cy="30" r="26" fill="none" stroke="#2A1D10" stroke-width="3"/>
+      <path d="M14 18 q5 -8 13 -10" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".9"/>
     </svg>`;
   },
 };
@@ -8608,6 +8747,217 @@ function clubFallback(img, id) {
 }
 
 /* ═══════════════════════════════════════════════════
+   A PICTURE FOR A WRITTEN ANSWER
+
+   The club and player boards are all crests and faces; a written board was
+   six grey words. Most of those words name something the album already has a
+   picture of — a club with a crest, a country with a flag, a man with a
+   photograph, a ground with a photo — so the tile carries it.
+
+   Two rules keep the picture from doing the player's work for him:
+   · a board is illustrated whole or not at all. At least four of its six
+     choices must be the same kind of thing, and the rest get a blank of that
+     kind, so the answer is never the one tile that looks different;
+   · a question that asks about the look of a thing — a flag, a crest, the
+     colours, the kit, the mascot — or already shows it in its own picture,
+     keeps words only, because there the picture *is* the answer.
+═══════════════════════════════════════════════════ */
+/* the country as the questions write it -> its flag in img/flags (flag-icons,
+   MIT; the three that no longer exist are drawn by hand) */
+const FLAG_OF = {
+  'Brasil':'br', 'Argentina':'ar', 'Uruguai':'uy', 'Chile':'cl', 'Paraguai':'py', 'Peru':'pe',
+  'Bolívia':'bo', 'Equador':'ec', 'Colômbia':'co', 'Venezuela':'ve', 'México':'mx',
+  'Estados Unidos':'us', 'EUA':'us', 'Canadá':'ca', 'Costa Rica':'cr', 'Honduras':'hn',
+  'Panamá':'pa', 'Jamaica':'jm', 'El Salvador':'sv', 'Guatemala':'gt', 'Haiti':'ht', 'Cuba':'cu',
+  'Trinidad e Tobago':'tt', 'Curaçao':'cw', 'Nicarágua':'ni', 'Inglaterra':'gb-eng',
+  'Escócia':'gb-sct', 'País de Gales':'gb-wls', 'Gales':'gb-wls', 'Irlanda do Norte':'gb-nir',
+  'Reino Unido':'gb', 'Grã-Bretanha':'gb', 'Irlanda':'ie', 'França':'fr', 'Espanha':'es',
+  'Portugal':'pt', 'Itália':'it', 'Alemanha':'de', 'Alemanha Ocidental':'de', 'Holanda':'nl',
+  'Países Baixos':'nl', 'Bélgica':'be', 'Suíça':'ch', 'Áustria':'at', 'Dinamarca':'dk',
+  'Suécia':'se', 'Noruega':'no', 'Finlândia':'fi', 'Islândia':'is', 'Polônia':'pl', 'Chéquia':'cz',
+  'República Tcheca':'cz', 'Tchecoslováquia':'cz', 'Eslováquia':'sk', 'Hungria':'hu', 'Romênia':'ro',
+  'Bulgária':'bg', 'Grécia':'gr', 'Turquia':'tr', 'Rússia':'ru', 'Ucrânia':'ua', 'Croácia':'hr',
+  'Sérvia':'rs', 'Eslovênia':'si', 'Bósnia':'ba', 'Bósnia e Herzegovina':'ba', 'Montenegro':'me',
+  'Albânia':'al', 'Macedônia do Norte':'mk', 'Geórgia':'ge', 'Armênia':'am', 'Israel':'il',
+  'Chipre':'cy', 'Luxemburgo':'lu', 'Malta':'mt', 'Estônia':'ee', 'Letônia':'lv', 'Lituânia':'lt',
+  'Bielorrússia':'by', 'Kosovo':'xk', 'Ilhas Faroe':'fo', 'Liechtenstein':'li', 'Marrocos':'ma',
+  'Tunísia':'tn', 'Argélia':'dz', 'Egito':'eg', 'Líbia':'ly', 'Senegal':'sn', 'Mali':'ml',
+  'Guiné':'gn', 'Costa do Marfim':'ci', 'Gana':'gh', 'Nigéria':'ng', 'Camarões':'cm',
+  'Burkina Faso':'bf', 'Togo':'tg', 'Libéria':'lr', 'África do Sul':'za', 'Zâmbia':'zm',
+  'Angola':'ao', 'Cabo Verde':'cv', 'RD Congo':'cd', 'Congo':'cg', 'Gabão':'ga', 'Quênia':'ke',
+  'Etiópia':'et', 'Sudão':'sd', 'Moçambique':'mz', 'Zimbábue':'zw', 'Guiné Equatorial':'gq',
+  'Tanzânia':'tz', 'Japão':'jp', 'Coreia do Sul':'kr', 'Coreia do Norte':'kp', 'China':'cn',
+  'Austrália':'au', 'Nova Zelândia':'nz', 'Irã':'ir', 'Iraque':'iq', 'Arábia Saudita':'sa',
+  'Catar':'qa', 'Emirados Árabes':'ae', 'Emirados Árabes Unidos':'ae', 'Jordânia':'jo',
+  'Kuwait':'kw', 'Bahrein':'bh', 'Omã':'om', 'Líbano':'lb', 'Síria':'sy', 'Uzbequistão':'uz',
+  'Tailândia':'th', 'Indonésia':'id', 'Vietnã':'vn', 'Índia':'in', 'Filipinas':'ph', 'Malásia':'my',
+  'Singapura':'sg', 'Taiti':'pf', 'Tahiti':'pf', 'Fiji':'fj', 'Ilhas Salomão':'sb',
+  'Nova Caledônia':'nc', 'Papua-Nova Guiné':'pg', 'Iugoslávia':'x-yu', 'União Soviética':'x-su',
+  'URSS':'x-su', 'Alemanha Oriental':'x-dd',
+};
+/* the album's three-letter codes onto the same files */
+const CTRY_ISO = { BRA:'br', ARG:'ar', POR:'pt', FRA:'fr', NED:'nl', GER:'de', BUL:'bg', ITA:'it',
+  ENG:'gb-eng', SCO:'gb-sct', WAL:'gb-wls', SWE:'se', DEN:'dk', NOR:'no', POL:'pl', CIV:'ci',
+  PER:'pe', PAR:'py', ROU:'ro', IRL:'ie', NIR:'gb-nir', ALG:'dz', JPN:'jp', KOR:'kr', LBR:'lr',
+  CRO:'hr', COL:'co', ESP:'es', URU:'uy', EGY:'eg', CMR:'cm', UKR:'ua', HUN:'hu', BEL:'be',
+  CZE:'cz', RUS:'ru', MEX:'mx', CHI:'cl', GHA:'gh', SEN:'sn', NGA:'ng' };
+const flagFile = iso => `img/flags/${iso}.webp`;
+
+/* the other ways a question writes a club that has a crest */
+const CLUB_ALIAS = {
+  'olympique de marselha':'marseille', 'marselha':'marseille', 'olympique de marseille':'marseille',
+  'bayern':'bayern', 'bayern munique':'bayern', 'inter':'inter', 'internazionale':'inter',
+  'atletico madrid':'atletico', 'atletico de madri':'atletico', 'atletico':'atletico',
+  'manchester utd':'manutd', 'man united':'manutd', 'tottenham hotspur':'tottenham',
+  'leverkusen':'leverkusen', 'dortmund':'dortmund', 'deportivo':'deportivo',
+  'sao paulo':'saopaulo', 'santos':'santos', 'atletico mineiro':'atleticomg',
+  'atletico-mg':'atleticomg', 'athletico paranaense':'atleticopr', 'athletico':'atleticopr',
+  'atletico paranaense':'atleticopr', 'athletico-pr':'atleticopr', 'vasco da gama':'vasco',
+  'sport':'sport', 'red bull bragantino':'bragantino', 'paris saint-germain':'psg',
+  'paris saint germain':'psg', 'sporting cp':'sporting', 'sporting de lisboa':'sporting',
+  'fc porto':'porto', 'werder':'werder', 'ac milan':'milan', 'psv eindhoven':'psv',
+  'olympique lyonnais':'lyon', 'napoles':'napoli', 'river':'riverplate', 'boca':'boca',
+  'new york cosmos':'cosmos', 'cosmos':'cosmos', 'america mineiro':'americamg',
+  'america-mg':'americamg', 'atletico goianiense':'atleticogo', 'atletico-go':'atleticogo',
+  'botafogo-sp':'botafogosp', 'sevilha':'sevilla', 'new york city':'nycfc',
+  'new york city fc':'nycfc', 'la galaxy':'lagalaxy', 'inter miami':'intermiami',
+  'santos fc':'santos', 'sao paulo fc':'saopaulo', 'sport recife':'sport',
+  'deportivo la coruna':'deportivo', 'bayern de munique':'bayern',
+};
+
+let _optIdx = null;
+function optIndex() {
+  if (_optIdx) return _optIdx;
+  const club = {}, flag = {}, face = {}, stad = {};
+  Object.keys(LOGOS).forEach(id => { club[_fold(clubName(id))] = id; });
+  Object.entries(CLUB_ALIAS).forEach(([k, id]) => { if (LOGOS[id]) club[k] = id; });
+  Object.entries(FLAG_OF).forEach(([k, iso]) => { flag[_fold(k)] = iso; });
+  Object.entries(CTRY_NAME).forEach(([c, n]) => { if (CTRY_ISO[c]) flag[_fold(n)] = CTRY_ISO[c]; });
+  /* a name two men in the album share is nobody's in particular */
+  const seen = {}, last = {};
+  PL.forEach(p => {
+    if (!p.img || !p.n) return;
+    const n = _fold(p.n); seen[n] = (seen[n] || 0) + 1; face[n] = p;
+    /* "Mbappé" for Kylian Mbappé, when he is the only Mbappé */
+    const w = n.split(/\s+/);
+    if (w.length > 1) { const s = w[w.length - 1]; last[s] = last[s] ? null : p; }
+  });
+  Object.keys(seen).forEach(n => { if (seen[n] > 1) delete face[n]; });
+  Object.keys(last).forEach(s => { if (last[s] && !(s in face) && s.length >= 4) face[s] = last[s]; });
+  Object.keys(STAD_IMGS).forEach(id => { if (STAD[id]) stad[_fold(STAD[id].name)] = STAD_IMGS[id]; });
+  /* the grounds abroad are the photographs PHOTO_ART sets a scene with —
+     from Camp Nou down to Hampden; the entries around them are cups and a
+     referee, which are not places */
+  const from = PHOTO_ART.findIndex(p => p.q.test('camp nou'));
+  const grounds = PHOTO_ART.slice(from).filter(p => !p.q.test('arbitro'));
+  return (_optIdx = { club, flag, face, stad, grounds });
+}
+
+/* What one written choice is a picture of, if anything. */
+function optResolve(text) {
+  const f = _fold(text).trim(), X = optIndex();
+  if (X.club[f]) return { k: 'club', id: X.club[f] };
+  if (X.flag[f]) return { k: 'ctry', iso: [X.flag[f]] };
+  /* "Coreia do Sul e Japão": a shared hosting is two flags */
+  const two = f.split(/\s+e\s+/);
+  if (two.length === 2 && X.flag[two[0]] && X.flag[two[1]])
+    return { k: 'ctry', iso: [X.flag[two[0]], X.flag[two[1]]] };
+  if (X.face[f]) return { k: 'face', img: X.face[f].img, era: X.face[f].era };
+  if (X.stad[f]) return { k: 'stad', img: X.stad[f] };
+  const g = X.grounds.find(p => p.q.test(f));
+  if (g) return { k: 'stad', img: g.img };
+  return null;
+}
+
+/* asked about the look of the thing: its picture would be the answer */
+const LOOKS = /bandeira|escudo|emblema|brasao|distintivo|simbolo|logo|mascote|uniforme|camisa|camiseta|cores?\b|listras|alvi|rubro|tricolor|bicolor|colorado|azul|vermelh|verde|branc|pret[oa]|amarel|grena|celeste|laranja|roxo|dourad|foto|imagem|rosto/;
+
+const _optMemo = new WeakMap();
+function optArtFor(q) {
+  if (!q || q.type !== 'txt' || !q.choices) return null;
+  if (_optMemo.has(q)) return _optMemo.get(q);
+  let out = null;
+  const res = q.choices.map(optResolve);
+  /* One name, two men: the album's Coutinho is Santos's, 1958, and a board of
+     Neymar and Messi means Philippe. A face from another generation than the
+     rest of the board is taken for a namesake and left blank. */
+  const eras = res.filter(r => r && r.k === 'face' && r.era).map(r => r.era[0]).sort((a, b) => a - b);
+  if (eras.length >= 3) {
+    const mid = eras[eras.length >> 1];
+    res.forEach((r, i) => { if (r && r.k === 'face' && r.era && Math.abs(r.era[0] - mid) > 15)
+      res[i] = { k: 'face', blank: true, n: q.choices[i] }; });
+  }
+  const count = {};
+  res.forEach(r => { if (r && !r.blank) count[r.k] = (count[r.k] || 0) + 1; });
+  const kind = Object.keys(count).sort((a, b) => count[b] - count[a])[0];
+  const n = q.choices.length, got = kind ? count[kind] : 0;
+  const t = _fold(q.t || '');
+  const looks = LOOKS.test(t);
+  /* The question's own picture, repeated on one tile, would point at it —
+     unless the question names that thing in words anyway (a flag of Uruguay
+     over "quem perdeu a final para o Uruguai?" is on no tile that matters). */
+  const onTile = (k, match) => kind === k && res.some((r, i) => r && r.k === k && !r.blank && match(r) &&
+    t.indexOf(_fold(q.choices[i])) === -1);
+  /* only what the question card actually draws: artReveals already keeps
+     the answer's own flag or crest off it */
+  const qFace = (q.face && !artReveals(q, { img: q.face }) && q.face) ||
+                (q.port && !artReveals(q, { player: q.port }) && PORT_IMGS[q.port]) ||
+                (q.who && !artReveals(q, { player: q.who }) && (PL.find(p => p.id === q.who) || {}).img);
+  const qCrest = q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest })) && q.crest;
+  const qFlag  = q.flag && !artReveals(q, { ctry: q.flag }) && CTRY_ISO[q.flag];
+  const shown = (kind === 'club' && (q._crestIsQ || q.msc)) ||
+                onTile('club', r => r.id === qCrest) ||
+                onTile('ctry', r => qFlag && r.iso.includes(qFlag)) ||
+                onTile('face', r => !!qFace && r.img === qFace) ||
+                (kind === 'stad' && (q.stad || q.qimg));
+  if (kind && got >= Math.min(n, Math.max(4, n - 2)) && !shown && !(looks && kind !== 'face')) {
+    out = {};
+    q.choices.forEach((c, i) => { out[c] = res[i] && res[i].k === kind && !res[i].blank ? res[i] : { k: kind, blank: true, n: c }; });
+    out._kind = kind;
+  }
+  _optMemo.set(q, out);
+  return out;
+}
+
+/* the initials of a club or man the album has no picture of, on the same
+   disc, so the blank is the same shape as its neighbours */
+function optMono(name) {
+  const w = String(name || '').replace(/[()'".]/g, ' ').split(/[\s-]+/)
+    .filter(x => x && !/^(de|da|do|dos|das|e|fc|cf|ac|sc|the|la|el|of)$/i.test(x));
+  return ((w[0] || '?')[0] + (w.length > 1 ? w[w.length - 1][0] : (w[0] || '')[1] || '')).toUpperCase();
+}
+
+/* The question card's flag: the printed one, with the drawn one kept as the
+   fallback for a file that fails to load. */
+function qFlagInner(code) {
+  const svg = `<svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[code] || ''}</svg>`;
+  if (!CTRY_ISO[code]) return svg;
+  return `<img src="${flagFile(CTRY_ISO[code])}" alt="" aria-hidden="true"
+    onerror="this.outerHTML=this.nextElementSibling.innerHTML" /><template>${svg}</template>`;
+}
+
+function optArtHtml(r) {
+  if (!r) return '';
+  if (r.k === 'club') return r.blank
+    ? `<span class="opt-art opt-crest"><span class="opt-mono">${optMono(r.n)}</span></span>`
+    : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
+        onerror="this.parentElement.innerHTML='<span class=\\'opt-mono\\'>${optMono(clubName(r.id))}</span>'" /></span>`;
+  if (r.k === 'ctry') return r.blank
+    ? `<span class="opt-art opt-flags"><span class="opt-flag opt-flag-blank"></span></span>`
+    : `<span class="opt-art opt-flags">${r.iso.map(iso => `<img class="opt-flag" src="${flagFile(iso)}" alt="" aria-hidden="true"
+        onerror="this.style.visibility='hidden'" />`).join('')}</span>`;
+  if (r.k === 'face') return r.blank
+    ? `<span class="opt-art opt-face"><span class="opt-mono">${optMono(r.n)}</span></span>`
+    : `<span class="opt-art opt-face"><img src="${r.img}" alt="" aria-hidden="true"
+        onerror="this.style.visibility='hidden'" /></span>`;
+  if (r.k === 'stad') return r.blank
+    ? `<span class="opt-art opt-stad"></span>`
+    : `<span class="opt-art opt-stad"><img src="${r.img}" alt="" aria-hidden="true"
+        onerror="this.style.visibility='hidden'" /></span>`;
+  return '';
+}
+
+/* ═══════════════════════════════════════════════════
    POCKET — one answer tile
 
    Ten of these make the board. Each is a pocket in the album page with
@@ -8671,8 +9021,9 @@ function badge(item, idx) {
   const longCls = item.n.length > 15 ? ' tile-name-long' : '';
 
   if (isTextQ(curQ)) {
-    return `<div class="${cls} b-text" data-id="${item.id}" style="${delay}">
-      ${tab}${voteEl}<span class="tile-name${longCls}">${item.n}</span></div>`;
+    const oa = optArtFor(curQ), art = oa ? optArtHtml(oa[item.id]) : '';
+    return `<div class="${cls} b-text${art ? ' b-art' : ''}" data-id="${item.id}" style="${delay}">
+      ${tab}${voteEl}${art}<span class="tile-name${longCls}">${item.n}</span></div>`;
   }
 
   if (isPlayer) {
@@ -8707,7 +9058,7 @@ const QICON = {
   rules: w => ART.rules(w), plane: w => ART.plane(w), boot: w => ART.boot(w),
   terrace: w => ART.terrace(w), route: w => ART.route(w), map: w => ART.mapBR(w),
   bench: w => ART.bench(w), globe: w => ART.globe(w), stadium: w => ART.stadium(w),
-  trophy: w => ART.trophy(w), ball: w => ART.ball(w),
+  trophy: w => ART.trophyScene(w), ball: w => ART.ball(w),
 };
 
 /* The real thing, where a question names it: the trophy it is played for,
@@ -8715,9 +9066,9 @@ const QICON = {
    question is about that ground, or the answer is the club that plays there
    (its colours are in the stands) — so a photograph only ever sets the scene. */
 const PHOTO_ART = [
-  { img:'img/9d58e5483683d4ec.webp', q:/copa do mundo|copa de (19|20)\d\d|copas de (19|20)\d\d|mundial de (19[3-9]|20[0-3])\d\b/, clue:/^$/, not:/feminin|clubes|sub-(17|20)/ },
+  { img:'img/9d58e5483683d4ec.webp', q:/copas? do mundo|copa de (19|20)\d\d|copas de (19|20)\d\d|mundial de (19[3-9]|20[0-3])\d\b/, clue:/^$/, not:/feminin|clubes|sub-(17|20)/ },
   { img:'img/03d8d3ecd7ebb46e.webp', q:/libertadores/, clue:/^$/, not:/feminin/ },
-  { img:'img/ee4f53bf49bbfde3.webp', q:/champions league|liga dos campeoes|copa dos campeoes/, clue:/^$/, not:/feminin/ },
+  { img:'img/ee4f53bf49bbfde3.webp', q:/champions league|liga dos campeoes|copas? dos campeoes/, clue:/^$/, not:/feminin/ },
   { img:'img/0af4923731c6c0f0.webp', q:/copa america/, clue:/^$/, not:/feminin/ },
   { img:'img/1bf59fab37c46525.webp', q:/eurocopa|\beuro (19|20)\d\d/, clue:/^$/, not:/feminin/ },
   { img:'img/aba3465fd14e7872.webp', q:/premier league/, clue:/manchester city/, not:/^$/ },
@@ -8805,7 +9156,7 @@ function questionArtRaw(q) {
     /* the wrapper carries the label, so the drawing inside it is decorative —
        otherwise a screen reader announces the flag twice */
     return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[q.flag] || q.flag}">
-      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[q.flag]}</svg></div>`;
+      ${qFlagInner(q.flag)}</div>`;
   /* a question about a Brazilian state gets the map, with that state lit */
   if (q.uf) return `<div class="qart qart-map qart-draw">${ART.mapBR(72, q.uf)}</div>`;
   /* A career asked as a list of clubs shows those clubs' crests, in order —
@@ -8958,7 +9309,7 @@ function inferArt(q) {
   if (m.kind === 'club')
     return `<div class="qart qart-crest">${clubArt(m.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[m.id] || m.id}">
-      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[m.id]}</svg></div>`;
+      ${qFlagInner(m.id)}</div>`;
 }
 
 /* The frame is the era, never the photograph: a cream mat with a sepia rule
@@ -9635,6 +9986,9 @@ function html() {
         marca atual. Uma parte deles não tem versão sob licença livre em lugar
         nenhum: são marcas registradas, exibidas aqui só para identificar o
         clube dentro do quiz, e estão listadas abaixo com essa licença.<br><br>
+        As bandeiras são do projeto <b style="color:var(--ink);">flag-icons</b>, de
+        Panayiotis Lipiridis (licença MIT); as da Iugoslávia, da União Soviética e da
+        Alemanha Oriental foram desenhadas aqui.<br><br>
         Os mascotes são desenhados aqui. Mascote de clube é arte do próprio
         clube e não existe sob licença livre; nenhum destes é a arte oficial de
         ninguém.

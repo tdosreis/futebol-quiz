@@ -72,8 +72,11 @@
    framed for its era.
 
    v25: over a thousand written questions, with rounds kept about a third
-   generated. */
-const VERSION = 'v35';
+   generated.
+
+   v36: a written answer carries its crest, flag, face or ground, the
+   question cards' drawings are repainted, and flags are printed ones. */
+const VERSION = 'v36';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

@@ -31,7 +31,8 @@ for x in tiny[:10]:    print("   TINY   ", x)
 for x in bad[:10]:     print("   BADHDR ", x)
 
 # ── orphans on disk ──
-on_disk = {f"img/{f}" for f in os.listdir(os.path.join(ROOT, "img"))}
+on_disk = {f"img/{f}" for f in os.listdir(os.path.join(ROOT, "img"))
+           if os.path.isfile(os.path.join(ROOT, "img", f))}   # img/flags is looked up by name
 orphans = sorted(on_disk - set(refs))
 print(f"  orphaned files on disk (not referenced): {len(orphans)}")
 
