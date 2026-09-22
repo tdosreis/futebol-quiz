@@ -32,6 +32,13 @@ futebol feminino. Cada partida é montada na hora, então nunca se repete.
 • Errou? Você cai para o último degrau garantido
 • PARAR a qualquer momento e levar o que já conquistou
 • A partir de R$ 75.000 o apresentador pergunta: "essa é a sua resposta final?"
+• Quatro CARTAS ESPECIAIS no meio da subida, para a escada não ser dezesseis
+  vezes a mesma coisa:
+  — Quem sou eu? — as pistas vêm uma de cada vez, e cada pista extra custa
+    cinco segundos do relógio
+  — Linha do tempo — quatro fatos para colocar em ordem, do mais antigo ao
+    mais novo (aqui as ajudas que cortam alternativas não valem: toda carta
+    na mesa está certa, o que se pergunta é a ordem)
 
 🆘 AS CINCO AJUDAS:
 • Cortar — queima metade das alternativas erradas
@@ -67,7 +74,7 @@ futebol feminino. Cada partida é montada na hora, então nunca se repete.
 🔥 PARA JOGAR DE VERDADE:
 • Sequências que multiplicam seus pontos (×2 e ×3)
 • Bônus por responder rápido
-• 20 medalhas para desbloquear, incluindo a de Milionário
+• 24 insígnias para desbloquear, incluindo a de Milionário
 • Recordes e estatísticas salvos no aparelho
 • Compartilhe sua escalada no WhatsApp
 

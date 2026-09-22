@@ -721,7 +721,11 @@
     .prize-pop { animation: prizeUp .4s ease-out; }
     .safe-box { display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--rule); border-radius: 10px; padding: 5px 9px; cursor: pointer; text-align: right; flex-shrink: 0; }
     .safe-box .k { font-size: 8px; letter-spacing: .16em; color: var(--ink-3); font-weight: 800; text-transform: uppercase; }
+    /* --good, not --good-ink, was 4.04:1 here on paper — under AA for 12px.
+       It only ever showed past the first checkpoint, which is why every
+       screenshot of rung one looked fine. */
     .safe-box .v { font-size: 12px; font-weight: 800; }
+    .safe-box .v.good { color: var(--good-ink); }
 
     /* the pundit */
     .expert-box { display: flex; align-items: center; gap: 9px; border: 1px dashed var(--brass);
@@ -867,13 +871,9 @@
       .hero-sticker .fig-hero .fig-nm { font-size: 13px; }
       .hero-sticker .fig-hero .fig-sub { font-size: 9px; }
     }
-    .mode-who { --md: #6A4BA8; --md-soft: rgba(106, 75, 168, .14); }
-    .mode-tl   { --md: #0F7B6C; --md-soft: rgba(15, 123, 108, .14); }
-    :root[data-theme="dark"] .mode-who, :root:not([data-theme="light"]) .mode-who { --md: #B49BE6; }
-    :root[data-theme="dark"] .mode-tl,  :root:not([data-theme="light"]) .mode-tl  { --md: #5FC2B0; }
     /* the clues, handed over one at a time */
     .qcard-clue { flex-direction: column; align-items: flex-start; gap: 7px; }
-    .qcard-clue > p { font-size: 15px; font-weight: 600; }
+    .qcard-clue > p { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
     .clues { list-style: none; display: flex; flex-direction: column; gap: 5px; width: 100%; }
     .clues li { position: relative; padding-left: 15px; font-size: 13.5px; line-height: 1.34; color: var(--ink-2);
       animation: qIn .3s cubic-bezier(.2,.9,.3,1) backwards; }
@@ -894,22 +894,41 @@
     .ord-t em { display: block; font-style: normal; font-size: 10.5px; font-weight: 600; color: var(--ink-3); margin-top: 1px; }
     .ord-y { flex: none; font-size: 13px; font-weight: 800; color: var(--ink-2); }
 
-    .mode-party { --md: #2F6FA8; --md-soft: rgba(47, 111, 168, .14); flex: none; }
-    :root[data-theme="dark"] .mode-party, :root:not([data-theme="light"]) .mode-party { --md: #7FA9E8; }
-    /* how many are playing, and what they are called */
-    .seg { display: flex; gap: 6px; }
-    .seg-b { background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px;
-      padding: 8px 15px; font: 800 14px/1 var(--font-c); color: var(--ink-2); cursor: pointer; }
-    .seg-b.is-on { background: var(--pitch); color: var(--on-pitch); border-color: var(--pitch); }
-    .nm-in { background: var(--pocket); border: 1px solid var(--rule); border-radius: 10px;
-      padding: 11px 13px; font: 600 14px/1.2 var(--font-s); color: var(--ink); width: 100%; }
-    .nm-in:focus { outline: none; border-color: var(--pitch); }
-    /* the table at the end of a pass-the-phone round */
-    .pod { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 320px; }
-    .pod-row { display: flex; align-items: center; gap: 9px; background: var(--pocket);
-      border: 1px solid var(--rule-2); border-radius: 10px; padding: 9px 12px; font-size: 13px; font-weight: 700; }
-    .pod-win { border-color: var(--brass); background: var(--brass-soft); }
-    .pod-p { color: var(--ink-3); font-size: 11px; }
+    /* ── Carta especial ──
+       Four rungs of the sixteen are dealt as a card instead of asked as a
+       question, and a card is turned over, not printed. It swings in from its
+       own edge, which is the one beat of theatre the climb gets. */
+    .spcard { width: 236px; padding: 22px 18px 19px; border-radius: 16px; position: relative; overflow: hidden;
+      background: var(--pocket); border: 1px solid var(--rule); box-shadow: 0 12px 28px var(--shadow);
+      display: flex; flex-direction: column; align-items: center; gap: 9px; text-align: center;
+      animation: spFlip .6s cubic-bezier(.2, .9, .25, 1) backwards; }
+    /* The gloss a card catches under a light. On paper it can be generous; on
+       the dark printing the same white turns the whole card grey, so it is cut
+       to a hint there. */
+    .spcard::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(160deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0) 44%); }
+    :root[data-theme="dark"] .spcard::after, :root:not([data-theme="light"]) .spcard::after {
+      background: linear-gradient(160deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 44%); }
+    /* The two cards keep the colours their old cover buttons had, light and
+       dark: the same purple and the same teal, so a player who knew them as
+       modes still recognises them as cards. They sit after .spcard on purpose
+       — a class selector cannot out-rank another one, only outlast it. */
+    .spcard-who { --sp: #6A4BA8; --sp-soft: rgba(106, 75, 168, .14); }
+    .spcard-tl  { --sp: #0F7B6C; --sp-soft: rgba(15, 123, 108, .14); }
+    :root[data-theme="dark"] .spcard-who, :root:not([data-theme="light"]) .spcard-who {
+      --sp: #B49BE6; --sp-soft: rgba(180, 155, 230, .15); }
+    :root[data-theme="dark"] .spcard-tl, :root:not([data-theme="light"]) .spcard-tl {
+      --sp: #5FC2B0; --sp-soft: rgba(95, 194, 176, .15); }
+    .spcard-k { font: 800 9px/1 var(--font-c); letter-spacing: .2em; text-transform: uppercase;
+      color: var(--sp, var(--brass)); }
+    .spcard-ic { width: 64px; height: 64px; border-radius: 50%; color: var(--sp, var(--brass));
+      background: var(--sp-soft, var(--brass-soft));
+      display: flex; align-items: center; justify-content: center; }
+    .spcard-n { font-size: 21px; color: var(--ink); }
+    .spcard-s { font-size: 11px; color: var(--ink-3); font-weight: 600; line-height: 1.35; }
+    @keyframes spFlip {
+      from { transform: perspective(760px) rotateY(-84deg) scale(.9); opacity: 0; }
+      to   { transform: perspective(760px) rotateY(0) scale(1); opacity: 1; } }
 
     .mode-album { --md: #B8860B; --md-soft: rgba(184, 134, 11, .14); flex: none; }
     :root[data-theme="dark"] .mode-album, :root:not([data-theme="light"]) .mode-album { --md: #D8A83C; }
@@ -930,6 +949,12 @@
     .medal-strip .medal-dot:nth-child(5){animation-delay:200ms} .medal-strip .medal-dot:nth-child(6){animation-delay:240ms}
     .medal-strip .medal-dot:nth-child(n+7){animation-delay:280ms}
     .medal-dot { width: 26px; height: 26px; border-radius: 50%; background: var(--pocket); box-shadow: inset 0 0 0 1px var(--rule); display: flex; align-items: center; justify-content: center; color: var(--brass); }
+    /* An empty pocket, printed the way the album prints the figurinhas you do
+       not have yet. The strip has to show up at zero too, or a new player
+       never learns there is anything here to collect. */
+    .medal-dot-off { background: none; box-shadow: inset 0 0 0 1px var(--rule-2); }
+    .medal-dot-off::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--rule); }
+    .medal-cap { font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
 
     /* ── Difficulty cards ── */
     .dc { display: flex; align-items: center; gap: 14px; background: var(--pocket); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; cursor: pointer;
@@ -1817,6 +1842,12 @@ const snd = {
   crowd()  { noise(.62, { freq: 700, to: 1500, q: .35, vol: .055 });
              noise(.62, { type: 'lowpass', freq: 300, q: .5, vol: .03 }); },
   freeze() { [1568, 1244.5, 1046.5].forEach((f, i) => tone(f, .2, { vol: .06, delay: i * .055 })); },
+  /* A carta especial landing face up: the card skids off the deck and settles,
+     and a single note says it is not the ordinary kind. */
+  card()   { noise(.09, { type: 'bandpass', freq: 1600, to: 3200, q: .6, vol: .04 });
+             crackle(.1, { grains: 6, vol: .014, delay: .05 });
+             tone(880, .26, { type: 'sine', vol: .055, delay: .09 });
+             tone(1318.5, .2, { type: 'sine', vol: .03, delay: .16 }); },
 };
 
 /* ═══════════════════════════════════════════════════
@@ -6814,7 +6845,7 @@ function doShare() {
 }
 
 function startDaily() {
-  isDaily = true; isSurv = false; isMil = false; modeTime = null;
+  isDaily = true; isSurv = false; isMil = false;
   diffKey = 'moderado';
   runSeed = dayIndex();
   seedFrom(runSeed);
@@ -6894,8 +6925,16 @@ function useHalf() {
    The crowd is well informed but not infallible, and it gets shakier
    as the money climbs: the right answer takes the biggest share only
    about as often as the rung is easy. */
+/* Three of the five ajudas answer the question "which of these is right?",
+   and on a Linha do tempo card every tile is right — the question is the
+   order, not the tiles. Pointing at one of four correct cards is not a
+   clue, it is noise dressed as one, so those three are simply not on the
+   table there. Congelar and Pular still are: time and escape work on any
+   shape of question. */
+const narrows = () => !(cat && cat.qs[qi] && cat.qs[qi].order);
+
 function usePoll() {
-  if (!lifes.poll || sc !== 'quiz') return;
+  if (!lifes.poll || sc !== 'quiz' || !narrows()) return;
   const q    = cat.qs[qi];
   const live = disp.filter(o => !hidden.has(o.id));
   if (!live.length) return;
@@ -6946,7 +6985,7 @@ const EXPERT_UNSURE = ['Acho que é', 'Se a memória não falha,', 'Chutaria em'
                        'Na dúvida eu iria de', 'Vou no palpite:'];
 
 function useExpert() {
-  if (!lifes.expert || sc !== 'quiz') return;
+  if (!lifes.expert || sc !== 'quiz' || !narrows()) return;
   const q    = cat.qs[qi];
   const live = disp.filter(o => !hidden.has(o.id));
   const acc  = isMil ? Math.max(0.4, 0.95 - rung * 0.038) : 0.8;
@@ -7886,7 +7925,7 @@ function medalCard(m, on) {
 let isSurv = false;
 
 function startSurvival() {
-  isSurv = true; isDaily = false; isMil = false; _seed = null; runSeed = null; modeTime = null;
+  isSurv = true; isDaily = false; isMil = false; _seed = null; runSeed = null;
   diffKey = 'moderado';
   cat = buildGame('moderado');
   cat.name = 'Mata-mata';
@@ -7956,7 +7995,16 @@ function safetyNet() {
 }
 
 /* seconds on the clock and distractor strictness for the current question */
-function qTime()   { return modeTime ? modeTime : isMil ? RUNG().time : DCFG().time; }
+/* Seconds on the clock. A carta especial is read, not skimmed — four clues,
+   or four events to put in order — so it gets a floor instead of the squeeze
+   its tier would normally apply. R$ 600.000 is a hard enough thing to ask
+   without twenty seconds to sort four decades in. */
+function qTime() {
+  if (!isMil) return DCFG().time;
+  const q = cat && cat.qs && cat.qs[qi];
+  if (q && q._special) return Math.max(RUNG().time, q.order ? 50 : 45);
+  return RUNG().time;
+}
 function qStrict() { return isMil ? Math.min(1, rung / (LADDER.length - 1) * 1.15) : DCFG().strict; }
 
 /* One question per rung, each matched to that rung's tier. Built in one pass
@@ -8002,12 +8050,17 @@ function buildMilhao() {
     return q;
   }).filter(Boolean);
 
+  /* Four of the sixteen rungs stop being a written question here and become
+     a card dealt from the album's own data. It is the same climb; it just
+     stops being sixteen of the same shape. */
+  dealSpecials(qs);
+
   return { id:'milhao', name:'Rumo ao Milhão', emoji:'💰',
            tag:'Uma pergunta por degrau', col:'#FFD700', diff:'Show', qs };
 }
 
 function startMilhao() {
-  isMil = true; isDaily = false; isSurv = false; _seed = null; runSeed = null; modeTime = null;
+  isMil = true; isDaily = false; isSurv = false; _seed = null; runSeed = null;
   diffKey = 'moderado';                  // only used for the score multiplier
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
@@ -9068,7 +9121,7 @@ function html() {
 
       <p class="small muted home-intro" style="max-width:300px;font-size:12.5px;">
         Dezesseis perguntas até <b class="brass" style="white-space:nowrap;">R$ 1.000.000</b>,
-        cada uma mais difícil.</p>
+        cada uma mais difícil — e quatro cartas especiais no caminho.</p>
 
       ${best > 0 ? `<span class="chip chip-brass">${ICON.money('currentColor', 11)} Seu recorde · ${money(best)}</span>` : ''}
 
@@ -9084,26 +9137,23 @@ function html() {
       </div>
 
       ${(() => {
+        /* The insígnias, small, on the cover — and printed even at zero. An
+           empty pocket is the invitation; hiding the strip until the first one
+           is won means the player who most needs to see it never does. The
+           full cards live one tap deeper, same as the álbum. */
         const e = earnedMedals();
-        if (!e.length) return '';
-        return `<div id="medal-strip" class="medal-strip" title="Medalhas">
-          ${e.slice(0, 11).map(m => `<span class="medal-dot" data-medal="${m.id}" title="${m.n}">${(ICON[m.ic] || ICON.medal)('currentColor', 13)}</span>`).join('')}
-          ${e.length > 11 ? `<span class="small muted" style="align-self:center;">+${e.length - 11}</span>` : ''}
+        const shown = e.slice(0, 9);
+        const blanks = Math.max(0, Math.min(3, MEDALS.length - e.length));
+        return `<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+          <div id="medal-strip" class="medal-strip" title="Insígnias">
+            ${shown.map(m => `<span class="medal-dot" data-medal="${m.id}" title="${m.n}">${
+              (ICON[m.ic] || ICON.medal)('currentColor', 13)}</span>`).join('')}
+            ${e.length > shown.length ? `<span class="small muted" style="align-self:center;">+${e.length - shown.length}</span>` : ''}
+            ${Array.from({ length: blanks }, () => '<span class="medal-dot medal-dot-off" aria-hidden="true"></span>').join('')}
+          </div>
+          <span class="medal-cap">${e.length} de ${MEDALS.length} insígnias</span>
         </div>`;
       })()}
-
-      <div class="modes">
-        ${mode('who-btn', ICON.target('currentColor', 16), 'Quem sou eu?',   'pistas',   'who')}
-        ${mode('tl-btn',  ICON.clock('currentColor', 16),  'Linha do tempo', 'em ordem', 'tl')}
-      </div>
-
-      <button id="party-btn" class="mode mode-party" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
-        <span class="mode-disc">${ICON.crowd('currentColor', 17)}</span>
-        <span style="flex:1;min-width:0;">
-          <span class="mt" style="display:block;">Com amigos</span>
-          <span class="ms" style="display:block;">passa o celular · 2 a 4 jogadores</span>
-        </span>
-      </button>
 
       <button id="balb" class="mode mode-album" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
         <span class="mode-disc">${ICON.book('currentColor', 17)}</span>
@@ -9122,7 +9172,7 @@ function html() {
       <div class="home-foot">
         <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
           muted ? ICON.mute('currentColor', 14) : ICON.sound('currentColor', 14)}</button>
-        <button id="bmed"  class="link">Medalhas</button>
+        <button id="bmed"  class="link">Insígnias</button>
         <button id="bcred" class="link">Créditos</button>
       </div>
 
@@ -9424,60 +9474,24 @@ function html() {
     </div>`;
   }
 
-  /* ── Passa o celular: two to four people, one phone, one round ── */
-  if (sc === 'party') {
+  /* ── A carta especial, before it is played ───────────────────
+     The rung is announced, not sprung: the clock does not start until the
+     player turns the card over, because reading "Quem sou eu?" for the first
+     time should not cost him the seconds he needs to answer it. */
+  if (sc === 'card' && cat && cat.qs[qi] && cat.qs[qi]._special) {
+    const k = SPECIAL[cat.qs[qi]._special];
     return `
-    <div class="pg" style="gap:12px;padding:18px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button id="bhome" class="btn btn-ghost btn-icon" aria-label="Voltar">${ICON.close('currentColor', 12)}</button>
-        <span class="eyebrow">Passa o celular</span>
+    <div class="pg pg-center" style="padding:26px 22px;gap:15px;">
+      <div class="eyebrow">Degrau ${rung + 1} de ${LADDER.length} ·
+        <span class="brass num" style="font-weight:800;">${money(RUNG().v)}</span></div>
+      <div class="spcard spcard-${cat.qs[qi]._special}">
+        <span class="spcard-k">Carta especial</span>
+        <span class="spcard-ic">${k.ic('currentColor', 32)}</span>
+        <span class="spcard-n display"><em>${k.n}</em></span>
+        <span class="spcard-s">${k.tag}</span>
       </div>
-      <p class="small muted" style="font-size:12.5px;">Todos respondem às mesmas perguntas, um de cada vez. No fim, o placar.</p>
-      <div class="seg">
-        ${[2, 3, 4].map(k => `<button class="seg-b${k === partyN ? ' is-on' : ''}" data-n="${k}">${k}</button>`).join('')}
-        <span class="small muted" style="align-self:center;padding-left:8px;">jogadores</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        ${Array.from({ length: partyN }, (_, i) => `<input class="nm-in" id="pn${i}" maxlength="14"
-          placeholder="Jogador ${i + 1}" value="${(partyNames[i] || '').replace(/"/g, '&quot;')}" />`).join('')}
-      </div>
-      <button id="bpstart" class="btn btn-primary btn-lg" style="margin-top:auto;">Começar</button>
-    </div>`;
-  }
-
-  /* ── Between turns: the phone changes hands ── */
-  if (sc === 'pass' && party) {
-    return `
-    <div class="pg pg-center" style="padding:26px 22px;gap:12px;">
-      <div class="eyebrow">Jogador ${party.i + 1} de ${party.names.length}</div>
-      <div class="display" style="font-size:28px;"><em>Passe o celular para<br>${party.names[party.i]}</em></div>
-      ${party.scores.length ? `<div class="pod">${party.scores.map(r =>
-        `<div class="pod-row"><span style="flex:1;min-width:0;">${r.n}</span><b class="num">${r.pts}</b></div>`).join('')}</div>` : ''}
-      <button id="bready" class="btn btn-primary btn-lg">Estou pronto</button>
-      <button id="bhome" class="btn btn-ghost btn-sm">Sair</button>
-    </div>`;
-  }
-
-  /* ── The table, once everybody has played ── */
-  if (sc === 'podium' && party) {
-    const rank = party.scores.slice().sort((a, b) => b.pts - a.pts);
-    const tied = rank.length > 1 && rank[0].pts === rank[1].pts;
-    return `
-    <div class="pg pg-center" style="padding:26px 22px;gap:10px;">
-      <div class="eyebrow">Passa o celular · fim</div>
-      <div style="margin:2px 0 -2px;">${ART.trophy(56)}</div>
-      <div class="display brass" style="font-size:27px;"><em>${tied ? 'Deu empate!' : rank[0].n + ' venceu!'}</em></div>
-      <div class="pod" style="width:100%;max-width:320px;">
-        ${rank.map((r, i) => `<div class="pod-row${i === 0 && !tied ? ' pod-win' : ''}">
-          <span class="pod-p num">${i + 1}º</span>
-          <span style="flex:1;min-width:0;">${r.n}</span>
-          <span class="small muted">${r.nCorrect}/${r.total}</span>
-          <b class="num">${r.pts}</b></div>`).join('')}
-      </div>
-      <div class="foot-row" style="margin-top:10px;">
-        <button id="bpagain" class="btn btn-primary">Outra rodada</button>
-        <button id="bhome"   class="btn btn-ghost btn-sm">Início</button>
-      </div>
+      <button id="bcardgo" class="btn btn-brass btn-lg">Virar a carta</button>
+      <button id="bexit" class="btn btn-ghost btn-sm">Sair</button>
     </div>`;
   }
 
@@ -9629,12 +9643,13 @@ function html() {
      already uses for what it does: the cut is the red of a wrong answer, the
      freeze is the cold of the clock running out, the skip is the pitch green
      of moving on. The tint only shows while the lifeline is still yours. */
+  const narrowing = !q.order;
   const ajudas = [
-    ['bhalf',   'Cortar',    ICON.cut,   lifes.half && cutCount() >= 1, 'cut'],
-    ['bpoll',   'Placar',    ICON.crowd, lifes.poll,                    'poll'],
-    ['bexpert', 'Convidado', ICON.mic,   lifes.expert,                  'mic'],
-    ['bfreeze', 'Congelar',  ICON.snow,  lifes.freeze,                  'snow'],
-    ['bskip',   'Pular',     ICON.skip,  lifes.skip,                    'skip'],
+    ['bhalf',   'Cortar',    ICON.cut,   narrowing && lifes.half && cutCount() >= 1, 'cut'],
+    ['bpoll',   'Placar',    ICON.crowd, narrowing && lifes.poll,                    'poll'],
+    ['bexpert', 'Convidado', ICON.mic,   narrowing && lifes.expert,                  'mic'],
+    ['bfreeze', 'Congelar',  ICON.snow,  lifes.freeze,                               'snow'],
+    ['bskip',   'Pular',     ICON.skip,  lifes.skip,                                 'skip'],
   ];
 
   const progress = isMil ? '' : `
@@ -9686,11 +9701,11 @@ function html() {
 
     ${q.clues ? `
     <div class="qcard qcard-clue">
-      <p>Quem sou eu?</p>
+      <p>${ICON.target('var(--ink-3)', 14)} Quem sou eu?</p>
       <ol class="clues">${q.clues.slice(0, q._shown || 1).map((c, i) =>
         `<li style="animation-delay:${i * 50}ms">${c}</li>`).join('')}</ol>
       ${armed && (q._shown || 1) < q.clues.length
-        ? `<button id="bclue" class="btn btn-ghost btn-sm clue-more">+ pista <span class="small muted">−2 pts</span></button>` : ''}
+        ? `<button id="bclue" class="btn btn-ghost btn-sm clue-more">+ pista <span class="small muted">−${CLUE_COST} seg.</span></button>` : ''}
     </div>` : `
     <div class="qcard${isMil ? ' qcard-brass' : ''}">
       ${art}
@@ -10014,29 +10029,23 @@ function go() {
 
   /* ── run controls ── */
   on('bshare',  () => { snd.tap(); doShare(); });
-  on('bhome',   () => { snd.swipe(); clearInterval(tmr); party = null; sc = 'home'; go(); });
-  on('who-btn',   () => { snd.select(); startMode(buildWho(8)); });
-  on('tl-btn',    () => { snd.select(); startMode(buildTimeline(8)); });
-  /* one more clue, and the question is worth a little less */
+  on('bhome',   () => { snd.swipe(); clearInterval(tmr); sc = 'home'; go(); });
+  /* One more clue, and the clock pays for it. It used to say "−2 pts" and
+     charge nothing at all; seconds are what a rung actually costs, and on the
+     ladder there are no points to take away. */
   on('bclue',     () => {
     const q = cat.qs[qi];
-    if (!q || !q.clues) return;
-    q._shown = Math.min(q.clues.length, (q._shown || 1) + 1);
+    if (!q || !q.clues || (q._shown || 1) >= q.clues.length) return;
+    q._shown = (q._shown || 1) + 1;
+    tLeft = Math.max(4, tLeft - CLUE_COST);
     snd.select(); go();
   });
-  on('party-btn', () => { snd.select(); sc = 'party'; go(); });
-  on('bpstart',   () => { snd.select(); startParty(); });
-  on('bready',    () => { snd.select(); partyPlay(); });
-  on('bpagain',   () => { snd.select(); party = { names: party.names, scores: [], i: 0,
-                                                  seed: (Math.random() * 2147483647) | 0 }; sc = 'pass'; go(); });
-  /* changing the number of players keeps the names already typed in */
-  document.querySelectorAll('.seg-b').forEach(b => b.addEventListener('click', () => {
-    partyNames = Array.from({ length: partyN }, (_, i) => {
-      const el = document.getElementById('pn' + i);
-      return (el && el.value) || partyNames[i] || '';
-    });
-    partyN = +b.dataset.n; snd.tap(); go();
-  }));
+  /* the card is turned over: now the clock starts */
+  on('bcardgo',   () => {
+    snd.rung();
+    sc = 'quiz'; tMax = qTime(); tLeft = tMax;
+    startTmr(); go();
+  });
   on('bexit',   () => { snd.swipe(); clearInterval(tmr); sc = isMil ? 'home' : 'difficulty'; go(); });
   on('bconf',   confirmAnswer);
   on('bfinal',  lockIn);
@@ -10121,11 +10130,10 @@ function go() {
    GAME LOGIC
 ═══════════════════════════════════════════════════ */
 function startGame() {
-  isDaily = false; isSurv = false; isMil = false; modeTime = null;
-  /* Every training round is seeded, even a solo one: that is what lets it be
-     handed to somebody else afterwards without replaying anything. */
-  runSeed = pendingSeed !== null ? pendingSeed : ((Math.random() * 2147483647) | 0);
-  pendingSeed = null;
+  isDaily = false; isSurv = false; isMil = false;
+  /* Seeded even though nothing hands a seed in: it is what keeps the tiles of
+     a question stable across a lifeline, and it costs nothing. */
+  runSeed = (Math.random() * 2147483647) | 0;
   seedFrom(runSeed);
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
@@ -10227,54 +10235,68 @@ function buildTimeline(n) {
            col:'#0F7B6C', diff:'Variado', qs };
 }
 
-/* Both run on the ordinary machinery: same board, same reveal, same album.
-   Only the clock is their own — reading four clues takes time. */
-let modeTime = null;
-function startMode(built) {
-  isDaily = false; isSurv = false; isMil = false;
-  runSeed = null; _seed = null; modeTime = 45;
-  cat = built;
-  qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
-  resetLifes();
-  sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
-  disp = getDisp(cat.qs[0]);
-  startTmr();
-  go();
+/* ── Where these two are actually played ──────────────────────
+   Neither is a mode of its own any more. They were two more buttons on a
+   cover that already had a queue of them, and a player who came for the
+   ladder never saw either one. They are dealt inside the ladder instead,
+   four rungs out of sixteen, which is the only place they were ever worth
+   playing: the climb gets the variety and they get the stakes.
+
+   None of them lands on a checkpoint — the rung you bank on should be the
+   plain kind — and the two hardest sit high, where a timeline is genuinely
+   worth R$ 600.000. */
+const SPECIAL_RUNGS = { 5: 'who', 9: 'tl', 12: 'who', 14: 'tl' };
+
+/* What each card says on its face. The colours are not here: they belong to
+   .spcard-who / .spcard-tl, which is the only way they can change with the
+   theme the way everything else on screen does. */
+const SPECIAL = {
+  who: { n: 'Quem sou eu?',   tag: 'Quatro pistas, uma de cada vez', ic: ICON.target },
+  tl:  { n: 'Linha do tempo', tag: 'Do mais antigo ao mais novo',    ic: ICON.clock },
+};
+
+/* Seconds a clue costs the clock — the whole price of the card. */
+const CLUE_COST = 5;
+
+/* Deals the cartas especiais into a ladder that is already built, replacing
+   the written question on those rungs. A face that is already the answer to
+   another question in the run is passed over: the same man twice in sixteen
+   would give the second one away. */
+function dealSpecials(qs) {
+  const spare = { who: buildWho(4).qs, tl: buildTimeline(4).qs };
+  const answered = new Set();
+  qs.forEach(q => (q.a || []).forEach(a => answered.add(a)));
+  Object.keys(SPECIAL_RUNGS).forEach(k => {
+    const i = +k;
+    if (i >= qs.length) return;
+    const kind = SPECIAL_RUNGS[k];
+    let card = null;
+    while (spare[kind].length) {
+      const c = spare[kind].pop();
+      if ((c.a || []).some(a => answered.has(a))) continue;
+      card = c; break;
+    }
+    if (!card) return;                       // no clean card left: leave the question
+    (card.a || []).forEach(a => answered.add(a));
+    qs[i] = Object.assign({}, card, { _special: kind });
+  });
+  return qs;
 }
 
 /* ═══════════════════════════════════════════════════
-   PASSA O CELULAR
+   O BARALHO DA RODADA
 
    A run is a seed: the same seed deals the same questions, in the same
-   order, with the same tiles — which is what lets four people take turns on
-   one phone and still be compared fairly at the end. The daily uses it too,
-   with the date as its seed.
+   order, with the same tiles. The diário uses it, with the date as its seed,
+   which is what makes it the same round for everybody who plays it that day.
 ═══════════════════════════════════════════════════ */
-let runSeed = null, pendingSeed = null;
-let party = null;          // { names, scores, i, seed } while passing the phone
-let partyN = 2, partyNames = [];
+let runSeed = null;
 
 /* Re-seeded per question: a lifeline draws random numbers, and without this
-   the two deals would drift apart the moment one player used one. */
+   two deals of the same seed would drift apart the moment one was used. */
 function dealDisp(i) {
   if (runSeed !== null) seedFrom(runSeed + i * 7919);
   return getDisp(cat.qs[i]);
-}
-
-function startParty() {
-  const names = [];
-  for (let i = 0; i < partyN; i++) {
-    const el = document.getElementById('pn' + i);
-    names.push(((el && el.value) || partyNames[i] || '').trim().slice(0, 14) || `Jogador ${i + 1}`);
-  }
-  partyNames = names;
-  party = { names, scores: [], i: 0, seed: (Math.random() * 2147483647) | 0 };
-  sc = 'pass'; go();
-}
-function partyPlay() {
-  pendingSeed = party.seed; diffKey = 'moderado';
-  startGame();
 }
 
 /* ── The "resposta final?" beat ────────────────────────────────
@@ -10506,8 +10528,12 @@ function advanceAfterReveal(p) {
     }
     qi++;
     sel.clear(); clearHelpers(); lastMsg = '';
-    sc = 'quiz'; tMax = qTime(); tLeft = tMax;
     disp = dealDisp(qi);
+    tMax = qTime(); tLeft = tMax;
+    /* A carta especial is announced before it is played, and the clock waits
+       for the player to turn it over. */
+    if (cat.qs[qi] && cat.qs[qi]._special) { sc = 'card'; snd.card(); return; }
+    sc = 'quiz';
     startTmr();
     return;
   }
@@ -10563,12 +10589,6 @@ function finishRun() {
   }
   LS.set('stats', stats);
   window._newMedals = newMedals();
-  /* passing the phone: bank this player's score and call the next one */
-  if (party && !isMil) {
-    party.scores.push({ n: party.names[party.i], pts, nCorrect, total: cat.qs.length });
-    party.i++;
-    sc = party.i < party.names.length ? 'pass' : 'podium';
-  }
 }
 
 function startTmr() {

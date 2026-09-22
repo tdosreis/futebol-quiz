@@ -50,8 +50,12 @@ TESTS = r"""
        isMil===true && rung===0 && sc==='quiz' && banked===0, `rung=${rung}`);
     ok('milhao deals one question per rung',
        cat.qs.length===LADDER.length, `${cat.qs.length} vs ${LADDER.length}`);
+    /* Keyed on the prompt AND the answer: four rungs are now cartas especiais,
+       and two Quem sou eu cards share a prompt while asking about different
+       faces. Those are not duplicates — the same prompt with the same answer
+       would be. */
     ok('milhao questions are all distinct',
-       new Set(cat.qs.map(q=>q.t)).size===cat.qs.length);
+       new Set(cat.qs.map(q=>q.t+'|'+(q.a||[]).join(','))).size===cat.qs.length);
     ok('the first rung has no safety net', safetyNet()===0, `${safetyNet()}`);
     ok('the clock comes from the rung, not the difficulty',
        tMax===LADDER[0].time, `tMax=${tMax}`);
@@ -110,6 +114,81 @@ TESTS = r"""
     ok('opening the ladder does not spend the clock', tLeft===tBefore);
     clearHelpers();
     ok('the ladder sheet closes between questions', ladderOpen===false);
+
+    // ---- cartas especiais: the other two shapes, dealt into the climb ----
+    startMilhao();
+    const spAt = cat.qs.map((q,i)=>q._special?i:-1).filter(i=>i>=0);
+    ok('the ladder deals four cartas especiais', spAt.length===4, `at ${spAt.join(',')}`);
+    ok('a carta especial never lands on a checkpoint',
+       spAt.every(i=>!LADDER[i].safe),
+       `safe: ${LADDER.map((s,i)=>s.safe?i:null).filter(i=>i!==null).join(',')}`);
+    ok('both kinds are dealt, twice each',
+       cat.qs.filter(q=>q._special==='who').length===2 &&
+       cat.qs.filter(q=>q._special==='tl').length===2,
+       cat.qs.filter(q=>q._special).map(q=>q._special).join(','));
+    ok('a Quem sou eu card opens on one clue and holds more',
+       cat.qs.filter(q=>q._special==='who')
+             .every(q=>q.clues && q.clues.length>=3 && q._shown===1));
+    ok('a Linha do tempo card deals four events and one right order',
+       cat.qs.filter(q=>q._special==='tl')
+             .every(q=>q.order && q.order.length===4 && q.a.length===4));
+    ok('a carta especial never repeats a face the climb already asks for', (()=>{
+        const plain = new Set();
+        cat.qs.forEach(q=>{ if(!q._special) (q.a||[]).forEach(a=>plain.add(a)); });
+        return cat.qs.filter(q=>q._special).every(q=>(q.a||[]).every(a=>!plain.has(a)));
+      })());
+
+    // the card is announced first, and the clock waits for it to be turned
+    startMilhao();
+    const firstSp = cat.qs.findIndex(q=>q._special);
+    for (let i=0;i<firstSp;i++){ answerCorrectly(); advanceAfterReveal(3); }
+    ok('a special rung stops on the card, not on the board',
+       sc==='card' && qi===firstSp, `sc=${sc} qi=${qi}`);
+    ok('the clock has not started while the card is face up',
+       tLeft===tMax, `${tLeft}/${tMax}`);
+    ok('a carta especial gets a longer clock than its rung would give',
+       tMax>=45 && tMax>=LADDER[firstSp].time, `tMax=${tMax} rung=${LADDER[firstSp].time}`);
+    go();
+    const turn = document.getElementById('bcardgo');
+    ok('the card can be turned over', !!turn);
+    if (turn) turn.click();
+    ok('turning the card arms the board', sc==='quiz', sc);
+
+    // a clue costs the clock, and exactly what it says it costs
+    startMilhao();
+    const whoAt = cat.qs.findIndex(q=>q._special==='who');
+    qi=whoAt; rung=whoAt; sc='quiz'; tMax=qTime(); tLeft=tMax;
+    disp=getDisp(cat.qs[whoAt]); go();
+    const t0c = tLeft, shown0 = cat.qs[whoAt]._shown;
+    const clueBtn = document.getElementById('bclue');
+    ok('a Quem sou eu card offers the next clue', !!clueBtn);
+    if (clueBtn) clueBtn.click();
+    ok('a clue costs seconds, not points',
+       cat.qs[whoAt]._shown===shown0+1 && tLeft===t0c-CLUE_COST, `${t0c} -> ${tLeft}`);
+
+    // the three ajudas that narrow the board are off where nothing narrows
+    startMilhao();
+    const tlAt = cat.qs.findIndex(q=>q._special==='tl');
+    qi=tlAt; rung=tlAt; sc='quiz'; disp=getDisp(cat.qs[tlAt]);
+    resetLifes(); usePoll(); useExpert();
+    ok('the crowd and the pundit stay silent on a Linha do tempo card',
+       lifes.poll===1 && lifes.expert===1, `poll=${lifes.poll} expert=${lifes.expert}`);
+    ok('cortar has nothing to cut when every tile is right', cutCount()===0, `${cutCount()}`);
+    useFreeze();
+    ok('congelar still works on a card', lifes.freeze===0, `${lifes.freeze}`);
+
+    // ---- the cover ----
+    sc='home'; go();
+    ok('the cover still has one way in', !!document.getElementById('mil-btn'));
+    ok('com amigos is gone from the cover', !document.getElementById('party-btn'));
+    ok('quem sou eu and linha do tempo are no longer modes of their own',
+       !document.getElementById('who-btn') && !document.getElementById('tl-btn'));
+    ok('the insígnias strip is printed on the cover',
+       !!document.getElementById('medal-strip'));
+    ok('the strip shows an empty pocket when there is room for one',
+       earnedMedals().length===MEDALS.length ||
+       document.querySelectorAll('.medal-dot-off').length>0,
+       `${earnedMedals().length}/${MEDALS.length}`);
 
     // money formatting
     ok('money reads in pt-BR grouping', money(1000000)==='R$ 1.000.000', money(1000000));
@@ -189,6 +268,8 @@ TESTS = r"""
     ok('the pundit says how sure he is', typeof expert.sure === 'boolean' && !!expert.line);
     ok('the pundit is single use', lifes.expert === 0);
     // he should be shakier near the million than at the bottom of the ladder
+    /* Both rungs have to be written questions: the pundit does not speak on a
+       Linha do tempo card, where every tile on the board is a right answer. */
     function pundit(atRung){
       let hit = 0;
       for (let i=0;i<60;i++){
@@ -198,8 +279,10 @@ TESTS = r"""
       }
       return hit;
     }
-    const low = pundit(0), high = pundit(14);
-    ok('the pundit gets shakier as the money climbs', low > high, `rung1=${low} rung15=${high}`);
+    ok('the pundit is tested on plain rungs',
+       !SPECIAL_RUNGS[0] && !SPECIAL_RUNGS[13], JSON.stringify(SPECIAL_RUNGS));
+    const low = pundit(0), high = pundit(13);
+    ok('the pundit gets shakier as the money climbs', low > high, `rung1=${low} rung14=${high}`);
 
     diffKey='moderado'; startGame();
     const q0 = qi;

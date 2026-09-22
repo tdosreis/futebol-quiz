@@ -108,6 +108,20 @@ def run(theme):
     for (var i=0;i<14;i++){ diffKey='medio'; startGame(); grab('quiz'); }
     for (var i=0;i<8;i++){ diffKey='dificil'; startGame(); grab('quiz-dificil'); }
     for (var i=0;i<8;i++){ startMilhao(); grab('milhao'); }
+    /* The cartas especiais, face up and then played. They carry the one pair of
+       colours nothing else on screen uses — the card's own --sp on the pocket —
+       and the loop above never reaches them: it only ever renders rung one. */
+    for (var i=0;i<5;i++){
+      startMilhao();
+      ['who','tl'].forEach(function(k){
+        var j = cat.qs.findIndex(function(q){ return q._special === k; });
+        if (j < 0) return;
+        qi = j; rung = j; disp = getDisp(cat.qs[j]); tMax = qTime(); tLeft = tMax;
+        sc = 'card'; go(); grab('carta/' + k);
+        if (cat.qs[j].clues) cat.qs[j]._shown = cat.qs[j].clues.length;
+        sc = 'quiz'; go(); grab('carta/' + k + '-board');
+      });
+    }
     sc='album'; albCtry='__escudos'; go(); grab('album/escudos');
     var d=document.createElement('pre'); d.id='OUT';
     d.textContent=JSON.stringify(all); document.body.appendChild(d);

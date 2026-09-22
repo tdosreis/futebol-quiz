@@ -188,6 +188,27 @@ STATES = {
    pts=41; streak=4; prevPts=30;
    sc='reveal'; lastMsg='';
    (function(){ const q=cat.qs[0]; sel=new Set(q.a); tLeft=16; doReveal(); })();""",
+
+ # ── the cartas especiais, face down and then played ────────────
+ "s-card-who": """startMilhao(); const i=cat.qs.findIndex(q=>q._special==='who');
+   qi=i; rung=i; disp=getDisp(cat.qs[i]); tMax=qTime(); tLeft=tMax; sc='card'; go();""",
+
+ "s-card-tl": """startMilhao(); const i=cat.qs.findIndex(q=>q._special==='tl');
+   qi=i; rung=i; disp=getDisp(cat.qs[i]); tMax=qTime(); tLeft=tMax; sc='card'; go();""",
+
+ # three clues showing, so the "+ pista" price is on screen with them
+ "s-who": """startMilhao(); const i=cat.qs.findIndex(q=>q._special==='who');
+   qi=i; rung=i; cat.qs[i]._shown=3; disp=getDisp(cat.qs[i]);
+   tMax=qTime(); tLeft=31; sc='quiz'; go();""",
+
+ # and the board where three of the five ajudas are off
+ "s-tl": """startMilhao(); const i=cat.qs.findIndex(q=>q._special==='tl');
+   qi=i; rung=i; disp=getDisp(cat.qs[i]); tMax=qTime(); tLeft=42; sc='quiz'; go();""",
+
+ # a brand new phone: the insígnias strip has to be there at zero
+ "s-home-zero": """album=new Set(); LS.set('album',[]);
+   stats={games:0,correct:0,answered:0,bestStreak:0}; LS.set('stats',stats);
+   LS.set('milBest',0); sc='home'; go();""",
 }
 
 def shot(name, js):
