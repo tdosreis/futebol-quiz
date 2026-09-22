@@ -676,7 +676,6 @@
     .insb-pr { margin-top: 7px; font-size: 10.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 
     /* ── Photo reveal ── */
-    .reveal-box { width: 138px; height: 138px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--rule), 0 6px 18px var(--shadow); }
 
     /* ── Header rail: the score, the clock, the dots ── */
     .pdot { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); transition: background .25s, transform .25s; flex-shrink: 0; }
@@ -1155,7 +1154,6 @@
       .qz-screen .qcard p { font-size: 15px; }
       .qz-screen .ajuda { padding: 4px 7px 3px; font-size: 8.5px; gap: 2px; }
       .qz-screen .aj-disc { width: 21px; height: 21px; }
-      .qz-screen .reveal-box { width: 96px; height: 96px; }
       .qz-screen .qart-wide { width: 88px; height: 58px; }
       .qz-screen .qart-face { width: 56px; height: 56px; }
       .qz-screen .stakes-v { font-size: 21px; }
@@ -1187,7 +1185,6 @@
        now that each icon has its own colour and disc the row still reads
        without them. Measured: it failed about a third of runs at 520. */
     @media (max-height: 600px) {
-      .qz-screen .reveal-box { width: 72px; height: 72px; }
       /* label only: `span` alone would now also hide the icon's disc */
       .qz-screen .ajuda .aj-lbl { display: none; }
       .qz-screen .ajuda { min-width: 34px; padding: 5px; }
@@ -6059,7 +6056,6 @@ function GEN_QS(tier) {
     hist:  { id:'g_hist',  name:'História',  emoji:'📚', col:'#C8A400' },
     squad: { id:'g_squad', name:'Elenco',    emoji:'👥', col:'#66BB6A' },
     era:   { id:'g_era',   name:'Época',     emoji:'⏳', col:'#FFA726' },
-    photo: { id:'g_photo', name:'Foto',      emoji:'📸', col:'#EC407A' },
     path:  { id:'g_path',  name:'Caminho',   emoji:'🔀', col:'#26C6DA' },
   };
   const out  = [];
@@ -6167,18 +6163,11 @@ function GEN_QS(tier) {
     });
   });
 
-  /* ── 9. PHOTO REVEAL: the picture sharpens as the clock runs down ── */
-  pick(PL.filter(p => p.img), 8).forEach(p => {
-    const others = PL.filter(x => x.id !== p.id);
-    out.push({
-      t: 'Quem é este jogador? (a foto vai ficando nítida)',
-      a: [p.id], type: 'player',
-      reveal: p.img,
-      textTiles: true,
-      pool: others.map(x => x.id), _cat: GC.photo,
-      d: 2,
-    });
-  });
+  /* 9 was PHOTO REVEAL — "Quem é este jogador?", the portrait sharpening as
+     the clock ran down. Dropped on the player's call: it was not interesting
+     enough to earn a rung. Its machinery went with it (q.reveal, .reveal-box,
+     the blur in startTmr, the g_photo category), so the numbering skips it
+     rather than renumbering twenty-six generators around a hole. */
 
   /* ── 10. CAREER PATH: guess the player from the clubs he played for ── */
   pick(PL.filter(p => (p.clubs || []).length >= 3), 8).forEach(p => {
@@ -6236,7 +6225,7 @@ function GEN_QS(tier) {
     const ok = byState[st].filter(c => !namesState(c, st));
     out.push({
       t: `Qual destes clubes é de ${ST_NAME[st]}?`,
-      a: [rndOf(ok).id], uf: st,
+      a: [rndOf(ok).id], uf: st, _noClub: true,
       pool: CL.filter(c => c.s !== st && !namesState(c, st)).map(c => c.id),
       _cat: GC.hist, d: 1,
     });
@@ -8910,12 +8899,30 @@ function artIndex() {
     if (w !== full && w.length >= 5 && last[w] === 1 && !COMMON.has(w)) pats.push(word(w));
     if (pats.length) players.push({ p, full, pats });
   });
-  const clubs = Object.keys(LOGOS).map(id => ({ id, n: _fold(clubName(id) || '') }))
-    .filter(c => c.n.length >= 4).map(c => ({ ...c, pat: word(c.n) }));
+  /* A club's name is a proper noun, and matching it on case-folded text loses
+     that — which is how "a seleção portuguesa" drew Portuguesa from São Paulo,
+     "a vitória por 6 a 3" drew Vitória da Bahia, and "a final portuguesa da
+     Liga Europa" drew Portuguesa again. Portuguese writes the club with a
+     capital and the adjective without, and that is the only thing that tells
+     them apart short of parsing the sentence. So an ambiguous name has to
+     appear capitalised, in the question as written, before its crest is
+     drawn. `capPat` keeps the accents: the text says "Vitória", not "vitoria". */
+  const rawWord = w => new RegExp('(^|[^A-Za-zÀ-ÿ0-9])' +
+    w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=[^A-Za-zÀ-ÿ0-9]|$)');
+  const clubs = Object.keys(LOGOS).map(id => {
+    const raw = clubName(id) || '';
+    return { id, n: _fold(raw), raw };
+  }).filter(c => c.n.length >= 4)
+    .map(c => ({ ...c, pat: word(c.n), capPat: rawWord(c.raw) }));
   return (_artIdx = { players, clubs });
 }
-function inferArt(q) {
-  if (!q || !q.t || typeof PL === 'undefined') return '';
+/* ── What a question is a picture of ──────────────────────────
+   Split out from the drawing so there is exactly one place that decides.
+   tools/audit_art.py calls this and reports what it finds; when the rules
+   lived only inside inferArt the audit kept its own copy of them, said the
+   Portuguesa bug was still there after it was fixed, and was itself wrong. */
+function artMatch(q) {
+  if (!q || !q.t || typeof PL === 'undefined') return null;
   const t = ' ' + _fold(q.t) + ' ';
   const ans = new Set(q.a || []);
   const ch = (q.choices || []).map(_fold);
@@ -8923,20 +8930,35 @@ function inferArt(q) {
   const { players, clubs } = artIndex();
   for (const x of players) {
     if (ans.has(x.p.id) || chosen(x.full) || artReveals(q, { player: x.p.id })) continue;
-    if (x.pats.some(r => r.test(t)))
-      return `<div class="qart qart-face print"><img src="${x.p.img}" alt="" aria-hidden="true"
-        onerror="this.parentElement.style.display='none'" /></div>`;
+    if (x.pats.some(r => r.test(t))) return { kind: 'player', id: x.p.id, hit: x.full };
   }
   for (const c of clubs) {
     if (ans.has(c.id) || chosen(c.n) || artReveals(q, { club: c.id })) continue;
-    if (c.pat.test(t))
-      return `<div class="qart qart-crest">${clubArt(c.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
+    /* `_noClub`: the question is about a place, not a team — see the state
+       generator, where "Qual destes clubes é de Bahia?" was illustrated with
+       Bahia's crest, which is both the wrong subject and half an answer.
+       `capPat`: the club has to be written as the proper noun it is. */
+    if (q._noClub || !c.capPat.test(q.t)) continue;
+    if (c.pat.test(t)) return { kind: 'club', id: c.id, hit: c.raw };
   }
   const cc = qCues(q).ctry;
   if (cc && FLAGS[cc] && !(q.type === 'txt' && chosen(_fold(CTRY_NAME[cc] || ''))) && !artReveals(q, { ctry: cc }))
-    return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[cc] || cc}">
-      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[cc]}</svg></div>`;
-  return '';
+    return { kind: 'ctry', id: cc, hit: cc };
+  return null;
+}
+
+function inferArt(q) {
+  const m = artMatch(q);
+  if (!m) return '';
+  if (m.kind === 'player') {
+    const p = PL.find(x => x.id === m.id);
+    return p ? `<div class="qart qart-face print"><img src="${p.img}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>` : '';
+  }
+  if (m.kind === 'club')
+    return `<div class="qart qart-crest">${clubArt(m.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
+  return `<div class="qart qart-flag" role="img" aria-label="${CTRY_NAME[m.id] || m.id}">
+      <svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true">${FLAGS[m.id]}</svg></div>`;
 }
 
 /* The frame is the era, never the photograph: a cream mat with a sepia rule
@@ -9850,15 +9872,6 @@ function html() {
     ${stakes}
 
     <div class="timer"><i id="tf" class="${tcls}${tLeft <= 5 ? ' timer-low' : ''}" style="width:${tpct}%;"></i></div>
-
-    ${q.reveal ? `
-    <div style="display:flex;justify-content:center;padding:2px 0 2px;">
-      <div class="reveal-box print">
-        <img id="revimg" src="${q.reveal}" alt="" aria-hidden="true"
-          style="filter:blur(${sc === 'reveal' ? 0 : (20 * (tLeft / tMax)).toFixed(1)}px);
-            transform:scale(1.08);transition:filter .9s linear;" />
-      </div>
-    </div>` : ''}
 
     ${q.clues ? `
     <div class="qcard qcard-clue">
@@ -10825,8 +10838,6 @@ function startTmr() {
     }
     const cn = document.getElementById('clock-n');
     if (cn) { cn.textContent = tLeft; if (tLeft <= 5) cn.parentElement.classList.add('timer-low'); }
-    const rv = document.getElementById('revimg');
-    if (rv && sc === 'quiz') rv.style.filter = 'blur(' + (20 * (tLeft / tMax)).toFixed(1) + 'px)';
     if (tLeft <= 0 && sc === 'quiz') doReveal();
   }, 1000);
 }

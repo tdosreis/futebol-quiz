@@ -68,7 +68,6 @@ futebol feminino. Cada partida é montada na hora, então nunca se repete.
 • Mata-mata — errou, acabou. Até onde você vai?
 • Treino — Fácil, Moderado e Difícil, sem apostar nada (as alternativas ficam
   mais parecidas conforme a dificuldade: mesma posição, mesma época, mesma seleção)
-• Foto revelada — a imagem vai ficando nítida; quem responde antes ganha mais
 • Caminho na carreira — descubra o jogador pelos clubes por onde passou
 
 🔥 PARA JOGAR DE VERDADE:
