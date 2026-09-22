@@ -189,6 +189,26 @@ STATES = {
    sc='reveal'; lastMsg='';
    (function(){ const q=cat.qs[0]; sel=new Set(q.a); tLeft=16; doReveal(); })();""",
 
+ # ── the held-up-to-the-light views, front and back ──
+ # Two taps in the real app: the first enlarges, the second turns it over.
+ "s-zoom-fig": """album=new Set(PL.slice(0,30).map(p=>p.id)); LS.set('album',[...album]);
+   albCtry='BRA'; albPage=0; sc='album'; go();
+   (function(){ var c=document.querySelector('.alb-turn'); if(c){ c.click(); c.click(); } })();""",
+
+ "s-zoom-fig-back": """album=new Set(PL.slice(0,30).map(p=>p.id)); LS.set('album',[...album]);
+   albCtry='BRA'; albPage=0; sc='album'; go();
+   (function(){ var c=document.querySelector('.alb-turn'); if(c){ c.click(); c.click(); }
+     var z=document.querySelector('.zoom'); if(z) z.classList.add('is-turned'); })();""",
+
+ "s-zoom-ins": """stats={games:37,correct:412,answered:560,bestStreak:9,perfect:3,hard80:2,survBest:11};
+   LS.set('stats',stats); insPage=0; sc='medals'; go();
+   (function(){ var c=document.querySelector('.ins'); if(c) c.click(); })();""",
+
+ "s-zoom-ins-back": """stats={games:37,correct:412,answered:560,bestStreak:9,perfect:3,hard80:2,survBest:11};
+   LS.set('stats',stats); insPage=0; sc='medals'; go();
+   (function(){ var c=document.querySelector('.ins'); if(c) c.click();
+     var z=document.querySelector('.zoom'); if(z) z.classList.add('is-turned'); })();""",
+
  # ── the cartas especiais, face down and then played ────────────
  "s-card-who": """startMilhao(); const i=cat.qs.findIndex(q=>q._special==='who');
    qi=i; rung=i; disp=getDisp(cat.qs[i]); tMax=qTime(); tLeft=tMax; sc='card'; go();""",

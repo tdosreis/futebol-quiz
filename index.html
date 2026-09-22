@@ -200,11 +200,19 @@
          and the Android app draws edge to edge), so a full 100dvh sheet on
          top of that padding made every screen taller than the phone by
          exactly the navigation bar. */
+      /* max-height as well as min: together they make the sheet exactly the
+         page, so the body can never grow past the glass and nothing in this
+         app scrolls. #qz is already overflow:hidden, which means anything
+         that does not fit is cut off rather than reachable — so this is only
+         safe alongside tools/probe_fit.py, which walks every screen at every
+         phone size and fails on the first pixel that would be clipped. */
       #qz { min-height: calc(100vh - env(safe-area-inset-bottom, 0px));
-            min-height: calc(100dvh - env(safe-area-inset-bottom, 0px)); }
+            min-height: calc(100dvh - env(safe-area-inset-bottom, 0px));
+            max-height: calc(100vh - env(safe-area-inset-bottom, 0px));
+            max-height: calc(100dvh - env(safe-area-inset-bottom, 0px)); }
     }
-    #ct { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
-    #ct > div { flex: 1; }
+    #ct { position: relative; z-index: 1; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+    #ct > div { flex: 1; min-height: 0; }
 
     /* Flex/grid children default to min-width:auto, so one wide child (a long
        author name, a club-career path) stretches the screen past the viewport
@@ -871,6 +879,15 @@
       .hero-sticker .fig-hero .fig-nm { font-size: 13px; }
       .hero-sticker .fig-hero .fig-sub { font-size: 9px; }
     }
+    /* The cover on a short phone. The hero figurinha is the only block here
+       with any give in it — everything else is a control someone has to hit —
+       so it is the one that gives. */
+    @media (max-height: 700px) {
+      .hero-sticker { width: 116px; }
+      .hero-sticker .fig-hero .fig-nm { font-size: 11.5px; }
+      .home-foot { gap: 10px; }
+      .medal-cap { font-size: 9px; }
+    }
     /* the clues, handed over one at a time */
     .qcard-clue { flex-direction: column; align-items: flex-start; gap: 7px; }
     .qcard-clue > p { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
@@ -1041,6 +1058,17 @@
     .ins-pips { display: flex; gap: 3px; }
     .ins-pips i { width: 5px; height: 5px; transform: rotate(45deg); background: var(--rule); }
     .ins-pips i.on { background: var(--ic); }
+    /* A sheet of eight insígnias on a 360×640 phone was thirty-seven pixels
+       past the page. The seal is the block with the give in it — everything
+       else on the card is a word someone has to read. */
+    @media (max-height: 700px) {
+      .ins { --notch: 82px; padding-bottom: 7px; }
+      .ins-emb { width: 48px; height: 48px; margin: 6px 0 3px; }
+      .ins-nm { margin-top: 5px; min-height: 2.1em; font-size: 11.5px; }
+      .ins-sub { font-size: 9px; }
+      .ins-rar { padding-top: 4px; }
+      .ins-perf { margin-top: 4px; }
+    }
 
     /* the card you tapped on the home strip, found for you */
     .ins.is-focus { border-color: var(--brass); animation: insFocus 1.2s ease-out 1; }
@@ -1200,6 +1228,18 @@
       color: var(--ink); margin-top: 3px; text-wrap: pretty; }
     .is-held .story { border-left-color: var(--pitch); }
     .is-held .story-k::after { content: '· pausado'; color: var(--ink-3); letter-spacing: .12em; }
+    /* ── The reveal, over the board rather than under it ──
+       It used to be the last block in the column, so on a short phone the
+       verdict, the figurinha and the "Você sabia?" were pushed off the bottom
+       — the one thing in a run you actually have to stop and read. Nothing
+       inside it changed; it simply stopped being part of the column. The
+       board stays where it is, dimmed, behind. */
+    .rvl-sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 12;
+      text-align: center; background: var(--stock); border-top: 1px solid var(--rule);
+      border-radius: 15px 15px 0 0; box-shadow: 0 -16px 34px -14px var(--shadow-2);
+      padding: 11px 13px calc(10px + env(safe-area-inset-bottom, 0px));
+      animation: rvlUp .26s cubic-bezier(.2, .9, .3, 1); }
+    @keyframes rvlUp { from { transform: translateY(16px); opacity: 0; } }
     .next-row { display: flex; justify-content: center; margin-top: 9px; }
     .btn-next { position: relative; overflow: hidden; gap: 5px; display: inline-flex; align-items: center; }
     .btn-next .next-fill { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--brass);
@@ -1306,6 +1346,28 @@
       display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .figback-h2 { font-size: 6.8px; font-weight: 700; color: var(--figback-acc);
       line-height: 1.3; margin-top: auto; padding-top: 3px; }
+
+    /* ── The back of a figurinha, held up to the light ──
+       The front's lettering is a fraction of the pocket (--pw) and rides the
+       zoom's scale with it, so it keeps its proportion at any size. The back's
+       was fixed px, chosen to sit inside a 75px pocket — where nobody can read
+       it anyway, since the back is only ever seen zoomed — and the zoom then
+       magnified it four and a half times: "Atacante · Brasil" came out larger
+       than the player's own name and every line wrapped. It is a fraction of
+       the card now too, picked to read at the size the card is actually seen
+       at. Only the zoomed copy: the pocket-sized back is unchanged. */
+    .zoom-slot .figback      { padding: calc(var(--pw) * .055); border-radius: calc(var(--pw) * .035); }
+    .zoom-slot .figback-n    { font-size: calc(var(--pw) * .030); }
+    .zoom-slot .figback-nm   { font-size: calc(var(--pw) * .055); margin-top: calc(var(--pw) * .022); }
+    .zoom-slot .figback-nick { font-size: calc(var(--pw) * .032); margin-top: calc(var(--pw) * .008); }
+    .zoom-slot .figback-rule { margin: calc(var(--pw) * .034) 0; }
+    .zoom-slot .figback-l    { font-size: calc(var(--pw) * .036); }
+    .zoom-slot .figback-clubs{ margin-top: calc(var(--pw) * .016); }
+    /* margin-top:auto pins the honours to the foot of the pocket, which is
+       right when the card is 118px tall and leaves half a card of dead paper
+       when it is five hundred. It follows the clubs here. */
+    .zoom-slot .figback-h2   { font-size: calc(var(--pw) * .036); padding-top: calc(var(--pw) * .022);
+                               margin-top: calc(var(--pw) * .03); }
 
     .alb-fresh > .fig { box-shadow: 0 0 0 2px var(--brass), 0 2px 8px var(--shadow); }
     .alb-fresh { animation: freshGlow 2.4s ease-in-out 3; }
@@ -5931,21 +5993,40 @@ function buildGame(key) {
      outranks a written one; tier still decides first. */
   const genTarget = Math.round(cfg.n * 0.3);
   let genN = 0;
+  /* The same standing preference the ladder draws, for the same reason: the
+     shape that wins a slot should not be the shape that wins it every round.
+     Seeded, so the diário is still the same round for everybody that day. */
+  const bias = {};
+  const biasOf = k => (bias[k] !== undefined ? bias[k] : (bias[k] = (rnd() - 0.5) * 9));
+  const PICK_MARGIN = 7;
+
   while (qs.length < cfg.n) {
-    let best = null, bestI = -1, bestW = -1e9;
+    /* shortlist kept and pruned as we go — see the note in buildMilhao */
+    let bestW = -1e9;
+    let near = [];
     for (let i = 0; i < scored.length; i++) {
       const o = scored[i];
       if (!o || seen.has(o.q.t) || seenA.has(ansKey(o.q))) continue;
       const cid   = (o.q._cat && o.q._cat.id) || '?';
       const shape = qShape(o.q);
       const w = o.w
+              + biasOf(shape)
               - (byCat[cid] || 0) * 6
               - (byShape[shape] || 0) * 14
               - (qs.length && ((qs[qs.length - 1]._cat || {}).id === cid) ? 9 : 0)
+              - (qs.length && qShape(qs[qs.length - 1]) === shape ? 14 : 0)
               + (!written(o.q) && genN < genTarget ? 16 : 0);
-      if (w > bestW) { bestW = w; best = o; bestI = i; }
+      if (w > bestW) {
+        bestW = w;
+        near = near.filter(c => c.w >= bestW - PICK_MARGIN);
+        near.push({ i, w });
+      } else if (w >= bestW - PICK_MARGIN) {
+        near.push({ i, w });
+      }
     }
-    if (!best) break;
+    if (!near.length) break;
+    const bestI = near[Math.floor(rnd() * near.length)].i;
+    const best = scored[bestI];
     scored[bestI] = null;
     seen.add(best.q.t);
     seenA.add(ansKey(best.q));
@@ -7136,9 +7217,11 @@ const _msc = (body, bg) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="t
 </svg>`;
 
 const MASC_ART = {
-  galo: () => _msc(`
-    <path d="M30 66 q-6 -10 -2 -20 q3 -9 12 -11 q10 -2 15 5 q4 6 1 12 l-4 14 Z" fill="#B23A2E"/>
-    <circle cx="47" cy="28" r="11" fill="#B23A2E"/>
+  /* Two clubs, two roosters. Atlético's Galo is black and white and CRB's is
+     red, so the bird simply takes the colour its own club wears. */
+  galo: (a) => _msc(`
+    <path d="M30 66 q-6 -10 -2 -20 q3 -9 12 -11 q10 -2 15 5 q4 6 1 12 l-4 14 Z" fill="${a || '#B23A2E'}"/>
+    <circle cx="47" cy="28" r="11" fill="${a || '#B23A2E'}"/>
     <path d="M40 18 q2 -6 6 -3 q1 -6 5 -3 q2 -5 5 0 q1 4 -2 6 Z" fill="#8E2018"/>
     <path d="M58 28 l9 3 l-9 4 Z" fill="#F0C24A"/>
     <path d="M50 38 q4 3 1 7 q-4 2 -5 -2 Z" fill="#8E2018"/>
@@ -7184,18 +7267,35 @@ const MASC_ART = {
 
   /* The mane has to be ragged: a regular star reads as a sun, which is what
      the first attempt at this drawing looked like. */
-  leao: () => _msc(`
+  /* ── The lion, six times over ─────────────────────────────────────
+     Six clubs have a lion and, until now, the same lion: six identical cards
+     in a row read as a printing error rather than as six mascots. They are
+     still the same animal, because they are — what changes is what each club
+     actually calls its own. The Leão do Sport wears the crown it wears on the
+     club's own iconography, the Leão Azul do Remo is blue, the Leão da Ilha
+     has its wave, the Leão do Pici its three colours, Vitória's carries the
+     sash, and Mirassol's the scarf. Nothing here is anyone's official art —
+     it is this album's drawing of a lion, six ways. */
+  leao: (a, b, v) => _msc(`
     <path d="M40 9 q7 1 9 6 q7 -2 10 4 q7 2 6 9 q5 4 2 10 q3 6 -3 10 q0 7 -7 8
              q-3 6 -10 5 q-4 4 -9 0 q-7 1 -10 -5 q-7 -1 -7 -8 q-6 -4 -3 -10
-             q-3 -6 2 -10 q-1 -7 6 -9 q3 -6 10 -4 q2 -5 9 -6 Z" fill="#A8681A"/>
-    <circle cx="40" cy="42" r="14" fill="#F0C24A"/>
-    <path d="M28 34 q-2 -6 3 -7 q4 -1 5 4" fill="#F0C24A"/>
-    <path d="M52 34 q2 -6 -3 -7 q-4 -1 -5 4" fill="#F0C24A"/>
+             q-3 -6 2 -10 q-1 -7 6 -9 q3 -6 10 -4 q2 -5 9 -6 Z" fill="${
+               v === 'azul' ? (a || '#0B1E4B') : '#A8681A'}"/>
+    ${v === 'pici' ? `<path d="M26 20 h28 v7 h-28 Z" fill="${b || '#A81C1C'}" stroke="none" opacity=".9"/>` : ''}
+    <circle cx="40" cy="42" r="14" fill="${v === 'azul' ? '#D9E2F2' : '#F0C24A'}"/>
+    <path d="M28 34 q-2 -6 3 -7 q4 -1 5 4" fill="${v === 'azul' ? '#D9E2F2' : '#F0C24A'}"/>
+    <path d="M52 34 q2 -6 -3 -7 q-4 -1 -5 4" fill="${v === 'azul' ? '#D9E2F2' : '#F0C24A'}"/>
     <ellipse cx="40" cy="49" rx="9" ry="6.5" fill="#F5E3C0"/>
     <circle cx="34" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
     <circle cx="46" cy="39" r="2.2" fill="#2A1D10" stroke="none"/>
     <path d="M40 45 l-3.5 3 h7 Z" fill="#2A1D10" stroke="none"/>
-    <path d="M40 48 v4 M40 52 q-4 3 -7 0 M40 52 q4 3 7 0" fill="none" stroke-width="1.9"/>`),
+    <path d="M40 48 v4 M40 52 q-4 3 -7 0 M40 52 q4 3 7 0" fill="none" stroke-width="1.9"/>
+    ${v === 'coroa'  ? `<path d="M29 14 l3 -9 l5 5 l3 -8 l3 8 l5 -5 l3 9 Z" fill="${a || '#C00000'}"/>` : ''}
+    ${v === 'barra'  ? `<path d="M18 62 q22 9 44 0 l0 8 q-22 8 -44 0 Z" fill="${a || '#B80000'}"/>
+                        <path d="M32 65 v8 M48 65 v8" stroke="${b || '#111'}" stroke-width="4"/>` : ''}
+    ${v === 'ilha'   ? `<path d="M12 68 q7 -6 14 0 q7 6 14 0 q7 -6 14 0 q7 6 14 0" fill="none"
+                          stroke="${a || '#1B4E9B'}" stroke-width="3.4"/>` : ''}
+    ${v === 'faixa'  ? `<path d="M18 62 q22 9 44 0 l0 8 q-22 8 -44 0 Z" fill="${b || '#0A7A3C'}"/>` : ''}`),
 
   coelho: () => _msc(`
     <path d="M26 64 q-4 -16 6 -22 q8 -5 16 0 q10 6 6 22 Z" fill="#E6E0D2"/>
@@ -7316,11 +7416,14 @@ const MASC_ART = {
     <circle cx="45" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
     <path d="M32 60 l8 6 8 -6" fill="#E6E0D2"/>`),
 
-  mosqueteiro: () => _msc(`
-    <path d="M26 66 q0 -14 14 -14 q14 0 14 14 Z" fill="#B23A2E"/>
+  /* The Mosqueteiro belongs to two clubs. Corinthians' wears black, Grêmio's
+     blue — the doublet and the hat take the club's own colours, and the plume
+     the second, so the two cards never read as the same drawing twice. */
+  mosqueteiro: (a, b) => _msc(`
+    <path d="M26 66 q0 -14 14 -14 q14 0 14 14 Z" fill="${a || '#B23A2E'}"/>
     <circle cx="40" cy="40" r="12" fill="#C9A47A"/>
-    <path d="M20 30 q20 -12 40 0 q-10 5 -20 5 q-10 0 -20 -5 Z" fill="#3A3A38"/>
-    <path d="M58 28 q10 -10 16 -6 q-4 8 -14 10" fill="#F5EFE0"/>
+    <path d="M20 30 q20 -12 40 0 q-10 5 -20 5 q-10 0 -20 -5 Z" fill="${a || '#3A3A38'}"/>
+    <path d="M58 28 q10 -10 16 -6 q-4 8 -14 10" fill="${b || '#F5EFE0'}"/>
     <path d="M34 48 q6 4 12 0" fill="none" stroke-width="1.9"/>
     <circle cx="35" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
     <circle cx="45" cy="38" r="1.9" fill="#2A1D10" stroke="none"/>
@@ -7503,11 +7606,11 @@ const MASCOTS = {
   palmeiras:   { n:'Porco',           art:'porco' },
   flamengo:    { n:'Urubu',           art:'urubu' },
   santos:      { n:'Peixe',           art:'peixe' },
-  sport:       { n:'Leão',            art:'leao' },
-  vitoria:     { n:'Leão',            art:'leao' },
-  fortaleza:   { n:'Leão do Pici',    art:'leao' },
-  avai:        { n:'Leão da Ilha',    art:'leao' },
-  remo:        { n:'Leão Azul',       art:'leao' },
+  sport:       { n:'Leão',            art:'leao', v:'coroa' },
+  vitoria:     { n:'Leão',            art:'leao', v:'barra' },
+  fortaleza:   { n:'Leão do Pici',    art:'leao', v:'pici'  },
+  avai:        { n:'Leão da Ilha',    art:'leao', v:'ilha'  },
+  remo:        { n:'Leão Azul',       art:'leao', v:'azul'  },
   americamg:   { n:'Coelho',          art:'coelho' },
   pontepreta:  { n:'Macaca',          art:'macaca' },
   criciuma:    { n:'Tigre',           art:'tigre' },
@@ -7537,7 +7640,7 @@ const MASCOTS = {
   paysandu:    { n:'Papão',           art:'papao' },
   portuguesa:  { n:'Lusa',            art:'caravela' },
   csa:         { n:'Azulão',          art:'azulao' },
-  mirassol:    { n:'Leão',            art:'leao' },
+  mirassol:    { n:'Leão',            art:'leao', v:'faixa' },
   botafogosp:  { n:'Pantera',         art:'pantera' },
   /* Guarani's mascot is the Bugre, and "bugre" is a slur for indigenous
      Brazilians. Every other mascot here is an animal, an object or a figure
@@ -7623,12 +7726,16 @@ function figExtra(sid, size, opts) {
     art  = `<span class="fig-flagbox">${flagSVG(st.id, 60)}</span>`;
   } else {
     band = 'MASCOTE';
-    /* One drawing serves every club that shares the animal, so five Leões sat
-       in a row looking like a printing error. The club's own colour washed
-       behind it tells them apart without five more drawings. */
+    /* One drawing used to serve every club that shares an animal, and a wash
+       of the club's colour behind it was supposed to tell them apart. It did
+       not: six Leões in a row still read as one drawing printed six times.
+       The colours go into the animal now, and each of the shared ones carries
+       what its own club calls it — see MASC_ART.leao. */
     const br = CL.find(c => c.id === st.id);
+    const m  = MASCOTS[st.id] || {};
     tint = br ? ` style="background:${hexA(br.c1, .16)}"` : '';
-    art  = `<span class="fig-msc">${(MASC_ART[(MASCOTS[st.id] || {}).art] || (() => ''))()}</span>`;
+    art  = `<span class="fig-msc">${(MASC_ART[m.art] || (() => ''))(
+      br && br.c1, br && br.c2, m.v)}</span>`;
   }
 
   return `<span class="fig fig-retro fig-extra fig-x-${st.kind} fig-${size}">
@@ -8022,23 +8129,56 @@ function buildMilhao() {
   const used = new Set();
   const usedA = new Set();
   const byCat = {}, byShape = {};
-  let prevCat = null;
+  let prevCat = null, prevShape = null;
   const genTarget = Math.round(LADDER.length * 0.3);
   let genN = 0;
+
+  /* ── Why the same climb twice ──────────────────────────────────
+     The weights below were deterministic apart from a ±3 jitter, and the tier
+     term is ±10 per step, so among the dozens of questions that fit a rung the
+     same one won every single time. Rung one was always "de que estado é este
+     clube?", rung two was always the goalkeeper question. Sixteen right
+     answers in the same order is still a recipe.
+
+     Two things change that, and neither touches the ramp. A standing
+     preference per shape family, drawn once per climb, so this climb likes
+     what the last one passed over. And the pick is made at random from
+     everything scoring within a hair of the best rather than from the best
+     alone — the margin is under the tier step, so a question from the wrong
+     tier can never win it. */
+  const bias = {};
+  const biasOf = k => (bias[k] !== undefined ? bias[k] : (bias[k] = (rnd() - 0.5) * 9));
+  const PICK_MARGIN = 7;
+
   const qs = LADDER.map(step => {
-    let best = null, bestW = -1e9;
+    /* The shortlist is kept as we go and pruned whenever the bar rises, rather
+       than scoring the whole pool into an array and filtering it afterwards:
+       that was a couple of thousand throwaway objects per rung, and a climb is
+       built sixteen times over. */
+    let bestW = -1e9;
+    let near = [];
     for (let i = 0; i < pool.length; i++) {
       if (used.has(i) || usedA.has(ansKey(pool[i]))) continue;
-      const cid = (pool[i]._cat && pool[i]._cat.id) || '?';
+      const cid   = (pool[i]._cat && pool[i]._cat.id) || '?';
+      const shape = qShape(pool[i]);
       const w = -Math.abs(pool[i]._d - step.tier) * 10 + rnd() * 3
               + (String(cid).startsWith('g_') ? 0 : 5)   // prefer a written question
+              + biasOf(shape)
               - (byCat[cid] || 0) * 5
-              - (byShape[qShape(pool[i])] || 0) * 12
+              - (byShape[shape] || 0) * 12
               - (cid === prevCat ? 8 : 0)
+              - (shape === prevShape ? 14 : 0)
               + (String(cid).startsWith('g_') && genN < genTarget ? 16 : 0);
-      if (w > bestW) { bestW = w; best = i; }
+      if (w > bestW) {
+        bestW = w;
+        near = near.filter(c => c.w >= bestW - PICK_MARGIN);
+        near.push({ i, w });
+      } else if (w >= bestW - PICK_MARGIN) {
+        near.push({ i, w });
+      }
     }
-    if (best === null) return null;
+    if (!near.length) return null;
+    const best = near[Math.floor(rnd() * near.length)].i;
     used.add(best);
     const q = pool[best];
     usedA.add(ansKey(q));
@@ -8046,7 +8186,7 @@ function buildMilhao() {
     byCat[cid] = (byCat[cid] || 0) + 1;
     byShape[qShape(q)] = (byShape[qShape(q)] || 0) + 1;
     if (String(cid).startsWith('g_')) genN++;
-    prevCat = cid;
+    prevCat = cid; prevShape = qShape(q);
     return q;
   }).filter(Boolean);
 
@@ -8663,7 +8803,10 @@ function questionArtRaw(q) {
      behind it would name the club, which is the whole question. */
   if (q.msc && MASCOTS[q.msc] && MASC_ART[MASCOTS[q.msc].art])
     return `<div class="qart qart-crest qart-hero qart-msc" role="img"
-      aria-label="Mascote de um clube brasileiro">${MASC_ART[MASCOTS[q.msc].art]()}</div>`;
+      aria-label="Mascote de um clube brasileiro">${(() => {
+        const br = CL.find(c => c.id === q.msc), m = MASCOTS[q.msc];
+        return MASC_ART[m.art](br && br.c1, br && br.c2, m.v);
+      })()}</div>`;
   if (q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest }))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
         clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   /* a match photograph can have the man who answers standing in it */
@@ -9403,21 +9546,39 @@ function html() {
      whether you hold it or not. A locked one still shows how far along you
      are: "58 / 108" is a reason to play one more round; "colecione 108
      figurinhas" is a wall. */
+  /* One set to a page, turned like the álbum's — which is what these are: a
+     sheet of figurinhas especiais. It used to be one long scroll, and on a
+     360×640 phone that was 1,391px of it hidden below the fold. The sets were
+     already the sections; they just had to become the pages. */
   if (sc === 'medals') {
-    const got = new Set(earnedMedals().map(m => m.id));
+    const got  = new Set(earnedMedals().map(m => m.id));
+    const sets = MEDAL_SETS.map(set => ({
+      set, ms: set.ids.map(id => MEDALS.find(m => m.id === id)).filter(Boolean) }));
+    insPage = Math.max(0, Math.min(insPage, sets.length - 1));
+    const cur = sets[insPage];
+    const n   = cur.ms.filter(m => got.has(m.id)).length;
     return `
-    <div class="pg" style="gap:10px;">
-      ${topbar(`Figurinhas especiais · ${got.size}/${MEDALS.length}`)}
-      <div class="scroll-y ins-sets" style="flex:1;">
-        ${MEDAL_SETS.map(set => {
-          const ms = set.ids.map(id => MEDALS.find(m => m.id === id)).filter(Boolean);
-          const n = ms.filter(m => got.has(m.id)).length;
-          return `<section>
-            <div class="ins-set-h"><span class="ins-set-t">${set.n}</span>
-              <span class="ins-set-n">${n} de ${ms.length}</span></div>
-            <div class="ins-grid">${ms.map(m => medalCard(m, got.has(m.id))).join('')}</div>
-          </section>`;
-        }).join('')}
+    <div class="pg" style="gap:9px;">
+      ${topbar(`Insígnias · ${got.size}/${MEDALS.length}`)}
+      <div class="ins-sets" style="flex:1;min-height:0;">
+        <section>
+          <div class="ins-set-h"><span class="ins-set-t">${cur.set.n}</span>
+            <span class="ins-set-n">${n} de ${cur.ms.length}</span></div>
+          <div class="ins-grid">${cur.ms.map(m => medalCard(m, got.has(m.id))).join('')}</div>
+        </section>
+      </div>
+      <div class="alb-foot">
+        <button id="ins-prev" class="alb-arrow" ${insPage === 0 ? 'disabled' : ''}
+          aria-label="Página anterior">${ICON.back('currentColor', 14)}</button>
+        <div class="alb-foot-mid">
+          <div class="alb-pips" aria-hidden="true">
+            ${sets.map((s, i) => `<span class="alb-pip${i === insPage ? ' is-on' : ''}${
+              s.ms.every(m => got.has(m.id)) ? ' is-full' : ''}"></span>`).join('')}
+          </div>
+          <span class="alb-folio">pág. ${insPage + 1} de ${sets.length} · ${cur.set.tag}</span>
+        </div>
+        <button id="ins-next" class="alb-arrow alb-fwd" ${insPage >= sets.length - 1 ? 'disabled' : ''}
+          aria-label="Próxima página">${ICON.back('currentColor', 14)}</button>
       </div>
     </div>`;
   }
@@ -9761,9 +9922,9 @@ function html() {
       <span class="settle-dots" aria-hidden="true"><i></i><i></i><i></i></span>
       <span class="small muted">${isMil ? money(RUNG().v) + ' na mesa…' : ''}</span>
     </div>`
-    : `<div style="text-align:center;padding:4px 0;" id="rvl"></div>`}
+    : `<div id="rvl" class="rvl-sheet"></div>`}
 
-    ${(sc === 'ask' || sc === 'lock') ? '<div class="stage-dark"></div>' : ''}
+    ${(sc === 'ask' || sc === 'lock' || sc === 'reveal') ? '<div class="stage-dark"></div>' : ''}
     ${ladderOpen ? ladderOverlay() : ''}
   </div>`;
 }
@@ -9833,6 +9994,7 @@ let albCtry = null;
 let albPage = 0;
 let albTurning = null;   // 'fwd' | 'back', consumed by the next render
 let medalFocus = null;   // the figurinha especial tapped on home, found on arrival
+let insPage = 0;         // which sheet of insígnias is open
 
 function go() {
   /* Only the board itself gets an entrance, and only when the question under
@@ -9866,6 +10028,8 @@ function go() {
   on('surv-btn',    () => { snd.select(); startSurvival(); });
   on('bcred',       () => { snd.swipe();  sc = 'credits'; go(); });
   on('bmed',        () => { snd.swipe();  sc = 'medals';  go(); });
+  on('ins-prev',    () => { snd.page(); insPage = Math.max(0, insPage - 1); go(); });
+  on('ins-next',    () => { snd.page(); insPage = Math.min(MEDAL_SETS.length - 1, insPage + 1); go(); });
   on('balb',        () => { snd.swipe();  sc = 'album';   go(); });
 
   /* ── Opening the album on what you just won ──
@@ -10000,6 +10164,11 @@ function go() {
   on('medal-strip', e => {
     const dot = e.target.closest && e.target.closest('.medal-dot');
     medalFocus = dot ? dot.dataset.medal : null;
+    /* open on the sheet that symbol lives on, not on sheet one */
+    if (medalFocus) {
+      const s = MEDAL_SETS.findIndex(x => x.ids.includes(medalFocus));
+      if (s >= 0) insPage = s;
+    }
     snd.swipe(); sc = 'medals'; go();
   });
   /* the same held-up-to-the-light view for a figurinha especial: its back
@@ -10124,7 +10293,58 @@ function go() {
       requestAnimationFrame(tick);
     }
   }
+
+  fitScreen();
 }
+
+/* ═══════════════════════════════════════════════════
+   NOTHING IN THIS APP SCROLLS
+
+   Every screen is built to fit, and most of them do on their own. One does
+   not: a board of ten pockets is sized by its width — four across, each one a
+   photograph with a name under it — so on a 360×640 phone, under a prize rail
+   and a question, it is genuinely taller than the glass. CSS cannot shrink it,
+   because its height comes from a width it must keep to stay four across.
+
+   So the board is measured after layout and scaled to whatever is left. A
+   transform, not a font change: every proportion inside the card — the
+   photograph, the name, the country band — is kept exactly, which is the
+   point. The negative margin is what hands the reclaimed height back to the
+   column; without it the box still occupies its old size and nothing is won.
+
+   It only ever shrinks, never below a floor where a face stops being a face,
+   and it resets before measuring so a re-render measures the real height
+   rather than the last scaled one.
+═══════════════════════════════════════════════════ */
+const FIT_FLOOR = 0.66;
+
+function fitScreen() {
+  const pg = document.querySelector('#ct > .pg');
+  if (!pg) return;
+  const board = pg.querySelector('.board');
+  if (board) { board.style.transform = ''; board.style.marginBottom = ''; }
+
+  /* How much does not fit. The sheet is capped to the viewport and clips, so
+     the body can no longer grow — measuring the page alone would always read
+     zero and the board would never be scaled, it would just be cut off. What
+     counts is the screen's content against the frame it is drawn into. */
+  const de = document.documentElement;
+  const qz = document.getElementById('qz');
+  let over = Math.max(de.scrollHeight, document.body.scrollHeight) - de.clientHeight;
+  if (qz) over = Math.max(over, pg.scrollHeight - qz.clientHeight,
+                                qz.scrollHeight - qz.clientHeight);
+  if (over <= 1 || !board) return;
+
+  const h = board.getBoundingClientRect().height;
+  if (h < 80) return;
+  const k = Math.max(FIT_FLOOR, (h - over) / h);
+  board.style.transformOrigin = 'top center';
+  board.style.transform = 'scale(' + k.toFixed(4) + ')';
+  board.style.marginBottom = (-Math.round(h * (1 - k))) + 'px';
+}
+
+/* A phone that turns, or a keyboard that opens, changes the room available. */
+window.addEventListener('resize', () => { try { fitScreen(); } catch (e) {} });
 
 /* ═══════════════════════════════════════════════════
    GAME LOGIC
