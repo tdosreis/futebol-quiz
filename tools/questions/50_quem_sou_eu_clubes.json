@@ -1,0 +1,1882 @@
+{
+ "id": "quemsoueuclube",
+ "name": "Quem sou eu? Clubes do mundo",
+ "emoji": "🏟️",
+ "tag": "Clubes",
+ "col": "#6b3a8c",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Sou holandês, ganhei três Copas dos Campeões seguidas (1971 a 1973) e minha casa leva o nome de Johan Cruyff. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Roma",
+    "Ajax",
+    "Juventus",
+    "Bayer Leverkusen",
+    "Athletic Bilbao",
+    "Leicester City"
+   ],
+   "a": [
+    "Ajax"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "AFC Ajax",
+    [
+     "Ajax"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o clube de Eusébio, bicampeão europeu em 1961 e 1962, e jogo no Estádio da Luz. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Hellas Verona",
+    "Deportivo La Coruña",
+    "Benfica",
+    "Manchester United",
+    "Steaua Bucareste",
+    "Arsenal"
+   ],
+   "a": [
+    "Benfica"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Sport Lisboa e Benfica",
+    [
+     "Benfica"
+    ]
+   ]
+  },
+  {
+   "t": "Sou português, jogo no Estádio do Dragão e fui campeão europeu em 1987 e 2004. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Sampdoria",
+    "Borussia Dortmund",
+    "Dynamo de Kiev",
+    "Porto",
+    "Shakhtar Donetsk",
+    "Bayern de Munique"
+   ],
+   "a": [
+    "Porto"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol Clube do Porto",
+    [
+     "Porto"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o clube de Lisboa que revelou Cristiano Ronaldo e Luís Figo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Atlético de Madrid",
+    "Lazio",
+    "Estrela Vermelha",
+    "Steaua Bucareste",
+    "Nottingham Forest",
+    "Sporting"
+   ],
+   "a": [
+    "Sporting"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Sporting Clube de Portugal",
+    [
+     "Sporting"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro clube britânico campeão europeu, em 1967, com um time de jogadores nascidos perto de Glasgow. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "PSV Eindhoven",
+    "Borussia Dortmund",
+    "Rangers",
+    "Lazio",
+    "Celtic",
+    "Sampdoria"
+   ],
+   "a": [
+    "Celtic"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Celtic F.C.",
+    [
+     "Celtic"
+    ]
+   ]
+  },
+  {
+   "t": "Sou romeno, de Bucareste, e perdi a final da Copa dos Campeões de 1989 por 4 a 0 para o Milan. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Hellas Verona",
+    "Steaua Bucareste",
+    "Rangers",
+    "Sevilla",
+    "Monaco",
+    "Juventus"
+   ],
+   "a": [
+    "Steaua Bucareste"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "FC Steaua București",
+    [
+     "Steaua"
+    ]
+   ]
+  },
+  {
+   "t": "Sou sérvio e fui campeão europeu e mundial em 1991. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Monaco",
+    "Atlético de Madrid",
+    "Celtic",
+    "Estrela Vermelha",
+    "Manchester United",
+    "Hellas Verona"
+   ],
+   "a": [
+    "Estrela Vermelha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Crvena Zvezda",
+    [
+     "Estrela"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro clube francês campeão da Champions, em 1993, vencendo o Milan em Munique. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Real Madrid",
+    "Milan",
+    "Sevilla",
+    "Manchester United",
+    "Olympique de Marseille",
+    "Ajax"
+   ],
+   "a": [
+    "Olympique de Marseille"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Olympique de Marseille",
+    [
+     "Olympique"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei minha primeira Champions em 2025, com 5 a 0 na final contra a Inter. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Borussia Dortmund",
+    "Paris Saint-Germain",
+    "Hellas Verona",
+    "Barcelona",
+    "Leicester City",
+    "Sevilla"
+   ],
+   "a": [
+    "Paris Saint-Germain"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Paris Saint-Germain",
+    [
+     "Paris"
+    ]
+   ]
+  },
+  {
+   "t": "Sou inglês e tenho mais títulos europeus (dois) do que títulos da liga inglesa (um). Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Nottingham Forest",
+    "Leicester City",
+    "Steaua Bucareste",
+    "Villarreal",
+    "Manchester United",
+    "PSV Eindhoven"
+   ],
+   "a": [
+    "Nottingham Forest"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Nottingham Forest F.C.",
+    [
+     "Nottingham"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Birmingham, jogo no Villa Park e tive o argentino 'Dibu' Martínez no gol. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Olympique de Marseille",
+    "CSKA Moscou",
+    "Aston Villa",
+    "Valencia",
+    "Manchester United",
+    "Leicester City"
+   ],
+   "a": [
+    "Aston Villa"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Aston Villa F.C.",
+    [
+     "Aston"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemão, fui campeão europeu em 1983 e perdi o Mundial daquele ano para o Grêmio. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "CSKA Moscou",
+    "Feyenoord",
+    "Estrela Vermelha",
+    "Shakhtar Donetsk",
+    "Hamburgo",
+    "Lyon"
+   ],
+   "a": [
+    "Hamburgo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Hamburger SV",
+    [
+     "Hamburgo"
+    ]
+   ]
+  },
+  {
+   "t": "Sou holandês, fui campeão europeu em 1988 e tive Romário e Ronaldo no elenco. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Atlético de Madrid",
+    "Atalanta",
+    "Lyon",
+    "Bayern de Munique",
+    "Manchester United",
+    "PSV Eindhoven"
+   ],
+   "a": [
+    "PSV Eindhoven"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "PSV Eindhoven",
+    [
+     "PSV"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro clube holandês campeão europeu, em 1970, e jogo no estádio De Kuip, em Roterdã. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Real Madrid",
+    "Athletic Bilbao",
+    "Juventus",
+    "Feyenoord",
+    "Estrela Vermelha",
+    "Shakhtar Donetsk"
+   ],
+   "a": [
+    "Feyenoord"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Feyenoord",
+    [
+     "Feyenoord"
+    ]
+   ]
+  },
+  {
+   "t": "Tenho a 'Muralha Amarela' e fui campeão europeu em 1997, contra a Juventus. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayern de Munique",
+    "Sevilla",
+    "Shakhtar Donetsk",
+    "Atlético de Madrid",
+    "Olympiacos",
+    "Borussia Dortmund"
+   ],
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Borussia Dortmund",
+    [
+     "Borussia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemão, fui fundado por uma empresa farmacêutica e perdi a final da Champions de 2002 para o Real Madrid. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Olympique de Marseille",
+    "Zenit",
+    "Athletic Bilbao",
+    "Olympiacos",
+    "Atlético de Madrid",
+    "Bayer Leverkusen"
+   ],
+   "a": [
+    "Bayer Leverkusen"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Bayer 04 Leverkusen",
+    [
+     "Bayer"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemão e meu estádio leva o nome de Fritz Walter, capitão campeão do mundo em 1954. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Roma",
+    "Rangers",
+    "Napoli",
+    "Olympiacos",
+    "Kaiserslautern",
+    "Tottenham"
+   ],
+   "a": [
+    "Kaiserslautern"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "1. FC Kaiserslautern",
+    [
+     "Kaiserslautern"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão inglês em 2016 com apostas pagando 5.000 para 1. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayern de Munique",
+    "Ajax",
+    "Paris Saint-Germain",
+    "CSKA Moscou",
+    "Lazio",
+    "Leicester City"
+   ],
+   "a": [
+    "Leicester City"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Leicester City F.C.",
+    [
+     "Leicester"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão inglês em 1995 com os gols de Alan Shearer. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Shakhtar Donetsk",
+    "Milan",
+    "Real Madrid",
+    "Atalanta",
+    "Deportivo La Coruña",
+    "Blackburn Rovers"
+   ],
+   "a": [
+    "Blackburn Rovers"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Blackburn Rovers F.C.",
+    [
+     "Blackburn"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão italiano com Maradona em 1987 e 1990, e meu estádio hoje leva o nome dele. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Zenit",
+    "Napoli",
+    "Chelsea",
+    "Feyenoord",
+    "Nottingham Forest",
+    "Barcelona"
+   ],
+   "a": [
+    "Napoli"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "SSC Napoli",
+    [
+     "Napoli"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão italiano em 1991 com Vialli e Mancini e perdi a final europeia de 1992 para o Barcelona. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayer Leverkusen",
+    "Steaua Bucareste",
+    "Barcelona",
+    "Fiorentina",
+    "Sampdoria",
+    "Olympique de Marseille"
+   ],
+   "a": [
+    "Sampdoria"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "UC Sampdoria",
+    [
+     "Sampdoria"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Verona e fui campeão italiano, surpreendentemente, em 1985. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Porto",
+    "Juventus",
+    "Olympiacos",
+    "Borussia Dortmund",
+    "Hellas Verona",
+    "Sampdoria"
+   ],
+   "a": [
+    "Hellas Verona"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Hellas Verona FC",
+    [
+     "Hellas"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão italiano em 2000 com Nedvěd, Verón e Simeone. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayern de Munique",
+    "Rangers",
+    "Sporting",
+    "Borussia Dortmund",
+    "Lazio",
+    "Milan"
+   ],
+   "a": [
+    "Lazio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "SS Lazio",
+    [
+     "Lazio"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o clube de Totti e De Rossi, dois ídolos que passaram a carreira quase toda comigo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayer Leverkusen",
+    "Zenit",
+    "Olympiacos",
+    "Atalanta",
+    "Roma",
+    "Valencia"
+   ],
+   "a": [
+    "Roma"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "AS Roma",
+    [
+     "Roma"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a 'Viola' de Florença, onde Batistuta virou ídolo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fiorentina",
+    "Atalanta",
+    "Deportivo La Coruña",
+    "Atlético de Madrid",
+    "Arsenal",
+    "Parma"
+   ],
+   "a": [
+    "Fiorentina"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "ACF Fiorentina",
+    [
+     "Fiorentina"
+    ]
+   ]
+  },
+  {
+   "t": "No fim dos anos 1990 tive Buffon, Cannavaro e Thuram na defesa e jogo no Estádio Ennio Tardini. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Lazio",
+    "Estrela Vermelha",
+    "Parma",
+    "Fiorentina",
+    "Sporting",
+    "Rangers"
+   ],
+   "a": [
+    "Parma"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Parma Calcio 1913",
+    [
+     "Parma"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Bérgamo e ganhei a Liga Europa de 2024, com três gols de Lookman na final. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Atalanta",
+    "Benfica",
+    "Inter de Milão",
+    "Villarreal",
+    "Arsenal",
+    "Celtic"
+   ],
+   "a": [
+    "Atalanta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Atalanta BC",
+    [
+     "Atalanta"
+    ]
+   ]
+  },
+  {
+   "t": "Sou andaluz, jogo no Ramón Sánchez-Pizjuán e revelei Sergio Ramos e Jesús Navas. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Juventus",
+    "Zenit",
+    "Blackburn Rovers",
+    "Ajax",
+    "Napoli",
+    "Sevilla"
+   ],
+   "a": [
+    "Sevilla"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Sevilla FC",
+    [
+     "Sevilla"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamam de 'Submarino Amarelo' e ganhei a Liga Europa de 2021. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Shakhtar Donetsk",
+    "Milan",
+    "Bayern de Munique",
+    "Villarreal",
+    "Olympiacos",
+    "Hellas Verona"
+   ],
+   "a": [
+    "Villarreal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Villarreal CF",
+    [
+     "Villarreal"
+    ]
+   ]
+  },
+  {
+   "t": "Jogo no Mestalla e fui campeão espanhol em 2002 e 2004. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rangers",
+    "Valencia",
+    "Athletic Bilbao",
+    "Nottingham Forest",
+    "Atalanta",
+    "Blackburn Rovers"
+   ],
+   "a": [
+    "Valencia"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Valencia CF",
+    [
+     "Valencia"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o 'Super Depor', campeão espanhol em 2000. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Inter de Milão",
+    "Ajax",
+    "Estrela Vermelha",
+    "Rangers",
+    "Deportivo La Coruña",
+    "Hamburgo"
+   ],
+   "a": [
+    "Deportivo La Coruña"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Deportivo de La Coruña",
+    [
+     "Deportivo"
+    ]
+   ]
+  },
+  {
+   "t": "Por tradição, só escalo jogadores bascos ou formados no País Basco. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Nottingham Forest",
+    "Sporting",
+    "Athletic Bilbao",
+    "Benfica",
+    "Olympique de Marseille",
+    "Paris Saint-Germain"
+   ],
+   "a": [
+    "Athletic Bilbao"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Athletic Club",
+    [
+     "Athletic"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Istambul e tive Hagi e Taffarel no elenco e, anos depois, Drogba e Sneijder. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bayern de Munique",
+    "Hellas Verona",
+    "Manchester City",
+    "Benfica",
+    "Galatasaray",
+    "Blackburn Rovers"
+   ],
+   "a": [
+    "Galatasaray"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Galatasaray S.K.",
+    [
+     "Galatasaray"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Pireu e dei à Grécia seu primeiro título europeu de clubes: a Conference League de 2024. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Sporting",
+    "CSKA Moscou",
+    "Aston Villa",
+    "Olympiacos",
+    "Borussia Dortmund",
+    "Athletic Bilbao"
+   ],
+   "a": [
+    "Olympiacos"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Olympiacos F.C.",
+    [
+     "Olympiacos"
+    ]
+   ]
+  },
+  {
+   "t": "Sou ucraniano, tive Fernandinho, Willian e Douglas Costa, e jogo longe de casa desde 2014 por causa da guerra. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Benfica",
+    "Liverpool",
+    "CSKA Moscou",
+    "Blackburn Rovers",
+    "Shakhtar Donetsk",
+    "Manchester United"
+   ],
+   "a": [
+    "Shakhtar Donetsk"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "FC Shakhtar Donetsk",
+    [
+     "Shakhtar"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei duas Recopas Europeias com Lobanovskyi e revelei Shevchenko. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fiorentina",
+    "Paris Saint-Germain",
+    "Dynamo de Kiev",
+    "Hellas Verona",
+    "Atalanta",
+    "Deportivo La Coruña"
+   ],
+   "a": [
+    "Dynamo de Kiev"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "FC Dynamo Kyiv",
+    [
+     "Dynamo"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de São Petersburgo e tive Hulk e Malcom no elenco. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Zenit",
+    "Paris Saint-Germain",
+    "Galatasaray",
+    "Feyenoord",
+    "Benfica",
+    "Olympiacos"
+   ],
+   "a": [
+    "Zenit"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "FC Zenit Saint Petersburg",
+    [
+     "Zenit"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro clube russo campeão europeu, na Copa da UEFA de 2005, com Vagner Love e Daniel Carvalho. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Atlético de Madrid",
+    "Sampdoria",
+    "Monaco",
+    "Leicester City",
+    "Milan",
+    "CSKA Moscou"
+   ],
+   "a": [
+    "CSKA Moscou"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "PFC CSKA Moscow",
+    [
+     "CSKA"
+    ]
+   ]
+  },
+  {
+   "t": "Jogo o Campeonato Francês sem ser da França e revelei Thierry Henry e Kylian Mbappé. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Monaco",
+    "Olympiacos",
+    "Paris Saint-Germain",
+    "Porto",
+    "Napoli",
+    "Roma"
+   ],
+   "a": [
+    "Monaco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "AS Monaco FC",
+    [
+     "Monaco"
+    ]
+   ]
+  },
+  {
+   "t": "Fui heptacampeão francês seguido, de 2002 a 2008, com as faltas de Juninho Pernambucano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Atlético de Madrid",
+    "Olympique de Marseille",
+    "Leicester City",
+    "Barcelona",
+    "Valencia",
+    "Lyon"
+   ],
+   "a": [
+    "Lyon"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Olympique Lyonnais",
+    [
+     "Lyon"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão italiano nove vezes seguidas, de 2012 a 2020. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Juventus",
+    "Estrela Vermelha",
+    "Napoli",
+    "Barcelona",
+    "Liverpool",
+    "Roma"
+   ],
+   "a": [
+    "Juventus"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Juventus FC",
+    [
+     "Juventus"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Milão, me chamam de 'Nerazzurri' e nunca fui rebaixado para a Série B. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Estrela Vermelha",
+    "Bayer Leverkusen",
+    "Steaua Bucareste",
+    "Inter de Milão",
+    "Olympiacos",
+    "Athletic Bilbao"
+   ],
+   "a": [
+    "Inter de Milão"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "FC Internazionale Milano",
+    [
+     "Inter"
+    ]
+   ]
+  },
+  {
+   "t": "Perdi grande parte do time num acidente aéreo em Munique, em 1958. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Manchester United",
+    "Shakhtar Donetsk",
+    "Steaua Bucareste",
+    "Celtic",
+    "Benfica",
+    "Blackburn Rovers"
+   ],
+   "a": [
+    "Manchester United"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Munich air disaster",
+    [
+     "Manchester"
+    ]
+   ]
+  },
+  {
+   "t": "Meu hino é 'You'll Never Walk Alone' e jogo em Anfield. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Liverpool",
+    "Deportivo La Coruña",
+    "Bayer Leverkusen",
+    "Villarreal",
+    "Leicester City",
+    "Lyon"
+   ],
+   "a": [
+    "Liverpool"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Liverpool F.C.",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Jogo em Stamford Bridge e ganhei o primeiro Mundial de Clubes com 32 times, em 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Chelsea",
+    "Milan",
+    "Monaco",
+    "Borussia Dortmund",
+    "Bayer Leverkusen",
+    "Real Madrid"
+   ],
+   "a": [
+    "Chelsea"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Chelsea F.C.",
+    [
+     "Chelsea"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro clube inglês do século XX a ganhar liga e copa na mesma temporada, em 1961. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Borussia Dortmund",
+    "Hamburgo",
+    "Dynamo de Kiev",
+    "Feyenoord",
+    "Milan",
+    "Tottenham"
+   ],
+   "a": [
+    "Tottenham"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Tottenham Hotspur F.C.",
+    [
+     "Tottenham"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Madri, jogo no Metropolitano e fui campeão espanhol em 2014 e 2021. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Borussia Dortmund",
+    "Deportivo La Coruña",
+    "Sporting",
+    "Shakhtar Donetsk",
+    "Blackburn Rovers",
+    "Atlético de Madrid"
+   ],
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Atlético de Madrid",
+    [
+     "Atlético"
+    ]
+   ]
+  },
+  {
+   "t": "Jogo na Bombonera e sou o clube de Maradona, Riquelme e Palermo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Once Caldas",
+    "Nacional",
+    "Racing",
+    "Boca Juniors",
+    "Colo-Colo",
+    "San Lorenzo"
+   ],
+   "a": [
+    "Boca Juniors"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Atlético Boca Juniors",
+    [
+     "Boca"
+    ]
+   ]
+  },
+  {
+   "t": "Jogo no Monumental de Núñez e caí para a segunda divisão argentina em 2011. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "LDU Quito",
+    "Boca Juniors",
+    "Defensa y Justicia",
+    "Racing",
+    "Vélez Sarsfield",
+    "River Plate"
+   ],
+   "a": [
+    "River Plate"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Atlético River Plate",
+    [
+     "River"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Avellaneda e tive Ricardo Bochini como maior ídolo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Cerro Porteño",
+    "Nacional",
+    "Colo-Colo",
+    "Independiente",
+    "Olimpia",
+    "Argentinos Juniors"
+   ],
+   "a": [
+    "Independiente"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Atlético Independiente",
+    [
+     "Independiente"
+    ]
+   ]
+  },
+  {
+   "t": "Fui tricampeão da Libertadores seguido (1968 a 1970) e voltei a ganhar em 2009, com Verón. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "River Plate",
+    "Universidad de Chile",
+    "Lanús",
+    "Estudiantes",
+    "LDU Quito",
+    "Colo-Colo"
+   ],
+   "a": [
+    "Estudiantes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Estudiantes de La Plata",
+    [
+     "Estudiantes"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamam de 'La Academia' e ganhei a Copa Sul-Americana de 2024 contra o Cruzeiro. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Estudiantes",
+    "Lanús",
+    "Racing",
+    "Once Caldas",
+    "Nacional",
+    "Atlético Nacional"
+   ],
+   "a": [
+    "Racing"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Racing Club de Avellaneda",
+    [
+     "Racing"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro campeão da Libertadores, em 1960, e sou pentacampeão do torneio. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Defensa y Justicia",
+    "Peñarol",
+    "Boca Juniors",
+    "Olimpia",
+    "Vélez Sarsfield",
+    "Colo-Colo"
+   ],
+   "a": [
+    "Peñarol"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Atlético Peñarol",
+    [
+     "Peñarol"
+    ]
+   ]
+  },
+  {
+   "t": "Sou uruguaio e fui campeão da Libertadores em 1971, 1980 e 1988. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Independiente del Valle",
+    "Estudiantes",
+    "Nacional",
+    "Defensa y Justicia",
+    "Cerro Porteño",
+    "LDU Quito"
+   ],
+   "a": [
+    "Nacional"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Nacional de Football",
+    [
+     "Nacional"
+    ]
+   ]
+  },
+  {
+   "t": "Sou paraguaio e fui campeão da Libertadores em 1979, 1990 e 2002. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Argentinos Juniors",
+    "San Lorenzo",
+    "Olimpia",
+    "Boca Juniors",
+    "River Plate",
+    "Nacional"
+   ],
+   "a": [
+    "Olimpia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Olimpia",
+    [
+     "Olimpia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o clube mais popular do Chile e jogo no Estádio Monumental David Arellano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Independiente",
+    "Olimpia",
+    "San Lorenzo",
+    "Colo-Colo",
+    "Racing",
+    "Estudiantes"
+   ],
+   "a": [
+    "Colo-Colo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Colo-Colo",
+    [
+     "Colo-Colo"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Quito e venci o Fluminense na final da Copa Sul-Americana de 2009. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Lanús",
+    "Colo-Colo",
+    "LDU Quito",
+    "Cerro Porteño",
+    "Estudiantes",
+    "Independiente del Valle"
+   ],
+   "a": [
+    "LDU Quito"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "LDU Quito",
+    [
+     "LDU"
+    ]
+   ]
+  },
+  {
+   "t": "Sou colombiano, tive Higuita no gol e ganhei a Libertadores em 1989 e 2016. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "River Plate",
+    "Cerro Porteño",
+    "Atlético Nacional",
+    "San Lorenzo",
+    "Vélez Sarsfield",
+    "Peñarol"
+   ],
+   "a": [
+    "Atlético Nacional"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Atlético Nacional",
+    [
+     "Atlético"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei minha primeira Libertadores em 2014, e o Papa Francisco é meu torcedor. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Vélez Sarsfield",
+    "Independiente",
+    "Boca Juniors",
+    "Atlético Nacional",
+    "San Lorenzo",
+    "Cerro Porteño"
+   ],
+   "a": [
+    "San Lorenzo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "San Lorenzo de Almagro",
+    [
+     "San"
+    ]
+   ]
+  },
+  {
+   "t": "Sou do bairro de Liniers, em Buenos Aires, e tive o goleiro Chilavert batendo faltas e pênaltis. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Argentinos Juniors",
+    "Defensa y Justicia",
+    "Cerro Porteño",
+    "Vélez Sarsfield",
+    "LDU Quito",
+    "San Lorenzo"
+   ],
+   "a": [
+    "Vélez Sarsfield"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club Atlético Vélez Sarsfield",
+    [
+     "Vélez"
+    ]
+   ]
+  },
+  {
+   "t": "Revelei Maradona e ganhei a Libertadores de 1985. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Argentinos Juniors",
+    "Independiente del Valle",
+    "Universidad de Chile",
+    "Defensa y Justicia",
+    "Cerro Porteño",
+    "Estudiantes"
+   ],
+   "a": [
+    "Argentinos Juniors"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Argentinos Juniors",
+    [
+     "Argentinos"
+    ]
+   ]
+  },
+  {
+   "t": "Sou equatoriano, de Sangolquí, e revelei Moisés Caicedo e Kendry Páez. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "San Lorenzo",
+    "Universidad de Chile",
+    "Estudiantes",
+    "Argentinos Juniors",
+    "Lanús",
+    "Independiente del Valle"
+   ],
+   "a": [
+    "Independiente del Valle"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Independiente del Valle",
+    [
+     "Independiente"
+    ]
+   ]
+  },
+  {
+   "t": "Sou egípcio, a CAF me elegeu o clube africano do século XX e meu arquirrival é o Zamalek. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Inter Miami",
+    "Al-Hilal",
+    "Al Ahly",
+    "Al-Nassr",
+    "Guangzhou Evergrande",
+    "Auckland City"
+   ],
+   "a": [
+    "Al Ahly"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Al Ahly SC",
+    [
+     "Al"
+    ]
+   ]
+  },
+  {
+   "t": "Sou congolês, de Lubumbashi, e meu goleiro Kidiaba comemorava gols pulando sentado no chão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Al Ahly",
+    "Guangzhou Evergrande",
+    "Club América",
+    "LA Galaxy",
+    "TP Mazembe",
+    "Kashima Antlers"
+   ],
+   "a": [
+    "TP Mazembe"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "TP Mazembe",
+    [
+     "TP"
+    ]
+   ]
+  },
+  {
+   "t": "Sou saudita, contratei Neymar em 2023 e eliminei o Manchester City no Mundial de Clubes de 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Seattle Sounders",
+    "Club América",
+    "Urawa Reds",
+    "Auckland City",
+    "Monterrey",
+    "Al-Hilal"
+   ],
+   "a": [
+    "Al-Hilal"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Al Hilal SFC",
+    [
+     "Al-Hilal"
+    ]
+   ]
+  },
+  {
+   "t": "Sou saudita, de Riad, e tive Talisca, Brozović e Sadio Mané no elenco. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Seattle Sounders",
+    "Al-Hilal",
+    "Al-Nassr",
+    "Monterrey",
+    "Urawa Reds",
+    "Club América"
+   ],
+   "a": [
+    "Al-Nassr"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Al Nassr FC",
+    [
+     "Al-Nassr"
+    ]
+   ]
+  },
+  {
+   "t": "Contratei Messi em 2023 e, no mesmo ano, ganhei a Leagues Cup. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Al-Hilal",
+    "Al-Nassr",
+    "Al Ahly",
+    "Inter Miami",
+    "Urawa Reds",
+    "Club América"
+   ],
+   "a": [
+    "Inter Miami"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Inter Miami CF",
+    [
+     "Inter"
+    ]
+   ]
+  },
+  {
+   "t": "Sou de Los Angeles e sou o maior campeão da MLS. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Wydad Casablanca",
+    "Urawa Reds",
+    "New York Cosmos",
+    "Inter Miami",
+    "Auckland City",
+    "LA Galaxy"
+   ],
+   "a": [
+    "LA Galaxy"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "LA Galaxy",
+    [
+     "LA"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o grande clube da antiga liga americana NASL e tive Carlos Alberto Torres como capitão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Kashima Antlers",
+    "New York Cosmos",
+    "Espérance de Tunis",
+    "Inter Miami",
+    "Seattle Sounders",
+    "LA Galaxy"
+   ],
+   "a": [
+    "New York Cosmos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "New York Cosmos (1970–1985)",
+    [
+     "New"
+    ]
+   ]
+  },
+  {
+   "t": "Sou japonês, tive Leonardo e Jorginho no elenco nos anos 1990 e sou o maior campeão da J-League. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Wydad Casablanca",
+    "Kashima Antlers",
+    "Espérance de Tunis",
+    "Al-Hilal",
+    "Auckland City",
+    "TP Mazembe"
+   ],
+   "a": [
+    "Kashima Antlers"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Kashima Antlers",
+    [
+     "Kashima"
+    ]
+   ]
+  },
+  {
+   "t": "Sou chinês e ganhei a Liga dos Campeões da Ásia em 2013 e 2015, com Marcello Lippi e Felipão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Wydad Casablanca",
+    "Kashima Antlers",
+    "Guangzhou Evergrande",
+    "Seattle Sounders",
+    "Espérance de Tunis",
+    "LA Galaxy"
+   ],
+   "a": [
+    "Guangzhou Evergrande"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Guangzhou F.C.",
+    [
+     "Guangzhou"
+    ]
+   ]
+  },
+  {
+   "t": "Sou neozelandês e fui terceiro colocado no Mundial de Clubes de 2014. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Urawa Reds",
+    "Seattle Sounders",
+    "Monterrey",
+    "Wydad Casablanca",
+    "Auckland City",
+    "New York Cosmos"
+   ],
+   "a": [
+    "Auckland City"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Auckland City FC",
+    [
+     "Auckland"
+    ]
+   ]
+  }
+ ]
+}

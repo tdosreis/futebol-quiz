@@ -1,0 +1,621 @@
+{
+ "id": "qualdestesnunca",
+ "name": "Qual destes nunca?",
+ "emoji": "🚫",
+ "tag": "Intrusos",
+ "col": "#8c3a3a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Qual destes jogadores NUNCA foi campeão do mundo com a Seleção?",
+   "type": "txt",
+   "choices": [
+    "Kaká",
+    "Zico",
+    "Rivaldo",
+    "Bebeto",
+    "Romário",
+    "Cafu"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NUNCA foi rebaixado no Brasileirão?",
+   "type": "txt",
+   "choices": [
+    "Vasco",
+    "Corinthians",
+    "São Paulo",
+    "Palmeiras",
+    "Cruzeiro",
+    "Grêmio"
+   ],
+   "a": [
+    "São Paulo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "Paulo"
+    ]
+   ],
+   "x": "Flamengo e São Paulo são os únicos grandes que nunca caíram."
+  },
+  {
+   "t": "Qual destes estádios NÃO fica na cidade de São Paulo?",
+   "type": "txt",
+   "choices": [
+    "Allianz Parque",
+    "Neo Química Arena",
+    "Canindé",
+    "Vila Belmiro",
+    "Morumbis",
+    "Pacaembu"
+   ],
+   "a": [
+    "Vila Belmiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio Urbano Caldeira",
+    [
+     "Belmiro"
+    ]
+   ],
+   "x": "A Vila Belmiro fica em Santos, no litoral."
+  },
+  {
+   "t": "Qual destes clubes NÃO é de Pernambuco?",
+   "type": "txt",
+   "choices": [
+    "Retrô",
+    "Santa Cruz",
+    "Salgueiro",
+    "Sport",
+    "Náutico",
+    "CRB"
+   ],
+   "a": [
+    "CRB"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "Clube de Regatas Brasil",
+    [
+     "CRB"
+    ]
+   ],
+   "x": "O CRB é de Maceió, em Alagoas."
+  },
+  {
+   "t": "Qual destes clubes NÃO é da Bahia?",
+   "type": "txt",
+   "choices": [
+    "Juazeirense",
+    "Jacuipense",
+    "Bahia de Feira",
+    "Bahia",
+    "Confiança",
+    "Vitória"
+   ],
+   "a": [
+    "Confiança"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "Associação Desportiva Confiança",
+    [
+     "Confiança"
+    ]
+   ],
+   "x": "O Confiança é de Aracaju, em Sergipe."
+  },
+  {
+   "t": "Qual destes clubes NÃO é de Santa Catarina?",
+   "type": "txt",
+   "choices": [
+    "Avaí",
+    "Londrina",
+    "Joinville",
+    "Criciúma",
+    "Figueirense",
+    "Chapecoense"
+   ],
+   "a": [
+    "Londrina"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "Londrina Esporte Clube",
+    [
+     "Londrina"
+    ]
+   ],
+   "x": "O Londrina é do norte do Paraná."
+  },
+  {
+   "t": "Qual destes clubes NÃO é de Goiás?",
+   "type": "txt",
+   "choices": [
+    "Atlético-GO",
+    "Aparecidense",
+    "Goiás",
+    "Cuiabá",
+    "Vila Nova",
+    "Anápolis"
+   ],
+   "a": [
+    "Cuiabá"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "Cuiabá Esporte Clube",
+    [
+     "Cuiabá"
+    ]
+   ],
+   "x": "O Cuiabá é de Mato Grosso."
+  },
+  {
+   "t": "Qual destes clubes NÃO é do Ceará?",
+   "type": "txt",
+   "choices": [
+    "Fortaleza",
+    "Ferroviário",
+    "Floresta",
+    "Ceará",
+    "ABC",
+    "Icasa"
+   ],
+   "a": [
+    "ABC"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "ABC Futebol Clube",
+    [
+     "ABC"
+    ]
+   ],
+   "x": "O ABC é de Natal, no Rio Grande do Norte."
+  },
+  {
+   "t": "Qual destes clubes NÃO é do Pará?",
+   "type": "txt",
+   "choices": [
+    "Paysandu",
+    "Sampaio Corrêa",
+    "Remo",
+    "Águia de Marabá",
+    "Tuna Luso",
+    "Castanhal"
+   ],
+   "a": [
+    "Sampaio Corrêa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "map"
+   },
+   "src": [
+    "pt",
+    "Sampaio Corrêa Futebol Clube",
+    [
+     "Corrêa"
+    ]
+   ],
+   "x": "O Sampaio Corrêa é de São Luís, no Maranhão."
+  },
+  {
+   "t": "Qual destes clubes NÃO é português?",
+   "type": "txt",
+   "choices": [
+    "Anderlecht",
+    "Vitória de Guimarães",
+    "Porto",
+    "Braga",
+    "Benfica",
+    "Sporting"
+   ],
+   "a": [
+    "Anderlecht"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "R.S.C. Anderlecht",
+    [
+     "Anderlecht"
+    ]
+   ],
+   "x": "O Anderlecht é o clube mais vitorioso da Bélgica."
+  },
+  {
+   "t": "Qual destes atacantes NÃO é argentino?",
+   "type": "txt",
+   "choices": [
+    "Tévez",
+    "Di María",
+    "Luis Suárez",
+    "Agüero",
+    "Messi",
+    "Batistuta"
+   ],
+   "a": [
+    "Luis Suárez"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Luis Suárez",
+    [
+     "Suárez"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO é uruguaio?",
+   "type": "txt",
+   "choices": [
+    "Francescoli",
+    "Cavani",
+    "Recoba",
+    "Forlán",
+    "Falcao García",
+    "Luis Suárez"
+   ],
+   "a": [
+    "Falcao García"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Radamel Falcao",
+    [
+     "García"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO é colombiano?",
+   "type": "txt",
+   "choices": [
+    "Asprilla",
+    "Valderrama",
+    "Falcao García",
+    "Higuita",
+    "James Rodríguez",
+    "Chilavert"
+   ],
+   "a": [
+    "Chilavert"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "José Luis Chilavert",
+    [
+     "Chilavert"
+    ]
+   ],
+   "x": "Chilavert é paraguaio."
+  },
+  {
+   "t": "Qual destes jogadores NÃO é holandês?",
+   "type": "txt",
+   "choices": [
+    "Rijkaard",
+    "Robben",
+    "Gullit",
+    "De Bruyne",
+    "Van Basten",
+    "Bergkamp"
+   ],
+   "a": [
+    "De Bruyne"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Kevin De Bruyne",
+    [
+     "Bruyne"
+    ]
+   ],
+   "x": "Kevin De Bruyne é belga."
+  },
+  {
+   "t": "Qual destes jogadores NÃO é francês?",
+   "type": "txt",
+   "choices": [
+    "Griezmann",
+    "Zidane",
+    "Mbappé",
+    "Platini",
+    "Henry",
+    "Eden Hazard"
+   ],
+   "a": [
+    "Eden Hazard"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Eden Hazard",
+    [
+     "Hazard"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO é alemão?",
+   "type": "txt",
+   "choices": [
+    "Thomas Müller",
+    "Philipp Lahm",
+    "Manuel Neuer",
+    "Toni Kroos",
+    "Miroslav Klose",
+    "Arjen Robben"
+   ],
+   "a": [
+    "Arjen Robben"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Arjen Robben",
+    [
+     "Robben"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO é italiano?",
+   "type": "txt",
+   "choices": [
+    "Del Piero",
+    "Totti",
+    "Roberto Baggio",
+    "Maldini",
+    "Batistuta",
+    "Pirlo"
+   ],
+   "a": [
+    "Batistuta"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Gabriel Batistuta",
+    [
+     "Batistuta"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO é português?",
+   "type": "txt",
+   "choices": [
+    "João Moutinho",
+    "Rui Costa",
+    "Figo",
+    "Bruno Fernandes",
+    "Bernardo Silva",
+    "Juan Mata"
+   ],
+   "a": [
+    "Juan Mata"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Juan Mata",
+    [
+     "Mata"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA foi artilheiro de uma Copa do Mundo?",
+   "type": "txt",
+   "choices": [
+    "Leônidas da Silva",
+    "Ademir de Menezes",
+    "Vavá",
+    "Ronaldo",
+    "Garrincha",
+    "Pelé"
+   ],
+   "a": [
+    "Pelé"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Pelé",
+    [
+     "Pelé"
+    ]
+   ],
+   "x": "Garrincha e Vavá dividiram a artilharia de 1962 com outros quatro jogadores."
+  },
+  {
+   "t": "Qual destes jogadores NUNCA jogou no Internacional?",
+   "type": "txt",
+   "choices": [
+    "Taffarel",
+    "Romário",
+    "Alexandre Pato",
+    "D'Alessandro",
+    "Fernandão",
+    "Falcão"
+   ],
+   "a": [
+    "Romário"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Romário",
+    [
+     "Romário"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NUNCA jogou no Atlético-MG?",
+   "type": "txt",
+   "choices": [
+    "Hulk",
+    "Reinaldo",
+    "Éder Aleixo",
+    "Diego Tardelli",
+    "Zico",
+    "Ronaldinho"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NUNCA ganhou a Champions League?",
+   "type": "txt",
+   "choices": [
+    "Rivaldo",
+    "Casemiro",
+    "Roberto Carlos",
+    "Kaká",
+    "Ibrahimović",
+    "Ronaldinho"
+   ],
+   "a": [
+    "Ibrahimović"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Zlatan Ibrahimović",
+    [
+     "Ibrahimović"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA ganhou a Champions League?",
+   "type": "txt",
+   "choices": [
+    "Roberto Carlos",
+    "Ronaldinho",
+    "Kaká",
+    "Cafu",
+    "Ronaldo",
+    "Rivaldo"
+   ],
+   "a": [
+    "Ronaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Ronaldo (futebolista)",
+    [
+     "Ronaldo"
+    ]
+   ],
+   "x": "Ronaldo Fenômeno jogou no Barcelona, Inter, Real Madrid e Milan, mas nunca ganhou a Champions."
+  }
+ ]
+}

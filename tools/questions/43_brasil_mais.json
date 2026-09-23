@@ -1,0 +1,1424 @@
+{
+ "id": "brasil_mais",
+ "name": "Futebol brasileiro: copas e recordes",
+ "emoji": "🥁",
+ "tag": "Copa do Brasil, estaduais, artilheiros e apelidos",
+ "col": "#1E7150",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Qual clube venceu a Copa do Brasil de 1990, a primeira do rubro-negro carioca?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil de Futebol",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube mineiro venceu a Copa do Brasil de 1993?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil de Futebol",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube paulista venceu a Copa do Brasil de 1995, contra o Grêmio?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil de Futebol",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube venceu a Copa do Brasil de 1998, sob o comando de Luiz Felipe Scolari?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil de Futebol",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube do ABC paulista venceu a Copa do Brasil de 2004, derrotando o Flamengo no Maracanã?",
+   "type": "txt",
+   "choices": [
+    "Ituano",
+    "Santo André",
+    "Mogi Mirim",
+    "Bragantino",
+    "São Caetano",
+    "Paulista"
+   ],
+   "a": [
+    "Santo André"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Esporte Clube Santo André",
+    [
+     "2004"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube de Jundiaí venceu a Copa do Brasil de 2005?",
+   "type": "txt",
+   "choices": [
+    "São Caetano",
+    "Ituano",
+    "Paulista",
+    "Santo André",
+    "XV de Piracicaba",
+    "Guarani"
+   ],
+   "a": [
+    "Paulista"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Paulista Futebol Clube",
+    [
+     "2005"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube foi bicampeão seguido da Copa do Brasil, em 2017 e 2018?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil de Futebol",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos clubes disputam a Série A do Brasileirão por temporada, desde 2006?",
+   "type": "txt",
+   "choices": [
+    "22",
+    "24",
+    "26",
+    "20",
+    "18",
+    "16"
+   ],
+   "a": [
+    "20"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol - Série A",
+    [
+     "20"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos clubes são rebaixados da Série A a cada temporada?",
+   "type": "txt",
+   "choices": [
+    "Seis",
+    "Cinco",
+    "Um",
+    "Dois",
+    "Três",
+    "Quatro"
+   ],
+   "a": [
+    "Quatro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol - Série A",
+    [
+     "rebaixados"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube venceu o Brasileirão de 2019 com 90 pontos, sob o comando de Jorge Jesus?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro 2019",
+    [
+     "90"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Campeonato Brasileiro?",
+   "type": "player",
+   "a": [
+    "dinamite"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Roberto Dinamite",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Corinthians, com mais de 300 gols?",
+   "type": "txt",
+   "choices": [
+    "Neco",
+    "Casagrande",
+    "Marcelinho Carioca",
+    "Baltazar",
+    "Cláudio",
+    "Sócrates"
+   ],
+   "a": [
+    "Cláudio"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "corinthians"
+   },
+   "src": [
+    "pt",
+    "Cláudio Christovam de Pinho",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Palmeiras?",
+   "type": "txt",
+   "choices": [
+    "Ademir da Guia",
+    "Heitor",
+    "Servílio",
+    "Evair",
+    "César Maluco",
+    "Leivinha"
+   ],
+   "a": [
+    "Heitor"
+   ],
+   "d": 5,
+   "art": {
+    "crest": "palmeiras"
+   },
+   "src": [
+    "pt",
+    "Heitor Marcelino Domingues",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do São Paulo?",
+   "type": "txt",
+   "choices": [
+    "Luís Fabiano",
+    "Gino Orlando",
+    "Raí",
+    "Serginho Chulapa",
+    "Müller",
+    "Careca"
+   ],
+   "a": [
+    "Serginho Chulapa"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "saopaulo"
+   },
+   "src": [
+    "pt",
+    "Serginho Chulapa",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Grêmio?",
+   "type": "txt",
+   "choices": [
+    "Renato Gaúcho",
+    "Baltazar",
+    "Tarciso",
+    "Jardel",
+    "Alcindo",
+    "Luan"
+   ],
+   "a": [
+    "Alcindo"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "gremio"
+   },
+   "src": [
+    "pt",
+    "Alcindo Martha de Freitas",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Cruzeiro?",
+   "type": "player",
+   "a": [
+    "tostao"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "cruzeiro"
+   },
+   "src": [
+    "pt",
+    "Tostão",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Atlético Mineiro?",
+   "type": "player",
+   "a": [
+    "reinaldo"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "atleticomg"
+   },
+   "src": [
+    "pt",
+    "José Reinaldo de Lima",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Botafogo?",
+   "type": "txt",
+   "choices": [
+    "Garrincha",
+    "Quarentinha",
+    "Heleno de Freitas",
+    "Jairzinho",
+    "Túlio",
+    "Amarildo"
+   ],
+   "a": [
+    "Quarentinha"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "botafogo"
+   },
+   "src": [
+    "pt",
+    "Quarentinha",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quem é o maior artilheiro da história do Fluminense?",
+   "type": "txt",
+   "choices": [
+    "Waldo",
+    "Castilho",
+    "Romerito",
+    "Washington",
+    "Fred",
+    "Rivellino"
+   ],
+   "a": [
+    "Waldo"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "fluminense"
+   },
+   "src": [
+    "pt",
+    "Waldo Machado",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas América o Brasil conquistou até 2024?",
+   "type": "txt",
+   "choices": [
+    "Seis",
+    "Oito",
+    "Nove",
+    "Dez",
+    "Sete",
+    "Cinco"
+   ],
+   "a": [
+    "Nove"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira de Futebol",
+    [
+     "Copa América"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Brasil conquistou sua primeira Copa América, então chamada Sul-Americano?",
+   "type": "txt",
+   "choices": [
+    "1959",
+    "1922",
+    "1989",
+    "1937",
+    "1919",
+    "1949"
+   ],
+   "a": [
+    "1919"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Campeonato Sul-Americano de 1919",
+    [
+     "1919"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu por 3 a 1 na final da Copa América de 2019, no Maracanã?",
+   "type": "txt",
+   "choices": [
+    "Paraguai",
+    "Argentina",
+    "Uruguai",
+    "Chile",
+    "Colômbia",
+    "Peru"
+   ],
+   "a": [
+    "Peru"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Copa América de 2019",
+    [
+     "Peru"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu de virada, por 3 a 2, na final da Copa das Confederações de 2009?",
+   "type": "txt",
+   "choices": [
+    "Itália",
+    "Argentina",
+    "África do Sul",
+    "Estados Unidos",
+    "Espanha",
+    "Egito"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Copa das Confederações FIFA de 2009",
+    [
+     "Estados Unidos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil goleou por 4 a 1 na final da Copa das Confederações de 2005?",
+   "type": "txt",
+   "choices": [
+    "Tunísia",
+    "Alemanha",
+    "Japão",
+    "Grécia",
+    "México",
+    "Argentina"
+   ],
+   "a": [
+    "Argentina"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Copa das Confederações FIFA de 2005",
+    [
+     "Argentina"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu nos pênaltis na final olímpica do Rio 2016?",
+   "type": "txt",
+   "choices": [
+    "Argentina",
+    "Honduras",
+    "Colômbia",
+    "México",
+    "Nigéria",
+    "Alemanha"
+   ],
+   "a": [
+    "Alemanha"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Futebol nos Jogos Olímpicos de Verão de 2016",
+    [
+     "Alemanha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o apelido mais conhecido da seleção brasileira?",
+   "type": "txt",
+   "choices": [
+    "Azzurra",
+    "Celeste",
+    "Albiceleste",
+    "Tricolor",
+    "Canarinho",
+    "La Roja"
+   ],
+   "a": [
+    "Canarinho"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira de Futebol",
+    [
+     "Canarinho"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos brasileiros diferentes já ganharam a Bola de Ouro da France Football?",
+   "type": "txt",
+   "choices": [
+    "Um",
+    "Cinco",
+    "Três",
+    "Seis",
+    "Dois",
+    "Quatro"
+   ],
+   "a": [
+    "Quatro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ronaldo",
+     "Rivaldo",
+     "Ronaldinho",
+     "Kaká"
+    ]
+   ],
+   "x": "Ronaldo, Rivaldo, Ronaldinho e Kaká."
+  },
+  {
+   "t": "Em que ano o Corinthians foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1930",
+    "1898",
+    "1920",
+    "1914",
+    "1902",
+    "1910"
+   ],
+   "a": [
+    "1910"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "corinthians"
+   },
+   "src": [
+    "pt",
+    "Sport Club Corinthians Paulista",
+    [
+     "1910"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Palmeiras foi fundado, ainda como Palestra Itália?",
+   "type": "txt",
+   "choices": [
+    "1930",
+    "1914",
+    "1921",
+    "1920",
+    "1902",
+    "1910"
+   ],
+   "a": [
+    "1914"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "palmeiras"
+   },
+   "src": [
+    "pt",
+    "Sociedade Esportiva Palmeiras",
+    [
+     "1914"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Grêmio foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1912",
+    "1909",
+    "1921",
+    "1895",
+    "1903",
+    "1900"
+   ],
+   "a": [
+    "1903"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "gremio"
+   },
+   "src": [
+    "pt",
+    "Grêmio Foot-Ball Porto Alegrense",
+    [
+     "1903"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Internacional foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1900",
+    "1921",
+    "1930",
+    "1903",
+    "1909",
+    "1912"
+   ],
+   "a": [
+    "1909"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "internacional"
+   },
+   "src": [
+    "pt",
+    "Sport Club Internacional",
+    [
+     "1909"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Santos foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1930",
+    "1914",
+    "1910",
+    "1920",
+    "1912",
+    "1902"
+   ],
+   "a": [
+    "1912"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "santos"
+   },
+   "src": [
+    "pt",
+    "Santos Futebol Clube",
+    [
+     "1912"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Cruzeiro foi fundado, com o nome de Palestra Itália?",
+   "type": "txt",
+   "choices": [
+    "1914",
+    "1942",
+    "1908",
+    "1930",
+    "1921",
+    "1912"
+   ],
+   "a": [
+    "1921"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "cruzeiro"
+   },
+   "src": [
+    "pt",
+    "Cruzeiro Esporte Clube",
+    [
+     "1921"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Atlético Mineiro foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1908",
+    "1921",
+    "1900",
+    "1903",
+    "1912",
+    "1915"
+   ],
+   "a": [
+    "1908"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "atleticomg"
+   },
+   "src": [
+    "pt",
+    "Clube Atlético Mineiro",
+    [
+     "1908"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o São Paulo Futebol Clube foi fundado?",
+   "type": "txt",
+   "choices": [
+    "1925",
+    "1914",
+    "1930",
+    "1910",
+    "1942",
+    "1935"
+   ],
+   "a": [
+    "1930"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "saopaulo"
+   },
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "1930"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Vasco da Gama foi fundado, como clube de regatas?",
+   "type": "txt",
+   "choices": [
+    "1898",
+    "1902",
+    "1915",
+    "1910",
+    "1895",
+    "1904"
+   ],
+   "a": [
+    "1898"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "vasco"
+   },
+   "src": [
+    "pt",
+    "Club de Regatas Vasco da Gama",
+    [
+     "1898"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube brasileiro perdeu a final da Sul-Americana de 2024 para o Racing?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Sul-Americana de 2024",
+    [
+     "Racing"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube brasileiro foi eliminado pelo Raja Casablanca na semifinal do Mundial de 2013?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo de Clubes da FIFA de 2013",
+    [
+     "Raja"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube brasileiro caiu para o TP Mazembe na semifinal do Mundial de 2010?",
+   "a": [
+    "internacional"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo de Clubes da FIFA de 2010",
+    [
+     "Mazembe"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final do Mundial de 1981 entre Flamengo e Liverpool, em Tóquio?",
+   "type": "txt",
+   "choices": [
+    "2 a 0 para o Flamengo",
+    "2 a 1 para o Flamengo",
+    "4 a 1 para o Flamengo",
+    "1 a 0 para o Flamengo",
+    "3 a 1 para o Flamengo",
+    "3 a 0 para o Flamengo"
+   ],
+   "a": [
+    "3 a 0 para o Flamengo"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "flamengo"
+   },
+   "src": [
+    "pt",
+    "Copa Intercontinental de 1981",
+    [
+     "3–0"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Mineiro?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 3,
+   "art": {
+    "map": "MG"
+   },
+   "src": [
+    "pt",
+    "Campeonato Mineiro de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Gaúcho?",
+   "a": [
+    "internacional"
+   ],
+   "d": 4,
+   "art": {
+    "map": "RS"
+   },
+   "src": [
+    "pt",
+    "Campeonato Gaúcho de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Baiano?",
+   "a": [
+    "bahia"
+   ],
+   "d": 3,
+   "art": {
+    "map": "BA"
+   },
+   "src": [
+    "pt",
+    "Campeonato Baiano de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Pernambucano?",
+   "a": [
+    "sport"
+   ],
+   "d": 3,
+   "art": {
+    "map": "PE"
+   },
+   "src": [
+    "pt",
+    "Campeonato Pernambucano de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Paranaense?",
+   "a": [
+    "coritiba"
+   ],
+   "d": 3,
+   "art": {
+    "map": "PR"
+   },
+   "src": [
+    "pt",
+    "Campeonato Paranaense de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem mais títulos do Campeonato Goiano?",
+   "a": [
+    "goias"
+   ],
+   "d": 3,
+   "art": {
+    "map": "GO"
+   },
+   "src": [
+    "pt",
+    "Campeonato Goiano de Futebol",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes nunca foi rebaixado no Campeonato Brasileiro?",
+   "type": "txt",
+   "choices": [
+    "Corinthians",
+    "Grêmio",
+    "Santos FC",
+    "São Paulo FC",
+    "Internacional",
+    "Palmeiras"
+   ],
+   "a": [
+    "São Paulo FC"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "rebaixado"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Palmeiras foi rebaixado pela primeira vez no Brasileirão?",
+   "type": "txt",
+   "choices": [
+    "1999",
+    "2002",
+    "2012",
+    "2008",
+    "1997",
+    "2004"
+   ],
+   "a": [
+    "2002"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "palmeiras"
+   },
+   "src": [
+    "pt",
+    "Sociedade Esportiva Palmeiras",
+    [
+     "2002"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Botafogo foi rebaixado pela primeira vez no Brasileirão?",
+   "type": "txt",
+   "choices": [
+    "2008",
+    "2005",
+    "2020",
+    "1999",
+    "2002",
+    "2014"
+   ],
+   "a": [
+    "2002"
+   ],
+   "d": 4,
+   "art": {
+    "crest": "botafogo"
+   },
+   "src": [
+    "pt",
+    "Botafogo de Futebol e Regatas",
+    [
+     "2002"
+    ]
+   ]
+  },
+  {
+   "t": "Contra qual clube Pelé marcou o milésimo gol da carreira, em 1969?",
+   "a": [
+    "vasco"
+   ],
+   "d": 3,
+   "art": {
+    "stad": "maracana"
+   },
+   "src": [
+    "pt",
+    "Milésimo gol de Pelé",
+    [
+     "Vasco"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleiro argentino sofreu o milésimo gol de Pelé, em 1969?",
+   "type": "txt",
+   "choices": [
+    "Fillol",
+    "Carrizo",
+    "Andrada",
+    "Cejas",
+    "Gatti",
+    "Roma"
+   ],
+   "a": [
+    "Andrada"
+   ],
+   "d": 5,
+   "art": {
+    "stad": "maracana"
+   },
+   "src": [
+    "pt",
+    "Edgardo Andrada",
+    [
+     "Pelé"
+    ]
+   ]
+  },
+  {
+   "t": "Qual craque ficou conhecido como 'Anjo de Pernas Tortas'?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Garrincha",
+    [
+     "Anjo de Pernas Tortas"
+    ]
+   ]
+  },
+  {
+   "t": "Qual craque ficou conhecido como 'Galinho de Quintino'?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Galinho"
+    ]
+   ]
+  },
+  {
+   "t": "Qual atacante ficou conhecido como 'Baixinho'?",
+   "type": "player",
+   "a": [
+    "romario"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Romário",
+    [
+     "Baixinho"
+    ]
+   ]
+  },
+  {
+   "t": "Qual meia ficou conhecido como 'Doutor', por ser formado em medicina?",
+   "type": "player",
+   "a": [
+    "socrates"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Sócrates",
+    [
+     "medicina"
+    ]
+   ]
+  },
+  {
+   "t": "Qual meia do bicampeonato mundial foi chamado de 'Príncipe Etíope' por Nelson Rodrigues?",
+   "type": "player",
+   "a": [
+    "didi"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Didi",
+    [
+     "Príncipe Etíope"
+    ]
+   ]
+  },
+  {
+   "t": "Qual atacante ficou conhecido como 'Animal'?",
+   "type": "player",
+   "a": [
+    "edmundo"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Edmundo",
+    [
+     "Animal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual lateral-direito ficou conhecido como 'Capita' e 'Pendolino'?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Cafu",
+    [
+     "Pendolino"
+    ]
+   ]
+  },
+  {
+   "t": "Qual atacante ficou conhecido como 'Imperador' na Itália?",
+   "type": "player",
+   "a": [
+    "adriano"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Adriano",
+    [
+     "Imperador"
+    ]
+   ]
+  },
+  {
+   "t": "Qual meia ficou conhecido como 'Bruxo'?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Ronaldinho",
+    [
+     "Bruxo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual atacante do Corinthians e da Portuguesa ficou conhecido como 'Casão'?",
+   "type": "player",
+   "a": [
+    "casagrande"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Walter Casagrande",
+    [
+     "Casão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleiro do Palmeiras e do penta foi chamado de 'Santo' pela torcida?",
+   "type": "player",
+   "a": [
+    "marcos"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Marcos (goleiro)",
+    [
+     "São Marcos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual ponta do tri ficou conhecido como 'Furacão da Copa'?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Jairzinho",
+    [
+     "Furacão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual meia do tri ficou conhecido como 'Patada Atômica' pelo chute forte?",
+   "type": "player",
+   "a": [
+    "rivellino"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Roberto Rivellino",
+    [
+     "Patada Atômica"
+    ]
+   ]
+  },
+  {
+   "t": "Qual atacante do tri foi chamado de 'Mineirinho de Ouro'?",
+   "type": "player",
+   "a": [
+    "tostao"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Tostão",
+    [
+     "Tostão"
+    ]
+   ]
+  }
+ ]
+}

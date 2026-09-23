@@ -1,0 +1,5014 @@
+{
+ "id": "quem_sou_eu_escrito",
+ "name": "Quem sou eu? — Craques",
+ "emoji": "🕵️",
+ "tag": "Pistas escritas: descubra o craque",
+ "col": "#7E57C2",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Camisa 10 do Santos, três vezes campeão do mundo com a seleção e autor de mais de mil gols na carreira. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pele",
+    [
+     "Camisa 10 do Santos"
+    ]
+   ]
+  },
+  {
+   "t": "Meia do Flamengo campeão mundial de 1981, depois ídolo do Kashima Antlers no Japão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zico",
+    [
+     "Meia do Flamengo cam"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta-direita de pernas tortas, bicampeão do mundo em 1958 e 1962 e ídolo do Botafogo. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "garrincha",
+    [
+     "Ponta-direita de per"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante artilheiro da Copa de 2002, com oito gols, e duas vezes eleito Bola de Ouro. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ronaldo",
+    [
+     "Atacante artilheiro "
+    ]
+   ]
+  },
+  {
+   "t": "Meia-atacante gaúcho revelado pelo Grêmio, Bola de Ouro de 2005 jogando pelo Barcelona. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ronaldinho",
+    [
+     "Meia-atacante gaúcho"
+    ]
+   ]
+  },
+  {
+   "t": "Meia revelado pelo São Paulo, eleito melhor do mundo em 2007, que encerrou a carreira no Orlando City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kaka",
+    [
+     "Meia revelado pelo S"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que jogou mais de 20 anos pelo Vasco, com uma rápida passagem pelo Barcelona em 1980. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dinamite"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dinamite",
+    [
+     "Atacante que jogou m"
+    ]
+   ]
+  },
+  {
+   "t": "Meia formado em medicina, capitão do Brasil na Copa de 1982 e líder da Democracia Corinthiana. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "socrates"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "socrates",
+    [
+     "Meia formado em medi"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante baixinho, craque da Copa de 1994 e ídolo de Vasco, PSV e Barcelona. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "romario"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "romario",
+    [
+     "Atacante baixinho"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que comemorou um gol na Copa de 1994 ninando um bebê imaginário, parceiro de Romário no ataque. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bebeto"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bebeto",
+    [
+     "Atacante que comemor"
+    ]
+   ]
+  },
+  {
+   "t": "Meia-atacante pernambucano, Bola de Ouro de 1999 pelo Barcelona e campeão do mundo em 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rivaldo",
+    [
+     "Meia-atacante pernam"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante canhoto apelidado de Imperador, ídolo da Inter de Milão e do Flamengo. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "adriano"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "adriano",
+    [
+     "Atacante canhoto ape"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante revelado pelo Santos que foi para o PSG em 2017, na transferência mais cara da história. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "neymar",
+    [
+     "Atacante revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-esquerdo do chute potente, autor de uma falta histórica contra a França em 1997 e ídolo do Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "roberto_carlos"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "roberto_carlos",
+    [
+     "Lateral-esquerdo do "
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito que jogou três finais de Copa seguidas e levantou a taça como capitão em 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cafu",
+    [
+     "Lateral-direito que "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro gaúcho campeão do mundo em 1994, que defendeu um pênalti na decisão contra a Itália. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "taffarel"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "taffarel",
+    [
+     "Goleiro gaúcho campe"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante revelado pelo Flamengo que chegou ao Real Madrid em 2018, aos 18 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vinicius"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "vinicius",
+    [
+     "Atacante revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito capitão do tri, que depois jogou no New York Cosmos ao lado de Pelé e Beckenbauer. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "carlos_alberto"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "carlos_alberto",
+    [
+     "Lateral-direito capi"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta apelidado de Furacão, que marcou em todos os jogos do Brasil na Copa de 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "jairzinho",
+    [
+     "Ponta apelidado de F"
+    ]
+   ]
+  },
+  {
+   "t": "Meia gaúcho revelado pelo Internacional, chamado de Rei de Roma pela torcida italiana. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "falcao"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "falcao",
+    [
+     "Meia gaúcho revelado"
+    ]
+   ]
+  },
+  {
+   "t": "Camisa 10 argentino, campeão do mundo em 1986 e ídolo eterno do Napoli. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maradona"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "maradona",
+    [
+     "Camisa 10 argentino"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino recordista de Bolas de Ouro, campeão do mundo no Catar em 2022. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "messi",
+    [
+     "Atacante argentino r"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante português, cinco vezes campeão da Champions e maior artilheiro da história das seleções. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cr7"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cr7",
+    [
+     "Atacante português"
+    ]
+   ]
+  },
+  {
+   "t": "Meia francês que fez dois gols de cabeça na final da Copa de 1998 contra o Brasil. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zidane"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zidane",
+    [
+     "Meia francês que fez"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante holandês, três vezes Bola de Ouro, autor de um voleio histórico na final da Euro de 1988. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "van_basten"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "van_basten",
+    [
+     "Atacante holandês"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão, maior artilheiro da história das Copas do Mundo, com 16 gols. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "klose"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "klose",
+    [
+     "Atacante alemão"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino apelidado de Batigol, ídolo da Fiorentina nos anos 90. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "batistuta"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "batistuta",
+    [
+     "Atacante argentino a"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante búlgaro, Bola de Ouro de 1994 e um dos artilheiros da Copa daquele ano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "stoichkov"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "stoichkov",
+    [
+     "Atacante búlgaro"
+    ]
+   ]
+  },
+  {
+   "t": "Camisa 14 holandês, símbolo do futebol total e três vezes eleito Bola de Ouro. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cruyff"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cruyff",
+    [
+     "Camisa 14 holandês"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante francês que marcou 13 gols em uma única Copa, a de 1958 na Suécia. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "fontaine"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "fontaine",
+    [
+     "Atacante francês que"
+    ]
+   ]
+  },
+  {
+   "t": "Meia colombiano, artilheiro da Copa de 2014 com seis gols. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "james"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "james",
+    [
+     "Meia colombiano"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante italiano de rabo de cavalo que perdeu o último pênalti da final de 1994. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "baggio"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "baggio",
+    [
+     "Atacante italiano de"
+    ]
+   ]
+  },
+  {
+   "t": "Meia francês eleito Bola de Ouro três anos seguidos, de 1983 a 1985, ídolo da Juventus. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "platini"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "platini",
+    [
+     "Meia francês eleito "
+    ]
+   ]
+  },
+  {
+   "t": "Meia inglês famoso pelas cobranças de falta, revelado pelo Manchester United e depois astro do LA Galaxy. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "beckham"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "beckham",
+    [
+     "Meia inglês famoso p"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante francês, maior artilheiro da história do Arsenal. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "henry"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "henry",
+    [
+     "Atacante francês"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante sueco que marcou de bicicleta, de muito longe, contra a Inglaterra em 2012. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ibrahimovic"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ibrahimovic",
+    [
+     "Atacante sueco que m"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante polonês que marcou cinco gols em nove minutos em um jogo do Bayern, em 2015. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lewandowski"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lewandowski",
+    [
+     "Atacante polonês que"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante francês campeão do mundo aos 19 anos, em 2018, e autor de três gols na final de 2022. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mbappe"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mbappe",
+    [
+     "Atacante francês cam"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante marfinense que empatou e depois bateu o pênalti decisivo na final da Champions de 2012, pelo Chelsea. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "drogba"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "drogba",
+    [
+     "Atacante marfinense "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante liberiano revelado no Monaco de Arsène Wenger, ídolo do Milan nos anos 90. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "weah"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "weah",
+    [
+     "Atacante liberiano r"
+    ]
+   ]
+  },
+  {
+   "t": "Meia croata que quebrou a sequência de Messi e Cristiano Ronaldo ao ganhar a Bola de Ouro de 2018. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "modric"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "modric",
+    [
+     "Meia croata que queb"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante francês, Bola de Ouro de 2022, que fez carreira no Lyon e no Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "benzema"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "benzema",
+    [
+     "Atacante francês"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro campeão do mundo em 1994 que passou mais de dez anos na Roma. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "aldair"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "aldair",
+    [
+     "Zagueiro campeão do "
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro italiano que se machucou na fase de grupos da Copa de 2006 e encerrou a carreira no Montreal Impact. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nesta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nesta",
+    [
+     "Zagueiro italiano qu"
+    ]
+   ]
+  },
+  {
+   "t": "Líbero alemão apelidado de Kaiser, campeão do mundo como jogador em 1974 e como técnico em 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "beckenbauer"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "beckenbauer",
+    [
+     "Líbero alemão apelid"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro cabeludo, capitão do Barcelona, que fez de cabeça o gol da semifinal da Copa de 2010 contra a Alemanha. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "puyol"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "puyol",
+    [
+     "Zagueiro cabeludo"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral baiano recordista de títulos, que brilhou no Sevilla e no Barcelona. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dani_alves"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dani_alves",
+    [
+     "Lateral baiano recor"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro brasileiro que foi o capitão da seleção no 7 a 1 contra a Alemanha, em 2014. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "david_luiz"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "david_luiz",
+    [
+     "Zagueiro brasileiro "
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro capitão da Itália campeã em 2006, eleito Bola de Ouro naquele mesmo ano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cannavaro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cannavaro",
+    [
+     "Zagueiro capitão da "
+    ]
+   ]
+  },
+  {
+   "t": "Líbero e capitão histórico do Milan, cuja camisa 6 foi aposentada pelo clube. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "baresi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "baresi",
+    [
+     "Líbero e capitão his"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral que voltou ao Flamengo depois da Itália e foi campeão brasileiro de 1992, aos 38 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "junior"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "junior",
+    [
+     "Lateral que voltou a"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro campeão do mundo em 2002 e campeão europeu pela Inter de Mourinho em 2010. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lucio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lucio",
+    [
+     "Zagueiro campeão do "
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito da Inter da Tríplice Coroa de 2010, que marcou quase sem ângulo contra a Coreia do Norte na Copa daquele ano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maicon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "maicon",
+    [
+     "Lateral-direito da I"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-esquerdo revelado pelo Fluminense, que voltou ao clube em 2023 e ganhou a Libertadores. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "marcelo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "marcelo",
+    [
+     "Lateral-esquerdo rev"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro revelado pelo Corinthians que foi capitão do PSG por vários anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "marquinhos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "marquinhos",
+    [
+     "Zagueiro revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral bicampeão do mundo que jogou a carreira inteira no Botafogo e hoje dá nome ao estádio do clube. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nilton_santos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nilton_santos",
+    [
+     "Lateral bicampeão do"
+    ]
+   ]
+  },
+  {
+   "t": "Defensor que jogou 25 temporadas apenas pelo Milan e ganhou cinco vezes a Copa dos Campeões e a Champions. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maldini"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "maldini",
+    [
+     "Defensor que jogou 2"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral e capitão da Alemanha campeã do mundo em 2014, que jogou quase a carreira toda no Bayern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lahm"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lahm",
+    [
+     "Lateral e capitão da"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro espanhol que empatou de cabeça aos 93 minutos a final da Champions de 2014 contra o Atlético de Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "sergio_ramos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "sergio_ramos",
+    [
+     "Zagueiro espanhol qu"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro que superou uma tuberculose no início da carreira e foi o capitão do Brasil na Copa de 2014. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "thiago_silva"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "thiago_silva",
+    [
+     "Zagueiro que superou"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro holandês contratado pelo Liverpool em 2018 e segundo colocado na Bola de Ouro de 2019. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "van_dijk"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "van_dijk",
+    [
+     "Zagueiro holandês co"
+    ]
+   ]
+  },
+  {
+   "t": "Meia inglês que sobreviveu à tragédia aérea de Munique e foi campeão do mundo em 1966. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "charlton"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "charlton",
+    [
+     "Meia inglês que sobr"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante revelado pelo Guarani, campeão brasileiro de 1978 ainda aos 17 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "careca"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "careca",
+    [
+     "Atacante revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Camisa 10 que ficou na Juventus até na Série B, depois do escândalo de 2006. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "del_piero"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "del_piero",
+    [
+     "Camisa 10 que ficou "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino naturalizado espanhol, ídolo do Real Madrid pentacampeão europeu nos anos 50. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "distefano"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "distefano",
+    [
+     "Atacante argentino n"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante uruguaio apelidado de El Matador, que brilhou no Napoli e no PSG. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cavani"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cavani",
+    [
+     "Atacante uruguaio ap"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante apelidado de Animal, bicampeão brasileiro pelo Palmeiras e ídolo do Vasco. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "edmundo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "edmundo",
+    [
+     "Atacante apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nascido em Leeds, filho de um ex-jogador do Leeds e do Manchester City, que brilhou no Salzburg e no Dortmund. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "haaland"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "haaland",
+    [
+     "Atacante nascido em "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nascido em Moçambique, apelidado de Pantera Negra, artilheiro da Copa de 1966 por Portugal. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "eusebio"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "eusebio",
+    [
+     "Atacante nascido em "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante húngaro que dá nome ao prêmio da FIFA para o gol mais bonito do ano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "puskas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "puskas",
+    [
+     "Atacante húngaro que"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que bateu um pênalti de cavadinha contra a Holanda na semifinal da Euro 2000. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "totti"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "totti",
+    [
+     "Atacante que bateu u"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão apelidado de Bombardeiro, que marcou o gol do título da Copa de 1974. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gerd_muller",
+    [
+     "Atacante alemão apel"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante inglês que trocou o Tottenham pelo Bayern de Munique em 2023. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kane",
+    [
+     "Atacante inglês que "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante paraibano que passou por Japão, Porto e Zenit antes de virar ídolo do Atlético Mineiro. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hulk"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hulk",
+    [
+     "Atacante paraibano q"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante uruguaio que jogou no Grêmio em 2023 antes de reencontrar Messi no Inter Miami. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "suarez"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "suarez",
+    [
+     "Atacante uruguaio qu"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante apelidado de Fabuloso, ídolo do São Paulo e do Sevilla. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "luis_fabiano"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "luis_fabiano",
+    [
+     "Atacante apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante inglês que marcou um golaço contra a Argentina na Copa de 1998, aos 18 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "owen"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "owen",
+    [
+     "Atacante inglês que "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante egípcio, ídolo do Liverpool campeão da Champions em 2019. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "salah"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "salah",
+    [
+     "Atacante egípcio"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante espanhol, capitão e ídolo do Real Madrid, que depois jogou no Schalke 04. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "raul"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "raul",
+    [
+     "Atacante espanhol"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante camaronês que ganhou a Tríplice Coroa pelo Barcelona em 2009 e pela Inter em 2010. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "etoo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "etoo",
+    [
+     "Atacante camaronês q"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino que marcou aos 93 minutos o gol do título inglês do Manchester City em 2012. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "aguero"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "aguero",
+    [
+     "Atacante argentino q"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante ucraniano eleito Bola de Ouro em 2004, quando defendia o Milan. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "shevchenko"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "shevchenko",
+    [
+     "Atacante ucraniano e"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante do Cruzeiro no tri de 1970 que depois se formou em medicina e virou comentarista. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "tostao"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "tostao",
+    [
+     "Atacante do Cruzeiro"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante inglês que estreou na Premier League pelo Everton aos 16 anos e depois jogou no DC United. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rooney"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rooney",
+    [
+     "Atacante inglês que "
+    ]
+   ]
+  },
+  {
+   "t": "Ponta bicampeão do mundo como jogador e campeão como técnico em 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zagallo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zagallo",
+    [
+     "Ponta bicampeão do m"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro gaúcho revelado pelo Internacional que marcou um gol de cabeça pelo Liverpool em 2021. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "alisson"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "alisson",
+    [
+     "Goleiro gaúcho revel"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro baiano revelado pelo Vitória, campeão da Libertadores de 1997 pelo Cruzeiro e depois ídolo do Milan. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dida"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dida",
+    [
+     "Goleiro baiano revel"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro brasileiro famoso pelos lançamentos longos, várias vezes campeão inglês pelo Manchester City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ederson"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ederson",
+    [
+     "Goleiro brasileiro f"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro italiano campeão do mundo em 2006, ídolo da Juventus por quase duas décadas. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "buffon",
+    [
+     "Goleiro italiano cam"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro e capitão da Espanha campeã do mundo em 2010. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "casillas"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "casillas",
+    [
+     "Goleiro e capitão da"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro revelado pelo Flamengo, titular do Brasil nas Copas de 2010 e 2014. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "julio_cesar"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "julio_cesar",
+    [
+     "Goleiro revelado pel"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro soviético apelidado de Aranha Negra, que só se vestia de preto. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "yashin"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "yashin",
+    [
+     "Goleiro soviético ap"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro alemão campeão do mundo em 2014, famoso por sair jogando como líbero. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "neuer"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "neuer",
+    [
+     "Goleiro alemão campe"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro do penta em 2002 que recusou uma proposta do Arsenal para continuar no Palmeiras. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "marcos"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "marcos",
+    [
+     "Goleiro do penta em "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro alemão do Bayern que defendeu três pênaltis na decisão da Champions de 2001, contra o Valencia. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kahn"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kahn",
+    [
+     "Goleiro alemão do Ba"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro dinamarquês campeão da Euro de 1992 e da Champions de 1999 pelo Manchester United. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "schmeichel"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "schmeichel",
+    [
+     "Goleiro dinamarquês "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro tcheco que jogava de capacete depois de uma fratura no crânio, ídolo do Chelsea. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cech"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cech",
+    [
+     "Goleiro tcheco que j"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro com mais de 100 gols marcados, quase todos de falta e pênalti, pelo São Paulo. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rogerio_ceni"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rogerio_ceni",
+    [
+     "Goleiro com mais de "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro belga emprestado pelo Chelsea ao Atlético de Madrid, onde foi campeão espanhol em 2014. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "courtois"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "courtois",
+    [
+     "Goleiro belga empres"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro holandês que passou mais de 1.300 minutos sem sofrer gol na Premier League, em 2008-09. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "van_der_sar"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "van_der_sar",
+    [
+     "Goleiro holandês que"
+    ]
+   ]
+  },
+  {
+   "t": "Meia paranaense, ídolo do Cruzeiro campeão da Tríplice Coroa de 2003 e do Fenerbahçe. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "alex"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "alex",
+    [
+     "Meia paranaense"
+    ]
+   ]
+  },
+  {
+   "t": "Meia italiano de passes precisos, campeão do mundo em 2006, que brilhou no Milan e na Juventus. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pirlo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pirlo",
+    [
+     "Meia italiano de pas"
+    ]
+   ]
+  },
+  {
+   "t": "Meia espanhol que fez o gol do título da Copa de 2010, na prorrogação contra a Holanda. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "iniesta"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "iniesta",
+    [
+     "Meia espanhol que fe"
+    ]
+   ]
+  },
+  {
+   "t": "Volante revelado pelo São Paulo, cinco vezes campeão da Champions pelo Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "casemiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "casemiro",
+    [
+     "Volante revelado pel"
+    ]
+   ]
+  },
+  {
+   "t": "Meia que foi jogar no Real Madrid depois da Copa de 1958 e não se entendeu com Di Stéfano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "didi"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "didi",
+    [
+     "Meia que foi jogar n"
+    ]
+   ]
+  },
+  {
+   "t": "Volante capitão do tetra em 1994 que depois foi técnico da seleção na Copa de 2010. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dunga"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dunga",
+    [
+     "Volante capitão do t"
+    ]
+   ]
+  },
+  {
+   "t": "Meia inglês que teve um gol não validado contra a Alemanha na Copa de 2010, com a bola dentro do gol. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lampard"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lampard",
+    [
+     "Meia inglês que teve"
+    ]
+   ]
+  },
+  {
+   "t": "Volante mineiro campeão do mundo em 2002 e integrante dos Invencíveis do Arsenal em 2003-04. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gilberto_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gilberto_silva",
+    [
+     "Volante mineiro camp"
+    ]
+   ]
+  },
+  {
+   "t": "Meia canhoto do tri de 1970, apelidado de Canhotinha de Ouro. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gerson"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gerson",
+    [
+     "Meia canhoto do tri "
+    ]
+   ]
+  },
+  {
+   "t": "Meia pernambucano, mestre das cobranças de falta, ídolo do Vasco e do Lyon. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "juninho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "juninho",
+    [
+     "Meia pernambucano"
+    ]
+   ]
+  },
+  {
+   "t": "Meia belga, ídolo do Manchester City, que foi pouco aproveitado pelo Chelsea no início da carreira. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "de_bruyne"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "de_bruyne",
+    [
+     "Meia belga"
+    ]
+   ]
+  },
+  {
+   "t": "Meia português recebido com uma cabeça de porco atirada pela torcida no Camp Nou, em 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "figo"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "figo",
+    [
+     "Meia português receb"
+    ]
+   ]
+  },
+  {
+   "t": "Meia ruivo do Manchester United que voltou da aposentadoria em 2012. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "scholes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "scholes",
+    [
+     "Meia ruivo do Manche"
+    ]
+   ]
+  },
+  {
+   "t": "Meia tcheco eleito Bola de Ouro em 2003, jogando pela Juventus. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nedved"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nedved",
+    [
+     "Meia tcheco eleito B"
+    ]
+   ]
+  },
+  {
+   "t": "Meia argentino, ídolo do Boca Juniors campeão da Libertadores de 2007. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "riquelme"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "riquelme",
+    [
+     "Meia argentino"
+    ]
+   ]
+  },
+  {
+   "t": "Meia do tri de 1970, famoso pelo elástico e pelo bigode, ídolo do Corinthians e do Fluminense. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rivellino"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rivellino",
+    [
+     "Meia do tri de 1970"
+    ]
+   ]
+  },
+  {
+   "t": "Meia e capitão do Liverpool campeão da Champions em 2005, na virada contra o Milan. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gerrard"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gerrard",
+    [
+     "Meia e capitão do Li"
+    ]
+   ]
+  },
+  {
+   "t": "Meia alemão campeão do mundo em 2014, com seis Champions: uma pelo Bayern e cinco pelo Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kroos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kroos",
+    [
+     "Meia alemão campeão "
+    ]
+   ]
+  },
+  {
+   "t": "Meia espanhol, cérebro do Barcelona de Guardiola e campeão do mundo em 2010. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "xavi"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "xavi",
+    [
+     "Meia espanhol"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro apelidado de Divino Mestre, pai de Ademir da Guia. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "domingos_guia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "domingos_guia",
+    [
+     "Zagueiro apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante do Flamengo e do São Paulo apelidado de Diamante Negro, que virou nome de chocolate. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "leonidas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "leonidas",
+    [
+     "Atacante do Flamengo"
+    ]
+   ]
+  },
+  {
+   "t": "Capitão do Uruguai campeão da Copa de 1950 no Maracanã, apelidado de Negro Jefe. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "obdulio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "obdulio",
+    [
+     "Capitão do Uruguai c"
+    ]
+   ]
+  },
+  {
+   "t": "Capitão da Alemanha Ocidental campeã do mundo em 1954, ídolo do Kaiserslautern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "fritz_walter"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "fritz_walter",
+    [
+     "Capitão da Alemanha "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante apelidado de Queixada, estrela do Expresso da Vitória do Vasco. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ademir"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ademir",
+    [
+     "Atacante apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante sueco do trio Gre-No-Li, campeão olímpico em 1948. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nordahl"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nordahl",
+    [
+     "Atacante sueco do tr"
+    ]
+   ]
+  },
+  {
+   "t": "Meia sueco do trio Gre-No-Li do Milan, vice-campeão do mundo em casa em 1958. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "liedholm"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "liedholm",
+    [
+     "Meia sueco do trio G"
+    ]
+   ]
+  },
+  {
+   "t": "Meia uruguaio campeão do mundo em 1950, autor do gol de empate na final do Maracanã. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "schiaffino"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "schiaffino",
+    [
+     "Meia uruguaio campeã"
+    ]
+   ]
+  },
+  {
+   "t": "Centroavante recuado da Hungria que marcou três vezes nos 6 a 3 sobre a Inglaterra em Wembley, em 1953. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hidegkuti"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hidegkuti",
+    [
+     "Centroavante recuado"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante húngaro apelidado de Cabeça de Ouro, artilheiro da Copa de 1954. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kocsis"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kocsis",
+    [
+     "Atacante húngaro ape"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nascido em Budapeste que virou ídolo do Barcelona e jogou por três seleções diferentes. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kubala"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kubala",
+    [
+     "Atacante nascido em "
+    ]
+   ]
+  },
+  {
+   "t": "Ponta uruguaio que fez o gol da vitória sobre o Brasil no Maracanaço de 1950. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ghiggia"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ghiggia",
+    [
+     "Ponta uruguaio que f"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito bicampeão do mundo, ídolo da Portuguesa e do Palmeiras. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "djalma_santos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "djalma_santos",
+    [
+     "Lateral-direito bica"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro do Santos, capitão do Brasil campeão do mundo em 1962. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mauro_ramos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mauro_ramos",
+    [
+     "Zagueiro do Santos"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta que substituiu Garrincha contra a Inglaterra em 1959, foi vaiado pelo Maracanã e saiu aplaudido. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "julinho"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "julinho",
+    [
+     "Ponta que substituiu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia francês filho de imigrantes poloneses, Bola de Ouro de 1958 pelo Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kopa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kopa",
+    [
+     "Meia francês filho d"
+    ]
+   ]
+  },
+  {
+   "t": "Meia tcheco, Bola de Ouro de 1962, que abriu o placar contra o Brasil na final da Copa daquele ano. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "masopust"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "masopust",
+    [
+     "Meia tcheco"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que marcou em duas finais de Copa seguidas, em 1958 e 1962. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vava"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "vava",
+    [
+     "Atacante que marcou "
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro capitão do Brasil em 1958, que criou o gesto de erguer a taça acima da cabeça. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bellini"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bellini",
+    [
+     "Zagueiro capitão do "
+    ]
+   ]
+  },
+  {
+   "t": "Ponta espanhol, o primeiro jogador a ganhar seis Copas dos Campeões, todas pelo Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gento"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gento",
+    [
+     "Ponta espanhol"
+    ]
+   ]
+  },
+  {
+   "t": "Volante do Santos bicampeão do mundo, que marcou na final de 1962. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zito"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zito",
+    [
+     "Volante do Santos bi"
+    ]
+   ]
+  },
+  {
+   "t": "Meia nascido na Galícia, bicampeão europeu pela Inter de Helenio Herrera nos anos 1960. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "luis_suarez_es"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "luis_suarez_es",
+    [
+     "Meia nascido na Galí"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante ídolo do Hamburgo que disputou quatro Copas do Mundo pela Alemanha. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "seeler"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "seeler",
+    [
+     "Atacante ídolo do Ha"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta-esquerda do Santos apelidado de Canhão da Vila, bicampeão do mundo. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pepe"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pepe",
+    [
+     "Ponta-esquerda do Sa"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante escocês que marcou de calcanhar pelo Manchester City contra o United, em 1974, e nem comemorou. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "law"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "law",
+    [
+     "Atacante escocês que"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante apelidado de Possesso por Nelson Rodrigues, que depois jogou no Milan. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "amarildo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "amarildo",
+    [
+     "Atacante apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante inglês que perdeu a final de 1966 por lesão e é o maior artilheiro da história da primeira divisão inglesa. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "greaves"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "greaves",
+    [
+     "Atacante inglês que "
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro e capitão da Inglaterra campeã do mundo em 1966. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "moore"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "moore",
+    [
+     "Zagueiro e capitão d"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro inglês campeão do mundo em 1966 que jogou pelo Leicester e pelo Stoke City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "banks"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "banks",
+    [
+     "Goleiro inglês campe"
+    ]
+   ]
+  },
+  {
+   "t": "Meia italiano que fez o gol da vitória por 4 a 3 sobre a Alemanha Ocidental na semifinal da Copa de 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rivera"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rivera",
+    [
+     "Meia italiano que fe"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-esquerdo ofensivo da Grande Inter, capitão da Itália campeã europeia em 1968. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "facchetti"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "facchetti",
+    [
+     "Lateral-esquerdo ofe"
+    ]
+   ]
+  },
+  {
+   "t": "Meia da Grande Inter que marcou duas vezes na final da Copa dos Campeões de 1964, contra o Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mazzola"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mazzola",
+    [
+     "Meia da Grande Inter"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro que foi campeão do mundo aos 40 anos, como capitão da Itália em 1982. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zoff"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zoff",
+    [
+     "Goleiro que foi camp"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta norte-irlandês que marcou seis gols em um jogo da FA Cup contra o Northampton, em 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "best"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "best",
+    [
+     "Ponta norte-irlandês"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro chileno, ídolo do Internacional bicampeão brasileiro nos anos 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "figueroa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "figueroa",
+    [
+     "Zagueiro chileno"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante holandês que marcou o milésimo gol da história das Copas, de pênalti, em 1978. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rensenbrink"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rensenbrink",
+    [
+     "Atacante holandês qu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia peruano com dez gols em Copas do Mundo, destaque em 1970 e 1978. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cubillas"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cubillas",
+    [
+     "Meia peruano com dez"
+    ]
+   ]
+  },
+  {
+   "t": "Meia tcheco que eternizou a cavadinha no pênalti decisivo da Euro de 1976. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "panenka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "panenka",
+    [
+     "Meia tcheco que eter"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta careca da Polônia que fez o gol da vitória sobre o Brasil na disputa do terceiro lugar em 1974. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lato"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lato",
+    [
+     "Ponta careca da Polô"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante escocês que foi campeão pelo Liverpool como jogador e depois como técnico. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dalglish"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dalglish",
+    [
+     "Atacante escocês que"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante do Dínamo de Kiev eleito Bola de Ouro em 1975. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "blokhin"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "blokhin",
+    [
+     "Atacante do Dínamo d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino, artilheiro e campeão da Copa de 1978, com dois gols na final. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kempes"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kempes",
+    [
+     "Atacante argentino"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante camaronês que dançava junto à bandeirinha de escanteio na Copa de 1990, aos 38 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "milla"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "milla",
+    [
+     "Atacante camaronês q"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro e capitão da Argentina campeã do mundo em 1978. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "passarella"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "passarella",
+    [
+     "Zagueiro e capitão d"
+    ]
+   ]
+  },
+  {
+   "t": "Líbero elegante da Juventus, campeão do mundo em 1982, que nunca foi expulso na carreira. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "scirea"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "scirea",
+    [
+     "Líbero elegante da J"
+    ]
+   ]
+  },
+  {
+   "t": "Volante mineiro ídolo do Atlético, da Roma e da Sampdoria. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cerezo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "cerezo",
+    [
+     "Volante mineiro ídol"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante italiano que fez três gols no Brasil na Copa de 1982. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rossi",
+    [
+     "Atacante italiano qu"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante do Atlético Mineiro que comemorava gols com o punho cerrado nos anos 1970. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "reinaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "reinaldo",
+    [
+     "Atacante do Atlético"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão, duas vezes Bola de Ouro, que depois virou dirigente do Bayern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rummenigge"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rummenigge",
+    [
+     "Atacante alemão"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante polonês da Juventus que depois presidiu a federação de futebol do seu país. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "boniek"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "boniek",
+    [
+     "Atacante polonês da "
+    ]
+   ]
+  },
+  {
+   "t": "Ponta-esquerda do Atlético Mineiro famoso pelo chute forte na Copa de 1982. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "eder"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "eder",
+    [
+     "Ponta-esquerda do At"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro soviético do Spartak Moscou, destaque do vice-campeonato europeu de 1988. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dasaev"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dasaev",
+    [
+     "Goleiro soviético do"
+    ]
+   ]
+  },
+  {
+   "t": "Meia ganês, pai dos atacantes André e Jordan Ayew. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "abedi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "abedi",
+    [
+     "Meia ganês"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argelino que marcou na vitória histórica sobre a Alemanha Ocidental na Copa de 1982. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "madjer"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "madjer",
+    [
+     "Atacante argelino qu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia holandês de tranças, Bola de Ouro de 1987 pelo Milan. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gullit"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gullit",
+    [
+     "Meia holandês de tra"
+    ]
+   ]
+  },
+  {
+   "t": "Volante holandês do Milan que depois treinou o Barcelona campeão europeu em 2006. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rijkaard"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rijkaard",
+    [
+     "Volante holandês do "
+    ]
+   ]
+  },
+  {
+   "t": "Meia e capitão da Alemanha campeã em 1990, que disputou cinco Copas do Mundo. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "matthaus"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "matthaus",
+    [
+     "Meia e capitão da Al"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta do Grêmio campeão mundial de 1983 que voltou ao clube para ganhar a Libertadores como técnico. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "renato_gaucho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "renato_gaucho",
+    [
+     "Ponta do Grêmio camp"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante da Democracia Corinthiana que depois virou comentarista de televisão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "casagrande"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "casagrande",
+    [
+     "Atacante da Democrac"
+    ]
+   ]
+  },
+  {
+   "t": "Meia uruguaio apelidado de Príncipe, ídolo do River Plate e inspiração de Zidane. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "francescoli"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "francescoli",
+    [
+     "Meia uruguaio apelid"
+    ]
+   ]
+  },
+  {
+   "t": "Meia colombiano de cabelo loiro volumoso, apelidado de El Pibe. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "valderrama"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "valderrama",
+    [
+     "Meia colombiano de c"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito titular na final da Copa de 1994, que se machucou no primeiro tempo e deu lugar a Cafu. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "jorginho"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "jorginho",
+    [
+     "Lateral-direito titu"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-esquerdo que disputou as Copas de 1986, 1990 e 1994 e jogou no Porto e no Genoa. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "branco"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "branco",
+    [
+     "Lateral-esquerdo que"
+    ]
+   ]
+  },
+  {
+   "t": "Meia romeno que fez um golaço de longe, por cobertura, contra a Colômbia na Copa de 1994. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hagi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hagi",
+    [
+     "Meia romeno que fez "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro reserva no tetra de 1994, titular do São Paulo que venceu o Barcelona e o Milan em Tóquio. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zetti"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zetti",
+    [
+     "Goleiro reserva no t"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante chileno que usou a camisa '1+8' na Inter de Milão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zamorano"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zamorano",
+    [
+     "Atacante chileno que"
+    ]
+   ]
+  },
+  {
+   "t": "Meia do São Paulo bicampeão mundial de clubes, irmão de Sócrates. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "raí"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "raí",
+    [
+     "Meia do São Paulo bi"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro colombiano que perdeu a bola para Roger Milla fora da área na Copa de 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "higuita"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "higuita",
+    [
+     "Goleiro colombiano q"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante holandês que tinha medo de avião, ídolo do Arsenal. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bergkamp"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bergkamp",
+    [
+     "Atacante holandês qu"
+    ]
+   ]
+  },
+  {
+   "t": "Volante que jogou 13 temporadas pelo Deportivo La Coruña e venceu a Copa do Rei de 2002 no Bernabéu. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mauro_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mauro_silva",
+    [
+     "Volante que jogou 13"
+    ]
+   ]
+  },
+  {
+   "t": "Meia nigeriano driblador, campeão olímpico em Atlanta 1996, ídolo do Bolton. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "okocha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "okocha",
+    [
+     "Meia nigeriano dribl"
+    ]
+   ]
+  },
+  {
+   "t": "Volante irlandês que deixou a seleção às vésperas da Copa de 2002 depois de uma briga com o técnico. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "keane"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "keane",
+    [
+     "Volante irlandês que"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro sul-coreano que converteu o pênalti decisivo contra a Espanha nas quartas da Copa de 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hong"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hong",
+    [
+     "Zagueiro sul-coreano"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nigeriano que voltou a jogar depois de uma cirurgia no coração, quando estava na Inter. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kanu"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kanu",
+    [
+     "Atacante nigeriano q"
+    ]
+   ]
+  },
+  {
+   "t": "Meia japonês que estreou na Série A pelo Perugia marcando dois gols contra a Juventus, em 1998. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nakata"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nakata",
+    [
+     "Meia japonês que est"
+    ]
+   ]
+  },
+  {
+   "t": "Meia-atacante belga, ídolo do Chelsea, contratado pelo Real Madrid em 2019. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hazard"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hazard",
+    [
+     "Meia-atacante belga"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante sul-coreano, ídolo do Tottenham e artilheiro da Premier League 2021-22. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "son"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "son",
+    [
+     "Atacante sul-coreano"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante senegalês campeão africano em 2022 e parceiro de Salah no Liverpool. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mane",
+    [
+     "Atacante senegalês c"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro bicampeão do mundo em 1958 e 1962, ídolo do Corinthians e do Santos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gilmar"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gilmar",
+    [
+     "Goleiro bicampeão do"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro titular do Brasil tricampeão em 1970, ídolo do Fluminense. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "felix"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "felix",
+    [
+     "Goleiro titular do B"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro holandês que depois foi técnico do Barcelona e da seleção da Holanda. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "koeman"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "koeman",
+    [
+     "Zagueiro holandês qu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia dinamarquês que jogou por Barcelona e Real Madrid nos anos 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "laudrup"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "laudrup",
+    [
+     "Meia dinamarquês que"
+    ]
+   ]
+  },
+  {
+   "t": "Meia do tetra em 1994, ídolo do Flamengo e do Palmeiras. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zinho"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zinho",
+    [
+     "Meia do tetra em 199"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que perseguiu por anos o seu milésimo gol, grande ídolo do Botafogo nos anos 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "tulio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "tulio",
+    [
+     "Atacante que persegu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia habilidoso do Palmeiras e do Deportivo La Coruña, famoso pela 'lambreta'. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "djalminha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "djalminha",
+    [
+     "Meia habilidoso do P"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante pentacampeão em 2002 que fez embaixadinhas na final do Paulistão de 1999 e provocou uma briga. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "edilson"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "edilson",
+    [
+     "Atacante pentacampeã"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante brasileiro que foi artilheiro e ídolo do Bayern de Munique nos anos 1990 e 2000. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "elber"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "elber",
+    [
+     "Atacante brasileiro "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante apelidado de Anjo Loiro, revelado pelo Flamengo, que jogou pelo Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "savio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "savio",
+    [
+     "Atacante apelidado d"
+    ]
+   ]
+  },
+  {
+   "t": "Volante pentacampeão em 2002, ídolo do Corinthians. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vampeta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "vampeta",
+    [
+     "Volante pentacampeão"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral e meia que jogou até os 43 anos, ídolo do Bayern e do Palmeiras. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ze_roberto"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ze_roberto",
+    [
+     "Lateral e meia que j"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta famoso pelas pedaladas, reserva no penta de 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "denilson"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "denilson",
+    [
+     "Ponta famoso pelas p"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino apelidado de La Joya, ídolo da Juventus. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dybala"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dybala",
+    [
+     "Atacante argentino a"
+    ]
+   ]
+  },
+  {
+   "t": "Meia uruguaio que chegou ao Flamengo vindo do Cruzeiro, em 2019. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "arrascaeta"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "arrascaeta",
+    [
+     "Meia uruguaio que ch"
+    ]
+   ]
+  },
+  {
+   "t": "Volante carioca campeão da Copa do Brasil de 2019 pelo Athletico Paranaense e ouro olímpico em Tóquio. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bruno_g"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bruno_g",
+    [
+     "Volante carioca camp"
+    ]
+   ]
+  },
+  {
+   "t": "Meia uruguaio revelado pelo Peñarol, titular do Real Madrid. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "valverde"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "valverde",
+    [
+     "Meia uruguaio revela"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que pintava as ruas do Jardim Peri para a Copa de 2014 e dois anos depois foi campeão olímpico. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gabriel_jesus"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "gabriel_jesus",
+    [
+     "Atacante que pintava"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante capixaba apelidado de Pombo, autor de um voleio contra a Sérvia na Copa de 2022. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "richarlison"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "richarlison",
+    [
+     "Atacante capixaba ap"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro revelado pelo Benfica, campeão da Champions pelo Manchester City em 2023. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ruben_dias"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ruben_dias",
+    [
+     "Zagueiro revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nigeriano que jogava de máscara protetora no Napoli e depois foi emprestado ao Galatasaray. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "osimhen"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "osimhen",
+    [
+     "Atacante nigeriano q"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta gaúcho que passou pelo Leeds antes de chegar ao Barcelona. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "raphinha"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "raphinha",
+    [
+     "Ponta gaúcho que pas"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral-direito revelado pelo Liverpool que foi para o Real Madrid em 2025. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "taa"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "taa",
+    [
+     "Lateral-direito reve"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante uruguaio revelado pelo Peñarol, que passou pelo Almería antes de brilhar no Benfica. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nunez"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "nunez",
+    [
+     "Atacante uruguaio re"
+    ]
+   ]
+  },
+  {
+   "t": "Meia inglês apelidado de Stockport Iniesta, revelado pelo Manchester City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "foden"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "foden",
+    [
+     "Meia inglês apelidad"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante revelado pelo Santos que chegou ao Real Madrid em 2019, ainda adolescente. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rodrygo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rodrygo",
+    [
+     "Atacante revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro revelado pelo São Paulo, campeão da Champions de 2022 pelo Real Madrid e titular do Brasil na Copa do Catar. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "militao"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "militao",
+    [
+     "Zagueiro revelado pe"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta inglês revelado pelo Arsenal que perdeu o último pênalti da final da Euro 2020. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "saka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "saka",
+    [
+     "Ponta inglês revelad"
+    ]
+   ]
+  },
+  {
+   "t": "Meia espanhol revelado no Las Palmas, eleito o melhor jovem da Euro 2020. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pedri"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pedri",
+    [
+     "Meia espanhol revela"
+    ]
+   ]
+  },
+  {
+   "t": "Meia inglês que passou por Birmingham e Borussia Dortmund antes de chegar ao Real Madrid em 2023. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bellingham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bellingham",
+    [
+     "Meia inglês que pass"
+    ]
+   ]
+  },
+  {
+   "t": "Meia que jogou na base da seleção inglesa antes de escolher a Alemanha, ídolo do Bayern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "musiala"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "musiala",
+    [
+     "Meia que jogou na ba"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante que marcou pelo Brasil em Wembley e no Bernabéu, aos 17 anos, em 2024. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "endrick"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "endrick",
+    [
+     "Atacante que marcou "
+    ]
+   ]
+  },
+  {
+   "t": "Ponta revelado pelo Barcelona que ganhou a Euro de 2024 aos 17 anos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "yamal"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "yamal",
+    [
+     "Ponta revelado pelo "
+    ]
+   ]
+  },
+  {
+   "t": "Volante capitão da França campeã em 1998 e técnico campeão em 2018. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "deschamps"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "deschamps",
+    [
+     "Volante capitão da F"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro francês que foi expulso na final da Copa de 1998 e mesmo assim saiu campeão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "desailly"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "desailly",
+    [
+     "Zagueiro francês que"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral francês que marcou seus dois únicos gols pela seleção na semifinal da Copa de 1998. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "thuram"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "thuram",
+    [
+     "Lateral francês que "
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro careca da França campeã em 1998, que ganhava um beijo na cabeça de Laurent Blanc antes dos jogos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "barthez"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "barthez",
+    [
+     "Goleiro careca da Fr"
+    ]
+   ]
+  },
+  {
+   "t": "Volante francês, capitão dos Invencíveis do Arsenal em 2003-04. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vieira"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "vieira",
+    [
+     "Volante francês"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta francês que formou com Robben a dupla apelidada de Robbery no Bayern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ribery"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ribery",
+    [
+     "Ponta francês que fo"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante francês, artilheiro da Euro de 2016 e campeão do mundo em 2018. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "griezmann"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "griezmann",
+    [
+     "Atacante francês"
+    ]
+   ]
+  },
+  {
+   "t": "Volante francês de família malinesa, campeão do mundo em 2018, que jogava no Caen antes do Leicester. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kante"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "kante",
+    [
+     "Volante francês de f"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro e capitão da França campeã do mundo em 2018. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lloris"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lloris",
+    [
+     "Goleiro e capitão da"
+    ]
+   ]
+  },
+  {
+   "t": "Meia francês campeão do mundo em 2018, que marcou na final contra a Croácia. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pogba"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pogba",
+    [
+     "Meia francês campeão"
+    ]
+   ]
+  },
+  {
+   "t": "Meia do Benfica e de Portugal na Copa de 1966, apelidado de Monstro Sagrado. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "coluna"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "coluna",
+    [
+     "Meia do Benfica e de"
+    ]
+   ]
+  },
+  {
+   "t": "Meia português ídolo da Fiorentina e do Milan, que depois se tornou presidente do Benfica. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ruicosta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ruicosta",
+    [
+     "Meia português ídolo"
+    ]
+   ]
+  },
+  {
+   "t": "Meia naturalizado português, campeão da Champions pelo Porto em 2004 e pelo Barcelona em 2006. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "deco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "deco",
+    [
+     "Meia naturalizado po"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante açoriano, ídolo do PSG nos anos 2000. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pauleta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "pauleta",
+    [
+     "Atacante açoriano"
+    ]
+   ]
+  },
+  {
+   "t": "Meia português capitão do Manchester United, contratado junto ao Sporting em 2020. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bruno_fernandes"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bruno_fernandes",
+    [
+     "Meia português capit"
+    ]
+   ]
+  },
+  {
+   "t": "Meia português revelado pelo Benfica que brilhou no Monaco e no Manchester City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bernardo_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bernardo_silva",
+    [
+     "Meia português revel"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro português que jogou pelo Barcelona entre duas passagens pelo Porto. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vitor_baia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "vitor_baia",
+    [
+     "Goleiro português qu"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro argentino que defendeu um pênalti de Deyna na Copa de 1978. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "fillol"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "fillol",
+    [
+     "Goleiro argentino qu"
+    ]
+   ]
+  },
+  {
+   "t": "Meia argentino campeão em 1978 que se transferiu para o Tottenham logo depois da Copa. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ardiles"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ardiles",
+    [
+     "Meia argentino campe"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino campeão em 1986 que foi técnico do Real Madrid campeão espanhol em 1995. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "valdano"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "valdano",
+    [
+     "Atacante argentino c"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino que ficou fora da final da Copa de 1990 por cartões amarelos. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "caniggia"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "caniggia",
+    [
+     "Atacante argentino q"
+    ]
+   ]
+  },
+  {
+   "t": "Meia argentino apelidado de La Brujita, ídolo do Estudiantes e da Lazio. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "veron"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "veron",
+    [
+     "Meia argentino apeli"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino que marcou duas vezes pelo Milan na final da Champions de 2005, perdida para o Liverpool. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "crespo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "crespo",
+    [
+     "Atacante argentino q"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral argentino, capitão e recordista de jogos pela Inter de Milão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zanetti"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zanetti",
+    [
+     "Lateral argentino"
+    ]
+   ]
+  },
+  {
+   "t": "Volante argentino do Barcelona que também jogou no Corinthians, em 2005 e 2006. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mascherano"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "mascherano",
+    [
+     "Volante argentino do"
+    ]
+   ]
+  },
+  {
+   "t": "Meia argentino que fez o gol do título da Copa América de 2021, no Maracanã. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "dimaria"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "dimaria",
+    [
+     "Meia argentino que f"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante argentino revelado pelo Racing, capitão da Inter de Milão. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lautaro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "lautaro",
+    [
+     "Atacante argentino r"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro espanhol dos anos 1920 e 1930 que dá nome ao prêmio de goleiro menos vazado da Espanha. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zamora"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "zamora",
+    [
+     "Goleiro espanhol dos"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante espanhol apelidado de Buitre, que marcou quatro gols contra a Dinamarca na Copa de 1986. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "butragueno"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "butragueno",
+    [
+     "Atacante espanhol ap"
+    ]
+   ]
+  },
+  {
+   "t": "Zagueiro artilheiro do Real Madrid e capitão da Espanha nos anos 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hierro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "hierro",
+    [
+     "Zagueiro artilheiro "
+    ]
+   ]
+  },
+  {
+   "t": "Atacante espanhol apelidado de El Niño, autor do gol do título da Euro de 2008. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "torres"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "torres",
+    [
+     "Atacante espanhol ap"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante espanhol apelidado de El Guaje, que jogou no Barcelona, no Atlético de Madrid e no New York City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "villa"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "villa",
+    [
+     "Atacante espanhol ap"
+    ]
+   ]
+  },
+  {
+   "t": "Meia espanhol apelidado de Merlin, ídolo do Manchester City por dez temporadas. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "david_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "david_silva",
+    [
+     "Meia espanhol apelid"
+    ]
+   ]
+  },
+  {
+   "t": "Volante do Barcelona de Guardiola que depois foi jogar no Inter Miami ao lado de Messi. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "busquets"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "busquets",
+    [
+     "Volante do Barcelona"
+    ]
+   ]
+  },
+  {
+   "t": "Volante espanhol, Bola de Ouro de 2024, que fez o gol do título da Champions de 2023 pelo Manchester City. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rodri"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "rodri",
+    [
+     "Volante espanhol"
+    ]
+   ]
+  },
+  {
+   "t": "Goleiro do Bayern tricampeão europeu nos anos 1970 e campeão do mundo em 1974. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maier"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "maier",
+    [
+     "Goleiro do Bayern tr"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral alemão que marcou em duas finais de Copa, em 1974 e 1982. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "breitner"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "breitner",
+    [
+     "Lateral alemão que m"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão campeão do mundo em 1990 que depois treinou a seleção na Copa de 2006. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "klinsmann"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "klinsmann",
+    [
+     "Atacante alemão camp"
+    ]
+   ]
+  },
+  {
+   "t": "Lateral alemão que fez de pênalti o gol da final da Copa de 1990 contra a Argentina. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "brehme"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "brehme",
+    [
+     "Lateral alemão que f"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão que levou uma cusparada de Rijkaard na Copa de 1990. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "voller"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "voller",
+    [
+     "Atacante alemão que "
+    ]
+   ]
+  },
+  {
+   "t": "Meia alemão do Leverkusen que foi vice da Bundesliga, da Copa da Alemanha e da Champions no mesmo ano de 2002. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ballack"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ballack",
+    [
+     "Meia alemão do Lever"
+    ]
+   ]
+  },
+  {
+   "t": "Meia alemão campeão do mundo em 2014 que terminou a final com o rosto sangrando. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "schweinsteiger"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "schweinsteiger",
+    [
+     "Meia alemão campeão "
+    ]
+   ]
+  },
+  {
+   "t": "Meia alemão de família turca, campeão do mundo em 2014 e ídolo do Arsenal. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ozil"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "ozil",
+    [
+     "Meia alemão de famíl"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante alemão, artilheiro da Copa de 2010, que jogou quase toda a carreira no Bayern. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "thomas_muller"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "thomas_muller",
+    [
+     "Atacante alemão"
+    ]
+   ]
+  },
+  {
+   "t": "Ponta inglês que jogou a carreira inteira no Preston North End. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "finney"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "finney",
+    [
+     "Ponta inglês que jog"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante bicampeão do mundo pela Itália em 1934 e 1938, que dá nome ao estádio de San Siro. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "meazza"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "meazza",
+    [
+     "Atacante bicampeão d"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante italiano, maior artilheiro da história da Série A e campeão do mundo em 1938. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "piola"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "piola",
+    [
+     "Atacante italiano"
+    ]
+   ]
+  },
+  {
+   "t": "Atacante nascido em Viena, considerado um dos maiores goleadores do século XX, que jogou pela Áustria e pela Tchecoslováquia. Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bican"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "bican",
+    [
+     "Atacante nascido em "
+    ]
+   ]
+  }
+ ]
+}

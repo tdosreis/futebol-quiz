@@ -1,0 +1,585 @@
+{
+ "id": "feminino",
+ "name": "Futebol feminino",
+ "emoji": "⚽",
+ "tag": "Feminino",
+ "col": "#8c3a6b",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Fui eleita seis vezes a melhor jogadora do mundo pela FIFA, cinco delas seguidas (2006 a 2010). Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Sun Wen",
+    "Marta",
+    "Alexia Putellas",
+    "Ada Hegerberg",
+    "Abby Wambach",
+    "Cristiane"
+   ],
+   "a": [
+    "Marta"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Marta (futebolista)",
+    [
+     "Marta"
+    ]
+   ]
+  },
+  {
+   "t": "Joguei sete Copas do Mundo, de 1995 a 2019, recorde entre homens e mulheres. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Kerolin",
+    "Birgit Prinz",
+    "Formiga",
+    "Alex Morgan",
+    "Ludmila",
+    "Cristiane"
+   ],
+   "a": [
+    "Formiga"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Formiga (futebolista)",
+    [
+     "Formiga"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a maior artilheira da história do futebol olímpico, com 14 gols. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Birgit Prinz",
+    "Vivianne Miedema",
+    "Alex Morgan",
+    "Cristiane",
+    "Pernille Harder",
+    "Ludmila"
+   ],
+   "a": [
+    "Cristiane"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Cristiane (futebolista)",
+    [
+     "Cristiane"
+    ]
+   ]
+  },
+  {
+   "t": "Fui artilheira da Copa do Mundo feminina de 1999, dividindo o prêmio com a chinesa Sun Wen. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Formiga",
+    "Marta",
+    "Aitana Bonmatí",
+    "Homare Sawa",
+    "Beth Mead",
+    "Sissi"
+   ],
+   "a": [
+    "Sissi"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Sissi (futebolista)",
+    [
+     "Sissi"
+    ]
+   ]
+  },
+  {
+   "t": "Sou espanhola, do Barcelona, e ganhei a Bola de Ouro em 2023 e 2024. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Lucy Bronze",
+    "Cristiane",
+    "Sam Kerr",
+    "Alex Morgan",
+    "Aitana Bonmatí",
+    "Olga Carmona"
+   ],
+   "a": [
+    "Aitana Bonmatí"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Aitana Bonmatí",
+    [
+     "Bonmatí"
+    ]
+   ]
+  },
+  {
+   "t": "Marquei três gols em 16 minutos na final da Copa de 2015, um deles do meio de campo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alex Morgan",
+    "Carli Lloyd",
+    "Aitana Bonmatí",
+    "Christine Sinclair",
+    "Debinha",
+    "Alexia Putellas"
+   ],
+   "a": [
+    "Carli Lloyd"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Carli Lloyd",
+    [
+     "Lloyd"
+    ]
+   ]
+  },
+  {
+   "t": "Sou japonesa, capitã e melhor jogadora da Copa de 2011, vencida pelo Japão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Pernille Harder",
+    "Megan Rapinoe",
+    "Homare Sawa",
+    "Kerolin",
+    "Cristiane",
+    "Wendie Renard"
+   ],
+   "a": [
+    "Homare Sawa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Homare Sawa",
+    [
+     "Sawa"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemã e fui eleita três vezes a melhor jogadora do mundo pela FIFA. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Olga Carmona",
+    "Pernille Harder",
+    "Wendie Renard",
+    "Sam Kerr",
+    "Birgit Prinz",
+    "Christine Sinclair"
+   ],
+   "a": [
+    "Birgit Prinz"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Birgit Prinz",
+    [
+     "Prinz"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz o gol do título da Euro 2022 na prorrogação, em Wembley, e comemorei tirando a camisa. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Homare Sawa",
+    "Debinha",
+    "Ada Hegerberg",
+    "Chloe Kelly",
+    "Wendie Renard",
+    "Birgit Prinz"
+   ],
+   "a": [
+    "Chloe Kelly"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Chloe Kelly",
+    [
+     "Kelly"
+    ]
+   ]
+  },
+  {
+   "t": "Sou australiana, capitã da seleção e artilheira do Chelsea. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Cristiane",
+    "Kerolin",
+    "Chloe Kelly",
+    "Sissi",
+    "Sun Wen",
+    "Sam Kerr"
+   ],
+   "a": [
+    "Sam Kerr"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Sam Kerr",
+    [
+     "Kerr"
+    ]
+   ]
+  },
+  {
+   "t": "Sou uma lenda americana dos anos 1990, bicampeã do mundo e dos Jogos Olímpicos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Debinha",
+    "Lucy Bronze",
+    "Beth Mead",
+    "Megan Rapinoe",
+    "Ludmila",
+    "Mia Hamm"
+   ],
+   "a": [
+    "Mia Hamm"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Mia Hamm",
+    [
+     "Hamm"
+    ]
+   ]
+  },
+  {
+   "t": "Sou francesa, zagueira e capitã do Lyon, oito vezes campeão europeu. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Aitana Bonmatí",
+    "Alexia Putellas",
+    "Ludmila",
+    "Cristiane",
+    "Wendie Renard",
+    "Christine Sinclair"
+   ],
+   "a": [
+    "Wendie Renard"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Wendie Renard",
+    [
+     "Renard"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção feminina tem mais títulos mundiais?",
+   "type": "txt",
+   "choices": [
+    "Espanha",
+    "Japão",
+    "Austrália",
+    "França",
+    "China",
+    "Estados Unidos"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Women's World Cup",
+    [
+     "Unidos"
+    ]
+   ],
+   "x": "São quatro: 1991, 1999, 2015 e 2019."
+  },
+  {
+   "t": "Qual seleção ganhou a Copa do Mundo feminina de 1995, na Suécia?",
+   "type": "txt",
+   "choices": [
+    "Noruega",
+    "Canadá",
+    "Alemanha",
+    "Holanda",
+    "Japão",
+    "França"
+   ],
+   "a": [
+    "Noruega"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1995 FIFA Women's World Cup",
+    [
+     "Noruega"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi a melhor campanha do Brasil numa Copa do Mundo feminina?",
+   "type": "txt",
+   "choices": [
+    "Campeão em 2007",
+    "Campeão em 2019",
+    "Vice-campeão em 2007",
+    "Vice-campeão em 2011",
+    "Semifinalista em 2015",
+    "Terceiro em 1999"
+   ],
+   "a": [
+    "Vice-campeão em 2007"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira de Futebol Feminino",
+    [
+     "2007"
+    ]
+   ],
+   "x": "Na final de 2007, na China, o Brasil perdeu por 2 a 0 para a Alemanha."
+  },
+  {
+   "t": "Qual seleção ganhou a Euro feminina de 2022 e de 2025?",
+   "type": "txt",
+   "choices": [
+    "Austrália",
+    "Holanda",
+    "Espanha",
+    "Inglaterra",
+    "Estados Unidos",
+    "Brasil"
+   ],
+   "a": [
+    "Inglaterra"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Women's Championship",
+    [
+     "Inglaterra"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é o maior campeão da Champions League feminina?",
+   "type": "txt",
+   "choices": [
+    "Arsenal",
+    "Lyon",
+    "Wolfsburg",
+    "Barcelona",
+    "Chelsea",
+    "Frankfurt"
+   ],
+   "a": [
+    "Lyon"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Women's Champions League",
+    [
+     "Lyon"
+    ]
+   ],
+   "x": "O Lyon já tem oito títulos."
+  },
+  {
+   "t": "Quantos gols Marta marcou em Copas do Mundo, recorde entre homens e mulheres?",
+   "type": "txt",
+   "choices": [
+    "18",
+    "15",
+    "16",
+    "14",
+    "17",
+    "19"
+   ],
+   "a": [
+    "17"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Marta (futebolista)",
+    [
+     "17"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo Formiga disputou?",
+   "type": "txt",
+   "choices": [
+    "Cinco",
+    "Oito",
+    "Seis",
+    "Sete",
+    "Nove",
+    "Quatro"
+   ],
+   "a": [
+    "Sete"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Formiga (futebolista)",
+    [
+     "Sete"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano foi entregue a primeira Bola de Ouro feminina?",
+   "type": "txt",
+   "choices": [
+    "2019",
+    "2017",
+    "2020",
+    "2015",
+    "2018",
+    "2016"
+   ],
+   "a": [
+    "2018"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "Ballon d'Or Féminin",
+    [
+     "2018"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleira americana, bicampeã do mundo, foi eleita a melhor goleira da Copa de 2011 e da de 2015?",
+   "type": "txt",
+   "choices": [
+    "Mary Earps",
+    "Briana Scurry",
+    "Hope Solo",
+    "Alyssa Naeher",
+    "Bárbara",
+    "Nadine Angerer"
+   ],
+   "a": [
+    "Hope Solo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Hope Solo",
+    [
+     "Solo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleira inglesa foi eleita a melhor goleira da Copa do Mundo feminina de 2023?",
+   "type": "txt",
+   "choices": [
+    "Mary Earps",
+    "Nadine Angerer",
+    "Cata Coll",
+    "Alyssa Naeher",
+    "Sari van Veenendaal",
+    "Hope Solo"
+   ],
+   "a": [
+    "Mary Earps"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Mary Earps",
+    [
+     "Earps"
+    ]
+   ]
+  }
+ ]
+}

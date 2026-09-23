@@ -94,8 +94,11 @@
 
    v43: Antony's card is drawn; his "photo" was a church in Antony, France.
 
-   v44: every question picture is a photograph. */
-const VERSION = 'v44';
+   v44: every question picture is a photograph.
+
+   v45: 1,003 new questions: who-am-I (players, coaches, clubs, legends),
+        odd-one-out, rules, years, women's football, derbies. */
+const VERSION = 'v45';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

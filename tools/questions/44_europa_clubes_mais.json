@@ -1,0 +1,1523 @@
+{
+ "id": "europa_clubes_mais",
+ "name": "Europa: clubes, técnicos e finais",
+ "emoji": "🏰",
+ "tag": "Champions, ligas nacionais, apelidos e estádios",
+ "col": "#2F4F8F",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Contra qual clube o Manchester United virou nos acréscimos a final da Champions de 1999?",
+   "type": "txt",
+   "choices": [
+    "Real Madrid",
+    "Valencia",
+    "Bayern de Munique",
+    "Juventus",
+    "Barcelona",
+    "Borussia Dortmund"
+   ],
+   "a": [
+    "Bayern de Munique"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 1999",
+    [
+     "Bayern"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube o Liverpool virou de 3 a 0 para 3 a 3 na final da Champions de 2005, em Istambul?",
+   "type": "txt",
+   "choices": [
+    "Chelsea",
+    "Real Madrid",
+    "Inter de Milão",
+    "Milan",
+    "Juventus",
+    "Barcelona"
+   ],
+   "a": [
+    "Milan"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 2005",
+    [
+     "Milan"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube perdeu a final da Champions de 2008 nos pênaltis, sob chuva em Moscou?",
+   "type": "txt",
+   "choices": [
+    "Manchester United",
+    "Barcelona",
+    "Roma",
+    "Liverpool",
+    "Arsenal",
+    "Chelsea"
+   ],
+   "a": [
+    "Chelsea"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 2008",
+    [
+     "Chelsea"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube a Inter de Milão venceu na final da Champions de 2010, em Madri?",
+   "type": "txt",
+   "choices": [
+    "Barcelona",
+    "Bayern de Munique",
+    "Lyon",
+    "Real Madrid",
+    "Manchester United",
+    "Chelsea"
+   ],
+   "a": [
+    "Bayern de Munique"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 2010",
+    [
+     "Bayern"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube perdeu a final da Champions de 2012 em casa, no próprio estádio, para o Chelsea?",
+   "type": "txt",
+   "choices": [
+    "Barcelona",
+    "Juventus",
+    "Borussia Dortmund",
+    "Bayern de Munique",
+    "Real Madrid",
+    "Benfica"
+   ],
+   "a": [
+    "Bayern de Munique"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 2012",
+    [
+     "Bayern"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube o Bayern venceu na final alemã da Champions de 2013, em Wembley?",
+   "type": "txt",
+   "choices": [
+    "Bayer Leverkusen",
+    "Werder Bremen",
+    "Wolfsburg",
+    "Schalke 04",
+    "Borussia Dortmund",
+    "Hamburgo"
+   ],
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Final da Liga dos Campeões da UEFA de 2013",
+    [
+     "Dortmund"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas vezes o Liverpool foi campeão europeu até 2019?",
+   "type": "txt",
+   "choices": [
+    "Cinco",
+    "Oito",
+    "Quatro",
+    "Sete",
+    "Seis",
+    "Três"
+   ],
+   "a": [
+    "Seis"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Liverpool Football Club",
+    [
+     "seis"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas dos Campeões e Champions o Milan conquistou?",
+   "type": "txt",
+   "choices": [
+    "Sete",
+    "Seis",
+    "Nove",
+    "Oito",
+    "Cinco",
+    "Quatro"
+   ],
+   "a": [
+    "Sete"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Associazione Calcio Milan",
+    [
+     "sete"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas dos Campeões e Champions o Bayern de Munique conquistou até 2020?",
+   "type": "txt",
+   "choices": [
+    "Três",
+    "Sete",
+    "Seis",
+    "Quatro",
+    "Oito",
+    "Cinco"
+   ],
+   "a": [
+    "Seis"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "FC Bayern München",
+    [
+     "seis"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico italiano venceu a Champions com Milan e Real Madrid, somando cinco títulos?",
+   "type": "txt",
+   "choices": [
+    "Carlo Ancelotti",
+    "Fabio Capello",
+    "Claudio Ranieri",
+    "Giovanni Trapattoni",
+    "Arrigo Sacchi",
+    "Marcello Lippi"
+   ],
+   "a": [
+    "Carlo Ancelotti"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Carlo Ancelotti",
+    [
+     "Champions"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico levou o Porto ao título da Champions de 2004 e a Inter ao de 2010?",
+   "type": "txt",
+   "choices": [
+    "André Villas-Boas",
+    "Jesualdo Ferreira",
+    "Carlos Queiroz",
+    "Fernando Santos",
+    "Rafael Benítez",
+    "José Mourinho"
+   ],
+   "a": [
+    "José Mourinho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "José Mourinho",
+    [
+     "Porto",
+     "Inter"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico espanhol venceu a Champions com o Liverpool em 2005?",
+   "type": "txt",
+   "choices": [
+    "Luis Enrique",
+    "Vicente del Bosque",
+    "Unai Emery",
+    "Rafael Benítez",
+    "Xabi Alonso",
+    "Pep Guardiola"
+   ],
+   "a": [
+    "Rafael Benítez"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Rafael Benítez",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico alemão venceu a Champions com o Liverpool em 2019?",
+   "type": "txt",
+   "choices": [
+    "Hansi Flick",
+    "Jürgen Klopp",
+    "Thomas Tuchel",
+    "Julian Nagelsmann",
+    "Ralf Rangnick",
+    "Jupp Heynckes"
+   ],
+   "a": [
+    "Jürgen Klopp"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Jürgen Klopp",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico alemão venceu a Champions com o Chelsea em 2021?",
+   "type": "txt",
+   "choices": [
+    "Julian Nagelsmann",
+    "Ralf Rangnick",
+    "Hansi Flick",
+    "Jupp Heynckes",
+    "Thomas Tuchel",
+    "Jürgen Klopp"
+   ],
+   "a": [
+    "Thomas Tuchel"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Thomas Tuchel",
+    [
+     "Chelsea"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico levou o Bayern ao título da Champions de 2020, vencendo todos os jogos?",
+   "type": "txt",
+   "choices": [
+    "Jupp Heynckes",
+    "Carlo Ancelotti",
+    "Hansi Flick",
+    "Julian Nagelsmann",
+    "Pep Guardiola",
+    "Niko Kovač"
+   ],
+   "a": [
+    "Hansi Flick"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Hans-Dieter Flick",
+    [
+     "2020"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico venceu a Champions de 2013 com o Bayern e depois se aposentou?",
+   "type": "txt",
+   "choices": [
+    "Louis van Gaal",
+    "Felix Magath",
+    "Ottmar Hitzfeld",
+    "Hansi Flick",
+    "Jupp Heynckes",
+    "Pep Guardiola"
+   ],
+   "a": [
+    "Jupp Heynckes"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Jupp Heynckes",
+    [
+     "2013"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico foi campeão da Champions com Barcelona e Manchester City?",
+   "type": "txt",
+   "choices": [
+    "Tito Vilanova",
+    "Xavi",
+    "Frank Rijkaard",
+    "Pep Guardiola",
+    "Johan Cruyff",
+    "Luis Enrique"
+   ],
+   "a": [
+    "Pep Guardiola"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Pep Guardiola",
+    [
+     "Barcelona",
+     "Manchester City"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube venceu a Premier League de 2015-16, uma das maiores zebras da história?",
+   "type": "txt",
+   "choices": [
+    "Everton",
+    "Tottenham",
+    "Leicester City",
+    "West Ham",
+    "Southampton",
+    "Arsenal"
+   ],
+   "a": [
+    "Leicester City"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Leicester City Football Club",
+    [
+     "2015–16"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico do Arsenal dos Invencíveis de 2003-04?",
+   "type": "txt",
+   "choices": [
+    "Arsène Wenger",
+    "Unai Emery",
+    "Rafael Benítez",
+    "George Graham",
+    "José Mourinho",
+    "Alex Ferguson"
+   ],
+   "a": [
+    "Arsène Wenger"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Arsène Wenger",
+    [
+     "Invincibles"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos anos Alex Ferguson ficou no comando do Manchester United?",
+   "type": "txt",
+   "choices": [
+    "20",
+    "22",
+    "18",
+    "15",
+    "30",
+    "26"
+   ],
+   "a": [
+    "26"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Alex Ferguson",
+    [
+     "26"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube o Manchester City venceu no último minuto para ganhar a Premier League de 2011-12?",
+   "type": "txt",
+   "choices": [
+    "Queens Park Rangers",
+    "Sunderland",
+    "Newcastle United",
+    "Stoke City",
+    "Wigan",
+    "Swansea"
+   ],
+   "a": [
+    "Queens Park Rangers"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Premier League 2011–12",
+    [
+     "Queens Park Rangers"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano o Liverpool voltou a ser campeão inglês, depois de 30 anos?",
+   "type": "txt",
+   "choices": [
+    "2020",
+    "2019",
+    "2022",
+    "2021",
+    "2018",
+    "2017"
+   ],
+   "a": [
+    "2020"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Liverpool Football Club",
+    [
+     "2020"
+    ]
+   ]
+  },
+  {
+   "t": "Qual estádio de Londres é a casa do Tottenham desde 2019?",
+   "type": "txt",
+   "choices": [
+    "Tottenham Hotspur Stadium",
+    "Emirates",
+    "Stamford Bridge",
+    "London Stadium",
+    "Craven Cottage",
+    "White Hart Lane"
+   ],
+   "a": [
+    "Tottenham Hotspur Stadium"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Tottenham Hotspur Stadium",
+    [
+     "2019"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do West Ham desde 2016, construído para a Olimpíada de Londres?",
+   "type": "txt",
+   "choices": [
+    "Selhurst Park",
+    "The Valley",
+    "Wembley",
+    "Upton Park",
+    "Craven Cottage",
+    "London Stadium"
+   ],
+   "a": [
+    "London Stadium"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "London Stadium",
+    [
+     "West Ham"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o apelido do Arsenal?",
+   "type": "txt",
+   "choices": [
+    "Toffees",
+    "Spurs",
+    "Magpies",
+    "Hammers",
+    "Red Devils",
+    "Gunners"
+   ],
+   "a": [
+    "Gunners"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Arsenal Football Club",
+    [
+     "Gunners"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube inglês é apelidado de 'Wolves'?",
+   "type": "txt",
+   "choices": [
+    "Leicester City",
+    "Burnley",
+    "Wolverhampton",
+    "Bournemouth",
+    "Watford",
+    "Brighton"
+   ],
+   "a": [
+    "Wolverhampton"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Wolverhampton Wanderers Football Club",
+    [
+     "Wolves"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o hino cantado pela torcida do Liverpool em Anfield?",
+   "type": "txt",
+   "choices": [
+    "I'm Forever Blowing Bubbles",
+    "Keep the Blue Flag Flying High",
+    "You'll Never Walk Alone",
+    "Sweet Caroline",
+    "Glory Glory Man United",
+    "Blue Moon"
+   ],
+   "a": [
+    "You'll Never Walk Alone"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "You'll Never Walk Alone",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é a canção símbolo da torcida do West Ham?",
+   "type": "txt",
+   "choices": [
+    "Marching On Together",
+    "Blue Moon",
+    "I'm Forever Blowing Bubbles",
+    "Glory Glory",
+    "You'll Never Walk Alone",
+    "Sweet Caroline"
+   ],
+   "a": [
+    "I'm Forever Blowing Bubbles"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "I'm Forever Blowing Bubbles",
+    [
+     "West Ham"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube basco só escala jogadores da região basca?",
+   "type": "txt",
+   "choices": [
+    "Eibar",
+    "Real Betis",
+    "Osasuna",
+    "Athletic Bilbao",
+    "Alavés",
+    "Real Sociedad"
+   ],
+   "a": [
+    "Athletic Bilbao"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Athletic Club",
+    [
+     "bascos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Valencia?",
+   "type": "txt",
+   "choices": [
+    "San Mamés",
+    "El Madrigal",
+    "Ciutat de València",
+    "Riazor",
+    "La Cerámica",
+    "Mestalla"
+   ],
+   "a": [
+    "Mestalla"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Estádio de Mestalla",
+    [
+     "Valencia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Atlético de Madrid desde 2017?",
+   "type": "txt",
+   "choices": [
+    "Vallecas",
+    "Santiago Bernabéu",
+    "Metropolitano",
+    "La Peineta Nueva",
+    "Vicente Calderón",
+    "Coliseum"
+   ],
+   "a": [
+    "Metropolitano"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Estádio Metropolitano",
+    [
+     "Atlético"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube espanhol é apelidado de 'Merengues'?",
+   "type": "txt",
+   "choices": [
+    "Espanyol",
+    "Getafe",
+    "Real Madrid",
+    "Atlético de Madrid",
+    "Barcelona",
+    "Valencia"
+   ],
+   "a": [
+    "Real Madrid"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Real Madrid Club de Fútbol",
+    [
+     "Merengues"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube espanhol é apelidado de 'Culés'?",
+   "type": "txt",
+   "choices": [
+    "Espanyol",
+    "Valencia",
+    "Girona",
+    "Barcelona",
+    "Sevilla",
+    "Real Madrid"
+   ],
+   "a": [
+    "Barcelona"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Futbol Club Barcelona",
+    [
+     "culé"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube espanhol é o maior campeão da Liga Europa, com sete títulos até 2023?",
+   "type": "txt",
+   "choices": [
+    "Barcelona",
+    "Atlético de Madrid",
+    "Villarreal",
+    "Valencia",
+    "Real Madrid",
+    "Sevilla"
+   ],
+   "a": [
+    "Sevilla"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Sevilla Fútbol Club",
+    [
+     "Liga Europa"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube espanhol foi campeão da La Liga em 2000, a primeira vez da sua história?",
+   "type": "txt",
+   "choices": [
+    "Athletic Bilbao",
+    "Deportivo La Coruña",
+    "Valencia",
+    "Real Sociedad",
+    "Sevilla",
+    "Real Betis"
+   ],
+   "a": [
+    "Deportivo La Coruña"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Real Club Deportivo de La Coruña",
+    [
+     "2000"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube espanhol foi campeão da La Liga em 2002 e 2004, sob Rafael Benítez?",
+   "type": "txt",
+   "choices": [
+    "Real Madrid",
+    "Deportivo La Coruña",
+    "Valencia",
+    "Barcelona",
+    "Atlético de Madrid",
+    "Sevilla"
+   ],
+   "a": [
+    "Valencia"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Valencia Club de Fútbol",
+    [
+     "2002",
+     "2004"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico argentino levou o Atlético de Madrid aos títulos espanhóis de 2014 e 2021?",
+   "type": "txt",
+   "choices": [
+    "Ramón Díaz",
+    "Mauricio Pochettino",
+    "Marcelo Bielsa",
+    "Jorge Sampaoli",
+    "Diego Simeone",
+    "Gerardo Martino"
+   ],
+   "a": [
+    "Diego Simeone"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Diego Simeone",
+    [
+     "2014",
+     "2021"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos gols Messi marcou no ano de 2012, recorde mundial em um ano civil?",
+   "type": "txt",
+   "choices": [
+    "91",
+    "95",
+    "86",
+    "79",
+    "73",
+    "100"
+   ],
+   "a": [
+    "91"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Lionel Messi",
+    [
+     "91"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos gols Messi marcou no Campeonato Espanhol de 2011-12, recorde da competição?",
+   "type": "txt",
+   "choices": [
+    "40",
+    "44",
+    "48",
+    "46",
+    "52",
+    "50"
+   ],
+   "a": [
+    "50"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Lionel Messi",
+    [
+     "50"
+    ]
+   ]
+  },
+  {
+   "t": "Qual espanhol é o maior artilheiro da história do Real Madrid depois de Cristiano Ronaldo?",
+   "type": "txt",
+   "choices": [
+    "Santillana",
+    "Di Stéfano",
+    "Raúl",
+    "Puskás",
+    "Hugo Sánchez",
+    "Gento"
+   ],
+   "a": [
+    "Raúl"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Raúl González",
+    [
+     "Real Madrid"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube italiano é chamado de 'Velha Senhora'?",
+   "type": "txt",
+   "choices": [
+    "Milan",
+    "Juventus",
+    "Torino",
+    "Bologna",
+    "Genoa",
+    "Sampdoria"
+   ],
+   "a": [
+    "Juventus"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Juventus Football Club",
+    [
+     "Vecchia Signora"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube italiano venceu nove Campeonatos Italianos seguidos, de 2012 a 2020?",
+   "type": "txt",
+   "choices": [
+    "Inter de Milão",
+    "Napoli",
+    "Roma",
+    "Juventus",
+    "Milan",
+    "Lazio"
+   ],
+   "a": [
+    "Juventus"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Juventus Football Club",
+    [
+     "nove"
+    ]
+   ]
+  },
+  {
+   "t": "Qual técnico foi campeão da Série A com Juventus, Chelsea e Inter, e tricampeão italiano seguido pela Juventus?",
+   "type": "txt",
+   "choices": [
+    "Carlo Ancelotti",
+    "Marcello Lippi",
+    "Massimiliano Allegri",
+    "Fabio Capello",
+    "Maurizio Sarri",
+    "Antonio Conte"
+   ],
+   "a": [
+    "Antonio Conte"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Antonio Conte",
+    [
+     "Juventus",
+     "Inter"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube italiano venceu a Champions de 2010 sob José Mourinho?",
+   "type": "txt",
+   "choices": [
+    "Inter de Milão",
+    "Roma",
+    "Juventus",
+    "Lazio",
+    "Napoli",
+    "Milan"
+   ],
+   "a": [
+    "Inter de Milão"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Football Club Internazionale Milano",
+    [
+     "2010"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o nome atual do estádio do Napoli, desde 2020?",
+   "type": "txt",
+   "choices": [
+    "Via del Mare",
+    "Estádio Diego Armando Maradona",
+    "Partenio",
+    "Arechi",
+    "Olímpico",
+    "San Paolo"
+   ],
+   "a": [
+    "Estádio Diego Armando Maradona"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Estádio Diego Armando Maradona",
+    [
+     "2020"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Bundesligas seguidas o Bayern ganhou até 2023?",
+   "type": "txt",
+   "choices": [
+    "Dez",
+    "Oito",
+    "Sete",
+    "Nove",
+    "Doze",
+    "Onze"
+   ],
+   "a": [
+    "Onze"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "FC Bayern München",
+    [
+     "onze"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Borussia Dortmund, famoso pela Muralha Amarela?",
+   "type": "txt",
+   "choices": [
+    "Signal Iduna Park",
+    "Allianz Arena",
+    "Red Bull Arena",
+    "Olympiastadion",
+    "Volksparkstadion",
+    "Veltins-Arena"
+   ],
+   "a": [
+    "Signal Iduna Park"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Signal Iduna Park",
+    [
+     "Dortmund"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Schalke 04?",
+   "type": "txt",
+   "choices": [
+    "Weserstadion",
+    "Mercedes-Benz Arena",
+    "Borussia-Park",
+    "Veltins-Arena",
+    "Allianz Arena",
+    "Signal Iduna Park"
+   ],
+   "a": [
+    "Veltins-Arena"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Veltins-Arena",
+    [
+     "Schalke"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube alemão pertence à montadora Volkswagen?",
+   "type": "txt",
+   "choices": [
+    "Ingolstadt",
+    "RB Leipzig",
+    "Wolfsburg",
+    "Bayer Leverkusen",
+    "Hannover 96",
+    "Stuttgart"
+   ],
+   "a": [
+    "Wolfsburg"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "VfL Wolfsburg",
+    [
+     "Volkswagen"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube francês ganhou sete títulos nacionais seguidos, de 2002 a 2008?",
+   "type": "txt",
+   "choices": [
+    "Monaco",
+    "Olympique de Marselha",
+    "Lyon",
+    "Lille",
+    "PSG",
+    "Bordeaux"
+   ],
+   "a": [
+    "Lyon"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Olympique Lyonnais",
+    [
+     "sete"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube francês é o maior campeão nacional, com mais de dez títulos?",
+   "type": "txt",
+   "choices": [
+    "Saint-Étienne",
+    "Olympique de Marselha",
+    "Monaco",
+    "Nantes",
+    "PSG",
+    "Lyon"
+   ],
+   "a": [
+    "PSG"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Paris Saint-Germain Football Club",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Olympique de Marselha?",
+   "type": "txt",
+   "choices": [
+    "Geoffroy-Guichard",
+    "Groupama Stadium",
+    "Allianz Riviera",
+    "Parc des Princes",
+    "Stade de France",
+    "Vélodrome"
+   ],
+   "a": [
+    "Vélodrome"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Stade Vélodrome",
+    [
+     "Marseille"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube português tem o apelido de 'Leões'?",
+   "type": "txt",
+   "choices": [
+    "Estoril",
+    "Porto",
+    "Sporting",
+    "Benfica",
+    "Braga",
+    "Belenenses"
+   ],
+   "a": [
+    "Sporting"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "POR"
+   },
+   "src": [
+    "pt",
+    "Sporting Clube de Portugal",
+    [
+     "Leões"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o estádio do Porto?",
+   "type": "txt",
+   "choices": [
+    "Estádio do Dragão",
+    "Estádio D. Afonso Henriques",
+    "Estádio da Luz",
+    "Estádio do Bessa",
+    "José Alvalade",
+    "Estádio Municipal de Braga"
+   ],
+   "a": [
+    "Estádio do Dragão"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "POR"
+   },
+   "src": [
+    "pt",
+    "Estádio do Dragão",
+    [
+     "Porto"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube holandês é o maior campeão nacional?",
+   "type": "txt",
+   "choices": [
+    "Feyenoord",
+    "Twente",
+    "Ajax",
+    "AZ Alkmaar",
+    "Utrecht",
+    "PSV"
+   ],
+   "a": [
+    "Ajax"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "AFC Ajax",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube escocês venceu a Copa dos Campeões em 1967, o primeiro britânico campeão europeu?",
+   "type": "txt",
+   "choices": [
+    "Hearts",
+    "Hibernian",
+    "Dundee United",
+    "Celtic",
+    "Aberdeen",
+    "Rangers"
+   ],
+   "a": [
+    "Celtic"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "SCO"
+   },
+   "src": [
+    "pt",
+    "Celtic Football Club",
+    [
+     "1967"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube belga é o maior campeão nacional?",
+   "type": "txt",
+   "choices": [
+    "Antwerp",
+    "Standard Liège",
+    "Genk",
+    "Anderlecht",
+    "Gent",
+    "Club Brugge"
+   ],
+   "a": [
+    "Anderlecht"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BEL"
+   },
+   "src": [
+    "pt",
+    "RSC Anderlecht",
+    [
+     "títulos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube grego venceu a Liga Conferência de 2024, primeiro título europeu de um time do país?",
+   "type": "txt",
+   "choices": [
+    "Panathinaikos",
+    "Olympiacos",
+    "Aris",
+    "AEK Atenas",
+    "Asteras Tripolis",
+    "PAOK"
+   ],
+   "a": [
+    "Olympiacos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Final da Liga Conferência Europa da UEFA de 2024",
+    [
+     "Olympiacos"
+    ]
+   ]
+  }
+ ]
+}

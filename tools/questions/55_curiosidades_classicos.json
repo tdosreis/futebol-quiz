@@ -1,0 +1,717 @@
+{
+ "id": "curiosidades",
+ "name": "Curiosidades e clássicos",
+ "emoji": "🧠",
+ "tag": "Curiosidades",
+ "col": "#5a3a8c",
+ "diff": "Fácil",
+ "qs": [
+  {
+   "t": "Qual é o maior placar da história do futebol oficial entre seleções?",
+   "type": "txt",
+   "choices": [
+    "Hungria 10 x 1 El Salvador",
+    "Austrália 31 x 0 Samoa Americana",
+    "Espanha 13 x 0 Bulgária",
+    "Inglaterra 13 x 0 Irlanda",
+    "Alemanha 16 x 0 Rússia",
+    "Brasil 14 x 0 Nicarágua"
+   ],
+   "a": [
+    "Austrália 31 x 0 Samoa Americana"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Australia 31–0 American Samoa",
+    [
+     "31"
+    ]
+   ],
+   "x": "Foi nas Eliminatórias de 2002; Archie Thompson fez 13 gols."
+  },
+  {
+   "t": "Qual é o maior público da história de uma partida de futebol?",
+   "type": "txt",
+   "choices": [
+    "Final da Champions de 1960, em Glasgow",
+    "Barcelona x Real Madrid, em 1999",
+    "Brasil x Uruguai, em 1950, no Maracanã",
+    "Flamengo x Fluminense, em 1963",
+    "Inglaterra x Alemanha, em 1966",
+    "Final da Copa de 1986, no Azteca"
+   ],
+   "a": [
+    "Brasil x Uruguai, em 1950, no Maracanã"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "en",
+    "Uruguay v Brazil (1950 FIFA World Cup)",
+    [
+     "1950"
+    ]
+   ],
+   "x": "Estima-se que cerca de 200 mil pessoas estavam no Maracanã."
+  },
+  {
+   "t": "Qual camisa costuma ser usada pelo goleiro titular?",
+   "type": "txt",
+   "choices": [
+    "9",
+    "12",
+    "7",
+    "1",
+    "10",
+    "5"
+   ],
+   "a": [
+    "1"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Squad number (association football)",
+    [
+     "1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual número de camisa ficou marcado por Pelé, Maradona, Zico e Messi?",
+   "type": "txt",
+   "choices": [
+    "8",
+    "11",
+    "5",
+    "9",
+    "7",
+    "10"
+   ],
+   "a": [
+    "10"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Squad number (association football)",
+    [
+     "10"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o esquema tático com quatro defensores, três meio-campistas e três atacantes?",
+   "type": "txt",
+   "choices": [
+    "5-3-2",
+    "4-2-3-1",
+    "3-4-3",
+    "4-4-2",
+    "4-3-3",
+    "3-5-2"
+   ],
+   "a": [
+    "4-3-3"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Formation (association football)",
+    [
+     "4-3-3"
+    ]
+   ]
+  },
+  {
+   "t": "Com qual esquema a Seleção de Lazaroni jogou a Copa de 1990, com três zagueiros e um líbero?",
+   "type": "txt",
+   "choices": [
+    "4-4-2",
+    "3-5-2",
+    "2-3-5",
+    "4-2-3-1",
+    "4-3-3",
+    "4-2-4"
+   ],
+   "a": [
+    "3-5-2"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Formation (association football)",
+    [
+     "3-5-2"
+    ]
+   ]
+  },
+  {
+   "t": "Qual esquema tático o Brasil popularizou na Copa de 1958?",
+   "type": "txt",
+   "choices": [
+    "4-3-3",
+    "2-3-5",
+    "4-4-2",
+    "4-2-4",
+    "3-5-2",
+    "5-3-2"
+   ],
+   "a": [
+    "4-2-4"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Formation (association football)",
+    [
+     "4-2-4"
+    ]
+   ]
+  },
+  {
+   "t": "O que significa a sigla VAR?",
+   "type": "txt",
+   "choices": [
+    "Verificação automática de regras",
+    "Validação de área e recuo",
+    "Vigilância da arbitragem reserva",
+    "Vídeo de alta resolução",
+    "Árbitro assistente de vídeo",
+    "Voto dos árbitros reunidos"
+   ],
+   "a": [
+    "Árbitro assistente de vídeo"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Video assistant referee",
+    [
+     "video"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o jogador que usa braçadeira e representa o time junto ao árbitro?",
+   "type": "txt",
+   "choices": [
+    "Líbero",
+    "Capitão",
+    "Volante",
+    "Centroavante",
+    "Ponta",
+    "Camisa 10"
+   ],
+   "a": [
+    "Capitão"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Captain (association football)",
+    [
+     "captain"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama a posição do jogador que protege a defesa, logo à frente dos zagueiros?",
+   "type": "txt",
+   "choices": [
+    "Volante",
+    "Meia-atacante",
+    "Líbero",
+    "Centroavante",
+    "Ponta",
+    "Lateral"
+   ],
+   "a": [
+    "Volante"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Midfielder",
+    [
+     "defensive"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama a falta ou reposição cobrada da linha lateral com as mãos?",
+   "type": "txt",
+   "choices": [
+    "Bola ao chão",
+    "Tiro de meta",
+    "Lateral",
+    "Tiro livre",
+    "Escanteio",
+    "Pênalti"
+   ],
+   "a": [
+    "Lateral"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Throw-in",
+    [
+     "throw"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas substituições cada time pode fazer num jogo oficial, pela regra atual?",
+   "type": "txt",
+   "choices": [
+    "Duas",
+    "Três",
+    "Sete",
+    "Seis",
+    "Quatro",
+    "Cinco"
+   ],
+   "a": [
+    "Cinco"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "en",
+    "Substitute (association football)",
+    [
+     "five"
+    ]
+   ],
+   "x": "A regra das cinco trocas surgiu na pandemia de 2020 e virou permanente."
+  },
+  {
+   "t": "Como se chama o torneio em que só as seleções campeãs da Euro e da Copa América se enfrentam?",
+   "type": "txt",
+   "choices": [
+    "Copa das Confederações",
+    "Recopa",
+    "Supercopa",
+    "Liga das Nações",
+    "Copa Intercontinental",
+    "Finalíssima"
+   ],
+   "a": [
+    "Finalíssima"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "CONMEBOL–UEFA Cup of Champions",
+    [
+     "Finalissima"
+    ]
+   ],
+   "x": "Em 2022, a Argentina venceu a Itália por 3 a 0 em Wembley."
+  },
+  {
+   "t": "Qual torneio a FIFA disputava entre campeões continentais antes da Copa, e que o Brasil ganhou quatro vezes?",
+   "type": "txt",
+   "choices": [
+    "Copa Rei Fahd",
+    "Mundialito",
+    "Finalíssima",
+    "Copa Intercontinental",
+    "Copa das Confederações",
+    "Liga das Nações"
+   ],
+   "a": [
+    "Copa das Confederações"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Confederations Cup",
+    [
+     "Confederations"
+    ]
+   ],
+   "x": "O Brasil venceu em 1997, 2005, 2009 e 2013."
+  },
+  {
+   "t": "Qual clube brasileiro ficou conhecido como 'Máquina Tricolor' nos anos 1970, com Rivellino?",
+   "type": "txt",
+   "choices": [
+    "Paraná Clube",
+    "Grêmio",
+    "São Paulo",
+    "Santa Cruz",
+    "Bahia",
+    "Fluminense"
+   ],
+   "a": [
+    "Fluminense"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Fluminense Football Club",
+    [
+     "Máquina"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ficou conhecido como a 'Academia' nos anos 1960 e 1970, com Ademir da Guia?",
+   "type": "txt",
+   "choices": [
+    "Vasco",
+    "Corinthians",
+    "Cruzeiro",
+    "Santos",
+    "Botafogo",
+    "Palmeiras"
+   ],
+   "a": [
+    "Palmeiras"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Sociedade Esportiva Palmeiras",
+    [
+     "Academia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual time era chamado de 'Expresso da Vitória' nos anos 1940?",
+   "type": "txt",
+   "choices": [
+    "Bangu",
+    "Vasco",
+    "América-RJ",
+    "Fluminense",
+    "Botafogo",
+    "Flamengo"
+   ],
+   "a": [
+    "Vasco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Club de Regatas Vasco da Gama",
+    [
+     "Expresso"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes é conhecido como 'Glorioso'?",
+   "type": "txt",
+   "choices": [
+    "Bahia",
+    "Vasco",
+    "América-MG",
+    "Náutico",
+    "Botafogo",
+    "Fluminense"
+   ],
+   "a": [
+    "Botafogo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Botafogo de Futebol e Regatas",
+    [
+     "Glorioso"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o clássico entre Grêmio e Internacional?",
+   "type": "txt",
+   "choices": [
+    "Fla-Flu",
+    "Majestoso",
+    "Clássico dos Milhões",
+    "Ba-Vi",
+    "Gre-Nal",
+    "Atle-Tiba"
+   ],
+   "a": [
+    "Gre-Nal"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Grenal",
+    [
+     "Grenal"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o clássico entre Athletico e Coritiba?",
+   "type": "txt",
+   "choices": [
+    "Atle-Tiba",
+    "Gre-Nal",
+    "Choque-Rei",
+    "Re-Pa",
+    "Ba-Vi",
+    "Clássico-Rei"
+   ],
+   "a": [
+    "Atle-Tiba"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Atletiba",
+    [
+     "Atletiba"
+    ]
+   ]
+  },
+  {
+   "t": "Como é conhecido o clássico entre Fortaleza e Ceará?",
+   "type": "txt",
+   "choices": [
+    "Ba-Vi",
+    "Majestoso",
+    "Clássico-Rei",
+    "Choque-Rei",
+    "Re-Pa",
+    "Clássico das Multidões"
+   ],
+   "a": [
+    "Clássico-Rei"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Clássico-Rei (Ceará)",
+    [
+     "Rei"
+    ]
+   ]
+  },
+  {
+   "t": "Como é conhecido o clássico entre Botafogo e Fluminense, o mais antigo do Rio?",
+   "type": "txt",
+   "choices": [
+    "Fla-Flu",
+    "Clássico da Amizade",
+    "Clássico Vovô",
+    "Clássico-Rei",
+    "Clássico dos Milhões",
+    "Majestoso"
+   ],
+   "a": [
+    "Clássico Vovô"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Clássico Vovô",
+    [
+     "Vovô"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o clássico entre Everton e Liverpool?",
+   "type": "txt",
+   "choices": [
+    "Merseyside Derby",
+    "North London Derby",
+    "Manchester Derby",
+    "Der Klassiker",
+    "Tyne-Wear Derby",
+    "Old Firm"
+   ],
+   "a": [
+    "Merseyside Derby"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "Merseyside derby",
+    [
+     "Merseyside"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes NÃO é o nome de uma posição no futebol?",
+   "type": "txt",
+   "choices": [
+    "Arremessador",
+    "Zagueiro",
+    "Ponta",
+    "Lateral",
+    "Volante",
+    "Centroavante"
+   ],
+   "a": [
+    "Arremessador"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Association football positions",
+    [
+     "positions"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o gol que o jogador marca, sem querer, na própria meta?",
+   "type": "txt",
+   "choices": [
+    "Gol contra",
+    "Gol de placa",
+    "Gol de ouro",
+    "Gol de honra",
+    "Gol qualificado",
+    "Gol olímpico"
+   ],
+   "a": [
+    "Gol contra"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Own goal",
+    [
+     "own goal"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o chute em que o jogador cruza uma perna por trás da outra para tocar a bola?",
+   "type": "txt",
+   "choices": [
+    "Letra",
+    "Bicicleta",
+    "Voleio",
+    "Chapa",
+    "Cavadinha",
+    "Trivela"
+   ],
+   "a": [
+    "Letra"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Rabona",
+    [
+     "Rabona"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu por 3 a 0 na final da Copa das Confederações de 2013, no Maracanã?",
+   "type": "txt",
+   "choices": [
+    "Uruguai",
+    "Argentina",
+    "México",
+    "Alemanha",
+    "Itália",
+    "Espanha"
+   ],
+   "a": [
+    "Espanha"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2013 FIFA Confederations Cup",
+    [
+     "Espanha"
+    ]
+   ]
+  }
+ ]
+}

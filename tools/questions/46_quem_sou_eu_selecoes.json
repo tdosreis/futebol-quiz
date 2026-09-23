@@ -1,0 +1,1024 @@
+{
+ "id": "quem_sou_eu_selecoes",
+ "name": "Quem sou eu? — Seleções",
+ "emoji": "🌍",
+ "tag": "Pistas escritas: descubra a seleção",
+ "col": "#2E6F9E",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Sou a seleção que venceu a Copa de 1930 em casa e a de 1950 no Maracanã. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Equador",
+    "Uruguai",
+    "Brasil",
+    "Argentina",
+    "Paraguai",
+    "Chile"
+   ],
+   "a": [
+    "Uruguai"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Uruguaia de Futebol",
+    [
+     "Uruguai"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a anfitriã Portugal na abertura e na final da mesma Eurocopa, em 2004. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Espanha",
+    "França",
+    "Grécia",
+    "Suíça",
+    "País de Gales",
+    "Hungria"
+   ],
+   "a": [
+    "Grécia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Eurocopa de 2004",
+    [
+     "Grécia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Hagi, que chegou às quartas de final da Copa de 1994. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Suécia",
+    "Espanha",
+    "Suíça",
+    "Romênia",
+    "Irlanda",
+    "Itália"
+   ],
+   "a": [
+    "Romênia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Romena de Futebol",
+    [
+     "Romênia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Stoichkov, semifinalista da Copa de 1994. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Suíça",
+    "Dinamarca",
+    "Grécia",
+    "Noruega",
+    "Itália",
+    "Bulgária"
+   ],
+   "a": [
+    "Bulgária"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Búlgara de Futebol",
+    [
+     "Bulgária"
+    ]
+   ]
+  },
+  {
+   "t": "Perdi nos pênaltis para o Uruguai nas quartas de 2010, depois de Suárez tirar uma bola com a mão em cima da linha. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Tunísia",
+    "Camarões",
+    "Marrocos",
+    "Argélia",
+    "Gana",
+    "Egito"
+   ],
+   "a": [
+    "Gana"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Gana na Copa do Mundo de 2010",
+    [
+     "Gana"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a Copa América em 2015 e em 2016, com Alexis Sánchez e Arturo Vidal. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Uruguai",
+    "Peru",
+    "Brasil",
+    "Chile",
+    "Estados Unidos",
+    "Equador"
+   ],
+   "a": [
+    "Chile"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Chilena de Futebol",
+    [
+     "Chile"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a primeira Copa Ouro da CONCACAF, em 1991. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Uruguai",
+    "Argentina",
+    "Costa Rica",
+    "México",
+    "Estados Unidos",
+    "Colômbia"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Copa Ouro da CONCACAF de 1991",
+    [
+     "Estados Unidos"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a Copa da Ásia de 2019 e sediei a Copa do Mundo de 2022. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Catar",
+    "Iraque",
+    "Japão",
+    "China",
+    "Arábia Saudita",
+    "Austrália"
+   ],
+   "a": [
+    "Catar"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Catariana de Futebol",
+    [
+     "Catar"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a Copa Africana de Nações de 2022, com Sadio Mané. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Gana",
+    "Argélia",
+    "Costa do Marfim",
+    "Marrocos",
+    "Senegal",
+    "África do Sul"
+   ],
+   "a": [
+    "Senegal"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Copa das Nações Africanas de 2021",
+    [
+     "Senegal"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Milla e Eto'o, cinco vezes campeã africana. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Egito",
+    "Marrocos",
+    "África do Sul",
+    "Costa do Marfim",
+    "Tunísia",
+    "Camarões"
+   ],
+   "a": [
+    "Camarões"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Camaronesa de Futebol",
+    [
+     "Camarões"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Gareth Bale, que chegou à semifinal da Euro 2016. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bulgária",
+    "Suíça",
+    "Itália",
+    "Irlanda",
+    "Romênia",
+    "País de Gales"
+   ],
+   "a": [
+    "País de Gales"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Galesa de Futebol",
+    [
+     "País de Gales"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a Copa das Confederações em 2001 e em 2003. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Noruega",
+    "Itália",
+    "País de Gales",
+    "Hungria",
+    "Escócia",
+    "França"
+   ],
+   "a": [
+    "França"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Copa das Confederações FIFA",
+    [
+     "França"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Chilavert, que chegou às quartas de final da Copa de 2010. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Brasil",
+    "Paraguai",
+    "Honduras",
+    "Colômbia",
+    "México",
+    "Argentina"
+   ],
+   "a": [
+    "Paraguai"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Paraguaia de Futebol",
+    [
+     "Paraguai"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Valderrama, Higuita e Asprilla nos anos 1990. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Peru",
+    "Canadá",
+    "México",
+    "Costa Rica",
+    "Colômbia",
+    "Honduras"
+   ],
+   "a": [
+    "Colômbia"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Colombiana de Futebol",
+    [
+     "Colômbia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Cubillas, que chegou às quartas de final da Copa de 1970. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Equador",
+    "Paraguai",
+    "Brasil",
+    "Colômbia",
+    "Peru",
+    "Canadá"
+   ],
+   "a": [
+    "Peru"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Peruana de Futebol",
+    [
+     "Peru"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Drogba, que foi à Copa pela primeira vez em 2006. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Egito",
+    "Marrocos",
+    "Tunísia",
+    "Senegal",
+    "Costa do Marfim",
+    "Nigéria"
+   ],
+   "a": [
+    "Costa do Marfim"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Marfinense de Futebol",
+    [
+     "Costa do Marfim"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Salah, que voltou à Copa do Mundo em 2018 depois de 28 anos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Tunísia",
+    "Gana",
+    "Camarões",
+    "Senegal",
+    "Egito",
+    "Argélia"
+   ],
+   "a": [
+    "Egito"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Egípcia de Futebol",
+    [
+     "Egito"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Son Heung-min e Park Ji-sung. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Coreia do Sul",
+    "Arábia Saudita",
+    "Austrália",
+    "Iraque",
+    "China",
+    "Catar"
+   ],
+   "a": [
+    "Coreia do Sul"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Sul-Coreana de Futebol",
+    [
+     "Coreia do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Dividi com a Coreia do Sul a Copa de 2002, e Nakata e Honda vestiram minha camisa. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Arábia Saudita",
+    "Coreia do Sul",
+    "Japão",
+    "Catar",
+    "China",
+    "Iraque"
+   ],
+   "a": [
+    "Japão"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Japonesa de Futebol",
+    [
+     "Japão"
+    ]
+   ]
+  },
+  {
+   "t": "Troquei a Oceania pela Ásia nas Eliminatórias em 2006, e Tim Cahill é o meu maior artilheiro. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Austrália",
+    "Catar",
+    "Iraque",
+    "Coreia do Sul",
+    "Irã",
+    "Arábia Saudita"
+   ],
+   "a": [
+    "Austrália"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Australiana de Futebol",
+    [
+     "Austrália"
+    ]
+   ]
+  },
+  {
+   "t": "Venci as três primeiras edições da Liga das Nações da CONCACAF. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "México",
+    "Colômbia",
+    "Peru",
+    "Paraguai",
+    "Jamaica",
+    "Estados Unidos"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Liga das Nações da CONCACAF",
+    [
+     "Estados Unidos"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Keylor Navas, que chegou às quartas de final da Copa de 2014. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Uruguai",
+    "Argentina",
+    "Canadá",
+    "Costa Rica",
+    "Estados Unidos",
+    "Chile"
+   ],
+   "a": [
+    "Costa Rica"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Costarriquenha de Futebol",
+    [
+     "Costa Rica"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Haaland e Ødegaard. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Áustria",
+    "Noruega",
+    "Dinamarca",
+    "Escócia",
+    "Polônia",
+    "Portugal"
+   ],
+   "a": [
+    "Noruega"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Norueguesa de Futebol",
+    [
+     "Noruega"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Eusébio, terceira colocada na Copa de 1966. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Croácia",
+    "Espanha",
+    "Suécia",
+    "Romênia",
+    "Portugal",
+    "Áustria"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Portuguesa de Futebol",
+    [
+     "Portugal"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Puskás e Hidegkuti, que goleou a Inglaterra por 6 a 3 em Wembley, em 1953. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Holanda",
+    "Bulgária",
+    "Hungria",
+    "Itália",
+    "Noruega",
+    "Romênia"
+   ],
+   "a": [
+    "Hungria"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Húngara de Futebol",
+    [
+     "Hungria"
+    ]
+   ]
+  },
+  {
+   "t": "Meu apelido é Bafana Bafana. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Egito",
+    "Marrocos",
+    "Argélia",
+    "Costa do Marfim",
+    "África do Sul",
+    "Tunísia"
+   ],
+   "a": [
+    "África do Sul"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Sul-Africana de Futebol",
+    [
+     "África do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Meu apelido é Les Fennecs, as raposas do deserto. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mali",
+    "Tunísia",
+    "África do Sul",
+    "Argélia",
+    "Gana",
+    "Marrocos"
+   ],
+   "a": [
+    "Argélia"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Argelina de Futebol",
+    [
+     "Argélia"
+    ]
+   ]
+  },
+  {
+   "t": "Meu apelido é Team Melli. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Austrália",
+    "Japão",
+    "Iraque",
+    "Catar",
+    "Irã",
+    "China"
+   ],
+   "a": [
+    "Irã"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Iraniana de Futebol",
+    [
+     "Irã"
+    ]
+   ]
+  },
+  {
+   "t": "Meu apelido é Reggae Boyz. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Equador",
+    "Argentina",
+    "Jamaica",
+    "Honduras",
+    "Uruguai",
+    "Chile"
+   ],
+   "a": [
+    "Jamaica"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Jamaicana de Futebol",
+    [
+     "Jamaica"
+    ]
+   ]
+  },
+  {
+   "t": "Fui terceira colocada nas Copas de 1950 e 1994 e vice-campeã em casa, em 1958. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Suécia",
+    "Espanha",
+    "Romênia",
+    "França",
+    "Portugal",
+    "Bulgária"
+   ],
+   "a": [
+    "Suécia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Sueca de Futebol",
+    [
+     "Suécia"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Laudrup e Schmeichel, campeã europeia em 1992. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "França",
+    "Romênia",
+    "Holanda",
+    "Suíça",
+    "Hungria",
+    "Dinamarca"
+   ],
+   "a": [
+    "Dinamarca"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Dinamarquesa de Futebol",
+    [
+     "Dinamarca"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Figo e Rui Costa, a 'geração de ouro' dos anos 1990. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Portugal",
+    "Suíça",
+    "Polônia",
+    "Dinamarca",
+    "França",
+    "Espanha"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Portuguesa de Futebol",
+    [
+     "Portugal"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Robben, Sneijder e Van Persie, vice-campeã do mundo em 2010. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Croácia",
+    "Escócia",
+    "Suíça",
+    "Espanha",
+    "Hungria",
+    "Holanda"
+   ],
+   "a": [
+    "Holanda"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Neerlandesa de Futebol",
+    [
+     "Holanda"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Hazard e De Bruyne, que chegou a liderar o ranking da FIFA. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bélgica",
+    "França",
+    "Escócia",
+    "Grécia",
+    "Suíça",
+    "País de Gales"
+   ],
+   "a": [
+    "Bélgica"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Belga de Futebol",
+    [
+     "Bélgica"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Ali Daei, que fez mais de cem gols por mim. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "China",
+    "Arábia Saudita",
+    "Iraque",
+    "Irã",
+    "Coreia do Sul",
+    "Japão"
+   ],
+   "a": [
+    "Irã"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Ali Daei",
+    [
+     "Irã"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Sami Al-Jaber, que disputou quatro Copas do Mundo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Arábia Saudita",
+    "Irã",
+    "Catar",
+    "China",
+    "Iraque",
+    "Austrália"
+   ],
+   "a": [
+    "Arábia Saudita"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Sami Al-Jaber",
+    [
+     "Arábia Saudita"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção da América do Norte que sediou a Copa de 1994 e dividiu a de 2026. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Estados Unidos",
+    "México",
+    "Chile",
+    "Brasil",
+    "Canadá",
+    "Uruguai"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção dos Estados Unidos de Futebol",
+    [
+     "Estados Unidos"
+    ]
+   ]
+  },
+  {
+   "t": "Sou a seleção de Alphonso Davies e Jonathan David. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Canadá",
+    "Uruguai",
+    "México",
+    "Brasil",
+    "Costa Rica",
+    "Peru"
+   ],
+   "a": [
+    "Canadá"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Seleção Canadense de Futebol",
+    [
+     "Canadá"
+    ]
+   ]
+  },
+  {
+   "t": "Venci a anfitriã Espanha na Copa de 1982, com um gol de Gerry Armstrong. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Islândia",
+    "Inglaterra",
+    "País de Gales",
+    "Escócia",
+    "Irlanda",
+    "Irlanda do Norte"
+   ],
+   "a": [
+    "Irlanda do Norte"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Irlanda do Norte na Copa do Mundo de 1982",
+    [
+     "Irlanda do Norte"
+    ]
+   ]
+  }
+ ]
+}

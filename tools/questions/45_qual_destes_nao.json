@@ -1,0 +1,1651 @@
+{
+ "id": "qual_destes_nao",
+ "name": "Qual destes NÃO?",
+ "emoji": "❓",
+ "tag": "Ache o intruso: quem nunca jogou, ganhou ou esteve lá",
+ "col": "#8E3B46",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco do penta, em 2002?",
+   "type": "txt",
+   "choices": [
+    "Vampeta",
+    "Romário",
+    "Edílson",
+    "Luizão",
+    "Kaká",
+    "Rogério Ceni"
+   ],
+   "a": [
+    "Romário"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira na Copa do Mundo de 2002",
+    [
+     "Romário"
+    ]
+   ],
+   "x": "Romário ficou fora da lista de Felipão, uma das maiores polêmicas da época."
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco do tetra, em 1994?",
+   "type": "txt",
+   "choices": [
+    "Mazinho",
+    "Viola",
+    "Edmundo",
+    "Ronaldo Fenômeno",
+    "Leonardo",
+    "Müller"
+   ],
+   "a": [
+    "Edmundo"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira na Copa do Mundo de 1994",
+    [
+     "Edmundo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco do tri, em 1970?",
+   "type": "txt",
+   "choices": [
+    "Dario",
+    "Edu",
+    "Roberto Miranda",
+    "Garrincha",
+    "Emerson Leão",
+    "Paulo Cézar Caju"
+   ],
+   "a": [
+    "Garrincha"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira na Copa do Mundo de 1970",
+    [
+     "Garrincha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco campeão de 1958?",
+   "type": "txt",
+   "choices": [
+    "Moacir",
+    "Dino Sani",
+    "De Sordi",
+    "Mazzola",
+    "Zózimo",
+    "Amarildo"
+   ],
+   "a": [
+    "Amarildo"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira na Copa do Mundo de 1958",
+    [
+     "Amarildo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Argentina campeã em 1986?",
+   "type": "txt",
+   "choices": [
+    "Nery Pumpido",
+    "Oscar Ruggeri",
+    "Sergio Batista",
+    "Jorge Burruchaga",
+    "Mario Kempes",
+    "Jorge Valdano"
+   ],
+   "a": [
+    "Mario Kempes"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Seleção Argentina na Copa do Mundo de 1986",
+    [
+     "Mario Kempes"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Argentina campeã em 2022?",
+   "type": "txt",
+   "choices": [
+    "Julián Álvarez",
+    "Sergio Agüero",
+    "Emiliano Martínez",
+    "Alexis Mac Allister",
+    "Enzo Fernández",
+    "Nicolás Otamendi"
+   ],
+   "a": [
+    "Sergio Agüero"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Seleção Argentina na Copa do Mundo de 2022",
+    [
+     "Sergio Agüero"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da França campeã em 1998?",
+   "type": "txt",
+   "choices": [
+    "Laurent Blanc",
+    "Emmanuel Petit",
+    "Youri Djorkaeff",
+    "Eric Cantona",
+    "Fabien Barthez",
+    "Bixente Lizarazu"
+   ],
+   "a": [
+    "Eric Cantona"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Francesa na Copa do Mundo de 1998",
+    [
+     "Eric Cantona"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da França campeã em 2018?",
+   "type": "txt",
+   "choices": [
+    "Antoine Griezmann",
+    "N'Golo Kanté",
+    "Raphaël Varane",
+    "Paul Pogba",
+    "Karim Benzema",
+    "Olivier Giroud"
+   ],
+   "a": [
+    "Karim Benzema"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Francesa na Copa do Mundo de 2018",
+    [
+     "Karim Benzema"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Espanha campeã em 2010?",
+   "type": "txt",
+   "choices": [
+    "Carles Puyol",
+    "Raúl",
+    "Gerard Piqué",
+    "Fernando Torres",
+    "David Villa",
+    "Xabi Alonso"
+   ],
+   "a": [
+    "Raúl"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Seleção Espanhola na Copa do Mundo de 2010",
+    [
+     "Raúl"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Alemanha campeã em 2014?",
+   "type": "txt",
+   "choices": [
+    "Michael Ballack",
+    "Mario Götze",
+    "Philipp Lahm",
+    "Miroslav Klose",
+    "Manuel Neuer",
+    "Toni Kroos"
+   ],
+   "a": [
+    "Michael Ballack"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Seleção Alemã na Copa do Mundo de 2014",
+    [
+     "Michael Ballack"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Itália campeã em 2006?",
+   "type": "txt",
+   "choices": [
+    "Gennaro Gattuso",
+    "Alessandro Del Piero",
+    "Roberto Baggio",
+    "Andrea Pirlo",
+    "Francesco Totti",
+    "Luca Toni"
+   ],
+   "a": [
+    "Roberto Baggio"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Seleção Italiana na Copa do Mundo de 2006",
+    [
+     "Roberto Baggio"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NÃO estava no elenco da Inglaterra campeã em 1966?",
+   "type": "txt",
+   "choices": [
+    "Gordon Banks",
+    "Geoff Hurst",
+    "Nobby Stiles",
+    "Bobby Charlton",
+    "Stanley Matthews",
+    "Bobby Moore"
+   ],
+   "a": [
+    "Stanley Matthews"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Seleção Inglesa na Copa do Mundo de 1966",
+    [
+     "Stanley Matthews"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NUNCA venceu a Copa dos Campeões ou a Champions League?",
+   "type": "txt",
+   "choices": [
+    "Steaua Bucareste",
+    "Aston Villa",
+    "Celtic",
+    "Porto",
+    "Estrela Vermelha",
+    "Arsenal"
+   ],
+   "a": [
+    "Arsenal"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Liga dos Campeões da UEFA",
+    [
+     "Arsenal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes brasileiros NUNCA venceu a Libertadores?",
+   "type": "txt",
+   "choices": [
+    "Palmeiras",
+    "Vasco",
+    "Santos FC",
+    "Athletico PR",
+    "Flamengo",
+    "Grêmio"
+   ],
+   "a": [
+    "Athletico PR"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Athletico PR"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destas seleções NUNCA venceu a Copa do Mundo?",
+   "type": "txt",
+   "choices": [
+    "Argentina",
+    "Uruguai",
+    "França",
+    "Espanha",
+    "Inglaterra",
+    "Holanda"
+   ],
+   "a": [
+    "Holanda"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA",
+    [
+     "Holanda"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes países NUNCA sediou uma Copa do Mundo até 2026?",
+   "type": "txt",
+   "choices": [
+    "México",
+    "Chile",
+    "Suécia",
+    "Catar",
+    "Japão",
+    "Portugal"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA",
+    [
+     "Portugal"
+    ]
+   ],
+   "x": "Portugal vai dividir a Copa de 2030 com Espanha e Marrocos."
+  },
+  {
+   "t": "Qual destes jogadores NUNCA ganhou a Bola de Ouro?",
+   "type": "txt",
+   "choices": [
+    "Fabio Cannavaro",
+    "Pavel Nedvěd",
+    "Michael Owen",
+    "Kaká",
+    "Andrés Iniesta",
+    "Luka Modrić"
+   ],
+   "a": [
+    "Andrés Iniesta"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Andrés Iniesta"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes goleiros NUNCA ganhou uma Copa do Mundo?",
+   "type": "txt",
+   "choices": [
+    "Marcos",
+    "Iker Casillas",
+    "Gianluigi Buffon",
+    "Hugo Lloris",
+    "Manuel Neuer",
+    "Oliver Kahn"
+   ],
+   "a": [
+    "Oliver Kahn"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Oliver Kahn",
+    [
+     "Oliver Kahn"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA foi eleito o melhor jogador do mundo pela FIFA?",
+   "type": "txt",
+   "choices": [
+    "Kaká",
+    "Ronaldinho",
+    "Rivaldo",
+    "Romário",
+    "Ronaldo Fenômeno",
+    "Neymar"
+   ],
+   "a": [
+    "Neymar"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Melhor jogador do mundo pela FIFA",
+    [
+     "Neymar"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destas seleções NUNCA venceu a Copa América?",
+   "type": "txt",
+   "choices": [
+    "Chile",
+    "Equador",
+    "Colômbia",
+    "Argentina",
+    "Peru",
+    "Uruguai"
+   ],
+   "a": [
+    "Equador"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Equador"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destas seleções NUNCA venceu a Eurocopa?",
+   "type": "txt",
+   "choices": [
+    "França",
+    "Espanha",
+    "Portugal",
+    "Itália",
+    "Inglaterra",
+    "Alemanha"
+   ],
+   "a": [
+    "Inglaterra"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Europeu de Futebol",
+    [
+     "Inglaterra"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é da região de Madri?",
+   "type": "txt",
+   "choices": [
+    "Getafe",
+    "Rayo Vallecano",
+    "Leganés",
+    "Real Madrid",
+    "Villarreal",
+    "Atlético de Madrid"
+   ],
+   "a": [
+    "Villarreal"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Villarreal Club de Fútbol",
+    [
+     "Villarreal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é de Londres?",
+   "type": "txt",
+   "choices": [
+    "Fulham",
+    "Chelsea",
+    "Arsenal",
+    "West Ham",
+    "Everton",
+    "Tottenham"
+   ],
+   "a": [
+    "Everton"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Everton Football Club",
+    [
+     "Everton"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é da região de Buenos Aires?",
+   "type": "txt",
+   "choices": [
+    "Boca Juniors",
+    "Racing",
+    "River Plate",
+    "San Lorenzo",
+    "Rosario Central",
+    "Independiente"
+   ],
+   "a": [
+    "Rosario Central"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Rosario Central",
+    [
+     "Rosario Central"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é do Rio de Janeiro?",
+   "type": "txt",
+   "choices": [
+    "Santos FC",
+    "Flamengo",
+    "Bangu",
+    "Vasco",
+    "Fluminense",
+    "Botafogo"
+   ],
+   "a": [
+    "Santos FC"
+   ],
+   "d": 1,
+   "art": {
+    "map": "RJ"
+   },
+   "src": [
+    "pt",
+    "Santos Futebol Clube",
+    [
+     "Santos FC"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é mineiro?",
+   "type": "txt",
+   "choices": [
+    "Uberlândia",
+    "América MG",
+    "Goiás",
+    "Cruzeiro",
+    "Villa Nova",
+    "Atlético MG"
+   ],
+   "a": [
+    "Goiás"
+   ],
+   "d": 2,
+   "art": {
+    "map": "MG"
+   },
+   "src": [
+    "pt",
+    "Goiás Esporte Clube",
+    [
+     "Goiás"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é gaúcho?",
+   "type": "txt",
+   "choices": [
+    "Criciúma",
+    "Internacional",
+    "Brasil de Pelotas",
+    "Caxias",
+    "Grêmio",
+    "Juventude"
+   ],
+   "a": [
+    "Criciúma"
+   ],
+   "d": 2,
+   "art": {
+    "map": "RS"
+   },
+   "src": [
+    "pt",
+    "Criciúma Esporte Clube",
+    [
+     "Criciúma"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é nordestino?",
+   "type": "txt",
+   "choices": [
+    "Bahia",
+    "Vitória",
+    "Fortaleza",
+    "Sport Recife",
+    "Ceará",
+    "Goiás"
+   ],
+   "a": [
+    "Goiás"
+   ],
+   "d": 2,
+   "art": {
+    "map": "PE"
+   },
+   "src": [
+    "pt",
+    "Goiás Esporte Clube",
+    [
+     "Goiás"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NÃO é paranaense?",
+   "type": "txt",
+   "choices": [
+    "Coritiba",
+    "Paraná Clube",
+    "Londrina",
+    "Figueirense",
+    "Operário",
+    "Athletico PR"
+   ],
+   "a": [
+    "Figueirense"
+   ],
+   "d": 3,
+   "art": {
+    "map": "PR"
+   },
+   "src": [
+    "pt",
+    "Figueirense Futebol Clube",
+    [
+     "Figueirense"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes estádios NÃO fica em Londres?",
+   "type": "txt",
+   "choices": [
+    "Stamford Bridge",
+    "Old Trafford",
+    "Wembley",
+    "Craven Cottage",
+    "Selhurst Park",
+    "Emirates"
+   ],
+   "a": [
+    "Old Trafford"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Old Trafford",
+    [
+     "Old Trafford"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes estádios NÃO fica no Rio de Janeiro?",
+   "type": "txt",
+   "choices": [
+    "Nilton Santos",
+    "Moça Bonita",
+    "São Januário",
+    "Laranjeiras",
+    "Morumbi",
+    "Maracanã"
+   ],
+   "a": [
+    "Morumbi"
+   ],
+   "d": 1,
+   "art": {
+    "map": "RJ"
+   },
+   "src": [
+    "pt",
+    "Estádio do Morumbi",
+    [
+     "Morumbi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clássicos NÃO é disputado na Argentina?",
+   "type": "txt",
+   "choices": [
+    "Superclásico",
+    "Clásico Rosarino",
+    "Old Firm",
+    "Clásico cordobés",
+    "Clásico de Avellaneda",
+    "Clásico Platense"
+   ],
+   "a": [
+    "Old Firm"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Old Firm",
+    [
+     "Old Firm"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Barcelona?",
+   "type": "txt",
+   "choices": [
+    "Rivaldo",
+    "Ronaldinho",
+    "Romário",
+    "Neymar",
+    "Kaká",
+    "Ronaldo Fenômeno"
+   ],
+   "a": [
+    "Kaká"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Kaká",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Real Madrid?",
+   "type": "txt",
+   "choices": [
+    "Kaká",
+    "Casemiro",
+    "Ronaldo Fenômeno",
+    "Rivaldo",
+    "Marcelo",
+    "Roberto Carlos"
+   ],
+   "a": [
+    "Rivaldo"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Rivaldo",
+    [
+     "Rivaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Milan?",
+   "type": "txt",
+   "choices": [
+    "Thiago Silva",
+    "Kaká",
+    "Ronaldo Fenômeno",
+    "Cafu",
+    "Roberto Carlos",
+    "Ronaldinho"
+   ],
+   "a": [
+    "Roberto Carlos"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Roberto Carlos",
+    [
+     "Roberto Carlos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou na Inter de Milão?",
+   "type": "txt",
+   "choices": [
+    "Roberto Carlos",
+    "Ronaldo Fenômeno",
+    "Kaká",
+    "Júlio César",
+    "Maicon",
+    "Adriano"
+   ],
+   "a": [
+    "Kaká"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Kaká",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no PSG?",
+   "type": "txt",
+   "choices": [
+    "Rivaldo",
+    "Neymar",
+    "Marquinhos",
+    "Raí",
+    "Thiago Silva",
+    "Ronaldinho"
+   ],
+   "a": [
+    "Rivaldo"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Rivaldo",
+    [
+     "Rivaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Chelsea?",
+   "type": "txt",
+   "choices": [
+    "Oscar",
+    "Thiago Silva",
+    "Ramires",
+    "David Luiz",
+    "Willian",
+    "Roberto Firmino"
+   ],
+   "a": [
+    "Roberto Firmino"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Roberto Firmino",
+    [
+     "Roberto Firmino"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Liverpool?",
+   "type": "txt",
+   "choices": [
+    "Ederson",
+    "Lucas Leiva",
+    "Philippe Coutinho",
+    "Fabinho",
+    "Alisson",
+    "Roberto Firmino"
+   ],
+   "a": [
+    "Ederson"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Ederson Moraes",
+    [
+     "Ederson"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Manchester City?",
+   "type": "txt",
+   "choices": [
+    "Gabriel Jesus",
+    "Elano",
+    "Fernandinho",
+    "Robinho",
+    "Ederson",
+    "Casemiro"
+   ],
+   "a": [
+    "Casemiro"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Casemiro",
+    [
+     "Casemiro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Manchester United?",
+   "type": "txt",
+   "choices": [
+    "Ramires",
+    "Casemiro",
+    "Antony",
+    "Anderson",
+    "Rafael",
+    "Fred"
+   ],
+   "a": [
+    "Ramires"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Ramires",
+    [
+     "Ramires"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes brasileiros NUNCA jogou no Bayern de Munique?",
+   "type": "txt",
+   "choices": [
+    "Dante",
+    "Giovane Élber",
+    "Rafinha",
+    "Juninho Pernambucano",
+    "Lúcio",
+    "Zé Roberto"
+   ],
+   "a": [
+    "Juninho Pernambucano"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Juninho Pernambucano",
+    [
+     "Juninho Pernambucano"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Flamengo?",
+   "type": "txt",
+   "choices": [
+    "Kaká",
+    "Zico",
+    "Ronaldinho",
+    "Romário",
+    "Adriano",
+    "Vinícius Jr."
+   ],
+   "a": [
+    "Kaká"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "flamengo"
+   },
+   "src": [
+    "pt",
+    "Kaká",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Corinthians?",
+   "type": "txt",
+   "choices": [
+    "Zico",
+    "Rivellino",
+    "Carlos Tévez",
+    "Ronaldo Fenômeno",
+    "Casagrande",
+    "Sócrates"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "corinthians"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no São Paulo?",
+   "type": "txt",
+   "choices": [
+    "Neymar",
+    "Raí",
+    "Rogério Ceni",
+    "Luís Fabiano",
+    "Cafu",
+    "Kaká"
+   ],
+   "a": [
+    "Neymar"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "saopaulo"
+   },
+   "src": [
+    "pt",
+    "Neymar",
+    [
+     "Neymar"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Santos?",
+   "type": "txt",
+   "choices": [
+    "Rodrygo",
+    "Diego",
+    "Neymar",
+    "Pelé",
+    "Robinho",
+    "Kaká"
+   ],
+   "a": [
+    "Kaká"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "santos"
+   },
+   "src": [
+    "pt",
+    "Kaká",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Palmeiras?",
+   "type": "txt",
+   "choices": [
+    "Marcos",
+    "Endrick",
+    "Edmundo",
+    "Roberto Carlos",
+    "Rivaldo",
+    "Zico"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "palmeiras"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Grêmio?",
+   "type": "txt",
+   "choices": [
+    "Luis Suárez",
+    "Ronaldinho",
+    "Arthur",
+    "Falcão",
+    "Renato Gaúcho",
+    "Mário Jardel"
+   ],
+   "a": [
+    "Falcão"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "gremio"
+   },
+   "src": [
+    "pt",
+    "Paulo Roberto Falcão",
+    [
+     "Falcão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Cruzeiro?",
+   "type": "txt",
+   "choices": [
+    "Alex",
+    "Ronaldo Fenômeno",
+    "Sorín",
+    "Dida",
+    "Tostão",
+    "Reinaldo"
+   ],
+   "a": [
+    "Reinaldo"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "cruzeiro"
+   },
+   "src": [
+    "pt",
+    "José Reinaldo de Lima",
+    [
+     "Reinaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Vasco?",
+   "type": "txt",
+   "choices": [
+    "Juninho Pernambucano",
+    "Roberto Dinamite",
+    "Edmundo",
+    "Zico",
+    "Philippe Coutinho",
+    "Romário"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "vasco"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Botafogo?",
+   "type": "txt",
+   "choices": [
+    "Nílton Santos",
+    "Jairzinho",
+    "Garrincha",
+    "Rivellino",
+    "Túlio Maravilha",
+    "Clarence Seedorf"
+   ],
+   "a": [
+    "Rivellino"
+   ],
+   "d": 3,
+   "art": {
+    "crest": "botafogo"
+   },
+   "src": [
+    "pt",
+    "Roberto Rivellino",
+    [
+     "Rivellino"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes craques NUNCA jogou no Fluminense?",
+   "type": "txt",
+   "choices": [
+    "Rivellino",
+    "Fred",
+    "Zico",
+    "Marcelo",
+    "Romário",
+    "Thiago Silva"
+   ],
+   "a": [
+    "Zico"
+   ],
+   "d": 2,
+   "art": {
+    "crest": "fluminense"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes nomes NUNCA foi técnico da seleção brasileira?",
+   "type": "txt",
+   "choices": [
+    "Luiz Felipe Scolari",
+    "Muricy Ramalho",
+    "Telê Santana",
+    "Zagallo",
+    "Tite",
+    "Carlos Alberto Parreira"
+   ],
+   "a": [
+    "Muricy Ramalho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Muricy Ramalho",
+    [
+     "Muricy Ramalho"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou o Real Madrid?",
+   "type": "txt",
+   "choices": [
+    "José Mourinho",
+    "Vicente del Bosque",
+    "Pep Guardiola",
+    "Fabio Capello",
+    "Zinedine Zidane",
+    "Carlo Ancelotti"
+   ],
+   "a": [
+    "Pep Guardiola"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Pep Guardiola",
+    [
+     "Pep Guardiola"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou o Barcelona?",
+   "type": "txt",
+   "choices": [
+    "Louis van Gaal",
+    "Pep Guardiola",
+    "Carlo Ancelotti",
+    "Luis Enrique",
+    "Johan Cruyff",
+    "Frank Rijkaard"
+   ],
+   "a": [
+    "Carlo Ancelotti"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlo Ancelotti",
+    [
+     "Carlo Ancelotti"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou o Manchester United?",
+   "type": "txt",
+   "choices": [
+    "Alex Ferguson",
+    "David Moyes",
+    "Erik ten Hag",
+    "Arsène Wenger",
+    "Louis van Gaal",
+    "José Mourinho"
+   ],
+   "a": [
+    "Arsène Wenger"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Arsène Wenger",
+    [
+     "Arsène Wenger"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou o Chelsea?",
+   "type": "txt",
+   "choices": [
+    "Luiz Felipe Scolari",
+    "Antonio Conte",
+    "Jürgen Klopp",
+    "Thomas Tuchel",
+    "Carlo Ancelotti",
+    "José Mourinho"
+   ],
+   "a": [
+    "Jürgen Klopp"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Jürgen Klopp",
+    [
+     "Jürgen Klopp"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou o Bayern de Munique?",
+   "type": "txt",
+   "choices": [
+    "Jupp Heynckes",
+    "Thomas Tuchel",
+    "José Mourinho",
+    "Carlo Ancelotti",
+    "Louis van Gaal",
+    "Pep Guardiola"
+   ],
+   "a": [
+    "José Mourinho"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "José Mourinho",
+    [
+     "José Mourinho"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes técnicos NUNCA treinou a Inter de Milão?",
+   "type": "txt",
+   "choices": [
+    "Antonio Conte",
+    "José Mourinho",
+    "Helenio Herrera",
+    "Roberto Mancini",
+    "Carlo Ancelotti",
+    "Simone Inzaghi"
+   ],
+   "a": [
+    "Carlo Ancelotti"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlo Ancelotti",
+    [
+     "Carlo Ancelotti"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destas seleções NUNCA chegou a uma final de Copa do Mundo até 2022?",
+   "type": "txt",
+   "choices": [
+    "Croácia",
+    "Holanda",
+    "Tchecoslováquia",
+    "Portugal",
+    "Hungria",
+    "Suécia"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA",
+    [
+     "Portugal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destas seleções africanas NUNCA venceu a Copa Africana de Nações até 2024?",
+   "type": "txt",
+   "choices": [
+    "Mali",
+    "Nigéria",
+    "Camarões",
+    "Senegal",
+    "Gana",
+    "Egito"
+   ],
+   "a": [
+    "Mali"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa das Nações Africanas",
+    [
+     "Mali"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes clubes NUNCA foi campeão mundial de clubes?",
+   "type": "txt",
+   "choices": [
+    "Boca Juniors",
+    "Inter de Milão",
+    "Porto",
+    "Real Madrid",
+    "Barcelona",
+    "Valencia"
+   ],
+   "a": [
+    "Valencia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Valencia Club de Fútbol",
+    [
+     "Valencia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual destes jogadores NUNCA disputou uma Copa do Mundo?",
+   "type": "txt",
+   "choices": [
+    "Samuel Eto'o",
+    "Didier Drogba",
+    "George Weah",
+    "Roger Milla",
+    "Mohamed Salah",
+    "Jay-Jay Okocha"
+   ],
+   "a": [
+    "George Weah"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "George Weah",
+    [
+     "George Weah"
+    ]
+   ],
+   "x": "A Libéria de Weah nunca se classificou para uma Copa do Mundo."
+  }
+ ]
+}

@@ -1,0 +1,2660 @@
+{
+ "id": "copa_mais",
+ "name": "Copa do Mundo: placares e histórias",
+ "emoji": "🏆",
+ "tag": "Finais, campanhas e momentos das Copas",
+ "col": "#B8860B",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Qual foi o placar da final da Copa de 1930, entre Uruguai e Argentina?",
+   "type": "txt",
+   "choices": [
+    "3 a 2",
+    "4 a 2",
+    "2 a 0",
+    "4 a 1",
+    "3 a 1",
+    "2 a 1"
+   ],
+   "a": [
+    "4 a 2"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "URU"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1930",
+    [
+     "4 a 2"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar do jogo decisivo da Copa de 1950, entre Uruguai e Brasil, no Maracanã?",
+   "type": "txt",
+   "choices": [
+    "1 a 1",
+    "2 a 2",
+    "2 a 1 para o Uruguai",
+    "1 a 0 para o Uruguai",
+    "2 a 0 para o Uruguai",
+    "3 a 2 para o Uruguai"
+   ],
+   "a": [
+    "2 a 1 para o Uruguai"
+   ],
+   "d": 2,
+   "art": {
+    "stad": "maracana"
+   },
+   "src": [
+    "pt",
+    "Maracanaço",
+    [
+     "2–1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1958, entre Brasil e Suécia?",
+   "type": "txt",
+   "choices": [
+    "2 a 1",
+    "4 a 2",
+    "2 a 0",
+    "5 a 2",
+    "3 a 1",
+    "3 a 2"
+   ],
+   "a": [
+    "5 a 2"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "SWE"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1958",
+    [
+     "5 a 2"
+    ]
+   ],
+   "x": "Pelé, com 17 anos, marcou duas vezes na decisão em Solna."
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1962, entre Brasil e Tchecoslováquia?",
+   "type": "txt",
+   "choices": [
+    "2 a 0",
+    "3 a 2",
+    "4 a 1",
+    "2 a 1",
+    "4 a 2",
+    "3 a 1"
+   ],
+   "a": [
+    "3 a 1"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1962",
+    [
+     "3 a 1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1966, depois da prorrogação?",
+   "type": "txt",
+   "choices": [
+    "2 a 0",
+    "3 a 2",
+    "4 a 1",
+    "3 a 1",
+    "4 a 2",
+    "2 a 1"
+   ],
+   "a": [
+    "4 a 2"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1966",
+    [
+     "4 a 2"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1974, entre Alemanha Ocidental e Holanda?",
+   "type": "txt",
+   "choices": [
+    "3 a 1",
+    "2 a 1",
+    "4 a 1",
+    "3 a 2",
+    "4 a 2",
+    "2 a 0"
+   ],
+   "a": [
+    "2 a 1"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1974",
+    [
+     "2 a 1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1978, depois da prorrogação?",
+   "type": "txt",
+   "choices": [
+    "3 a 2",
+    "2 a 0",
+    "2 a 1",
+    "3 a 1",
+    "4 a 2",
+    "4 a 1"
+   ],
+   "a": [
+    "3 a 1"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1978",
+    [
+     "3 a 1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1982, entre Itália e Alemanha Ocidental?",
+   "type": "txt",
+   "choices": [
+    "2 a 1",
+    "3 a 2",
+    "2 a 0",
+    "4 a 2",
+    "3 a 1",
+    "4 a 1"
+   ],
+   "a": [
+    "3 a 1"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1982",
+    [
+     "3 a 1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1986, entre Argentina e Alemanha Ocidental?",
+   "type": "txt",
+   "choices": [
+    "3 a 1",
+    "3 a 2",
+    "2 a 1",
+    "2 a 0",
+    "4 a 2",
+    "4 a 1"
+   ],
+   "a": [
+    "3 a 2"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1986",
+    [
+     "3 a 2"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 1990, em Roma?",
+   "type": "txt",
+   "choices": [
+    "1 a 0",
+    "2 a 0",
+    "2 a 1",
+    "3 a 2",
+    "3 a 1",
+    "4 a 2"
+   ],
+   "a": [
+    "1 a 0"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1990",
+    [
+     "1 a 0"
+    ]
+   ]
+  },
+  {
+   "t": "Como terminou o tempo normal e a prorrogação da final da Copa de 1994?",
+   "type": "txt",
+   "choices": [
+    "2 a 1 para o Brasil",
+    "2 a 2",
+    "0 a 0",
+    "1 a 0 para o Brasil",
+    "1 a 1",
+    "1 a 0 para a Itália"
+   ],
+   "a": [
+    "0 a 0"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1994",
+    [
+     "0–0"
+    ]
+   ],
+   "x": "Foi a primeira final de Copa decidida nos pênaltis."
+  },
+  {
+   "t": "Quantos gols Ronaldo marcou na final da Copa de 2002, contra a Alemanha?",
+   "type": "txt",
+   "choices": [
+    "Quatro",
+    "Três",
+    "Cinco",
+    "Nenhum",
+    "Dois",
+    "Um"
+   ],
+   "a": [
+    "Dois"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2002",
+    [
+     "Ronaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 2014, no Maracanã?",
+   "type": "txt",
+   "choices": [
+    "3 a 1 para a Alemanha",
+    "2 a 1 para a Alemanha",
+    "2 a 0 para a Alemanha",
+    "1 a 0 para a Argentina",
+    "0 a 0, pênaltis para a Alemanha",
+    "1 a 0 para a Alemanha"
+   ],
+   "a": [
+    "1 a 0 para a Alemanha"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2014",
+    [
+     "1–0"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar da final da Copa de 2018, entre França e Croácia?",
+   "type": "txt",
+   "choices": [
+    "3 a 2",
+    "4 a 1",
+    "2 a 1",
+    "4 a 2",
+    "3 a 1",
+    "2 a 0"
+   ],
+   "a": [
+    "4 a 2"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "CRO"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2018",
+    [
+     "4 a 2"
+    ]
+   ]
+  },
+  {
+   "t": "Qual era o placar da final da Copa de 2022 antes da disputa de pênaltis?",
+   "type": "txt",
+   "choices": [
+    "4 a 4",
+    "2 a 2",
+    "2 a 1",
+    "3 a 2",
+    "1 a 1",
+    "3 a 3"
+   ],
+   "a": [
+    "3 a 3"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2022",
+    [
+     "3–3"
+    ]
+   ]
+  },
+  {
+   "t": "Quais países vão sediar a Copa do Mundo de 2030, além dos três sul-americanos que recebem os jogos de abertura?",
+   "type": "txt",
+   "choices": [
+    "Espanha, Portugal e França",
+    "Inglaterra, Escócia e Irlanda",
+    "Marrocos, Egito e Tunísia",
+    "Portugal, Marrocos e Argélia",
+    "Espanha, Itália e Marrocos",
+    "Espanha, Portugal e Marrocos"
+   ],
+   "a": [
+    "Espanha, Portugal e Marrocos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2030",
+    [
+     "Marrocos"
+    ]
+   ]
+  },
+  {
+   "t": "Em quais três países sul-americanos serão disputados os jogos de abertura da Copa de 2030, pelo centenário?",
+   "type": "txt",
+   "choices": [
+    "Argentina, Chile e Peru",
+    "Brasil, Chile e Uruguai",
+    "Uruguai, Brasil e Argentina",
+    "Brasil, Argentina e Colômbia",
+    "Uruguai, Argentina e Paraguai",
+    "Uruguai, Paraguai e Bolívia"
+   ],
+   "a": [
+    "Uruguai, Argentina e Paraguai"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "URU"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2030",
+    [
+     "Paraguai"
+    ]
+   ]
+  },
+  {
+   "t": "Em que estádio foi disputada a final da Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Estádio 974",
+    "Estádio Internacional Khalifa",
+    "Estádio Al Bayt",
+    "Estádio Al Janoub",
+    "Estádio Education City",
+    "Estádio Lusail"
+   ],
+   "a": [
+    "Estádio Lusail"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio Lusail",
+    [
+     "final"
+    ]
+   ]
+  },
+  {
+   "t": "Em que estádio foi disputada a final da Copa de 1982?",
+   "type": "txt",
+   "choices": [
+    "Riazor",
+    "Vicente Calderón",
+    "Mestalla",
+    "Camp Nou",
+    "Sarrià",
+    "Santiago Bernabéu"
+   ],
+   "a": [
+    "Santiago Bernabéu"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1982",
+    [
+     "Bernabéu"
+    ]
+   ]
+  },
+  {
+   "t": "Em que estádio de Buenos Aires foi disputada a final da Copa de 1978?",
+   "type": "txt",
+   "choices": [
+    "Libertadores de América",
+    "Monumental de Núñez",
+    "El Gasómetro",
+    "El Cilindro",
+    "José Amalfitani",
+    "La Bombonera"
+   ],
+   "a": [
+    "Monumental de Núñez"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1978",
+    [
+     "Monumental"
+    ]
+   ]
+  },
+  {
+   "t": "Em que cidade foi disputada a final da Copa de 1974?",
+   "type": "txt",
+   "choices": [
+    "Frankfurt",
+    "Berlim",
+    "Düsseldorf",
+    "Dortmund",
+    "Munique",
+    "Hamburgo"
+   ],
+   "a": [
+    "Munique"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1974",
+    [
+     "Munique"
+    ]
+   ]
+  },
+  {
+   "t": "Em que cidade sueca foi disputada a final da Copa de 1958?",
+   "type": "txt",
+   "choices": [
+    "Uppsala",
+    "Norrköping",
+    "Helsingborg",
+    "Gotemburgo",
+    "Solna, vizinha de Estocolmo",
+    "Malmö"
+   ],
+   "a": [
+    "Solna, vizinha de Estocolmo"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "BRA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 1958",
+    [
+     "Solna"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da primeira Copa do Mundo, em 1930?",
+   "type": "txt",
+   "choices": [
+    "Luis Monti",
+    "Héctor Scarone",
+    "Pedro Cea",
+    "José Nasazzi",
+    "Guillermo Stábile",
+    "Bert Patenaude"
+   ],
+   "a": [
+    "Guillermo Stábile"
+   ],
+   "d": 5,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Guillermo Stábile",
+    [
+     "artilheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção marcou 27 gols em uma única Copa, recorde que dura desde 1954?",
+   "type": "txt",
+   "choices": [
+    "Alemanha Ocidental",
+    "Áustria",
+    "Brasil",
+    "França",
+    "Hungria",
+    "Uruguai"
+   ],
+   "a": [
+    "Hungria"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Seleção Húngara de Futebol",
+    [
+     "27"
+    ]
+   ]
+  },
+  {
+   "t": "Contra qual seleção a Hungria venceu por 10 a 1 na Copa de 1982, a maior goleada da história das Copas?",
+   "type": "txt",
+   "choices": [
+    "El Salvador",
+    "Honduras",
+    "Nova Zelândia",
+    "Haiti",
+    "Kuwait",
+    "Zaire"
+   ],
+   "a": [
+    "El Salvador"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "HUN"
+   },
+   "src": [
+    "pt",
+    "Hungria 10–1 El Salvador",
+    [
+     "10–1"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção africana perdeu por 9 a 0 para a Iugoslávia na Copa de 1974?",
+   "type": "txt",
+   "choices": [
+    "Camarões",
+    "Egito",
+    "Zaire",
+    "Tunísia",
+    "Argélia",
+    "Marrocos"
+   ],
+   "a": [
+    "Zaire"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Zaire na Copa do Mundo de 1974",
+    [
+     "9–0"
+    ]
+   ]
+  },
+  {
+   "t": "Quem se tornou o jogador mais velho a marcar em uma Copa, aos 42 anos, contra a Rússia em 1994?",
+   "type": "player",
+   "a": [
+    "milla"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "RUS"
+   },
+   "src": [
+    "pt",
+    "Roger Milla",
+    [
+     "42"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu por 1 a 0 na semifinal da Copa de 2002, com gol de Ronaldo?",
+   "type": "txt",
+   "choices": [
+    "Turquia",
+    "Senegal",
+    "Estados Unidos",
+    "Alemanha",
+    "Coreia do Sul",
+    "Inglaterra"
+   ],
+   "a": [
+    "Turquia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2002",
+    [
+     "Turquia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil eliminou nas oitavas de final da Copa de 2002, por 2 a 0?",
+   "type": "txt",
+   "choices": [
+    "Japão",
+    "Dinamarca",
+    "Suécia",
+    "México",
+    "Irlanda",
+    "Bélgica"
+   ],
+   "a": [
+    "Bélgica"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2002",
+    [
+     "Bélgica"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu de virada por 2 a 1 nas quartas de final da Copa de 2002?",
+   "type": "txt",
+   "choices": [
+    "Bélgica",
+    "Espanha",
+    "Senegal",
+    "Inglaterra",
+    "Estados Unidos",
+    "Turquia"
+   ],
+   "a": [
+    "Inglaterra"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2002",
+    [
+     "Inglaterra"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu na semifinal da Copa de 1994, com gol de cabeça de Romário?",
+   "type": "txt",
+   "choices": [
+    "Bulgária",
+    "Suécia",
+    "Holanda",
+    "Estados Unidos",
+    "Romênia",
+    "Itália"
+   ],
+   "a": [
+    "Suécia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1994",
+    [
+     "Suécia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi o placar de Brasil x Holanda nas quartas de final da Copa de 1994?",
+   "type": "txt",
+   "choices": [
+    "3 a 1 para o Brasil",
+    "4 a 2 para o Brasil",
+    "1 a 0 para o Brasil",
+    "2 a 2, pênaltis para o Brasil",
+    "3 a 2 para o Brasil",
+    "2 a 1 para o Brasil"
+   ],
+   "a": [
+    "3 a 2 para o Brasil"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1994",
+    [
+     "3–2"
+    ]
+   ]
+  },
+  {
+   "t": "Contra qual seleção o Brasil venceu por 1 a 0 nas oitavas de 1994, no dia 4 de julho?",
+   "type": "txt",
+   "choices": [
+    "México",
+    "Rússia",
+    "Estados Unidos",
+    "Holanda",
+    "Suécia",
+    "Camarões"
+   ],
+   "a": [
+    "Estados Unidos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1994",
+    [
+     "Estados Unidos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu por 3 a 1 na semifinal da Copa de 1970?",
+   "type": "txt",
+   "choices": [
+    "Inglaterra",
+    "México",
+    "Alemanha Ocidental",
+    "Itália",
+    "Uruguai",
+    "Peru"
+   ],
+   "a": [
+    "Uruguai"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1970",
+    [
+     "Uruguai"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou o gol de Brasil 1 x 0 Inglaterra na fase de grupos da Copa de 1970?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1970",
+    [
+     "Jairzinho"
+    ]
+   ]
+  },
+  {
+   "t": "Contra qual seleção Pelé marcou três gols na semifinal da Copa de 1958?",
+   "type": "txt",
+   "choices": [
+    "União Soviética",
+    "Áustria",
+    "Suécia",
+    "França",
+    "Inglaterra",
+    "País de Gales"
+   ],
+   "a": [
+    "França"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1958",
+    [
+     "França"
+    ]
+   ]
+  },
+  {
+   "t": "Contra qual seleção Pelé marcou seu primeiro gol em Copas, nas quartas de final de 1958?",
+   "type": "txt",
+   "choices": [
+    "Inglaterra",
+    "França",
+    "Áustria",
+    "Suécia",
+    "País de Gales",
+    "União Soviética"
+   ],
+   "a": [
+    "País de Gales"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1958",
+    [
+     "País de Gales"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção anfitriã o Brasil eliminou na semifinal da Copa de 1962?",
+   "type": "txt",
+   "choices": [
+    "Iugoslávia",
+    "Tchecoslováquia",
+    "Chile",
+    "México",
+    "Espanha",
+    "Inglaterra"
+   ],
+   "a": [
+    "Chile"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1962",
+    [
+     "Chile"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu o Brasil por 3 a 0 na disputa do terceiro lugar da Copa de 2014?",
+   "type": "txt",
+   "choices": [
+    "Holanda",
+    "Argentina",
+    "Costa Rica",
+    "Colômbia",
+    "Bélgica",
+    "Alemanha"
+   ],
+   "a": [
+    "Holanda"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "Holanda"
+    ]
+   ]
+  },
+  {
+   "t": "Em que jogo da Copa de 2014 Neymar fraturou uma vértebra e ficou fora do resto do torneio?",
+   "type": "txt",
+   "choices": [
+    "Brasil x Croácia, na estreia",
+    "Brasil x Alemanha, na semifinal",
+    "Brasil x Chile, nas oitavas",
+    "Brasil x México, na fase de grupos",
+    "Brasil x Camarões, na fase de grupos",
+    "Brasil x Colômbia, nas quartas"
+   ],
+   "a": [
+    "Brasil x Colômbia, nas quartas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "Colômbia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil eliminou nas oitavas de final da Copa de 2018, por 2 a 0?",
+   "type": "txt",
+   "choices": [
+    "México",
+    "Suécia",
+    "Japão",
+    "Costa Rica",
+    "Sérvia",
+    "Suíça"
+   ],
+   "a": [
+    "México"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2018",
+    [
+     "México"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o gol de Brasil 1 x 0 Suíça na Copa de 2022?",
+   "type": "player",
+   "a": [
+    "casemiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Casemiro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil goleou por 4 a 1 nas oitavas de final da Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Japão",
+    "Camarões",
+    "Sérvia",
+    "Gana",
+    "Suíça",
+    "Coreia do Sul"
+   ],
+   "a": [
+    "Coreia do Sul"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Coreia do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu o Brasil na primeira partida da história da seleção em Copas, em 1930?",
+   "type": "txt",
+   "choices": [
+    "Iugoslávia",
+    "Bolívia",
+    "Uruguai",
+    "França",
+    "Estados Unidos",
+    "Argentina"
+   ],
+   "a": [
+    "Iugoslávia"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Seleção Brasileira na Copa de 1930",
+    [
+     "Iugoslávia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou o Brasil na semifinal da Copa de 1938?",
+   "type": "txt",
+   "choices": [
+    "Polônia",
+    "Hungria",
+    "França",
+    "Itália",
+    "Tchecoslováquia",
+    "Suécia"
+   ],
+   "a": [
+    "Itália"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1938",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção perdeu para o Brasil por 6 a 5, na prorrogação, na Copa de 1938?",
+   "type": "txt",
+   "choices": [
+    "Polônia",
+    "Tchecoslováquia",
+    "Hungria",
+    "Suécia",
+    "Itália",
+    "Suíça"
+   ],
+   "a": [
+    "Polônia"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1938",
+    [
+     "Polônia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção, liderada por Eusébio, ajudou a eliminar o Brasil na primeira fase da Copa de 1966?",
+   "type": "txt",
+   "choices": [
+    "Portugal",
+    "Coreia do Norte",
+    "Alemanha Ocidental",
+    "Hungria",
+    "União Soviética",
+    "Inglaterra"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1966",
+    [
+     "Portugal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu na disputa do terceiro lugar da Copa de 1978?",
+   "type": "txt",
+   "choices": [
+    "Itália",
+    "Polônia",
+    "Peru",
+    "Alemanha Ocidental",
+    "Áustria",
+    "Holanda"
+   ],
+   "a": [
+    "Itália"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1978",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção o Brasil venceu por 3 a 1 na segunda fase da Copa de 1982, antes de cair para a Itália?",
+   "type": "txt",
+   "choices": [
+    "Nova Zelândia",
+    "Polônia",
+    "Escócia",
+    "União Soviética",
+    "Alemanha Ocidental",
+    "Argentina"
+   ],
+   "a": [
+    "Argentina"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1982",
+    [
+     "Argentina"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou a Itália nas oitavas da Copa de 2002, com gol de ouro de Ahn Jung-hwan?",
+   "type": "txt",
+   "choices": [
+    "Turquia",
+    "Croácia",
+    "Estados Unidos",
+    "Senegal",
+    "Japão",
+    "Coreia do Sul"
+   ],
+   "a": [
+    "Coreia do Sul"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2002",
+    [
+     "Ahn"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi a primeira seleção africana a chegar a uma semifinal de Copa, em 2022?",
+   "type": "txt",
+   "choices": [
+    "Tunísia",
+    "Senegal",
+    "Camarões",
+    "Marrocos",
+    "Gana",
+    "Nigéria"
+   ],
+   "a": [
+    "Marrocos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Marrocos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Argentina venceu por 3 a 0 na semifinal da Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Austrália",
+    "Holanda",
+    "Portugal",
+    "França",
+    "Marrocos",
+    "Croácia"
+   ],
+   "a": [
+    "Croácia"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Croácia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Croácia venceu na disputa do terceiro lugar da Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Inglaterra",
+    "Argentina",
+    "Portugal",
+    "Marrocos",
+    "Brasil",
+    "Holanda"
+   ],
+   "a": [
+    "Marrocos"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "CRO"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Marrocos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu a disputa do terceiro lugar da Copa de 2018, contra a Inglaterra?",
+   "type": "txt",
+   "choices": [
+    "França",
+    "Suécia",
+    "Croácia",
+    "Bélgica",
+    "Uruguai",
+    "Rússia"
+   ],
+   "a": [
+    "Bélgica"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2018",
+    [
+     "Bélgica"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu o Uruguai por 3 a 2 na disputa do terceiro lugar da Copa de 2010?",
+   "type": "txt",
+   "choices": [
+    "Holanda",
+    "Gana",
+    "Alemanha",
+    "Paraguai",
+    "Espanha",
+    "Argentina"
+   ],
+   "a": [
+    "Alemanha"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "URU"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "Alemanha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Alemanha goleou por 4 a 1 nas oitavas de 2010, em jogo com um gol de Lampard não validado?",
+   "type": "txt",
+   "choices": [
+    "Sérvia",
+    "Inglaterra",
+    "Gana",
+    "Argentina",
+    "Estados Unidos",
+    "Austrália"
+   ],
+   "a": [
+    "Inglaterra"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "Inglaterra"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Alemanha goleou por 4 a 0 nas quartas de final da Copa de 2010?",
+   "type": "txt",
+   "choices": [
+    "Uruguai",
+    "Gana",
+    "Argentina",
+    "Paraguai",
+    "Inglaterra",
+    "Espanha"
+   ],
+   "a": [
+    "Argentina"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "Argentina"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou a Inglaterra nos pênaltis nas quartas de final da Copa de 2006?",
+   "type": "txt",
+   "choices": [
+    "Brasil",
+    "Itália",
+    "Portugal",
+    "Alemanha",
+    "França",
+    "Argentina"
+   ],
+   "a": [
+    "Portugal"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2006",
+    [
+     "Portugal"
+    ]
+   ]
+  },
+  {
+   "t": "Em que final de Copa Zidane foi expulso por uma cabeçada em Materazzi?",
+   "type": "txt",
+   "choices": [
+    "1998",
+    "2002",
+    "2014",
+    "2006",
+    "2010",
+    "1994"
+   ],
+   "a": [
+    "2006"
+   ],
+   "d": 1,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2006",
+    [
+     "Materazzi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual italiano levou a cabeçada de Zidane na final da Copa de 2006?",
+   "type": "txt",
+   "choices": [
+    "Gianluca Zambrotta",
+    "Andrea Pirlo",
+    "Marco Materazzi",
+    "Alessandro Nesta",
+    "Gennaro Gattuso",
+    "Fabio Cannavaro"
+   ],
+   "a": [
+    "Marco Materazzi"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Final da Copa do Mundo FIFA de 2006",
+    [
+     "Materazzi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou a Argentina nos pênaltis nas quartas de final da Copa de 2006?",
+   "type": "txt",
+   "choices": [
+    "Holanda",
+    "México",
+    "Alemanha",
+    "França",
+    "Portugal",
+    "Itália"
+   ],
+   "a": [
+    "Alemanha"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2006",
+    [
+     "Alemanha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu a Alemanha, então campeã do mundo, na estreia da Copa de 2018?",
+   "type": "txt",
+   "choices": [
+    "Japão",
+    "Coreia do Sul",
+    "Estados Unidos",
+    "Suécia",
+    "México",
+    "Costa Rica"
+   ],
+   "a": [
+    "México"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2018",
+    [
+     "México"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu a Alemanha por 2 a 0 e ajudou a eliminá-la na primeira fase da Copa de 2018?",
+   "type": "txt",
+   "choices": [
+    "Arábia Saudita",
+    "Irã",
+    "Suécia",
+    "Coreia do Sul",
+    "Japão",
+    "México"
+   ],
+   "a": [
+    "Coreia do Sul"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2018",
+    [
+     "Coreia do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Espanha goleou por 7 a 0 na Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Costa Rica",
+    "Catar",
+    "Alemanha",
+    "Panamá",
+    "Marrocos",
+    "Japão"
+   ],
+   "a": [
+    "Costa Rica"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Costa Rica"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção a Holanda goleou por 5 a 1 na estreia da Copa de 2014, com um gol de peixinho de Van Persie?",
+   "type": "txt",
+   "choices": [
+    "Argentina",
+    "México",
+    "Costa Rica",
+    "Austrália",
+    "Chile",
+    "Espanha"
+   ],
+   "a": [
+    "Espanha"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "NED"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "Espanha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou a Itália na primeira fase da Copa de 2014, no jogo da mordida de Suárez em Chiellini?",
+   "type": "txt",
+   "choices": [
+    "Colômbia",
+    "Inglaterra",
+    "Uruguai",
+    "Japão",
+    "Costa Rica",
+    "Grécia"
+   ],
+   "a": [
+    "Uruguai"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "Uruguai"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo a Alemanha ganhou até 2022?",
+   "type": "txt",
+   "choices": [
+    "Cinco",
+    "Seis",
+    "Três",
+    "Uma",
+    "Quatro",
+    "Duas"
+   ],
+   "a": [
+    "Quatro"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Seleção Alemã de Futebol",
+    [
+     "1954",
+     "1974",
+     "1990",
+     "2014"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo a Argentina ganhou até 2022?",
+   "type": "txt",
+   "choices": [
+    "Nenhuma",
+    "Duas",
+    "Cinco",
+    "Quatro",
+    "Uma",
+    "Três"
+   ],
+   "a": [
+    "Três"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ARG"
+   },
+   "src": [
+    "pt",
+    "Seleção Argentina de Futebol",
+    [
+     "1978",
+     "1986",
+     "2022"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo a França ganhou até 2022?",
+   "type": "txt",
+   "choices": [
+    "Cinco",
+    "Nenhuma",
+    "Duas",
+    "Uma",
+    "Três",
+    "Quatro"
+   ],
+   "a": [
+    "Duas"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "FRA"
+   },
+   "src": [
+    "pt",
+    "Seleção Francesa de Futebol",
+    [
+     "1998",
+     "2018"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo a Itália ganhou até 2022?",
+   "type": "txt",
+   "choices": [
+    "Três",
+    "Uma",
+    "Duas",
+    "Quatro",
+    "Seis",
+    "Cinco"
+   ],
+   "a": [
+    "Quatro"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Seleção Italiana de Futebol",
+    [
+     "1934",
+     "1938",
+     "1982",
+     "2006"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas Copas do Mundo o Uruguai ganhou até 2022?",
+   "type": "txt",
+   "choices": [
+    "Cinco",
+    "Uma",
+    "Quatro",
+    "Três",
+    "Nenhuma",
+    "Duas"
+   ],
+   "a": [
+    "Duas"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "URU"
+   },
+   "src": [
+    "pt",
+    "Seleção Uruguaia de Futebol",
+    [
+     "1930",
+     "1950"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas seleções disputaram cada Copa do Mundo de 1982 a 1994?",
+   "type": "txt",
+   "choices": [
+    "18",
+    "24",
+    "28",
+    "32",
+    "20",
+    "16"
+   ],
+   "a": [
+    "24"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1982",
+    [
+     "24"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi a primeira Copa do Mundo transmitida em cores pela televisão?",
+   "type": "txt",
+   "choices": [
+    "1978",
+    "1970",
+    "1966",
+    "1974",
+    "1958",
+    "1962"
+   ],
+   "a": [
+    "1970"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1970",
+    [
+     "cores"
+    ]
+   ]
+  },
+  {
+   "t": "Qual troféu era entregue ao campeão mundial até 1970?",
+   "type": "txt",
+   "choices": [
+    "Taça Lipton",
+    "Taça FIFA",
+    "Taça Jules Rimet",
+    "Taça Rio Branco",
+    "Taça Stanley",
+    "Taça Henri Delaunay"
+   ],
+   "a": [
+    "Taça Jules Rimet"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Taça Jules Rimet",
+    [
+     "1970"
+    ]
+   ]
+  },
+  {
+   "t": "Em que ano a Taça Jules Rimet foi roubada da sede da CBF, no Rio, e nunca mais recuperada?",
+   "type": "txt",
+   "choices": [
+    "1994",
+    "1970",
+    "1978",
+    "1966",
+    "1983",
+    "1990"
+   ],
+   "a": [
+    "1983"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Taça Jules Rimet",
+    [
+     "1983"
+    ]
+   ]
+  },
+  {
+   "t": "Quem desenhou a Taça FIFA, entregue ao campeão mundial desde 1974?",
+   "type": "txt",
+   "choices": [
+    "Silvio Gazzaniga",
+    "Gianni Versace",
+    "Jules Rimet",
+    "Henri Delaunay",
+    "Abel Lafleur",
+    "Giorgetto Giugiaro"
+   ],
+   "a": [
+    "Silvio Gazzaniga"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Taça FIFA",
+    [
+     "Gazzaniga"
+    ]
+   ]
+  },
+  {
+   "t": "Em que Copa do Mundo a tecnologia da linha do gol foi usada pela primeira vez?",
+   "type": "txt",
+   "choices": [
+    "2006",
+    "2002",
+    "2018",
+    "2010",
+    "2022",
+    "2014"
+   ],
+   "a": [
+    "2014"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Tecnologia da linha de gol",
+    [
+     "2014"
+    ]
+   ]
+  },
+  {
+   "t": "Em que Copa do Mundo o impedimento semiautomático foi usado pela primeira vez?",
+   "type": "txt",
+   "choices": [
+    "2014",
+    "2018",
+    "2022",
+    "2026",
+    "2010",
+    "2006"
+   ],
+   "a": [
+    "2022"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "semiautomático"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou o primeiro gol de ouro da história das Copas, em 1998, contra o Paraguai?",
+   "type": "txt",
+   "choices": [
+    "Thierry Henry",
+    "Laurent Blanc",
+    "Zinedine Zidane",
+    "Youri Djorkaeff",
+    "David Trezeguet",
+    "Lilian Thuram"
+   ],
+   "a": [
+    "Laurent Blanc"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "PAR"
+   },
+   "src": [
+    "pt",
+    "Laurent Blanc",
+    [
+     "Paraguai"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou o primeiro gol da história das Copas do Mundo, em 1930?",
+   "type": "txt",
+   "choices": [
+    "Héctor Castro",
+    "José Nasazzi",
+    "Lucien Laurent",
+    "Bert Patenaude",
+    "Guillermo Stábile",
+    "Pedro Cea"
+   ],
+   "a": [
+    "Lucien Laurent"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Lucien Laurent",
+    [
+     "1930"
+    ]
+   ]
+  },
+  {
+   "t": "Qual americano marcou o primeiro hat-trick da história das Copas, em 1930?",
+   "type": "txt",
+   "choices": [
+    "Tom Florie",
+    "Bert Patenaude",
+    "Guillermo Stábile",
+    "Billy Gonsalves",
+    "Lucien Laurent",
+    "Joe Gaetjens"
+   ],
+   "a": [
+    "Bert Patenaude"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "goalNet"
+   },
+   "src": [
+    "pt",
+    "Bert Patenaude",
+    [
+     "hat-trick"
+    ]
+   ]
+  },
+  {
+   "t": "Qual país tem mais participações em Copas do Mundo sem nunca ter sido campeão?",
+   "type": "txt",
+   "choices": [
+    "Suíça",
+    "Holanda",
+    "Estados Unidos",
+    "México",
+    "Suécia",
+    "Bélgica"
+   ],
+   "a": [
+    "México"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Seleção Mexicana de Futebol",
+    [
+     "participações"
+    ]
+   ]
+  },
+  {
+   "t": "Qual campeã do mundo caiu na primeira fase da Copa seguinte, em 2014?",
+   "type": "txt",
+   "choices": [
+    "França",
+    "Argentina",
+    "Brasil",
+    "Espanha",
+    "Alemanha",
+    "Itália"
+   ],
+   "a": [
+    "Espanha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "Espanha"
+    ]
+   ]
+  },
+  {
+   "t": "Qual campeã do mundo caiu na primeira fase da Copa seguinte, em 2010?",
+   "type": "txt",
+   "choices": [
+    "Inglaterra",
+    "Alemanha",
+    "França",
+    "Espanha",
+    "Itália",
+    "Brasil"
+   ],
+   "a": [
+    "Itália"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Em que cidade foi disputado o jogo de abertura da Copa de 2014?",
+   "type": "txt",
+   "choices": [
+    "Rio de Janeiro",
+    "Brasília",
+    "Salvador",
+    "São Paulo",
+    "Belo Horizonte",
+    "Fortaleza"
+   ],
+   "a": [
+    "São Paulo"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "CRO"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "São Paulo"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas cidades-sede teve a Copa do Mundo de 2014, no Brasil?",
+   "type": "txt",
+   "choices": [
+    "16",
+    "12",
+    "14",
+    "8",
+    "9",
+    "10"
+   ],
+   "a": [
+    "12"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2014",
+    [
+     "12"
+    ]
+   ]
+  },
+  {
+   "t": "Qual cidade-sede da Copa de 2014 fica no meio da floresta amazônica?",
+   "type": "txt",
+   "choices": [
+    "Cuiabá",
+    "Manaus",
+    "Macapá",
+    "Porto Velho",
+    "Boa Vista",
+    "Belém"
+   ],
+   "a": [
+    "Manaus"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Arena da Amazônia",
+    [
+     "Manaus"
+    ]
+   ]
+  },
+  {
+   "t": "Qual estádio de Brasília recebeu jogos da Copa de 2014?",
+   "type": "txt",
+   "choices": [
+    "Bezerrão",
+    "Arena Pantanal",
+    "Serejão",
+    "Boca do Jacaré",
+    "Castelão",
+    "Mané Garrincha"
+   ],
+   "a": [
+    "Mané Garrincha"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio Nacional Mané Garrincha",
+    [
+     "2014"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico da Inglaterra campeã do mundo em 1966?",
+   "type": "txt",
+   "choices": [
+    "Alf Ramsey",
+    "Don Revie",
+    "Bobby Robson",
+    "Bill Shankly",
+    "Ron Greenwood",
+    "Walter Winterbottom"
+   ],
+   "a": [
+    "Alf Ramsey"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ENG"
+   },
+   "src": [
+    "pt",
+    "Alf Ramsey",
+    [
+     "1966"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico da Alemanha Ocidental campeã do mundo em 1974?",
+   "type": "txt",
+   "choices": [
+    "Helmut Schön",
+    "Sepp Herberger",
+    "Jupp Derwall",
+    "Udo Lattek",
+    "Berti Vogts",
+    "Franz Beckenbauer"
+   ],
+   "a": [
+    "Helmut Schön"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Helmut Schön",
+    [
+     "1974"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico da Alemanha Ocidental campeã do mundo em 1954?",
+   "type": "txt",
+   "choices": [
+    "Hennes Weisweiler",
+    "Sepp Herberger",
+    "Jupp Derwall",
+    "Udo Lattek",
+    "Otto Nerz",
+    "Helmut Schön"
+   ],
+   "a": [
+    "Sepp Herberger"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "GER"
+   },
+   "src": [
+    "pt",
+    "Sepp Herberger",
+    [
+     "1954"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico da Itália campeã do mundo em 1982?",
+   "type": "txt",
+   "choices": [
+    "Enzo Bearzot",
+    "Azeglio Vicini",
+    "Dino Zoff",
+    "Giovanni Trapattoni",
+    "Cesare Maldini",
+    "Arrigo Sacchi"
+   ],
+   "a": [
+    "Enzo Bearzot"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Enzo Bearzot",
+    [
+     "1982"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o técnico da Itália bicampeã do mundo em 1934 e 1938?",
+   "type": "txt",
+   "choices": [
+    "Enzo Bearzot",
+    "Nereo Rocco",
+    "Helenio Herrera",
+    "Ferruccio Valcareggi",
+    "Vittorio Pozzo",
+    "Edmondo Fabbri"
+   ],
+   "a": [
+    "Vittorio Pozzo"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "ITA"
+   },
+   "src": [
+    "pt",
+    "Vittorio Pozzo",
+    [
+     "1938"
+    ]
+   ]
+  },
+  {
+   "t": "Qual foi a única Copa do Mundo sem uma final, decidida em um quadrangular?",
+   "type": "txt",
+   "choices": [
+    "1934",
+    "1958",
+    "1930",
+    "1954",
+    "1938",
+    "1950"
+   ],
+   "a": [
+    "1950"
+   ],
+   "d": 3,
+   "art": {
+    "stad": "maracana"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 1950",
+    [
+     "quadrangular"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu todos os sete jogos que disputou na Copa de 2002?",
+   "type": "txt",
+   "choices": [
+    "Brasil",
+    "Alemanha",
+    "Inglaterra",
+    "Coreia do Sul",
+    "Espanha",
+    "Turquia"
+   ],
+   "a": [
+    "Brasil"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2002",
+    [
+     "sete"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos gols a Espanha marcou em toda a Copa de 2010, campanha do título?",
+   "type": "txt",
+   "choices": [
+    "6",
+    "11",
+    "15",
+    "8",
+    "10",
+    "12"
+   ],
+   "a": [
+    "8"
+   ],
+   "d": 4,
+   "art": {
+    "flag": "ESP"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "8"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção deixou a Copa de 2010 sem perder nenhum jogo, com três empates na primeira fase?",
+   "type": "txt",
+   "choices": [
+    "Nova Zelândia",
+    "Suíça",
+    "Japão",
+    "Estados Unidos",
+    "Eslováquia",
+    "Paraguai"
+   ],
+   "a": [
+    "Nova Zelândia"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Nova Zelândia na Copa do Mundo de 2010",
+    [
+     "empates"
+    ]
+   ]
+  },
+  {
+   "t": "Qual país foi o primeiro anfitrião eliminado na fase de grupos, em 2010?",
+   "type": "txt",
+   "choices": [
+    "Japão",
+    "Alemanha",
+    "África do Sul",
+    "Coreia do Sul",
+    "Estados Unidos",
+    "Catar"
+   ],
+   "a": [
+    "África do Sul"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2010",
+    [
+     "África do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Qual país-sede perdeu os três jogos da fase de grupos na Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Gana",
+    "Irã",
+    "Equador",
+    "Tunísia",
+    "Arábia Saudita",
+    "Catar"
+   ],
+   "a": [
+    "Catar"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Mundo FIFA de 2022",
+    [
+     "Catar"
+    ]
+   ]
+  },
+  {
+   "t": "Qual brasileiro fez gol contra na abertura da Copa de 2014, contra a Croácia?",
+   "type": "player",
+   "a": [
+    "marcelo"
+   ],
+   "d": 3,
+   "art": {
+    "flag": "CRO"
+   },
+   "src": [
+    "pt",
+    "Brasil 3–1 Croácia",
+    [
+     "contra"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou dois gols na estreia do Brasil na Copa de 2014, contra a Croácia?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "CRO"
+   },
+   "src": [
+    "pt",
+    "Brasil 3–1 Croácia",
+    [
+     "Neymar"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleiro mexicano fez defesas milagrosas no empate sem gols com o Brasil na Copa de 2014?",
+   "type": "txt",
+   "choices": [
+    "Jesús Corona",
+    "Oswaldo Sánchez",
+    "Guillermo Ochoa",
+    "Antonio Carbajal",
+    "Jorge Campos",
+    "Alfredo Talavera"
+   ],
+   "a": [
+    "Guillermo Ochoa"
+   ],
+   "d": 2,
+   "art": {
+    "flag": "MEX"
+   },
+   "src": [
+    "pt",
+    "Guillermo Ochoa",
+    [
+     "Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Qual goleiro mexicano foi o primeiro jogador a disputar cinco Copas do Mundo, de 1950 a 1966?",
+   "type": "txt",
+   "choices": [
+    "Guillermo Ochoa",
+    "Antonio Carbajal",
+    "Ignacio Calderón",
+    "Pablo Larios",
+    "Oswaldo Sánchez",
+    "Jorge Campos"
+   ],
+   "a": [
+    "Antonio Carbajal"
+   ],
+   "d": 5,
+   "art": {
+    "flag": "MEX"
+   },
+   "src": [
+    "pt",
+    "Antonio Carbajal",
+    [
+     "cinco"
+    ]
+   ]
+  }
+ ]
+}

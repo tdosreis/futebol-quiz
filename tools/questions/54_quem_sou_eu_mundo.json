@@ -1,0 +1,1180 @@
+{
+ "id": "quemsoueumundo",
+ "name": "Quem sou eu? Lendas do mundo",
+ "emoji": "👑",
+ "tag": "Lendas",
+ "col": "#3a8c6b",
+ "diff": "Difícil",
+ "qs": [
+  {
+   "t": "Sou búlgaro, ganhei a Bola de Ouro de 1994 e fui um dos artilheiros da Copa daquele ano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jean-Pierre Papin",
+    "Hristo Stoichkov",
+    "Elías Figueroa",
+    "Ali Daei",
+    "Hakan Şükür",
+    "Mohamed Salah"
+   ],
+   "a": [
+    "Hristo Stoichkov"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Hristo Stoichkov",
+    [
+     "Stoichkov"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamavam de 'Maradona dos Cárpatos' e sou o maior ídolo do futebol romeno. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mohamed Salah",
+    "Gabriel Batistuta",
+    "Gheorghe Hagi",
+    "Pavel Nedvěd",
+    "Alberto Spencer",
+    "James Rodríguez"
+   ],
+   "a": [
+    "Gheorghe Hagi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Gheorghe Hagi",
+    [
+     "Hagi"
+    ]
+   ]
+  },
+  {
+   "t": "Sou liberiano, ganhei a Bola de Ouro de 1995 e depois virei presidente do meu país. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Gabriel Batistuta",
+    "Thomas Müller",
+    "Just Fontaine",
+    "George Weah",
+    "Fabio Cannavaro",
+    "Davor Šuker"
+   ],
+   "a": [
+    "George Weah"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "George Weah",
+    [
+     "Weah"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz 13 gols numa única Copa do Mundo, em 1958, um recorde que dura até hoje. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Enzo Francescoli",
+    "Michael Owen",
+    "Didier Drogba",
+    "Matthias Sammer",
+    "Just Fontaine",
+    "Alberto Spencer"
+   ],
+   "a": [
+    "Just Fontaine"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Just Fontaine",
+    [
+     "Fontaine"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamavam de 'Der Bomber': fiz 40 gols numa só temporada da Bundesliga, recorde que durou quase 50 anos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luka Modrić",
+    "Gerd Müller",
+    "Diego Forlán",
+    "Lothar Matthäus",
+    "Matthias Sammer",
+    "Oleg Salenko"
+   ],
+   "a": [
+    "Gerd Müller"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Gerd Müller",
+    [
+     "Müller"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz cinco gols em nove minutos saindo do banco, contra o Wolfsburg, em 2015. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Ruud Gullit",
+    "George Weah",
+    "Luka Modrić",
+    "Robert Lewandowski",
+    "Mohamed Salah",
+    "Gabriel Batistuta"
+   ],
+   "a": [
+    "Robert Lewandowski"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Robert Lewandowski",
+    [
+     "Lewandowski"
+    ]
+   ]
+  },
+  {
+   "t": "Dancei junto à bandeirinha de escanteio em 1990 e marquei um gol de Copa aos 42 anos, em 1994. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Paolo Rossi",
+    "Roger Milla",
+    "Hakan Şükür",
+    "Harry Kane",
+    "Gabriel Batistuta",
+    "Gheorghe Hagi"
+   ],
+   "a": [
+    "Roger Milla"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Roger Milla",
+    [
+     "Milla"
+    ]
+   ]
+  },
+  {
+   "t": "Joguei cinco Copas e fui o primeiro eleito melhor jogador do mundo pela FIFA, em 1991. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Marco van Basten",
+    "Harry Kane",
+    "Lothar Matthäus",
+    "Alfredo Di Stéfano",
+    "Mohamed Salah",
+    "Gheorghe Hagi"
+   ],
+   "a": [
+    "Lothar Matthäus"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Lothar Matthäus",
+    [
+     "Matthäus"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz três gols no Brasil no Sarriá e fui artilheiro e melhor jogador da Copa de 1982. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alberto Spencer",
+    "Jean-Pierre Papin",
+    "Eric Cantona",
+    "Harry Kane",
+    "Paolo Rossi",
+    "Pavel Nedvěd"
+   ],
+   "a": [
+    "Paolo Rossi"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Paolo Rossi",
+    [
+     "Rossi"
+    ]
+   ]
+  },
+  {
+   "t": "Era reserva no início da Copa de 1990, em casa, e terminei como artilheiro do torneio. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jean-Pierre Papin",
+    "Didier Drogba",
+    "Gabriel Batistuta",
+    "Samuel Eto'o",
+    "Mario Kempes",
+    "Salvatore Schillaci"
+   ],
+   "a": [
+    "Salvatore Schillaci"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Salvatore Schillaci",
+    [
+     "Schillaci"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemão e ganhei a Chuteira de Ouro da Copa de 2010, aos 20 anos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Eusébio",
+    "Daniel Passarella",
+    "Gerd Müller",
+    "Enzo Francescoli",
+    "Ali Daei",
+    "Thomas Müller"
+   ],
+   "a": [
+    "Thomas Müller"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Thomas Müller",
+    [
+     "Müller"
+    ]
+   ]
+  },
+  {
+   "t": "Sou colombiano e fui artilheiro da Copa de 2014, com um golaço de voleio contra o Uruguai. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Andriy Shevchenko",
+    "Thomas Müller",
+    "Mohamed Salah",
+    "Lothar Matthäus",
+    "Son Heung-min",
+    "James Rodríguez"
+   ],
+   "a": [
+    "James Rodríguez"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "James Rodríguez",
+    [
+     "Rodríguez"
+    ]
+   ]
+  },
+  {
+   "t": "Sou inglês e fui artilheiro da Copa de 2018, com seis gols. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Daniel Passarella",
+    "Ruud Gullit",
+    "Pavel Nedvěd",
+    "Elías Figueroa",
+    "Harry Kane",
+    "Andriy Shevchenko"
+   ],
+   "a": [
+    "Harry Kane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Harry Kane",
+    [
+     "Kane"
+    ]
+   ]
+  },
+  {
+   "t": "Sou croata, fui eleito o melhor da Copa de 2018 e ganhei a Bola de Ouro no mesmo ano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Roger Milla",
+    "Didier Drogba",
+    "Eric Cantona",
+    "Carlos Valderrama",
+    "Gabriel Batistuta",
+    "Luka Modrić"
+   ],
+   "a": [
+    "Luka Modrić"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Luka Modrić",
+    [
+     "Modrić"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamavam de 'El Príncipe', sou uruguaio e fui o ídolo de infância de Zidane. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fabio Cannavaro",
+    "Enzo Francescoli",
+    "Pavel Nedvěd",
+    "Mario Kempes",
+    "Carlos Valderrama",
+    "Samuel Eto'o"
+   ],
+   "a": [
+    "Enzo Francescoli"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Enzo Francescoli",
+    [
+     "Francescoli"
+    ]
+   ]
+  },
+  {
+   "t": "Sou chileno, zagueiro, ídolo do Internacional nos anos 1970 e eleito três vezes o melhor da América. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Matthias Sammer",
+    "Robert Lewandowski",
+    "Alberto Spencer",
+    "Jean-Pierre Papin",
+    "Elías Figueroa",
+    "Hakan Şükür"
+   ],
+   "a": [
+    "Elías Figueroa"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Elías Figueroa",
+    [
+     "Figueroa"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamam de 'El Pibe', sou colombiano e fiquei famoso pela cabeleira loira. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Marco van Basten",
+    "Roger Milla",
+    "Didier Drogba",
+    "Son Heung-min",
+    "Carlos Valderrama",
+    "Harry Kane"
+   ],
+   "a": [
+    "Carlos Valderrama"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Carlos Valderrama",
+    [
+     "Valderrama"
+    ]
+   ]
+  },
+  {
+   "t": "Sou equatoriano e o maior artilheiro da história da Libertadores, com 54 gols pelo Peñarol e pelo Barcelona de Guayaquil. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jean-Pierre Papin",
+    "Diego Forlán",
+    "Carlos Valderrama",
+    "Andriy Shevchenko",
+    "Alberto Spencer",
+    "Roger Milla"
+   ],
+   "a": [
+    "Alberto Spencer"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Alberto Spencer",
+    [
+     "Spencer"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o capitão da Argentina campeã do mundo em 1978. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luka Modrić",
+    "Ruud Gullit",
+    "Robert Lewandowski",
+    "Son Heung-min",
+    "Daniel Passarella",
+    "Salvatore Schillaci"
+   ],
+   "a": [
+    "Daniel Passarella"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Daniel Passarella",
+    [
+     "Passarella"
+    ]
+   ]
+  },
+  {
+   "t": "Fui artilheiro e campeão da Copa de 1978, com dois gols na final. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mario Kempes",
+    "Oleg Salenko",
+    "Jean-Pierre Papin",
+    "Paolo Rossi",
+    "Hakan Şükür",
+    "James Rodríguez"
+   ],
+   "a": [
+    "Mario Kempes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Mario Kempes",
+    [
+     "Kempes"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o único jogador com hat-tricks em duas Copas diferentes pela Argentina: 1994 e 1998. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alfredo Di Stéfano",
+    "Salvatore Schillaci",
+    "Gabriel Batistuta",
+    "Roger Milla",
+    "Carlos Valderrama",
+    "Diego Forlán"
+   ],
+   "a": [
+    "Gabriel Batistuta"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Gabriel Batistuta",
+    [
+     "Batistuta"
+    ]
+   ]
+  },
+  {
+   "t": "Sou francês, ídolo do Manchester United, e fui suspenso por meses após uma voadora num torcedor, em 1995. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Eric Cantona",
+    "Davor Šuker",
+    "Harry Kane",
+    "Samuel Eto'o",
+    "Elías Figueroa",
+    "Paolo Rossi"
+   ],
+   "a": [
+    "Eric Cantona"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Eric Cantona",
+    [
+     "Cantona"
+    ]
+   ]
+  },
+  {
+   "t": "Sou marfinense, empatei a final da Champions de 2012 aos 88 minutos e bati o pênalti do título. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Ruud Gullit",
+    "Gerd Müller",
+    "George Weah",
+    "Michael Owen",
+    "Hristo Stoichkov",
+    "Didier Drogba"
+   ],
+   "a": [
+    "Didier Drogba"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Didier Drogba",
+    [
+     "Drogba"
+    ]
+   ]
+  },
+  {
+   "t": "Sou camaronês e ganhei a tríplice coroa em anos seguidos: com o Barcelona em 2009 e com a Inter em 2010. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alfredo Di Stéfano",
+    "Paolo Rossi",
+    "Enzo Francescoli",
+    "Samuel Eto'o",
+    "Son Heung-min",
+    "Gheorghe Hagi"
+   ],
+   "a": [
+    "Samuel Eto'o"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Samuel Eto'o",
+    [
+     "Eto'o"
+    ]
+   ]
+  },
+  {
+   "t": "Sou egípcio, me chamam de 'Faraó' e sou ídolo do Liverpool. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Carlos Valderrama",
+    "Mohamed Salah",
+    "Ali Daei",
+    "Just Fontaine",
+    "Thomas Müller",
+    "Samuel Eto'o"
+   ],
+   "a": [
+    "Mohamed Salah"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Mohamed Salah",
+    [
+     "Salah"
+    ]
+   ]
+  },
+  {
+   "t": "Sou sul-coreano, fui artilheiro da Premier League em 2021-22 e ganhei o Prêmio Puskás de 2020. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mario Kempes",
+    "Lothar Matthäus",
+    "Andriy Shevchenko",
+    "Pavel Nedvěd",
+    "Son Heung-min",
+    "George Weah"
+   ],
+   "a": [
+    "Son Heung-min"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Son Heung-min",
+    [
+     "Heung-min"
+    ]
+   ]
+  },
+  {
+   "t": "Sou iraniano e fui, por muitos anos, o maior artilheiro da história das seleções, com 108 gols. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Davor Šuker",
+    "Eric Cantona",
+    "Ali Daei",
+    "Ruud Gullit",
+    "Oleg Salenko",
+    "Samuel Eto'o"
+   ],
+   "a": [
+    "Ali Daei"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Ali Daei",
+    [
+     "Daei"
+    ]
+   ]
+  },
+  {
+   "t": "Sou tcheco, joguei na Lazio e na Juventus e ganhei a Bola de Ouro de 2003. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mario Kempes",
+    "James Rodríguez",
+    "Ruud Gullit",
+    "Enzo Francescoli",
+    "Pavel Nedvěd",
+    "Eusébio"
+   ],
+   "a": [
+    "Pavel Nedvěd"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Pavel Nedvěd",
+    [
+     "Nedvěd"
+    ]
+   ]
+  },
+  {
+   "t": "Sou ucraniano, ganhei a Bola de Ouro de 2004 e bati o pênalti do título do Milan em 2003. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jean-Pierre Papin",
+    "Mario Kempes",
+    "Daniel Passarella",
+    "Andriy Shevchenko",
+    "Thomas Müller",
+    "George Weah"
+   ],
+   "a": [
+    "Andriy Shevchenko"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Andriy Shevchenko",
+    [
+     "Shevchenko"
+    ]
+   ]
+  },
+  {
+   "t": "Sou inglês, ganhei a Bola de Ouro de 2001 e marquei um golaço contra a Argentina na Copa de 1998. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Andriy Shevchenko",
+    "Gheorghe Hagi",
+    "Didier Drogba",
+    "Eric Cantona",
+    "Michael Owen",
+    "Hakan Şükür"
+   ],
+   "a": [
+    "Michael Owen"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Michael Owen",
+    [
+     "Owen"
+    ]
+   ]
+  },
+  {
+   "t": "Sou alemão, líbero, e ganhei a Bola de Ouro de 1996, ano em que fui campeão da Euro. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Gerd Müller",
+    "Didier Drogba",
+    "Matthias Sammer",
+    "Jean-Pierre Papin",
+    "Lothar Matthäus",
+    "Gheorghe Hagi"
+   ],
+   "a": [
+    "Matthias Sammer"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Matthias Sammer",
+    [
+     "Sammer"
+    ]
+   ]
+  },
+  {
+   "t": "Sou italiano, zagueiro e capitão do tetra de 2006, e ganhei a Bola de Ouro naquele ano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fabio Cannavaro",
+    "Mario Kempes",
+    "Oleg Salenko",
+    "Daniel Passarella",
+    "Hristo Stoichkov",
+    "Thomas Müller"
+   ],
+   "a": [
+    "Fabio Cannavaro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Fabio Cannavaro",
+    [
+     "Cannavaro"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Bola de Ouro de 1987 e a dediquei a Nelson Mandela. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Oleg Salenko",
+    "Alfredo Di Stéfano",
+    "Lothar Matthäus",
+    "Diego Forlán",
+    "Ali Daei",
+    "Ruud Gullit"
+   ],
+   "a": [
+    "Ruud Gullit"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ruud Gullit",
+    [
+     "Gullit"
+    ]
+   ]
+  },
+  {
+   "t": "Marquei de voleio, quase sem ângulo, na final da Euro 1988 contra a União Soviética. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Marco van Basten",
+    "Thomas Müller",
+    "Elías Figueroa",
+    "George Weah",
+    "Matthias Sammer",
+    "Diego Forlán"
+   ],
+   "a": [
+    "Marco van Basten"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Marco van Basten",
+    [
+     "Basten"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamavam de 'Major Galopante' e hoje dou nome ao prêmio de gol mais bonito do ano. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Just Fontaine",
+    "Mohamed Salah",
+    "Davor Šuker",
+    "Hristo Stoichkov",
+    "Jean-Pierre Papin",
+    "Ferenc Puskás"
+   ],
+   "a": [
+    "Ferenc Puskás"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Ferenc Puskás",
+    [
+     "Puskás"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei as cinco primeiras Copas dos Campeões com o Real Madrid e joguei por Argentina e Espanha. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alfredo Di Stéfano",
+    "Ruud Gullit",
+    "Harry Kane",
+    "Eusébio",
+    "Ali Daei",
+    "Carlos Valderrama"
+   ],
+   "a": [
+    "Alfredo Di Stéfano"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "pt",
+    "Alfredo Di Stéfano",
+    [
+     "Stéfano"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o único goleiro eleito o melhor jogador de uma Copa do Mundo, em 2002. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Petr Čech",
+    "Thibaut Courtois",
+    "Emiliano Martínez",
+    "Oliver Kahn",
+    "José Luis Chilavert",
+    "Taffarel"
+   ],
+   "a": [
+    "Oliver Kahn"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Oliver Kahn",
+    [
+     "Kahn"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamavam de 'Aranha Negra' e sou o único goleiro a ganhar a Bola de Ouro, em 1963. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Lev Yashin",
+    "Peter Schmeichel",
+    "Taffarel",
+    "René Higuita",
+    "Manuel Neuer",
+    "Gordon Banks"
+   ],
+   "a": [
+    "Lev Yashin"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Lev Yashin",
+    [
+     "Yashin"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo como capitão da Itália aos 40 anos, em 1982. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Dino Zoff",
+    "Taffarel",
+    "José Luis Chilavert",
+    "Petr Čech",
+    "Gordon Banks",
+    "Emiliano Martínez"
+   ],
+   "a": [
+    "Dino Zoff"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Dino Zoff",
+    [
+     "Zoff"
+    ]
+   ]
+  },
+  {
+   "t": "Sou dinamarquês, campeão da Euro 1992 e da tríplice coroa com o Manchester United em 1999. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Peter Schmeichel",
+    "Emiliano Martínez",
+    "Iker Casillas",
+    "Lev Yashin",
+    "José Luis Chilavert",
+    "Gianluigi Buffon"
+   ],
+   "a": [
+    "Peter Schmeichel"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Peter Schmeichel",
+    [
+     "Schmeichel"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o capitão e goleiro da Espanha campeã do mundo em 2010. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Dino Zoff",
+    "Gianluigi Buffon",
+    "Manuel Neuer",
+    "Oliver Kahn",
+    "José Luis Chilavert",
+    "Iker Casillas"
+   ],
+   "a": [
+    "Iker Casillas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Iker Casillas",
+    [
+     "Casillas"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz a famosa 'defesa escorpião' em Wembley, em 1995. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Iker Casillas",
+    "Oliver Kahn",
+    "Petr Čech",
+    "José Luis Chilavert",
+    "Peter Schmeichel",
+    "René Higuita"
+   ],
+   "a": [
+    "René Higuita"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "René Higuita",
+    [
+     "Higuita"
+    ]
+   ]
+  },
+  {
+   "t": "Sou paraguaio e um dos goleiros com mais gols da história, de falta e de pênalti. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Iker Casillas",
+    "René Higuita",
+    "Gianluigi Buffon",
+    "José Luis Chilavert",
+    "Taffarel",
+    "Lev Yashin"
+   ],
+   "a": [
+    "José Luis Chilavert"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "José Luis Chilavert",
+    [
+     "Chilavert"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz a defesa que muitos chamam de a maior da história, numa cabeçada de Pelé, na Copa de 1970. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Petr Čech",
+    "Iker Casillas",
+    "Thibaut Courtois",
+    "Taffarel",
+    "Gianluigi Buffon",
+    "Gordon Banks"
+   ],
+   "a": [
+    "Gordon Banks"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Gordon Banks",
+    [
+     "Banks"
+    ]
+   ]
+  },
+  {
+   "t": "Sou argentino, fui o melhor goleiro da Copa de 2022 e defendi pênaltis na final. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Gordon Banks",
+    "Iker Casillas",
+    "Gianluigi Buffon",
+    "Emiliano Martínez",
+    "Thibaut Courtois",
+    "René Higuita"
+   ],
+   "a": [
+    "Emiliano Martínez"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Emiliano Martínez",
+    [
+     "Martínez"
+    ]
+   ]
+  }
+ ]
+}

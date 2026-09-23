@@ -1,0 +1,1047 @@
+{
+ "id": "regras_jogadas",
+ "name": "Regras, dribles e jargão",
+ "emoji": "📏",
+ "tag": "O que diz a regra e o que diz a arquibancada",
+ "col": "#4B6B3C",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Quantos minutos dura uma partida oficial de futebol, sem contar os acréscimos?",
+   "type": "txt",
+   "choices": [
+    "120",
+    "90",
+    "70",
+    "60",
+    "80",
+    "100"
+   ],
+   "a": [
+    "90"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Laws of the Game (association football)",
+    [
+     "90"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos jogadores um time precisa ter em campo, no mínimo, para uma partida oficial continuar?",
+   "type": "txt",
+   "choices": [
+    "Seis",
+    "Nove",
+    "Dez",
+    "Sete",
+    "Oito",
+    "Cinco"
+   ],
+   "a": [
+    "Sete"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Laws of the Game (association football)",
+    [
+     "Sete"
+    ]
+   ],
+   "x": "Abaixo disso o árbitro encerra o jogo — foi o que aconteceu em alguns jogos com muitas expulsões."
+  },
+  {
+   "t": "Desde 2025, por quantos segundos o goleiro pode segurar a bola nas mãos antes de soltá-la?",
+   "type": "txt",
+   "choices": [
+    "Quinze",
+    "Cinco",
+    "Doze",
+    "Seis",
+    "Dez",
+    "Oito"
+   ],
+   "a": [
+    "Oito"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Laws of the Game (association football)",
+    [
+     "Oito"
+    ]
+   ],
+   "x": "Antes a regra era de seis segundos e a punição, um tiro livre indireto."
+  },
+  {
+   "t": "Pela regra de 2025, o que o adversário ganha se o goleiro segurar a bola por mais de oito segundos?",
+   "type": "txt",
+   "choices": [
+    "Um tiro livre direto",
+    "Um lateral",
+    "Nada: é só advertência",
+    "Um tiro livre indireto",
+    "Um escanteio",
+    "Um pênalti"
+   ],
+   "a": [
+    "Um escanteio"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Laws of the Game (association football)",
+    [
+     "Um escanteio"
+    ]
+   ]
+  },
+  {
+   "t": "Um gol pode ser marcado diretamente de um tiro de meta?",
+   "type": "txt",
+   "choices": [
+    "Não, nunca",
+    "Sim, mas só no gol adversário",
+    "Só se o goleiro cobrar",
+    "Só se a bola tocar outro jogador",
+    "Sim, em qualquer gol",
+    "Só na prorrogação"
+   ],
+   "a": [
+    "Sim, mas só no gol adversário"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Goal kick",
+    [
+     "Sim, mas só no gol adversário"
+    ]
+   ]
+  },
+  {
+   "t": "De que jogada sai um 'gol olímpico'?",
+   "type": "txt",
+   "choices": [
+    "Um pênalti de cavadinha",
+    "Um lateral direto no gol",
+    "Um chute do meio-campo",
+    "Uma cobrança de escanteio direto no gol",
+    "Uma bicicleta",
+    "Um gol de cabeça do goleiro"
+   ],
+   "a": [
+    "Uma cobrança de escanteio direto no gol"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Olympic goal",
+    [
+     "Uma cobrança de escanteio direto no gol"
+    ]
+   ]
+  },
+  {
+   "t": "Por que o gol direto de escanteio ganhou o nome de 'gol olímpico'?",
+   "type": "txt",
+   "choices": [
+    "Foi marcado numa final olímpica",
+    "O primeiro foi em Amsterdã 1928",
+    "É raro como uma medalha olímpica",
+    "Estreou nas regras numa Olimpíada",
+    "Foi marcado contra o Uruguai, campeão olímpico, em 1924",
+    "Foi criado pelo Comitê Olímpico"
+   ],
+   "a": [
+    "Foi marcado contra o Uruguai, campeão olímpico, em 1924"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Olympic goal",
+    [
+     "Foi marcado contra o Uruguai, campeão olímpico, em 1924"
+    ]
+   ],
+   "x": "O argentino Cesáreo Onzari marcou direto do escanteio contra o Uruguai em 1924."
+  },
+  {
+   "t": "Em qual destas situações NÃO existe impedimento?",
+   "type": "txt",
+   "choices": [
+    "Num passe de um companheiro",
+    "Na cobrança de lateral",
+    "Num cruzamento na área",
+    "Num lançamento longo",
+    "Numa falta cobrada de forma indireta",
+    "Num toque de cabeça de um companheiro"
+   ],
+   "a": [
+    "Na cobrança de lateral"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Offside (association football)",
+    [
+     "Na cobrança de lateral"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos cartões amarelos no mesmo jogo levam à expulsão?",
+   "type": "txt",
+   "choices": [
+    "Dois",
+    "Nenhum: só o vermelho expulsa",
+    "Um",
+    "Cinco",
+    "Três",
+    "Quatro"
+   ],
+   "a": [
+    "Dois"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Penalty card",
+    [
+     "Dois"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é a circunferência oficial de uma bola de futebol tamanho 5?",
+   "type": "txt",
+   "choices": [
+    "Exatamente 80 cm",
+    "Entre 74 e 76 cm",
+    "Entre 68 e 70 cm",
+    "Entre 62 e 64 cm",
+    "Entre 58 e 60 cm",
+    "Entre 50 e 52 cm"
+   ],
+   "a": [
+    "Entre 68 e 70 cm"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Ball (association football)",
+    [
+     "Entre 68 e 70 cm"
+    ]
+   ]
+  },
+  {
+   "t": "Quanto pesa uma bola oficial de futebol no início do jogo?",
+   "type": "txt",
+   "choices": [
+    "Entre 250 e 280 gramas",
+    "Entre 500 e 550 gramas",
+    "Entre 600 e 650 gramas",
+    "Cerca de 1 quilo",
+    "Entre 410 e 450 gramas",
+    "Entre 300 e 350 gramas"
+   ],
+   "a": [
+    "Entre 410 e 450 gramas"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Ball (association football)",
+    [
+     "Entre 410 e 450 gramas"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o raio do círculo central do campo?",
+   "type": "txt",
+   "choices": [
+    "16,5 metros",
+    "5 metros",
+    "7,32 metros",
+    "11 metros",
+    "10 metros",
+    "9,15 metros"
+   ],
+   "a": [
+    "9,15 metros"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Football pitch",
+    [
+     "9,15 metros"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é o comprimento máximo do campo em jogos internacionais?",
+   "type": "txt",
+   "choices": [
+    "105 metros",
+    "90 metros",
+    "120 metros",
+    "110 metros",
+    "100 metros",
+    "130 metros"
+   ],
+   "a": [
+    "110 metros"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Football pitch",
+    [
+     "110 metros"
+    ]
+   ]
+  },
+  {
+   "t": "O que é um 'hat-trick'?",
+   "type": "txt",
+   "choices": [
+    "Um gol em três jogos seguidos",
+    "Três assistências seguidas",
+    "Três defesas de pênalti",
+    "Um gol de cada jeito: cabeça, esquerda e direita",
+    "Três títulos seguidos",
+    "Três gols do mesmo jogador em uma partida"
+   ],
+   "a": [
+    "Três gols do mesmo jogador em uma partida"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Hat-trick",
+    [
+     "Três gols do mesmo jogador em uma partida"
+    ]
+   ]
+  },
+  {
+   "t": "O que é uma 'cavadinha'?",
+   "type": "txt",
+   "choices": [
+    "Um drible por baixo das pernas",
+    "Um gol de calcanhar",
+    "Um chute com a parte de fora do pé",
+    "Uma falta cobrada rasteira",
+    "Um lançamento de 40 metros",
+    "Um pênalti batido devagar, por cima, no meio do gol"
+   ],
+   "a": [
+    "Um pênalti batido devagar, por cima, no meio do gol"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Panenka",
+    [
+     "Um pênalti batido devagar, por cima, no meio do gol"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou em 1961, no Maracanã, o gol que deu origem à expressão 'gol de placa'?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "d": 2,
+   "art": {
+    "stad": "maracana"
+   },
+   "src": [
+    "pt",
+    "Gol de placa",
+    [
+     "Fluminense"
+    ]
+   ]
+  },
+  {
+   "t": "Qual é a punição para um defensor que toca a bola com a mão, de propósito, dentro da própria área?",
+   "type": "txt",
+   "choices": [
+    "Só cartão amarelo",
+    "Escanteio",
+    "Tiro livre indireto",
+    "Bola ao chão",
+    "Pênalti",
+    "Tiro de meta"
+   ],
+   "a": [
+    "Pênalti"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Handball (association football)",
+    [
+     "Pênalti"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama a jogada de passar a bola entre as pernas do adversário?",
+   "type": "txt",
+   "choices": [
+    "Trivela",
+    "Elástico",
+    "Chapéu",
+    "Lambreta",
+    "Pedalada",
+    "Caneta"
+   ],
+   "a": [
+    "Caneta"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Nutmeg (football)",
+    [
+     "Caneta"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o drible de levantar a bola por cima da cabeça do adversário?",
+   "type": "txt",
+   "choices": [
+    "Pedalada",
+    "Carretilha",
+    "Trivela",
+    "Caneta",
+    "Elástico",
+    "Chapéu"
+   ],
+   "a": [
+    "Chapéu"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Glossary of association football terms",
+    [
+     "Chapéu"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o drible que Rivellino eternizou, puxando a bola de um lado para o outro com o mesmo pé?",
+   "type": "txt",
+   "choices": [
+    "Drible da vaca",
+    "Elástico",
+    "Caneta",
+    "Chapéu",
+    "Lambreta",
+    "Pedalada"
+   ],
+   "a": [
+    "Elástico"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Elastico",
+    [
+     "Elástico"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o drible de prender a bola entre os pés e jogá-la por cima da própria cabeça?",
+   "type": "txt",
+   "choices": [
+    "Elástico",
+    "Carretilha",
+    "Chapéu",
+    "Caneta",
+    "Lambreta",
+    "Pedalada"
+   ],
+   "a": [
+    "Lambreta"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Rainbow flick",
+    [
+     "Lambreta"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o chute com a parte de fora do pé, que faz a bola fazer uma curva?",
+   "type": "txt",
+   "choices": [
+    "Folha seca",
+    "Peixinho",
+    "Carrinho",
+    "Bicuda",
+    "Trivela",
+    "Chaleira"
+   ],
+   "a": [
+    "Trivela"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Trivela",
+    [
+     "Trivela"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama a jogada de passar os pés por cima da bola, sem tocá-la, para enganar o marcador?",
+   "type": "txt",
+   "choices": [
+    "Drible da vaca",
+    "Caneta",
+    "Elástico",
+    "Carretilha",
+    "Pedalada",
+    "Chapéu"
+   ],
+   "a": [
+    "Pedalada"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Step over",
+    [
+     "Pedalada"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o drible de tocar a bola por um lado do adversário e correr pelo outro para buscá-la?",
+   "type": "txt",
+   "choices": [
+    "Caneta",
+    "Meia-lua",
+    "Elástico",
+    "Chapéu",
+    "Drible da vaca",
+    "Pedalada"
+   ],
+   "a": [
+    "Drible da vaca"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Glossary of association football terms",
+    [
+     "Drible da vaca"
+    ]
+   ]
+  },
+  {
+   "t": "No futebol, o que é um 'frango'?",
+   "type": "txt",
+   "choices": [
+    "Um gol sofrido por falha do goleiro",
+    "Um chute muito fraco",
+    "Um cartão amarelo bobo",
+    "Um passe errado",
+    "Um jogador reserva",
+    "Um drible humilhante"
+   ],
+   "a": [
+    "Um gol sofrido por falha do goleiro"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Glossary of association football terms",
+    [
+     "Um gol sofrido por falha do goleiro"
+    ]
+   ]
+  },
+  {
+   "t": "No futebol, o que é um 'peixinho'?",
+   "type": "txt",
+   "choices": [
+    "Um pênalti mal batido",
+    "Uma defesa no canto",
+    "Uma cabeçada mergulhando em direção à bola",
+    "Um drible curto",
+    "Um carrinho por trás",
+    "Um chute rasteiro"
+   ],
+   "a": [
+    "Uma cabeçada mergulhando em direção à bola"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "ball"
+   },
+   "src": [
+    "en",
+    "Diving header",
+    [
+     "Uma cabeçada mergulhando em direção à bola"
+    ]
+   ]
+  },
+  {
+   "t": "No futebol, o que é 'fazer cera'?",
+   "type": "txt",
+   "choices": [
+    "Enrolar para gastar o tempo",
+    "Marcar homem a homem",
+    "Dar um chutão para frente",
+    "Fingir uma falta",
+    "Encerar a bola antes do jogo",
+    "Bater falta por cima da barreira"
+   ],
+   "a": [
+    "Enrolar para gastar o tempo"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Time-wasting",
+    [
+     "Enrolar para gastar o tempo"
+    ]
+   ]
+  },
+  {
+   "t": "Como se chama o defensor que joga atrás da linha de zagueiros, livre de marcação fixa?",
+   "type": "txt",
+   "choices": [
+    "Volante",
+    "Ala",
+    "Centroavante",
+    "Ponta",
+    "Meia-armador",
+    "Líbero"
+   ],
+   "a": [
+    "Líbero"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "tactics"
+   },
+   "src": [
+    "en",
+    "Sweeper (association football)",
+    [
+     "Líbero"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas substituições cada time podia fazer por jogo nas Copas de 1970 a 1994?",
+   "type": "txt",
+   "choices": [
+    "Uma",
+    "Quatro",
+    "Cinco",
+    "Duas",
+    "Nenhuma",
+    "Três"
+   ],
+   "a": [
+    "Duas"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "en",
+    "Substitute (association football)",
+    [
+     "Duas"
+    ]
+   ]
+  },
+  {
+   "t": "Quantas substituições cada time podia fazer por jogo na Copa de 2022?",
+   "type": "txt",
+   "choices": [
+    "Quatro",
+    "Cinco",
+    "Três",
+    "Duas",
+    "Sete",
+    "Seis"
+   ],
+   "a": [
+    "Cinco"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "en",
+    "Substitute (association football)",
+    [
+     "Cinco"
+    ]
+   ]
+  },
+  {
+   "t": "O que era a regra do 'gol fora de casa', abolida pela UEFA em 2021?",
+   "type": "txt",
+   "choices": [
+    "Gol fora não era anulado pelo VAR",
+    "Jogo fora tinha prorrogação obrigatória",
+    "O visitante escolhia o lado do campo",
+    "O visitante batia primeiro nos pênaltis",
+    "No empate, valiam mais os gols marcados no campo do adversário",
+    "Gol fora valia dois pontos"
+   ],
+   "a": [
+    "No empate, valiam mais os gols marcados no campo do adversário"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "Away goals rule",
+    [
+     "No empate, valiam mais os gols marcados no campo do adversário"
+    ]
+   ]
+  },
+  {
+   "t": "Como o árbitro sinaliza que vai aplicar a lei da vantagem?",
+   "type": "txt",
+   "choices": [
+    "Levanta a bandeira",
+    "Aponta para o centro do campo",
+    "Estende os dois braços à frente e deixa o jogo seguir",
+    "Cruza os braços acima da cabeça",
+    "Apita duas vezes",
+    "Mostra o cartão amarelo"
+   ],
+   "a": [
+    "Estende os dois braços à frente e deixa o jogo seguir"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Advantage (association football)",
+    [
+     "Estende os dois braços à frente e deixa o jogo seguir"
+    ]
+   ]
+  },
+  {
+   "t": "Pelas regras atuais, o que acontece se a bola bate no árbitro e entra no gol?",
+   "type": "txt",
+   "choices": [
+    "Cobra-se um tiro de meta",
+    "Cobra-se um escanteio",
+    "Vale se o VAR confirmar",
+    "O time que atacava ganha um pênalti",
+    "O gol não vale e o jogo recomeça com bola ao chão",
+    "O gol vale normalmente"
+   ],
+   "a": [
+    "O gol não vale e o jogo recomeça com bola ao chão"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Dropped-ball",
+    [
+     "O gol não vale e o jogo recomeça com bola ao chão"
+    ]
+   ]
+  },
+  {
+   "t": "Numa disputa de pênaltis, quantas cobranças cada time tem na série inicial?",
+   "type": "txt",
+   "choices": [
+    "Seis",
+    "Dez",
+    "Três",
+    "Cinco",
+    "Sete",
+    "Quatro"
+   ],
+   "a": [
+    "Cinco"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Penalty shoot-out (association football)",
+    [
+     "Cinco"
+    ]
+   ]
+  },
+  {
+   "t": "Onde o goleiro precisa estar no momento da cobrança de um pênalti?",
+   "type": "txt",
+   "choices": [
+    "Onde quiser, desde que parado",
+    "Dentro da pequena área, em qualquer ponto",
+    "A um metro à frente da linha",
+    "Com os dois pés fora da linha",
+    "Com pelo menos parte de um pé sobre a linha do gol",
+    "Encostado em uma das traves"
+   ],
+   "a": [
+    "Com pelo menos parte de um pé sobre a linha do gol"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Penalty kick (association football)",
+    [
+     "Com pelo menos parte de um pé sobre a linha do gol"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos jogos cada clube faz na fase de liga da Champions League desde 2024-25?",
+   "type": "txt",
+   "choices": [
+    "Oito",
+    "Dez",
+    "Quatro",
+    "Doze",
+    "Sete",
+    "Seis"
+   ],
+   "a": [
+    "Oito"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2024–25 UEFA Champions League",
+    [
+     "Oito"
+    ]
+   ]
+  },
+  {
+   "t": "No formato de 2024 da Champions, quantos clubes vão direto às oitavas de final ao fim da fase de liga?",
+   "type": "txt",
+   "choices": [
+    "Quatro",
+    "Seis",
+    "Dezesseis",
+    "Doze",
+    "Vinte e quatro",
+    "Oito"
+   ],
+   "a": [
+    "Oito"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2024–25 UEFA Champions League",
+    [
+     "Oito"
+    ]
+   ],
+   "x": "Do 9º ao 24º colocado, os clubes disputam um mata-mata extra por vaga nas oitavas."
+  },
+  {
+   "t": "Por que a Copa de 2022 ficou famosa pelos acréscimos longos?",
+   "type": "txt",
+   "choices": [
+    "A FIFA mandou repor todo o tempo parado",
+    "Houve muitos apagões",
+    "Os árbitros eram inexperientes",
+    "Os jogos tinham 100 minutos por regra",
+    "O VAR foi usado pela primeira vez",
+    "O calor obrigava pausas extras"
+   ],
+   "a": [
+    "A FIFA mandou repor todo o tempo parado"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "A FIFA mandou repor todo o tempo parado"
+    ]
+   ]
+  },
+  {
+   "t": "Quantos árbitros trabalham em campo em uma partida oficial, sem contar o VAR?",
+   "type": "txt",
+   "choices": [
+    "Três",
+    "Seis",
+    "Cinco",
+    "Um",
+    "Dois",
+    "Quatro"
+   ],
+   "a": [
+    "Quatro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "rules"
+   },
+   "src": [
+    "en",
+    "Referee (association football)",
+    [
+     "Quatro"
+    ]
+   ],
+   "x": "O árbitro principal, os dois assistentes e o quarto árbitro."
+  },
+  {
+   "t": "Qual das posições abaixo é a do jogador que usa luvas e pode pegar a bola com as mãos na própria área?",
+   "type": "txt",
+   "choices": [
+    "Goleiro",
+    "Líbero",
+    "Zagueiro",
+    "Ala",
+    "Lateral",
+    "Volante"
+   ],
+   "a": [
+    "Goleiro"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Goalkeeper (association football)",
+    [
+     "Goleiro"
+    ]
+   ]
+  }
+ ]
+}

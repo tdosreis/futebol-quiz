@@ -1,0 +1,1882 @@
+{
+ "id": "quemsoueutec",
+ "name": "Quem sou eu? Técnicos",
+ "emoji": "🧑‍💼",
+ "tag": "Técnicos",
+ "col": "#3a5a8c",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Treinei a Seleção nas Copas de 1982 e 1986 e ganhei duas Libertadores e dois Mundiais com o São Paulo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Dunga",
+    "Telê Santana",
+    "Tite",
+    "Paulo Autuori",
+    "Zagallo",
+    "Abel Braga"
+   ],
+   "a": [
+    "Telê Santana"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Telê Santana",
+    [
+     "Santana"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo em 2002 e levei Portugal à final da Euro 2004, em casa. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rogério Ceni",
+    "Cláudio Coutinho",
+    "Luiz Felipe Scolari",
+    "Paulo César Carpegiani",
+    "Cuca",
+    "Carlos Alberto Parreira"
+   ],
+   "a": [
+    "Luiz Felipe Scolari"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Luiz Felipe Scolari",
+    [
+     "Scolari"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo em 1994 e dirigi seis seleções diferentes em Copas, incluindo Kuwait e África do Sul. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rubens Minelli",
+    "Luiz Felipe Scolari",
+    "Paulo César Carpegiani",
+    "Carlos Alberto Parreira",
+    "Vanderlei Luxemburgo",
+    "Oswaldo de Oliveira"
+   ],
+   "a": [
+    "Carlos Alberto Parreira"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlos Alberto Parreira",
+    [
+     "Parreira"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o primeiro a ganhar a Copa do Mundo como jogador e como técnico. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fernando Diniz",
+    "Sebastião Lazaroni",
+    "Vicente Feola",
+    "Cláudio Coutinho",
+    "Dorival Júnior",
+    "Zagallo"
+   ],
+   "a": [
+    "Zagallo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Mário Zagallo",
+    [
+     "Zagallo"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão brasileiro com o Corinthians em 2011 e 2015 e dirigi a Seleção em duas Copas. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Dorival Júnior",
+    "Telê Santana",
+    "Vanderlei Luxemburgo",
+    "Abel Braga",
+    "Tite",
+    "Mano Menezes"
+   ],
+   "a": [
+    "Tite"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Tite (treinador)",
+    [
+     "Tite"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o técnico com mais títulos brasileiros: cinco, por Palmeiras, Corinthians, Cruzeiro e Santos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Zagallo",
+    "Vanderlei Luxemburgo",
+    "Abel Braga",
+    "Mano Menezes",
+    "Dunga",
+    "Paulo Autuori"
+   ],
+   "a": [
+    "Vanderlei Luxemburgo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Vanderlei Luxemburgo",
+    [
+     "Luxemburgo"
+    ]
+   ]
+  },
+  {
+   "t": "Fui tricampeão brasileiro seguido com o São Paulo (2006 a 2008) e ganhei a Libertadores de 2011 com o Santos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mano Menezes",
+    "Sebastião Lazaroni",
+    "Cuca",
+    "Muricy Ramalho",
+    "Oswaldo de Oliveira",
+    "Luiz Felipe Scolari"
+   ],
+   "a": [
+    "Muricy Ramalho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Muricy Ramalho",
+    [
+     "Ramalho"
+    ]
+   ]
+  },
+  {
+   "t": "Sou português e fui bicampeão brasileiro com o Palmeiras, em 2022 e 2023. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Helmut Schön",
+    "Fabio Capello",
+    "Jürgen Klopp",
+    "Helenio Herrera",
+    "Abel Ferreira",
+    "Jorge Jesus"
+   ],
+   "a": [
+    "Abel Ferreira"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Abel Ferreira",
+    [
+     "Ferreira"
+    ]
+   ]
+  },
+  {
+   "t": "Sou português, levei o Benfica a duas finais seguidas da Liga Europa (2013 e 2014) e depois treinei o Flamengo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Antonio Conte",
+    "Jorge Jesus",
+    "Helenio Herrera",
+    "Rinus Michels",
+    "Hansi Flick",
+    "Bob Paisley"
+   ],
+   "a": [
+    "Jorge Jesus"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Jorge Jesus",
+    [
+     "Jesus"
+    ]
+   ]
+  },
+  {
+   "t": "Fiz os dois gols do Grêmio no Mundial de 1983 e, como técnico, levei o Fluminense à final da Libertadores de 2008. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Renato Gaúcho",
+    "Dunga",
+    "Paulo Autuori",
+    "Vicente Feola",
+    "Dorival Júnior",
+    "Cuca"
+   ],
+   "a": [
+    "Renato Gaúcho"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Renato Portaluppi",
+    [
+     "Gaúcho"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Copa do Brasil e a Libertadores de 2022 com o Flamengo e assumi a Seleção em 2024. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mano Menezes",
+    "Ênio Andrade",
+    "Dorival Júnior",
+    "Levir Culpi",
+    "Sebastião Lazaroni",
+    "Cuca"
+   ],
+   "a": [
+    "Dorival Júnior"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Dorival Júnior",
+    [
+     "Júnior"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Libertadores de 2013 com o Atlético-MG, de Ronaldinho. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Tite",
+    "Paulo César Carpegiani",
+    "Muricy Ramalho",
+    "Telê Santana",
+    "Cuca",
+    "Levir Culpi"
+   ],
+   "a": [
+    "Cuca"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Cuca (treinador)",
+    [
+     "Cuca"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Libertadores de 2023 com o Fluminense enquanto também era técnico interino da Seleção. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Abel Braga",
+    "Carlos Alberto Parreira",
+    "Luiz Felipe Scolari",
+    "Cuca",
+    "Levir Culpi",
+    "Fernando Diniz"
+   ],
+   "a": [
+    "Fernando Diniz"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Fernando Diniz",
+    [
+     "Diniz"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Libertadores com o Cruzeiro em 1997 e com o São Paulo em 2005, além do Mundial de 2005. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luiz Felipe Scolari",
+    "Fernando Diniz",
+    "Rogério Ceni",
+    "Paulo Autuori",
+    "Levir Culpi",
+    "Dunga"
+   ],
+   "a": [
+    "Paulo Autuori"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Paulo Autuori",
+    [
+     "Autuori"
+    ]
+   ]
+  },
+  {
+   "t": "Levei o Internacional à Libertadores e ao Mundial de 2006, vencendo o Barcelona no Japão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Cuca",
+    "Carlos Alberto Parreira",
+    "Dunga",
+    "Muricy Ramalho",
+    "Ênio Andrade",
+    "Abel Braga"
+   ],
+   "a": [
+    "Abel Braga"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Abel Braga",
+    [
+     "Braga"
+    ]
+   ]
+  },
+  {
+   "t": "Fui capitão do tetra em 1994 e técnico da Seleção na Copa de 2010. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Levir Culpi",
+    "Vanderlei Luxemburgo",
+    "Ênio Andrade",
+    "Rubens Minelli",
+    "Dorival Júnior",
+    "Dunga"
+   ],
+   "a": [
+    "Dunga"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Dunga",
+    [
+     "Dunga"
+    ]
+   ]
+  },
+  {
+   "t": "Dirigi a Seleção entre 2010 e 2012 e ganhei a prata olímpica em Londres. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Levir Culpi",
+    "Zagallo",
+    "Fernando Diniz",
+    "Ênio Andrade",
+    "Mano Menezes",
+    "Dunga"
+   ],
+   "a": [
+    "Mano Menezes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Mano Menezes",
+    [
+     "Menezes"
+    ]
+   ]
+  },
+  {
+   "t": "Fui tricampeão brasileiro seguido: 1975 e 1976 com o Internacional e 1977 com o São Paulo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Sebastião Lazaroni",
+    "Oswaldo de Oliveira",
+    "Dunga",
+    "Rogério Ceni",
+    "Carlos Alberto Parreira",
+    "Rubens Minelli"
+   ],
+   "a": [
+    "Rubens Minelli"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Rubens Minelli",
+    [
+     "Minelli"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão brasileiro por três clubes diferentes: Internacional (1979), Grêmio (1981) e Coritiba (1985). Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fernando Diniz",
+    "Mano Menezes",
+    "Renato Gaúcho",
+    "Carlos Alberto Parreira",
+    "Oswaldo de Oliveira",
+    "Ênio Andrade"
+   ],
+   "a": [
+    "Ênio Andrade"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Ênio Andrade",
+    [
+     "Andrade"
+    ]
+   ]
+  },
+  {
+   "t": "Dirigi a Seleção na Copa de 1978 e ganhei o Brasileirão de 1980 com o Flamengo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Vanderlei Luxemburgo",
+    "Cláudio Coutinho",
+    "Rogério Ceni",
+    "Vicente Feola",
+    "Telê Santana",
+    "Ênio Andrade"
+   ],
+   "a": [
+    "Cláudio Coutinho"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Cláudio Coutinho",
+    [
+     "Coutinho"
+    ]
+   ]
+  },
+  {
+   "t": "Com apenas 32 anos, levei o Flamengo à Libertadores e ao Mundial de 1981. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Sebastião Lazaroni",
+    "Paulo Autuori",
+    "Vicente Feola",
+    "Vanderlei Luxemburgo",
+    "Paulo César Carpegiani",
+    "Zagallo"
+   ],
+   "a": [
+    "Paulo César Carpegiani"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Paulo César Carpegiani",
+    [
+     "Carpegiani"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o técnico do primeiro título mundial do Brasil, na Suécia, em 1958. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mano Menezes",
+    "Carlos Alberto Parreira",
+    "Paulo Autuori",
+    "Dorival Júnior",
+    "Vicente Feola",
+    "Sebastião Lazaroni"
+   ],
+   "a": [
+    "Vicente Feola"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Vicente Feola",
+    [
+     "Feola"
+    ]
+   ]
+  },
+  {
+   "t": "Dirigi a Seleção na Copa de 1990, famosa pelo esquema com líbero. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Dunga",
+    "Rogério Ceni",
+    "Levir Culpi",
+    "Tite",
+    "Sebastião Lazaroni",
+    "Ênio Andrade"
+   ],
+   "a": [
+    "Sebastião Lazaroni"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Sebastião Lazaroni",
+    [
+     "Lazaroni"
+    ]
+   ]
+  },
+  {
+   "t": "Levei o Corinthians ao título do primeiro Mundial de Clubes da FIFA, em 2000. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rogério Ceni",
+    "Tite",
+    "Zagallo",
+    "Paulo César Carpegiani",
+    "Oswaldo de Oliveira",
+    "Dunga"
+   ],
+   "a": [
+    "Oswaldo de Oliveira"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Oswaldo de Oliveira",
+    [
+     "Oliveira"
+    ]
+   ]
+  },
+  {
+   "t": "Fui goleiro-artilheiro e, como técnico, ganhei o Brasileirão de 2020 com o Flamengo. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rogério Ceni",
+    "Oswaldo de Oliveira",
+    "Dorival Júnior",
+    "Vicente Feola",
+    "Abel Braga",
+    "Telê Santana"
+   ],
+   "a": [
+    "Rogério Ceni"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Rogério Ceni",
+    [
+     "Ceni"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei cinco Champions League como técnico: duas pelo Milan e três pelo Real Madrid. Em 2025 assumi a Seleção. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Abel Ferreira",
+    "Guus Hiddink",
+    "Carlo Ancelotti",
+    "Rinus Michels",
+    "Louis van Gaal",
+    "Béla Guttmann"
+   ],
+   "a": [
+    "Carlo Ancelotti"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlo Ancelotti",
+    [
+     "Ancelotti"
+    ]
+   ]
+  },
+  {
+   "t": "Fui volante do 'Dream Team' do Barcelona e, como técnico, dei ao Manchester City seu primeiro Mundial de Clubes, em 2023. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Pep Guardiola",
+    "Helenio Herrera",
+    "Carlo Ancelotti",
+    "Antonio Conte",
+    "Alf Ramsey",
+    "Franz Beckenbauer"
+   ],
+   "a": [
+    "Pep Guardiola"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Pep Guardiola",
+    [
+     "Guardiola"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions com o Porto em 2004 e com a Inter em 2010. Me chamam de 'Special One'. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luis Enrique",
+    "Alex Ferguson",
+    "Zinedine Zidane",
+    "Louis van Gaal",
+    "Brian Clough",
+    "José Mourinho"
+   ],
+   "a": [
+    "José Mourinho"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "José Mourinho",
+    [
+     "Mourinho"
+    ]
+   ]
+  },
+  {
+   "t": "Fiquei 26 anos no Manchester United e, antes, ganhei a Recopa Europeia com o Aberdeen. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rafael Benítez",
+    "Jorge Jesus",
+    "Pep Guardiola",
+    "Alex Ferguson",
+    "Vittorio Pozzo",
+    "Enzo Bearzot"
+   ],
+   "a": [
+    "Alex Ferguson"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Alex Ferguson",
+    [
+     "Ferguson"
+    ]
+   ]
+  },
+  {
+   "t": "Fui bicampeão alemão com o Dortmund e dei ao Liverpool a Champions de 2019 e a Premier League de 2020. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rafael Benítez",
+    "Jürgen Klopp",
+    "Helenio Herrera",
+    "Enzo Bearzot",
+    "Luis Enrique",
+    "Rinus Michels"
+   ],
+   "a": [
+    "Jürgen Klopp"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Jürgen Klopp",
+    [
+     "Klopp"
+    ]
+   ]
+  },
+  {
+   "t": "Marquei de voleio na final da Champions de 2002 e, como técnico, fui campeão espanhol com o Real Madrid em 2017 e 2020. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Mauricio Pochettino",
+    "Rafael Benítez",
+    "Bob Paisley",
+    "Vicente del Bosque",
+    "Zinedine Zidane",
+    "Pep Guardiola"
+   ],
+   "a": [
+    "Zinedine Zidane"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Zinedine Zidane",
+    [
+     "Zidane"
+    ]
+   ]
+  },
+  {
+   "t": "Nunca fui jogador profissional, mas ganhei duas Copas dos Campeões seguidas com o Milan (1989 e 1990). Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Helmut Schön",
+    "Ottmar Hitzfeld",
+    "Arrigo Sacchi",
+    "Luis Enrique",
+    "Didier Deschamps",
+    "Mauricio Pochettino"
+   ],
+   "a": [
+    "Arrigo Sacchi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Arrigo Sacchi",
+    [
+     "Sacchi"
+    ]
+   ]
+  },
+  {
+   "t": "Como técnico do Barcelona, fui tetracampeão espanhol seguido, de 1991 a 1994. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luis Enrique",
+    "Claudio Ranieri",
+    "Hansi Flick",
+    "Marcello Lippi",
+    "Johan Cruyff",
+    "Didier Deschamps"
+   ],
+   "a": [
+    "Johan Cruyff"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Johan Cruyff",
+    [
+     "Cruyff"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o pai do 'futebol total': ganhei a Copa dos Campeões de 1971 com o Ajax e a Euro 1988 com a Holanda. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alf Ramsey",
+    "Béla Guttmann",
+    "José Mourinho",
+    "Rinus Michels",
+    "Zinedine Zidane",
+    "Johan Cruyff"
+   ],
+   "a": [
+    "Rinus Michels"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Rinus Michels",
+    [
+     "Michels"
+    ]
+   ]
+  },
+  {
+   "t": "Fiquei 22 anos no Arsenal e comandei os 'Invencíveis' de 2003-04. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bob Paisley",
+    "Alf Ramsey",
+    "Ottmar Hitzfeld",
+    "Fabio Capello",
+    "Arsène Wenger",
+    "Béla Guttmann"
+   ],
+   "a": [
+    "Arsène Wenger"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Arsène Wenger",
+    [
+     "Wenger"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Copa de 2010 e a Euro 2012 com a Espanha e duas Champions com o Real Madrid. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Louis van Gaal",
+    "Enzo Bearzot",
+    "Vicente del Bosque",
+    "Hansi Flick",
+    "Carlo Ancelotti",
+    "Jupp Heynckes"
+   ],
+   "a": [
+    "Vicente del Bosque"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Vicente del Bosque",
+    [
+     "Bosque"
+    ]
+   ]
+  },
+  {
+   "t": "Dirijo a França desde 2012 e fui vice-campeão do mundo em 2022, nos pênaltis contra a Argentina. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Didier Deschamps",
+    "Rinus Michels",
+    "Johan Cruyff",
+    "Guus Hiddink",
+    "Luis Enrique",
+    "Fabio Capello"
+   ],
+   "a": [
+    "Didier Deschamps"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Didier Deschamps",
+    [
+     "Deschamps"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo com a Alemanha em 2014 e dirigi a seleção de 2006 a 2021. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Guus Hiddink",
+    "Antonio Conte",
+    "José Mourinho",
+    "Arrigo Sacchi",
+    "Vittorio Pozzo",
+    "Joachim Löw"
+   ],
+   "a": [
+    "Joachim Löw"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Joachim Löw",
+    [
+     "Löw"
+    ]
+   ]
+  },
+  {
+   "t": "Com o Milan, venci o Barcelona por 4 a 0 na final da Champions de 1994. Depois dirigi a Inglaterra e a Rússia. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Fabio Capello",
+    "Ottmar Hitzfeld",
+    "Helenio Herrera",
+    "Claudio Ranieri",
+    "Luis Enrique",
+    "Alex Ferguson"
+   ],
+   "a": [
+    "Fabio Capello"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Fabio Capello",
+    [
+     "Capello"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo com a Itália em 2006 e da Ásia com o Guangzhou Evergrande. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Zinedine Zidane",
+    "Jorge Jesus",
+    "Guus Hiddink",
+    "Arrigo Sacchi",
+    "Rinus Michels",
+    "Marcello Lippi"
+   ],
+   "a": [
+    "Marcello Lippi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Marcello Lippi",
+    [
+     "Lippi"
+    ]
+   ]
+  },
+  {
+   "t": "Dirigi a Espanha na Copa de 2022 e dei ao PSG sua primeira Champions, em 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Luis Enrique",
+    "Marcello Lippi",
+    "Jürgen Klopp",
+    "Zinedine Zidane",
+    "Bob Paisley",
+    "Arrigo Sacchi"
+   ],
+   "a": [
+    "Luis Enrique"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Luis Enrique",
+    [
+     "Enrique"
+    ]
+   ]
+  },
+  {
+   "t": "Fui tricampeão italiano seguido com a Juventus (2012 a 2014) e campeão com o Napoli em 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Aimé Jacquet",
+    "Luis Enrique",
+    "Louis van Gaal",
+    "Antonio Conte",
+    "Brian Clough",
+    "Guus Hiddink"
+   ],
+   "a": [
+    "Antonio Conte"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Antonio Conte",
+    [
+     "Conte"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions de 2005 com o Liverpool, virando um 0 a 3 contra o Milan em Istambul. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Rafael Benítez",
+    "Claudio Ranieri",
+    "Jorge Jesus",
+    "Joachim Löw",
+    "Hansi Flick",
+    "Alex Ferguson"
+   ],
+   "a": [
+    "Rafael Benítez"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Rafael Benítez",
+    [
+     "Benítez"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions com dois clubes alemães: o Dortmund em 1997 e o Bayern em 2001. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Ottmar Hitzfeld",
+    "Brian Clough",
+    "Enzo Bearzot",
+    "Jupp Heynckes",
+    "Zinedine Zidane",
+    "Didier Deschamps"
+   ],
+   "a": [
+    "Ottmar Hitzfeld"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Ottmar Hitzfeld",
+    [
+     "Hitzfeld"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions com o Real Madrid em 1998 e com o Bayern, na tríplice coroa de 2013. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jupp Heynckes",
+    "Aimé Jacquet",
+    "Luis Enrique",
+    "Vittorio Pozzo",
+    "Rinus Michels",
+    "Jürgen Klopp"
+   ],
+   "a": [
+    "Jupp Heynckes"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Jupp Heynckes",
+    [
+     "Heynckes"
+    ]
+   ]
+  },
+  {
+   "t": "Fui auxiliar de Löw no título mundial de 2014 e, como técnico principal, fui campeão espanhol com o Barcelona em 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Ottmar Hitzfeld",
+    "Carlo Ancelotti",
+    "José Mourinho",
+    "Pep Guardiola",
+    "Béla Guttmann",
+    "Hansi Flick"
+   ],
+   "a": [
+    "Hansi Flick"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Hansi Flick",
+    [
+     "Flick"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions de 1995 com o Ajax e fui terceiro na Copa de 2014 com a Holanda. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Otto Rehhagel",
+    "Didier Deschamps",
+    "Johan Cruyff",
+    "Mauricio Pochettino",
+    "Vicente del Bosque",
+    "Louis van Gaal"
+   ],
+   "a": [
+    "Louis van Gaal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Louis van Gaal",
+    [
+     "Gaal"
+    ]
+   ]
+  },
+  {
+   "t": "Levei a Coreia do Sul à semifinal da Copa de 2002 e o PSV ao título europeu de 1988. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Carlo Ancelotti",
+    "Didier Deschamps",
+    "Fabio Capello",
+    "Guus Hiddink",
+    "Louis van Gaal",
+    "Thomas Tuchel"
+   ],
+   "a": [
+    "Guus Hiddink"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Guus Hiddink",
+    [
+     "Hiddink"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão inglês com o Leicester em 2016, numa das maiores zebras da história. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "José Mourinho",
+    "Brian Clough",
+    "Marcello Lippi",
+    "Rafael Benítez",
+    "Louis van Gaal",
+    "Claudio Ranieri"
+   ],
+   "a": [
+    "Claudio Ranieri"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Claudio Ranieri",
+    [
+     "Ranieri"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Champions de 2021 com o Chelsea e assumi a seleção da Inglaterra em 2025. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Joachim Löw",
+    "Helmut Schön",
+    "José Mourinho",
+    "Thomas Tuchel",
+    "Bob Paisley",
+    "Jupp Heynckes"
+   ],
+   "a": [
+    "Thomas Tuchel"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Thomas Tuchel",
+    [
+     "Tuchel"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão alemão com o Kaiserslautern em 1998, logo depois de o clube subir da segunda divisão. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Bob Paisley",
+    "Vicente del Bosque",
+    "Pep Guardiola",
+    "Otto Rehhagel",
+    "Jupp Heynckes",
+    "Brian Clough"
+   ],
+   "a": [
+    "Otto Rehhagel"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Otto Rehhagel",
+    [
+     "Rehhagel"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo com a Alemanha Ocidental em 1974, em casa. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Enzo Bearzot",
+    "Bob Paisley",
+    "Helmut Schön",
+    "Alex Ferguson",
+    "Arrigo Sacchi",
+    "Jorge Jesus"
+   ],
+   "a": [
+    "Helmut Schön"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Helmut Schön",
+    [
+     "Schön"
+    ]
+   ]
+  },
+  {
+   "t": "Sou o único técnico bicampeão do mundo: com a Itália, em 1934 e 1938. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Johan Cruyff",
+    "Vittorio Pozzo",
+    "Thomas Tuchel",
+    "Joachim Löw",
+    "Alex Ferguson",
+    "Helmut Schön"
+   ],
+   "a": [
+    "Vittorio Pozzo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Vittorio Pozzo",
+    [
+     "Pozzo"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o técnico da Inglaterra campeã do mundo em 1966. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Pep Guardiola",
+    "Franz Beckenbauer",
+    "Alf Ramsey",
+    "José Mourinho",
+    "Didier Deschamps",
+    "Arsène Wenger"
+   ],
+   "a": [
+    "Alf Ramsey"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Alf Ramsey",
+    [
+     "Ramsey"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o técnico da Itália campeã do mundo em 1982, na Espanha. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Helenio Herrera",
+    "Jürgen Klopp",
+    "Enzo Bearzot",
+    "Jupp Heynckes",
+    "Vicente del Bosque",
+    "Louis van Gaal"
+   ],
+   "a": [
+    "Enzo Bearzot"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Enzo Bearzot",
+    [
+     "Bearzot"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o técnico da França campeã do mundo em 1998, em casa. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alex Ferguson",
+    "Fabio Capello",
+    "José Mourinho",
+    "Aimé Jacquet",
+    "Béla Guttmann",
+    "Brian Clough"
+   ],
+   "a": [
+    "Aimé Jacquet"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Aimé Jacquet",
+    [
+     "Jacquet"
+    ]
+   ]
+  },
+  {
+   "t": "Fui auxiliar de Bill Shankly e, como técnico, ganhei seis títulos ingleses com o Liverpool. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Didier Deschamps",
+    "Rafael Benítez",
+    "Bob Paisley",
+    "Franz Beckenbauer",
+    "Zinedine Zidane",
+    "Brian Clough"
+   ],
+   "a": [
+    "Bob Paisley"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Bob Paisley",
+    [
+     "Paisley"
+    ]
+   ]
+  },
+  {
+   "t": "Levei o Nottingham Forest a duas Copas dos Campeões seguidas, em 1979 e 1980. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Aimé Jacquet",
+    "Vittorio Pozzo",
+    "Brian Clough",
+    "Otto Rehhagel",
+    "José Mourinho",
+    "Bob Paisley"
+   ],
+   "a": [
+    "Brian Clough"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Brian Clough",
+    [
+     "Clough"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei duas Copas dos Campeões com o Benfica e, ao sair, teria rogado uma famosa 'maldição' ao clube. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Guus Hiddink",
+    "Aimé Jacquet",
+    "Claudio Ranieri",
+    "Helenio Herrera",
+    "Béla Guttmann",
+    "Antonio Conte"
+   ],
+   "a": [
+    "Béla Guttmann"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Béla Guttmann",
+    [
+     "Guttmann"
+    ]
+   ]
+  },
+  {
+   "t": "Comandei a 'Grande Inter' do catenaccio, bicampeã europeia em 1964 e 1965. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Antonio Conte",
+    "Zinedine Zidane",
+    "Franz Beckenbauer",
+    "Helenio Herrera",
+    "Marcello Lippi",
+    "Luis Enrique"
+   ],
+   "a": [
+    "Helenio Herrera"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Helenio Herrera",
+    [
+     "Herrera"
+    ]
+   ]
+  },
+  {
+   "t": "Fui campeão do mundo como capitão em 1974 e como técnico da Alemanha em 1990. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Franz Beckenbauer",
+    "Abel Ferreira",
+    "Zagallo",
+    "Marcello Lippi",
+    "Otto Rehhagel",
+    "Ottmar Hitzfeld"
+   ],
+   "a": [
+    "Franz Beckenbauer"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Franz Beckenbauer",
+    [
+     "Beckenbauer"
+    ]
+   ]
+  },
+  {
+   "t": "Levei o Tottenham à final da Champions de 2019 e depois assumi a seleção dos Estados Unidos. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Claudio Ranieri",
+    "Helenio Herrera",
+    "Béla Guttmann",
+    "Carlo Ancelotti",
+    "Brian Clough",
+    "Mauricio Pochettino"
+   ],
+   "a": [
+    "Mauricio Pochettino"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Mauricio Pochettino",
+    [
+     "Pochettino"
+    ]
+   ]
+  },
+  {
+   "t": "Levei o Leeds de volta à Premier League em 2020 e o Uruguai ao 3º lugar da Copa América de 2024. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alfio Basile",
+    "Diego Simeone",
+    "Marcelo Bielsa",
+    "César Luis Menotti",
+    "Carlos Bilardo",
+    "Ramón Díaz"
+   ],
+   "a": [
+    "Marcelo Bielsa"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Marcelo Bielsa",
+    [
+     "Bielsa"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamam de 'Cholo': fui duas vezes campeão espanhol como técnico do Atlético de Madrid. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Óscar Tabárez",
+    "Marcelo Gallardo",
+    "Jorge Sampaoli",
+    "Lionel Scaloni",
+    "Diego Simeone",
+    "César Luis Menotti"
+   ],
+   "a": [
+    "Diego Simeone"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Diego Simeone",
+    [
+     "Simeone"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei a Copa América de 2021, a Finalíssima e a Copa de 2022 com a Argentina. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Diego Simeone",
+    "Jorge Sampaoli",
+    "Marcelo Gallardo",
+    "Ramón Díaz",
+    "Bora Milutinović",
+    "Lionel Scaloni"
+   ],
+   "a": [
+    "Lionel Scaloni"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Lionel Scaloni",
+    [
+     "Scaloni"
+    ]
+   ]
+  },
+  {
+   "t": "Fui o técnico da Argentina campeã do mundo em 1978 e depois treinei Maradona no Barcelona. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jorge Sampaoli",
+    "Ramón Díaz",
+    "César Luis Menotti",
+    "Marcelo Gallardo",
+    "Carlos Bilardo",
+    "Alfio Basile"
+   ],
+   "a": [
+    "César Luis Menotti"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "César Luis Menotti",
+    [
+     "Menotti"
+    ]
+   ]
+  },
+  {
+   "t": "Sou médico de formação e fui vice-campeão do mundo com a Argentina em 1990. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Óscar Tabárez",
+    "Marcelo Gallardo",
+    "César Luis Menotti",
+    "Carlos Bilardo",
+    "Alfio Basile",
+    "Ramón Díaz"
+   ],
+   "a": [
+    "Carlos Bilardo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlos Bilardo",
+    [
+     "Bilardo"
+    ]
+   ]
+  },
+  {
+   "t": "Me chamam de 'El Maestro': dirigi o Uruguai por 15 anos e ganhei a Copa América de 2011. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Carlos Bianchi",
+    "Ramón Díaz",
+    "Marcelo Gallardo",
+    "Lionel Scaloni",
+    "Marcelo Bielsa",
+    "Óscar Tabárez"
+   ],
+   "a": [
+    "Óscar Tabárez"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Óscar Tabárez",
+    [
+     "Tabárez"
+    ]
+   ]
+  },
+  {
+   "t": "Ganhei quatro Libertadores: uma com o Vélez Sarsfield e três com o Boca Juniors. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Jorge Sampaoli",
+    "Carlos Bianchi",
+    "Diego Simeone",
+    "Carlos Bilardo",
+    "Ramón Díaz",
+    "Marcelo Gallardo"
+   ],
+   "a": [
+    "Carlos Bianchi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Carlos Bianchi",
+    [
+     "Bianchi"
+    ]
+   ]
+  },
+  {
+   "t": "Fui técnico do Santos em 2019 e do Flamengo em 2023, e dirigi a Argentina na Copa de 2018. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Óscar Tabárez",
+    "Jorge Sampaoli",
+    "Carlos Bilardo",
+    "Ramón Díaz",
+    "Marcelo Gallardo",
+    "Lionel Scaloni"
+   ],
+   "a": [
+    "Jorge Sampaoli"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Jorge Sampaoli",
+    [
+     "Sampaoli"
+    ]
+   ]
+  },
+  {
+   "t": "Dirigi cinco seleções diferentes em Copas: México, Costa Rica, EUA, Nigéria e China. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Carlo Ancelotti",
+    "Carlos Bianchi",
+    "Bora Milutinović",
+    "Pep Guardiola",
+    "Óscar Tabárez",
+    "Marcelo Gallardo"
+   ],
+   "a": [
+    "Bora Milutinović"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Bora Milutinović",
+    [
+     "Milutinović"
+    ]
+   ]
+  },
+  {
+   "t": "Fui meia do River e do Monaco e, como técnico, sou o maior campeão da história do River Plate. Quem sou eu?",
+   "type": "txt",
+   "choices": [
+    "Alfio Basile",
+    "Diego Simeone",
+    "Carlos Bilardo",
+    "Ramón Díaz",
+    "Marcelo Gallardo",
+    "Carlos Bianchi"
+   ],
+   "a": [
+    "Marcelo Gallardo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "bench"
+   },
+   "src": [
+    "pt",
+    "Marcelo Gallardo",
+    [
+     "Gallardo"
+    ]
+   ]
+  }
+ ]
+}
