@@ -77,8 +77,11 @@
    v36: a written answer carries its crest, flag, face or ground, the
    question cards' drawings are repainted, and flags are printed ones.
 
-   v37: clubs with no crest file wear their colours on a drawn badge. */
-const VERSION = 'v37';
+   v37: clubs with no crest file wear their colours on a drawn badge.
+
+   v38: the page is measured against the phone's real screen, so a reveal
+   never has to be scrolled to reach Próxima. */
+const VERSION = 'v38';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

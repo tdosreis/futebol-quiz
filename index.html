@@ -10869,9 +10869,46 @@ function go() {
 ═══════════════════════════════════════════════════ */
 const FIT_FLOOR = 0.66;
 
+/* The glass as the phone reports it, not as CSS guesses it. The sheet is
+   sized from 100dvh and the navigation-bar inset, and on most phones that is
+   exactly the screen. Where it is not — a system font size, a browser that
+   reports the inset differently — the page came out taller than the glass
+   and the "Próxima" at the foot of a reveal had to be scrolled to. So the
+   sheet is measured against the real viewport after layout, and only if it
+   overhangs is it pinned to what is actually there. On a phone where it
+   already fits this does nothing at all. */
+function fitGlass() {
+  const qz = document.getElementById('qz');
+  if (!qz) return;
+  qz.style.minHeight = qz.style.maxHeight = '';
+  if (window.innerWidth >= 700) return;
+  const de = document.documentElement;
+  const over = Math.max(de.scrollHeight, document.body.scrollHeight) - de.clientHeight;
+  if (over <= 1) return;
+  const h = Math.max(420, Math.floor(qz.getBoundingClientRect().height - over));
+  qz.style.minHeight = qz.style.maxHeight = h + 'px';
+}
+
+/* The reveal sheet is pinned to the foot of the page and grows upward. With
+   a long "Você sabia?", a figurinha and a large system font it can be taller
+   than the page, and then its own top is lost. It is scaled down from the
+   bottom until it fits under the top bar, so the verdict, the note and the
+   button are all on the glass together. */
+function fitSheet() {
+  const rv = document.getElementById('rvl'), qz = document.getElementById('qz');
+  if (!rv || !qz) return;
+  rv.style.transform = '';
+  const room = qz.clientHeight - 64, hh = rv.offsetHeight;
+  if (hh <= room || hh < 1) return;
+  rv.style.transformOrigin = 'bottom center';
+  rv.style.transform = 'scale(' + Math.max(0.55, room / hh).toFixed(4) + ')';
+}
+
 function fitScreen() {
+  try { fitGlass(); } catch (e) {}
   const pg = document.querySelector('#ct > .pg');
   if (!pg) return;
+  try { fitSheet(); } catch (e) {}
   const board = pg.querySelector('.board');
   if (board) { board.style.transform = ''; board.style.marginBottom = ''; }
 
