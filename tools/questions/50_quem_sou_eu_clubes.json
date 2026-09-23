@@ -1073,15 +1073,15 @@
    ]
   },
   {
-   "t": "Sou de Milão, me chamam de 'Nerazzurri' e nunca fui rebaixado para a Série B. Quem sou eu?",
+   "t": "Me chamam de 'Nerazzurri', divido o San Siro com um rival e nunca fui rebaixado para a Série B. Quem sou eu?",
    "type": "txt",
    "choices": [
-    "Estrela Vermelha",
-    "Bayer Leverkusen",
-    "Steaua Bucareste",
+    "Milan",
     "Inter de Milão",
-    "Olympiacos",
-    "Athletic Bilbao"
+    "Napoli",
+    "Lazio",
+    "Juventus",
+    "Roma"
    ],
    "a": [
     "Inter de Milão"

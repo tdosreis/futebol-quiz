@@ -104,9 +104,19 @@
         photo framed on the cup.
 
    v47: four who-am-I clues that the 2026 World Cup could have made stale
-        are worded so they stay true. */
-const VERSION = 'v47';
+        are worded so they stay true.
+
+   v48: pictures keep a cache of their own across updates and are retried
+        once before a card gives up; a country-hidden band says ANOS 90;
+        the Inter clue no longer names Milan. */
+const VERSION = 'v48';
 const CACHE   = 'futebol-quiz-' + VERSION;
+/* Photos, crests and flags never change under the same name (each file is
+   named by its content), so they live in a cache of their own that survives
+   updates. Wiping them with every version meant the first game after an
+   update re-downloaded every picture, and on a weak signal cards came up
+   blank. */
+const IMG_CACHE = 'futebol-quiz-img';
 
 const SHELL = [
   '/futebol-quiz/',
@@ -129,7 +139,7 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE && k !== IMG_CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -164,6 +174,20 @@ self.addEventListener('fetch', e => {
           return res;
         })
         .catch(() => caches.match(req).then(r => r || caches.match('/futebol-quiz/index.html')))
+    );
+    return;
+  }
+
+  // pictures: cache-first from the lasting cache, one retry on the network
+  if (sameOrigin && url.pathname.includes('/img/')) {
+    const key = url.origin + url.pathname;
+    const get = () => fetch(key);
+    e.respondWith(
+      caches.open(IMG_CACHE).then(c => c.match(key).then(hit => hit ||
+        get().catch(() => new Promise(r => setTimeout(r, 600)).then(get)).then(res => {
+          if (res && res.status === 200) c.put(key, res.clone());
+          return res;
+        })))
     );
     return;
   }

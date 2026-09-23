@@ -4845,7 +4845,7 @@ const CATS = [
       {"t": "Jogo o Campeonato Francês sem ser da França e revelei Thierry Henry e Kylian Mbappé. Quem sou eu?", "a": ["Monaco"], "type": "txt", "choices": ["Monaco", "Olympiacos", "Paris Saint-Germain", "Porto", "Napoli", "Roma"], "d": 3, "icon": "terrace"},
       {"t": "Fui heptacampeão francês seguido, de 2002 a 2008, com as faltas de Juninho Pernambucano. Quem sou eu?", "a": ["Lyon"], "type": "txt", "choices": ["Atlético de Madrid", "Olympique de Marseille", "Leicester City", "Barcelona", "Valencia", "Lyon"], "d": 2, "icon": "terrace"},
       {"t": "Fui campeão italiano nove vezes seguidas, de 2012 a 2020. Quem sou eu?", "a": ["Juventus"], "type": "txt", "choices": ["Juventus", "Estrela Vermelha", "Napoli", "Barcelona", "Liverpool", "Roma"], "d": 2, "icon": "terrace"},
-      {"t": "Sou de Milão, me chamam de 'Nerazzurri' e nunca fui rebaixado para a Série B. Quem sou eu?", "a": ["Inter de Milão"], "type": "txt", "choices": ["Estrela Vermelha", "Bayer Leverkusen", "Steaua Bucareste", "Inter de Milão", "Olympiacos", "Athletic Bilbao"], "d": 2, "icon": "terrace"},
+      {"t": "Me chamam de 'Nerazzurri', divido o San Siro com um rival e nunca fui rebaixado para a Série B. Quem sou eu?", "a": ["Inter de Milão"], "type": "txt", "choices": ["Milan", "Inter de Milão", "Napoli", "Lazio", "Juventus", "Roma"], "d": 2, "icon": "terrace"},
       {"t": "Perdi grande parte do time num acidente aéreo em Munique, em 1958. Quem sou eu?", "a": ["Manchester United"], "type": "txt", "choices": ["Manchester United", "Shakhtar Donetsk", "Steaua Bucareste", "Celtic", "Benfica", "Blackburn Rovers"], "d": 2, "icon": "terrace"},
       {"t": "Meu hino é 'You'll Never Walk Alone' e jogo em Anfield. Quem sou eu?", "a": ["Liverpool"], "type": "txt", "choices": ["Liverpool", "Deportivo La Coruña", "Bayer Leverkusen", "Villarreal", "Leicester City", "Lyon"], "d": 1, "icon": "terrace"},
       {"t": "Jogo em Stamford Bridge e ganhei o primeiro Mundial de Clubes com 32 times, em 2025. Quem sou eu?", "a": ["Chelsea"], "type": "txt", "choices": ["Chelsea", "Milan", "Monaco", "Borussia Dortmund", "Bayer Leverkusen", "Real Madrid"], "d": 2, "icon": "terrace"},
@@ -6902,6 +6902,7 @@ function cueSim(p, cues) {
   return sc;
 }
 
+const DRAWN_FACES = new Set(['antony']);
 function getDisp(q) {
   /* A third kind of answer. Players and clubs are rows of data with an id, a
      photo and a shape on screen; "onde foram escritas as primeiras regras do
@@ -6915,7 +6916,10 @@ function getDisp(q) {
   }
 
   const isPlayer = q.type === 'player';
-  const pool0 = isPlayer ? PL : CL;
+  /* A drawn card among nine photographs stands out and reads as a clue, so
+     a player we only have a drawing of is never a wrong option — he appears
+     when he is the answer. */
+  const pool0 = isPlayer ? PL.filter(p => !DRAWN_FACES.has(p.id) || (q.a || []).includes(p.id)) : CL;
   const sim   = isPlayer ? simPlayer : simClub;
   const cfg   = DCFG();
   const strict = (q.strict !== undefined) ? q.strict : qStrict();
@@ -6935,7 +6939,7 @@ function getDisp(q) {
   if (cues.year) q._hideEra = true;
 
   // `fixed` = show exactly these tiles (comparison questions)
-  if (q.fixed) return shuf(q.fixed.map(id => pool0.find(x => x.id === id)).filter(Boolean));
+  if (q.fixed) return shuf(q.fixed.map(id => (isPlayer ? PL : CL).find(x => x.id === id)).filter(Boolean));
 
   const right = q.a.map(id => pool0.find(x => x.id === id)).filter(Boolean);
 
@@ -10974,6 +10978,20 @@ const CTRY_COLORS = {
 };
 const ctryColors = c => CTRY_COLORS[c] || ['#17593F', '#B8860B'];
 
+/* A photo that fails to arrive (a flaky connection, or the first load after
+   an update) is asked for once more before the card gives up on it; it used
+   to go straight to a blank frame for the rest of the game. */
+function imgRetry(img) {
+  if (img.dataset.retry) { img.style.opacity = '.2'; return; }
+  img.dataset.retry = '1';
+  setTimeout(() => { img.src = img.src.split('?')[0] + '?r=1'; }, 700);
+}
+
+/* A band that has lost its country to the question ("which of these played
+   for Norway?") said a bare "00" or "90", which read as a number. It says
+   the decade in words instead: ANOS 90, ANOS 2000. */
+const bandDec = yr => 'ANOS ' + decName(Math.floor(yr / 10) * 10);
+
 /* One figurinha. `size` is lg (album page), sm (a tile on the board) or
    hero (the cover). */
 function figurinha(p, size, opts) {
@@ -10992,14 +11010,14 @@ function figurinha(p, size, opts) {
        its room — "ARGÉLIA 70" truncated to "ARGÉLIA…". A merged spread keeps
        the year, because there it is the thing that tells the cards apart. */
     (opts.hideEra || opts.noYear || !yr) ? ''
-      : String(Math.floor(yr / 10) * 10).slice(2),
+      : opts.hideCtry ? bandDec(yr) : String(Math.floor(yr / 10) * 10).slice(2),
   ].filter(Boolean).join(' ');
   const sub  = opts.sub !== undefined ? opts.sub
              : `${POS_NAME[p.pos]} · ${p.era ? p.era[0] + '–' + p.era[1] : ''}`;
   const alt  = opts.decorative ? 'alt="" aria-hidden="true"' : `alt="${p.n}"`;
   const nmCls = 'fig-nm' + (p.n.length > 13 ? ' fig-nm-long' : '');
   const shot = `<div class="fig-shot"><img src="${p.img}" ${alt}
-      onerror="this.style.opacity='.2'" /></div>`;
+      onerror="imgRetry(this)" /></div>`;
 
   if (era === 'retro') {
     /* the header band carries the country and the decade, the way the old
@@ -11021,7 +11039,7 @@ function figurinha(p, size, opts) {
      When the country is being hidden the decade takes its place, so a modern
      card does not sit blank-headed in a row of cards showing one. */
   const mBand = opts.hideCtry
-    ? (opts.hideEra || !yr ? '' : String(Math.floor(yr / 10) * 10).slice(2))
+    ? (opts.hideEra || !yr ? '' : bandDec(yr))
     : bandCtry(p.ctry);
   return `<span class="fig fig-modern fig-${size}">
     <span class="fig-band${mBand ? '' : ' fig-band-mute'}">${mBand}</span>
