@@ -92,8 +92,10 @@
    v42: a question is pictured by its topic — the Bola de Ouro, the scorer's
    boot, the keeper's gloves — and a board's band clears its number tab.
 
-   v43: Antony's card is drawn; his "photo" was a church in Antony, France. */
-const VERSION = 'v43';
+   v43: Antony's card is drawn; his "photo" was a church in Antony, France.
+
+   v44: every question picture is a photograph. */
+const VERSION = 'v44';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

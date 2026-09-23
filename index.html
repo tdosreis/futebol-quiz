@@ -517,6 +517,9 @@
     .b-text.b-voted { padding-right: 44px; }
     .b-text .tile-name { -webkit-line-clamp: 3; font-size: 13.5px; min-height: 0; }
     .b-text .tile-name-long { font-size: 12px; }
+    /* an event with no crest carries a photograph of a cup, not a drawing of one */
+    .ord-photo { border-radius: 50%; overflow: hidden; }
+    .ord-art.ord-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* A written choice with a picture of its own: the crest, the flag, the
        face or the ground sits above the words, the way it does on a club
@@ -9387,7 +9390,7 @@ function badge(item, idx) {
     return `<div class="${oc}" data-id="${item.id}" style="${delay}">
       <span class="ord-n">${at >= 0 ? at + 1 : ''}</span>
       ${item.crest ? `<span class="ord-art crest-box">${clubArt(item.crest, '', false)}</span>`
-                   : `<span class="ord-art ord-draw">${ART.trophy(24)}</span>`}
+                   : `<span class="ord-art ord-photo"><img src="${REAL_ART.trophy[0]}" alt="" aria-hidden="true" /></span>`}
       <span class="ord-t">${item.label}${item.sub ? `<em>${item.sub}</em>` : ''}</span>
       ${sc === 'reveal' ? `<span class="ord-y num">${item.y}</span>` : ''}
     </div>`;
@@ -9519,6 +9522,51 @@ const TOPIC_ART = [
   ['terrace',    /torcid|torcedor|apelid|conhecid[oa] como|chamad[oa] de/],
   ['stadium',    /estadio|\barena\b/],
 ];
+/* Every drawn vignette has a photograph now. The app has forty-odd real
+   pictures — grounds, trophies, a match ball, a referee — and a close crop
+   of the right one says "goalkeeper" or "Bola de Ouro" as plainly as a
+   drawing did, without looking like a cartoon beside a real face. Each
+   entry is a photograph and a crop into it (scale, then where to zoom). */
+const REAL_ART = {
+  ballonDor:  ['img/fd49175bd81940cc.webp', 1.6, 50, 58],    // the ball, close
+  ball:       ['img/fd49175bd81940cc.webp', 1.3, 50, 55],
+  goldenBoot: ['img/ac4c800e276855e1.webp', 2.6, 97, 40],    // a goal being scored
+  goalNet:    ['img/ac4c800e276855e1.webp', 2.2, 96, 45],
+  gloves:     ['img/ac4c800e276855e1.webp', 3.4, 98, 38],    // the goal, the keeper's
+  penalty:    ['img/ac4c800e276855e1.webp', 3.4, 98, 38],
+  tactics:    ['img/a95907be7a97c55c.webp', 1.15, 50, 60],   // a pitch from the stand
+  bench:      ['img/a95907be7a97c55c.webp', 1.6, 50, 80],
+  terrace:    ['img/f81fa4decaf6183b.webp', 1.5, 50, 90],    // a packed stand
+  contract:   ['img/ab0a0d60a0088003.webp', 1.0, 50, 50],    // a national ground, no club's
+  jersey:     ['img/ab0a0d60a0088003.webp', 1.8, 50, 85],
+  trophy:     ['img/c1ae333ad2891227.webp', 1.0, 50, 50],    // a cup in its case
+  boot:       ['img/ac4c800e276855e1.webp', 1.2, 60, 50],
+  globe:      ['img/fd49175bd81940cc.webp', 1.0, 50, 50],
+  plane:      ['img/fd49175bd81940cc.webp', 1.0, 50, 50],
+  route:      ['img/a95907be7a97c55c.webp', 1.0, 50, 55],
+  rules:      ['img/688a4a475f46f22b.webp', 1.0, 50, 50],
+};
+/* grounds that are no club's home and name nothing a question asks about */
+const NEUTRAL_GROUNDS = ['img/ab0a0d60a0088003.webp', 'img/96e17095e1771549.webp',
+  'img/ac4c800e276855e1.webp', 'img/0be967c3d2359f38.webp', 'img/db3f19fe5fbec233.webp'];
+function realArt(key, q) {
+  let r = REAL_ART[key];
+  if (key === 'stadium' || !r) {
+    /* a stadium question is shown a ground it does not name and cannot be
+       answered by: every candidate whose name is in the question, its
+       choices or its answers is skipped */
+    const said = _fold([q.t, ...(q.choices || []), ...(q.a || []).map(a => clubName(a) || a)].join(' | '));
+    const bad = new Set(PHOTO_ART.filter(x => x.q.test(said)).map(x => x.img));
+    const pool = NEUTRAL_GROUNDS.filter(g => !bad.has(g));
+    let hsh = 0; for (const ch of String(q.t || '')) hsh = (hsh * 31 + ch.charCodeAt(0)) >>> 0;
+    r = [pool[hsh % pool.length] || NEUTRAL_GROUNDS[0], 1.0, 50, 50];
+  }
+  const [img, s, ox, oy] = r;
+  return `<div class="qart qart-wide print"><img src="${img}" alt="" aria-hidden="true"
+    style="transform:scale(${s});transform-origin:${ox}% ${oy}%;"
+    onerror="this.parentElement.style.display='none'" /></div>`;
+}
+
 const topicArt = q => { const t = _fold(q.t || ''); const hit = TOPIC_ART.find(([, re]) => re.test(t)); return hit ? hit[0] : ''; };
 
 /* what a category falls back to when a question names nothing to draw */
@@ -9539,7 +9587,7 @@ function questionArtRaw(q) {
   if (q.stad) return STAD_IMGS[q.stad]
     ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + ART.stadium(104) + '</div>'" /></div>`
-    : `<div class="qart qart-wide qart-draw">${ART.stadium(104)}</div>`;
+    : realArt('stadium', q);
   if (q.face && !artReveals(q, { img: q.face }))  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
   /* A written question can name the player it is about, and his photograph
@@ -9581,7 +9629,7 @@ function questionArtRaw(q) {
       return `<div class="qart qart-path" role="img" aria-label="Clubes da carreira">
         ${shown.map((c, i) => `<span class="qp crest-box" style="animation-delay:${i * 90}ms">${
           clubArt(c, '', false)}</span>`).join('')}</div>`;
-    return `<div class="qart qart-wide qart-draw">${ART.route(104)}</div>`;
+    return realArt('route', q);
   }
   { const named = inferArt(q); if (named) return named; }
   { const shot = photoArt(q); if (shot) return shot; }
@@ -9589,12 +9637,11 @@ function questionArtRaw(q) {
      question was written with — which was the category's mark by another
      name ("boot" on every Craques question, the Bola de Ouro ones included) */
   const topic = topicArt(q);
-  if (topic) return `<div class="qart qart-wide qart-draw">${QICON[topic](92)}</div>`;
+  if (topic) return realArt(topic, q);
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
   if (FALLBACK_PHOTO[key]) return `<div class="qart qart-wide print"><img src="${FALLBACK_PHOTO[key]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + QICON['${key}'](92) + '</div>'" /></div>`;
-  const draw = QICON[key] || QICON.ball;
-  return `<div class="qart qart-wide qart-draw">${draw(92)}</div>`;
+  return realArt(QICON[key] ? key : 'ball', q);
 }
 
 /* A question with nothing of its own to show still names someone: a player,
