@@ -87,8 +87,11 @@
    v40: a figurinha turned over in the zoom is as wide as its front.
 
    v41: a zoomed figurinha's band and club fit whole, "da Bahia", a map
-   that is Brazil, and a terrace you can read. */
-const VERSION = 'v41';
+   that is Brazil, and a terrace you can read.
+
+   v42: a question is pictured by its topic — the Bola de Ouro, the scorer's
+   boot, the keeper's gloves — and a board's band clears its number tab. */
+const VERSION = 'v42';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

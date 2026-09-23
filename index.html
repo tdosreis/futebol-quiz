@@ -435,6 +435,11 @@
       font-variant-numeric: tabular-nums;
     }
     .tab-brass { background: var(--brass); color: var(--on-brass); }
+    /* On a board the number tab sits on the band's left end. The band's text
+       was centred across the whole card, so a long country — "INGLATERRA" —
+       started under the tab and read "NGLATERRA". It is centred in the part
+       of the band the tab leaves showing. */
+    .b-fig .fig-band { padding-left: 31px; padding-right: 4px; }
 
     /* ═══════════════════════════════════════════════════════════════
        THE BOARD — ten answer pockets
@@ -1173,6 +1178,7 @@
       .fig-sm .fig-nm-long { font-size: 6.7px; }
       .fig-sm .fig-flag { width: 10px; height: 7px; }
       .tab { font-size: 8.5px; padding: 2px 6px; }
+      .b-fig .fig-band { padding-left: 27px; padding-right: 3px; }
       .qcard p { font-size: 15.5px; }
       /* ten text pockets is five rows; at 52px they pushed CONFIRMAR off a
          568px-tall screen, so here they stay close to their old height. */
@@ -8548,6 +8554,181 @@ const ART = {
       </g>`);
   },
 
+  /* ── Topic vignettes ──
+     A question about the Bola de Ouro was pictured with a boot, one about a
+     goalkeeper with a trophy: the category's mark, not the question's. These
+     are what a question is about when it names no one — the prize, the
+     position, the moment — picked from its words by TOPIC_ART below. Same
+     inks and outline as the other scenes; none of them can name an answer. */
+
+  /* the Bola de Ouro: a golden ball on a black plinth under a spotlight */
+  ballonDor(w) {
+    return this._frame(w, 'Ilustração da Bola de Ouro', `
+      <rect width="120" height="80" fill="#243248"/>
+      <path d="M60 0 L30 80 H90 Z" fill="#F0C24A" opacity=".14"/>
+      <g fill="#F0C24A"><path d="M22 18 l1.4 3 3 .4 -2.2 2 .6 3 -2.8 -1.5 -2.8 1.5 .6 -3 -2.2 -2 3 -.4 Z"/>
+        <path d="M98 28 l1 2.2 2.3 .3 -1.7 1.5 .5 2.3 -2.1 -1.2 -2.1 1.2 .5 -2.3 -1.7 -1.5 2.3 -.3 Z"/>
+        <circle cx="92" cy="12" r="1.2"/><circle cx="30" cy="40" r="1"/></g>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
+        <path d="M44 62 h32 l4 12 h-40 Z" fill="#20241E"/>
+        <path d="M48 66 h24" stroke="#F0C24A" stroke-width="1.6"/>
+        <circle cx="60" cy="36" r="22" fill="#E8B23C"/>
+        <path d="M60 14 a22 22 0 0 1 0 44 a16 22 0 0 0 0 -44 Z" fill="#C79A4E" stroke="none"/>
+        <circle cx="60" cy="36" r="22" fill="none"/>
+        <path d="M60 27 l8.5 6.2 -3.3 10 h-10.4 l-3.3 -10 Z" fill="#A9803B"/>
+        <path d="M60 27 v-13 M68.5 33.2 l12.5 -4 M65.2 43.2 l7.7 10.6 M54.8 43.2 l-7.7 10.6 M51.5 33.2 l-12.5 -4"
+          fill="none" stroke-width="1.6"/>
+        <path d="M54 58 h12 v4 h-12 Z" fill="#C79A4E"/>
+      </g>
+      <path d="M46 26 q4 -8 12 -10" stroke="#FFF3CF" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/>`);
+  },
+
+  /* the Chuteira de Ouro: the scorer's prize, gold on a plinth */
+  goldenBoot(w) {
+    return this._frame(w, 'Ilustração da Chuteira de Ouro', `
+      <rect width="120" height="80" fill="#243248"/>
+      <path d="M60 0 L28 80 H92 Z" fill="#F0C24A" opacity=".14"/>
+      <g fill="#F0C24A"><circle cx="20" cy="16" r="1.3"/><circle cx="100" cy="20" r="1.1"/><circle cx="96" cy="44" r=".9"/></g>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M34 64 h52 l4 10 h-60 Z" fill="#20241E"/>
+        <path d="M40 68 h40" stroke="#F0C24A" stroke-width="1.6"/>
+        <path d="M30 20 q3 18 5 24 q2 8 11 8 h36 q10 0 10 -8 q0 -7 -10 -9 L58 30 q-9 -3 -12 -12 Z" fill="#E8B23C"/>
+        <path d="M58 30 L82 35 q10 2 10 9 q0 8 -10 8 h-20 Z" fill="#C79A4E" stroke="none"/>
+        <path d="M30 20 q3 18 5 24 q2 8 11 8 h36 q10 0 10 -8 q0 -7 -10 -9 L58 30 q-9 -3 -12 -12 Z" fill="none"/>
+        <path d="M38 26 l12 4 M40 32 l12 3" stroke-width="1.6"/>
+        <path d="M38 52 h52" stroke-width="2.6"/>
+        <path d="M44 54 v7 M56 54 v7 M68 54 v7 M80 54 v7" stroke-width="2.6"/>
+      </g>
+      <path d="M34 22 q2 10 4 16" stroke="#FFF3CF" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".9"/>`);
+  },
+
+  /* the goalkeeper: two gloves closing on the ball, the net behind */
+  gloves(w) {
+    let net = '';
+    for (let x = 4; x < 120; x += 8) net += `<path d="M${x} 0 V80" />`;
+    for (let y = 4; y < 80; y += 8) net += `<path d="M0 ${y} H120" />`;
+    return this._frame(w, 'Ilustração de luvas de goleiro', `
+      <rect width="120" height="80" fill="#2E7D4F"/>
+      <g stroke="#F5EFE0" stroke-width=".8" opacity=".35">${net}</g>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="60" cy="40" r="15" fill="#F7F2E4"/>
+        <path d="M60 32 l6 4.4 -2.3 7 h-7.4 l-2.3 -7 Z" fill="#2A1D10"/>
+        <path d="M60 32 v-7 M66 36.4 l7 -2.2 M63.7 43.4 l4.4 5.8 M56.3 43.4 l-4.4 5.8 M54 36.4 l-7 -2.2" stroke-width="1.4"/>
+        <path d="M14 66 L22 28 q2 -6 7 -4 l1 10 q3 -9 8 -7 l-1 11 q4 -7 8 -4 l-2 10 q4 -3 7 0 l-6 14 q-4 10 -14 12 Z" fill="#F0C24A"/>
+        <path d="M14 66 l6 8 h16 l-4 -10" fill="#20241E"/>
+        <path d="M106 66 L98 28 q-2 -6 -7 -4 l-1 10 q-3 -9 -8 -7 l1 11 q-4 -7 -8 -4 l2 10 q-4 -3 -7 0 l6 14 q4 10 14 12 Z" fill="#F0C24A"/>
+        <path d="M106 66 l-6 8 h-16 l4 -10" fill="#20241E"/>
+      </g>
+      <path d="M22 48 l10 3 M98 48 l-10 3" stroke="#B23A2E" stroke-width="3" stroke-linecap="round"/>`);
+  },
+
+  /* the prancheta: a formation in chalk, for questions about positions */
+  tactics(w) {
+    const X = (x, y) => `<path d="M${x - 3} ${y - 3} l6 6 M${x + 3} ${y - 3} l-6 6"/>`;
+    const O = (x, y) => `<circle cx="${x}" cy="${y}" r="3.4"/>`;
+    return this._frame(w, 'Ilustração de uma prancheta tática', `
+      <rect width="120" height="80" fill="#8C6A3E"/>
+      <rect x="6" y="6" width="108" height="68" rx="3" fill="#1F5A38" stroke="#2A1D10" stroke-width="2"/>
+      <g fill="none" stroke="#F5EFE0" stroke-width="1.2" opacity=".55">
+        <path d="M60 10 V70"/><circle cx="60" cy="40" r="10"/>
+        <path d="M10 26 h14 v28 h-14 M110 26 h-14 v28 h14"/>
+      </g>
+      <g fill="none" stroke="#F5EFE0" stroke-width="2" stroke-linecap="round">
+        ${O(18, 40)}${O(32, 22)}${O(32, 58)}${O(44, 40)}${O(50, 26)}${O(50, 54)}
+        ${X(76, 30)}${X(76, 50)}${X(92, 40)}
+      </g>
+      <g fill="none" stroke="#F0C24A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M54 50 q14 8 26 -2" stroke-dasharray="3 3"/><path d="M78 44 l3 4 -5 1"/>
+        <path d="M54 30 q18 -14 34 4"/><path d="M85 31 l4 4 -5 1"/>
+      </g>
+      <rect x="48" y="2" width="24" height="7" rx="2" fill="#A7A89C" stroke="#2A1D10" stroke-width="1.6"/>`);
+  },
+
+  /* the goal: the ball in the back of the net, for the scoring questions */
+  goalNet(w) {
+    let net = '';
+    for (let x = 22; x <= 98; x += 7) net += `<path d="M${x} 16 V58"/>`;
+    for (let y = 21; y <= 58; y += 7) net += `<path d="M18 ${y} H102"/>`;
+    return this._frame(w, 'Ilustração de uma bola no fundo do gol', `
+      <rect width="120" height="80" fill="#9FB7C9"/>
+      ${this._pitch(56, 24)}
+      <path d="M0 64 H120" stroke="#F5EFE0" stroke-width="1.6" opacity=".85"/>
+      <g stroke="#F5EFE0" stroke-width="1" opacity=".7">${net}</g>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
+        <path d="M14 64 V12 H106 V64" fill="none" stroke="#F5EFE0" stroke-width="5"/>
+        <path d="M14 64 V12 H106 V64" fill="none"/>
+        <path d="M11.5 64 V9.5 H108.5 V64" fill="none" stroke-width="1.2" opacity=".6"/>
+        <circle cx="72" cy="38" r="10" fill="#F7F2E4"/>
+        <path d="M72 32.5 l4 3 -1.5 4.8 h-5 l-1.5 -4.8 Z" fill="#2A1D10"/>
+      </g>
+      <path d="M72 38 q10 4 16 12 q4 6 2 12" fill="none" stroke="#F5EFE0" stroke-width="1.4" opacity=".8"/>
+      <g stroke="#F0C24A" stroke-width="2" stroke-linecap="round"><path d="M50 30 l-8 -4 M52 40 h-9 M50 50 l-8 4"/></g>`);
+  },
+
+  /* the penalty: the spot, the ball on it, the keeper on his line */
+  penalty(w) {
+    return this._frame(w, 'Ilustração de um pênalti', `
+      <rect width="120" height="80" fill="#3A3F36"/>
+      ${this._crowd(4, 3, 6, 2.1, 9)}
+      ${this._pitch(26, 54)}
+      <g stroke="#F5EFE0" stroke-width="1.4" fill="none" opacity=".85">
+        <path d="M0 44 H120"/><path d="M26 44 L14 80 M94 44 L106 80"/>
+      </g>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round">
+        <path d="M32 44 V20 H88 V44" fill="none" stroke="#F5EFE0" stroke-width="4"/>
+        <path d="M34 22 H86 V44 H34 Z" fill="#F5EFE0" opacity=".18" stroke="none"/>
+        <path d="M60 28 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="#C98A5B"/>
+        <path d="M52 44 l2 -8 q6 -4 12 0 l2 8 Z" fill="#F0C24A"/>
+        <path d="M54 36 l-9 -5 M66 36 l9 -5" stroke="#F0C24A" stroke-width="3.6" stroke-linecap="round"/>
+        <ellipse cx="60" cy="67" rx="3" ry="1.2" fill="#F5EFE0" stroke="none"/>
+        <circle cx="60" cy="62" r="5.5" fill="#F7F2E4"/>
+        <path d="M60 59 l2.4 1.8 -.9 2.8 h-3 l-.9 -2.8 Z" fill="#2A1D10"/>
+      </g>`);
+  },
+
+  /* the shirt on its hanger in the dressing room, for the questions about a
+     man and the club he is remembered at. No number on it: a number is an
+     answer on some questions, and a shirt reads as a shirt without one. */
+  jersey(w) {
+    let slats = '';
+    for (let x = 0; x < 120; x += 10) slats += `<rect x="${x}" y="0" width="9" height="80" fill="#7A5A32"/>`;
+    return this._frame(w, 'Ilustração de uma camisa no vestiário', `
+      <rect width="120" height="80" fill="#6B4E2C"/>${slats}
+      <rect y="66" width="120" height="14" fill="#5A4024"/>
+      <path d="M0 66 H120" stroke="#2A1D10" stroke-width="2"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M60 6 q4 0 4 4 q0 3 -4 5" fill="none" stroke="#A7A89C" stroke-width="2.4"/>
+        <path d="M60 15 L38 22 M60 15 L82 22" stroke="#A7A89C" stroke-width="2.4"/>
+        <path d="M44 18 L26 26 L32 40 L40 36 V64 H80 V36 L88 40 L94 26 L76 18 q-6 7 -16 7 q-10 0 -16 -7 Z" fill="#F5EFE0"/>
+        <path d="M52 19 v44 M60 25 v38 M68 19 v44" stroke="#B23A2E" stroke-width="5" stroke-linecap="butt"/>
+        <path d="M44 18 L26 26 L32 40 L40 36 V64 H80 V36 L88 40 L94 26 L76 18 q-6 7 -16 7 q-10 0 -16 -7 Z" fill="none"/>
+        <path d="M44 18 q16 12 32 0" fill="none" stroke="#20241E" stroke-width="3"/>
+        <path d="M60 30 l1.6 3.4 3.6 .4 -2.7 2.5 .8 3.6 -3.3 -1.9 -3.3 1.9 .8 -3.6 -2.7 -2.5 3.6 -.4 Z" fill="#F0C24A" stroke-width="1.2"/>
+      </g>`);
+  },
+
+  /* the transfer: the contract, the pen and the money, for signings */
+  contract(w) {
+    return this._frame(w, 'Ilustração de um contrato de transferência', `
+      <rect width="120" height="80" fill="#8C6A3E"/>
+      <path d="M0 0 H120 V10 H0 Z" fill="#7A5A32"/>
+      <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="64" y="40" width="44" height="24" rx="2" fill="#6FA86A" transform="rotate(-8 86 52)"/>
+        <rect x="60" y="46" width="44" height="24" rx="2" fill="#7FBF78" transform="rotate(4 82 58)"/>
+        <circle cx="82" cy="58" r="6" fill="none" stroke-width="1.6" transform="rotate(4 82 58)"/>
+        <path d="M22 10 h40 l8 8 v54 h-48 Z" fill="#F5EFE0"/>
+        <path d="M62 10 v8 h8" fill="#DCD3BC"/>
+        <path d="M30 22 h26 M30 30 h32 M30 37 h32 M30 44 h24" stroke-width="1.4" opacity=".55"/>
+        <path d="M30 60 q6 -8 10 -2 t10 -3" fill="none" stroke="#243248" stroke-width="1.8"/>
+        <path d="M30 64 h28" stroke-width="1.2" opacity=".5"/>
+        <path d="M70 26 L54 60 l-2 6 5 -4 16 -34 Z" fill="#20241E"/>
+        <path d="M70 26 l3 2" stroke="#F0C24A" stroke-width="3"/>
+        <circle cx="100" cy="24" r="7" fill="#F0C24A"/><circle cx="92" cy="30" r="7" fill="#E8B23C"/>
+      </g>
+      <g font-family="Archivo, system-ui" font-weight="800" font-size="7" fill="#2A1D10" text-anchor="middle">
+        <text x="100" y="26.5">$</text><text x="92" y="32.5">$</text></g>`);
+  },
+
   /* the cup on its podium under the confetti, for a question card: the
      prize-screen cup is portrait and a landscape card cut it in half */
   trophyScene(w) {
@@ -9263,6 +9444,9 @@ const QICON = {
   terrace: w => ART.terrace(w), route: w => ART.route(w), map: w => ART.mapBR(w),
   bench: w => ART.bench(w), globe: w => ART.globe(w), stadium: w => ART.stadium(w),
   trophy: w => ART.trophyScene(w), ball: w => ART.ball(w),
+  ballonDor: w => ART.ballonDor(w), goldenBoot: w => ART.goldenBoot(w), gloves: w => ART.gloves(w),
+  tactics: w => ART.tactics(w), goalNet: w => ART.goalNet(w), penalty: w => ART.penalty(w),
+  contract: w => ART.contract(w), jersey: w => ART.jersey(w),
 };
 
 /* The real thing, where a question names it: the trophy it is played for,
@@ -9313,6 +9497,27 @@ function photoArt(q) {
   return hit ? `<div class="qart qart-wide print"><img src="${hit.img}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>` : '';
 }
+
+/* What a question is about, read from its words, when it names nothing that
+   has a picture of its own. First match wins, so the specific prize comes
+   before the position it was won in ("Qual goleiro ganhou a Bola de Ouro?"
+   is a Bola de Ouro question). Only ever a topic — never a person, club or
+   country — so it cannot answer anything. */
+const TOPIC_ART = [
+  ['ballonDor',  /bolas? de ouro|melhor (jogador|jogadora)( do mundo| da fifa)|fifa the best|\bfifa best\b|ballon d/],
+  ['goalNet',    /milesimo gol|gol (mais rapido|olimpico|de bicicleta|de placa|historico)|fez o gol|marcou o gol|gol do titulo|gol da vitoria/],
+  ['penalty',    /penalti/],
+  ['goldenBoot', /chuteira de ouro|artilheir|goleador|\d+ gols|mais gols|gols em (um|uma)/],
+  ['gloves',     /goleir|luva de ouro/],
+  ['contract',   /transferencia|contratou|contratad|vendido|comprad|contrato|\bfoi para\b.{0,30}\brecorde/],
+  ['tactics',    /lateral|volante|zagueir|centroavante|meio-campista|\bmeia\b|\bponta\b|esquema|formacao tatica|4-4-2|4-3-3|3-5-2/],
+  ['bench',      /\btecnico\b|treinador|comandou/],
+  ['trophy',     /copa do mundo feminina|copas do mundo femininas|mundial feminino/],
+  ['jersey',     /idolo|jogou (quase |praticamente )?toda|comecou (a |sua )?carreira|revelou|se destacou|foi revelado/],
+  ['terrace',    /torcid|torcedor|apelid|conhecid[oa] como|chamad[oa] de/],
+  ['stadium',    /estadio|\barena\b/],
+];
+const topicArt = q => { const t = _fold(q.t || ''); const hit = TOPIC_ART.find(([, re]) => re.test(t)); return hit ? hit[0] : ''; };
 
 /* what a category falls back to when a question names nothing to draw */
 const CAT_ART = {
@@ -9378,6 +9583,11 @@ function questionArtRaw(q) {
   }
   { const named = inferArt(q); if (named) return named; }
   { const shot = photoArt(q); if (shot) return shot; }
+  /* the question's own topic outranks the category's mark, and the icon a
+     question was written with — which was the category's mark by another
+     name ("boot" on every Craques question, the Bola de Ouro ones included) */
+  const topic = topicArt(q);
+  if (topic) return `<div class="qart qart-wide qart-draw">${QICON[topic](92)}</div>`;
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
   if (FALLBACK_PHOTO[key]) return `<div class="qart qart-wide print"><img src="${FALLBACK_PHOTO[key]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + QICON['${key}'](92) + '</div>'" /></div>`;
