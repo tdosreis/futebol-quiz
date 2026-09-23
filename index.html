@@ -10878,12 +10878,18 @@ const FIT_FLOOR = 0.66;
    overhangs is it pinned to what is actually there. On a phone where it
    already fits this does nothing at all. */
 function fitGlass() {
-  const qz = document.getElementById('qz');
+  const qz = document.getElementById('qz'), bd = document.body;
   if (!qz) return;
-  qz.style.minHeight = qz.style.maxHeight = '';
+  qz.style.minHeight = qz.style.maxHeight = bd.style.minHeight = '';
   if (window.innerWidth >= 700) return;
   const de = document.documentElement;
-  const over = Math.max(de.scrollHeight, document.body.scrollHeight) - de.clientHeight;
+  const overBy = () => Math.max(de.scrollHeight, bd.scrollHeight) - de.clientHeight;
+  if (overBy() <= 1) return;
+  /* The body is 100dvh tall too, and on a phone whose dvh is taller than
+     its glass that alone overhangs — so it is held to the glass first, and
+     the sheet gives up whatever is still left over. */
+  bd.style.minHeight = de.clientHeight + 'px';
+  const over = overBy();
   if (over <= 1) return;
   const h = Math.max(420, Math.floor(qz.getBoundingClientRect().height - over));
   qz.style.minHeight = qz.style.maxHeight = h + 'px';
