@@ -101,8 +101,11 @@
 
    v46: sticker names keep their accents; album pockets fill the page; the
         light theme gets light album pages; one-row progress; the trophy
-        photo framed on the cup. */
-const VERSION = 'v46';
+        photo framed on the cup.
+
+   v47: four who-am-I clues that the 2026 World Cup could have made stale
+        are worded so they stay true. */
+const VERSION = 'v47';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
