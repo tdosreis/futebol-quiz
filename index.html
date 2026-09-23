@@ -654,6 +654,10 @@
       letter-spacing: -.005em; flex: 1; min-width: 0; white-space: pre-line; text-wrap: balance; }
     .qart { flex-shrink: 0; border-radius: 8px; overflow: hidden; }
     .qart-face { width: 66px; height: 66px; border-radius: 50%; }
+    /* the face and nothing under it: the shirt would name the club or the
+       country the question asks for */
+    .qart-face.qart-tight img { object-fit: cover; object-position: 50% 12%;
+      transform: scale(1.45); transform-origin: 50% 24%; }
     .qart-wide { width: 104px; height: 68px; }
     /* a flag drawn at the size of a vignette, for the questions about a country */
     .qart-flag { width: 78px; height: 52px; border-radius: 4px; overflow: hidden;
@@ -4209,7 +4213,7 @@ const CATS = [
       {"t": "Ponta gaúcho que passou pelo Leeds antes de chegar ao Barcelona. Quem sou eu?", "a": ["raphinha"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Lateral-direito revelado pelo Liverpool que foi para o Real Madrid em 2025. Quem sou eu?", "a": ["taa"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Atacante uruguaio revelado pelo Peñarol, que passou pelo Almería antes de brilhar no Benfica. Quem sou eu?", "a": ["nunez"], "type": "player", "d": 3, "icon": "jersey"},
-      {"t": "Meia inglês apelidado de Stockport Iniesta, revelado pelo Manchester City. Quem sou eu?", "a": ["foden"], "type": "player", "d": 2, "icon": "jersey"},
+      {"t": "Meia inglês apelidado de 'Stockport Iniesta', revelado pelo Manchester City. Quem sou eu?", "a": ["foden"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Atacante revelado pelo Santos que chegou ao Real Madrid em 2019, ainda adolescente. Quem sou eu?", "a": ["rodrygo"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Zagueiro revelado pelo São Paulo, campeão da Champions de 2022 pelo Real Madrid e titular do Brasil na Copa do Catar. Quem sou eu?", "a": ["militao"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Ponta inglês revelado pelo Arsenal que perdeu o último pênalti da final da Euro 2020. Quem sou eu?", "a": ["saka"], "type": "player", "d": 2, "icon": "jersey"},
@@ -6124,18 +6128,18 @@ const NICK = {
   thiago_silva:'Monstro', emerson:'Puma', vinicius:'Vini Jr.', cafu:'Pendolino',
   maradona:'Pibe de Oro', messi:'La Pulga', cr7:'CR7', zidane:'Zizou', batistuta:'Batigol',
   baggio:'Divino Codino', platini:'Le Roi', henry:'Titi', ibrahimovic:'Ibra', beckenbauer:'Kaiser',
-  gerd_muller:'Bomber', del_piero:'Pinturicchio', distefano:'Saeta Rubia', cavani:'Matador',
+  gerd_muller:'Bomber', del_piero:'Pinturicchio', distefano:'Saeta Rubia',
   eusebio:'Pantera Negra', puskas:'Major Galopante', totti:'Il Capitano', suarez:'Pistolero',
   salah:'Rei Egípcio', aguero:'Kun', casillas:'San Iker', yashin:'Aranha Negra', kahn:'Titã',
   pirlo:'Maestro', nedved:'Fúria Tcheca', van_basten:'Cisne de Utrecht', weah:'King George',
   cruyff:'Profeta do Gol', klose:'Salto Mortal', neymar:'Ney',
   /* ── as páginas antigas ── */
   leonidas:'Diamante Negro', domingos_guia:'Divino Mestre', zizinho:'Mestre Ziza',
-  ademir:'Queixada', julinho:'Julinho Botelho', djalma_santos:'Djalminha',
+  ademir:'Queixada',
   vava:'Peito de Aço', amarildo:'Possesso', clodoaldo:'Corintiano da Vila',
-  cerezo:'Cerezo', eder:'Canhão', reinaldo:'Rei', casagrande:'Casão',
+  casagrande:'Casão',
   renato_gaucho:'Rei do Rio', raí:'Doutor Raí', branco:'Canhão da Copa',
-  ghiggia:'El Negro Jefe', obdulio:'El Negro Jefe da Celeste',
+  obdulio:'El Negro Jefe',
   best:'O Quinto Beatle', kempes:'El Matador', valderrama:'El Pibe',
   higuita:'El Loco', chilavert:'Goleiro Artilheiro', cubillas:'Nene',
   milla:'Vovô da Copa', rossi:'Pablito', zoff:'Dino',
@@ -7565,7 +7569,19 @@ function GEN_QS(tier) {
   }
 
   /* 23. Nicknames — match the name the crowd uses to the face */
-  pick(PL.filter(p => p.nick && p.nick !== p.n), 8).forEach(p => {
+  /* A nickname is only a question if it points at one man and does not
+     spell him out. "Djalminha" was filed under Djalma Santos while Djalminha
+     himself is in the album; "Matador" is Kempes and Cavani both; "Julinho
+     Botelho" or "Doutor Raí" print the answer on its own card. */
+  const nickOk = p => {
+    if (!p.nick) return false;
+    const nk = _fold(p.nick), nm = _fold(p.n);
+    if (nk === nm) return false;
+    const words = s => s.split(/[^a-z0-9]+/).filter(w => w.length >= 3);
+    if (words(nm).some(w => nk.includes(w)) || words(nk).some(w => nm.includes(w))) return false;
+    return !PL.some(x => x.id !== p.id && (_fold(x.n) === nk || (x.nick && _fold(x.nick) === nk)));
+  };
+  pick(PL.filter(nickOk), 8).forEach(p => {
     out.push({
       t: `Qual jogador é conhecido como "${p.nick}"?`,
       a: [p.id], type: 'player',
@@ -10374,9 +10390,9 @@ function optArtFor(q) {
     t.indexOf(_fold(q.choices[i])) === -1);
   /* only what the question card actually draws: artReveals already keeps
      the answer's own flag or crest off it */
-  const qFace = (q.face && !artReveals(q, { img: q.face }) && q.face) ||
+  const qFace = (q.face && (faceMode(q, PL.find(x => x.img === q.face)) || !artReveals(q, { img: q.face })) && q.face) ||
                 (q.port && !artReveals(q, { player: q.port }) && PORT_IMGS[q.port]) ||
-                (q.who && !artReveals(q, { player: q.who }) && (PL.find(p => p.id === q.who) || {}).img);
+                (q.who && faceMode(q, PL.find(p => p.id === q.who)) && (PL.find(p => p.id === q.who) || {}).img);
   const qCrest = q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest })) && q.crest;
   const qFlag  = q.flag && !artReveals(q, { ctry: q.flag }) && CTRY_ISO[q.flag];
   /* A rivalry pictured by its two clubs is answered by a question that names
@@ -10710,15 +10726,17 @@ function questionArtRaw(q) {
     ? `<div class="qart qart-wide print"><img src="${STAD_IMGS[q.stad]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + ART.stadium(104) + '</div>'" /></div>`
     : realArt('stadium', q);
-  if (q.face && !artReveals(q, { img: q.face }))  return `<div class="qart qart-face print"><img src="${q.face}" alt="" aria-hidden="true"
-        onerror="this.parentElement.style.display='none'" /></div>`;
+  if (q.face) {
+    const fp = PL.find(x => x.img === q.face);
+    const mode = fp ? faceMode(q, fp) : (artReveals(q, { img: q.face }) ? '' : 'full');
+    if (mode) return faceHtml(q.face, mode);
+  }
   /* A written question can name the player it is about, and his photograph
      illustrates it. tools/merge_questions.py refuses a row whose pictured
      player is also its answer, so the picture never answers the question. */
-  if (q.who && !artReveals(q, { player: q.who })) {
-    const w = PL.find(p => p.id === q.who);
-    if (w && w.img) return `<div class="qart qart-face print"><img src="${w.img}" alt="" aria-hidden="true"
-        onerror="this.parentElement.style.display='none'" /></div>`;
+  if (q.who) {
+    const w = PL.find(p => p.id === q.who), mode = faceMode(q, w);
+    if (mode) return faceHtml(w.img, mode);
   }
   /* A mascot question shows the drawing and nothing else — the club's colours
      behind it would name the club, which is the whole question. */
@@ -10777,6 +10795,25 @@ function questionArtRaw(q) {
    country — unless the question already names that man, club or country,
    in which case the picture only shows what the text has said. Every
    picture a question can carry passes through here. */
+/* Is this man the answer itself? Then his picture can never go on the
+   question. Otherwise what artReveals fears is only his shirt — the club or
+   the country on it — and the face alone is safe. A question about someone
+   ("Por qual destes clubes Gérson jogou?") has to show who it means: there is
+   Gérson of 1970 and Gérson of Flamengo, and a football instead of his face
+   left it to guessing. So he is shown, cropped to the face. */
+function artIsSelf(q, p) {
+  const A = q.a || [];
+  return !p || A.includes(p.id) || A.map(_fold).includes(_fold(p.n));
+}
+/* 'full' — show the photo; 'tight' — show only the face; '' — show nothing */
+function faceMode(q, p) {
+  if (!p || !p.img) return '';
+  if (!artReveals(q, { player: p.id })) return 'full';
+  return artIsSelf(q, p) ? '' : 'tight';
+}
+const faceHtml = (img, mode) => `<div class="qart qart-face print${mode === 'tight' ? ' qart-tight' : ''}"><img src="${img}" alt="" aria-hidden="true"
+        onerror="this.parentElement.style.display='none'" /></div>`;
+
 function artReveals(q, e) {
   const F = _fold, A = q.a || [], ans = A.map(F);
   const t = ' ' + F(q.t) + ' ';
@@ -10823,7 +10860,12 @@ function artIndex() {
   const COMMON = new Set(['silva', 'santos', 'junior', 'souza', 'costa', 'lima', 'ferreira', 'fernandes',
     'rodriguez', 'martinez', 'garcia', 'gomez', 'lopez', 'perez', 'muller', 'alves', 'pereira', 'oliveira',
     'gonzalez', 'marcelo', 'diego', 'alex', 'marcos', 'branco', 'felix', 'brito', 'zinho', 'eder', 'cesar',
-    'julio', 'carlos', 'roberto', 'ronaldo', 'neto', 'dida', 'didi', 'pepe', 'gilmar', 'jorginho', 'emerson']);
+    'julio', 'carlos', 'roberto', 'ronaldo', 'neto', 'dida', 'didi', 'pepe', 'gilmar', 'jorginho', 'emerson',
+    /* surnames that are also a region, a ground or another man: "clube
+       gaúcho" drew Renato Gaúcho, "clube pernambucano" Juninho, "Villa Park"
+       David Villa, "Jorge Jesus" Gabriel Jesus, "Monumental de Núñez" Darwin
+       Núñez, "Bramley-Moore Dock" Bobby Moore */
+    'gaucho', 'pernambucano', 'villa', 'jesus', 'nunez', 'moore']);
   const last = {};
   PL.forEach(p => { const w = _fold(p.n).split(/\s+/).pop(); last[w] = (last[w] || 0) + 1; });
   const players = [];
@@ -10857,6 +10899,27 @@ function artIndex() {
    tools/audit_art.py calls this and reports what it finds; when the rules
    lived only inside inferArt the audit kept its own copy of them, said the
    Portuguesa bug was still there after it was fixed, and was itself wrong. */
+/* A name is a proper noun: "ponta careca" is a bald winger, not Careca, and
+   "nesta ordem" is not Nesta. The match is made on folded text, so it is
+   checked against the question as written for its capital. Folding keeps
+   the length of NFC text (an accented letter loses only its mark), so the
+   offsets line up. */
+function capHit(raw, re) {
+  /* a name inside a nickname in quotes ('Maradona dos Cárpatos' is Hagi) is
+     not the man; blanked out, keeping the offsets */
+  raw = String(raw || '').normalize('NFC')
+    .replace(/(^|[\s(])['"“‘][^'"”’]{2,40}['"”’]/g, m => ' '.repeat(m.length));
+  const t = ' ' + _fold(raw) + ' ', r = ' ' + raw + ' ';
+  const g = new RegExp(re.source, 'g');
+  let m;
+  while ((m = g.exec(t))) {
+    const i = m.index + (m[1] || '').length;
+    const c = r[i];
+    if (c && c !== c.toLowerCase()) return true;
+    if (g.lastIndex === m.index) g.lastIndex++;
+  }
+  return false;
+}
 function artMatch(q) {
   if (!q || !q.t || typeof PL === 'undefined') return null;
   const t = ' ' + _fold(q.t) + ' ';
@@ -10865,8 +10928,10 @@ function artMatch(q) {
   const chosen = n => ch.some(c => c === n || c.indexOf(n) !== -1 || n.indexOf(c) !== -1);
   const { players, clubs } = artIndex();
   for (const x of players) {
-    if (ans.has(x.p.id) || chosen(x.full) || artReveals(q, { player: x.p.id })) continue;
-    if (x.pats.some(r => r.test(t))) return { kind: 'player', id: x.p.id, hit: x.full };
+    if (ans.has(x.p.id) || chosen(x.full)) continue;
+    const mode = faceMode(q, x.p);
+    if (!mode) continue;
+    if (x.pats.some(r => capHit(q.t, r))) return { kind: 'player', id: x.p.id, hit: x.full, tight: mode === 'tight' };
   }
   for (const c of clubs) {
     if (ans.has(c.id) || chosen(c.n) || artReveals(q, { club: c.id })) continue;
@@ -10888,8 +10953,7 @@ function inferArt(q) {
   if (!m) return '';
   if (m.kind === 'player') {
     const p = PL.find(x => x.id === m.id);
-    return p ? `<div class="qart qart-face print"><img src="${p.img}" alt="" aria-hidden="true"
-        onerror="this.parentElement.style.display='none'" /></div>` : '';
+    return p ? faceHtml(p.img, m.tight ? 'tight' : 'full') : '';
   }
   if (m.kind === 'club')
     return `<div class="qart qart-crest">${clubArt(m.id, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;

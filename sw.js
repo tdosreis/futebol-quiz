@@ -108,8 +108,12 @@
 
    v48: pictures keep a cache of their own across updates and are retried
         once before a card gives up; a country-hidden band says ANOS 90;
-        the Inter clue no longer names Milan. */
-const VERSION = 'v48';
+        the Inter clue no longer names Milan.
+
+   v49: a question about a player shows his face, cropped clear of the
+        shirt when the shirt could answer it; names in the text are matched
+        as proper nouns; ambiguous or self-revealing nicknames are gone. */
+const VERSION = 'v49';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
