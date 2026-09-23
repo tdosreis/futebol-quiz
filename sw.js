@@ -84,8 +84,11 @@
 
    v39: the body is held to the real screen as well as the sheet.
 
-   v40: a figurinha turned over in the zoom is as wide as its front. */
-const VERSION = 'v40';
+   v40: a figurinha turned over in the zoom is as wide as its front.
+
+   v41: a zoomed figurinha's band and club fit whole, "da Bahia", a map
+   that is Brazil, and a terrace you can read. */
+const VERSION = 'v41';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

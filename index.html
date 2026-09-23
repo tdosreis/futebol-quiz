@@ -6255,6 +6255,10 @@ function GEN_QS(tier) {
     MG:'Minas Gerais', PR:'Paraná', BA:'Bahia', CE:'Ceará', PE:'Pernambuco',
     SC:'Santa Catarina', GO:'Goiás', MT:'Mato Grosso', PA:'Pará', AL:'Alagoas',
     RN:'Rio Grande do Norte', MA:'Maranhão' };
+  /* Portuguese names most states with an article: "da Bahia", "do Paraná",
+     but "de São Paulo", "de Minas Gerais". "É de Bahia" read as a slip. */
+  const ST_DE = { RJ:'do', SP:'de', RS:'do', MG:'de', PR:'do', BA:'da', CE:'do', PE:'de',
+    SC:'de', GO:'de', MT:'de', PA:'do', AL:'de', RN:'do', MA:'do' };
   /* Bahia is from Bahia, Ceará from Ceará, Goiás from Goiás — asking which of
      these is from that state answers itself. Such a club stays in the pool as a
      wrong answer elsewhere; it just cannot be the answer to its own name. */
@@ -6266,7 +6270,7 @@ function GEN_QS(tier) {
     ST_NAME[st] && byState[st].some(c => !namesState(c, st))), 5).forEach(st => {
     const ok = byState[st].filter(c => !namesState(c, st));
     out.push({
-      t: `Qual destes clubes é de ${ST_NAME[st]}?`,
+      t: `Qual destes clubes é ${ST_DE[st] || 'de'} ${ST_NAME[st]}?`,
       a: [rndOf(ok).id], uf: st, _noClub: true,
       pool: CL.filter(c => c.s !== st && !namesState(c, st)).map(c => c.id),
       _cat: GC.hist, d: 1,
@@ -7990,6 +7994,11 @@ function openZoom(src, front, back, lookFrom) {
       });
     });
   }
+  /* the zoom is the pocket scaled up k times, so its lettering is laid out
+     at pocket size: what matters is how big it reads once scaled — 7px on the
+     glass, still plain on a card this size — not how far it shrank from the
+     pocket's own size */
+  try { fitFigText(z.querySelector('.zoom-front'), 7 / k, 0); } catch (e) {}
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cx = vw / 2, cy = vh / 2;
   const at = rect => `translate(calc(-50% + ${rect.left + rect.width / 2 - cx}px), calc(-50% + ${rect.top + rect.height / 2 - cy}px)) scale(1)`;
@@ -8426,16 +8435,19 @@ const ART = {
      The outline is a deliberate simplification: lon/lat projected into this
      card's box (see tools note), enough to be recognisably Brazil at 104px and
      no more. */
-  BR_PATH: 'M51.7 4.2 L52.7 6.6 L58.7 9.2 L65 5.7 L67.7 12.5 L70 15 L76.5 18.4 '
-         + 'L87.2 22.6 L91 26.8 L88.6 33.1 L84.7 37.7 L84.6 46.7 L83.5 50.2 '
-         + 'L80.3 55 L73.1 58 L69.9 62 L67.7 67.9 L64.4 72.7 L62.5 75.8 '
-         + 'L56.1 69.4 L55.2 54.3 L56.1 43.8 L52.4 38.6 L44.3 31.8 L37.1 31.8 '
-         + 'L31.2 27.6 L37.1 21.1 L38 16.5 L41.3 10.1 L46.3 6.4 L47.2 6.6 Z',
+  BR_PATH: 'M65.5 8.5 L68.1 12.9 L69.7 16.2 L71.5 16.9 L77.4 20.1 L82.0 20.8 '
+         + 'L86.9 22.1 L89.0 24.1 L92.2 25.0 L92.9 27.8 L92.6 29.5 L91.4 32.2 '
+         + 'L89.3 34.4 L86.9 37.7 L86.0 41.1 L85.7 45.6 L83.9 50.0 L82.8 52.9 '
+         + 'L79.2 54.4 L76.3 55.6 L73.7 56.2 L70.6 59.4 L70.4 63.8 L68.1 67.1 '
+         + 'L66.2 69.5 L62.6 72.5 L62.2 70.3 L59.0 67.8 L55.7 66.6 L58.3 63.4 '
+         + 'L61.9 61.4 L62.2 59.6 L60.6 58.9 L61.1 56.2 L59.3 56.1 L58.8 53.0 '
+         + 'L55.2 53.0 L54.7 49.3 L55.9 46.5 L54.4 43.3 L51.5 43.1 L51.5 38.6 '
+         + 'L48.7 38.4 L43.0 35.6 L43.2 32.4 L38.8 33.9 L34.5 34.4 L34.7 31.7 '
+         + 'L30.8 31.0 L29.2 28.2 L30.8 24.5 L35.5 23.1 L36.5 17.9 L35.8 14.1 '
+         + 'L39.8 12.2 L40.6 13.9 L45.3 12.5 L44.2 9.2 L47.3 9.2 L50.7 7.2 '
+         + 'L52.1 8.3 L51.7 11.7 L55.1 13.4 L58.3 12.7 L61.6 12.2 L63.4 12.2 Z',
 
-  UF_XY: { SP:[70,54.3], RJ:[78.9,54.8], MG:[76.2,47.8], BA:[80.4,36.8],
-           RS:[62.4,69], PR:[65.4,58.9], SC:[67,64], PE:[86.3,29.2],
-           CE:[83.8,23.3], PA:[63.9,21.1], GO:[68.5,43.2], MT:[58.7,37.7],
-           AL:[88.2,31.4], MA:[74.6,23], RN:[88.2,24.4] },
+  UF_XY: { SP:[70.6,53.4], RJ:[80.0,53.4], MG:[76.9,47.0], BA:[81.6,36.9], RS:[62.9,66.0], PR:[65.5,57.2], SC:[67.3,61.8], PE:[87.8,30.0], CE:[85.2,24.5], PA:[64.0,22.6], GO:[68.8,42.6], MT:[58.5,37.6], AL:[89.9,32.0], MA:[75.8,24.3], RN:[89.9,25.6] },
 
   mapBR(w, uf) {
     const at = this.UF_XY[uf];
@@ -8479,29 +8491,33 @@ const ART = {
       </g>`);
   },
 
-  /* the terrace: a bandeirão over a packed stand, flares going, for the
-     questions about what the stands call things */
+  /* the terrace: a few fans big enough to read at thumbnail size — two rows
+     of heads and shoulders, a scarf held up between them, and the club flag
+     on its pole over the stand. The first version was a mosaic of a hundred
+     dots, and at 104px it read as noise. */
   terrace(w) {
+    const fan = (x, y, r, shirt, skin) => `
+      <path d="M${x - r * 1.9} ${y + r * 3.2} q0 -${r * 2.2} ${r * 1.9} -${r * 2.2} q${r * 1.9} 0 ${r * 1.9} ${r * 2.2} Z" fill="${shirt}"/>
+      <circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/>`;
+    const back = [[14, 36, '#8FA3B8', '#A56B45'], [34, 34, '#B23A2E', '#C98A5B'], [54, 36, '#F5EFE0', '#8C5A3A'],
+                  [74, 34, '#2E7D4F', '#C98A5B'], [94, 36, '#B23A2E', '#A56B45'], [114, 34, '#F0C24A', '#C98A5B']];
+    const front = [[4, 58, '#B23A2E', '#C98A5B'], [30, 60, '#F5EFE0', '#A56B45'], [58, 58, '#B23A2E', '#8C5A3A'],
+                   [86, 60, '#F0C24A', '#C98A5B'], [114, 58, '#2E7D4F', '#A56B45']];
     return this._frame(w, 'Ilustração da torcida', `
       <rect width="120" height="80" fill="#3A3F36"/>
-      ${this._crowd(34, 7, 7, 2.8, 11)}
-      <g>
-        <path d="M14 44 l-3 -12 M30 42 l2 -13 M52 46 l-2 -12 M74 44 l3 -12 M96 46 l-2 -13 M108 42 l3 -11" stroke-width="3" stroke="#C98A5B"/>
+      <g stroke="#2A1D10" stroke-width="1.6" stroke-linejoin="round">
+        ${back.map(([x, y, s, k]) => fan(x, y, 6, s, k)).join('')}
       </g>
       <g stroke="#2A1D10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M-2 8 q16 -6 32 2 t32 0 t32 2 t30 -2 v22 q-15 5 -30 1 t-32 -2 t-32 2 t-32 -2 Z" fill="#B23A2E"/>
-        <path d="M-2 18 q16 -6 32 2 t32 0 t32 2 t30 -2" fill="none" stroke="#F5EFE0" stroke-width="5"/>
-        <path d="M10 30 v-26 M110 30 v-26" />
-      </g>
-      <g><circle cx="40" cy="19" r="5" fill="#F0C24A" stroke="#2A1D10" stroke-width="1.6"/>
-        <path d="M37 19 h6 M40 16 v6" stroke="#2A1D10" stroke-width="1.4"/></g>
-      <g fill="#F5EFE0" opacity=".55">
-        <circle cx="22" cy="54" r="6"/><circle cx="28" cy="50" r="5"/><circle cx="18" cy="48" r="4"/>
-        <circle cx="94" cy="56" r="6"/><circle cx="100" cy="51" r="5"/><circle cx="89" cy="50" r="4"/>
-      </g>
-      <g stroke="#2A1D10" stroke-width="1.4">
-        <path d="M23 70 v-12" stroke="#5B5D54" stroke-width="2.4"/><path d="M20 58 q3 -8 6 0 Z" fill="#F07A3A"/>
-        <path d="M95 72 v-12" stroke="#5B5D54" stroke-width="2.4"/><path d="M92 60 q3 -8 6 0 Z" fill="#F07A3A"/>
+        <path d="M18 46 L22 32 M42 46 L38 32" stroke="#C98A5B" stroke-width="4"/>
+        <path d="M18 30 h26 v7 h-26 Z" fill="#B23A2E"/>
+        <path d="M24 30 v7 M31 30 v7 M38 30 v7" stroke="#F5EFE0" stroke-width="2.4"/>
+        <path d="M18 30 h26 v7 h-26 Z" fill="none"/>
+        ${front.map(([x, y, s, k]) => fan(x, y, 8, s, k)).join('')}
+        <path d="M78 42 V4" stroke-width="2.2"/>
+        <path d="M78 5 q10 -4 20 1 t20 0 v18 q-10 4 -20 -1 t-20 0 Z" fill="#B23A2E"/>
+        <path d="M78 11 q10 -4 20 1 t20 0 M78 17 q10 -4 20 1 t20 0" fill="none" stroke="#F5EFE0" stroke-width="2.6"/>
+        <path d="M78 5 q10 -4 20 1 t20 0 v18 q-10 4 -20 -1 t-20 0 Z" fill="none"/>
       </g>`);
   },
 
@@ -10873,6 +10889,56 @@ function go() {
 ═══════════════════════════════════════════════════ */
 const FIT_FLOOR = 0.66;
 
+/* A figurinha's lettering is sized for the usual name. "ARGENTINA" in the
+   band, "Argentinos Juniors" under the name, or "Maradona" on a narrow
+   pocket did not fit: the band cut to "ARGENT…", the club to "Argentinos
+   Ju…", and a long surname broke mid-word. Each line is measured after
+   layout and, only if it overflows, stepped down until it fits — never
+   below 55% of its size, so it stays a label and not a smudge. On the page
+   (`minPx`) it also never goes below a size a phone can print: an album
+   pocket is a thumbnail, its band can only ever hold "A…", and the zoom
+   is where the whole word is read. */
+let _fitCtx = null;
+function fitFigText(root, minPx, rel) {
+  if (!root) return;
+  /* the widest thing that must sit on one line: the whole text where the
+     line never wraps (the band, the club), else its longest word */
+  const words = el => {
+    const cs = getComputedStyle(el);
+    _fitCtx = _fitCtx || document.createElement('canvas').getContext('2d');
+    _fitCtx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const ls = parseFloat(cs.letterSpacing) || 0, up = cs.textTransform === 'uppercase';
+    const txt = el.textContent.trim();
+    return Math.max(0, ...(cs.whiteSpace === 'nowrap' ? [txt] : txt.split(/\s+/)).map(w => {
+      const t = up ? w.toUpperCase() : w;
+      return _fitCtx.measureText(t).width + ls * t.length;
+    }));
+  };
+  root.querySelectorAll('.fig-band, .fig-nm, .fig-sub').forEach(el => {
+    const room = el.clientWidth;
+    if (!room || !el.textContent.trim()) return;
+    const cs = getComputedStyle(el);
+    const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+    const over = () => el.scrollWidth > room + 1 || el.scrollHeight > el.clientHeight + 1 ||
+                       words(el) > room - pad;
+    let f = parseFloat(cs.fontSize);
+    const floor = Math.max(f * (rel === undefined ? 0.55 : rel), minPx || 0);
+    for (let i = 0; i < 24 && f > floor && over(); i++) {
+      f *= 0.93;
+      el.style.fontSize = f.toFixed(2) + 'px';
+    }
+  });
+}
+
+/* measured before the web fonts arrived, a line may have been shrunk for the
+   fallback's wider letters — refit it once the real ones are in */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => {
+  try {
+    document.querySelectorAll('#ct .fig-band, #ct .fig-nm, #ct .fig-sub').forEach(el => { el.style.fontSize = ''; });
+    fitFigText(document.getElementById('ct'), 5.5);
+  } catch (e) {}
+});
+
 /* The glass as the phone reports it, not as CSS guesses it. The sheet is
    sized from 100dvh and the navigation-bar inset, and on most phones that is
    exactly the screen. Where it is not — a system font size, a browser that
@@ -10915,6 +10981,7 @@ function fitSheet() {
 }
 
 function fitScreen() {
+  try { fitFigText(document.getElementById('ct'), 5.5); } catch (e) {}
   try { fitGlass(); } catch (e) {}
   const pg = document.querySelector('#ct > .pg');
   if (!pg) return;
