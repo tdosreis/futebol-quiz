@@ -288,6 +288,8 @@
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    /* the name is a span inside a flex chip, so the ellipsis has to be its own */
+    .chip > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
     .chip-pitch { border-color: var(--pitch); color: var(--pitch); }
     .chip-brass { border-color: var(--brass); color: var(--brass); background: var(--brass-soft); }
     .chip-soft  { border-color: transparent; background: var(--pocket-2); }
@@ -337,7 +339,10 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .fig-nm { font-family: var(--font-c); font-weight: 700; text-transform: uppercase;
       letter-spacing: .03em; overflow-wrap: anywhere;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      /* room above the capitals for their accents: at this line height the
+         clip took the acute off PELÉ and the tilde off FALCÃO */
+      padding-top: .2em; margin-top: -.2em; }
     /* "Cristiano Ronaldo" in caps is a lot of letters for a card 90px wide,
        so the long ones shrink instead of losing their tail. In px, not em:
        em resolves against the parent, which is the 16px body, so .84em made
@@ -722,6 +727,11 @@
     /* ── Photo reveal ── */
 
     /* ── Header rail: the score, the clock, the dots ── */
+    /* One row, always: fifteen or twenty dots wrapped under themselves and
+       ran into the category's name. Past ten they are drawn smaller instead. */
+    .pdots { display: flex; align-items: center; gap: 3px; flex-wrap: nowrap; justify-content: flex-end; }
+    .pdots-dense { gap: 2px; }
+    .pdots-dense .pdot { width: 4px; height: 4px; }
     .pdot { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); transition: background .25s, transform .25s; flex-shrink: 0; }
     .pdot-on   { background: var(--pitch); }
     .pdot-cur  { background: var(--ink); transform: scale(1.5); }
@@ -1659,13 +1669,11 @@
       .alb-slot .fig-nm { font-size: clamp(5.4px, calc(var(--pw) * .126), 9.4px); }
       .alb-slot .fig-nm-long { font-size: clamp(5px, calc(var(--pw) * .104), 8px);
         -webkit-line-clamp: 3; line-height: 1.05; letter-spacing: 0; }
-      @container (max-height: 560px) { .alb-slot .fig-sub { display: none; } }
+      .alb-short .alb-slot .fig-sub { display: none; }
       /* On the smallest pockets the band's lettering shrinks too, so it keeps
          its country instead of "BRA…". */
-      @container (max-height: 540px) {
-        .alb-slot .fig-band { font-size: 5.6px; letter-spacing: .04em;
+      .alb-tiny .alb-slot .fig-band { font-size: 5.6px; letter-spacing: .04em;
           padding-left: 18px; padding-right: 2px; }
-      }
     }
     /* the pocket you have not filled yet: the album prints the number and
        waits for the sticker */
@@ -11746,7 +11754,7 @@ function html() {
   ];
 
   const progress = isMil ? '' : `
-    <div style="display:flex;align-items:center;gap:3px;max-width:104px;flex-wrap:wrap;justify-content:flex-end;">
+    <div class="pdots${cat.qs.length > 10 ? ' pdots-dense' : ''}">
       ${cat.qs.length <= 20 ? cat.qs.map((_, i) => {
           const cls = i < runLog.length ? (runLog[i] === 3 ? 'pdot pdot-on'
                     : runLog[i] === 0 ? 'pdot pdot-miss' : 'pdot pdot-on')
@@ -12332,7 +12340,26 @@ function fitSheet() {
   rv.style.transform = 'scale(' + Math.max(0.55, room / hh).toFixed(4) + ')';
 }
 
+/* The album page sizes its pockets to the sheet. Chrome resolves the
+   sheet's cqh to 0 while the sheet takes its height from flex: 1, so the
+   container-unit formula always fell to its 40px floor and every page was a
+   small block of stamps in the middle of an empty sheet. The same formula,
+   measured here instead. */
+function fitAlbum() {
+  const sh = document.querySelector('.alb-sheet'), g = sh && sh.querySelector('.alb-grid');
+  if (!g) return;
+  const cs = getComputedStyle(sh);
+  const w = sh.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const h = sh.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  if (w < 1 || h < 1) return;
+  const pw = Math.max(40, Math.min((w - 21) / 4, (h - 34) / 5 * .58));
+  g.style.setProperty('--pw', pw.toFixed(2) + 'px');
+  sh.classList.toggle('alb-short', h < 560);
+  sh.classList.toggle('alb-tiny', h < 540);
+}
+
 function fitScreen() {
+  try { fitAlbum(); } catch (e) {}
   try { fitFigText(document.getElementById('ct'), 5.5); } catch (e) {}
   try { fitGlass(); } catch (e) {}
   const pg = document.querySelector('#ct > .pg');
