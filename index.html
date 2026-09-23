@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Futebol Quiz BR</title>
+  <!-- Thirty dark-only rules are written ":root:not([data-theme=light]) X"
+       outside the dark media query, so with no attribute they applied on a
+       light phone too: the album's pages stayed night-dark and the empty
+       pockets' "A COLAR" vanished into them. The attribute follows the
+       system setting; one set in the markup is left alone. -->
+  <script>(function () {
+    var r = document.documentElement;
+    if (r.hasAttribute('data-theme') || !window.matchMedia) return;
+    var m = matchMedia('(prefers-color-scheme: dark)');
+    var set = function () { r.setAttribute('data-theme', m.matches ? 'dark' : 'light'); };
+    set();
+    if (m.addEventListener) m.addEventListener('change', set);
+    else if (m.addListener) m.addListener(set);
+  })();</script>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
@@ -524,7 +538,7 @@
     .b-text .tile-name-long { font-size: 12px; }
     /* an event with no crest carries a photograph of a cup, not a drawing of one */
     .ord-photo { border-radius: 50%; overflow: hidden; }
-    .ord-art.ord-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ord-art.ord-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; display: block; }
 
     /* A written choice with a picture of its own: the crest, the flag, the
        face or the ground sits above the words, the way it does on a club
@@ -910,6 +924,9 @@
     .hero-sticker { width: 138px; margin: 0 auto;
       animation: dealIn .5s cubic-bezier(.2,.9,.3,1) 60ms backwards; }
     @keyframes dealIn { from { opacity: 0; transform: translateY(9px) rotate(-2.2deg) scale(.965); } }
+    /* its number rides above the corner, clear of the band: at -4px it sat
+       on the country and "ALEMANHA 90" read "EMANHA 90" */
+    .hero-sticker > .alb-n { top: -13px; left: -7px; }
     .modes { display: flex; gap: 7px; width: 100%; max-width: 340px; }
     .mode { flex: 1; min-width: 0; background: var(--pocket); border: 1px solid var(--rule);
       border-radius: 12px; padding: 11px 6px 10px; text-align: center; cursor: pointer;
@@ -10640,7 +10657,7 @@ const REAL_ART = {
   terrace:    ['img/f81fa4decaf6183b.webp', 1.5, 50, 90],    // a packed stand
   contract:   ['img/ab0a0d60a0088003.webp', 1.0, 50, 50],    // a national ground, no club's
   jersey:     ['img/ab0a0d60a0088003.webp', 1.8, 50, 85],
-  trophy:     ['img/c1ae333ad2891227.webp', 1.0, 50, 50],    // a cup in its case
+  trophy:     ['img/c1ae333ad2891227.webp', 1.0, 50, 50, '50% 72%'],  // a cup in its case: framed on the cup, not the list of winners above it
   boot:       ['img/ac4c800e276855e1.webp', 1.2, 60, 50],
   globe:      ['img/fd49175bd81940cc.webp', 1.0, 50, 50],
   plane:      ['img/fd49175bd81940cc.webp', 1.0, 50, 50],
@@ -10662,9 +10679,9 @@ function realArt(key, q) {
     let hsh = 0; for (const ch of String(q.t || '')) hsh = (hsh * 31 + ch.charCodeAt(0)) >>> 0;
     r = [pool[hsh % pool.length] || NEUTRAL_GROUNDS[0], 1.0, 50, 50];
   }
-  const [img, s, ox, oy] = r;
+  const [img, s, ox, oy, pos] = r;
   return `<div class="qart qart-wide print"><img src="${img}" alt="" aria-hidden="true"
-    style="transform:scale(${s});transform-origin:${ox}% ${oy}%;"
+    style="transform:scale(${s});transform-origin:${ox}% ${oy}%;${pos ? `object-position:${pos};` : ''}"
     onerror="this.parentElement.style.display='none'" /></div>`;
 }
 

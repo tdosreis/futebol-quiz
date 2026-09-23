@@ -97,8 +97,12 @@
    v44: every question picture is a photograph.
 
    v45: 1,003 new questions: who-am-I (players, coaches, clubs, legends),
-        odd-one-out, rules, years, women's football, derbies. */
-const VERSION = 'v45';
+        odd-one-out, rules, years, women's football, derbies.
+
+   v46: sticker names keep their accents; album pockets fill the page; the
+        light theme gets light album pages; one-row progress; the trophy
+        photo framed on the cup. */
+const VERSION = 'v46';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [

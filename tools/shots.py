@@ -70,8 +70,8 @@ STATES = {
  "shot-06-milhao": """startMilhao(); rung=11; qi=11; banked=50000;
    cat.qs[11]={ t:'Qual destes jogadores foi campeão do mundo em 1970?',
      a:['jairzinho'], type:'player',
-     fixed:['jairzinho','tostao','gerson','rivellino','carlos_alberto',
-            'zico','falcao','socrates','junior','dinamite'], _cat:{id:'copa',name:'Copa do Mundo',col:'#2E7D4F'} };
+     fixed:['jairzinho','zico','falcao','socrates','junior',
+            'dinamite','careca','eder','cerezo','bebeto'], _cat:{id:'copa',name:'Copa do Mundo',col:'#2E7D4F'} };
    sel.clear(); sc='quiz'; tMax=qTime(); tLeft=21; disp=getDisp(cat.qs[11]); go();""",
 
 
