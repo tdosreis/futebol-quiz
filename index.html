@@ -1639,6 +1639,9 @@
     .qart-msc { display: flex; align-items: center; justify-content: center; }
     .qart-msc svg { width: 100%; height: 100%; }
     .fig-x-mascote .fig-msc svg rect:first-of-type { opacity: 0; }
+    /* as a question the disc is plain: the club's colours would answer it */
+    .qart-msc .msc-disc { fill: var(--pocket-2); }
+    .qart-msc .msc-ring { stroke: var(--rule); }
 
     /* ── The country band that opens each page ──────────────────
        Straight out of the old albums: the crest, the name set large and
@@ -2770,7 +2773,7 @@ const CATS = [
       { t:'Qual craque bicampeão mundial de 1958 e 1962 era chamado de "A Alegria do Povo"?', a:['garrincha'],     type:'player' },
       /* ── Copa do Mundo – mais profundidade ── */
       { t:'Quem foi eleito o melhor jogador da Copa do Mundo de 2018 na Rússia, liderando a Croácia até a final?',                a:['modric'],      type:'player' },
-      { t:'Qual atacante colombiano foi artilheiro da Copa de 2014 com 6 gols, incluindo um de voleio antológico contra o Uruguai?', a:['james'],    type:'player' },
+      { t:'Qual meia colombiano foi artilheiro da Copa de 2014 com 6 gols, incluindo um de voleio antológico contra o Uruguai?', a:['james'],    type:'player' },
       { t:'Qual italiano perdeu o pênalti mais famoso da história na final da Copa de 1994, contra o Brasil?',                    a:['baggio'],      type:'player' },
       { t:'Quem marcou dois gols nos últimos 10 minutos da final da Copa de 2022, levando a França à prorrogação?',               a:['mbappe'],      type:'player' },
       { t:'Quem ganhou a Copa do Mundo de 2018 com a França, sendo o mais jovem a marcar em uma final desde Pelé em 1958?',       a:['mbappe'],      type:'player' },
@@ -5730,7 +5733,7 @@ const PL_META = {
   socrates:      { pos:'MF', era:[1974,1989], ctry:'BRA', clubs:['corinthians','fiorentina','flamengo','santos'] },
   romario:       { pos:'FW', era:[1985,2009], ctry:'BRA', clubs:['vasco','psv','barcelona','flamengo','valencia','fluminense'] },
   bebeto:        { pos:'FW', era:[1983,2002], ctry:'BRA', clubs:['flamengo','vasco','deportivo','botafogo','cruzeiro'] },
-  rivaldo:       { pos:'FW', era:[1991,2015], ctry:'BRA', clubs:['palmeiras','deportivo','barcelona','milan','olympiacos','corinthians','saopaulo'] },
+  rivaldo:       { pos:'MF', era:[1991,2015], ctry:'BRA', clubs:['palmeiras','deportivo','barcelona','milan','olympiacos','corinthians','saopaulo'] },
   adriano:       { pos:'FW', era:[1999,2016], ctry:'BRA', clubs:['flamengo','inter','parma','roma','corinthians'] },
   neymar:        { pos:'FW', era:[2009,2026], ctry:'BRA', clubs:['santos','barcelona','psg','alhilal'] },
   roberto_carlos:{ pos:'DF', era:[1992,2015], ctry:'BRA', clubs:['palmeiras','inter','realmadrid','fenerbahce','corinthians'] },
@@ -5786,7 +5789,7 @@ const PL_META = {
   sergio_ramos: { pos:'DF', era:[2003,2026], ctry:'ESP', clubs:['sevilla','realmadrid','psg'] },
   thiago_silva: { pos:'DF', era:[2004,2026], ctry:'BRA', clubs:['fluminense','milan','psg','chelsea'] },
   van_dijk: { pos:'DF', era:[2011,2026], ctry:'NED', clubs:['celtic','southampton','liverpool'] },
-  charlton: { pos:'FW', era:[1956,1975], ctry:'ENG', clubs:['manutd','prestonne'] },
+  charlton: { pos:'MF', era:[1956,1975], ctry:'ENG', clubs:['manutd','prestonne'] },
   careca: { pos:'FW', era:[1978,1997], ctry:'BRA', clubs:['guarani','saopaulo','napoli'] },
   del_piero: { pos:'FW', era:[1991,2014], ctry:'ITA', clubs:['padova','juventus','sydney'] },
   distefano: { pos:'FW', era:[1945,1966], ctry:'ARG', clubs:['riverplate','millonarios','realmadrid','espanyol'] },
@@ -5854,7 +5857,7 @@ const PL_META = {
   leonidas:        { pos:'FW', era:[1929,1950], ctry:'BRA', clubs:['botafogo', 'vasco', 'flamengo', 'saopaulo'] },
   obdulio:         { pos:'MF', era:[1935,1955], ctry:'URU', clubs:['penarol'] },
   fritz_walter:    { pos:'FW', era:[1937,1959], ctry:'GER', clubs:['kaiserslautern'] },
-  zizinho:         { pos:'FW', era:[1938,1961], ctry:'BRA', clubs:['flamengo', 'bangu', 'saopaulo'] },
+  zizinho:         { pos:'MF', era:[1938,1961], ctry:'BRA', clubs:['flamengo', 'bangu', 'saopaulo'] },
   ademir:          { pos:'FW', era:[1939,1956], ctry:'BRA', clubs:['vasco', 'fluminense'] },
   nordahl:         { pos:'FW', era:[1940,1958], ctry:'SWE', clubs:['norrkoping', 'milan', 'roma'] },
   liedholm:        { pos:'MF', era:[1942,1961], ctry:'SWE', clubs:['norrkoping', 'milan'] },
@@ -5866,7 +5869,7 @@ const PL_META = {
   djalma_santos:   { pos:'DF', era:[1948,1970], ctry:'BRA', clubs:['portuguesa', 'palmeiras', 'atleticopr'] },
   mauro_ramos:     { pos:'DF', era:[1948,1967], ctry:'BRA', clubs:['saopaulo', 'santos'] },
   julinho:         { pos:'FW', era:[1949,1967], ctry:'BRA', clubs:['portuguesa', 'fiorentina', 'palmeiras'] },
-  kopa:            { pos:'FW', era:[1949,1967], ctry:'FRA', clubs:['reims', 'realmadrid'] },
+  kopa:            { pos:'MF', era:[1949,1967], ctry:'FRA', clubs:['reims', 'realmadrid'] },
   masopust:        { pos:'MF', era:[1950,1970], ctry:'CZE', clubs:['dukla'] },
   vava:            { pos:'FW', era:[1951,1970], ctry:'BRA', clubs:['vasco', 'atleticomg', 'palmeiras'] },
   bellini:         { pos:'DF', era:[1952,1970], ctry:'BRA', clubs:['vasco', 'saopaulo', 'atleticopr'] },
@@ -5884,7 +5887,7 @@ const PL_META = {
   banks:           { pos:'GK', era:[1958,1978], ctry:'ENG', clubs:['leicester', 'stoke'] },
   rivera:          { pos:'MF', era:[1959,1979], ctry:'ITA', clubs:['alessandria', 'milan'] },
   facchetti:       { pos:'DF', era:[1960,1978], ctry:'ITA', clubs:['inter'] },
-  mazzola:         { pos:'MF', era:[1960,1977], ctry:'ITA', clubs:['inter'] },
+  mazzola:         { pos:'FW', era:[1960,1977], ctry:'ITA', clubs:['inter'] },
   zoff:            { pos:'GK', era:[1961,1983], ctry:'ITA', clubs:['napoli', 'juventus'] },
   best:            { pos:'FW', era:[1963,1984], ctry:'NIR', clubs:['manutd', 'fulham'] },
   figueroa:        { pos:'DF', era:[1964,1982], ctry:'CHI', clubs:['penarol', 'internacional', 'palestino'] },
@@ -5906,7 +5909,7 @@ const PL_META = {
   rossi:           { pos:'FW', era:[1973,1987], ctry:'ITA', clubs:['vicenza', 'juventus', 'milan'] },
   reinaldo:        { pos:'FW', era:[1973,1989], ctry:'BRA', clubs:['atleticomg'] },
   rummenigge:      { pos:'FW', era:[1974,1989], ctry:'GER', clubs:['bayern', 'inter'] },
-  boniek:          { pos:'FW', era:[1975,1988], ctry:'POL', clubs:['widzew', 'juventus', 'roma'] },
+  boniek:          { pos:'MF', era:[1975,1988], ctry:'POL', clubs:['widzew', 'juventus', 'roma'] },
   eder:            { pos:'FW', era:[1975,1991], ctry:'BRA', clubs:['atleticomg', 'gremio', 'flamengo'] },
   dasaev:          { pos:'GK', era:[1977,1991], ctry:'RUS', clubs:['spartak', 'sevilla'] },
   abedi:           { pos:'MF', era:[1978,2000], ctry:'GHA', clubs:['marseille', 'torino'] },
@@ -5916,7 +5919,7 @@ const PL_META = {
   matthaus:        { pos:'MF', era:[1979,2000], ctry:'GER', clubs:['gladbach', 'bayern', 'inter'] },
   renato_gaucho:   { pos:'FW', era:[1979,1998], ctry:'BRA', clubs:['gremio', 'flamengo', 'botafogo'] },
   casagrande:      { pos:'FW', era:[1980,1994], ctry:'BRA', clubs:['corinthians', 'porto', 'torino'] },
-  francescoli:     { pos:'FW', era:[1980,1997], ctry:'URU', clubs:['riverplate', 'marseille', 'torino'] },
+  francescoli:     { pos:'MF', era:[1980,1997], ctry:'URU', clubs:['riverplate', 'marseille', 'torino'] },
   chilavert:       { pos:'GK', era:[1980,2004], ctry:'PAR', clubs:['velez', 'strasbourg'] },
   valderrama:      { pos:'MF', era:[1981,2004], ctry:'COL', clubs:['millonarios', 'montpellier'] },
   jorginho:        { pos:'DF', era:[1981,1999], ctry:'BRA', clubs:['flamengo', 'leverkusen', 'bayern'] },
@@ -6837,6 +6840,11 @@ function simClub(cand, ref) {
    who were actually around in 1958, and the flags come off the tiles. */
 const _fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const DEMONYM = [
+  /* before 'gales' and 'irland', which they contain */
+  ['senegal', 'SEN'], ['irlanda do norte', 'NIR'], ['norte-irland', 'NIR'],
+  ['argelin', 'ALG'], ['argelia', 'ALG'], ['marfinense', 'CIV'], [' peru', 'PER'],
+  ['paragua', 'PAR'], ['romen', 'ROU'], ['romeni', 'ROU'], ['irland', 'IRL'],
+  ['coreia', 'KOR'], ['corean', 'KOR'], ['japon', 'JPN'], ['japao', 'JPN'],
   ['brasil', 'BRA'], ['argentin', 'ARG'], ['portug', 'POR'], ['franca', 'FRA'], ['frances', 'FRA'],
   ['holand', 'NED'], ['alema', 'GER'], ['germ', 'GER'], ['bulgar', 'BUL'], ['itali', 'ITA'],
   ['ingl', 'ENG'], ['suec', 'SWE'], ['polon', 'POL'], ['marfim', 'CIV'], ['ivor', 'CIV'],
@@ -6851,7 +6859,9 @@ const POS_WORDS = [
   ['goleiro', 'GK'],
   ['zagueiro', 'DF'], ['lateral', 'DF'], ['defensor', 'DF'], ['beque', 'DF'],
   ['meia', 'MF'], ['meio-campista', 'MF'], ['meio campista', 'MF'], ['volante', 'MF'], ['armador', 'MF'],
-  ['atacante', 'FW'], ['centroavante', 'FW'], ['artilheir', 'FW'], ['ponta', 'FW'],
+  /* not 'artilheiro': that is what he did, not where he played — "artilheiro
+     do Flamengo" is Zico, a meia */
+  ['atacante', 'FW'], ['centroavante', 'FW'], ['ponta', 'FW'],
 ];
 
 function qCues(q) {
@@ -6859,7 +6869,9 @@ function qCues(q) {
   const t = ' ' + _fold(q.t) + ' ';
   const cues = { ctry: null, pos: null, year: null };
   for (const [w, code] of DEMONYM) if (t.indexOf(w) !== -1) { cues.ctry = code; break; }
-  for (const [w, pos]  of POS_WORDS) if (t.indexOf(w) !== -1) { cues.pos = pos; break; }
+  /* a club's name is not a position: "Defensor Sporting" */
+  const tp = t.replace(/defensor sporting/g, '');
+  for (const [w, pos]  of POS_WORDS) if (tp.indexOf(w) !== -1) { cues.pos = pos; break; }
   const y = /\b(19[3-9]\d|20[0-2]\d)\b/.exec(t);
   if (y) cues.year = parseInt(y[1], 10);
   else {
@@ -7278,7 +7290,7 @@ function GEN_QS(tier) {
     out.push({
       t: `Qual destes jogadores defendeu a seleção ${ctrySel(c)}?`,
       _skip: !CTRY_NAME[c],
-      a: [p.id], type: 'player',
+      a: [p.id], type: 'player', flag: c,
       pool: PL.filter(x => x.ctry !== c).map(x => x.id), _cat: GC.nat,
       d: 2,
     });
@@ -8780,6 +8792,28 @@ const MASC_ART = {
     <path d="M40 62 v8 h6" stroke-width="3"/>
     <path d="M54 40 q8 -2 8 -8" fill="none" stroke-width="2.2"/>`),
 };
+
+/* The flat drawings read as clip-art beside the photographs, and the
+   clubs' own mascot art is theirs and under no free licence. Each mascot is
+   now Microsoft's Fluent Emoji 3D figure for its animal (MIT licence) on a
+   disc in the club's colours: the rooster for the Galos, the fox for the
+   Raposa, the fencer for the Mosqueteiros, the wolf for the Papão. The
+   Azulão's bird is tinted blue and the Dourado's fish gold. Papo, which has
+   no fitting figure, keeps its drawing. */
+const MSC_IMG = { galo:0, raposa:0, porco:0, urubu:0, peixe:0, leao:0, coelho:0, macaca:0,
+  tigre:0, touro:0, dragao:0, cobra:0, periquito:0, elefante:0, tubarao:0, timbu:0,
+  almirante:0, mosqueteiro:0, saci:0, poDeArroz:0, cachorro:0, santo:0, furacao:0,
+  heroi:0, vovo:0, coxa:0, verdao:0, figueira:0, papao:0, caravela:0, pantera:0,
+  azulao: 'hue-rotate(235deg) saturate(1.15)', dourado: 'hue-rotate(205deg) saturate(1.4) brightness(1.1)' };
+const mscDisc = (k, c1, c2) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="true"
+  style="display:block;width:100%;height:100%;">
+  <rect width="80" height="80" fill="var(--retro-card)"/>
+  <circle class="msc-disc" cx="40" cy="40" r="34" fill="${c1 || '#2E4A3A'}"/>
+  <circle class="msc-glow" cx="40" cy="36" r="30" fill="#fff" opacity=".13"/>
+  <circle class="msc-ring" cx="40" cy="40" r="34" fill="none" stroke="${c2 || '#E9DDC1'}" stroke-width="2.5"/>
+  <image href="img/msc/${k}.webp" x="13" y="12" width="54" height="54"${MSC_IMG[k] ? ` style="filter:${MSC_IMG[k]}"` : ''}/>
+</svg>`;
+Object.keys(MSC_IMG).forEach(k => { MASC_ART[k] = (c1, c2) => mscDisc(k, c1, c2); });
 
 /* Which club wears which. A drawing is shared by everyone who shares the
    animal — that is how the terraces say it too. */
@@ -10393,7 +10427,7 @@ function optArtFor(q) {
   const qFace = (q.face && (faceMode(q, PL.find(x => x.img === q.face)) || !artReveals(q, { img: q.face })) && q.face) ||
                 (q.port && !artReveals(q, { player: q.port }) && PORT_IMGS[q.port]) ||
                 (q.who && faceMode(q, PL.find(p => p.id === q.who)) && (PL.find(p => p.id === q.who) || {}).img);
-  const qCrest = q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest })) && q.crest;
+  const qCrest = q.crest && (q._crestIsQ || (!artReveals(q, { club: q.crest }) && !crestDecoy(q))) && q.crest;
   const qFlag  = q.flag && !artReveals(q, { ctry: q.flag }) && CTRY_ISO[q.flag];
   /* A rivalry pictured by its two clubs is answered by a question that names
      either of them; a league by its flag, by one that names its country. */
@@ -10746,7 +10780,7 @@ function questionArtRaw(q) {
         const br = CL.find(c => c.id === q.msc), m = MASCOTS[q.msc];
         return MASC_ART[m.art](br && br.c1, br && br.c2, m.v);
       })()}</div>`;
-  if (q.crest && (q._crestIsQ || !artReveals(q, { club: q.crest }))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
+  if (q.crest && (q._crestIsQ || (!artReveals(q, { club: q.crest }) && !crestDecoy(q)))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
         clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   /* a match photograph can have the man who answers standing in it */
   if (q.qimg && q.type !== 'player')  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
@@ -10813,6 +10847,23 @@ function faceMode(q, p) {
 }
 const faceHtml = (img, mode) => `<div class="qart qart-face print${mode === 'tight' ? ' qart-tight' : ''}"><img src="${img}" alt="" aria-hidden="true"
         onerror="this.parentElement.style.display='none'" /></div>`;
+
+/* "Qual clube venceu a Champions de 2001…" under the crest of Valencia, the
+   side that lost it: a crest on a which-club question reads as the answer,
+   and it is someone else's. When the answer is a club, only the answer's own
+   crest could fit there — and that one is never shown — so no crest is. */
+function crestDecoy(q) {
+  if (!q.crest) return false;
+  /* a crest the question names is its subject ("Qual clube o Milan
+     goleou…"), not a decoy */
+  const cn = _fold(clubName(q.crest) || '');
+  if (cn && (' ' + _fold(q.t) + ' ').indexOf(cn) !== -1) return false;
+  const A = q.a || [];
+  if (!q.type) return !A.includes(q.crest);                 // answers are club ids
+  if (q.type !== 'txt') return false;
+  const clubs = A.map(a => { const r = optResolve(a); return r && r.k === 'club' && !r.pair ? r.id : null; });
+  return clubs.length > 0 && clubs.every(Boolean) && !clubs.includes(q.crest);
+}
 
 function artReveals(q, e) {
   const F = _fold, A = q.a || [], ans = A.map(F);
@@ -11652,9 +11703,10 @@ function html() {
         As bandeiras são do projeto <b style="color:var(--ink);">flag-icons</b>, de
         Panayiotis Lipiridis (licença MIT); as da Iugoslávia, da União Soviética e da
         Alemanha Oriental foram desenhadas aqui.<br><br>
-        Os mascotes são desenhados aqui. Mascote de clube é arte do próprio
-        clube e não existe sob licença livre; nenhum destes é a arte oficial de
-        ninguém.
+        Os mascotes usam as figuras do <b style="color:var(--ink);">Fluent Emoji</b>,
+        da Microsoft (licença MIT), sobre as cores de cada clube. Mascote de clube
+        é arte do próprio clube e não existe sob licença livre; nenhum destes é a
+        arte oficial de ninguém.
       </p>
       <!-- The cap was a flat 330px, from when the page never filled the sheet;
            on a tall phone that wasted half the screen. It has to stay a cap of

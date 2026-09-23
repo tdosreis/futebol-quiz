@@ -112,8 +112,13 @@
 
    v49: a question about a player shows his face, cropped clear of the
         shirt when the shirt could answer it; names in the text are matched
-        as proper nouns; ambiguous or self-revealing nicknames are gone. */
-const VERSION = 'v49';
+        as proper nouns; ambiguous or self-revealing nicknames are gone.
+
+   v50: mascots are Fluent Emoji 3D figures on the club's colours; ten
+        missing nationality words (argelina…); no decoy crest on a
+        which-club question; position words fixed; flags on nationality
+        questions. */
+const VERSION = 'v50';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
