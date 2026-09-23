@@ -90,8 +90,10 @@
    that is Brazil, and a terrace you can read.
 
    v42: a question is pictured by its topic — the Bola de Ouro, the scorer's
-   boot, the keeper's gloves — and a board's band clears its number tab. */
-const VERSION = 'v42';
+   boot, the keeper's gloves — and a board's band clears its number tab.
+
+   v43: Antony's card is drawn; his "photo" was a church in Antony, France. */
+const VERSION = 'v43';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
