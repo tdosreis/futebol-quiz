@@ -688,6 +688,10 @@
     .zoom-back { transform: rotateY(180deg); }
     .zoom-face > .alb-slot, .zoom-face > .ins { width: 100%; height: 100%; aspect-ratio: auto; }
     .zoom-face > .alb-slot > .fig { width: 100%; height: 100%; }
+    /* the back is a flex item of the slot too, and without this it shrank to
+       its own lettering — the card turned over into a strip three-quarters
+       as wide as its front */
+    .zoom-face > .alb-slot > .figback { flex: 1 1 auto; width: 100%; min-width: 0; }
     .zoom-x { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px;
       width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
       display: flex; align-items: center; justify-content: center;

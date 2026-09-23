@@ -82,8 +82,10 @@
    v38: the page is measured against the phone's real screen, so a reveal
    never has to be scrolled to reach Próxima.
 
-   v39: the body is held to the real screen as well as the sheet. */
-const VERSION = 'v39';
+   v39: the body is held to the real screen as well as the sheet.
+
+   v40: a figurinha turned over in the zoom is as wide as its front. */
+const VERSION = 'v40';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
