@@ -80,8 +80,10 @@
    v37: clubs with no crest file wear their colours on a drawn badge.
 
    v38: the page is measured against the phone's real screen, so a reveal
-   never has to be scrolled to reach Próxima. */
-const VERSION = 'v38';
+   never has to be scrolled to reach Próxima.
+
+   v39: the body is held to the real screen as well as the sheet. */
+const VERSION = 'v39';
 const CACHE   = 'futebol-quiz-' + VERSION;
 
 const SHELL = [
