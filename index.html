@@ -12089,6 +12089,13 @@ let justCut = false;
 let firedAid = null;   // the lifeline spent on this render, so it can flare once
 let gameN   = 0;   // bumped when a run starts, so two runs' question 0 differ
 let _lastSc = null;
+/* Whether this render is a move to a different screen rather than a repaint of
+   the one already showing. go() works it out, and html() reads it to decide
+   whether the album should jump to a freshly-earned sticker — so it cannot be
+   a local of go(): html() is called by go() but not written inside it, and a
+   const in go() is not in html()'s scope. It was one, and the album threw
+   "movedScreen is not defined" for anyone who had just earned a figurinha. */
+let movedScreen = false;
 /* which section of the album is open, and which spread within it */
 let albCtry = null;
 let albPage = 0;
@@ -12107,7 +12114,7 @@ function go() {
   if (sc === 'quiz') _qKey = qk;
 
   const ct = document.getElementById('ct');
-  const movedScreen = sc !== _lastSc;
+  movedScreen = sc !== _lastSc;
   _lastSc = sc;
   if (ct) ct.classList.toggle('screen-in', movedScreen);
 

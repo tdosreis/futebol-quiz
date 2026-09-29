@@ -126,8 +126,15 @@
         only long option on four boards; four questions that sat in both
         curiosos and feminino are down to one copy each; a club takes its own
         article — "a camisa da Juventus", "companheiro na Portuguesa",
-        "Fundação da Chapecoense" — and the Inter is at last a Inter. */
-const VERSION = 'v51';
+        "Fundação da Chapecoense" — and the Inter is at last a Inter.
+
+   v52: the album opens again after a run that earned a figurinha. It threw
+        on the way in — movedScreen was a const inside go(), read from
+        html(), which go() calls but does not contain — so the screen never
+        rendered and the button did nothing, for anyone who had just won a
+        sticker and only for them. It also does now what it was written to
+        do: open on the spread that sticker is in, with the sticker marked. */
+const VERSION = 'v52';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

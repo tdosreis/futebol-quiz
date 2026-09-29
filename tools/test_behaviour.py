@@ -576,6 +576,36 @@ TESTS = r"""
       album = new Set(); sc = 'home'; go();
     })();
 
+    /* ---- the album after a run that earned something ----
+       html() reads movedScreen to open the album on the spread the new
+       sticker lives in. movedScreen was a const inside go(), which html() is
+       called by but not written inside, so this threw ReferenceError for
+       every player who had just earned a figurinha — and the guard is
+       `runNewIds.length && movedScreen`, so it threw only for them, which is
+       how it shipped. The whole screen failed to render: #ct kept whatever
+       was on it before. */
+    (function(){
+      album = new Set(); runNewIds = []; sc = 'home'; go();
+      const before = document.getElementById('ct').innerHTML.length;
+      const save = advanceAfterReveal; advanceAfterReveal = function(){};
+      diffKey = 'moderado'; startGame();
+      const q = cat.qs.find(x => x.type === 'player' && x.a.length === 1) || cat.qs[0];
+      qi = cat.qs.indexOf(q); disp = getDisp(q); sel = new Set(q.a);
+      doReveal();
+      const earnedOne = runNewIds.length > 0;
+      let threw = '';
+      try { sc = 'album'; go(); } catch (e) { threw = (e && e.message) || String(e); }
+      const shown = !!document.querySelector('.alb-slot');
+      ok('answering right earns a figurinha', earnedOne, runNewIds.join(', ') || 'none');
+      ok('the album opens after a run that earned one', !threw && shown,
+         threw || (shown ? 'album on screen' : '#ct did not change'));
+      ok('it opens on the spread the new sticker is in',
+         !threw && !!document.querySelector('.alb-fresh'),
+         threw || `albCtry=${albCtry} albPage=${albPage}`);
+      advanceAfterReveal = save;
+      album = new Set(); runNewIds = []; sc = 'home'; go();
+    })();
+
     /* ---- swiping a page of the album ----
        The turn is a plain slide now: release decides the whole gesture at
        once, rather than a drag whose state has to survive the re-render
