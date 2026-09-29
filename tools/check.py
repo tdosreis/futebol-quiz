@@ -17,6 +17,9 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PY = sys.executable
 
 FAST = [
+    # first because it is the only one that needs no browser: two seconds of
+    # jsc, so on a machine where Chrome will not start it is the whole suite
+    ("check_bank",       ["tools/check_bank.py"],      "every written question is answerable and fair"),
     ("validate",         ["tools/validate.py"],        "data + the page actually boots"),
     ("run_tests",        ["tools/run_tests.py"],       "game rules and board composition"),
     ("test_generators",  ["tools/test_generators.py"], "generated questions are answerable"),
