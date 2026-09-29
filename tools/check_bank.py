@@ -9,9 +9,10 @@ with macOS, so it still runs when check.py can do nothing but report timeouts.
 It reads CATS straight out of index.html — bracket-matched, not regexed, because
 a regex over 600k of nested literals undercounted 2,406 questions as 397 — hands
 it to jsc, and checks the plain structural promises the game relies on, plus the
-three things that are invisible in a diff: a question that contains its own
-answer, an option set where the answer is the only long one, and the same
-question asked twice in different words.
+four things that are invisible in a diff: a question pointing at a picture that
+does not exist, a question that contains its own answer, an option set where the
+answer is the only long one, and the same question asked twice in different
+words.
 
   python3 tools/check_bank.py          # non-zero exit if anything failed
 
@@ -78,25 +79,80 @@ def brace_match(s, start):
     raise ValueError("unbalanced brackets from offset %d" % start)
 
 
+def declaration(src, decl, bracket):
+    """The literal that `decl` opens, bracket-matched out of the page."""
+    i = src.find(decl)
+    if i < 0:
+        sys.exit("could not find `%s` in index.html" % decl)
+    a = src.index(bracket, i)
+    return src[a:brace_match(src, a)]
+
+
+MISSING = re.compile(r"Can't find variable: ([A-Za-z0-9_$]+)")
+
+
+def js_eval(body, want):
+    """Run `body` under jsc and return the JSON it prints for `want`.
+
+    The tables are lifted out of the page, so they reference helpers defined
+    elsewhere in it — FLAGS is built with _VERT and _HORZ, QICON with _msc.
+    Rather than keeping a list of those in step with the page, whatever jsc says
+    is missing gets stubbed and the run repeats. A stub is only ever reached at
+    definition time, where its value is thrown away, so what it returns does not
+    matter; if a table ever starts *reading* one, the JSON will show it and the
+    checks will say so.
+    """
+    stubs = []
+    tmp = os.path.join(ROOT, "_bank.js")
+    try:
+        for _ in range(40):
+            io.open(tmp, "w", encoding="utf-8").write(
+                "\n".join(stubs) + "\n" + body + "\nprint(JSON.stringify(%s));\n" % want)
+            out = subprocess.run([JSC, tmp], capture_output=True, text=True, timeout=180)
+            blob = (out.stdout or "") + (out.stderr or "")
+            m = MISSING.search(blob)
+            if not m:
+                if out.returncode != 0 or not out.stdout.strip():
+                    sys.exit("jsc could not evaluate %s:\n%s" % (want, blob[:800]))
+                return json.loads(out.stdout)
+            stubs.append("var %s = function(){ return ''; };" % m.group(1))
+        sys.exit("gave up stubbing for %s after 40 helpers" % want)
+    finally:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+
+
 def load_cats():
     src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-    i = src.find("const CATS = [")
-    if i < 0:
-        sys.exit("could not find `const CATS = [` in index.html")
-    a = src.index("[", i)
-    b = brace_match(src, a)
-    prog = ("\n".join("var %s = [];" % n for n in STUBS)
-            + "\nvar CATS = " + src[a:b] + ";\n"
-            + "print(JSON.stringify(CATS));\n")
-    tmp = os.path.join(ROOT, "_bank.js")
-    io.open(tmp, "w", encoding="utf-8").write(prog)
-    try:
-        out = subprocess.run([JSC, tmp], capture_output=True, text=True, timeout=120)
-    finally:
-        os.remove(tmp)
-    if out.returncode != 0 or not out.stdout.strip():
-        sys.exit("jsc could not evaluate CATS:\n" + (out.stderr or "")[:800])
-    return json.loads(out.stdout)
+    body = ("\n".join("var %s = [];" % n for n in STUBS)
+            + "\nvar CATS = " + declaration(src, "const CATS = [", "[") + ";")
+    return js_eval(body, "CATS")
+
+
+# What a question is allowed to point at. `icon` matters most: inferArt falls
+# back to QICON[key] ? key : 'ball', so a misspelt icon is not an error at
+# runtime, it is quietly the wrong picture.
+ART_FIELDS = [
+    ("crest", ["LOGOS"]),
+    ("flag",  ["FLAGS"]),
+    ("stad",  ["STAD"]),
+    ("icon",  ["QICON", "FALLBACK_PHOTO"]),
+    ("port",  ["PORT"]),
+    ("who",   ["PL"]),
+]
+
+
+def load_vocab():
+    """The key sets a question's art fields have to name."""
+    src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    tables = ["LOGOS", "FLAGS", "STAD", "QICON", "PORT", "FALLBACK_PHOTO"]
+    body = "\n".join(
+        "var %s = %s;" % (t, declaration(src, "const %s = {" % t, "{")) for t in tables)
+    body += "\nvar PL = " + declaration(src, "const PL = [", "[") + ";"
+    body += ("\nvar _V = {};"
+             + "".join("_V.%s = Object.keys(%s);" % (t, t) for t in tables)
+             + "_V.PL = PL.map(function(p){ return p.id; });")
+    return js_eval(body, "_V")
 
 
 def fold(x):
@@ -127,6 +183,8 @@ def main():
     if not os.path.exists(JSC):
         sys.exit("no jsc at %s — this tool needs JavaScriptCore" % JSC)
     cats = load_cats()
+    vocab = load_vocab()
+    allowed = {f: set().union(*(set(vocab[t]) for t in ts)) for f, ts in ART_FIELDS}
     errs, warns = [], []
     seen = {}
     total = 0
@@ -160,6 +218,15 @@ def main():
                     fset[f] = 1
             elif q.get("type") == "txt":
                 errs.append("%s — a txt question with no choices" % where)
+
+            # art the question points at has to exist
+            for field, tables in ART_FIELDS:
+                v = q.get(field)
+                if v is None:
+                    continue
+                for one in (v if isinstance(v, list) else [v]):
+                    if one not in allowed[field]:
+                        errs.append("%s — %s=%r is in no %s" % (where, field, one, "/".join(tables)))
 
             d = q.get("d")
             if d is not None and (not isinstance(d, int) or not 1 <= d <= 5):
