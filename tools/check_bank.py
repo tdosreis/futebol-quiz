@@ -16,7 +16,12 @@ question asked twice in different words.
   python3 tools/check_bank.py          # non-zero exit if anything failed
 
 Findings are split: an error is a question the engine can mishandle, a warning is
-one a player can beat without knowing the answer.
+one a player can beat without knowing the answer. A warning that has been looked
+at and judged fair goes in ACCEPTED with its reason, because three warnings that
+print on every run are how you learn to stop reading the output — the same
+argument check.py makes for not calling a Chrome timeout a failure. ACCEPTED is
+keyed on the exact question text, so rewording one retires its excuse and the
+warning comes back.
 """
 import io, os, re, json, subprocess, sys, unicodedata
 
@@ -27,6 +32,19 @@ JSC = ("/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/"
 # Names CATS mentions that live elsewhere in the page. Stubbing them is enough
 # because nothing in the array reads their contents at definition time.
 STUBS = ["LIB_CHAMPS", "BR_CHAMPS"]
+
+# Warnings that have been read and judged fair. Keyed on the question's exact
+# text: reword it and the excuse expires, which is the point.
+ACCEPTED = {
+    "Selecione TODOS os times do Ceará":
+        "a multi-select for a state has to list the club named after it, or the "
+        "answer is wrong; Ceará SC is one of several to find",
+    "Selecione TODOS os times da Bahia":
+        "same as Ceará — Bahia is one of the clubs the player has to pick out",
+    "Como é chamado o clássico entre Benfica e Porto?":
+        "the answer is O Clássico and every decoy is another league's version of "
+        "the same word, so the shared 'clássico' narrows nothing",
+}
 
 
 def brace_match(s, start):
@@ -158,7 +176,7 @@ def main():
             for one in a:
                 fa = fold(one)
                 if len(fa) >= 5 and fa in ft:
-                    warns.append("%s — says its answer (%r)" % (where, one))
+                    warns.append((t, "%s — says its answer (%r)" % (where, one)))
 
             # the answer as the only option long enough to spot from across the room
             if ch and len(ch) > 2:
@@ -166,7 +184,7 @@ def main():
                 med = lens[len(lens) // 2]
                 longest = max(ch, key=lambda x: len(str(x)))
                 if len(str(longest)) > med * 2.2 and len(str(longest)) > 18 and longest in a:
-                    warns.append("%s — the answer is the only long option (%r)" % (where, longest))
+                    warns.append((t, "%s — the answer is the only long option (%r)" % (where, longest)))
 
     # the same question in two wordings — only worth comparing where the answer
     # already matches, which cuts it from 2.9M pairs to a few hundred
@@ -178,13 +196,28 @@ def main():
                 if not s1 or not s2:
                     continue
                 if len(s1 & s2) / len(s1 | s2) >= TWIN:
-                    warns.append("[%s] %s\n        is [%s] %s again" % (c1, t1[:66], c2, t2[:66]))
+                    warns.append((t1, "[%s] %s\n        is [%s] %s again" % (c1, t1[:66], c2, t2[:66])))
+
+    # split the warnings against ACCEPTED, and notice when an excuse has outlived
+    # the question it was written for — a stale entry is how this would quietly
+    # start excusing something nobody has read
+    live, accepted_hit = [], set()
+    for text, msg in warns:
+        if text in ACCEPTED:
+            accepted_hit.add(text)
+        else:
+            live.append(msg)
+    stale = [t for t in ACCEPTED if t not in accepted_hit]
 
     print("%d categories, %d written questions" % (len(cats), total))
-    for label, rows in (("ERROR", errs), ("warn", warns)):
-        for r in rows:
-            print("  %-5s %s" % (label, r))
-    print("%d errors, %d warnings" % (len(errs), len(warns)))
+    for r in errs:
+        print("  ERROR %s" % r)
+    for r in live:
+        print("  warn  %s" % r)
+    for t in stale:
+        errs.append("ACCEPTED still excuses %r, which no longer warns — delete the entry" % t[:60])
+        print("  ERROR ACCEPTED still excuses %r, which no longer warns — delete the entry" % t[:60])
+    print("%d errors, %d warnings, %d accepted" % (len(errs), len(live), len(accepted_hit)))
     return 1 if errs else 0
 
 
