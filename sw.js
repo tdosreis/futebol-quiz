@@ -117,8 +117,14 @@
    v50: mascots are Fluent Emoji 3D figures on the club's colours; ten
         missing nationality words (argelina…); no decoy crest on a
         which-club question; position words fixed; flags on nationality
-        questions. */
-const VERSION = 'v50';
+        questions.
+
+   v51: no question answers itself — the ground question drops the Arena do
+        Grêmio and the cities that name their club, "na Vila Belmiro" and
+        "no Rio de Janeiro" take their article, and six written questions
+        that said their own answer are reworded; the answer is no longer the
+        only long option on four boards. */
+const VERSION = 'v51';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

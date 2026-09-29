@@ -2169,7 +2169,7 @@ const CATS = [
       { t:'O Beira-Rio é o estádio de qual clube gaúcho?',           a:['internacional'],           stad:'beirario' },
       { t:'A Vila Belmiro é a casa histórica de qual clube?',        a:['santos'],                  stad:'vilabelmiro' },
       { t:'O Estádio São Januário pertence a qual clube carioca?',   a:['vasco'],                   stad:'saojanua' },
-      { t:'Qual time gaúcho joga na Arena do Grêmio?',               a:['gremio'],                  stad:'arena_gre' },
+      { t:'Qual time gaúcho deixou o Estádio Olímpico Monumental em 2012?', a:['gremio'],            stad:'arena_gre' },
       { t:'O Maracanã é usado como mandante por quais clubes do RJ?',a:['flamengo','fluminense'],   stad:'maracana' },
       { t:'O Mineirão em BH é compartilhado por quais times?',       a:['cruzeiro','atleticomg'],   stad:'mineirao' },
       { t:'O Morumbi é o estádio de qual clube paulista?',            a:['saopaulo'],  stad:'morumbi' },
@@ -2532,8 +2532,6 @@ const CATS = [
         type:'txt', choices:['A derrota de 1950 no Maracanã','Uma exigência da FIFA','A cor sujava demais','Um pedido do governo','A Copa de 1938','Um concurso de 1930'], a:['A derrota de 1950 no Maracanã'], flag:'BRA' },
       { t:'Quem é a maior artilheira da história das Copas do Mundo femininas?',
         type:'txt', choices:['Marta','Formiga','Cristiane','Birgit Prinz','Abby Wambach','Sun Wen'], a:['Marta'], icon:'trophy' },
-      { t:'Quantas vezes Marta foi eleita a melhor jogadora do mundo pela FIFA?',
-        type:'txt', choices:['6','3','4','5','7','2'], a:['6'], icon:'rules' },
       { t:'Como é chamada a derrota do Brasil para o Uruguai na decisão de 1950?',
         type:'txt', choices:['Maracanaço','Mineiraço','Fatídico','Desastre de 50','Tragédia Carioca','Maracanãzinho'], a:['Maracanaço'], flag:'BRA' },
       { t:'Como ficou conhecida a derrota do Brasil por 7 a 1 em 2014?',
@@ -2541,10 +2539,6 @@ const CATS = [
       /* ── o futebol feminino ── */
       { t:'Em que ano foi disputada a primeira Copa do Mundo Feminina?',
         type:'txt', choices:['1991','1970','1983','1995','1999','2003'], a:['1991'], icon:'trophy' },
-      { t:'Qual seleção é a maior campeã da Copa do Mundo Feminina?',
-        type:'txt', choices:['Estados Unidos','Alemanha','Noruega','Brasil','Japão','Suécia'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Qual seleção venceu a Copa do Mundo Feminina de 2023?',
-        type:'txt', choices:['Espanha','Inglaterra','Estados Unidos','Suécia','Austrália','Alemanha'], a:['Espanha'], icon:'trophy' },
       { t:'Que país vai sediar a Copa do Mundo Feminina de 2027?',
         type:'txt', choices:['Brasil','Estados Unidos','Alemanha','México','Colômbia','Bélgica'], a:['Brasil'], flag:'BRA' },
       { t:'Qual foi a primeira brasileira a marcar em quatro Copas do Mundo?',
@@ -2676,7 +2670,7 @@ const CATS = [
         type:'txt', choices:['Atenas 2004','Sydney 2000','Pequim 2008','Londres 2012','Atlanta 1996','Rio 2016'], a:['Atenas 2004'], icon:'trophy' },
       { t:'Qual seleção venceu o ouro olímpico do futebol feminino em Paris 2024?',
         type:'txt', choices:['Estados Unidos','Brasil','Alemanha','Espanha','Canadá','Japão'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Qual seleção venceu a primeira Eurocopa Feminina em que a Inglaterra foi campeã, em 2022?',
+      { t:'Qual seleção venceu a Eurocopa Feminina de 2022, jogando em casa?',
         type:'txt', choices:['Inglaterra','Alemanha','Holanda','Suécia','França','Espanha'], a:['Inglaterra'], icon:'trophy' },
     ]
   },
@@ -2764,7 +2758,7 @@ const CATS = [
       { t:'Quem marcou os dois gols do Flamengo nos últimos minutos da Libertadores de 2019?', a:['gabigol'],       type:'player' },
       { t:'Qual meia brasileiro foi ídolo da Roma nos anos 80 e campeão italiano em 1983, chamado de "Rei de Roma"?', a:['falcao'], type:'player' },
       /* ── Lendas internacionais ── */
-      { t:'Qual holandês criou o "giro de Cruyff" e foi símbolo do futebol total nos anos 70?',a:['cruyff'],       type:'player' },
+      { t:'Qual holandês deu nome a um drible de giro de 180 graus e foi o símbolo do futebol total nos anos 70?',a:['cruyff'], type:'player' },
       { t:'Qual argentino é apelidado de "Batigol" e é o maior artilheiro da história da Fiorentina?', a:['batistuta'], type:'player' },
       { t:'Qual lateral-esquerdo brasileiro ficou famoso pelas cobranças de falta impossíveis?',a:['roberto_carlos'],type:'player' },
       { t:'Quem foi o capitão do Brasil na conquista do pentacampeonato mundial em 2002?',     a:['cafu'],          type:'player' },
@@ -2906,7 +2900,7 @@ const CATS = [
       {"t": "Qual clube holandês venceu a Copa dos Campeões de 1988 nos pênaltis, contra o Benfica?", "a": ["PSV"], "type": "txt", "choices": ["PSV", "Ajax", "Feyenoord", "AZ Alkmaar", "Twente", "Vitesse"], "d": 3, "x": "Depois de um 0 a 0 em Stuttgart, o PSV venceu por 6 a 5 nos pênaltis e fechou a tríplice coroa.", "crest": "benfica"},
       {"t": "Qual clube iugoslavo venceu a Copa dos Campeões de 1991, em Bari?", "a": ["Estrela Vermelha"], "type": "txt", "choices": ["Estrela Vermelha", "Partizan", "Dínamo Zagreb", "Hajduk Split", "Steaua Bucareste", "Olympique de Marselha"], "d": 4, "x": "Depois de um 0 a 0 com o Olympique de Marselha, a Estrela Vermelha venceu por 5 a 3 nos pênaltis.", "crest": "marseille"},
       {"t": "Contra qual clube o Barcelona venceu sua primeira Copa dos Campeões, em 1992, em Wembley?", "a": ["Sampdoria"], "type": "txt", "choices": ["Sampdoria", "Juventus", "Benfica", "Estrela Vermelha", "Olympique de Marselha", "Milan"], "d": 4, "x": "O gol do título foi uma falta cobrada por Ronald Koeman na prorrogação.", "crest": "barcelona"},
-      {"t": "Qual clube francês venceu a primeira Champions League, em 1993?", "a": ["Olympique de Marselha"], "type": "txt", "choices": ["Olympique de Marselha", "PSG", "Monaco", "Bordeaux", "Lyon", "Nantes"], "d": 3, "x": "O Olympique venceu o Milan por 1 a 0, com gol de cabeça de Basile Boli, em Munique.", "crest": "milan"},
+      {"t": "Qual clube francês venceu a primeira Champions League, em 1993?", "a": ["Marselha"], "type": "txt", "choices": ["Marselha", "PSG", "Monaco", "Bordeaux", "Lyon", "Nantes"], "d": 3, "x": "O Olympique venceu o Milan por 1 a 0, com gol de cabeça de Basile Boli, em Munique.", "crest": "milan"},
       {"t": "Qual clube o Milan goleou por 4 a 0 na final da Champions de 1994, em Atenas?", "a": ["Barcelona"], "type": "txt", "choices": ["Barcelona", "Ajax", "Monaco", "Porto", "Manchester United", "Juventus"], "d": 4, "x": "O Milan de Fabio Capello atropelou o 'Dream Team' de Johan Cruyff.", "crest": "milan"},
       {"t": "Qual clube venceu a Champions de 1995 com o gol do jovem Patrick Kluivert?", "a": ["Ajax"], "type": "txt", "choices": ["Ajax", "Milan", "Juventus", "Bayern de Munique", "PSG", "Barcelona"], "d": 3, "x": "Kluivert tinha 18 anos, e o Ajax de Louis van Gaal venceu o Milan por 1 a 0, em Viena.", "crest": "milan"},
       {"t": "Qual clube alemão venceu a Champions de 1997, contra a Juventus?", "a": ["Borussia Dortmund"], "type": "txt", "choices": ["Borussia Dortmund", "Bayern de Munique", "Schalke 04", "Bayer Leverkusen", "Werder Bremen", "Hamburgo"], "d": 3, "x": "O Dortmund venceu por 3 a 1, em Munique, com dois gols de Riedle e uma cobertura de Lars Ricken.", "crest": "juventus"},
@@ -2995,7 +2989,7 @@ const CATS = [
       {"t": "Qual seleção venceu a Copa América de 1979, contra o Chile na final?", "a": ["Paraguai"], "type": "txt", "choices": ["Paraguai", "Brasil", "Uruguai", "Peru", "Argentina", "Colômbia"], "d": 5, "x": "Foi o segundo título do Paraguai, decidido num jogo extra em Buenos Aires.", "flag": "CHI"},
       {"t": "Qual seleção venceu a Copa América de 1975, contra a Colômbia na final?", "a": ["Peru"], "type": "txt", "choices": ["Peru", "Brasil", "Uruguai", "Paraguai", "Chile", "Argentina"], "d": 5, "x": "O Peru venceu a Colômbia num jogo desempate, em Caracas.", "flag": "COL"},
       {"t": "Qual seleção venceu o Campeonato Sul-Americano de 1963, disputado em casa?", "a": ["Bolívia"], "type": "txt", "choices": ["Bolívia", "Paraguai", "Argentina", "Brasil", "Peru", "Equador"], "d": 5, "x": "É o único título continental da Bolívia; no caminho, venceu o Brasil por 5 a 4.", "icon": "trophy"},
-      {"t": "Qual seleção venceu a Copa América de 1989, disputada no Brasil?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Uruguai", "Argentina", "Paraguai", "Colômbia", "Chile"], "d": 3, "x": "Foi o primeiro título do Brasil na competição desde 1949.", "flag": "URU"},
+      {"t": "Qual seleção venceu a Copa América de 1989?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Uruguai", "Argentina", "Paraguai", "Colômbia", "Chile"], "d": 3, "x": "O Brasil venceu em casa, com o gol do título de Romário sobre o Uruguai, e encerrou um jejum que durava desde 1949.", "icon": "trophy"},
       {"t": "Quem marcou o gol do título do Brasil contra o Uruguai na Copa América de 1989, no Maracanã?", "a": ["romario"], "type": "player", "d": 3, "x": "Romário marcou de cabeça, no Maracanã, e o Brasil encerrou um jejum de 40 anos no torneio.", "flag": "URU"},
       {"t": "Qual uruguaio foi eleito o melhor jogador da Copa do Mundo de 2010?", "a": ["Diego Forlán"], "type": "txt", "choices": ["Diego Forlán", "Luis Suárez", "Edinson Cavani", "Sebastián Abreu", "Diego Lugano", "Álvaro Recoba"], "d": 3, "x": "Forlán fez cinco gols, dividiu a artilharia e levou a Bola de Ouro do torneio.", "flag": "URU"},
       {"t": "Qual atacante uruguaio tirou com a mão uma bola de Gana em cima da linha, nas quartas de 2010?", "a": ["suarez"], "type": "player", "d": 2, "x": "Asamoah Gyan perdeu o pênalti, e o Uruguai venceu Gana na disputa de pênaltis.", "flag": "GHA"},
@@ -3404,7 +3398,7 @@ const CATS = [
       {"t": "Qual clube manda seus jogos na Johan Cruyff Arena?", "a": ["Ajax"], "type": "txt", "choices": ["Ajax", "PSV", "Feyenoord", "AZ Alkmaar", "Twente", "Utrecht"], "d": 2, "x": "O estádio se chamava Amsterdam ArenA até 2018.", "icon": "stadium"},
       {"t": "Qual clube de Roterdã manda seus jogos em De Kuip?", "a": ["Feyenoord"], "type": "txt", "choices": ["Feyenoord", "Sparta Roterdã", "Excelsior", "Ajax", "PSV", "AZ Alkmaar"], "d": 3, "x": "'De Kuip' quer dizer 'o tanque', pelo formato do estádio, aberto em 1937.", "icon": "stadium"},
       {"t": "Qual clube manda seus jogos no Parc des Princes?", "a": ["PSG"], "type": "txt", "choices": ["PSG", "Paris FC", "Red Star", "Lyon", "Olympique de Marselha", "Monaco"], "d": 2, "x": "O estádio ganhou a forma atual em 1972.", "icon": "stadium"},
-      {"t": "Qual clube manda seus jogos no Stade Vélodrome?", "a": ["Olympique de Marselha"], "type": "txt", "choices": ["Olympique de Marselha", "PSG", "Lyon", "Monaco", "Nice", "Bordeaux"], "d": 2, "x": "O nome vem da pista de ciclismo que existia no estádio.", "icon": "stadium"},
+      {"t": "Qual clube manda seus jogos no Stade Vélodrome?", "a": ["Marselha"], "type": "txt", "choices": ["Marselha", "PSG", "Lyon", "Monaco", "Nice", "Bordeaux"], "d": 2, "x": "O nome vem da pista de ciclismo que existia no estádio.", "icon": "stadium"},
       {"t": "Qual clube escocês manda seus jogos em Ibrox?", "a": ["Rangers"], "type": "txt", "choices": ["Rangers", "Celtic", "Hearts", "Aberdeen", "Hibernian", "Kilmarnock"], "d": 3, "x": "O estádio ficou marcado pela tragédia de 1971, que matou 66 torcedores.", "flag": "SCO"},
       {"t": "Qual clube inglês manda seus jogos no Emirates Stadium?", "a": ["Arsenal"], "type": "txt", "choices": ["Arsenal", "Tottenham", "Chelsea", "West Ham", "Manchester City", "Fulham"], "d": 1, "x": "O Arsenal deixou Highbury em 2006 para se mudar para lá.", "icon": "stadium"},
       {"t": "Qual clube inglês manda seus jogos em Stamford Bridge?", "a": ["Chelsea"], "type": "txt", "choices": ["Chelsea", "Arsenal", "Fulham", "Tottenham", "Crystal Palace", "West Ham"], "d": 1, "x": "Inaugurado em 1877, o Stamford Bridge começou como um estádio de atletismo.", "icon": "stadium"},
@@ -4300,7 +4294,7 @@ const CATS = [
       {"t": "Em que estádio foi disputada a final da Copa de 1982?", "a": ["Santiago Bernabéu"], "type": "txt", "choices": ["Riazor", "Vicente Calderón", "Mestalla", "Camp Nou", "Sarrià", "Santiago Bernabéu"], "d": 3, "flag": "ESP"},
       {"t": "Em que estádio de Buenos Aires foi disputada a final da Copa de 1978?", "a": ["Monumental de Núñez"], "type": "txt", "choices": ["Libertadores de América", "Monumental de Núñez", "El Gasómetro", "El Cilindro", "José Amalfitani", "La Bombonera"], "d": 3, "flag": "NED"},
       {"t": "Em que cidade foi disputada a final da Copa de 1974?", "a": ["Munique"], "type": "txt", "choices": ["Frankfurt", "Berlim", "Düsseldorf", "Dortmund", "Munique", "Hamburgo"], "d": 3, "flag": "NED"},
-      {"t": "Em que cidade sueca foi disputada a final da Copa de 1958?", "a": ["Solna, vizinha de Estocolmo"], "type": "txt", "choices": ["Uppsala", "Norrköping", "Helsingborg", "Gotemburgo", "Solna, vizinha de Estocolmo", "Malmö"], "d": 4, "flag": "BRA"},
+      {"t": "Em que cidade sueca foi disputada a final da Copa de 1958?", "a": ["Solna"], "type": "txt", "choices": ["Uppsala", "Norrköping", "Helsingborg", "Gotemburgo", "Solna", "Malmö"], "d": 4, "x": "Solna fica ao lado de Estocolmo, e a final foi no Råsunda.", "flag": "BRA"},
       {"t": "Quem foi o artilheiro da primeira Copa do Mundo, em 1930?", "a": ["Guillermo Stábile"], "type": "txt", "choices": ["Luis Monti", "Héctor Scarone", "Pedro Cea", "José Nasazzi", "Guillermo Stábile", "Bert Patenaude"], "d": 5, "flag": "ARG"},
       {"t": "Qual seleção marcou 27 gols em uma única Copa, recorde que dura desde 1954?", "a": ["Hungria"], "type": "txt", "choices": ["Alemanha Ocidental", "Áustria", "Brasil", "França", "Hungria", "Uruguai"], "d": 4, "icon": "goalNet"},
       {"t": "Contra qual seleção a Hungria venceu por 10 a 1 na Copa de 1982, a maior goleada da história das Copas?", "a": ["El Salvador"], "type": "txt", "choices": ["El Salvador", "Honduras", "Nova Zelândia", "Haiti", "Kuwait", "Zaire"], "d": 4, "flag": "HUN"},
@@ -4503,7 +4497,7 @@ const CATS = [
       {"t": "Qual clube italiano venceu nove Campeonatos Italianos seguidos, de 2012 a 2020?", "a": ["Juventus"], "type": "txt", "choices": ["Inter de Milão", "Napoli", "Roma", "Juventus", "Milan", "Lazio"], "d": 1, "flag": "ITA"},
       {"t": "Qual técnico foi campeão da Série A com Juventus, Chelsea e Inter, e tricampeão italiano seguido pela Juventus?", "a": ["Antonio Conte"], "type": "txt", "choices": ["Carlo Ancelotti", "Marcello Lippi", "Massimiliano Allegri", "Fabio Capello", "Maurizio Sarri", "Antonio Conte"], "d": 3, "flag": "ITA"},
       {"t": "Qual clube italiano venceu a Champions de 2010 sob José Mourinho?", "a": ["Inter de Milão"], "type": "txt", "choices": ["Inter de Milão", "Roma", "Juventus", "Lazio", "Napoli", "Milan"], "d": 1, "flag": "ITA"},
-      {"t": "Qual é o nome atual do estádio do Napoli, desde 2020?", "a": ["Estádio Diego Armando Maradona"], "type": "txt", "choices": ["Via del Mare", "Estádio Diego Armando Maradona", "Partenio", "Arechi", "Olímpico", "San Paolo"], "d": 2, "flag": "ITA"},
+      {"t": "Qual é o nome atual do estádio do Napoli, desde 2020?", "a": ["Diego Armando Maradona"], "type": "txt", "choices": ["Via del Mare", "Diego Armando Maradona", "Partenio-Lombardi", "Arechi", "Olímpico de Roma", "San Paolo"], "d": 2, "flag": "ITA"},
       {"t": "Quantas Bundesligas seguidas o Bayern ganhou até 2023?", "a": ["Onze"], "type": "txt", "choices": ["Dez", "Oito", "Sete", "Nove", "Doze", "Onze"], "d": 3, "flag": "GER"},
       {"t": "Qual é o estádio do Borussia Dortmund, famoso pela Muralha Amarela?", "a": ["Signal Iduna Park"], "type": "txt", "choices": ["Signal Iduna Park", "Allianz Arena", "Red Bull Arena", "Olympiastadion", "Volksparkstadion", "Veltins-Arena"], "d": 2, "flag": "GER"},
       {"t": "Qual é o estádio do Schalke 04?", "a": ["Veltins-Arena"], "type": "txt", "choices": ["Weserstadion", "Mercedes-Benz Arena", "Borussia-Park", "Veltins-Arena", "Allianz Arena", "Signal Iduna Park"], "d": 3, "flag": "GER"},
@@ -5065,7 +5059,7 @@ const CATS = [
       {"t": "O que significa a sigla VAR?", "a": ["Árbitro assistente de vídeo"], "type": "txt", "choices": ["Verificação automática de regras", "Validação de área e recuo", "Vigilância da arbitragem reserva", "Vídeo de alta resolução", "Árbitro assistente de vídeo", "Voto dos árbitros reunidos"], "d": 1, "icon": "rules"},
       {"t": "Como se chama o jogador que usa braçadeira e representa o time junto ao árbitro?", "a": ["Capitão"], "type": "txt", "choices": ["Líbero", "Capitão", "Volante", "Centroavante", "Ponta", "Camisa 10"], "d": 1, "icon": "jersey"},
       {"t": "Como se chama a posição do jogador que protege a defesa, logo à frente dos zagueiros?", "a": ["Volante"], "type": "txt", "choices": ["Volante", "Meia-atacante", "Líbero", "Centroavante", "Ponta", "Lateral"], "d": 1, "icon": "tactics"},
-      {"t": "Como se chama a falta ou reposição cobrada da linha lateral com as mãos?", "a": ["Lateral"], "type": "txt", "choices": ["Bola ao chão", "Tiro de meta", "Lateral", "Tiro livre", "Escanteio", "Pênalti"], "d": 1, "icon": "rules"},
+      {"t": "Como se chama a reposição de bola cobrada com as duas mãos, por cima da cabeça?", "a": ["Lateral"], "type": "txt", "choices": ["Bola ao chão", "Tiro de meta", "Lateral", "Tiro livre", "Escanteio", "Pênalti"], "d": 1, "icon": "rules"},
       {"t": "Quantas substituições cada time pode fazer num jogo oficial, pela regra atual?", "a": ["Cinco"], "type": "txt", "choices": ["Duas", "Três", "Sete", "Seis", "Quatro", "Cinco"], "d": 2, "x": "A regra das cinco trocas surgiu na pandemia de 2020 e virou permanente.", "icon": "bench"},
       {"t": "Como se chama o torneio em que só as seleções campeãs da Euro e da Copa América se enfrentam?", "a": ["Finalíssima"], "type": "txt", "choices": ["Copa das Confederações", "Recopa", "Supercopa", "Liga das Nações", "Copa Intercontinental", "Finalíssima"], "d": 4, "x": "Em 2022, a Argentina venceu a Itália por 3 a 0 em Wembley.", "icon": "trophy"},
       {"t": "Qual torneio a FIFA disputava entre campeões continentais antes da Copa, e que o Brasil ganhou quatro vezes?", "a": ["Copa das Confederações"], "type": "txt", "choices": ["Copa Rei Fahd", "Mundialito", "Finalíssima", "Copa Intercontinental", "Copa das Confederações", "Liga das Nações"], "d": 3, "x": "O Brasil venceu em 1997, 2005, 2009 e 2013.", "icon": "trophy"},
@@ -7386,10 +7380,29 @@ function GEN_QS(tier) {
     fontenova:'bahia',
     couto:'coritiba',
     arruda:'santacruz',  };
-  pick(STIDS.filter(k => STAD_CLUB[k]), 4).forEach(k => {
-    const owner = STAD_CLUB[k];
+  /* A ground is "no Maracanã" but "na Vila Belmiro" — the feminine ones took
+     "no" and read as a slip, the same way "é de Bahia" did. Cities take their
+     article too: "em Salvador", but "no Rio de Janeiro". */
+  const STAD_EM = { neoq:'na', vilabelmiro:'na', arena_gre:'na', fontenova:'na' };
+  const CITY_EM = { 'Rio de Janeiro':'no' };
+  /* The trap the state question already avoids, in another shape: the Arena do
+     Grêmio names its tenant outright, and the Vila Belmiro and the Morumbi
+     stand in Santos and São Paulo, cities that name theirs. Dropping the city
+     saves those two; a ground named after the club it answers cannot be asked
+     at all, so it is left out. Matched both ways round, like namesState below:
+     the club is "Santos FC" and the city plain "Santos", so neither string
+     contains the other whole. */
+  const saysClub = (s, id) => {
+    const a = _fold(s);
+    const b = _fold(clubName(id) || '').replace(/\b(fc|sc|ec|cr|se|ac|aa)\b/g, ' ').replace(/\s+/g, ' ').trim();
+    return !!b && (a.indexOf(b) !== -1 || b.indexOf(a) !== -1);
+  };
+  pick(STIDS.filter(k => STAD_CLUB[k] && !saysClub(STAD[k].name, STAD_CLUB[k])), 4).forEach(k => {
+    const owner = STAD_CLUB[k], em = STAD_EM[k] || 'no';
+    const where = `Qual clube manda seus jogos ${em} ${STAD[k].name}`;
     out.push({
-      t: `Qual clube manda seus jogos no ${STAD[k].name}, em ${STAD[k].city}?`,
+      t: saysClub(STAD[k].city, owner) ? `${where}?`
+        : `${where}, ${CITY_EM[STAD[k].city] || 'em'} ${STAD[k].city}?`,
       a: [owner],
       pool: CL.filter(c => c.id !== owner).map(c => c.id),
       stad: k,
