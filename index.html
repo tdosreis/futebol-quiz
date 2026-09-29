@@ -5426,13 +5426,19 @@ const ctrySel = c => CTRY_ADJ[c] || ('de ' + (CTRY_NAME[c] || c));
 
 /* "passou pelo Juventus" is wrong — in Portuguese the club is a Juventus, and
    so are a Roma, a Inter, a Lazio, a Fiorentina. Everything else here takes
-   "pelo", which is why only the exceptions are listed. */
-const CLUB_FEM = new Set(['juventus', 'roma', 'inter', 'lazio', 'fiorentina',
-  'sampdoria', 'atalanta', 'portuguesa', 'ponte preta', 'chapecoense']);
+   "pelo", which is why only the exceptions are listed.
+   These are club *names*, lowercased, because that is what the lookup folds —
+   not ids. 'inter' was written as an id and so never matched anything: the
+   name is "Inter de Milão", and the Inter went around as "pelo Inter" for as
+   long as this list has existed. */
+const CLUB_FEM = new Set(['juventus', 'roma', 'inter de milão', 'lazio', 'fiorentina',
+  'sampdoria', 'atalanta', 'udinese', 'portuguesa', 'ponte preta', 'chapecoense']);
 const byClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'pela ' : 'pelo ') + clubName(id);
 /* "passaram PELO Bahia" but "o mascote DO Bahia" — same gender, different
    preposition, and byClub only knows the first one. */
 const ofClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'da ' : 'do ') + clubName(id);
+/* and "companheiro NA Juventus" — the third one the generated questions need. */
+const inClub = id => (CLUB_FEM.has(String(clubName(id)).toLowerCase()) ? 'na ' : 'no ') + clubName(id);
 
 const CTRY_ADJ = {
   BRA:'brasileira', ARG:'argentina', URU:'uruguaia', CHI:'chilena', COL:'colombiana',
@@ -5712,6 +5718,7 @@ function clubName(id) {
   const c = CL.find(x => x.id === id);
   return c ? c.n : (CLUB_NAMES[id] || id);
 }
+
 
 const PL_META = {
   /* ── Brasileiros ── */
@@ -7622,7 +7629,7 @@ function GEN_QS(tier) {
   pick(bigAbroad, 6).forEach(c => {
     const yes = rndOf(abroad[c]);
     out.push({
-      t: `Qual destes jogadores vestiu a camisa do ${CLUB_NAMES[c]}?`,
+      t: `Qual destes jogadores vestiu a camisa ${ofClub(c)}?`,
       a: [yes.id], type: 'player',
       pool: PL.filter(p => !(p.clubs || []).includes(c)).map(p => p.id), _cat: GC3.abroad,
       d: abroad[c].length >= 6 ? 2 : 3,
@@ -7646,7 +7653,7 @@ function GEN_QS(tier) {
     const mates = abroad[c].filter(x => x.id !== p.id);
     if (!mates.length) return;
     out.push({
-      t: `Quem foi companheiro de ${p.n} no ${CLUB_NAMES[c]}?`,
+      t: `Quem foi companheiro de ${p.n} ${inClub(c)}?`,
       a: [rndOf(mates).id], type: 'player',
       pool: PL.filter(x => x.id !== p.id && !(x.clubs || []).includes(c)).map(x => x.id),
       face: p.img, _cat: GC3.abroad, d: 3,
@@ -7767,7 +7774,7 @@ function GEN_QS(tier) {
     const no = PL.filter(p => p.wc.length && !(p.clubs || []).includes(c));
     if (no.length < 9) continue;
     out.push({
-      t: `Qual destes campeões do mundo vestiu a camisa do ${clubName(c)}?`,
+      t: `Qual destes campeões do mundo vestiu a camisa ${ofClub(c)}?`,
       a: [rndOf(yes).id], type: 'player',
       pool: no.map(p => p.id), crest: c, _cat: GC4.geracao, d: 3,
     });
@@ -12633,7 +12640,7 @@ function tlEvents() {
     id: 'wc' + y, y: +y, label: `${WC_ED[y][1]} campeã do mundo`, sub: `Sede: ${WC_ED[y][0]}` }));
   Object.keys(CL_META).forEach(c => {
     const f = CL_META[c].f, nm = clubName(c);
-    if (f && nm) ev.push({ id: 'f' + c, y: f, label: `Fundação do ${nm}`, crest: c });
+    if (f && nm) ev.push({ id: 'f' + c, y: f, label: `Fundação ${ofClub(c)}`, crest: c });
   });
   const first = {};
   Object.keys(LIB_CHAMPS).forEach(y => {
@@ -12642,7 +12649,7 @@ function tlEvents() {
   });
   Object.keys(first).forEach(c => {
     const nm = clubName(c);
-    if (nm) ev.push({ id: 'l' + c, y: first[c], label: `1ª Libertadores do ${nm}`, crest: c });
+    if (nm) ev.push({ id: 'l' + c, y: first[c], label: `1ª Libertadores ${ofClub(c)}`, crest: c });
   });
   return ev;
 }
@@ -12782,8 +12789,8 @@ function storyFor(q) {
   if (cid === 'libertadores') {
     const id = q.a[0], ys = Object.keys(LIB_CHAMPS).map(Number).filter(k => LIB_CHAMPS[k] === id).sort((m, n) => m - n);
     const nm = clubName(id);
-    if (ys.length === 1) return `Foi a única Libertadores do ${nm} até hoje.`;
-    return `Foi o ${ORD(ys.indexOf(y) + 1)} dos ${ys.length} títulos do ${nm} na Libertadores: ${joinPT(ys.map(String))}.`;
+    if (ys.length === 1) return `Foi a única Libertadores ${ofClub(id)} até hoje.`;
+    return `Foi o ${ORD(ys.indexOf(y) + 1)} dos ${ys.length} títulos ${ofClub(id)} na Libertadores: ${joinPT(ys.map(String))}.`;
   }
   if (cid === 'brasileirao') {
     const nm = id => clubName(BR_CHAMPS[id]);

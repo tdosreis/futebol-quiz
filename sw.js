@@ -124,7 +124,9 @@
         "no Rio de Janeiro" take their article, and six written questions
         that said their own answer are reworded; the answer is no longer the
         only long option on four boards; four questions that sat in both
-        curiosos and feminino are down to one copy each. */
+        curiosos and feminino are down to one copy each; a club takes its own
+        article — "a camisa da Juventus", "companheiro na Portuguesa",
+        "Fundação da Chapecoense" — and the Inter is at last a Inter. */
 const VERSION = 'v51';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is

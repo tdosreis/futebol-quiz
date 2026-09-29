@@ -53,7 +53,7 @@ def brace_match(s, start):
     and comments — the one part of this that a regex genuinely cannot do."""
     k, depth, n = start, 0, len(s)
     opener = s[start]
-    closer = {"[": "]", "{": "}"}[opener]
+    closer = {"[": "]", "{": "}", "(": ")"}[opener]
     while k < n:
         c = s[k]
         if c in "\"'`":
@@ -143,15 +143,22 @@ ART_FIELDS = [
 
 
 def load_vocab():
-    """The key sets a question's art fields have to name."""
+    """The key sets a question's art fields have to name, plus the two lists
+    that are keyed on a club's *name* rather than its id."""
     src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-    tables = ["LOGOS", "FLAGS", "STAD", "QICON", "PORT", "FALLBACK_PHOTO"]
+    tables = ["LOGOS", "FLAGS", "STAD", "QICON", "PORT", "FALLBACK_PHOTO", "CLUB_NAMES"]
     body = "\n".join(
         "var %s = %s;" % (t, declaration(src, "const %s = {" % t, "{")) for t in tables)
     body += "\nvar PL = " + declaration(src, "const PL = [", "[") + ";"
+    body += "\nvar CL = " + declaration(src, "const CL = [", "[") + ";"
+    body += "\nvar CLUB_FEM = new Set" + declaration(src, "const CLUB_FEM = new Set(", "(") + ";"
     body += ("\nvar _V = {};"
              + "".join("_V.%s = Object.keys(%s);" % (t, t) for t in tables)
-             + "_V.PL = PL.map(function(p){ return p.id; });")
+             + "_V.PL = PL.map(function(p){ return p.id; });"
+             + "_V.CLUB_FEM = [];CLUB_FEM.forEach(function(k){_V.CLUB_FEM.push(k);});"
+             # every name a club can be written as, folded the way the lookup folds it
+             + "_V.CLUB_LC = CL.map(function(c){return String(c.n).toLowerCase();})"
+             + ".concat(Object.keys(CLUB_NAMES).map(function(k){return String(CLUB_NAMES[k]).toLowerCase();}));")
     return js_eval(body, "_V")
 
 
@@ -252,6 +259,18 @@ def main():
                 longest = max(ch, key=lambda x: len(str(x)))
                 if len(str(longest)) > med * 2.2 and len(str(longest)) > 18 and longest in a:
                     warns.append((t, "%s — the answer is the only long option (%r)" % (where, longest)))
+
+    # CLUB_FEM decides "pela Juventus" against "pelo Milan", and byClub/ofClub/
+    # inClub look a club up by its *name*, lowercased. An entry written as an id
+    # therefore matches nothing and fails silently, in the one direction nobody
+    # notices: the club just keeps taking the masculine article. 'inter' sat
+    # there like that for as long as the list existed — the name is "Inter de
+    # Milão".
+    club_lc = set(vocab["CLUB_LC"])
+    for entry in vocab["CLUB_FEM"]:
+        if entry not in club_lc:
+            errs.append("CLUB_FEM has %r, which is no club's name in lower case — "
+                        "the lookup folds clubName(id), not the id" % entry)
 
     # the same question in two wordings — only worth comparing where the answer
     # already matches, which cuts it from 2.9M pairs to a few hundred
