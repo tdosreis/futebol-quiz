@@ -9,8 +9,9 @@ with macOS, so it still runs when check.py can do nothing but report timeouts.
 It reads CATS straight out of index.html — bracket-matched, not regexed, because
 a regex over 600k of nested literals undercounted 2,406 questions as 397 — hands
 it to jsc, and checks the plain structural promises the game relies on, plus the
-two kinds of unfairness that are invisible in a diff: a question that contains
-its own answer, and an option set where the answer is the only long one.
+three things that are invisible in a diff: a question that contains its own
+answer, an option set where the answer is the only long one, and the same
+question asked twice in different words.
 
   python3 tools/check_bank.py          # non-zero exit if anything failed
 
@@ -86,6 +87,24 @@ def fold(x):
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", x)).strip()
 
 
+# Words that carry no subject, so that two questions are compared on what they
+# are about rather than on the scaffolding they share.
+STOP = set("qual quais quem que de do da dos das o a os as em no na nos nas um uma "
+           "foi foram com por para pela pelo se sua seu mais menos este esta estes "
+           "estas destes destas nunca como onde quando quantas quantos ano anos "
+           "primeiro primeira e".split())
+
+# 0.8, because the bank asks the same question about different subjects on
+# purpose — "Quantas Copas a França ganhou" against "o Uruguai", six "NUNCA
+# jogou no X" — and those land between 0.5 and 0.73. Above 0.8 is the same
+# sentence twice: "Que país vai sediar a Copa de 2027" and "Qual país vai".
+TWIN = 0.8
+
+
+def subject(t):
+    return set(w for w in fold(t).split() if w not in STOP and len(w) > 2)
+
+
 def main():
     if not os.path.exists(JSC):
         sys.exit("no jsc at %s — this tool needs JavaScriptCore" % JSC)
@@ -93,10 +112,14 @@ def main():
     errs, warns = [], []
     seen = {}
     total = 0
+    by_answer = {}
 
     for c in cats:
         for q in c.get("qs", []):
             total += 1
+            key = tuple(sorted(fold(x) for x in (q.get("a") or [])))
+            if key:
+                by_answer.setdefault(key, []).append((c.get("id"), q.get("t") or ""))
             where = "[%s] %s" % (c.get("id"), (q.get("t") or "")[:72])
             a = q.get("a") or []
             if not a:
@@ -144,6 +167,18 @@ def main():
                 longest = max(ch, key=lambda x: len(str(x)))
                 if len(str(longest)) > med * 2.2 and len(str(longest)) > 18 and longest in a:
                     warns.append("%s — the answer is the only long option (%r)" % (where, longest))
+
+    # the same question in two wordings — only worth comparing where the answer
+    # already matches, which cuts it from 2.9M pairs to a few hundred
+    for group in by_answer.values():
+        for i in range(len(group)):
+            for j in range(i + 1, len(group)):
+                (c1, t1), (c2, t2) = group[i], group[j]
+                s1, s2 = subject(t1), subject(t2)
+                if not s1 or not s2:
+                    continue
+                if len(s1 & s2) / len(s1 | s2) >= TWIN:
+                    warns.append("[%s] %s\n        is [%s] %s again" % (c1, t1[:66], c2, t2[:66]))
 
     print("%d categories, %d written questions" % (len(cats), total))
     for label, rows in (("ERROR", errs), ("warn", warns)):
