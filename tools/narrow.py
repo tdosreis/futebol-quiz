@@ -46,6 +46,19 @@ PROBE = r"""
         const ox=getComputedStyle(a).overflowX;
         if(ox==='auto'||ox==='scroll') return;
       }
+      /* A crop is the same bargain with the box shut. PHOTO_ART zooms into a
+         face with transform:scale(3.4) and leaves the .qart pocket's
+         overflow:hidden to do the cropping, so the img's own rect comes back
+         three times the pocket and hanging off the screen, while on the glass
+         it is a close-up inside an 88px square. The test cannot simply be "has
+         a clipping ancestor": the app's own root sets overflow-x:hidden at
+         full width, and that would excuse every element on the page. It has to
+         be a box narrower than the screen — a pocket, not the page. */
+      const vwEdge = vw - 0.5;
+      for(let a=el.parentElement; a && a!==document.body; a=a.parentElement){
+        const ox=getComputedStyle(a).overflowX;
+        if((ox==='hidden'||ox==='clip') && a.getBoundingClientRect().width < vwEdge) return;
+      }
       const r=el.getBoundingClientRect();
       if(r.width<0.5 && r.height<0.5) return;
       if(r.right>vw+0.5 || r.left<-0.5)
