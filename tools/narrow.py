@@ -93,8 +93,14 @@ PROBE = r"""
       usePoll(); useExpert(); probe('photo tiles + 2 ajudas');
     startMilhao(); qi=firstQ(q=>q.textTiles); rung=9; disp=getDisp(cat.qs[qi]); go();
       usePoll(); probe('text tiles + placar');
-    startMilhao(); qi=firstQ(q=>q.reveal); rung=11; disp=getDisp(cat.qs[qi]); go();
-      usePoll(); useExpert(); probe('photo-reveal + 2 ajudas');
+    /* was firstQ(q=>q.reveal) — the photo-reveal question is gone, and firstQ
+       answers 0 when nothing matches, so this had quietly been measuring the
+       first question on the board under a name for a screen that no longer
+       exists. A written question with its own art is the widest thing a rung
+       this high can hold, which is what it was here to check. */
+    startMilhao(); qi=firstQ(q=>q.type==='txt'&&(q.crest||q.flag||q.stad)); rung=11;
+      disp=getDisp(cat.qs[qi]); go();
+      usePoll(); useExpert(); probe('question art + 2 ajudas');
     ladderOpen=true; go(); probe('ladder sheet'); ladderOpen=false;
     sel=new Set([disp[0].id]); sc='ask'; go(); probe('resposta final');
     startSurvival(); probe('mata-mata');

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Render specific game states to PNG so changes can be eyeballed."""
-import subprocess, os, io, sys
+import subprocess, os, io, sys, re
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -156,11 +156,16 @@ STATES = {
  "s-difficulty": "sc='difficulty'; go();",
  "s-credits":    "sc='credits'; go();",
  "s-quiz-hard":  "diffKey='dificil'; startGame();",
- "s-reveal": """diffKey='moderado';
-   cat = buildGame('moderado');
-   const rq = GEN_QS(2).find(q => q.reveal);
-   cat.qs = [rq]; qi=0; sel.clear(); pts=0; streak=0; runLog=[];
-   sc='quiz'; tMax=25; tLeft=17; disp=getDisp(rq); go();""",
+ # Was the photo-reveal question — "Quem é este jogador?", the portrait
+ # sharpening as the clock ran down — which was dropped along with q.reveal,
+ # leaving `GEN_QS(2).find(q => q.reveal)` undefined and this shot throwing in
+ # getDisp every time it ran. The reveal worth a picture now is the panel that
+ # comes up over the board with the answer on it.
+ "s-reveal": """advanceAfterReveal=function(){};
+   diffKey='moderado'; startGame();
+   const q=cat.qs.find(x=>x.type==='player'&&x.a.length===1)||cat.qs[0];
+   qi=cat.qs.indexOf(q); disp=getDisp(q); sel=new Set(q.a);
+   pts=48; streak=4; tLeft=17; doReveal();""",
  "s-career": """diffKey='dificil';
    cat = buildGame('dificil');
    const cq = GEN_QS(3).find(q => /nesta ordem/.test(q.t));
@@ -235,23 +240,44 @@ def shot(name, js):
     src = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
     theme = os.environ.get("THEME", "")
     if theme: src = src.replace("<html lang=\"pt-BR\">", f"<html lang=\"pt-BR\" data-theme=\"{theme}\">")
+    # The error is painted into the picture so it cannot be missed by eye, and
+    # the title is set so it cannot be missed by the console either: a state
+    # that threw used to print "ok", because a PNG had been written, and
+    # s-reveal went on doing that for as long as it took somebody to open the
+    # file. Chrome writes the screenshot and dumps the DOM in the same run.
     inject = ("<script>window.addEventListener('load',function(){setTimeout(function(){"
-              "try{" + js + "}catch(e){document.body.innerHTML='<pre style=\"color:red;"
+              "try{" + js + "}catch(e){document.title='SHOT-THREW';"
+              "document.body.innerHTML='<pre style=\"color:red;"
               "font-size:11px\">'+(e.stack||e)+'</pre>';}},250);});</script>")
     tmp = os.path.join(ROOT, "_shot.html")
     io.open(tmp, "w", encoding="utf-8").write(src.replace("</body>", inject + "</body>"))
     try:
-        subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
-                        "--window-size=500," + os.environ.get("H", "940"),
-                        "--force-device-scale-factor=2",
-                        "--allow-file-access-from-files", "--virtual-time-budget=5000",
-                        "--screenshot=" + os.path.join(OUT, name + ".png"),
-                        "file://" + tmp], capture_output=True, timeout=240)
+        r = subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
+                            "--window-size=500," + os.environ.get("H", "940"),
+                            "--force-device-scale-factor=2",
+                            "--allow-file-access-from-files", "--virtual-time-budget=5000",
+                            "--screenshot=" + os.path.join(OUT, name + ".png"),
+                            "--dump-dom",
+                            "file://" + tmp], capture_output=True, text=True, timeout=240)
     finally:
         if os.path.exists(tmp): os.remove(tmp)
     p = os.path.join(OUT, name + ".png")
-    print(f"  {name:14s} {'ok' if os.path.exists(p) else 'MISSING'}")
+    dom = r.stdout or ""
+    if not os.path.exists(p):
+        print(f"  {name:14s} MISSING")
+        return False
+    # the <title>, not the whole DOM: --dump-dom hands back the injected script
+    # too, and its source contains the marker whether or not anything threw
+    if re.search(r"<title[^>]*>\s*SHOT-THREW\s*</title>", dom):
+        m = re.search(r"<pre[^>]*>(.*?)</pre>", dom, re.S)
+        why = re.sub(r"\s+", " ", (m.group(1) if m else "")).strip()[:110]
+        print(f"  {name:14s} THREW  {why}")
+        return False
+    print(f"  {name:14s} ok")
+    return True
 
 want = sys.argv[1:] or list(STATES)
+ok = True
 for n in want:
-    if n in STATES: shot(n, STATES[n])
+    if n in STATES: ok = shot(n, STATES[n]) and ok
+sys.exit(0 if ok else 1)
