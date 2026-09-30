@@ -162,15 +162,19 @@
         paintings (tools/paint), crests and mascots as gouache, flags as
         painted cloth — and the drawn flags, badges and mascots carry the
         same folds and brush tooth. The picture cache is renamed so phones
-        drop the old photographs instead of keeping them for good. */
-const VERSION = 'v57';
+        drop the old photographs instead of keeping them for good.
+
+   v58: back to the original photographs — the filter paintings were not
+        close enough to hand-painted work. The picture cache is renamed
+        again so phones drop the painted copies. tools/paint stays. */
+const VERSION = 'v58';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
    updates. Wiping them with every version meant the first game after an
    update re-downloaded every picture, and on a weak signal cards came up
    blank. */
-const IMG_CACHE = 'futebol-quiz-img-painted';
+const IMG_CACHE = 'futebol-quiz-img-2';
 
 const SHELL = [
   '/futebol-quiz/',
