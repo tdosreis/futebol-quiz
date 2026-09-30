@@ -156,15 +156,21 @@
         stretched 4x (it was blurry), the turn is lighter (no backdrop blur,
         no drop-shadow filters, the foil sweep moves by transform, the tilt
         only restyles the foil), and the seleções are shield badges with a
-        star per World Cup won. */
-const VERSION = 'v56';
+        star per World Cup won.
+
+   v57: every picture is repainted — players and scenes as layered brush
+        paintings (tools/paint), crests and mascots as gouache, flags as
+        painted cloth — and the drawn flags, badges and mascots carry the
+        same folds and brush tooth. The picture cache is renamed so phones
+        drop the old photographs instead of keeping them for good. */
+const VERSION = 'v57';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
    updates. Wiping them with every version meant the first game after an
    update re-downloaded every picture, and on a weak signal cards came up
    blank. */
-const IMG_CACHE = 'futebol-quiz-img';
+const IMG_CACHE = 'futebol-quiz-img-painted';
 
 const SHELL = [
   '/futebol-quiz/',

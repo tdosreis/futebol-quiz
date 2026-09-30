@@ -173,10 +173,11 @@
     html { background: var(--stock-2); }
     body {
       background: var(--stock-2);
-      background-image:
+      /* the page itself has the brush-and-paper tooth the painted pictures sit in */
+      background-image: url(img/paint-paper.webp),
         radial-gradient(circle at 15% 12%, var(--grain) 0 1px, transparent 1px),
         radial-gradient(circle at 62% 78%, var(--grain) 0 1px, transparent 1px);
-      background-size: 7px 7px, 11px 11px;
+      background-size: 192px 192px, 7px 7px, 11px 11px;
       color: var(--ink);
       display: flex; align-items: center; justify-content: center;
       min-height: 100vh; min-height: 100dvh;
@@ -7223,6 +7224,8 @@ const FLAGS = {
 };
 
 /* A drawn flag chip. `h` is the height in px; the flag keeps a 3:2 ratio. */
+/* the cloth and the brush over a drawn picture (see paintDefs) */
+const PAINT_SVG = (w, h) => `<rect width="${w}" height="${h}" fill="url(#fqFold)"/><rect width="${w}" height="${h}" fill="url(#fqTooth)"/>`;
 function flagSVG(code, h) {
   h = h || 8;
   const name = CTRY_NAME[code] || code || '';
@@ -7235,7 +7238,7 @@ function flagSVG(code, h) {
       font-weight:800;letter-spacing:-.3px;">${(code || '?').slice(0, 2)}</span>`;
   }
   return `<svg viewBox="0 0 9 6" preserveAspectRatio="none" role="img" aria-label="${name}"
-    style="${box}display:inline-block;">${art}</svg>`;
+    style="${box}display:inline-block;">${art}${h >= 10 ? PAINT_SVG(9, 6) : ''}</svg>`;
 }
 
 /* The little mark on a category chip. Most categories carry an emoji that
@@ -10100,6 +10103,7 @@ const _msc = (body, bg) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="t
   style="display:block;width:100%;height:100%;">
   <rect width="80" height="80" fill="${bg || 'var(--retro-card)'}"/>
   <g stroke="#2A1D10" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">${body}</g>
+  <rect width="80" height="80" fill="url(#fqTooth)"/>
 </svg>`;
 
 const MASC_ART = {
@@ -10664,6 +10668,7 @@ function selecaoArt(code) {
       <g clip-path="url(#${id}c)">
         <svg x="-40" y="4" width="180" height="110" viewBox="0 0 9 6" preserveAspectRatio="xMidYMid slice">${art}</svg>
         <rect x="0" y="0" width="100" height="116" fill="url(#${id}f)"/>
+        <rect x="0" y="0" width="100" height="116" fill="url(#fqTooth)"/>
         <rect x="0" y="0" width="100" height="116" fill="url(#${id}s)"/>
       </g>
       <path d="${shield}" fill="none" stroke="url(#${id}g)" stroke-width="4.5"/>
@@ -16092,6 +16097,29 @@ function startTmr() {
 }
 
 /* ── Boot ── */
+/* ── The painter's shared materials ──
+   Every drawn flag, badge and mascot takes the same two things the painted
+   photographs have: folds of light across the cloth, and the brush-and-paper
+   tooth over the colour. Defined once here and referenced by id; the tooth is
+   a transparent texture laid on top, so no blend mode has to be composited
+   for each of the hundreds of little flags on a page. */
+(function paintDefs() {
+  try {
+    const d = document.createElement('div');
+    d.innerHTML = `<svg width="0" height="0" aria-hidden="true" focusable="false"
+        style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <pattern id="fqTooth" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <image href="img/paint-tooth.webp" width="1" height="1" preserveAspectRatio="none"/></pattern>
+        <linearGradient id="fqFold" x1="0" x2="1" y1="0" y2=".35">
+          <stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".2" stop-color="#fff" stop-opacity=".16"/>
+          <stop offset=".4" stop-color="#000" stop-opacity=".1"/><stop offset=".6" stop-color="#fff" stop-opacity=".2"/>
+          <stop offset=".8" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/>
+        </linearGradient>
+      </defs></svg>`;
+    document.body.appendChild(d.firstElementChild);
+  } catch (e) {}
+})();
 go();
 
 /* ── Service Worker registration ── */
