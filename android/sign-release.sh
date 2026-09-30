@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 KEYSTORE="futebol-quiz-upload-v2.keystore"
 ALIAS="futebol-quiz"
 UNSIGNED="app/build/outputs/bundle/release/app-release.aab"
-SIGNED="app-upload-v3.aab"
+SIGNED="app-upload-v4.aab"
 
 [[ -f "$KEYSTORE" ]] || { echo "!! $KEYSTORE not found."; exit 1; }
 [[ -f "$UNSIGNED" ]] || { echo "!! $UNSIGNED not found — run ./gradlew bundleRelease first."; exit 1; }

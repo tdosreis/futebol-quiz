@@ -15,4 +15,6 @@
 -->
 <resources>
     <color name="shortcut_background">#F5F5F5</color>
+    <!-- the green of icons/icon-source.png, as measured by tools/make_icons.py -->
+    <color name="ic_launcher_background">#0C593E</color>
 </resources>

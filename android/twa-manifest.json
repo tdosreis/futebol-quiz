@@ -10,7 +10,7 @@
   "navigationColorDark": "#000000",
   "navigationDividerColor": "#000000",
   "navigationDividerColorDark": "#000000",
-  "backgroundColor": "#060E08",
+  "backgroundColor": "#0C593E",
   "enableNotifications": false,
   "startUrl": "/futebol-quiz/",
   "iconUrl": "https://tdosreis.github.io/futebol-quiz/icons/icon-512.png",
@@ -20,8 +20,8 @@
     "path": "/Users/tiagodosreis/git/play-store/futebol-quiz/android/futebol-quiz-upload-v2.keystore",
     "alias": "futebol-quiz"
   },
-  "appVersionName": "1.0.2",
-  "appVersionCode": 3,
+  "appVersionName": "1.0.3",
+  "appVersionCode": 4,
   "shortcuts": [],
   "generatorApp": "unknown",
   "webManifestUrl": "https://tdosreis.github.io/futebol-quiz/manifest.json",
@@ -43,5 +43,5 @@
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "1.0.2"
+  "appVersion": "1.0.3"
 }

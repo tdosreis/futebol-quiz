@@ -133,8 +133,12 @@
         html(), which go() calls but does not contain — so the screen never
         rendered and the button did nothing, for anyone who had just won a
         sticker and only for them. It also does now what it was written to
-        do: open on the spread that sticker is in, with the sticker marked. */
-const VERSION = 'v52';
+        do: open on the spread that sticker is in, with the sticker marked.
+
+   v53: the icons are the question mark now, not the football — the same
+        picture as the Play listing, drawn by tools/make_icons.py. /icons/ is
+        in the versioned cache, so this bump is what replaces them. */
+const VERSION = 'v53';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
