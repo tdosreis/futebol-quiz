@@ -1,0 +1,3106 @@
+{
+ "id": "placarcopas",
+ "name": "Placar das Copas",
+ "emoji": "📺",
+ "tag": "Placar",
+ "col": "#1f5f3a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Copa de 1930, final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Alemanha Ocidental",
+    "Hungria",
+    "Brasil",
+    "Tchecoslováquia",
+    "França",
+    "Uruguai"
+   ],
+   "score": {
+    "lbl": "Copa de 1930 · Final",
+    "h": "?",
+    "hg": 4,
+    "ag": 2,
+    "a": "Argentina"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1930 FIFA World Cup",
+    [
+     "1930"
+    ]
+   ],
+   "x": "Em Montevidéu, o Uruguai virou um 1 a 2 do primeiro tempo e ganhou a primeira Copa."
+  },
+  {
+   "t": "Copa de 1934, final: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "Tchecoslováquia"
+   ],
+   "choices": [
+    "França",
+    "Alemanha Ocidental",
+    "Inglaterra",
+    "Tchecoslováquia",
+    "Suécia",
+    "México"
+   ],
+   "score": {
+    "lbl": "Copa de 1934 · Final",
+    "h": "Itália",
+    "hg": 2,
+    "ag": 1,
+    "a": "?",
+    "x": "após a prorrogação"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1934 FIFA World Cup",
+    [
+     "1934"
+    ]
+   ]
+  },
+  {
+   "t": "Copa de 1938, final: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "Hungria"
+   ],
+   "choices": [
+    "Áustria",
+    "Hungria",
+    "Inglaterra",
+    "Polônia",
+    "Suíça",
+    "União Soviética"
+   ],
+   "score": {
+    "lbl": "Copa de 1938 · Final",
+    "h": "Itália",
+    "hg": 4,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1938 FIFA World Cup",
+    [
+     "1938"
+    ]
+   ],
+   "x": "A Itália de Vittorio Pozzo foi a primeira bicampeã do mundo."
+  },
+  {
+   "t": "Copa de 1950, jogo decisivo: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Alemanha Ocidental",
+    "França",
+    "Hungria",
+    "Uruguai",
+    "Escócia",
+    "Polônia"
+   ],
+   "score": {
+    "lbl": "Copa de 1950 · Jogo decisivo",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Brasil",
+    "x": "Maracanã"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1950 FIFA World Cup",
+    [
+     "1950"
+    ]
+   ],
+   "x": "Ghiggia fez o gol da virada e calou quase 200 mil pessoas: o Maracanazo."
+  },
+  {
+   "t": "Copa de 1954, final: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Hungria"
+   ],
+   "choices": [
+    "Argentina",
+    "Hungria",
+    "Escócia",
+    "Tchecoslováquia",
+    "Suíça",
+    "Áustria"
+   ],
+   "score": {
+    "lbl": "Copa de 1954 · Final",
+    "h": "Alemanha Ocidental",
+    "hg": 3,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1954 FIFA World Cup",
+    [
+     "1954"
+    ]
+   ],
+   "x": "O 'Milagre de Berna': a Hungria de Puskás perdeu a invencibilidade de quatro anos."
+  },
+  {
+   "t": "Copa de 1958, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Suécia"
+   ],
+   "choices": [
+    "Escócia",
+    "Hungria",
+    "Argentina",
+    "Holanda",
+    "Suécia",
+    "Iugoslávia"
+   ],
+   "score": {
+    "lbl": "Copa de 1958 · Final",
+    "h": "Brasil",
+    "hg": 5,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1958 FIFA World Cup",
+    [
+     "1958"
+    ]
+   ],
+   "x": "Pelé, aos 17 anos, marcou dois gols na final contra os donos da casa."
+  },
+  {
+   "t": "Copa de 1962, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Tchecoslováquia"
+   ],
+   "choices": [
+    "Suécia",
+    "Polônia",
+    "Inglaterra",
+    "Tchecoslováquia",
+    "Bélgica",
+    "México"
+   ],
+   "score": {
+    "lbl": "Copa de 1962 · Final",
+    "h": "Brasil",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1962 FIFA World Cup",
+    [
+     "1962"
+    ]
+   ],
+   "x": "Amarildo, Zito e Vavá marcaram no Chile, sem Pelé, contundido."
+  },
+  {
+   "t": "Copa de 1966, final: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Chile",
+    "França",
+    "Suíça",
+    "Espanha",
+    "Escócia",
+    "Inglaterra"
+   ],
+   "score": {
+    "lbl": "Copa de 1966 · Final",
+    "h": "?",
+    "hg": 4,
+    "ag": 2,
+    "a": "Alemanha Ocidental",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966"
+    ]
+   ],
+   "x": "Geoff Hurst fez três gols em Wembley, um deles o polêmico que talvez não tenha entrado."
+  },
+  {
+   "t": "Copa de 1970, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Itália",
+    "Hungria",
+    "Polônia",
+    "França",
+    "União Soviética",
+    "Escócia"
+   ],
+   "score": {
+    "lbl": "Copa de 1970 · Final",
+    "h": "Brasil",
+    "hg": 4,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970"
+    ]
+   ],
+   "x": "O gol de Carlos Alberto, depois de uma troca de passes do time inteiro, fechou o tri."
+  },
+  {
+   "t": "Copa de 1974, final: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Suíça",
+    "Holanda",
+    "Polônia",
+    "Iugoslávia",
+    "França",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 1974 · Final",
+    "h": "Alemanha Ocidental",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1974 FIFA World Cup",
+    [
+     "1974"
+    ]
+   ],
+   "x": "Gerd Müller fez o gol do título em Munique, contra a Laranja Mecânica de Cruyff."
+  },
+  {
+   "t": "Copa de 1978, final: quem enfrentou a Holanda neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Iugoslávia",
+    "Polônia",
+    "Argentina",
+    "Tchecoslováquia",
+    "Itália",
+    "Portugal"
+   ],
+   "score": {
+    "lbl": "Copa de 1978 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Holanda",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1978 FIFA World Cup",
+    [
+     "1978"
+    ]
+   ],
+   "x": "Mario Kempes marcou duas vezes no Monumental de Núñez."
+  },
+  {
+   "t": "Copa de 1982, final: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha Ocidental"
+   ],
+   "choices": [
+    "Polônia",
+    "Alemanha Ocidental",
+    "Peru",
+    "Escócia",
+    "Brasil",
+    "Iugoslávia"
+   ],
+   "score": {
+    "lbl": "Copa de 1982 · Final",
+    "h": "Itália",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982"
+    ]
+   ],
+   "x": "Paolo Rossi, Tardelli e Altobelli marcaram no Santiago Bernabéu."
+  },
+  {
+   "t": "Copa de 1986, final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha Ocidental"
+   ],
+   "choices": [
+    "Itália",
+    "Tchecoslováquia",
+    "Áustria",
+    "Alemanha Ocidental",
+    "Espanha",
+    "Iugoslávia"
+   ],
+   "score": {
+    "lbl": "Copa de 1986 · Final",
+    "h": "Argentina",
+    "hg": 3,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1986 FIFA World Cup",
+    [
+     "1986"
+    ]
+   ],
+   "x": "Burruchaga fez o gol da vitória depois de um passe de Maradona, no Azteca."
+  },
+  {
+   "t": "Copa de 1990, final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha Ocidental"
+   ],
+   "choices": [
+    "Costa Rica",
+    "Bulgária",
+    "Bélgica",
+    "Alemanha Ocidental",
+    "Catar",
+    "Chile"
+   ],
+   "score": {
+    "lbl": "Copa de 1990 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Argentina"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1990 FIFA World Cup",
+    [
+     "1990"
+    ]
+   ],
+   "x": "Brehme fez o gol do título de pênalti, a cinco minutos do fim, em Roma."
+  },
+  {
+   "t": "Copa de 1994, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Paraguai",
+    "Itália",
+    "Suíça",
+    "Gana",
+    "Suécia",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Final",
+    "h": "Brasil",
+    "hg": 0,
+    "ag": 0,
+    "a": "?",
+    "x": "Brasil 3 × 2 nos pênaltis"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Roberto Baggio chutou por cima o último pênalti, em Pasadena."
+  },
+  {
+   "t": "Copa de 1998, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Tunísia",
+    "França",
+    "Chile",
+    "Bélgica",
+    "Nigéria",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa de 1998 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998"
+    ]
+   ],
+   "x": "Zidane fez dois gols de cabeça no Stade de France."
+  },
+  {
+   "t": "Copa de 2002, final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Polônia",
+    "Equador",
+    "Romênia",
+    "Alemanha",
+    "Argélia",
+    "Itália"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Final",
+    "h": "Brasil",
+    "hg": 2,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Ronaldo marcou os dois gols em Yokohama, contra Oliver Kahn."
+  },
+  {
+   "t": "Copa de 2006, final: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "França",
+    "Argentina",
+    "Arábia Saudita",
+    "Colômbia",
+    "Croácia",
+    "Inglaterra"
+   ],
+   "score": {
+    "lbl": "Copa de 2006 · Final",
+    "h": "Itália",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "Itália 5 × 3 nos pênaltis"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2006 FIFA World Cup",
+    [
+     "2006"
+    ]
+   ],
+   "x": "A final da cabeçada de Zidane em Materazzi, em Berlim."
+  },
+  {
+   "t": "Copa de 2010, final: quem enfrentou a Holanda neste placar?",
+   "type": "txt",
+   "a": [
+    "Espanha"
+   ],
+   "choices": [
+    "Paraguai",
+    "Grécia",
+    "Colômbia",
+    "Austrália",
+    "Romênia",
+    "Espanha"
+   ],
+   "score": {
+    "lbl": "Copa de 2010 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Holanda",
+    "x": "após a prorrogação"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010"
+    ]
+   ],
+   "x": "Iniesta marcou aos 116 minutos em Joanesburgo."
+  },
+  {
+   "t": "Copa de 2014, final: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Estados Unidos",
+    "Senegal",
+    "Suíça",
+    "Argentina",
+    "Itália",
+    "Costa Rica"
+   ],
+   "score": {
+    "lbl": "Copa de 2014 · Final",
+    "h": "Alemanha",
+    "hg": 1,
+    "ag": 0,
+    "a": "?",
+    "x": "após a prorrogação"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014"
+    ]
+   ],
+   "x": "Mario Götze marcou no Maracanã, aos 113 minutos."
+  },
+  {
+   "t": "Copa de 2018, final: quem enfrentou a França neste placar?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Costa do Marfim",
+    "Croácia",
+    "Colômbia",
+    "Peru",
+    "Argélia",
+    "Gana"
+   ],
+   "score": {
+    "lbl": "Copa de 2018 · Final",
+    "h": "França",
+    "hg": 4,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018"
+    ]
+   ],
+   "x": "Mbappé, aos 19 anos, marcou na final de Moscou."
+  },
+  {
+   "t": "Copa de 2022, final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Portugal",
+    "México",
+    "França",
+    "Noruega",
+    "Costa Rica",
+    "Holanda"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Final",
+    "h": "Argentina",
+    "hg": 3,
+    "ag": 3,
+    "a": "?",
+    "x": "Argentina 4 × 2 nos pênaltis"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Messi marcou duas vezes e Mbappé três, na final mais emocionante da história."
+  },
+  {
+   "t": "Copa de 1950, quadrangular final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Suécia"
+   ],
+   "choices": [
+    "Tchecoslováquia",
+    "Itália",
+    "Uruguai",
+    "Argentina",
+    "Áustria",
+    "Suécia"
+   ],
+   "score": {
+    "lbl": "Copa de 1950 · Quadrangular final",
+    "h": "Brasil",
+    "hg": 7,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1950 FIFA World Cup",
+    [
+     "1950"
+    ]
+   ],
+   "x": "Ademir marcou quatro gols no Maracanã."
+  },
+  {
+   "t": "Copa de 1950, quadrangular final: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Brasil"
+   ],
+   "choices": [
+    "Peru",
+    "Suécia",
+    "Brasil",
+    "México",
+    "Iugoslávia",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa de 1950 · Quadrangular final",
+    "h": "?",
+    "hg": 6,
+    "ag": 1,
+    "a": "Espanha"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1950 FIFA World Cup",
+    [
+     "1950"
+    ]
+   ],
+   "x": "A torcida cantou 'Touradas em Madri' no Maracanã."
+  },
+  {
+   "t": "Copa de 1954, primeira fase: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Hungria"
+   ],
+   "choices": [
+    "Itália",
+    "Suécia",
+    "Suíça",
+    "Chile",
+    "Brasil",
+    "Hungria"
+   ],
+   "score": {
+    "lbl": "Copa de 1954 · Primeira fase",
+    "h": "?",
+    "hg": 8,
+    "ag": 3,
+    "a": "Alemanha Ocidental"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1954 FIFA World Cup",
+    [
+     "1954"
+    ]
+   ],
+   "x": "As duas seleções se reencontraram na final, e a Alemanha venceu."
+  },
+  {
+   "t": "Copa de 1954, quartas de final: quem enfrentou a Suíça neste placar?",
+   "type": "txt",
+   "a": [
+    "Áustria"
+   ],
+   "choices": [
+    "Espanha",
+    "Bélgica",
+    "Áustria",
+    "Tchecoslováquia",
+    "Hungria",
+    "Inglaterra"
+   ],
+   "score": {
+    "lbl": "Copa de 1954 · Quartas de final",
+    "h": "?",
+    "hg": 7,
+    "ag": 5,
+    "a": "Suíça"
+   },
+   "d": 5,
+   "src": [
+    "en",
+    "1954 FIFA World Cup",
+    [
+     "1954"
+    ]
+   ],
+   "x": "É até hoje o jogo com mais gols da história das Copas."
+  },
+  {
+   "t": "Copa de 1954, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Hungria"
+   ],
+   "choices": [
+    "Alemanha Ocidental",
+    "Escócia",
+    "Hungria",
+    "Bélgica",
+    "Espanha",
+    "Iugoslávia"
+   ],
+   "score": {
+    "lbl": "Copa de 1954 · Quartas de final",
+    "h": "?",
+    "hg": 4,
+    "ag": 2,
+    "a": "Brasil"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1954 FIFA World Cup",
+    [
+     "1954"
+    ]
+   ],
+   "x": "O jogo ficou conhecido como a 'Batalha de Berna', com três expulsos."
+  },
+  {
+   "t": "Copa de 1958, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Tchecoslováquia",
+    "Itália",
+    "Suíça",
+    "Escócia",
+    "Chile",
+    "França"
+   ],
+   "score": {
+    "lbl": "Copa de 1958 · Semifinal",
+    "h": "Brasil",
+    "hg": 5,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1958 FIFA World Cup",
+    [
+     "1958"
+    ]
+   ],
+   "x": "Pelé marcou três gols contra a França de Just Fontaine."
+  },
+  {
+   "t": "Copa de 1958, disputa do 3º lugar: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "França",
+    "Suécia",
+    "Tchecoslováquia",
+    "Uruguai",
+    "Áustria",
+    "Peru"
+   ],
+   "score": {
+    "lbl": "Copa de 1958 · Disputa do 3º lugar",
+    "h": "?",
+    "hg": 6,
+    "ag": 3,
+    "a": "Alemanha Ocidental"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1958 FIFA World Cup",
+    [
+     "1958"
+    ]
+   ],
+   "x": "Just Fontaine marcou quatro vezes e fechou a Copa com 13 gols."
+  },
+  {
+   "t": "Copa de 1962, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Chile"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Chile",
+    "Suécia",
+    "Holanda",
+    "Tchecoslováquia",
+    "Itália"
+   ],
+   "score": {
+    "lbl": "Copa de 1962 · Semifinal",
+    "h": "Brasil",
+    "hg": 4,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1962 FIFA World Cup",
+    [
+     "1962"
+    ]
+   ],
+   "x": "Garrincha marcou dois gols e ainda foi expulso."
+  },
+  {
+   "t": "Copa de 1966, quartas de final: quem enfrentou Portugal neste placar?",
+   "type": "txt",
+   "a": [
+    "Coreia do Norte"
+   ],
+   "choices": [
+    "Brasil",
+    "Peru",
+    "Escócia",
+    "Coreia do Norte",
+    "Suécia",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa de 1966 · Quartas de final",
+    "h": "Portugal",
+    "hg": 5,
+    "ag": 3,
+    "a": "?",
+    "x": "Portugal perdia por 3 × 0"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966"
+    ]
+   ],
+   "x": "Eusébio marcou quatro gols na virada."
+  },
+  {
+   "t": "Copa de 1966, primeira fase: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "Coreia do Norte"
+   ],
+   "choices": [
+    "Iugoslávia",
+    "Chile",
+    "Peru",
+    "Coreia do Norte",
+    "Alemanha Ocidental",
+    "Escócia"
+   ],
+   "score": {
+    "lbl": "Copa de 1966 · Primeira fase",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Itália"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966"
+    ]
+   ],
+   "x": "Pak Doo-ik marcou o gol da maior zebra da Copa de 1966."
+  },
+  {
+   "t": "Copa de 1966, primeira fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Portugal"
+   ],
+   "choices": [
+    "México",
+    "França",
+    "Espanha",
+    "Portugal",
+    "Alemanha Ocidental",
+    "Suécia"
+   ],
+   "score": {
+    "lbl": "Copa de 1966 · Primeira fase",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Brasil"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966"
+    ]
+   ],
+   "x": "Pelé saiu machucado e o Brasil caiu na primeira fase."
+  },
+  {
+   "t": "Copa de 1970, semifinal: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Uruguai",
+    "França",
+    "Peru",
+    "Chile",
+    "México",
+    "Itália"
+   ],
+   "score": {
+    "lbl": "Copa de 1970 · Semifinal",
+    "h": "?",
+    "hg": 4,
+    "ag": 3,
+    "a": "Alemanha Ocidental",
+    "x": "após a prorrogação"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970"
+    ]
+   ],
+   "x": "Ficou conhecido como o 'Jogo do Século', no Estádio Azteca."
+  },
+  {
+   "t": "Copa de 1970, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Hungria",
+    "Iugoslávia",
+    "Suíça",
+    "Uruguai",
+    "Espanha",
+    "Escócia"
+   ],
+   "score": {
+    "lbl": "Copa de 1970 · Semifinal",
+    "h": "Brasil",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970"
+    ]
+   ],
+   "x": "A revanche de 1950, em Guadalajara."
+  },
+  {
+   "t": "Copa de 1970, primeira fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Iugoslávia",
+    "Áustria",
+    "Alemanha Ocidental",
+    "Suíça",
+    "Peru",
+    "Inglaterra"
+   ],
+   "score": {
+    "lbl": "Copa de 1970 · Primeira fase",
+    "h": "Brasil",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970"
+    ]
+   ],
+   "x": "Jogo da defesa de Banks e do gol de Jairzinho."
+  },
+  {
+   "t": "Copa de 1974, segunda fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Portugal",
+    "Holanda",
+    "Suécia",
+    "França",
+    "Áustria",
+    "Suíça"
+   ],
+   "score": {
+    "lbl": "Copa de 1974 · Segunda fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1974 FIFA World Cup",
+    [
+     "1974"
+    ]
+   ],
+   "x": "Neeskens e Cruyff marcaram; a Holanda foi à final."
+  },
+  {
+   "t": "Copa de 1974, disputa do 3º lugar: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Polônia"
+   ],
+   "choices": [
+    "Itália",
+    "França",
+    "Alemanha Ocidental",
+    "Áustria",
+    "União Soviética",
+    "Polônia"
+   ],
+   "score": {
+    "lbl": "Copa de 1974 · Disputa do 3º lugar",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1974 FIFA World Cup",
+    [
+     "1974"
+    ]
+   ],
+   "x": "Lato marcou o gol e foi o artilheiro da Copa."
+  },
+  {
+   "t": "Copa de 1978, segunda fase: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Peru"
+   ],
+   "choices": [
+    "México",
+    "Suécia",
+    "Hungria",
+    "Espanha",
+    "Peru",
+    "Brasil"
+   ],
+   "score": {
+    "lbl": "Copa de 1978 · Segunda fase",
+    "h": "Argentina",
+    "hg": 6,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1978 FIFA World Cup",
+    [
+     "1978"
+    ]
+   ],
+   "x": "A goleada levou a Argentina à final no saldo de gols, à frente do Brasil."
+  },
+  {
+   "t": "Copa de 1982, segunda fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Escócia",
+    "Áustria",
+    "Itália",
+    "Suíça",
+    "Portugal"
+   ],
+   "score": {
+    "lbl": "Copa de 1982 · Segunda fase",
+    "h": "?",
+    "hg": 3,
+    "ag": 2,
+    "a": "Brasil",
+    "x": "Estádio Sarriá"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982"
+    ]
+   ],
+   "x": "Paolo Rossi marcou três vezes e eliminou o Brasil de Telê."
+  },
+  {
+   "t": "Copa de 1982, semifinal: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Portugal",
+    "Suécia",
+    "França",
+    "Espanha",
+    "União Soviética",
+    "Polônia"
+   ],
+   "score": {
+    "lbl": "Copa de 1982 · Semifinal",
+    "h": "Alemanha Ocidental",
+    "hg": 3,
+    "ag": 3,
+    "a": "?",
+    "x": "Alemanha 5 × 4 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982"
+    ]
+   ],
+   "x": "A primeira disputa de pênaltis da história das Copas."
+  },
+  {
+   "t": "Copa de 1982, primeira fase: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Argélia"
+   ],
+   "choices": [
+    "Portugal",
+    "Uruguai",
+    "Peru",
+    "Argélia",
+    "Tchecoslováquia",
+    "Brasil"
+   ],
+   "score": {
+    "lbl": "Copa de 1982 · Primeira fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Alemanha Ocidental"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982"
+    ]
+   ],
+   "x": "Madjer e Belloumi marcaram na zebra de Gijón."
+  },
+  {
+   "t": "Copa de 1982, primeira fase: quem enfrentou El Salvador neste placar?",
+   "type": "txt",
+   "a": [
+    "Hungria"
+   ],
+   "choices": [
+    "Escócia",
+    "Chile",
+    "Inglaterra",
+    "França",
+    "Hungria",
+    "Peru"
+   ],
+   "score": {
+    "lbl": "Copa de 1982 · Primeira fase",
+    "h": "?",
+    "hg": 10,
+    "ag": 1,
+    "a": "El Salvador"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982"
+    ]
+   ],
+   "x": "A maior goleada da história das Copas."
+  },
+  {
+   "t": "Copa de 1986, quartas de final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Suécia",
+    "Áustria",
+    "França",
+    "Inglaterra",
+    "Alemanha Ocidental",
+    "Uruguai"
+   ],
+   "score": {
+    "lbl": "Copa de 1986 · Quartas de final",
+    "h": "Argentina",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "1986 FIFA World Cup",
+    [
+     "1986"
+    ]
+   ],
+   "x": "O jogo da 'Mão de Deus' e do gol do século de Maradona."
+  },
+  {
+   "t": "Copa de 1986, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "França",
+    "Itália",
+    "Espanha",
+    "Áustria",
+    "Hungria",
+    "México"
+   ],
+   "score": {
+    "lbl": "Copa de 1986 · Quartas de final",
+    "h": "Brasil",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "França 4 × 3 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1986 FIFA World Cup",
+    [
+     "1986"
+    ]
+   ],
+   "x": "Zico perdeu um pênalti no tempo normal, em Guadalajara."
+  },
+  {
+   "t": "Copa de 1986, primeira fase: quem enfrentou o Uruguai neste placar?",
+   "type": "txt",
+   "a": [
+    "Dinamarca"
+   ],
+   "choices": [
+    "Suíça",
+    "Holanda",
+    "Suécia",
+    "Dinamarca",
+    "Tchecoslováquia",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 1986 · Primeira fase",
+    "h": "?",
+    "hg": 6,
+    "ag": 1,
+    "a": "Uruguai"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1986 FIFA World Cup",
+    [
+     "1986"
+    ]
+   ],
+   "x": "A 'Dinamite Dinamarquesa' de Elkjær e Laudrup."
+  },
+  {
+   "t": "Copa de 1990, abertura: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Camarões"
+   ],
+   "choices": [
+    "Polônia",
+    "Colômbia",
+    "Suécia",
+    "Tunísia",
+    "Bulgária",
+    "Camarões"
+   ],
+   "score": {
+    "lbl": "Copa de 1990 · Abertura",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Argentina"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1990 FIFA World Cup",
+    [
+     "1990"
+    ]
+   ],
+   "x": "Omam-Biyik marcou de cabeça, e a campeã do mundo perdeu na estreia."
+  },
+  {
+   "t": "Copa de 1990, oitavas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Argentina",
+    "Tunísia",
+    "França",
+    "Paraguai",
+    "Polônia",
+    "Turquia"
+   ],
+   "score": {
+    "lbl": "Copa de 1990 · Oitavas de final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1990 FIFA World Cup",
+    [
+     "1990"
+    ]
+   ],
+   "x": "Maradona driblou meio time e deu o passe para Caniggia."
+  },
+  {
+   "t": "Copa de 1994, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Argentina",
+    "Croácia",
+    "Turquia",
+    "Dinamarca",
+    "Catar",
+    "Holanda"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Quartas de final",
+    "h": "Brasil",
+    "hg": 3,
+    "ag": 2,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Branco fez o gol da vitória de falta, e Bebeto embalou o bebê."
+  },
+  {
+   "t": "Copa de 1994, quartas de final: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Bulgária"
+   ],
+   "choices": [
+    "Colômbia",
+    "Argentina",
+    "Suécia",
+    "Bulgária",
+    "Marrocos",
+    "Suíça"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Quartas de final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Alemanha"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Stoichkov e Letchkov viraram contra a campeã do mundo."
+  },
+  {
+   "t": "Copa de 1994, oitavas de final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Romênia"
+   ],
+   "choices": [
+    "Nigéria",
+    "Portugal",
+    "Espanha",
+    "Costa do Marfim",
+    "Romênia",
+    "Camarões"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Oitavas de final",
+    "h": "?",
+    "hg": 3,
+    "ag": 2,
+    "a": "Argentina"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Hagi comandou a Romênia, e a Argentina já estava sem Maradona."
+  },
+  {
+   "t": "Copa de 1994, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Suécia"
+   ],
+   "choices": [
+    "Suécia",
+    "Holanda",
+    "Argentina",
+    "Sérvia",
+    "Equador",
+    "Grécia"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Semifinal",
+    "h": "Brasil",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Romário fez o gol de cabeça, entre os gigantes suecos."
+  },
+  {
+   "t": "Copa de 1994, primeira fase: quem enfrentou Camarões neste placar?",
+   "type": "txt",
+   "a": [
+    "Rússia"
+   ],
+   "choices": [
+    "Arábia Saudita",
+    "Dinamarca",
+    "Brasil",
+    "Uruguai",
+    "Rússia",
+    "Equador"
+   ],
+   "score": {
+    "lbl": "Copa de 1994 · Primeira fase",
+    "h": "?",
+    "hg": 6,
+    "ag": 1,
+    "a": "Camarões"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994"
+    ]
+   ],
+   "x": "Salenko marcou cinco gols; Roger Milla fez o de Camarões, aos 42 anos."
+  },
+  {
+   "t": "Copa de 1998, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Holanda",
+    "Grécia",
+    "Estados Unidos",
+    "Costa do Marfim",
+    "Irã",
+    "Noruega"
+   ],
+   "score": {
+    "lbl": "Copa de 1998 · Semifinal",
+    "h": "Brasil",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "Brasil 4 × 2 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998"
+    ]
+   ],
+   "x": "Taffarel defendeu dois pênaltis em Marselha."
+  },
+  {
+   "t": "Copa de 1998, quartas de final: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Austrália",
+    "Croácia",
+    "Espanha",
+    "Costa Rica",
+    "Polônia",
+    "Paraguai"
+   ],
+   "score": {
+    "lbl": "Copa de 1998 · Quartas de final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Alemanha"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998"
+    ]
+   ],
+   "x": "A estreante Croácia de Šuker chegou ao terceiro lugar."
+  },
+  {
+   "t": "Copa de 1998, primeira fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Noruega"
+   ],
+   "choices": [
+    "Portugal",
+    "Noruega",
+    "Arábia Saudita",
+    "Itália",
+    "Costa Rica",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 1998 · Primeira fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Brasil"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998"
+    ]
+   ],
+   "x": "Um pênalti no fim deu a vitória aos noruegueses em Marselha."
+  },
+  {
+   "t": "Copa de 1998, oitavas de final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Croácia",
+    "Inglaterra",
+    "Chile",
+    "Dinamarca",
+    "Arábia Saudita",
+    "Costa Rica"
+   ],
+   "score": {
+    "lbl": "Copa de 1998 · Oitavas de final",
+    "h": "Argentina",
+    "hg": 2,
+    "ag": 2,
+    "a": "?",
+    "x": "Argentina 4 × 3 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998"
+    ]
+   ],
+   "x": "O jogo do golaço de Owen e da expulsão de Beckham."
+  },
+  {
+   "t": "Copa de 2002, abertura: quem enfrentou a França neste placar?",
+   "type": "txt",
+   "a": [
+    "Senegal"
+   ],
+   "choices": [
+    "Grécia",
+    "Japão",
+    "Sérvia",
+    "Suécia",
+    "Senegal",
+    "Costa Rica"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Abertura",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "França"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Papa Bouba Diop marcou, e a campeã do mundo caiu na primeira fase."
+  },
+  {
+   "t": "Copa de 2002, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Camarões",
+    "Suíça",
+    "Colômbia",
+    "Gana",
+    "Polônia"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Quartas de final",
+    "h": "Brasil",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Ronaldinho fez o gol de falta que encobriu Seaman."
+  },
+  {
+   "t": "Copa de 2002, oitavas de final: quem enfrentou a Itália neste placar?",
+   "type": "txt",
+   "a": [
+    "Coreia do Sul"
+   ],
+   "choices": [
+    "Argentina",
+    "Alemanha",
+    "Dinamarca",
+    "Coreia do Sul",
+    "Paraguai",
+    "Tunísia"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Oitavas de final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Itália",
+    "x": "gol de ouro"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Ahn Jung-hwan marcou de cabeça na prorrogação."
+  },
+  {
+   "t": "Copa de 2002, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Turquia"
+   ],
+   "choices": [
+    "Holanda",
+    "Arábia Saudita",
+    "Itália",
+    "Turquia",
+    "Camarões",
+    "Japão"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Semifinal",
+    "h": "Brasil",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Ronaldo marcou de bico, e o Brasil foi à terceira final seguida."
+  },
+  {
+   "t": "Copa de 2002, primeira fase: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Arábia Saudita"
+   ],
+   "choices": [
+    "Arábia Saudita",
+    "Bulgária",
+    "Portugal",
+    "Noruega",
+    "Peru",
+    "Senegal"
+   ],
+   "score": {
+    "lbl": "Copa de 2002 · Primeira fase",
+    "h": "Alemanha",
+    "hg": 8,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002"
+    ]
+   ],
+   "x": "Klose marcou três gols de cabeça."
+  },
+  {
+   "t": "Copa de 2006, semifinal: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Itália",
+    "Dinamarca",
+    "França",
+    "Espanha",
+    "Catar",
+    "Colômbia"
+   ],
+   "score": {
+    "lbl": "Copa de 2006 · Semifinal",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Alemanha",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2006 FIFA World Cup",
+    [
+     "2006"
+    ]
+   ],
+   "x": "Grosso e Del Piero marcaram nos últimos minutos, em Dortmund."
+  },
+  {
+   "t": "Copa de 2006, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Nigéria",
+    "Senegal",
+    "Coreia do Sul",
+    "França",
+    "Paraguai",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 2006 · Quartas de final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2006 FIFA World Cup",
+    [
+     "2006"
+    ]
+   ],
+   "x": "Henry marcou depois de uma falta de Zidane."
+  },
+  {
+   "t": "Copa de 2010, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Camarões",
+    "Holanda",
+    "Marrocos",
+    "Itália",
+    "Arábia Saudita",
+    "Estados Unidos"
+   ],
+   "score": {
+    "lbl": "Copa de 2010 · Quartas de final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Brasil"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010"
+    ]
+   ],
+   "x": "Sneijder marcou duas vezes na virada, em Porto Elizabeth."
+  },
+  {
+   "t": "Copa de 2010, quartas de final: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Croácia",
+    "Rússia",
+    "Gana",
+    "Alemanha",
+    "Uruguai"
+   ],
+   "score": {
+    "lbl": "Copa de 2010 · Quartas de final",
+    "h": "?",
+    "hg": 4,
+    "ag": 0,
+    "a": "Argentina"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010"
+    ]
+   ],
+   "x": "A Argentina de Maradona técnico levou quatro."
+  },
+  {
+   "t": "Copa de 2010, quartas de final: quem enfrentou o Uruguai neste placar?",
+   "type": "txt",
+   "a": [
+    "Gana"
+   ],
+   "choices": [
+    "Irã",
+    "Gana",
+    "Tunísia",
+    "Marrocos",
+    "Dinamarca",
+    "Paraguai"
+   ],
+   "score": {
+    "lbl": "Copa de 2010 · Quartas de final",
+    "h": "Uruguai",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "Uruguai 4 × 2 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010"
+    ]
+   ],
+   "x": "Suárez tirou com a mão uma bola em cima da linha no último minuto."
+  },
+  {
+   "t": "Copa de 2014, semifinal: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Irã",
+    "Peru",
+    "México",
+    "Dinamarca",
+    "Senegal",
+    "Alemanha"
+   ],
+   "score": {
+    "lbl": "Copa de 2014 · Semifinal",
+    "h": "?",
+    "hg": 7,
+    "ag": 1,
+    "a": "Brasil",
+    "x": "Mineirão"
+   },
+   "d": 1,
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014"
+    ]
+   ],
+   "x": "O 7 a 1: cinco gols em 29 minutos no primeiro tempo."
+  },
+  {
+   "t": "Copa de 2014, primeira fase: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Noruega",
+    "Costa Rica",
+    "Holanda",
+    "Camarões",
+    "França",
+    "Polônia"
+   ],
+   "score": {
+    "lbl": "Copa de 2014 · Primeira fase",
+    "h": "?",
+    "hg": 5,
+    "ag": 1,
+    "a": "Espanha"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014"
+    ]
+   ],
+   "x": "A revanche da final de 2010, com o gol de peixinho de Van Persie."
+  },
+  {
+   "t": "Copa de 2014, primeira fase: quem enfrentou o Uruguai neste placar?",
+   "type": "txt",
+   "a": [
+    "Costa Rica"
+   ],
+   "choices": [
+    "Camarões",
+    "Croácia",
+    "Costa Rica",
+    "Alemanha",
+    "Polônia",
+    "Chile"
+   ],
+   "score": {
+    "lbl": "Copa de 2014 · Primeira fase",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Uruguai"
+   },
+   "d": 4,
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014"
+    ]
+   ],
+   "x": "A Costa Rica chegou às quartas de final em um grupo com três campeões."
+  },
+  {
+   "t": "Copa de 2018, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Bélgica"
+   ],
+   "choices": [
+    "Rússia",
+    "Bélgica",
+    "Holanda",
+    "Suécia",
+    "Noruega",
+    "Costa do Marfim"
+   ],
+   "score": {
+    "lbl": "Copa de 2018 · Quartas de final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Brasil"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018"
+    ]
+   ],
+   "x": "A geração belga de De Bruyne e Hazard eliminou o Brasil em Kazan."
+  },
+  {
+   "t": "Copa de 2018, primeira fase: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Coreia do Sul"
+   ],
+   "choices": [
+    "Romênia",
+    "Camarões",
+    "Coreia do Sul",
+    "Japão",
+    "Tunísia",
+    "Costa do Marfim"
+   ],
+   "score": {
+    "lbl": "Copa de 2018 · Primeira fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Alemanha"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018"
+    ]
+   ],
+   "x": "A campeã do mundo caiu na primeira fase pela primeira vez desde 1938."
+  },
+  {
+   "t": "Copa de 2018, oitavas de final: quem enfrentou a França neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Holanda",
+    "Noruega",
+    "Nigéria",
+    "Bulgária",
+    "Suécia",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa de 2018 · Oitavas de final",
+    "h": "França",
+    "hg": 4,
+    "ag": 3,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018"
+    ]
+   ],
+   "x": "Mbappé marcou duas vezes e correu como nunca em Kazan."
+  },
+  {
+   "t": "Copa de 2018, abertura: quem enfrentou a Arábia Saudita neste placar?",
+   "type": "txt",
+   "a": [
+    "Rússia"
+   ],
+   "choices": [
+    "Croácia",
+    "Turquia",
+    "Japão",
+    "França",
+    "Rússia",
+    "Brasil"
+   ],
+   "score": {
+    "lbl": "Copa de 2018 · Abertura",
+    "h": "?",
+    "hg": 5,
+    "ag": 0,
+    "a": "Arábia Saudita"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018"
+    ]
+   ],
+   "x": "A anfitriã começou a Copa com goleada."
+  },
+  {
+   "t": "Copa de 2022, primeira fase: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Arábia Saudita"
+   ],
+   "choices": [
+    "Arábia Saudita",
+    "Noruega",
+    "Sérvia",
+    "Espanha",
+    "Coreia do Sul",
+    "Costa Rica"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Primeira fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Argentina"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "A futura campeã perdeu a estreia no Catar."
+  },
+  {
+   "t": "Copa de 2022, quartas de final: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Catar",
+    "Suécia",
+    "Camarões",
+    "Rússia",
+    "Croácia",
+    "Alemanha"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Quartas de final",
+    "h": "?",
+    "hg": 1,
+    "ag": 1,
+    "a": "Brasil",
+    "x": "Croácia 4 × 2 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Neymar marcou na prorrogação, e Petković empatou no fim."
+  },
+  {
+   "t": "Copa de 2022, quartas de final: quem enfrentou Portugal neste placar?",
+   "type": "txt",
+   "a": [
+    "Marrocos"
+   ],
+   "choices": [
+    "Irã",
+    "Romênia",
+    "Marrocos",
+    "México",
+    "Noruega",
+    "Bélgica"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Quartas de final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Portugal"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Marrocos foi a primeira seleção africana a chegar a uma semifinal."
+  },
+  {
+   "t": "Copa de 2022, primeira fase: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Japão"
+   ],
+   "choices": [
+    "Costa Rica",
+    "Chile",
+    "Suíça",
+    "Japão",
+    "Bélgica",
+    "Sérvia"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Primeira fase",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Alemanha"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "O Japão virou contra a Alemanha e depois venceu a Espanha."
+  },
+  {
+   "t": "Copa de 2022, primeira fase: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Camarões"
+   ],
+   "choices": [
+    "Paraguai",
+    "Camarões",
+    "Colômbia",
+    "Japão",
+    "Argélia",
+    "Equador"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Primeira fase",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Aboubakar marcou nos acréscimos e foi expulso por tirar a camisa."
+  },
+  {
+   "t": "Copa de 2022, semifinal: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Arábia Saudita",
+    "Sérvia",
+    "Bélgica",
+    "Croácia",
+    "Espanha",
+    "Estados Unidos"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Semifinal",
+    "h": "Argentina",
+    "hg": 3,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Messi e Julián Álvarez levaram a Argentina à final."
+  },
+  {
+   "t": "Copa de 2022, oitavas de final: quem enfrentou Portugal neste placar?",
+   "type": "txt",
+   "a": [
+    "Suíça"
+   ],
+   "choices": [
+    "Grécia",
+    "Suíça",
+    "Sérvia",
+    "Colômbia",
+    "Holanda",
+    "Costa do Marfim"
+   ],
+   "score": {
+    "lbl": "Copa de 2022 · Oitavas de final",
+    "h": "Portugal",
+    "hg": 6,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022"
+    ]
+   ],
+   "x": "Gonçalo Ramos, no lugar de Cristiano Ronaldo, marcou três gols."
+  },
+  {
+   "t": "Final da Eurocopa de 1976: quem enfrentou a Alemanha Ocidental neste placar?",
+   "type": "txt",
+   "a": [
+    "Tchecoslováquia"
+   ],
+   "choices": [
+    "Itália",
+    "Rússia",
+    "Tchecoslováquia",
+    "Croácia",
+    "Inglaterra",
+    "Holanda"
+   ],
+   "score": {
+    "lbl": "Eurocopa 1976 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 2,
+    "a": "Alemanha Ocidental",
+    "x": "Tchecoslováquia 5 × 3 nos pênaltis"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "Eurocopa 1976",
+    [
+     "1976"
+    ]
+   ],
+   "x": "Panenka decidiu com a cavadinha que ganhou o nome dele."
+  },
+  {
+   "t": "Final da Eurocopa de 1984: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Portugal",
+    "França",
+    "Grécia",
+    "Dinamarca",
+    "Alemanha Ocidental",
+    "Alemanha"
+   ],
+   "score": {
+    "lbl": "Eurocopa 1984 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Espanha"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Eurocopa 1984",
+    [
+     "1984"
+    ]
+   ],
+   "x": "Platini marcou nove gols naquela Euro, recorde até 2016... que só Cristiano Ronaldo alcançou somando edições."
+  },
+  {
+   "t": "Final da Eurocopa de 1988: quem enfrentou a Holanda neste placar?",
+   "type": "txt",
+   "a": [
+    "União Soviética"
+   ],
+   "choices": [
+    "Espanha",
+    "Tchecoslováquia",
+    "Alemanha Ocidental",
+    "Suécia",
+    "Rússia",
+    "União Soviética"
+   ],
+   "score": {
+    "lbl": "Eurocopa 1988 · Final",
+    "h": "Holanda",
+    "hg": 2,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Eurocopa 1988",
+    [
+     "1988"
+    ]
+   ],
+   "x": "Van Basten fez o gol de voleio quase sem ângulo."
+  },
+  {
+   "t": "Final da Eurocopa de 1992: quem enfrentou a Alemanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Dinamarca"
+   ],
+   "choices": [
+    "Alemanha Ocidental",
+    "Bélgica",
+    "Dinamarca",
+    "Itália",
+    "Rússia",
+    "Portugal"
+   ],
+   "score": {
+    "lbl": "Eurocopa 1992 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Alemanha"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 1992",
+    [
+     "1992"
+    ]
+   ],
+   "x": "A Dinamarca entrou no lugar da Iugoslávia a dez dias do torneio."
+  },
+  {
+   "t": "Final da Eurocopa de 2000: quem enfrentou a França neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Espanha",
+    "Suécia",
+    "Tchecoslováquia",
+    "Dinamarca",
+    "Itália",
+    "Alemanha"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2000 · Final",
+    "h": "França",
+    "hg": 2,
+    "ag": 1,
+    "a": "?",
+    "x": "gol de ouro"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Eurocopa 2000",
+    [
+     "2000"
+    ]
+   ],
+   "x": "Trezeguet marcou o gol de ouro na prorrogação."
+  },
+  {
+   "t": "Final da Eurocopa de 2004: quem enfrentou Portugal neste placar?",
+   "type": "txt",
+   "a": [
+    "Grécia"
+   ],
+   "choices": [
+    "União Soviética",
+    "Suécia",
+    "Croácia",
+    "Grécia",
+    "Rússia",
+    "Espanha"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2004 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Portugal"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 2004",
+    [
+     "2004"
+    ]
+   ],
+   "x": "Charisteas marcou de cabeça no Estádio da Luz."
+  },
+  {
+   "t": "Final da Eurocopa de 2008: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Itália",
+    "Rússia",
+    "França",
+    "Dinamarca",
+    "Alemanha Ocidental",
+    "Alemanha"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2008 · Final",
+    "h": "Espanha",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 2008",
+    [
+     "2008"
+    ]
+   ],
+   "x": "Fernando Torres marcou em Viena, e começou a era espanhola."
+  },
+  {
+   "t": "Final da Eurocopa de 2012: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Bélgica",
+    "Tchecoslováquia",
+    "França",
+    "Alemanha Ocidental",
+    "Grécia",
+    "Itália"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2012 · Final",
+    "h": "Espanha",
+    "hg": 4,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 2012",
+    [
+     "2012"
+    ]
+   ],
+   "x": "A maior goleada de uma final de Euro."
+  },
+  {
+   "t": "Final da Eurocopa de 2016: quem enfrentou a França neste placar?",
+   "type": "txt",
+   "a": [
+    "Portugal"
+   ],
+   "choices": [
+    "Dinamarca",
+    "Rússia",
+    "Inglaterra",
+    "União Soviética",
+    "Portugal",
+    "Suécia"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2016 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "França",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 2016",
+    [
+     "2016"
+    ]
+   ],
+   "x": "Éder marcou em Paris, com Cristiano Ronaldo machucado no banco."
+  },
+  {
+   "t": "Final da Eurocopa de 2020: quem enfrentou a Inglaterra neste placar?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Holanda",
+    "Itália",
+    "França",
+    "Tchecoslováquia",
+    "Bélgica",
+    "Dinamarca"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2020 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 1,
+    "a": "Inglaterra",
+    "x": "Itália 3 × 2 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Eurocopa 2020",
+    [
+     "2020"
+    ]
+   ],
+   "x": "Donnarumma defendeu dois pênaltis em Wembley."
+  },
+  {
+   "t": "Final da Eurocopa de 2024: quem enfrentou a Espanha neste placar?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Holanda",
+    "Alemanha Ocidental",
+    "Inglaterra",
+    "União Soviética",
+    "Croácia",
+    "Portugal"
+   ],
+   "score": {
+    "lbl": "Eurocopa 2024 · Final",
+    "h": "Espanha",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "Eurocopa 2024",
+    [
+     "2024"
+    ]
+   ],
+   "x": "Oyarzabal marcou o gol do tetra europeu da Espanha em Berlim."
+  },
+  {
+   "t": "Final da Copa América de 2004: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Uruguai",
+    "Bolívia",
+    "Colômbia",
+    "México",
+    "Peru",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa América 2004 · Final",
+    "h": "Brasil",
+    "hg": 2,
+    "ag": 2,
+    "a": "?",
+    "x": "Brasil 4 × 2 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa América 2004",
+    [
+     "2004"
+    ]
+   ],
+   "x": "Adriano empatou no último minuto, em Lima."
+  },
+  {
+   "t": "Final da Copa América de 2007: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Uruguai",
+    "Bolívia",
+    "México",
+    "Equador",
+    "Paraguai",
+    "Argentina"
+   ],
+   "score": {
+    "lbl": "Copa América 2007 · Final",
+    "h": "Brasil",
+    "hg": 3,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa América 2007",
+    [
+     "2007"
+    ]
+   ],
+   "x": "Júlio Baptista, Daniel Alves e um gol contra de Ayala."
+  },
+  {
+   "t": "Final da Copa América de 2011: quem enfrentou o Paraguai neste placar?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Argentina",
+    "Chile",
+    "México",
+    "Brasil",
+    "Uruguai",
+    "Bolívia"
+   ],
+   "score": {
+    "lbl": "Copa América 2011 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Paraguai"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa América 2011",
+    [
+     "2011"
+    ]
+   ],
+   "x": "Forlán marcou duas vezes e o Uruguai chegou ao 15º título."
+  },
+  {
+   "t": "Final da Copa América de 2015: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Chile"
+   ],
+   "choices": [
+    "Uruguai",
+    "Chile",
+    "Paraguai",
+    "Equador",
+    "Bolívia",
+    "Peru"
+   ],
+   "score": {
+    "lbl": "Copa América 2015 · Final",
+    "h": "?",
+    "hg": 0,
+    "ag": 0,
+    "a": "Argentina",
+    "x": "Chile 4 × 1 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa América 2015",
+    [
+     "2015"
+    ]
+   ],
+   "x": "O primeiro título da história do Chile, em casa."
+  },
+  {
+   "t": "Final da Copa América de 2019: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Peru"
+   ],
+   "choices": [
+    "Equador",
+    "Chile",
+    "Argentina",
+    "Colômbia",
+    "Peru",
+    "Bolívia"
+   ],
+   "score": {
+    "lbl": "Copa América 2019 · Final",
+    "h": "Brasil",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa América 2019",
+    [
+     "2019"
+    ]
+   ],
+   "x": "Everton Cebolinha, Gabriel Jesus e Richarlison marcaram no Maracanã."
+  },
+  {
+   "t": "Final da Copa América de 2021: quem enfrentou o Brasil neste placar?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Equador",
+    "Chile",
+    "Paraguai",
+    "Argentina",
+    "Peru",
+    "Bolívia"
+   ],
+   "score": {
+    "lbl": "Copa América 2021 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Brasil"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "Copa América 2021",
+    [
+     "2021"
+    ]
+   ],
+   "x": "Di María encobriu Ederson no Maracanã, e Messi ganhou seu primeiro título."
+  },
+  {
+   "t": "Final da Copa América de 2024: quem enfrentou a Argentina neste placar?",
+   "type": "txt",
+   "a": [
+    "Colômbia"
+   ],
+   "choices": [
+    "México",
+    "Chile",
+    "Uruguai",
+    "Peru",
+    "Equador",
+    "Colômbia"
+   ],
+   "score": {
+    "lbl": "Copa América 2024 · Final",
+    "h": "Argentina",
+    "hg": 1,
+    "ag": 0,
+    "a": "?",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa América 2024",
+    [
+     "2024"
+    ]
+   ],
+   "x": "Lautaro Martínez marcou na final em Miami."
+  }
+ ]
+}

@@ -1,0 +1,2708 @@
+{
+ "id": "ligaseuropa",
+ "name": "Ligas da Europa",
+ "emoji": "🌍",
+ "tag": "Europa",
+ "col": "#1f4f8c",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Premier League de 1992-93: quem foi campeão na primeira edição com esse nome?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Everton",
+    "Manchester City",
+    "Arsenal",
+    "Liverpool",
+    "Chelsea",
+    "Manchester United"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1992-93 Premier League",
+    [
+     "1992-93"
+    ]
+   ],
+   "x": "Foi o primeiro título inglês do United em 26 anos."
+  },
+  {
+   "t": "Premier League de 1997-98: quem foi campeão na primeira temporada completa de Wenger?",
+   "type": "txt",
+   "a": [
+    "Arsenal"
+   ],
+   "choices": [
+    "Manchester United",
+    "Fulham",
+    "Liverpool",
+    "Everton",
+    "Manchester City",
+    "Arsenal"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1997-98 Premier League",
+    [
+     "1997-98"
+    ]
+   ],
+   "x": "O Arsenal fez a dobradinha com a Copa da Inglaterra."
+  },
+  {
+   "t": "Premier League de 1998-99: quem foi campeão no ano da tríplice coroa de Ferguson?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Manchester United",
+    "Liverpool",
+    "Manchester City",
+    "Tottenham",
+    "Everton",
+    "Fulham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1998-99 Premier League",
+    [
+     "1998-99"
+    ]
+   ]
+  },
+  {
+   "t": "Premier League de 2004-05: quem foi campeão na primeira temporada de Mourinho?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Fulham",
+    "Manchester United",
+    "Everton",
+    "Liverpool",
+    "Arsenal",
+    "Chelsea"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2004-05 Premier League",
+    [
+     "2004-05"
+    ]
+   ],
+   "x": "O Chelsea sofreu só 15 gols, recorde da liga."
+  },
+  {
+   "t": "Premier League de 2012-13: quem foi campeão na última temporada de Ferguson?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Arsenal",
+    "Manchester United",
+    "Manchester City",
+    "Tottenham",
+    "Liverpool",
+    "Fulham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2012-13 Premier League",
+    [
+     "2012-13"
+    ]
+   ]
+  },
+  {
+   "t": "Premier League de 2016-17: quem foi campeão com Antonio Conte e a defesa de três zagueiros?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Arsenal",
+    "Chelsea",
+    "Manchester United",
+    "Liverpool",
+    "Everton",
+    "Tottenham"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2016-17 Premier League",
+    [
+     "2016-17"
+    ]
+   ]
+  },
+  {
+   "t": "Premier League de 2017-18: quem foi campeão com 100 pontos, recorde da liga?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Manchester United",
+    "Chelsea",
+    "Liverpool",
+    "Tottenham",
+    "Fulham",
+    "Manchester City"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2017-18 Premier League",
+    [
+     "2017-18"
+    ]
+   ]
+  },
+  {
+   "t": "Premier League de 2019-20: quem foi campeão acabando com um jejum de 30 anos?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Arsenal",
+    "Everton",
+    "Manchester United",
+    "Liverpool",
+    "Manchester City",
+    "Chelsea"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2019-20 Premier League",
+    [
+     "2019-20"
+    ]
+   ],
+   "x": "O título foi confirmado em junho de 2020, depois da pausa da pandemia."
+  },
+  {
+   "t": "Premier League de 2023-24: quem foi campeão pela quarta vez seguida?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Chelsea",
+    "Arsenal",
+    "Tottenham",
+    "Liverpool",
+    "Manchester City",
+    "Fulham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2023-24 Premier League",
+    [
+     "2023-24"
+    ]
+   ]
+  },
+  {
+   "t": "Premier League de 2024-25: quem foi campeão na primeira temporada de Arne Slot?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Tottenham",
+    "Chelsea",
+    "Fulham",
+    "Arsenal",
+    "Manchester United",
+    "Liverpool"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2024-25 Premier League",
+    [
+     "2024-25"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1986-87: quem foi campeão pela primeira vez, com Maradona?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Milan",
+    "Juventus",
+    "Atalanta",
+    "Fiorentina",
+    "Napoli",
+    "Torino"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1986-87 Campeonato Italiano",
+    [
+     "1986-87"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1987-88: quem foi campeão na primeira temporada de Arrigo Sacchi?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Milan",
+    "Atalanta",
+    "Inter de Milão",
+    "Juventus",
+    "Parma",
+    "Sampdoria"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1987-88 Campeonato Italiano",
+    [
+     "1987-88"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1988-89: quem foi campeão com o alemão Matthäus e o recorde de pontos da época?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Milan",
+    "Juventus",
+    "Torino",
+    "Inter de Milão",
+    "Fiorentina",
+    "Atalanta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1988-89 Campeonato Italiano",
+    [
+     "1988-89"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1990-91: quem foi campeão com Vialli e Mancini, pela única vez?",
+   "type": "txt",
+   "a": [
+    "Sampdoria"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Juventus",
+    "Lazio",
+    "Parma",
+    "Napoli",
+    "Fiorentina"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1990-91 Campeonato Italiano",
+    [
+     "1990-91"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1991-92: quem foi campeão sem perder um jogo, com Fabio Capello?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Parma",
+    "Roma",
+    "Milan",
+    "Inter de Milão",
+    "Atalanta",
+    "Napoli"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1991-92 Campeonato Italiano",
+    [
+     "1991-92"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 1999-00: quem foi campeão na última rodada, sob chuva em Perugia?",
+   "type": "txt",
+   "a": [
+    "Lazio"
+   ],
+   "choices": [
+    "Lazio",
+    "Parma",
+    "Sampdoria",
+    "Napoli",
+    "Fiorentina",
+    "Inter de Milão"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1999-00 Campeonato Italiano",
+    [
+     "1999-00"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2000-01: quem foi campeão com Totti, Batistuta e Cafu?",
+   "type": "txt",
+   "a": [
+    "Roma"
+   ],
+   "choices": [
+    "Juventus",
+    "Milan",
+    "Roma",
+    "Atalanta",
+    "Parma",
+    "Inter de Milão"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2000-01 Campeonato Italiano",
+    [
+     "2000-01"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2006-07: quem foi campeão com a Juventus rebaixada pelo escândalo do Calciopoli?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Juventus",
+    "Inter de Milão",
+    "Atalanta",
+    "Lazio",
+    "Torino",
+    "Roma"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2006-07 Campeonato Italiano",
+    [
+     "2006-07"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2011-12: quem foi campeão invicto, no primeiro dos nove títulos seguidos?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Roma",
+    "Milan",
+    "Inter de Milão",
+    "Lazio",
+    "Torino",
+    "Juventus"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2011-12 Campeonato Italiano",
+    [
+     "2011-12"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2020-21: quem foi campeão interrompendo a sequência da Juventus?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Juventus",
+    "Atalanta",
+    "Inter de Milão",
+    "Roma",
+    "Lazio",
+    "Parma"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2020-21 Campeonato Italiano",
+    [
+     "2020-21"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2021-22: quem foi campeão com Stefano Pioli, depois de 11 anos?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Napoli",
+    "Lazio",
+    "Atalanta",
+    "Inter de Milão",
+    "Milan"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2021-22 Campeonato Italiano",
+    [
+     "2021-22"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2022-23: quem foi campeão pela primeira vez sem Maradona?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Fiorentina",
+    "Roma",
+    "Napoli",
+    "Milan",
+    "Lazio",
+    "Atalanta"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2022-23 Campeonato Italiano",
+    [
+     "2022-23"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2023-24: quem foi campeão conquistando a segunda estrela?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Juventus",
+    "Fiorentina",
+    "Milan",
+    "Atalanta",
+    "Inter de Milão",
+    "Napoli"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2023-24 Campeonato Italiano",
+    [
+     "2023-24"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Italiano de 2024-25: quem foi campeão com Antonio Conte no banco?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Juventus",
+    "Sampdoria",
+    "Napoli",
+    "Milan",
+    "Atalanta",
+    "Roma"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2024-25 Campeonato Italiano",
+    [
+     "2024-25"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 1995-96: quem foi campeão com a dobradinha liga e copa?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Valencia",
+    "Zaragoza",
+    "Real Madrid",
+    "Atlético de Madrid",
+    "Deportivo La Coruña",
+    "Sevilla"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1995-96 Campeonato Espanhol",
+    [
+     "1995-96"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 1999-00: quem foi campeão pela única vez na história?",
+   "type": "txt",
+   "a": [
+    "Deportivo La Coruña"
+   ],
+   "choices": [
+    "Sevilla",
+    "Real Madrid",
+    "Atlético de Madrid",
+    "Barcelona",
+    "Deportivo La Coruña",
+    "Valencia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1999-00 Campeonato Espanhol",
+    [
+     "1999-00"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2001-02: quem foi campeão com Rafael Benítez?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Barcelona",
+    "Deportivo La Coruña",
+    "Zaragoza",
+    "Sevilla",
+    "Real Madrid",
+    "Valencia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2001-02 Campeonato Espanhol",
+    [
+     "2001-02"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2003-04: quem foi campeão e ainda levou a Copa da UEFA?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Barcelona",
+    "Deportivo La Coruña",
+    "Valencia",
+    "Atlético de Madrid",
+    "Zaragoza",
+    "Real Madrid"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2003-04 Campeonato Espanhol",
+    [
+     "2003-04"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2004-05: quem foi campeão com Ronaldinho e Frank Rijkaard?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Barcelona",
+    "Real Madrid",
+    "Sevilla",
+    "Valencia",
+    "Deportivo La Coruña"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2004-05 Campeonato Espanhol",
+    [
+     "2004-05"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2008-09: quem foi campeão na primeira temporada de Guardiola?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Barcelona",
+    "Valencia",
+    "Deportivo La Coruña",
+    "Real Madrid",
+    "Zaragoza",
+    "Sevilla"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2008-09 Campeonato Espanhol",
+    [
+     "2008-09"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2011-12: quem foi campeão com 100 pontos e José Mourinho?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Barcelona",
+    "Zaragoza",
+    "Valencia",
+    "Atlético de Madrid",
+    "Real Madrid",
+    "Sevilla"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2011-12 Campeonato Espanhol",
+    [
+     "2011-12"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2013-14: quem foi campeão com um empate no Camp Nou na última rodada?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Deportivo La Coruña",
+    "Zaragoza",
+    "Barcelona",
+    "Sevilla",
+    "Atlético de Madrid",
+    "Valencia"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2013-14 Campeonato Espanhol",
+    [
+     "2013-14"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2016-17: quem foi campeão com Zidane no banco?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Valencia",
+    "Sevilla",
+    "Real Madrid",
+    "Barcelona",
+    "Deportivo La Coruña"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2016-17 Campeonato Espanhol",
+    [
+     "2016-17"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2020-21: quem foi campeão com Luis Suárez, dispensado pelo Barcelona?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Barcelona",
+    "Deportivo La Coruña",
+    "Zaragoza",
+    "Sevilla",
+    "Real Madrid"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2020-21 Campeonato Espanhol",
+    [
+     "2020-21"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2022-23: quem foi campeão com Xavi no banco?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Real Madrid",
+    "Barcelona",
+    "Atlético de Madrid",
+    "Valencia",
+    "Sevilla",
+    "Zaragoza"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2022-23 Campeonato Espanhol",
+    [
+     "2022-23"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Espanhol de 2024-25: quem foi campeão na primeira temporada de Hansi Flick?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Valencia",
+    "Real Madrid",
+    "Atlético de Madrid",
+    "Sevilla",
+    "Barcelona"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2024-25 Campeonato Espanhol",
+    [
+     "2024-25"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 1991-92: quem foi campeão numa decisão na última rodada?",
+   "type": "txt",
+   "a": [
+    "Stuttgart"
+   ],
+   "choices": [
+    "Stuttgart",
+    "Bayer Leverkusen",
+    "Werder Bremen",
+    "Kaiserslautern",
+    "Bayern de Munique",
+    "Borussia Dortmund"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1991-92 Campeonato Alemão",
+    [
+     "1991-92"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2003-04: quem foi campeão com o brasileiro Ailton artilheiro?",
+   "type": "txt",
+   "a": [
+    "Werder Bremen"
+   ],
+   "choices": [
+    "Werder Bremen",
+    "Stuttgart",
+    "Kaiserslautern",
+    "Bayer Leverkusen",
+    "Borussia Dortmund",
+    "Bayern de Munique"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2003-04 Campeonato Alemão",
+    [
+     "2003-04"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2006-07: quem foi campeão com Mario Gómez e Cacau no ataque?",
+   "type": "txt",
+   "a": [
+    "Stuttgart"
+   ],
+   "choices": [
+    "Stuttgart",
+    "Borussia Dortmund",
+    "Kaiserslautern",
+    "Bayer Leverkusen",
+    "Werder Bremen",
+    "Bayern de Munique"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2006-07 Campeonato Alemão",
+    [
+     "2006-07"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2010-11: quem foi campeão na terceira temporada de Klopp?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Borussia Dortmund",
+    "Bayer Leverkusen",
+    "Stuttgart",
+    "Kaiserslautern",
+    "Werder Bremen"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2010-11 Campeonato Alemão",
+    [
+     "2010-11"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2011-12: quem foi campeão fazendo a dobradinha com a Copa da Alemanha?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Werder Bremen",
+    "Bayer Leverkusen",
+    "Stuttgart",
+    "Borussia Dortmund",
+    "Bayern de Munique",
+    "Kaiserslautern"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2011-12 Campeonato Alemão",
+    [
+     "2011-12"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2001-02: quem foi campeão com Amoroso artilheiro?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Borussia Dortmund",
+    "Bayer Leverkusen",
+    "Stuttgart",
+    "Kaiserslautern",
+    "Bayern de Munique",
+    "Werder Bremen"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2001-02 Campeonato Alemão",
+    [
+     "2001-02"
+    ]
+   ]
+  },
+  {
+   "t": "Campeonato Alemão de 2012-13: quem foi campeão no ano da tríplice coroa com Heynckes?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Werder Bremen",
+    "Kaiserslautern",
+    "Stuttgart",
+    "Borussia Dortmund",
+    "Bayer Leverkusen",
+    "Bayern de Munique"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2012-13 Campeonato Alemão",
+    [
+     "2012-13"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1988?",
+   "type": "txt",
+   "a": [
+    "Bayer Leverkusen"
+   ],
+   "choices": [
+    "Bordeaux",
+    "Sevilla",
+    "Porto",
+    "Bayer Leverkusen",
+    "Barcelona",
+    "Feyenoord"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1988"
+    ]
+   ],
+   "x": "O Leverkusen virou um 0 a 3 da ida e ganhou nos pênaltis contra o Espanyol."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1989?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Borussia Dortmund",
+    "Napoli",
+    "Bayer Leverkusen",
+    "Lyon",
+    "Olympique de Marselha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1989"
+    ]
+   ],
+   "x": "Maradona e Careca levaram o Napoli ao título europeu."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1990?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Benfica",
+    "Monaco",
+    "Olympique de Marselha",
+    "Atlético de Madrid",
+    "Galatasaray",
+    "Juventus"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1990"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1991?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Tottenham",
+    "Barcelona",
+    "Fenerbahçe",
+    "Inter de Milão",
+    "Atlético de Madrid"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1991"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1992?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "Everton",
+    "Fenerbahçe",
+    "Feyenoord",
+    "Ajax",
+    "Lazio",
+    "Liverpool"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1992"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1993?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Sampdoria",
+    "Roma",
+    "Lyon",
+    "Juventus",
+    "Fiorentina"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1993"
+    ]
+   ],
+   "x": "Roberto Baggio ganhou a Bola de Ouro naquele ano."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1994?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Werder Bremen",
+    "Sporting",
+    "Inter de Milão",
+    "Barcelona",
+    "Paris Saint-Germain",
+    "Fiorentina"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1994"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1995?",
+   "type": "txt",
+   "a": [
+    "Parma"
+   ],
+   "choices": [
+    "Manchester United",
+    "Parma",
+    "Fulham",
+    "Zaragoza",
+    "Kaiserslautern",
+    "PSV"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1995"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1996?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Manchester City",
+    "Napoli",
+    "Bayern de Munique",
+    "Galatasaray",
+    "Manchester United",
+    "Lazio"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1996"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1998?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Porto",
+    "Torino",
+    "Borussia Dortmund",
+    "Inter de Milão",
+    "PSV"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1998"
+    ]
+   ],
+   "x": "Ronaldo marcou na final contra a Lazio, em Paris."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 1999?",
+   "type": "txt",
+   "a": [
+    "Parma"
+   ],
+   "choices": [
+    "Everton",
+    "Sampdoria",
+    "Parma",
+    "Valencia",
+    "Celtic",
+    "Barcelona"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "1999"
+    ]
+   ],
+   "x": "Crespo, Verón e Buffon estavam no time."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2000?",
+   "type": "txt",
+   "a": [
+    "Galatasaray"
+   ],
+   "choices": [
+    "Lyon",
+    "Porto",
+    "Borussia Dortmund",
+    "Monaco",
+    "Galatasaray",
+    "Lazio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2000"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2001?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Milan",
+    "Galatasaray",
+    "Liverpool",
+    "Fiorentina",
+    "Roma",
+    "Real Madrid"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2001"
+    ]
+   ],
+   "x": "A final contra o Alavés terminou 5 a 4 com gol de ouro."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2002?",
+   "type": "txt",
+   "a": [
+    "Feyenoord"
+   ],
+   "choices": [
+    "Torino",
+    "Feyenoord",
+    "Galatasaray",
+    "Sampdoria",
+    "Stuttgart",
+    "Atalanta"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2002"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2003?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Feyenoord",
+    "Napoli",
+    "Lyon",
+    "Real Madrid",
+    "Porto"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2003"
+    ]
+   ],
+   "x": "O primeiro título europeu de José Mourinho."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2004?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Bayer Leverkusen",
+    "Borussia Dortmund",
+    "Inter de Milão",
+    "Valencia",
+    "Manchester United",
+    "Lyon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2004"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2006?",
+   "type": "txt",
+   "a": [
+    "Sevilla"
+   ],
+   "choices": [
+    "Atalanta",
+    "Roma",
+    "Manchester City",
+    "Sevilla",
+    "Werder Bremen",
+    "Paris Saint-Germain"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2006"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2010?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Feyenoord",
+    "Real Madrid",
+    "Ajax",
+    "Parma",
+    "Galatasaray",
+    "Atlético de Madrid"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2010"
+    ]
+   ],
+   "x": "Forlán marcou os dois gols da final."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2011?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Porto",
+    "Kaiserslautern",
+    "Everton",
+    "Real Madrid",
+    "Sampdoria",
+    "Torino"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2011"
+    ]
+   ],
+   "x": "Falcao García fez 17 gols naquela Liga Europa."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2013?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Fiorentina",
+    "Celtic",
+    "Lazio",
+    "Zaragoza",
+    "Deportivo La Coruña",
+    "Chelsea"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2013"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2017?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Napoli",
+    "PSV",
+    "Zaragoza",
+    "Manchester United",
+    "Ajax",
+    "Borussia Dortmund"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2017"
+    ]
+   ],
+   "x": "Com Mourinho, o United ganhou o único título europeu que faltava."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2018?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Sevilla",
+    "Atlético de Madrid",
+    "Sporting",
+    "Parma",
+    "Liverpool",
+    "Roma"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2018"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2019?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Liverpool",
+    "Sevilla",
+    "Barcelona",
+    "Lyon",
+    "Celtic",
+    "Chelsea"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2019"
+    ]
+   ],
+   "x": "Na final contra o Arsenal, em Baku, Hazard marcou dois gols."
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2024?",
+   "type": "txt",
+   "a": [
+    "Atalanta"
+   ],
+   "choices": [
+    "Atalanta",
+    "Zaragoza",
+    "Werder Bremen",
+    "Atlético de Madrid",
+    "Liverpool",
+    "Roma"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2024"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Copa da UEFA/Liga Europa de 2025?",
+   "type": "txt",
+   "a": [
+    "Tottenham"
+   ],
+   "choices": [
+    "Lyon",
+    "Valencia",
+    "Tottenham",
+    "Liverpool",
+    "Arsenal",
+    "Bayer Leverkusen"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA Europa League",
+    [
+     "2025"
+    ]
+   ],
+   "x": "O primeiro título do Tottenham em 17 anos."
+  },
+  {
+   "t": "Qual clube manda seus jogos no Old Trafford?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Kaiserslautern",
+    "Manchester United",
+    "Atlético de Madrid",
+    "Parma",
+    "Inter de Milão",
+    "Galatasaray"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Old Trafford",
+    [
+     "Old Trafford"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Signal Iduna Park?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Fiorentina",
+    "Arsenal",
+    "Bayer Leverkusen",
+    "Napoli",
+    "Kaiserslautern",
+    "Borussia Dortmund"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Signal Iduna Park",
+    [
+     "Signal Iduna Park"
+    ]
+   ],
+   "x": "A arquibancada sul, a 'Muralha Amarela', tem quase 25 mil lugares em pé."
+  },
+  {
+   "t": "Qual clube manda seus jogos no Estádio da Luz?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Chelsea",
+    "Sporting",
+    "Zaragoza",
+    "Benfica",
+    "Werder Bremen",
+    "Roma"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio da Luz",
+    [
+     "Estádio da Luz"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Riazor?",
+   "type": "txt",
+   "a": [
+    "Deportivo La Coruña"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Inter de Milão",
+    "Manchester City",
+    "Werder Bremen",
+    "Real Madrid",
+    "Deportivo La Coruña"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Riazor",
+    [
+     "Riazor"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Weserstadion?",
+   "type": "txt",
+   "a": [
+    "Werder Bremen"
+   ],
+   "choices": [
+    "Celtic",
+    "Fenerbahçe",
+    "Ajax",
+    "Manchester City",
+    "Werder Bremen",
+    "Fulham"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Weserstadion",
+    [
+     "Weserstadion"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Estádio Fritz Walter?",
+   "type": "txt",
+   "a": [
+    "Kaiserslautern"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Bayer Leverkusen",
+    "Kaiserslautern",
+    "Zaragoza",
+    "Inter de Milão",
+    "Juventus"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio Fritz Walter",
+    [
+     "Estádio Fritz Walter"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no BayArena?",
+   "type": "txt",
+   "a": [
+    "Bayer Leverkusen"
+   ],
+   "choices": [
+    "Stuttgart",
+    "Manchester United",
+    "Lyon",
+    "Bayer Leverkusen",
+    "Feyenoord",
+    "Inter de Milão"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "BayArena",
+    [
+     "BayArena"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Craven Cottage?",
+   "type": "txt",
+   "a": [
+    "Fulham"
+   ],
+   "choices": [
+    "Chelsea",
+    "Juventus",
+    "Inter de Milão",
+    "Bayer Leverkusen",
+    "Celtic",
+    "Fulham"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Craven Cottage",
+    [
+     "Craven Cottage"
+    ]
+   ],
+   "x": "Fica à beira do Tâmisa, em Londres."
+  },
+  {
+   "t": "Qual clube manda seus jogos no Artemio Franchi?",
+   "type": "txt",
+   "a": [
+    "Fiorentina"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Bordeaux",
+    "Juventus",
+    "Liverpool",
+    "Werder Bremen",
+    "Fiorentina"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Artemio Franchi",
+    [
+     "Artemio Franchi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Stade Louis II?",
+   "type": "txt",
+   "a": [
+    "Monaco"
+   ],
+   "choices": [
+    "Real Madrid",
+    "Liverpool",
+    "Atlético de Madrid",
+    "Monaco",
+    "Galatasaray",
+    "Bordeaux"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Stade Louis II",
+    [
+     "Stade Louis II"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Philips Stadion?",
+   "type": "txt",
+   "a": [
+    "PSV"
+   ],
+   "choices": [
+    "PSV",
+    "Benfica",
+    "Paris Saint-Germain",
+    "Liverpool",
+    "Torino",
+    "Stuttgart"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Philips Stadion",
+    [
+     "Philips Stadion"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Celtic Park?",
+   "type": "txt",
+   "a": [
+    "Celtic"
+   ],
+   "choices": [
+    "Milan",
+    "Ajax",
+    "Celtic",
+    "Bayer Leverkusen",
+    "Sampdoria",
+    "Napoli"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Celtic Park",
+    [
+     "Celtic Park"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no Estádio José Alvalade?",
+   "type": "txt",
+   "a": [
+    "Sporting"
+   ],
+   "choices": [
+    "Arsenal",
+    "Fenerbahçe",
+    "Sporting",
+    "Barcelona",
+    "Paris Saint-Germain",
+    "Juventus"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio José Alvalade",
+    [
+     "Estádio José Alvalade"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no La Romareda?",
+   "type": "txt",
+   "a": [
+    "Zaragoza"
+   ],
+   "choices": [
+    "Zaragoza",
+    "Deportivo La Coruña",
+    "Werder Bremen",
+    "Real Madrid",
+    "Galatasaray",
+    "Sporting"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "La Romareda",
+    [
+     "La Romareda"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Vecchia Signora'?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Juventus",
+    "Galatasaray",
+    "Torino",
+    "Chelsea",
+    "Zaragoza",
+    "Atlético de Madrid"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Vecchia Signora"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Colchoneros'?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Parma",
+    "Liverpool",
+    "Fiorentina",
+    "Lazio",
+    "Benfica"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Colchoneros"
+    ]
+   ],
+   "x": "O nome vem das listras vermelhas e brancas, como os colchões antigos."
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Merengues'?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Napoli",
+    "Fenerbahçe",
+    "Zaragoza",
+    "Real Madrid",
+    "Sevilla",
+    "Lyon"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Merengues"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Blaugrana'?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Atlético de Madrid",
+    "Feyenoord",
+    "Sporting",
+    "Barcelona",
+    "PSV"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Blaugrana"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Citizens'?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Barcelona",
+    "Ajax",
+    "Bayern de Munique",
+    "Manchester City",
+    "Liverpool",
+    "Manchester United"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Citizens"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Spurs'?",
+   "type": "txt",
+   "a": [
+    "Tottenham"
+   ],
+   "choices": [
+    "Tottenham",
+    "Everton",
+    "Valencia",
+    "Werder Bremen",
+    "Liverpool",
+    "Lyon"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Spurs"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Cottagers'?",
+   "type": "txt",
+   "a": [
+    "Fulham"
+   ],
+   "choices": [
+    "Atalanta",
+    "Fulham",
+    "Feyenoord",
+    "Inter de Milão",
+    "Borussia Dortmund",
+    "Bayern de Munique"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Cottagers"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Rossoneri'?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Barcelona",
+    "Napoli",
+    "Olympique de Marselha",
+    "Paris Saint-Germain",
+    "Bordeaux",
+    "Milan"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Rossoneri"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Biancocelesti'?",
+   "type": "txt",
+   "a": [
+    "Lazio"
+   ],
+   "choices": [
+    "Deportivo La Coruña",
+    "Barcelona",
+    "Lazio",
+    "Bayer Leverkusen",
+    "Kaiserslautern",
+    "Benfica"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Biancocelesti"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Giallorossi'?",
+   "type": "txt",
+   "a": [
+    "Roma"
+   ],
+   "choices": [
+    "Feyenoord",
+    "Roma",
+    "Juventus",
+    "Galatasaray",
+    "Inter de Milão",
+    "Manchester City"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Giallorossi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Partenopei'?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Feyenoord",
+    "Stuttgart",
+    "Napoli",
+    "Everton",
+    "Bayer Leverkusen",
+    "Real Madrid"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Partenopei"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Granata'?",
+   "type": "txt",
+   "a": [
+    "Torino"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Sporting",
+    "Porto",
+    "Sampdoria",
+    "Torino",
+    "Lazio"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Granata"
+    ]
+   ],
+   "x": "O Grande Torino morreu no acidente de Superga, em 1949."
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Blucerchiati'?",
+   "type": "txt",
+   "a": [
+    "Sampdoria"
+   ],
+   "choices": [
+    "Tottenham",
+    "Inter de Milão",
+    "Fiorentina",
+    "Borussia Dortmund",
+    "Sampdoria",
+    "Milan"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Blucerchiati"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'La Dea'?",
+   "type": "txt",
+   "a": [
+    "Atalanta"
+   ],
+   "choices": [
+    "Fenerbahçe",
+    "Ajax",
+    "Inter de Milão",
+    "Atalanta",
+    "Sevilla",
+    "Milan"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "La Dea"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Os Dragões'?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Lazio",
+    "Porto",
+    "Fulham",
+    "Parma",
+    "Borussia Dortmund",
+    "Sampdoria"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Os Dragões"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'As Águias'?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Fulham",
+    "Lazio",
+    "Benfica",
+    "Arsenal",
+    "Deportivo La Coruña",
+    "Sampdoria"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "As Águias"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Os Leões'?",
+   "type": "txt",
+   "a": [
+    "Sporting"
+   ],
+   "choices": [
+    "Parma",
+    "Fenerbahçe",
+    "Sporting",
+    "Bordeaux",
+    "Sevilla",
+    "Fulham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Os Leões"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Bhoys'?",
+   "type": "txt",
+   "a": [
+    "Celtic"
+   ],
+   "choices": [
+    "Torino",
+    "Milan",
+    "Kaiserslautern",
+    "Celtic",
+    "Atlético de Madrid",
+    "PSV"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Bhoys"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Súper Depor'?",
+   "type": "txt",
+   "a": [
+    "Deportivo La Coruña"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Liverpool",
+    "Deportivo La Coruña",
+    "Milan",
+    "Paris Saint-Germain",
+    "Borussia Dortmund"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Súper Depor"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Die Roten Teufel'?",
+   "type": "txt",
+   "a": [
+    "Kaiserslautern"
+   ],
+   "choices": [
+    "Parma",
+    "Monaco",
+    "Torino",
+    "Kaiserslautern",
+    "Chelsea",
+    "Paris Saint-Germain"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Die Roten Teufel"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube tem o apelido de 'Die Schwarzgelben'?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Valencia",
+    "Chelsea",
+    "Paris Saint-Germain",
+    "Zaragoza",
+    "Borussia Dortmund",
+    "Roma"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "en",
+    "List of football club nicknames",
+    [
+     "Die Schwarzgelben"
+    ]
+   ]
+  }
+ ]
+}

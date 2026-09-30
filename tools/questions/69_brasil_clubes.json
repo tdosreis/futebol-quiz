@@ -1,0 +1,1865 @@
+{
+ "id": "brasilclubes",
+ "name": "Clubes do Brasil",
+ "emoji": "🟢",
+ "tag": "Brasil",
+ "col": "#1f7a3a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Quem venceu a Copa do Brasil de 1990?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1990"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1991?",
+   "a": [
+    "criciuma"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1991"
+    ]
+   ],
+   "x": "O Criciúma de Felipão surpreendeu o país."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1993?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1993"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1994?",
+   "a": [
+    "gremio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1994"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1995?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1995"
+    ]
+   ],
+   "x": "Marcelinho Carioca brilhou na final contra o Grêmio."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1996?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1996"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1997?",
+   "a": [
+    "gremio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1997"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 1998?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "1998"
+    ]
+   ],
+   "x": "O Palmeiras de Felipão levou o título e, no ano seguinte, a Libertadores."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2000?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2000"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2001?",
+   "a": [
+    "gremio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2001"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2002?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2002"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2003?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2003"
+    ]
+   ],
+   "x": "Naquele ano o Cruzeiro fez a tríplice coroa: Mineiro, Copa do Brasil e Brasileirão."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2006?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2006"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2008?",
+   "a": [
+    "sport"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2008"
+    ]
+   ],
+   "x": "O Sport venceu o Corinthians na final, na Ilha do Retiro."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2009?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2009"
+    ]
+   ],
+   "x": "Ronaldo foi o grande nome daquela campanha."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2012?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2012"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2013?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2013"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2015?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2015"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2016?",
+   "a": [
+    "gremio"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2016"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2017?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2017"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2018?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2018"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2019?",
+   "a": [
+    "atleticopr"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2019"
+    ]
+   ],
+   "x": "O Athletico venceu o Internacional no Beira-Rio."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2020?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2020"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2021?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2021"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2022?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2022"
+    ]
+   ]
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2023?",
+   "a": [
+    "saopaulo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2023"
+    ]
+   ],
+   "x": "Foi o primeiro título do São Paulo na competição."
+  },
+  {
+   "t": "Quem venceu a Copa do Brasil de 2024?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "2024"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Arena da Baixada?",
+   "a": [
+    "atleticopr"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Arena da Baixada",
+    [
+     "Arena da Baixada"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Arruda?",
+   "a": [
+    "santacruz"
+   ],
+   "d": 4,
+   "art": {
+    "stad": "arruda"
+   },
+   "src": [
+    "pt",
+    "Arruda",
+    [
+     "Arruda"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Aflitos?",
+   "a": [
+    "nautico"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Aflitos",
+    [
+     "Aflitos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Barradão?",
+   "a": [
+    "vitoria"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Barradão",
+    [
+     "Barradão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Baenão?",
+   "a": [
+    "remo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Baenão",
+    [
+     "Baenão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Curuzu?",
+   "a": [
+    "paysandu"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Curuzu",
+    [
+     "Curuzu"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Brinco de Ouro?",
+   "a": [
+    "guarani"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Brinco de Ouro",
+    [
+     "Brinco de Ouro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Moisés Lucarelli?",
+   "a": [
+    "pontepreta"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Moisés Lucarelli",
+    [
+     "Moisés Lucarelli"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Heriberto Hülse?",
+   "a": [
+    "criciuma"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Heriberto Hülse",
+    [
+     "Heriberto Hülse"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Ressacada?",
+   "a": [
+    "avai"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Ressacada",
+    [
+     "Ressacada"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Orlando Scarpelli?",
+   "a": [
+    "figueirense"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Orlando Scarpelli",
+    [
+     "Orlando Scarpelli"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Arena Condá?",
+   "a": [
+    "chapecoense"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Arena Condá",
+    [
+     "Arena Condá"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Alfredo Jaconi?",
+   "a": [
+    "juventude"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Alfredo Jaconi",
+    [
+     "Alfredo Jaconi"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Hailé Pinheiro?",
+   "a": [
+    "goias"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Hailé Pinheiro",
+    [
+     "Hailé Pinheiro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Antônio Accioly?",
+   "a": [
+    "atleticogo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Antônio Accioly",
+    [
+     "Antônio Accioly"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Arena Pantanal?",
+   "a": [
+    "cuiaba"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Arena Pantanal",
+    [
+     "Arena Pantanal"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Nabi Abi Chedid?",
+   "a": [
+    "bragantino"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Nabi Abi Chedid",
+    [
+     "Nabi Abi Chedid"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Canindé?",
+   "a": [
+    "portuguesa"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Canindé",
+    [
+     "Canindé"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Frasqueirão?",
+   "a": [
+    "abc"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Frasqueirão",
+    [
+     "Frasqueirão"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Arena MRV?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Arena MRV",
+    [
+     "Arena MRV"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Independência?",
+   "a": [
+    "americamg"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Independência",
+    [
+     "Independência"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Estádio Nilton Santos?",
+   "a": [
+    "botafogo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio Nilton Santos",
+    [
+     "Estádio Nilton Santos"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio São Januário?",
+   "a": [
+    "vasco"
+   ],
+   "d": 2,
+   "art": {
+    "stad": "saojanua"
+   },
+   "src": [
+    "pt",
+    "São Januário",
+    [
+     "São Januário"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Morumbis?",
+   "a": [
+    "saopaulo"
+   ],
+   "d": 2,
+   "art": {
+    "stad": "morumbi"
+   },
+   "src": [
+    "pt",
+    "Morumbis",
+    [
+     "Morumbis"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Vila Belmiro?",
+   "a": [
+    "santos"
+   ],
+   "d": 2,
+   "art": {
+    "stad": "vilabelmiro"
+   },
+   "src": [
+    "pt",
+    "Vila Belmiro",
+    [
+     "Vila Belmiro"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Estádio José Maria de Campos Maia?",
+   "a": [
+    "mirassol"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Estádio José Maria de Campos Maia",
+    [
+     "Estádio José Maria de Campos Maia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube manda seus jogos no estádio Santa Cruz, em Ribeirão Preto?",
+   "a": [
+    "botafogosp"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "stadium"
+   },
+   "src": [
+    "pt",
+    "Santa Cruz, em Ribeirão Preto",
+    [
+     "Santa Cruz, em Ribeirão Preto"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Rogério Ceni é ídolo?",
+   "a": [
+    "saopaulo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Rogério Ceni"
+    ]
+   ],
+   "x": "Rogério Ceni marcou mais de cem gols como goleiro."
+  },
+  {
+   "t": "De qual clube Marcos é ídolo?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Marcos"
+    ]
+   ],
+   "x": "São Marcos jogou a carreira inteira no Palmeiras."
+  },
+  {
+   "t": "De qual clube Tostão e Dirceu Lopes são ídolos?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Tostão e Dirceu Lopes"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Reinaldo é ídolo?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Reinaldo"
+    ]
+   ],
+   "x": "Reinaldo comemorava gols com o punho cerrado, gesto contra a ditadura."
+  },
+  {
+   "t": "De qual clube Renato Gaúcho é ídolo?",
+   "a": [
+    "gremio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Renato Gaúcho"
+    ]
+   ],
+   "x": "Renato foi campeão da Libertadores como jogador e como técnico pelo clube."
+  },
+  {
+   "t": "De qual clube Falcão e Fernandão são ídolos?",
+   "a": [
+    "internacional"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Falcão e Fernandão"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Sócrates e Marcelinho Carioca são ídolos?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Sócrates e Marcelinho Carioca"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Nílton Santos e Garrincha são ídolos?",
+   "a": [
+    "botafogo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Nílton Santos e Garrincha"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Castilho e Fred são ídolos?",
+   "a": [
+    "fluminense"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Castilho e Fred"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Ademir da Guia é ídolo?",
+   "a": [
+    "palmeiras"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Ademir da Guia"
+    ]
+   ],
+   "x": "Ademir da Guia é filho de Domingos da Guia."
+  },
+  {
+   "t": "De qual clube Alex, o camisa 10 da Tríplice Coroa de 2003 é ídolo?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Alex"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Assis e Washington, o Casal 20 são ídolos?",
+   "a": [
+    "fluminense"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Assis e Washington"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Evaristo de Macedo, depois ídolo do Barcelona e do Real Madrid é ídolo?",
+   "a": [
+    "flamengo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Evaristo de Macedo"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Túlio Maravilha, artilheiro do título de 1995 é ídolo?",
+   "a": [
+    "botafogo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Túlio Maravilha"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Neto, camisa 10 do título brasileiro de 1990 é ídolo?",
+   "a": [
+    "corinthians"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Neto"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Raí, irmão de Sócrates é ídolo?",
+   "a": [
+    "saopaulo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Raí"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Dario, o Dadá Maravilha, artilheiro do título brasileiro de 1971 é ídolo?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Dario"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Bobô, craque do título brasileiro de 1988 é ídolo?",
+   "a": [
+    "bahia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Bobô"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Dirceu Lopes, o Príncipe é ídolo?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Dirceu Lopes"
+    ]
+   ]
+  },
+  {
+   "t": "De qual clube Juninho Pernambucano, rei das faltas é ídolo?",
+   "a": [
+    "vasco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Juninho Pernambucano"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube foi campeão brasileiro de 1971, o primeiro da era do Campeonato Nacional?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Nacional?"
+    ]
+   ],
+   "x": "Dadá Maravilha fez o gol do título contra o Botafogo, no Maracanã."
+  },
+  {
+   "t": "Qual clube ganhou o Brasileirão de 2024 e a Libertadores no mesmo ano?",
+   "a": [
+    "botafogo"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "ano?"
+    ]
+   ],
+   "x": "O Botafogo não era campeão brasileiro desde 1995."
+  },
+  {
+   "t": "Qual clube ganhou o primeiro Brasileirão em pontos corridos, em 2003?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "2003?"
+    ]
+   ],
+   "x": "O Cruzeiro de Alex fez a tríplice coroa naquele ano."
+  },
+  {
+   "t": "Qual clube foi tricampeão brasileiro seguido de 2006 a 2008?",
+   "a": [
+    "saopaulo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "2008?"
+    ]
+   ],
+   "x": "O São Paulo de Muricy Ramalho."
+  },
+  {
+   "t": "Qual clube foi campeão brasileiro em 1985, na final contra o Bangu no Maracanã?",
+   "a": [
+    "coritiba"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Maracanã?"
+    ]
+   ],
+   "x": "O título foi decidido nos pênaltis."
+  },
+  {
+   "t": "Qual clube foi campeão brasileiro em 1978, com Careca ainda adolescente?",
+   "a": [
+    "guarani"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "adolescente?"
+    ]
+   ],
+   "x": "O único título brasileiro de um clube do interior paulista até hoje."
+  },
+  {
+   "t": "Qual clube foi campeão brasileiro em 1988, com Bobô e Charles?",
+   "a": [
+    "bahia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Charles?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube foi campeão brasileiro em 2001, com Kléberson e Alex Mineiro?",
+   "a": [
+    "atleticopr"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Mineiro?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube foi o primeiro brasileiro campeão da Libertadores, em 1962?",
+   "a": [
+    "santos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "1962?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 1976, com Nelinho e Joãozinho?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Joãozinho?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 1995, com Felipão no banco?",
+   "a": [
+    "gremio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "banco?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 1997, na final contra o Sporting Cristal?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Cristal?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 1998, no ano do seu centenário?",
+   "a": [
+    "vasco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "centenário?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 2010, com D'Alessandro?",
+   "a": [
+    "internacional"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "D'Alessandro?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 2017, contra o Lanús?",
+   "a": [
+    "gremio"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Lanús?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube ganhou a Libertadores de 2013 contra o Olimpia, com Ronaldinho?",
+   "a": [
+    "atleticomg"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Ronaldinho?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Colorado'?",
+   "a": [
+    "internacional"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Colorado'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Raposa'?",
+   "a": [
+    "cruzeiro"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Raposa'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Furacão'?",
+   "a": [
+    "atleticopr"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Furacão'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Tricolor de Aço'?",
+   "a": [
+    "bahia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Aço'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Leão da Ilha'?",
+   "a": [
+    "sport"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Ilha'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Tigre'?",
+   "a": [
+    "criciuma"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Tigre'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Macaca'?",
+   "a": [
+    "pontepreta"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Macaca'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Bugre'?",
+   "a": [
+    "guarani"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Bugre'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Esmeraldino'?",
+   "a": [
+    "goias"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Esmeraldino'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Dragão', em Goiânia?",
+   "a": [
+    "atleticogo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Goiânia?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Massa Bruta'?",
+   "a": [
+    "bragantino"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Bruta'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Verdão do Oeste'?",
+   "a": [
+    "chapecoense"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Oeste'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Papo'?",
+   "a": [
+    "juventude"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Papo'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Timbu'?",
+   "a": [
+    "nautico"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Timbu'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Rubro-Negro Baiano'?",
+   "a": [
+    "vitoria"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Baiano'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Coelho'?",
+   "a": [
+    "americamg"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Coelho'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Lusa'?",
+   "a": [
+    "portuguesa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Lusa'?"
+    ]
+   ]
+  },
+  {
+   "t": "Qual clube é conhecido como 'Dourado'?",
+   "a": [
+    "cuiaba"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "'Dourado'?"
+    ]
+   ]
+  }
+ ]
+}

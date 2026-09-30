@@ -88,27 +88,53 @@ def main():
             bad = lambda msg: errs.append(f"{where}: {msg} :: {q.get('t', '')[:70]}")
             t, a, typ = q.get("t", ""), q.get("a") or [], q.get("type")
             if not t.endswith("?"): bad("question does not end in '?'")
-            if fold(t) in seen: bad(f"duplicate of a question in {seen[fold(t)]}")
-            seen[fold(t)] = where
+            key = fold(t + ' ' + q["clues"][0]) if q.get("clues") else fold(t)
+            if key in seen: bad(f"duplicate of a question in {seen[key]}")
+            seen[key] = where
+            cl_ = q.get("clues")
+            if cl_ is not None and (not isinstance(cl_, list) or not 3 <= len(cl_) <= 5 or typ != "player"):
+                bad("clues must be 3-5 lines, on a player question")
             if not a: bad("no answer")
             if not isinstance(q.get("d"), int) or not 1 <= q["d"] <= 5: bad("d must be 1..5")
-            if typ == "txt":
+            fx = q.get("fixed")
+            if fx is not None:
+                if typ not in ("player", None) or len(fx) < 2 or len(set(fx)) != len(fx): bad("fixed: 2+ different ids on a player or club question")
+                if any(x not in fx for x in a): bad("fixed: an answer is not among the tiles")
+                for x in fx:
+                    if x not in (pl if typ == "player" else cl): bad(f"fixed: unknown id '{x}'")
+            sc_, xi_ = q.get("score"), q.get("xi")
+            if sc_ is not None and ([sc_.get("h"), sc_.get("a")].count("?") != 1 or "hg" not in sc_ or "ag" not in sc_):
+                bad("score needs h, hg, ag, a with exactly one side '?'")
+            if xi_ is not None and sum(r.count("?") for r in xi_.get("rows", [])) != 1:
+                bad("xi needs exactly one '?' on the pitch")
+            if typ == "order":
+                it = q.get("order") or []
+                if not 3 <= len(it) <= 5: bad("order needs 3-5 cards")
+                ids = [e.get("id") for e in it]
+                if len(set(ids)) != len(ids): bad("order: repeated card id")
+                if a != [e["id"] for e in sorted(it, key=lambda e: e["y"])]: bad("order: the answer is not the cards sorted by year")
+                if len({e["y"] for e in it}) != len(it): bad("order: two cards share a year")
+                for e in it:
+                    if not (e.get("face") in pl or e.get("crest") in logos or e.get("flag")): bad(f"order: card '{e.get('id')}' has no picture")
+            elif typ == "txt":
                 ch = q.get("choices") or []
-                if len(ch) != 6 or len({fold(c) for c in ch}) != 6: bad("txt needs six different choices")
+                need = 2 if q.get("duel") else 6
+                if len(ch) != need or len({fold(c) for c in ch}) != need: bad(f"txt needs {need} different choices")
                 if any(x not in ch for x in a): bad("an answer is not among the choices")
             elif typ == "player":
                 for x in a:
                     if x not in pl: bad(f"unknown player '{x}'")
-                    elif fold(pl[x]) in fold(t): bad(f"the question names its own answer ({pl[x]})")
+                    elif fold(pl[x]) in fold(t) and not q.get("duel"): bad(f"the question names its own answer ({pl[x]})")
             elif typ is None:
                 for x in a:
                     if x not in cl: bad(f"unknown club '{x}'")
-                    elif fold(cl[x]) in fold(t): bad(f"the question names its own answer ({cl[x]})")
+                    elif fold(cl[x]) in fold(t) and not q.get("duel"): bad(f"the question names its own answer ({cl[x]})")
             else:
                 bad(f"unknown type '{typ}'")
 
             art = q.get("art") or {}
-            if len(art) != 1: bad("art needs exactly one key")
+            pictured = typ == "order" or sc_ is not None or xi_ is not None
+            if len(art) != (0 if pictured else 1): bad("art needs exactly one key" if not pictured else "a scoreboard, pitch or timeline is its own picture: no art")
             for k, v in art.items():
                 if k == "who":
                     if v not in pl: bad(f"art: unknown player '{v}'")
@@ -139,6 +165,14 @@ def main():
             row = {"t": t, "a": a}
             if typ: row["type"] = typ
             if typ == "txt": row["choices"] = q["choices"]
+            for k_ in ("fixed", "clues", "score", "xi", "order"):
+                if q.get(k_) is not None: row[k_] = q[k_]
+            if q.get("clues"):
+                # a clue card hides what the tiles would otherwise give away
+                row.update({"_shown": 1, "opts": 6, "strict": 1, "_noFlag": True, "_hideCtry": True, "_hideEra": True})
+                nm = fold(pl.get(a[0], ""))
+                for c_ in q["clues"]:
+                    if nm and (nm in fold(c_) or nm.split()[-1] in fold(c_).split()): bad(f"a clue names the answer: {c_[:50]}")
             row["d"] = q.get("d")
             x_ = q.get("x")
             if x_ is not None:

@@ -137,8 +137,14 @@
 
    v53: the icons are the question mark now, not the football — the same
         picture as the Play listing, drawn by tools/make_icons.py. /icons/ is
-        in the versioned cache, so this bump is what replaces them. */
-const VERSION = 'v53';
+        in the versioned cache, so this bump is what replaces them.
+
+   v54: 1,037 new questions, every question and answer pictured, in new
+        formats: placar (guess the missing side of a scoreline), escalação
+        (a line-up with one gap), duelo (two options), duplas (mark both),
+        linha do tempo with faces and flags, quem sou eu with written clues,
+        and ache o intruso. */
+const VERSION = 'v54';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

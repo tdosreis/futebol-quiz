@@ -1,0 +1,2026 @@
+{
+ "id": "quemsoueupistas",
+ "name": "Quem sou eu? Quatro pistas",
+ "emoji": "🕵️",
+ "tag": "Pistas",
+ "col": "#7e57c2",
+ "diff": "Variado",
+ "qs": [
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "leonidas"
+   ],
+   "clues": [
+    "Atacante dos anos 1930 e 40, um dos primeiros ídolos negros do futebol brasileiro.",
+    "Fui artilheiro da Copa de 1938, na França.",
+    "Me chamavam de 'Diamante Negro' e dei nome a um chocolate.",
+    "Dizem que popularizei a bicicleta no Brasil."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Leônidas da Silva",
+    [
+     "Leônidas da Silva"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "domingos_guia"
+   ],
+   "clues": [
+    "Zagueiro elegante dos anos 1930, famoso por sair jogando.",
+    "Joguei no Vasco, no Flamengo, no Corinthians e no Boca Juniors.",
+    "O drible curto na própria área ganhou meu nome: a 'domingada'.",
+    "Me chamavam de 'Divino Mestre'."
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Domingos da Guia",
+    [
+     "Domingos da Guia"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zizinho"
+   ],
+   "clues": [
+    "Meia genial dos anos 1940, ídolo de infância de Pelé.",
+    "Fui eleito o melhor jogador da Copa de 1950.",
+    "Joguei no Flamengo, no Bangu e no São Paulo.",
+    "Me chamavam de 'Mestre Ziza'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Zizinho",
+    [
+     "Zizinho"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ademir"
+   ],
+   "clues": [
+    "Atacante dos anos 1940 e 50, de queixo marcante.",
+    "Fui o artilheiro da Copa de 1950, no Brasil.",
+    "Sou um dos maiores ídolos do Vasco.",
+    "Me chamavam de 'Queixada'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Ademir de Menezes",
+    [
+     "Ademir de Menezes"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "obdulio"
+   ],
+   "clues": [
+    "Volante e capitão uruguaio dos anos 1950.",
+    "Pus a bola debaixo do braço depois do gol do Brasil no Maracanã e fui reclamar com o árbitro.",
+    "Joguei a vida inteira no Peñarol.",
+    "Me chamavam de 'El Negro Jefe'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Obdulio Varela",
+    [
+     "Obdulio Varela"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ghiggia"
+   ],
+   "clues": [
+    "Ponta-direita uruguaio dos anos 1950.",
+    "Joguei no Peñarol, na Roma e no Milan.",
+    "Dizia que só três pessoas calaram o Maracanã: o Papa, Frank Sinatra e eu.",
+    "Fiz o gol do título uruguaio em 1950."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Alcides Ghiggia",
+    [
+     "Alcides Ghiggia"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "puskas"
+   ],
+   "clues": [
+    "Atacante canhoto que brilhou nos anos 1950.",
+    "Liderei os 'Magiares Mágicos' que golearam a Inglaterra em Wembley.",
+    "Depois da Revolução de 1956, fui brilhar no Real Madrid.",
+    "O prêmio do gol mais bonito do ano tem meu nome."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Ferenc Puskás",
+    [
+     "Ferenc Puskás"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "distefano"
+   ],
+   "clues": [
+    "Atacante que jogava em todas as posições do campo.",
+    "Joguei pelas seleções da Argentina e da Espanha, mas nunca disputei uma Copa.",
+    "Ganhei as cinco primeiras Copas dos Campeões com o Real Madrid.",
+    "Me chamavam de 'Saeta Rubia'."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Alfredo Di Stéfano",
+    [
+     "Alfredo Di Stéfano"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kopa"
+   ],
+   "clues": [
+    "Meia francês, filho de imigrantes poloneses.",
+    "Fui o melhor jogador da Copa de 1958.",
+    "Joguei no Reims e no Real Madrid.",
+    "Ganhei a Bola de Ouro de 1958."
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Raymond Kopa",
+    [
+     "Raymond Kopa"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "fontaine"
+   ],
+   "clues": [
+    "Atacante francês nascido no Marrocos.",
+    "Joguei no Nice e no Reims.",
+    "Uma lesão encerrou minha carreira aos 28 anos.",
+    "Tenho o recorde de gols numa só Copa: 13, em 1958."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Just Fontaine",
+    [
+     "Just Fontaine"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "clues": [
+    "Ponta-direita de pernas tortas, dos anos 1950 e 60.",
+    "Chamava todos os marcadores de 'João'.",
+    "Fui o grande nome da Copa de 1962, sem Pelé.",
+    "Sou o maior ídolo do Botafogo, a 'Alegria do Povo'."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Garrincha",
+    [
+     "Garrincha"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "didi"
+   ],
+   "clues": [
+    "Meia elegante dos anos 1950, bicampeão do mundo.",
+    "Joguei no Fluminense, no Botafogo e no Real Madrid.",
+    "Inventei a 'folha seca', o chute que caía de repente.",
+    "Fui eleito o melhor jogador da Copa de 1958."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Didi",
+    [
+     "Didi"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "nilton_santos"
+   ],
+   "clues": [
+    "Lateral-esquerdo que adorava atacar, nos anos 1950.",
+    "Joguei a carreira toda num só clube.",
+    "Fiz um gol contra a Áustria na Copa de 1958, avançando pela lateral.",
+    "Me chamavam de 'Enciclopédia do Futebol', e o estádio do Botafogo tem meu nome."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Nílton Santos",
+    [
+     "Nílton Santos"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "yashin"
+   ],
+   "clues": [
+    "Goleiro que se vestia de preto, nos anos 1950 e 60.",
+    "Joguei a carreira inteira no Dínamo de Moscou.",
+    "Defendi mais de 150 pênaltis, segundo as contas da época.",
+    "Sou o único goleiro a ganhar a Bola de Ouro."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Lev Yashin",
+    [
+     "Lev Yashin"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "eusebio"
+   ],
+   "clues": [
+    "Atacante nascido em Moçambique, dos anos 1960.",
+    "Fui artilheiro da Copa de 1966, com nove gols.",
+    "Sou o maior ídolo do Benfica.",
+    "Me chamavam de 'Pantera Negra'."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Eusébio",
+    [
+     "Eusébio"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "best"
+   ],
+   "clues": [
+    "Ponta norte-irlandês dos anos 1960, cabeludo e boêmio.",
+    "Nunca joguei uma Copa do Mundo.",
+    "Fui campeão europeu com o Manchester United em 1968.",
+    "Diziam que eu era o 'quinto Beatle'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "George Best",
+    [
+     "George Best"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "charlton"
+   ],
+   "clues": [
+    "Meia inglês dos anos 1960, de chute potente.",
+    "Sobrevivi ao acidente aéreo de Munique, em 1958.",
+    "Fui campeão do mundo em 1966 e europeu em 1968.",
+    "Sou um dos maiores ídolos do Manchester United."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Bobby Charlton",
+    [
+     "Bobby Charlton"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "beckenbauer"
+   ],
+   "clues": [
+    "Zagueiro que saía jogando como um meia.",
+    "Joguei a semifinal de 1970 com o ombro deslocado e o braço imobilizado.",
+    "Fui campeão do mundo como capitão em 1974 e como técnico em 1990.",
+    "Me chamavam de 'Kaiser'."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Franz Beckenbauer",
+    [
+     "Franz Beckenbauer"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "clues": [
+    "Centroavante baixinho e implacável dentro da área.",
+    "Fiz 14 gols em Copas do Mundo, recorde que durou décadas.",
+    "Fiz o gol do título da Alemanha Ocidental em 1974.",
+    "Me chamavam de 'Der Bomber'."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Gerd Müller",
+    [
+     "Gerd Müller"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cruyff"
+   ],
+   "clues": [
+    "Atacante holandês que usava a camisa 14.",
+    "Ganhei três Copas dos Campeões seguidas com o Ajax.",
+    "Um drible de costas para o marcador ganhou meu nome.",
+    "Criei o 'Dream Team' do Barcelona como técnico."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Johan Cruyff",
+    [
+     "Johan Cruyff"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "tostao"
+   ],
+   "clues": [
+    "Atacante inteligente, ídolo de Minas Gerais.",
+    "Um descolamento de retina quase me tirou da Copa de 1970.",
+    "Parei de jogar aos 26 anos e virei médico.",
+    "Sou o maior ídolo do Cruzeiro nos anos 1960."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Tostão",
+    [
+     "Tostão"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rivellino"
+   ],
+   "clues": [
+    "Meia canhoto de bigode, dos anos 1970.",
+    "Joguei no Corinthians e no Fluminense.",
+    "Fiz um gol de falta de longe contra a Tchecoslováquia em 1970.",
+    "O elástico ficou famoso com meu nome."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Rivellino",
+    [
+     "Rivellino"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "clues": [
+    "Ponta-direita rápido e forte, dos anos 1970.",
+    "Sou cria do Botafogo, como Garrincha.",
+    "Marquei em todos os jogos do Brasil na Copa de 1970.",
+    "Me chamavam de 'Furacão da Copa'."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Jairzinho",
+    [
+     "Jairzinho"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "carlos_alberto"
+   ],
+   "clues": [
+    "Lateral-direito e capitão da seleção nos anos 1970.",
+    "Joguei no Fluminense, no Santos e no New York Cosmos.",
+    "Levantei a taça Jules Rimet no Azteca.",
+    "Fiz o último gol da final de 1970, depois de um passe de Pelé."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Carlos Alberto Torres",
+    [
+     "Carlos Alberto Torres"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kempes"
+   ],
+   "clues": [
+    "Centroavante cabeludo dos anos 1970.",
+    "Era o único da seleção que jogava na Europa, no Valencia.",
+    "Fui artilheiro e campeão da Copa de 1978, em casa.",
+    "Me chamavam de 'El Matador'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Mario Kempes",
+    [
+     "Mario Kempes"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "clues": [
+    "Meia camisa 10 dos anos 1970 e 80.",
+    "Joguei na Udinese e ajudei a fundar o futebol profissional no Japão, no Kashima.",
+    "Perdi um pênalti contra a França na Copa de 1986.",
+    "Sou o maior ídolo do Flamengo, o 'Galinho de Quintino'."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Zico",
+    [
+     "Zico"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "socrates"
+   ],
+   "clues": [
+    "Meia alto, de passe de calcanhar, dos anos 1980.",
+    "Me formei em medicina enquanto jogava.",
+    "Liderei a Democracia Corinthiana.",
+    "Fui capitão da seleção de 1982."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Sócrates",
+    [
+     "Sócrates"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "falcao"
+   ],
+   "clues": [
+    "Volante elegante dos anos 1970 e 80.",
+    "Fui campeão brasileiro invicto com o Internacional em 1979.",
+    "Na Itália me chamaram de 'Rei de Roma'.",
+    "Fiz o gol do empate contra a Itália no Sarriá, em 1982."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Paulo Roberto Falcão",
+    [
+     "Paulo Roberto Falcão"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "clues": [
+    "Atacante italiano dos anos 1980.",
+    "Voltei de uma suspensão pouco antes da Copa de 1982.",
+    "Fiz três gols no Brasil no Estádio Sarriá.",
+    "Fui artilheiro da Copa e Bola de Ouro em 1982."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Paolo Rossi",
+    [
+     "Paolo Rossi"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "platini"
+   ],
+   "clues": [
+    "Meia francês dos anos 1980, craque nas faltas.",
+    "Ganhei a Bola de Ouro três vezes seguidas.",
+    "Fui ídolo da Juventus.",
+    "Fiz nove gols na Euro 1984, que a França ganhou."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Michel Platini",
+    [
+     "Michel Platini"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maradona"
+   ],
+   "clues": [
+    "Meia canhoto baixinho dos anos 1980.",
+    "Fui o maior ídolo da história do Napoli.",
+    "Marquei dois gols históricos contra a Inglaterra em 1986, um deles com a mão.",
+    "Fui campeão do mundo como capitão da Argentina em 1986."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Diego Maradona",
+    [
+     "Diego Maradona"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rummenigge"
+   ],
+   "clues": [
+    "Atacante alemão dos anos 1980.",
+    "Ganhei a Bola de Ouro em 1980 e 1981.",
+    "Joguei no Bayern e na Inter de Milão.",
+    "Perdi duas finais de Copa seguidas, em 1982 e 1986."
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Karl-Heinz Rummenigge",
+    [
+     "Karl-Heinz Rummenigge"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "van_basten"
+   ],
+   "clues": [
+    "Centroavante holandês dos anos 1980 e 90.",
+    "Uma lesão no tornozelo me tirou dos campos aos 28 anos.",
+    "Fiz um voleio quase sem ângulo na final da Euro 1988.",
+    "Ganhei três Bolas de Ouro jogando pelo Milan."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Marco van Basten",
+    [
+     "Marco van Basten"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gullit"
+   ],
+   "clues": [
+    "Meia holandês de tranças, dos anos 1980.",
+    "Dediquei minha Bola de Ouro de 1987 a Nelson Mandela.",
+    "Formei o trio holandês do Milan de Sacchi.",
+    "Depois fui jogador e técnico do Chelsea."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Ruud Gullit",
+    [
+     "Ruud Gullit"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "matthaus"
+   ],
+   "clues": [
+    "Meia alemão, recordista de jogos em Copas por muito tempo.",
+    "Joguei cinco Copas do Mundo.",
+    "Fui capitão da Alemanha campeã em 1990.",
+    "Fui o primeiro eleito melhor jogador do mundo pela FIFA, em 1991."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Lothar Matthäus",
+    [
+     "Lothar Matthäus"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "careca"
+   ],
+   "clues": [
+    "Centroavante dos anos 1980, revelado no interior paulista.",
+    "Fui campeão brasileiro com o Guarani e com o São Paulo.",
+    "Formei um trio famoso no Napoli com Maradona.",
+    "Fui cortado da Copa de 1982 por lesão e joguei as de 1986 e 1990."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Careca",
+    [
+     "Careca"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "romario"
+   ],
+   "clues": [
+    "Atacante baixinho, rei da pequena área.",
+    "Fui artilheiro do Campeonato Holandês pelo PSV.",
+    "Fui o melhor jogador da Copa de 1994.",
+    "Digo que marquei mais de mil gols na carreira, e hoje sou senador."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Romário",
+    [
+     "Romário"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "bebeto"
+   ],
+   "clues": [
+    "Atacante dos anos 1990, parceiro de outro baixinho.",
+    "Fui ídolo do Deportivo La Coruña.",
+    "Joguei no Flamengo e no Vasco.",
+    "Comemorei um gol na Copa de 1994 embalando um bebê imaginário."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Bebeto",
+    [
+     "Bebeto"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "baggio"
+   ],
+   "clues": [
+    "Atacante italiano de rabo de cavalo, budista.",
+    "Joguei na Fiorentina, na Juventus, no Milan e na Inter.",
+    "Ganhei a Bola de Ouro de 1993.",
+    "Chutei por cima o último pênalti da final de 1994."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Roberto Baggio",
+    [
+     "Roberto Baggio"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "stoichkov"
+   ],
+   "clues": [
+    "Atacante canhoto e explosivo dos anos 1990.",
+    "Fui peça do 'Dream Team' de Cruyff no Barcelona.",
+    "Levei a Bulgária à semifinal da Copa de 1994.",
+    "Ganhei a Bola de Ouro de 1994."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Hristo Stoichkov",
+    [
+     "Hristo Stoichkov"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "weah"
+   ],
+   "clues": [
+    "Atacante africano dos anos 1990.",
+    "Joguei no Monaco, no PSG e no Milan.",
+    "Fui o primeiro africano a ganhar a Bola de Ouro, em 1995.",
+    "Depois virei presidente do meu país, a Libéria."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "George Weah",
+    [
+     "George Weah"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "clues": [
+    "Atacante que estreou no Cruzeiro ainda adolescente.",
+    "Fui o jogador mais jovem a ser eleito o melhor do mundo pela FIFA.",
+    "Voltei de duas lesões graves no joelho para brilhar na Copa de 2002.",
+    "Me chamam de 'Fenômeno'."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Ronaldo (futebolista)",
+    [
+     "Ronaldo (futebolista)"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zidane"
+   ],
+   "clues": [
+    "Meia francês de origem argelina, nascido em Marselha.",
+    "Fiz dois gols de cabeça numa final de Copa.",
+    "Fiz um voleio histórico na final da Champions de 2002.",
+    "Fui expulso na final de 2006 por uma cabeçada."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Zinedine Zidane",
+    [
+     "Zinedine Zidane"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "clues": [
+    "Meia-atacante canhoto, nascido no Recife.",
+    "Joguei no Palmeiras, no Deportivo La Coruña e no Barcelona.",
+    "Ganhei a Bola de Ouro de 1999.",
+    "Fui um dos 'três R' do penta, em 2002."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Rivaldo",
+    [
+     "Rivaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "roberto_carlos"
+   ],
+   "clues": [
+    "Lateral-esquerdo baixinho de chute fortíssimo.",
+    "Joguei no Palmeiras, na Inter e no Real Madrid.",
+    "Fiz um gol de falta em curva impossível contra a França, em 1997.",
+    "Fui campeão do mundo em 2002 e três vezes campeão europeu."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Roberto Carlos",
+    [
+     "Roberto Carlos"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "clues": [
+    "Lateral-direito incansável, três vezes finalista de Copa.",
+    "Joguei no São Paulo, na Roma e no Milan.",
+    "Sou o único jogador a disputar três finais de Copa seguidas.",
+    "Levantei a taça do penta como capitão."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Cafu",
+    [
+     "Cafu"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "figo"
+   ],
+   "clues": [
+    "Meia português de dribles pela ponta.",
+    "Fui ídolo do Barcelona e depois me transferi para o maior rival.",
+    "Na volta ao Camp Nou, jogaram uma cabeça de porco no campo.",
+    "Ganhei a Bola de Ouro de 2000."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Luís Figo",
+    [
+     "Luís Figo"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "shevchenko"
+   ],
+   "clues": [
+    "Atacante ucraniano revelado no Dínamo de Kiev.",
+    "Fui artilheiro do Campeonato Italiano pelo Milan.",
+    "Bati o pênalti do título europeu do Milan em 2003.",
+    "Ganhei a Bola de Ouro de 2004."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Andriy Shevchenko",
+    [
+     "Andriy Shevchenko"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "clues": [
+    "Meia-atacante que jogava sorrindo.",
+    "Fui revelado pelo Grêmio e brilhei no PSG antes do Barcelona.",
+    "Fiz um gol de falta que encobriu o goleiro inglês na Copa de 2002.",
+    "Fui aplaudido pela torcida do Real Madrid no Bernabéu, em 2005."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Ronaldinho",
+    [
+     "Ronaldinho"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "clues": [
+    "Meia de arrancadas, revelado no São Paulo.",
+    "Fui campeão do mundo em 2002, ainda reserva.",
+    "Ganhei a Champions com o Milan em 2007.",
+    "Fui o último a ganhar a Bola de Ouro antes da era Messi e Cristiano Ronaldo."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Kaká",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "henry"
+   ],
+   "clues": [
+    "Atacante francês, rápido e elegante.",
+    "Fui revelado no Monaco e passei pela Juventus.",
+    "Sou o maior artilheiro da história do Arsenal.",
+    "Fui campeão do mundo em 1998 e europeu com o Barcelona em 2009."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Thierry Henry",
+    [
+     "Thierry Henry"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "drogba"
+   ],
+   "clues": [
+    "Atacante africano forte e decisivo nas finais.",
+    "Joguei no Guingamp e no Olympique de Marselha.",
+    "Fiz o gol de empate e o pênalti decisivo na final da Champions de 2012.",
+    "Pedi pelo fim da guerra civil na Costa do Marfim em 2005."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Didier Drogba",
+    [
+     "Didier Drogba"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "etoo"
+   ],
+   "clues": [
+    "Atacante camaronês de muitos títulos.",
+    "Fui descartado pelo Real Madrid e brilhei no Mallorca.",
+    "Ganhei a tríplice coroa com o Barcelona e, no ano seguinte, com a Inter.",
+    "Marquei em duas finais de Champions."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Samuel Eto'o",
+    [
+     "Samuel Eto'o"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pirlo"
+   ],
+   "clues": [
+    "Meia italiano de barba longa e passes longos.",
+    "Comecei como meia-atacante e virei o 'regista' que armava o jogo lá de trás.",
+    "Joguei no Milan e na Juventus.",
+    "Fui campeão do mundo em 2006."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Andrea Pirlo",
+    [
+     "Andrea Pirlo"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "clues": [
+    "Goleiro italiano de carreira longuíssima.",
+    "Fui a transferência de goleiro mais cara do mundo por muitos anos.",
+    "Joguei no Parma, na Juventus e no PSG.",
+    "Fui campeão do mundo em 2006."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Gianluigi Buffon",
+    [
+     "Gianluigi Buffon"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "iniesta"
+   ],
+   "clues": [
+    "Meia espanhol, calvo e discreto.",
+    "Joguei 16 anos no Barcelona e terminei a carreira no Japão.",
+    "Fiz um gol no último minuto contra o Chelsea em 2009 que levou o Barça à final.",
+    "Fiz o gol do título da Espanha em 2010."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Andrés Iniesta",
+    [
+     "Andrés Iniesta"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "xavi"
+   ],
+   "clues": [
+    "Meia espanhol, maestro do passe curto.",
+    "Joguei 17 temporadas no Barcelona.",
+    "Fui eleito o melhor jogador da Euro 2008.",
+    "Depois fui técnico do Barcelona."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Xavi",
+    [
+     "Xavi"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "clues": [
+    "Atacante canhoto que saiu da Argentina aos 13 anos.",
+    "Fiz um tratamento de hormônio de crescimento pago pelo meu clube.",
+    "Ganhei a Bola de Ouro oito vezes.",
+    "Fui campeão do mundo em 2022, no Catar."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Lionel Messi",
+    [
+     "Lionel Messi"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "cr7"
+   ],
+   "clues": [
+    "Atacante português nascido na Ilha da Madeira.",
+    "Fui revelado no Sporting e brilhei no Manchester United.",
+    "Sou o maior artilheiro da história da Champions.",
+    "Ganhei cinco Bolas de Ouro."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Cristiano Ronaldo",
+    [
+     "Cristiano Ronaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "clues": [
+    "Atacante revelado na Vila Belmiro.",
+    "Ganhei o Prêmio Puskás em 2011.",
+    "Fui a transferência mais cara da história, em 2017.",
+    "Sou o maior artilheiro da história da seleção brasileira."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Neymar",
+    [
+     "Neymar"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "modric"
+   ],
+   "clues": [
+    "Meia croata que cresceu como refugiado durante a guerra.",
+    "Joguei no Dinamo Zagreb e no Tottenham.",
+    "Levei a Croácia à final da Copa de 2018.",
+    "Quebrei a hegemonia de Messi e Cristiano Ronaldo na Bola de Ouro, em 2018."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Luka Modrić",
+    [
+     "Luka Modrić"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "lewandowski"
+   ],
+   "clues": [
+    "Centroavante polonês de muitos gols.",
+    "Joguei no Dortmund e no Bayern.",
+    "Fiz cinco gols em nove minutos saindo do banco, em 2015.",
+    "Quebrei o recorde de gols numa só Bundesliga, com 41."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Robert Lewandowski",
+    [
+     "Robert Lewandowski"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "mbappe"
+   ],
+   "clues": [
+    "Atacante francês muito rápido, revelado no Monaco.",
+    "Fui campeão do mundo aos 19 anos.",
+    "Fiz três gols numa final de Copa e perdi.",
+    "Troquei o PSG pelo Real Madrid em 2024."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Kylian Mbappé",
+    [
+     "Kylian Mbappé"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "haaland"
+   ],
+   "clues": [
+    "Centroavante nórdico, filho de ex-jogador da Premier League.",
+    "Joguei no Salzburg e no Borussia Dortmund.",
+    "Quebrei o recorde de gols numa só Premier League, com 36.",
+    "Ganhei a tríplice coroa com o Manchester City em 2023."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Erling Haaland",
+    [
+     "Erling Haaland"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "vinicius"
+   ],
+   "clues": [
+    "Atacante revelado no Flamengo, vendido ainda menor de idade.",
+    "Fiz o gol do título da Champions de 2022.",
+    "Marquei na final da Champions de 2024, em Wembley.",
+    "Fui eleito o melhor jogador do mundo pela FIFA em 2024."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Vinícius Júnior",
+    [
+     "Vinícius Júnior"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "clues": [
+    "Atacante revelado no Santos aos 15 anos.",
+    "Joguei nos Estados Unidos, no New York Cosmos.",
+    "Marquei meu milésimo gol de pênalti, no Maracanã.",
+    "Sou o único tricampeão mundial como jogador."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Pelé",
+    [
+     "Pelé"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "schiaffino"
+   ],
+   "clues": [
+    "Meia uruguaio dos anos 1950.",
+    "Joguei no Peñarol, no Milan e na Roma.",
+    "Depois, defendi também a seleção da Itália.",
+    "Fiz o gol de empate do Uruguai no Maracanã, em 1950."
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Juan Alberto Schiaffino",
+    [
+     "Juan Alberto Schiaffino"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "zagallo"
+   ],
+   "clues": [
+    "Ponta-esquerda que voltava para marcar, nos anos 1950 e 60.",
+    "Joguei no Flamengo e no Botafogo.",
+    "Fui técnico da seleção em 1970 e coordenador em 1994.",
+    "Fui o primeiro campeão do mundo como jogador e como técnico."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Mário Zagallo",
+    [
+     "Mário Zagallo"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "hagi"
+   ],
+   "clues": [
+    "Meia canhoto romeno dos anos 1990.",
+    "Joguei no Real Madrid e no Barcelona.",
+    "Levei a Romênia às quartas de final da Copa de 1994.",
+    "Me chamavam de 'Maradona dos Cárpatos'."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Gheorghe Hagi",
+    [
+     "Gheorghe Hagi"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "valderrama"
+   ],
+   "clues": [
+    "Meia colombiano dos anos 1990, de passes precisos.",
+    "Joguei no Montpellier e nos Estados Unidos.",
+    "Joguei três Copas do Mundo.",
+    "Era famoso pela cabeleira loira e armada."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Carlos Valderrama",
+    [
+     "Carlos Valderrama"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "higuita"
+   ],
+   "clues": [
+    "Goleiro colombiano que saía jogando com os pés.",
+    "Perdi uma bola para Roger Milla fora da área na Copa de 1990.",
+    "Ganhei a Libertadores de 1989 com o Atlético Nacional.",
+    "Fiz a 'defesa escorpião' em Wembley."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "René Higuita",
+    [
+     "René Higuita"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "chilavert"
+   ],
+   "clues": [
+    "Goleiro paraguaio, cobrador de faltas e pênaltis.",
+    "Fui ídolo do Vélez Sarsfield.",
+    "Fui eleito três vezes o melhor goleiro do mundo pela IFFHS.",
+    "Marquei mais de 60 gols na carreira."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "José Luis Chilavert",
+    [
+     "José Luis Chilavert"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "francescoli"
+   ],
+   "clues": [
+    "Meia uruguaio elegante dos anos 1980 e 90.",
+    "Joguei no Olympique de Marselha e no Torino.",
+    "Sou ídolo do River Plate.",
+    "Zidane batizou o filho com meu nome."
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Enzo Francescoli",
+    [
+     "Enzo Francescoli"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "batistuta"
+   ],
+   "clues": [
+    "Centroavante argentino de cabelo comprido.",
+    "Fiquei na Fiorentina mesmo depois de o clube cair para a Série B.",
+    "Ganhei o Campeonato Italiano com a Roma em 2001.",
+    "Fiz hat-tricks em duas Copas diferentes."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Gabriel Batistuta",
+    [
+     "Gabriel Batistuta"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "maldini"
+   ],
+   "clues": [
+    "Lateral e zagueiro italiano de carreira longa.",
+    "Meu pai foi capitão do mesmo clube que eu.",
+    "Joguei 25 temporadas no Milan.",
+    "Ganhei cinco títulos europeus e nunca fui campeão do mundo."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Paolo Maldini",
+    [
+     "Paolo Maldini"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "beckham"
+   ],
+   "clues": [
+    "Meia inglês de cruzamentos precisos.",
+    "Fui expulso contra a Argentina na Copa de 1998.",
+    "Joguei no Real Madrid e fui para os Estados Unidos em 2007.",
+    "Sou ídolo do Manchester United e dono de um clube em Miami."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "David Beckham",
+    [
+     "David Beckham"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "gerrard"
+   ],
+   "clues": [
+    "Meia inglês de chutes de longe.",
+    "Joguei 17 temporadas no mesmo clube.",
+    "Comecei a virada de Istambul com um gol de cabeça.",
+    "Sou o maior capitão da história do Liverpool."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Steven Gerrard",
+    [
+     "Steven Gerrard"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "ibrahimovic"
+   ],
+   "clues": [
+    "Centroavante sueco de origem bósnia, mestre do taekwondo.",
+    "Joguei em Ajax, Juventus, Inter, Barcelona, Milan, PSG e Manchester United.",
+    "Ganhei o Prêmio Puskás com uma bicicleta contra a Inglaterra.",
+    "Nunca ganhei a Champions League."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Zlatan Ibrahimović",
+    [
+     "Zlatan Ibrahimović"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "del_piero"
+   ],
+   "clues": [
+    "Atacante italiano, craque das faltas.",
+    "Joguei 19 temporadas na Juventus e fiquei no clube na Série B.",
+    "Fiz o segundo gol da semifinal de 2006 contra a Alemanha.",
+    "Terminei a carreira na Austrália e na Índia."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Alessandro Del Piero",
+    [
+     "Alessandro Del Piero"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "totti"
+   ],
+   "clues": [
+    "Atacante italiano de um clube só.",
+    "Fui campeão italiano em 2001.",
+    "Comemorei um gol tirando uma selfie com a torcida.",
+    "Sou o capitão eterno da Roma."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Francesco Totti",
+    [
+     "Francesco Totti"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "suarez"
+   ],
+   "clues": [
+    "Centroavante uruguaio, polêmico e artilheiro.",
+    "Tirei com a mão uma bola em cima da linha contra Gana em 2010.",
+    "Formei o trio MSN no Barcelona.",
+    "Joguei no Grêmio e fui para o Inter Miami."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Luis Suárez",
+    [
+     "Luis Suárez"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "salah"
+   ],
+   "clues": [
+    "Atacante canhoto africano, muito rápido.",
+    "Passei pelo Chelsea, pela Fiorentina e pela Roma.",
+    "Abri o placar na final da Champions de 2019, de pênalti.",
+    "Sou o maior ídolo egípcio do Liverpool."
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Mohamed Salah",
+    [
+     "Mohamed Salah"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "de_bruyne"
+   ],
+   "clues": [
+    "Meia belga de passes e chutes precisos.",
+    "Não tive chance no Chelsea e brilhei no Wolfsburg.",
+    "Fui eleito o melhor jogador da Premier League duas vezes.",
+    "Ganhei a tríplice coroa com o Manchester City em 2023."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Kevin De Bruyne",
+    [
+     "Kevin De Bruyne"
+    ]
+   ]
+  },
+  {
+   "t": "Quem sou eu?",
+   "type": "player",
+   "a": [
+    "kane"
+   ],
+   "clues": [
+    "Centroavante inglês, maior artilheiro da história da seleção.",
+    "Fui emprestado a vários clubes pequenos antes de estourar.",
+    "Fui artilheiro da Copa de 2018.",
+    "Troquei o Tottenham pelo Bayern em 2023."
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Harry Kane",
+    [
+     "Harry Kane"
+    ]
+   ]
+  }
+ ]
+}

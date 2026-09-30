@@ -1,0 +1,969 @@
+{
+ "id": "intrusofotos",
+ "name": "Ache o intruso",
+ "emoji": "🔍",
+ "tag": "Intruso",
+ "col": "#4a4a8c",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com o Brasil em 1958?",
+   "type": "player",
+   "a": [
+    "julinho"
+   ],
+   "fixed": [
+    "gilmar",
+    "julinho",
+    "garrincha",
+    "vava",
+    "zito",
+    "didi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1958 FIFA World Cup",
+    [
+     "1958 FIFA World Cup"
+    ]
+   ],
+   "x": "Julinho Botelho jogava na época, mas não estava entre os campeões de 1958."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com o Brasil em 1962?",
+   "type": "player",
+   "a": [
+    "felix"
+   ],
+   "fixed": [
+    "nilton_santos",
+    "amarildo",
+    "zagallo",
+    "didi",
+    "felix",
+    "zito"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1962 FIFA World Cup",
+    [
+     "1962 FIFA World Cup"
+    ]
+   ],
+   "x": "Félix jogava na época, mas não estava entre os campeões de 1962."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com o Brasil em 1970?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "fixed": [
+    "rivellino",
+    "gerson",
+    "felix",
+    "jairzinho",
+    "clodoaldo",
+    "garrincha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1970 FIFA World Cup",
+    [
+     "1970 FIFA World Cup"
+    ]
+   ],
+   "x": "Garrincha jogava na época, mas não estava entre os campeões de 1970."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com o Brasil em 1994?",
+   "type": "player",
+   "a": [
+    "savio"
+   ],
+   "fixed": [
+    "branco",
+    "savio",
+    "romario",
+    "zetti",
+    "jorginho",
+    "mauro_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1994 FIFA World Cup",
+    [
+     "1994 FIFA World Cup"
+    ]
+   ],
+   "x": "Sávio jogava na época, mas não estava entre os campeões de 1994."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com o Brasil em 2002?",
+   "type": "player",
+   "a": [
+    "tulio"
+   ],
+   "fixed": [
+    "lucio",
+    "gilberto_silva",
+    "tulio",
+    "kaka",
+    "rivaldo",
+    "roberto_carlos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2002 FIFA World Cup",
+    [
+     "2002 FIFA World Cup"
+    ]
+   ],
+   "x": "Túlio Maravilha jogava na época, mas não estava entre os campeões de 2002."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com a Itália em 2006?",
+   "type": "player",
+   "a": [
+    "maldini"
+   ],
+   "fixed": [
+    "totti",
+    "pirlo",
+    "cannavaro",
+    "buffon",
+    "nesta",
+    "maldini"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2006 FIFA World Cup",
+    [
+     "2006 FIFA World Cup"
+    ]
+   ],
+   "x": "Paolo Maldini jogava na época, mas não estava entre os campeões de 2006."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com a Espanha em 2010?",
+   "type": "player",
+   "a": [
+    "raul"
+   ],
+   "fixed": [
+    "david_silva",
+    "iniesta",
+    "raul",
+    "sergio_ramos",
+    "torres",
+    "villa"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2010 FIFA World Cup",
+    [
+     "2010 FIFA World Cup"
+    ]
+   ],
+   "x": "Raúl jogava na época, mas não estava entre os campeões de 2010."
+  },
+  {
+   "t": "Ache o intruso: qual destes NÃO foi campeão do mundo com a França em 2018?",
+   "type": "player",
+   "a": [
+    "benzema"
+   ],
+   "fixed": [
+    "kante",
+    "benzema",
+    "griezmann",
+    "mbappe",
+    "pogba",
+    "lloris"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2018 FIFA World Cup",
+    [
+     "2018 FIFA World Cup"
+    ]
+   ],
+   "x": "Karim Benzema jogava na época, mas não estava entre os campeões de 2018."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques dos anos 2000 NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "henry"
+   ],
+   "fixed": [
+    "henry",
+    "ronaldinho",
+    "shevchenko",
+    "cannavaro",
+    "nedved",
+    "kaka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Henry foi segundo colocado em 2003."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques dos anos 1990 NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "romario"
+   ],
+   "fixed": [
+    "romario",
+    "stoichkov",
+    "ronaldo",
+    "zidane",
+    "baggio",
+    "weah"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Romário foi eleito o melhor do mundo pela FIFA em 1994, mas a Bola de Ouro daquele ano foi de Stoichkov."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques dos anos 1980 NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "fixed": [
+    "rummenigge",
+    "platini",
+    "gullit",
+    "rossi",
+    "zico",
+    "van_basten"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Até 1994, a Bola de Ouro só premiava jogadores europeus."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques dos anos 1960 NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "fixed": [
+    "best",
+    "law",
+    "charlton",
+    "yashin",
+    "eusebio",
+    "pele"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Pelé nunca pôde concorrer: até 1995, só europeus disputavam a Bola de Ouro. Em 2014 recebeu uma honorária."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques dos anos 2010 NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "fixed": [
+    "neymar",
+    "cr7",
+    "messi",
+    "rodri",
+    "modric",
+    "benzema"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Neymar ficou em terceiro em 2015 e 2017."
+  },
+  {
+   "t": "Ache o intruso: qual destes meias NUNCA ganhou a Bola de Ouro?",
+   "type": "player",
+   "a": [
+    "xavi"
+   ],
+   "fixed": [
+    "xavi",
+    "zidane",
+    "modric",
+    "kaka",
+    "platini",
+    "rivaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Xavi ficou no pódio três vezes, sempre atrás de Messi."
+  },
+  {
+   "t": "Ache o intruso: qual destes goleiros NUNCA foi campeão do mundo?",
+   "type": "player",
+   "a": [
+    "kahn"
+   ],
+   "fixed": [
+    "buffon",
+    "casillas",
+    "neuer",
+    "kahn",
+    "zoff",
+    "taffarel"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Kahn foi eleito o melhor jogador da Copa de 2002, mas perdeu a final."
+  },
+  {
+   "t": "Ache o intruso: qual destes goleiros NUNCA ganhou a Champions League?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "fixed": [
+    "buffon",
+    "neuer",
+    "van_der_sar",
+    "dida",
+    "alisson",
+    "casillas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Buffon perdeu três finais de Champions pela Juventus."
+  },
+  {
+   "t": "Ache o intruso: qual destes atacantes NUNCA foi artilheiro de uma Copa do Mundo?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "fixed": [
+    "kempes",
+    "gerd_muller",
+    "ronaldo",
+    "fontaine",
+    "messi",
+    "klose"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Messi chegou a 13 gols em Copas sem nunca ser o artilheiro de uma edição."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Real Madrid?",
+   "type": "player",
+   "a": [
+    "henry"
+   ],
+   "fixed": [
+    "zidane",
+    "henry",
+    "figo",
+    "beckham",
+    "owen",
+    "ronaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Henry passou por Monaco, Juventus, Arsenal, Barcelona e New York Red Bulls."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Barcelona?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "fixed": [
+    "romario",
+    "kaka",
+    "ronaldinho",
+    "ronaldo",
+    "neymar",
+    "rivaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Kaká jogou no São Paulo, Milan, Real Madrid e Orlando City."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Milan?",
+   "type": "player",
+   "a": [
+    "totti"
+   ],
+   "fixed": [
+    "kaka",
+    "ronaldinho",
+    "totti",
+    "shevchenko",
+    "van_basten",
+    "weah"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Totti jogou a carreira inteira na Roma."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou na Juventus?",
+   "type": "player",
+   "a": [
+    "maradona"
+   ],
+   "fixed": [
+    "pirlo",
+    "buffon",
+    "del_piero",
+    "platini",
+    "maradona",
+    "zidane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Maradona jogou no Napoli, o rival do sul."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Manchester United?",
+   "type": "player",
+   "a": [
+    "gerrard"
+   ],
+   "fixed": [
+    "charlton",
+    "beckham",
+    "cr7",
+    "gerrard",
+    "scholes",
+    "rooney"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Gerrard foi ídolo do rival Liverpool."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Bayern?",
+   "type": "player",
+   "a": [
+    "ozil"
+   ],
+   "fixed": [
+    "kahn",
+    "neuer",
+    "ozil",
+    "lewandowski",
+    "thomas_muller",
+    "lahm"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Özil jogou no Werder Bremen, Real Madrid e Arsenal."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no PSG?",
+   "type": "player",
+   "a": [
+    "cr7"
+   ],
+   "fixed": [
+    "neymar",
+    "ronaldinho",
+    "weah",
+    "cr7",
+    "mbappe",
+    "ibrahimovic"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Cristiano Ronaldo nunca jogou na França."
+  },
+  {
+   "t": "Ache o intruso: qual destes brasileiros NUNCA jogou no Flamengo?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "fixed": [
+    "romario",
+    "zico",
+    "ronaldinho",
+    "rivaldo",
+    "bebeto",
+    "adriano"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Rivaldo jogou no Santa Cruz, Mogi Mirim, Corinthians e Palmeiras antes da Europa."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Corinthians?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "fixed": [
+    "rivaldo",
+    "roberto_carlos",
+    "ronaldo",
+    "socrates",
+    "zico",
+    "casagrande"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Zico jogou no Flamengo, na Udinese e no Kashima."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no São Paulo?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "fixed": [
+    "zico",
+    "cafu",
+    "rogerio_ceni",
+    "raí",
+    "careca",
+    "kaka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Santos?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "fixed": [
+    "zico",
+    "neymar",
+    "coutinho",
+    "pepe",
+    "robinho",
+    "pele"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Vasco?",
+   "type": "player",
+   "a": [
+    "socrates"
+   ],
+   "fixed": [
+    "edmundo",
+    "juninho",
+    "socrates",
+    "romario",
+    "dinamite",
+    "bebeto"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Grêmio?",
+   "type": "player",
+   "a": [
+    "falcao"
+   ],
+   "fixed": [
+    "zinho",
+    "emerson",
+    "ronaldinho",
+    "falcao",
+    "renato_gaucho",
+    "suarez"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ],
+   "x": "Falcão foi ídolo do rival Internacional."
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Cruzeiro?",
+   "type": "player",
+   "a": [
+    "zico"
+   ],
+   "fixed": [
+    "tostao",
+    "piazza",
+    "alex",
+    "zico",
+    "dida",
+    "ronaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes craques NUNCA jogou no Palmeiras?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "fixed": [
+    "edmundo",
+    "rivaldo",
+    "marcos",
+    "roberto_carlos",
+    "kaka",
+    "alex"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Football",
+    [
+     "Football"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes clubes NUNCA foi campeão da Libertadores?",
+   "a": [
+    "coritiba"
+   ],
+   "fixed": [
+    "internacional",
+    "vasco",
+    "coritiba",
+    "fluminense",
+    "santos",
+    "cruzeiro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Futebol no Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes clubes brasileiros ainda não tem uma Libertadores?",
+   "a": [
+    "sport"
+   ],
+   "fixed": [
+    "saopaulo",
+    "corinthians",
+    "gremio",
+    "sport",
+    "atleticomg",
+    "botafogo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Futebol no Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes clubes NUNCA ergueu a Libertadores, apesar de ter jogado a final?",
+   "a": [
+    "atleticopr"
+   ],
+   "fixed": [
+    "fluminense",
+    "palmeiras",
+    "santos",
+    "flamengo",
+    "gremio",
+    "atleticopr"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Futebol no Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Ache o intruso: qual destes clubes NUNCA foi campeão brasileiro desde 1971?",
+   "a": [
+    "goias"
+   ],
+   "fixed": [
+    "atleticopr",
+    "goias",
+    "guarani",
+    "bahia",
+    "coritiba",
+    "vasco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Futebol no Brasil",
+    [
+     "Futebol no Brasil"
+    ]
+   ]
+  }
+ ]
+}

@@ -44,8 +44,10 @@ TESTS = r"""
         /* A `txt` question answers with a word and carries its own choices,
            so like `fixed` it shows exactly them — six reads better than ten
            when every tile is a sentence. */
+        /* a timeline deals its own cards, and a clue card asks for six */
         const want = q.type === 'txt' ? q.choices.length
-                   : q.fixed ? q.fixed.length : 10;
+                   : q.order ? q.order.length
+                   : q.fixed ? q.fixed.length : (q.opts || 10);
         if (d.length !== want) sizeOk = false;
         const s = new Set(d.map(x=>x.id));
         if (s.size !== d.length) dupOk = false;
@@ -117,7 +119,9 @@ TESTS = r"""
       for (let i = 0; i < samples; i++) {
         const g = buildGame(k);
         g.qs.forEach(q => {
-          if (q.type !== 'player') return;
+          /* a hand-picked board (a duel, a line-up, a pair) is the same at
+             every level, so it says nothing about how the levels differ */
+          if (q.type !== 'player' || q.fixed) return;
           const ref = PL.find(p => p.id === q.a[0]);
           if (!ref) return;
           const d = getDisp(q);

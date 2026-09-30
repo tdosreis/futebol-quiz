@@ -1,0 +1,2472 @@
+{
+ "id": "placarclubes",
+ "name": "Placar dos Clubes",
+ "emoji": "🏟️",
+ "tag": "Placar",
+ "col": "#5a2d7a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Final europeia de 1962: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Liverpool",
+    "Inter de Milão",
+    "Juventus",
+    "Manchester City",
+    "Atlético de Madrid",
+    "Benfica"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1962 · Final",
+    "h": "?",
+    "hg": 5,
+    "ag": 3,
+    "a": "Real Madrid"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1962 European Cup Final",
+    [
+     "Copa dos Campeões 1962"
+    ]
+   ],
+   "x": "Eusébio marcou duas vezes, e o Benfica foi bicampeão."
+  },
+  {
+   "t": "Final europeia de 1963: quem enfrentou o Benfica neste placar?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Tottenham",
+    "Bayer Leverkusen",
+    "Valencia",
+    "Atlético de Madrid",
+    "Sampdoria",
+    "Milan"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1963 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Benfica"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1963 European Cup Final",
+    [
+     "Copa dos Campeões 1963"
+    ]
+   ],
+   "x": "Altafini, brasileiro naturalizado italiano, marcou os dois gols em Wembley."
+  },
+  {
+   "t": "Final europeia de 1964: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Barcelona",
+    "Bayer Leverkusen",
+    "Milan",
+    "Valencia",
+    "Arsenal",
+    "Inter de Milão"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1964 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Real Madrid"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1964 European Cup Final",
+    [
+     "Copa dos Campeões 1964"
+    ]
+   ],
+   "x": "A 'Grande Inter' de Helenio Herrera ganhou seu primeiro título europeu."
+  },
+  {
+   "t": "Final europeia de 1965: quem enfrentou a Inter de Milão neste placar?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Liverpool",
+    "Atlético de Madrid",
+    "Valencia",
+    "Benfica",
+    "Porto",
+    "Chelsea"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1965 · Final",
+    "h": "Inter de Milão",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1965 European Cup Final",
+    [
+     "Copa dos Campeões 1965"
+    ]
+   ],
+   "x": "A final foi disputada no San Siro, casa da própria Inter."
+  },
+  {
+   "t": "Final europeia de 1967: quem enfrentou a Inter de Milão neste placar?",
+   "type": "txt",
+   "a": [
+    "Celtic"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Celtic",
+    "Chelsea",
+    "Bayern de Munique",
+    "Benfica",
+    "Atlético de Madrid"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1967 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Inter de Milão"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1967 European Cup Final",
+    [
+     "Copa dos Campeões 1967"
+    ]
+   ],
+   "x": "Os 'Leões de Lisboa', todos nascidos perto de Glasgow."
+  },
+  {
+   "t": "Final europeia de 1968: quem enfrentou o Benfica neste placar?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Liverpool",
+    "Chelsea",
+    "Manchester United",
+    "Celtic",
+    "Monaco",
+    "Olympique de Marselha"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1968 · Final",
+    "h": "?",
+    "hg": 4,
+    "ag": 1,
+    "a": "Benfica",
+    "x": "após a prorrogação"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1968 European Cup Final",
+    [
+     "Copa dos Campeões 1968"
+    ]
+   ],
+   "x": "Dez anos depois da tragédia de Munique, com Charlton e Best."
+  },
+  {
+   "t": "Final europeia de 1969: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Inter de Milão",
+    "Paris Saint-Germain",
+    "Barcelona",
+    "Ajax",
+    "Bayern de Munique"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1969 · Final",
+    "h": "Milan",
+    "hg": 4,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1969 European Cup Final",
+    [
+     "Copa dos Campeões 1969"
+    ]
+   ],
+   "x": "O Ajax de Cruyff perdeu a primeira final antes de ganhar três seguidas."
+  },
+  {
+   "t": "Final europeia de 1970: quem enfrentou o Celtic neste placar?",
+   "type": "txt",
+   "a": [
+    "Feyenoord"
+   ],
+   "choices": [
+    "Juventus",
+    "Porto",
+    "Atlético de Madrid",
+    "Barcelona",
+    "Bayer Leverkusen",
+    "Feyenoord"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1970 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Celtic",
+    "x": "após a prorrogação"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1970 European Cup Final",
+    [
+     "Copa dos Campeões 1970"
+    ]
+   ],
+   "x": "O primeiro título europeu de um clube holandês."
+  },
+  {
+   "t": "Final europeia de 1972: quem enfrentou o Ajax neste placar?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Chelsea",
+    "Barcelona",
+    "Inter de Milão",
+    "Manchester City",
+    "Borussia Dortmund",
+    "Bayer Leverkusen"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1972 · Final",
+    "h": "Ajax",
+    "hg": 2,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1972 European Cup Final",
+    [
+     "Copa dos Campeões 1972"
+    ]
+   ],
+   "x": "Cruyff marcou os dois gols em Roterdã."
+  },
+  {
+   "t": "Final europeia de 1973: quem enfrentou a Juventus neste placar?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Paris Saint-Germain",
+    "Milan",
+    "PSV",
+    "Arsenal",
+    "Ajax"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1973 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Juventus"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1973 European Cup Final",
+    [
+     "Copa dos Campeões 1973"
+    ]
+   ],
+   "x": "O terceiro título seguido do Ajax."
+  },
+  {
+   "t": "Final europeia de 1985: quem enfrentou o Liverpool neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Ajax",
+    "Sampdoria",
+    "Real Madrid",
+    "Olympique de Marselha",
+    "Juventus"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1985 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Liverpool",
+    "x": "Estádio de Heysel"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1985 European Cup Final",
+    [
+     "Copa dos Campeões 1985"
+    ]
+   ],
+   "x": "Platini marcou de pênalti numa noite marcada pela tragédia no estádio."
+  },
+  {
+   "t": "Final europeia de 1987: quem enfrentou o Bayern de Munique neste placar?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Barcelona",
+    "Borussia Dortmund",
+    "Liverpool",
+    "Porto",
+    "Juventus",
+    "Arsenal"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1987 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Bayern de Munique"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1987 European Cup Final",
+    [
+     "Copa dos Campeões 1987"
+    ]
+   ],
+   "x": "Madjer empatou de calcanhar, e Juary virou em Viena."
+  },
+  {
+   "t": "Final europeia de 1988: quem enfrentou o PSV neste placar?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Liverpool",
+    "Manchester United",
+    "Paris Saint-Germain",
+    "Benfica",
+    "Sampdoria",
+    "Olympique de Marselha"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1988 · Final",
+    "h": "PSV",
+    "hg": 0,
+    "ag": 0,
+    "a": "?",
+    "x": "PSV 6 × 5 nos pênaltis"
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1988 European Cup Final",
+    [
+     "Copa dos Campeões 1988"
+    ]
+   ],
+   "x": "O PSV de Romário ainda não tinha o brasileiro na final: ele chegou meses depois."
+  },
+  {
+   "t": "Final europeia de 1990: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Paris Saint-Germain",
+    "Benfica",
+    "Porto",
+    "Real Madrid",
+    "Atlético de Madrid"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1990 · Final",
+    "h": "Milan",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1990 European Cup Final",
+    [
+     "Copa dos Campeões 1990"
+    ]
+   ],
+   "x": "Rijkaard marcou, e o Milan de Sacchi foi bicampeão."
+  },
+  {
+   "t": "Final europeia de 1992: quem enfrentou a Sampdoria neste placar?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Barcelona",
+    "Feyenoord",
+    "Liverpool",
+    "Bayer Leverkusen",
+    "Arsenal",
+    "Manchester United"
+   ],
+   "score": {
+    "lbl": "Copa dos Campeões 1992 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Sampdoria",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1992 European Cup Final",
+    [
+     "Copa dos Campeões 1992"
+    ]
+   ],
+   "x": "Koeman marcou de falta em Wembley: o primeiro título europeu do Barça."
+  },
+  {
+   "t": "Final europeia de 1993: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Olympique de Marselha"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Manchester United",
+    "Celtic",
+    "Atlético de Madrid",
+    "Paris Saint-Germain",
+    "Chelsea"
+   ],
+   "score": {
+    "lbl": "Champions League 1993 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Milan"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1993 UEFA Champions League final",
+    [
+     "Champions League 1993"
+    ]
+   ],
+   "x": "Basile Boli marcou de cabeça: o primeiro título europeu de um clube francês."
+  },
+  {
+   "t": "Final europeia de 1994: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Barcelona",
+    "Sampdoria",
+    "Real Madrid",
+    "Bayer Leverkusen",
+    "Olympique de Marselha",
+    "Feyenoord"
+   ],
+   "score": {
+    "lbl": "Champions League 1994 · Final",
+    "h": "Milan",
+    "hg": 4,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1994 UEFA Champions League final",
+    [
+     "Champions League 1994"
+    ]
+   ],
+   "x": "O Milan de Capello atropelou o 'Dream Team' de Cruyff em Atenas."
+  },
+  {
+   "t": "Final europeia de 1995: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "Ajax",
+    "Celtic",
+    "Juventus",
+    "Bayer Leverkusen",
+    "Sampdoria",
+    "Chelsea"
+   ],
+   "score": {
+    "lbl": "Champions League 1995 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Milan"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1995 UEFA Champions League final",
+    [
+     "Champions League 1995"
+    ]
+   ],
+   "x": "Kluivert, com 18 anos, fez o gol no fim."
+  },
+  {
+   "t": "Final europeia de 1996: quem enfrentou o Ajax neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Barcelona",
+    "Juventus",
+    "Bayer Leverkusen",
+    "Real Madrid",
+    "Benfica",
+    "Monaco"
+   ],
+   "score": {
+    "lbl": "Champions League 1996 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 1,
+    "a": "Ajax",
+    "x": "Juventus 4 × 2 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1996 UEFA Champions League final",
+    [
+     "Champions League 1996"
+    ]
+   ],
+   "x": "A Juventus de Del Piero e Vialli, em Roma."
+  },
+  {
+   "t": "Final europeia de 1997: quem enfrentou a Juventus neste placar?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Tottenham",
+    "Olympique de Marselha",
+    "Borussia Dortmund",
+    "Manchester City",
+    "Bayer Leverkusen",
+    "Sampdoria"
+   ],
+   "score": {
+    "lbl": "Champions League 1997 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Juventus"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1997 UEFA Champions League final",
+    [
+     "Champions League 1997"
+    ]
+   ],
+   "x": "Riedle marcou duas vezes e Ricken encobriu Peruzzi com o primeiro toque."
+  },
+  {
+   "t": "Final europeia de 1998: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Arsenal",
+    "Tottenham",
+    "PSV",
+    "Juventus",
+    "Monaco",
+    "Manchester United"
+   ],
+   "score": {
+    "lbl": "Champions League 1998 · Final",
+    "h": "Real Madrid",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1998 UEFA Champions League final",
+    [
+     "Champions League 1998"
+    ]
+   ],
+   "x": "Mijatović marcou, e o Real voltou a ganhar a Europa depois de 32 anos."
+  },
+  {
+   "t": "Final europeia de 1999: quem enfrentou o Manchester United neste placar?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Barcelona",
+    "Milan",
+    "Feyenoord",
+    "Bayern de Munique",
+    "Tottenham",
+    "Real Madrid"
+   ],
+   "score": {
+    "lbl": "Champions League 1999 · Final",
+    "h": "Manchester United",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "1999 UEFA Champions League final",
+    [
+     "Champions League 1999"
+    ]
+   ],
+   "x": "Sheringham e Solskjær marcaram nos acréscimos em Barcelona."
+  },
+  {
+   "t": "Final europeia de 2000: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Atlético de Madrid",
+    "Valencia",
+    "PSV",
+    "Monaco",
+    "Bayern de Munique"
+   ],
+   "score": {
+    "lbl": "Champions League 2000 · Final",
+    "h": "Real Madrid",
+    "hg": 3,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2000 UEFA Champions League final",
+    [
+     "Champions League 2000"
+    ]
+   ],
+   "x": "A primeira final entre dois clubes do mesmo país."
+  },
+  {
+   "t": "Final europeia de 2001: quem enfrentou o Bayern de Munique neste placar?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Valencia",
+    "Atlético de Madrid",
+    "Paris Saint-Germain",
+    "Monaco",
+    "Benfica",
+    "Barcelona"
+   ],
+   "score": {
+    "lbl": "Champions League 2001 · Final",
+    "h": "Bayern de Munique",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "Bayern 5 × 4 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2001 UEFA Champions League final",
+    [
+     "Champions League 2001"
+    ]
+   ],
+   "x": "Oliver Kahn defendeu três pênaltis no San Siro."
+  },
+  {
+   "t": "Final europeia de 2002: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Bayer Leverkusen"
+   ],
+   "choices": [
+    "Ajax",
+    "Manchester City",
+    "Valencia",
+    "Atlético de Madrid",
+    "Bayer Leverkusen",
+    "Tottenham"
+   ],
+   "score": {
+    "lbl": "Champions League 2002 · Final",
+    "h": "Real Madrid",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 UEFA Champions League final",
+    [
+     "Champions League 2002"
+    ]
+   ],
+   "x": "O voleio de Zidane em Glasgow."
+  },
+  {
+   "t": "Final europeia de 2003: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Arsenal",
+    "Benfica",
+    "Feyenoord",
+    "Sampdoria",
+    "Juventus",
+    "Monaco"
+   ],
+   "score": {
+    "lbl": "Champions League 2003 · Final",
+    "h": "Milan",
+    "hg": 0,
+    "ag": 0,
+    "a": "?",
+    "x": "Milan 3 × 2 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2003 UEFA Champions League final",
+    [
+     "Champions League 2003"
+    ]
+   ],
+   "x": "A final italiana de Old Trafford, com Dida decisivo nos pênaltis."
+  },
+  {
+   "t": "Final europeia de 2004: quem enfrentou o Monaco neste placar?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Manchester United",
+    "Porto",
+    "Ajax",
+    "Inter de Milão",
+    "Bayern de Munique",
+    "Feyenoord"
+   ],
+   "score": {
+    "lbl": "Champions League 2004 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Monaco"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2004 UEFA Champions League final",
+    [
+     "Champions League 2004"
+    ]
+   ],
+   "x": "O Porto de José Mourinho, com Deco no meio-campo."
+  },
+  {
+   "t": "Final europeia de 2005: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Juventus",
+    "Chelsea",
+    "Liverpool",
+    "Inter de Milão",
+    "Real Madrid"
+   ],
+   "score": {
+    "lbl": "Champions League 2005 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 3,
+    "a": "Milan",
+    "x": "Liverpool 3 × 2 nos pênaltis"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "2005 UEFA Champions League final",
+    [
+     "Champions League 2005"
+    ]
+   ],
+   "x": "O Milan vencia por 3 a 0 no intervalo em Istambul."
+  },
+  {
+   "t": "Final europeia de 2006: quem enfrentou o Barcelona neste placar?",
+   "type": "txt",
+   "a": [
+    "Arsenal"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Arsenal",
+    "Milan",
+    "Bayer Leverkusen",
+    "Benfica",
+    "Manchester City"
+   ],
+   "score": {
+    "lbl": "Champions League 2006 · Final",
+    "h": "Barcelona",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 UEFA Champions League final",
+    [
+     "Champions League 2006"
+    ]
+   ],
+   "x": "Eto'o e Belletti viraram o jogo em Paris."
+  },
+  {
+   "t": "Final europeia de 2007: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Paris Saint-Germain",
+    "Manchester City",
+    "Celtic",
+    "Liverpool",
+    "Benfica"
+   ],
+   "score": {
+    "lbl": "Champions League 2007 · Final",
+    "h": "Milan",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2007 UEFA Champions League final",
+    [
+     "Champions League 2007"
+    ]
+   ],
+   "x": "A revanche de Istambul, com dois gols de Inzaghi em Atenas."
+  },
+  {
+   "t": "Final europeia de 2008: quem enfrentou o Manchester United neste placar?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Tottenham",
+    "Real Madrid",
+    "Olympique de Marselha",
+    "PSV",
+    "Chelsea"
+   ],
+   "score": {
+    "lbl": "Champions League 2008 · Final",
+    "h": "Manchester United",
+    "hg": 1,
+    "ag": 1,
+    "a": "?",
+    "x": "United 6 × 5 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2008 UEFA Champions League final",
+    [
+     "Champions League 2008"
+    ]
+   ],
+   "x": "John Terry escorregou na cobrança que daria o título ao Chelsea, em Moscou."
+  },
+  {
+   "t": "Final europeia de 2009: quem enfrentou o Manchester United neste placar?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Barcelona",
+    "PSV",
+    "Valencia",
+    "Olympique de Marselha",
+    "Celtic",
+    "Arsenal"
+   ],
+   "score": {
+    "lbl": "Champions League 2009 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Manchester United"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "2009 UEFA Champions League final",
+    [
+     "Champions League 2009"
+    ]
+   ],
+   "x": "Eto'o e Messi, de cabeça, marcaram em Roma."
+  },
+  {
+   "t": "Final europeia de 2010: quem enfrentou o Bayern de Munique neste placar?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Arsenal",
+    "Manchester United",
+    "Porto",
+    "Milan",
+    "Inter de Milão",
+    "Atlético de Madrid"
+   ],
+   "score": {
+    "lbl": "Champions League 2010 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Bayern de Munique"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "Champions League 2010"
+    ]
+   ],
+   "x": "Diego Milito fez os dois gols, e a Inter completou a tríplice coroa."
+  },
+  {
+   "t": "Final europeia de 2011: quem enfrentou o Barcelona neste placar?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "PSV",
+    "Real Madrid",
+    "Sampdoria",
+    "Borussia Dortmund",
+    "Manchester United",
+    "Milan"
+   ],
+   "score": {
+    "lbl": "Champions League 2011 · Final",
+    "h": "Barcelona",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2011 UEFA Champions League final",
+    [
+     "Champions League 2011"
+    ]
+   ],
+   "x": "O Barça de Guardiola em Wembley, com gols de Pedro, Messi e Villa."
+  },
+  {
+   "t": "Final europeia de 2012: quem enfrentou o Bayern de Munique neste placar?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Monaco",
+    "Barcelona",
+    "Chelsea",
+    "Olympique de Marselha",
+    "PSV",
+    "Porto"
+   ],
+   "score": {
+    "lbl": "Champions League 2012 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 1,
+    "a": "Bayern de Munique",
+    "x": "Chelsea 4 × 3 nos pênaltis"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "2012 UEFA Champions League final",
+    [
+     "Champions League 2012"
+    ]
+   ],
+   "x": "Drogba empatou aos 88 minutos e bateu o último pênalti, na casa do Bayern."
+  },
+  {
+   "t": "Final europeia de 2013: quem enfrentou o Bayern de Munique neste placar?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Tottenham",
+    "Bayer Leverkusen",
+    "Borussia Dortmund",
+    "Ajax",
+    "Olympique de Marselha",
+    "Sampdoria"
+   ],
+   "score": {
+    "lbl": "Champions League 2013 · Final",
+    "h": "Bayern de Munique",
+    "hg": 2,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2013 UEFA Champions League final",
+    [
+     "Champions League 2013"
+    ]
+   ],
+   "x": "A primeira final entre alemães, com gol de Robben no fim."
+  },
+  {
+   "t": "Final europeia de 2014: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Liverpool",
+    "Ajax",
+    "Feyenoord",
+    "Celtic",
+    "Paris Saint-Germain",
+    "Atlético de Madrid"
+   ],
+   "score": {
+    "lbl": "Champions League 2014 · Final",
+    "h": "Real Madrid",
+    "hg": 4,
+    "ag": 1,
+    "a": "?",
+    "x": "após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2014 UEFA Champions League final",
+    [
+     "Champions League 2014"
+    ]
+   ],
+   "x": "Sergio Ramos empatou aos 93 minutos: a 'Décima'."
+  },
+  {
+   "t": "Final europeia de 2015: quem enfrentou o Barcelona neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Arsenal",
+    "Juventus",
+    "Manchester United",
+    "Chelsea",
+    "Monaco",
+    "Ajax"
+   ],
+   "score": {
+    "lbl": "Champions League 2015 · Final",
+    "h": "Barcelona",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2015 UEFA Champions League final",
+    [
+     "Champions League 2015"
+    ]
+   ],
+   "x": "O trio MSN marcou dois dos três gols em Berlim."
+  },
+  {
+   "t": "Final europeia de 2016: quem enfrentou o Atlético de Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Tottenham",
+    "Sampdoria",
+    "Liverpool",
+    "Chelsea",
+    "Real Madrid",
+    "Valencia"
+   ],
+   "score": {
+    "lbl": "Champions League 2016 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 1,
+    "a": "Atlético de Madrid",
+    "x": "Real 5 × 3 nos pênaltis"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2016 UEFA Champions League final",
+    [
+     "Champions League 2016"
+    ]
+   ],
+   "x": "Cristiano Ronaldo bateu o último pênalti em Milão."
+  },
+  {
+   "t": "Final europeia de 2017: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Celtic",
+    "Bayer Leverkusen",
+    "Olympique de Marselha",
+    "Porto",
+    "Valencia",
+    "Juventus"
+   ],
+   "score": {
+    "lbl": "Champions League 2017 · Final",
+    "h": "Real Madrid",
+    "hg": 4,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2017 UEFA Champions League final",
+    [
+     "Champions League 2017"
+    ]
+   ],
+   "x": "O primeiro bicampeão da era Champions League."
+  },
+  {
+   "t": "Final europeia de 2018: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Inter de Milão",
+    "Valencia",
+    "Arsenal",
+    "PSV",
+    "Liverpool"
+   ],
+   "score": {
+    "lbl": "Champions League 2018 · Final",
+    "h": "Real Madrid",
+    "hg": 3,
+    "ag": 1,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2018 UEFA Champions League final",
+    [
+     "Champions League 2018"
+    ]
+   ],
+   "x": "A bicicleta de Bale em Kiev."
+  },
+  {
+   "t": "Final europeia de 2019: quem enfrentou o Tottenham neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Liverpool",
+    "Olympique de Marselha",
+    "Feyenoord",
+    "Celtic",
+    "Juventus",
+    "Porto"
+   ],
+   "score": {
+    "lbl": "Champions League 2019 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Tottenham"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2019 UEFA Champions League final",
+    [
+     "Champions League 2019"
+    ]
+   ],
+   "x": "Salah e Origi marcaram na final inglesa de Madri."
+  },
+  {
+   "t": "Final europeia de 2020: quem enfrentou o Paris Saint-Germain neste placar?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Monaco",
+    "Ajax",
+    "PSV",
+    "Milan",
+    "Bayern de Munique"
+   ],
+   "score": {
+    "lbl": "Champions League 2020 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Paris Saint-Germain",
+    "x": "Estádio da Luz"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2020 UEFA Champions League final",
+    [
+     "Champions League 2020"
+    ]
+   ],
+   "x": "Coman, revelado pelo PSG, fez o gol do título."
+  },
+  {
+   "t": "Final europeia de 2021: quem enfrentou o Manchester City neste placar?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Celtic",
+    "Chelsea",
+    "Olympique de Marselha",
+    "Bayer Leverkusen",
+    "PSV",
+    "Ajax"
+   ],
+   "score": {
+    "lbl": "Champions League 2021 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Manchester City"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2021 UEFA Champions League final",
+    [
+     "Champions League 2021"
+    ]
+   ],
+   "x": "Havertz marcou no Porto."
+  },
+  {
+   "t": "Final europeia de 2022: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Sampdoria",
+    "Arsenal",
+    "Liverpool",
+    "Paris Saint-Germain",
+    "Manchester United",
+    "Benfica"
+   ],
+   "score": {
+    "lbl": "Champions League 2022 · Final",
+    "h": "Real Madrid",
+    "hg": 1,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2022 UEFA Champions League final",
+    [
+     "Champions League 2022"
+    ]
+   ],
+   "x": "Vinícius Jr. fez o gol do título em Paris."
+  },
+  {
+   "t": "Final europeia de 2023: quem enfrentou a Inter de Milão neste placar?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Manchester City",
+    "Ajax",
+    "Milan",
+    "Feyenoord",
+    "Benfica",
+    "Liverpool"
+   ],
+   "score": {
+    "lbl": "Champions League 2023 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Inter de Milão"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 UEFA Champions League final",
+    [
+     "Champions League 2023"
+    ]
+   ],
+   "x": "Rodri marcou, e o City completou a tríplice coroa."
+  },
+  {
+   "t": "Final europeia de 2024: quem enfrentou o Real Madrid neste placar?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Celtic",
+    "Barcelona",
+    "Borussia Dortmund",
+    "Valencia",
+    "Bayer Leverkusen"
+   ],
+   "score": {
+    "lbl": "Champions League 2024 · Final",
+    "h": "Real Madrid",
+    "hg": 2,
+    "ag": 0,
+    "a": "?"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2024 UEFA Champions League final",
+    [
+     "Champions League 2024"
+    ]
+   ],
+   "x": "Carvajal e Vinícius Jr. marcaram em Wembley."
+  },
+  {
+   "t": "Final europeia de 2025: quem enfrentou a Inter de Milão neste placar?",
+   "type": "txt",
+   "a": [
+    "Paris Saint-Germain"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Chelsea",
+    "Arsenal",
+    "Sampdoria",
+    "Juventus",
+    "Liverpool"
+   ],
+   "score": {
+    "lbl": "Champions League 2025 · Final",
+    "h": "?",
+    "hg": 5,
+    "ag": 0,
+    "a": "Inter de Milão"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "2025 UEFA Champions League final",
+    [
+     "Champions League 2025"
+    ]
+   ],
+   "x": "A maior goleada de uma final: o primeiro título europeu do PSG."
+  },
+  {
+   "t": "Libertadores de 1962: quem enfrentou o Santos FC neste placar?",
+   "type": "txt",
+   "a": [
+    "Peñarol"
+   ],
+   "choices": [
+    "Athletico PR",
+    "Palmeiras",
+    "River Plate",
+    "Atlético MG",
+    "Peñarol",
+    "São Paulo FC"
+   ],
+   "score": {
+    "lbl": "Libertadores 1962 · Jogo extra",
+    "h": "Santos FC",
+    "hg": 3,
+    "ag": 0,
+    "a": "?",
+    "x": "em Buenos Aires"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1962",
+    [
+     "Libertadores 1962"
+    ]
+   ],
+   "x": "O primeiro título continental de um clube brasileiro."
+  },
+  {
+   "t": "Libertadores de 1963: quem enfrentou o Boca Juniors neste placar?",
+   "type": "txt",
+   "a": [
+    "Santos FC"
+   ],
+   "choices": [
+    "Santos FC",
+    "Atlético MG",
+    "River Plate",
+    "Grêmio",
+    "Palmeiras",
+    "Peñarol"
+   ],
+   "score": {
+    "lbl": "Libertadores 1963 · Final (volta)",
+    "h": "Boca Juniors",
+    "hg": 1,
+    "ag": 2,
+    "a": "?",
+    "x": "La Bombonera"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1963",
+    [
+     "Libertadores 1963"
+    ]
+   ],
+   "x": "O Santos de Pelé foi bicampeão dentro da Bombonera."
+  },
+  {
+   "t": "Libertadores de 1983: quem enfrentou o Peñarol neste placar?",
+   "type": "txt",
+   "a": [
+    "Grêmio"
+   ],
+   "choices": [
+    "Fluminense",
+    "Athletico PR",
+    "Cruzeiro",
+    "Palmeiras",
+    "Atlético MG",
+    "Grêmio"
+   ],
+   "score": {
+    "lbl": "Libertadores 1983 · Final (volta)",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Peñarol",
+    "x": "Estádio Olímpico"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1983",
+    [
+     "Libertadores 1983"
+    ]
+   ],
+   "x": "O primeiro título continental do Grêmio."
+  },
+  {
+   "t": "Libertadores de 2000: quem enfrentou o Palmeiras neste placar?",
+   "type": "txt",
+   "a": [
+    "Boca Juniors"
+   ],
+   "choices": [
+    "Peñarol",
+    "Flamengo",
+    "River Plate",
+    "Botafogo",
+    "Boca Juniors",
+    "São Paulo FC"
+   ],
+   "score": {
+    "lbl": "Libertadores 2000 · Final (volta)",
+    "h": "Palmeiras",
+    "hg": 0,
+    "ag": 0,
+    "a": "?",
+    "x": "Boca 4 × 2 nos pênaltis"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2000",
+    [
+     "Libertadores 2000"
+    ]
+   ],
+   "x": "O Boca de Bianchi e Riquelme venceu no Morumbi."
+  },
+  {
+   "t": "Libertadores de 2003: quem enfrentou o Santos FC neste placar?",
+   "type": "txt",
+   "a": [
+    "Boca Juniors"
+   ],
+   "choices": [
+    "Boca Juniors",
+    "Grêmio",
+    "Fluminense",
+    "Flamengo",
+    "Cruzeiro",
+    "Corinthians"
+   ],
+   "score": {
+    "lbl": "Libertadores 2003 · Final (volta)",
+    "h": "Santos FC",
+    "hg": 1,
+    "ag": 3,
+    "a": "?",
+    "x": "Morumbi"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2003",
+    [
+     "Libertadores 2003"
+    ]
+   ],
+   "x": "O Boca de Tevez foi campeão também no Brasil."
+  },
+  {
+   "t": "Libertadores de 2005: quem enfrentou o São Paulo FC neste placar?",
+   "type": "txt",
+   "a": [
+    "Athletico PR"
+   ],
+   "choices": [
+    "Athletico PR",
+    "Grêmio",
+    "Corinthians",
+    "Internacional",
+    "Santos FC",
+    "Cruzeiro"
+   ],
+   "score": {
+    "lbl": "Libertadores 2005 · Final (volta)",
+    "h": "São Paulo FC",
+    "hg": 4,
+    "ag": 0,
+    "a": "?",
+    "x": "Morumbi"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2005",
+    [
+     "Libertadores 2005"
+    ]
+   ],
+   "x": "A primeira final da Libertadores entre dois brasileiros."
+  },
+  {
+   "t": "Libertadores de 2006: quem enfrentou o São Paulo FC neste placar?",
+   "type": "txt",
+   "a": [
+    "Internacional"
+   ],
+   "choices": [
+    "Grêmio",
+    "Boca Juniors",
+    "Athletico PR",
+    "Cruzeiro",
+    "Internacional",
+    "Palmeiras"
+   ],
+   "score": {
+    "lbl": "Libertadores 2006 · Final (ida)",
+    "h": "São Paulo FC",
+    "hg": 1,
+    "ag": 2,
+    "a": "?",
+    "x": "Morumbi"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2006",
+    [
+     "Libertadores 2006"
+    ]
+   ],
+   "x": "Rafael Sóbis marcou duas vezes no Morumbi."
+  },
+  {
+   "t": "Libertadores de 2007: quem enfrentou o Boca Juniors neste placar?",
+   "type": "txt",
+   "a": [
+    "Grêmio"
+   ],
+   "choices": [
+    "River Plate",
+    "Internacional",
+    "Santos FC",
+    "Peñarol",
+    "Grêmio",
+    "Corinthians"
+   ],
+   "score": {
+    "lbl": "Libertadores 2007 · Final (ida)",
+    "h": "Boca Juniors",
+    "hg": 3,
+    "ag": 0,
+    "a": "?",
+    "x": "La Bombonera"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2007",
+    [
+     "Libertadores 2007"
+    ]
+   ],
+   "x": "Riquelme comandou o Boca no sexto título."
+  },
+  {
+   "t": "Libertadores de 2011: quem enfrentou o Peñarol neste placar?",
+   "type": "txt",
+   "a": [
+    "Santos FC"
+   ],
+   "choices": [
+    "Botafogo",
+    "Flamengo",
+    "Boca Juniors",
+    "São Paulo FC",
+    "River Plate",
+    "Santos FC"
+   ],
+   "score": {
+    "lbl": "Libertadores 2011 · Final (volta)",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Peñarol",
+    "x": "Pacaembu"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2011",
+    [
+     "Libertadores 2011"
+    ]
+   ],
+   "x": "Neymar e Danilo marcaram no tricampeonato santista."
+  },
+  {
+   "t": "Libertadores de 2012: quem enfrentou o Boca Juniors neste placar?",
+   "type": "txt",
+   "a": [
+    "Corinthians"
+   ],
+   "choices": [
+    "Palmeiras",
+    "Cruzeiro",
+    "Internacional",
+    "Corinthians",
+    "Peñarol",
+    "Fluminense"
+   ],
+   "score": {
+    "lbl": "Libertadores 2012 · Final (volta)",
+    "h": "?",
+    "hg": 2,
+    "ag": 0,
+    "a": "Boca Juniors",
+    "x": "Pacaembu"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2012",
+    [
+     "Libertadores 2012"
+    ]
+   ],
+   "x": "Emerson Sheik marcou os dois gols do primeiro título."
+  },
+  {
+   "t": "Libertadores de 2018: quem enfrentou o Boca Juniors neste placar?",
+   "type": "txt",
+   "a": [
+    "River Plate"
+   ],
+   "choices": [
+    "Athletico PR",
+    "Santos FC",
+    "Flamengo",
+    "River Plate",
+    "Fluminense",
+    "Corinthians"
+   ],
+   "score": {
+    "lbl": "Libertadores 2018 · Final (volta)",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Boca Juniors",
+    "x": "em Madri, após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2018",
+    [
+     "Libertadores 2018"
+    ]
+   ],
+   "x": "A final foi levada para o Santiago Bernabéu depois de um ataque ao ônibus do Boca."
+  },
+  {
+   "t": "Libertadores de 2019: quem enfrentou o River Plate neste placar?",
+   "type": "txt",
+   "a": [
+    "Flamengo"
+   ],
+   "choices": [
+    "Santos FC",
+    "Flamengo",
+    "Boca Juniors",
+    "Fluminense",
+    "São Paulo FC",
+    "Internacional"
+   ],
+   "score": {
+    "lbl": "Libertadores 2019 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "River Plate",
+    "x": "em Lima"
+   },
+   "d": 1,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2019",
+    [
+     "Libertadores 2019"
+    ]
+   ],
+   "x": "Gabigol virou nos últimos minutos."
+  },
+  {
+   "t": "Libertadores de 2020: quem enfrentou o Palmeiras neste placar?",
+   "type": "txt",
+   "a": [
+    "Santos FC"
+   ],
+   "choices": [
+    "Corinthians",
+    "Cruzeiro",
+    "River Plate",
+    "Grêmio",
+    "Santos FC",
+    "Flamengo"
+   ],
+   "score": {
+    "lbl": "Libertadores 2020 · Final",
+    "h": "Palmeiras",
+    "hg": 1,
+    "ag": 0,
+    "a": "?",
+    "x": "no Maracanã"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2020",
+    [
+     "Libertadores 2020"
+    ]
+   ],
+   "x": "Breno Lopes marcou de cabeça nos acréscimos."
+  },
+  {
+   "t": "Libertadores de 2021: quem enfrentou o Palmeiras neste placar?",
+   "type": "txt",
+   "a": [
+    "Flamengo"
+   ],
+   "choices": [
+    "Fluminense",
+    "Botafogo",
+    "Atlético MG",
+    "Corinthians",
+    "Flamengo",
+    "Santos FC"
+   ],
+   "score": {
+    "lbl": "Libertadores 2021 · Final",
+    "h": "Palmeiras",
+    "hg": 2,
+    "ag": 1,
+    "a": "?",
+    "x": "em Montevidéu, após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2021",
+    [
+     "Libertadores 2021"
+    ]
+   ],
+   "x": "Deyverson fez o gol do bicampeonato."
+  },
+  {
+   "t": "Libertadores de 2022: quem enfrentou o Flamengo neste placar?",
+   "type": "txt",
+   "a": [
+    "Athletico PR"
+   ],
+   "choices": [
+    "Grêmio",
+    "Athletico PR",
+    "Internacional",
+    "São Paulo FC",
+    "Peñarol",
+    "Palmeiras"
+   ],
+   "score": {
+    "lbl": "Libertadores 2022 · Final",
+    "h": "Flamengo",
+    "hg": 1,
+    "ag": 0,
+    "a": "?",
+    "x": "em Guayaquil"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2022",
+    [
+     "Libertadores 2022"
+    ]
+   ],
+   "x": "Gabigol marcou mais uma vez numa final."
+  },
+  {
+   "t": "Libertadores de 2023: quem enfrentou o Boca Juniors neste placar?",
+   "type": "txt",
+   "a": [
+    "Fluminense"
+   ],
+   "choices": [
+    "Fluminense",
+    "Palmeiras",
+    "Vasco",
+    "Grêmio",
+    "Flamengo",
+    "Internacional"
+   ],
+   "score": {
+    "lbl": "Libertadores 2023 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Boca Juniors",
+    "x": "no Maracanã, após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2023",
+    [
+     "Libertadores 2023"
+    ]
+   ],
+   "x": "John Kennedy fez o gol do primeiro título do Fluminense."
+  },
+  {
+   "t": "Libertadores de 2024: quem enfrentou o Atlético MG neste placar?",
+   "type": "txt",
+   "a": [
+    "Botafogo"
+   ],
+   "choices": [
+    "Flamengo",
+    "São Paulo FC",
+    "Grêmio",
+    "Corinthians",
+    "Botafogo",
+    "Boca Juniors"
+   ],
+   "score": {
+    "lbl": "Libertadores 2024 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Atlético MG",
+    "x": "em Buenos Aires"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2024",
+    [
+     "Libertadores 2024"
+    ]
+   ],
+   "x": "O Botafogo ganhou com um jogador a menos desde o primeiro minuto."
+  },
+  {
+   "t": "Mundial de 1962: quem enfrentou o Benfica neste placar?",
+   "type": "txt",
+   "a": [
+    "Santos FC"
+   ],
+   "choices": [
+    "Manchester City",
+    "Botafogo",
+    "Athletico PR",
+    "Barcelona",
+    "Santos FC",
+    "Vasco"
+   ],
+   "score": {
+    "lbl": "Mundial 1962 · Final (volta)",
+    "h": "Benfica",
+    "hg": 2,
+    "ag": 5,
+    "a": "?",
+    "x": "Estádio da Luz"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1962 FIFA Club World Cup",
+    [
+     "Mundial 1962"
+    ]
+   ],
+   "x": "Pelé marcou três gols em Lisboa."
+  },
+  {
+   "t": "Mundial de 1981: quem enfrentou o Liverpool neste placar?",
+   "type": "txt",
+   "a": [
+    "Flamengo"
+   ],
+   "choices": [
+    "Botafogo",
+    "Barcelona",
+    "Internacional",
+    "Flamengo",
+    "Paris Saint-Germain",
+    "Corinthians"
+   ],
+   "score": {
+    "lbl": "Mundial 1981 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Liverpool",
+    "x": "em Tóquio"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1981 FIFA Club World Cup",
+    [
+     "Mundial 1981"
+    ]
+   ],
+   "x": "Nunes marcou dois gols e Zico deu três assistências."
+  },
+  {
+   "t": "Mundial de 1992: quem enfrentou o Barcelona neste placar?",
+   "type": "txt",
+   "a": [
+    "São Paulo FC"
+   ],
+   "choices": [
+    "Palmeiras",
+    "Grêmio",
+    "São Paulo FC",
+    "Real Madrid",
+    "Internacional",
+    "Atlético MG"
+   ],
+   "score": {
+    "lbl": "Mundial 1992 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Barcelona",
+    "x": "em Tóquio"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1992 FIFA Club World Cup",
+    [
+     "Mundial 1992"
+    ]
+   ],
+   "x": "Raí marcou os dois gols contra o 'Dream Team'."
+  },
+  {
+   "t": "Mundial de 1993: quem enfrentou o Milan neste placar?",
+   "type": "txt",
+   "a": [
+    "São Paulo FC"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Real Madrid",
+    "São Paulo FC",
+    "Internacional",
+    "Flamengo",
+    "Atlético MG"
+   ],
+   "score": {
+    "lbl": "Mundial 1993 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 2,
+    "a": "Milan",
+    "x": "em Tóquio"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1993 FIFA Club World Cup",
+    [
+     "Mundial 1993"
+    ]
+   ],
+   "x": "Müller marcou de calcanhar no fim."
+  },
+  {
+   "t": "Mundial de 2005: quem enfrentou o Liverpool neste placar?",
+   "type": "txt",
+   "a": [
+    "São Paulo FC"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Chelsea",
+    "São Paulo FC",
+    "Barcelona",
+    "Milan",
+    "Internacional"
+   ],
+   "score": {
+    "lbl": "Mundial 2005 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Liverpool",
+    "x": "em Yokohama"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2005 FIFA Club World Cup",
+    [
+     "Mundial 2005"
+    ]
+   ],
+   "x": "Mineiro fez o gol, e Rogério Ceni foi eleito o melhor da final."
+  },
+  {
+   "t": "Mundial de 2006: quem enfrentou o Barcelona neste placar?",
+   "type": "txt",
+   "a": [
+    "Internacional"
+   ],
+   "choices": [
+    "Palmeiras",
+    "Internacional",
+    "Inter de Milão",
+    "Liverpool",
+    "Botafogo",
+    "São Paulo FC"
+   ],
+   "score": {
+    "lbl": "Mundial 2006 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Barcelona",
+    "x": "em Yokohama"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 FIFA Club World Cup",
+    [
+     "Mundial 2006"
+    ]
+   ],
+   "x": "Adriano Gabiru marcou contra o Barça de Ronaldinho."
+  },
+  {
+   "t": "Mundial de 2012: quem enfrentou o Chelsea neste placar?",
+   "type": "txt",
+   "a": [
+    "Corinthians"
+   ],
+   "choices": [
+    "Cruzeiro",
+    "Palmeiras",
+    "Internacional",
+    "Corinthians",
+    "Grêmio",
+    "Santos FC"
+   ],
+   "score": {
+    "lbl": "Mundial 2012 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Chelsea",
+    "x": "em Yokohama"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2012 FIFA Club World Cup",
+    [
+     "Mundial 2012"
+    ]
+   ],
+   "x": "Guerrero marcou de cabeça, e Cássio foi o melhor jogador."
+  },
+  {
+   "t": "Mundial de 2019: quem enfrentou o Flamengo neste placar?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Botafogo",
+    "Fluminense",
+    "Bayern de Munique",
+    "Liverpool",
+    "Inter de Milão",
+    "Milan"
+   ],
+   "score": {
+    "lbl": "Mundial 2019 · Final",
+    "h": "?",
+    "hg": 1,
+    "ag": 0,
+    "a": "Flamengo",
+    "x": "em Doha, após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2019 FIFA Club World Cup",
+    [
+     "Mundial 2019"
+    ]
+   ],
+   "x": "Firmino fez o gol na prorrogação."
+  },
+  {
+   "t": "Mundial de 2021: quem enfrentou o Palmeiras neste placar?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Santos FC",
+    "Chelsea",
+    "Grêmio",
+    "Liverpool",
+    "Cruzeiro",
+    "Manchester City"
+   ],
+   "score": {
+    "lbl": "Mundial 2021 · Final",
+    "h": "?",
+    "hg": 2,
+    "ag": 1,
+    "a": "Palmeiras",
+    "x": "em Abu Dhabi, após a prorrogação"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2021 FIFA Club World Cup",
+    [
+     "Mundial 2021"
+    ]
+   ],
+   "x": "Havertz marcou de pênalti no fim."
+  },
+  {
+   "t": "Mundial de 2023: quem enfrentou o Fluminense neste placar?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Barcelona",
+    "Manchester City",
+    "São Paulo FC",
+    "Liverpool",
+    "Botafogo",
+    "Milan"
+   ],
+   "score": {
+    "lbl": "Mundial 2023 · Final",
+    "h": "?",
+    "hg": 4,
+    "ag": 0,
+    "a": "Fluminense",
+    "x": "em Jidá"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 FIFA Club World Cup",
+    [
+     "Mundial 2023"
+    ]
+   ],
+   "x": "Julián Álvarez marcou aos 40 segundos."
+  },
+  {
+   "t": "Mundial de 2025: quem enfrentou o Paris Saint-Germain neste placar?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Cruzeiro",
+    "Barcelona",
+    "Chelsea",
+    "Atlético MG",
+    "Palmeiras"
+   ],
+   "score": {
+    "lbl": "Mundial 2025 · Final",
+    "h": "?",
+    "hg": 3,
+    "ag": 0,
+    "a": "Paris Saint-Germain",
+    "x": "em Nova Jersey"
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2025 FIFA Club World Cup",
+    [
+     "Mundial 2025"
+    ]
+   ],
+   "x": "Cole Palmer marcou dois gols na final do primeiro Mundial com 32 clubes."
+  },
+  {
+   "t": "Mundial de 2025: quem enfrentou o Botafogo neste placar?",
+   "type": "txt",
+   "a": [
+    "Paris Saint-Germain"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Cruzeiro",
+    "Paris Saint-Germain",
+    "Liverpool",
+    "Real Madrid",
+    "Grêmio"
+   ],
+   "score": {
+    "lbl": "Mundial 2025 · Fase de grupos",
+    "h": "Botafogo",
+    "hg": 1,
+    "ag": 0,
+    "a": "?",
+    "x": "em Pasadena"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "2025 FIFA Club World Cup",
+    [
+     "Mundial 2025"
+    ]
+   ],
+   "x": "Igor Jesus marcou contra o campeão europeu."
+  },
+  {
+   "t": "Mundial de 2025: quem enfrentou o Chelsea neste placar?",
+   "type": "txt",
+   "a": [
+    "Flamengo"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Flamengo",
+    "Cruzeiro",
+    "São Paulo FC",
+    "Bayern de Munique",
+    "Santos FC"
+   ],
+   "score": {
+    "lbl": "Mundial 2025 · Fase de grupos",
+    "h": "?",
+    "hg": 3,
+    "ag": 1,
+    "a": "Chelsea",
+    "x": "na Filadélfia"
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "2025 FIFA Club World Cup",
+    [
+     "Mundial 2025"
+    ]
+   ],
+   "x": "O Flamengo virou contra o futuro campeão."
+  }
+ ]
+}

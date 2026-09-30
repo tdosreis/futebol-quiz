@@ -1,0 +1,874 @@
+{
+ "id": "duplas",
+ "name": "Duplas e trios",
+ "emoji": "👯",
+ "tag": "Marque dois",
+ "col": "#b0633a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Selecione os 2 atacantes titulares do Brasil na final da Copa de 1994?",
+   "type": "player",
+   "a": [
+    "romario",
+    "bebeto"
+   ],
+   "fixed": [
+    "bebeto",
+    "renato_gaucho",
+    "romario",
+    "tulio",
+    "edmundo",
+    "muller_sp",
+    "careca",
+    "ronaldo",
+    "raí",
+    "zinho"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1994 FIFA World Cup",
+    [
+     "1994 FIFA World Cup"
+    ]
+   ],
+   "x": "Romário e Bebeto fizeram 8 dos 11 gols do Brasil no tetra."
+  },
+  {
+   "t": "Selecione os 2 que formaram a dupla 'Ro-Ro' na seleção brasileira do fim dos anos 1990?",
+   "type": "player",
+   "a": [
+    "ronaldo",
+    "romario"
+   ],
+   "fixed": [
+    "rivaldo",
+    "romario",
+    "edmundo",
+    "ronaldo",
+    "ronaldinho",
+    "elber",
+    "denilson",
+    "savio",
+    "bebeto",
+    "edilson"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Romário",
+    [
+     "Romário"
+    ]
+   ],
+   "x": "A dupla ganhou a Copa das Confederações de 1997; Romário foi cortado da Copa de 1998."
+  },
+  {
+   "t": "Selecione os 2 brasileiros campeões do mundo como jogadores em 1994 e em 2002?",
+   "type": "player",
+   "a": [
+    "cafu",
+    "ronaldo"
+   ],
+   "fixed": [
+    "roberto_carlos",
+    "dunga",
+    "lucio",
+    "bebeto",
+    "marcos",
+    "rivaldo",
+    "cafu",
+    "taffarel",
+    "romario",
+    "ronaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Cafu",
+    [
+     "Cafu"
+    ]
+   ],
+   "x": "Os dois estiveram nos elencos do tetra e do penta."
+  },
+  {
+   "t": "Selecione os 2 holandeses do trio do Milan campeão europeu de 1989, ao lado de Gullit?",
+   "type": "player",
+   "a": [
+    "van_basten",
+    "rijkaard"
+   ],
+   "fixed": [
+    "rijkaard",
+    "cruyff",
+    "rensenbrink",
+    "baresi",
+    "krol",
+    "van_der_sar",
+    "maldini",
+    "bergkamp",
+    "van_basten",
+    "koeman"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "AC Milan",
+    [
+     "AC Milan"
+    ]
+   ],
+   "x": "O trio holandês comandou o Milan de Arrigo Sacchi."
+  },
+  {
+   "t": "Selecione os 2 que formaram o trio 'MSN' do Barcelona com Messi?",
+   "type": "player",
+   "a": [
+    "suarez",
+    "neymar"
+   ],
+   "fixed": [
+    "lewandowski",
+    "etoo",
+    "suarez",
+    "griezmann",
+    "neymar",
+    "henry",
+    "pedri",
+    "ronaldinho",
+    "ibrahimovic",
+    "villa"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "MSN (football)",
+    [
+     "MSN (football)"
+    ]
+   ],
+   "x": "O trio marcou 122 gols na temporada 2014-15."
+  },
+  {
+   "t": "Selecione os 2 que formaram a 'BBC' do Real Madrid com Bale?",
+   "type": "player",
+   "a": [
+    "benzema",
+    "cr7"
+   ],
+   "fixed": [
+    "cr7",
+    "marcelo",
+    "kaka",
+    "kroos",
+    "sergio_ramos",
+    "modric",
+    "raul",
+    "vinicius",
+    "casemiro",
+    "benzema"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "BBC (Real Madrid)",
+    [
+     "BBC (Real Madrid)"
+    ]
+   ],
+   "x": "Bale, Benzema e Cristiano ganharam quatro Champions juntos."
+  },
+  {
+   "t": "Selecione os 2 que formaram o trio 'Ma-Gi-Ca' do Napoli com Giordano?",
+   "type": "player",
+   "a": [
+    "maradona",
+    "careca"
+   ],
+   "fixed": [
+    "rossi",
+    "baggio",
+    "platini",
+    "rummenigge",
+    "boniek",
+    "maradona",
+    "careca",
+    "batistuta",
+    "zico",
+    "socrates"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "SSC Napoli",
+    [
+     "SSC Napoli"
+    ]
+   ],
+   "x": "O trio levou o Napoli ao título italiano de 1990."
+  },
+  {
+   "t": "Selecione os 2 franceses do 'quadrado mágico' com Tigana e Fernández, nos anos 1980?",
+   "type": "player",
+   "a": [
+    "platini",
+    "giresse"
+   ],
+   "fixed": [
+    "tresor",
+    "vieira",
+    "giresse",
+    "desailly",
+    "platini",
+    "deschamps",
+    "zidane",
+    "kopa",
+    "henry",
+    "fontaine"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Carré magique",
+    [
+     "Carré magique"
+    ]
+   ],
+   "x": "O 'quadrado mágico' ganhou a Euro 1984."
+  },
+  {
+   "t": "Selecione os 2 atacantes do 'quadrado mágico' do Brasil com Kaká e Ronaldinho, em 2006?",
+   "type": "player",
+   "a": [
+    "ronaldo",
+    "adriano"
+   ],
+   "fixed": [
+    "adriano",
+    "edilson",
+    "luis_fabiano",
+    "denilson",
+    "rivaldo",
+    "edmundo",
+    "elber",
+    "robinho",
+    "romario",
+    "ronaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Brazil at the 2006 FIFA World Cup",
+    [
+     "Brazil at the 2006 FIFA World Cup"
+    ]
+   ],
+   "x": "O quarteto não passou das quartas de final, contra a França."
+  },
+  {
+   "t": "Selecione os 2 volantes titulares do Brasil no tetra de 1994?",
+   "type": "player",
+   "a": [
+    "dunga",
+    "mauro_silva"
+   ],
+   "fixed": [
+    "gilberto_silva",
+    "emerson",
+    "raí",
+    "socrates",
+    "falcao",
+    "zinho",
+    "clodoaldo",
+    "mauro_silva",
+    "cerezo",
+    "dunga"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1994 FIFA World Cup",
+    [
+     "1994 FIFA World Cup"
+    ]
+   ],
+   "x": "Dunga e Mauro Silva protegiam a zaga no time de Parreira."
+  },
+  {
+   "t": "Selecione os 2 laterais titulares do Brasil na final da Copa de 2002?",
+   "type": "player",
+   "a": [
+    "cafu",
+    "roberto_carlos"
+   ],
+   "fixed": [
+    "jorginho",
+    "maicon",
+    "nilton_santos",
+    "junior",
+    "marcelo",
+    "dani_alves",
+    "branco",
+    "roberto_carlos",
+    "cafu",
+    "carlos_alberto"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2002 FIFA World Cup final",
+    [
+     "2002 FIFA World Cup final"
+    ]
+   ],
+   "x": "Cafu era o capitão e levantou a taça em Yokohama."
+  },
+  {
+   "t": "Selecione os 2 laterais do Brasil bicampeão em 1958 e 1962?",
+   "type": "player",
+   "a": [
+    "djalma_santos",
+    "nilton_santos"
+   ],
+   "fixed": [
+    "nilton_santos",
+    "junior",
+    "bellini",
+    "piazza",
+    "zito",
+    "carlos_alberto",
+    "brito",
+    "gilmar",
+    "djalma_santos",
+    "mauro_ramos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1958 FIFA World Cup",
+    [
+     "1958 FIFA World Cup"
+    ]
+   ],
+   "x": "Nílton Santos, a 'Enciclopédia do Futebol', ia ao ataque como poucos laterais da época."
+  },
+  {
+   "t": "Selecione os 2 argentinos que marcaram na final da Copa de 2022?",
+   "type": "player",
+   "a": [
+    "messi",
+    "dimaria"
+   ],
+   "fixed": [
+    "batistuta",
+    "messi",
+    "aguero",
+    "lautaro",
+    "riquelme",
+    "dybala",
+    "zanetti",
+    "crespo",
+    "dimaria",
+    "mascherano"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2022 FIFA World Cup final",
+    [
+     "2022 FIFA World Cup final"
+    ]
+   ],
+   "x": "Messi marcou duas vezes e Di María uma."
+  },
+  {
+   "t": "Selecione os 2 portugueses eleitos melhores jogadores do mundo pela FIFA?",
+   "type": "player",
+   "a": [
+    "figo",
+    "cr7"
+   ],
+   "fixed": [
+    "ruicosta",
+    "deco",
+    "bernardo_silva",
+    "pauleta",
+    "eusebio",
+    "figo",
+    "vitor_baia",
+    "coluna",
+    "cr7",
+    "bruno_fernandes"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "FIFA World Player of the Year",
+    [
+     "FIFA World Player of the Year"
+    ]
+   ],
+   "x": "Figo ganhou em 2001; Cristiano Ronaldo, várias vezes a partir de 2008."
+  },
+  {
+   "t": "Selecione os 2 holandeses que ganharam a Bola de Ouro nos anos 1980?",
+   "type": "player",
+   "a": [
+    "gullit",
+    "van_basten"
+   ],
+   "fixed": [
+    "van_basten",
+    "van_dijk",
+    "koeman",
+    "van_der_sar",
+    "bergkamp",
+    "rijkaard",
+    "rensenbrink",
+    "gullit",
+    "krol",
+    "cruyff"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ],
+   "x": "Gullit ganhou em 1987; Van Basten, em 1988 e 1989."
+  },
+  {
+   "t": "Selecione os 2 alemães que ganharam a Bola de Ouro nos anos 1970?",
+   "type": "player",
+   "a": [
+    "beckenbauer",
+    "gerd_muller"
+   ],
+   "fixed": [
+    "matthaus",
+    "seeler",
+    "voller",
+    "fritz_walter",
+    "klinsmann",
+    "maier",
+    "rummenigge",
+    "gerd_muller",
+    "beckenbauer",
+    "breitner"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ],
+   "x": "Gerd Müller ganhou em 1970; Beckenbauer, em 1972 e 1976. Rummenigge veio em 1980."
+  },
+  {
+   "t": "Selecione os 2 italianos que ganharam a Bola de Ouro depois de 1990?",
+   "type": "player",
+   "a": [
+    "baggio",
+    "cannavaro"
+   ],
+   "fixed": [
+    "baresi",
+    "totti",
+    "nesta",
+    "rossi",
+    "pirlo",
+    "maldini",
+    "cannavaro",
+    "del_piero",
+    "baggio",
+    "buffon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ],
+   "x": "Baggio ganhou em 1993; Cannavaro, em 2006."
+  },
+  {
+   "t": "Selecione os 2 brasileiros que ganharam a Bola de Ouro nos anos 1990?",
+   "type": "player",
+   "a": [
+    "ronaldo",
+    "rivaldo"
+   ],
+   "fixed": [
+    "bebeto",
+    "cafu",
+    "rivaldo",
+    "dunga",
+    "kaka",
+    "raí",
+    "ronaldo",
+    "romario",
+    "ronaldinho",
+    "roberto_carlos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ],
+   "x": "Ronaldo ganhou em 1997; Rivaldo, em 1999."
+  },
+  {
+   "t": "Selecione os 2 brasileiros do Real Madrid 'galáctico' campeão espanhol em 2002-03?",
+   "type": "player",
+   "a": [
+    "ronaldo",
+    "roberto_carlos"
+   ],
+   "fixed": [
+    "ronaldinho",
+    "roberto_carlos",
+    "marcelo",
+    "robinho",
+    "rivaldo",
+    "ronaldo",
+    "casemiro",
+    "ze_roberto",
+    "kaka",
+    "savio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Real Madrid CF",
+    [
+     "Real Madrid CF"
+    ]
+   ],
+   "x": "Ronaldo chegou em 2002 e foi artilheiro daquele Espanhol."
+  },
+  {
+   "t": "Selecione os 2 atacantes da tabelinha mais famosa do Santos nos anos 1960?",
+   "type": "player",
+   "a": [
+    "pele",
+    "coutinho"
+   ],
+   "fixed": [
+    "tostao",
+    "pele",
+    "didi",
+    "coutinho",
+    "amarildo",
+    "garrincha",
+    "zito",
+    "pepe",
+    "jairzinho",
+    "vava"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "Santos FC",
+    [
+     "Santos FC"
+    ]
+   ],
+   "x": "A dupla era famosa pelas tabelinhas na Vila Belmiro."
+  },
+  {
+   "t": "Selecione os 2 zagueiros do Milan de Sacchi que jogaram a carreira inteira no clube?",
+   "type": "player",
+   "a": [
+    "baresi",
+    "maldini"
+   ],
+   "fixed": [
+    "thuram",
+    "maldini",
+    "facchetti",
+    "nesta",
+    "baresi",
+    "cannavaro",
+    "scirea",
+    "rijkaard",
+    "desailly",
+    "koeman"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "AC Milan",
+    [
+     "AC Milan"
+    ]
+   ],
+   "x": "Baresi e Maldini passaram toda a carreira profissional no Milan."
+  },
+  {
+   "t": "Selecione os 2 goleiros de Itália e Espanha campeões do mundo em 2006 e 2010?",
+   "type": "player",
+   "a": [
+    "buffon",
+    "casillas"
+   ],
+   "fixed": [
+    "dida",
+    "kahn",
+    "casillas",
+    "courtois",
+    "lloris",
+    "marcos",
+    "buffon",
+    "barthez",
+    "neuer",
+    "zoff"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "FIFA World Cup"
+    ]
+   ],
+   "x": "Buffon sofreu só dois gols em 2006; Casillas, dois em 2010."
+  },
+  {
+   "t": "Selecione os 2 craques do meio-campo do Barcelona que venceram a Euro 2008 e a Copa de 2010?",
+   "type": "player",
+   "a": [
+    "xavi",
+    "iniesta"
+   ],
+   "fixed": [
+    "xavi",
+    "kroos",
+    "pedri",
+    "david_silva",
+    "torres",
+    "modric",
+    "puyol",
+    "busquets",
+    "iniesta",
+    "villa"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Spain national football team",
+    [
+     "Spain national football team"
+    ]
+   ],
+   "x": "Xavi e Iniesta foram a base do tiki-taka."
+  },
+  {
+   "t": "Selecione os 2 brasileiros que jogaram a final da Champions de 2010 pela Inter, além de Júlio César?",
+   "type": "player",
+   "a": [
+    "maicon",
+    "lucio"
+   ],
+   "fixed": [
+    "dida",
+    "roberto_carlos",
+    "ronaldo",
+    "cafu",
+    "alex",
+    "maicon",
+    "lucio",
+    "adriano",
+    "kaka",
+    "thiago_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "2010 UEFA Champions League final"
+    ]
+   ],
+   "x": "Júlio César, Maicon e Lúcio foram titulares na tríplice coroa de Mourinho."
+  },
+  {
+   "t": "Selecione os 2 que completavam o ataque do Brasil de 1970 com Pelé e Tostão?",
+   "type": "player",
+   "a": [
+    "jairzinho",
+    "rivellino"
+   ],
+   "fixed": [
+    "gerson",
+    "clodoaldo",
+    "rivellino",
+    "vava",
+    "amarildo",
+    "zico",
+    "jairzinho",
+    "socrates",
+    "carlos_alberto",
+    "garrincha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "1970 FIFA World Cup",
+    [
+     "1970 FIFA World Cup"
+    ]
+   ],
+   "x": "O ataque de 1970 tinha Jairzinho, Tostão, Pelé e Rivellino, todos camisas 10 em seus clubes."
+  },
+  {
+   "t": "Selecione os 2 companheiros de Messi no ataque do Barcelona campeão europeu de 2009?",
+   "type": "player",
+   "a": [
+    "etoo",
+    "henry"
+   ],
+   "fixed": [
+    "stoichkov",
+    "etoo",
+    "ronaldinho",
+    "neymar",
+    "deco",
+    "rivaldo",
+    "henry",
+    "suarez",
+    "villa",
+    "ibrahimovic"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "pt",
+    "2009 UEFA Champions League final",
+    [
+     "2009 UEFA Champions League final"
+    ]
+   ],
+   "x": "O trio fez exatamente 100 gols naquela temporada."
+  },
+  {
+   "t": "Selecione os 2 jogadores campeões do mundo como jogador e como técnico pela Alemanha e pela França?",
+   "type": "player",
+   "a": [
+    "beckenbauer",
+    "deschamps"
+   ],
+   "fixed": [
+    "zidane",
+    "desailly",
+    "zagallo",
+    "matthaus",
+    "lahm",
+    "beckenbauer",
+    "voller",
+    "klinsmann",
+    "deschamps",
+    "thuram"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "FIFA World Cup"
+    ]
+   ],
+   "x": "Zagallo foi o primeiro; Beckenbauer e Deschamps repetiram o feito."
+  }
+ ]
+}

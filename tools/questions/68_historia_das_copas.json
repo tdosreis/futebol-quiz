@@ -1,0 +1,1740 @@
+{
+ "id": "historiacopas",
+ "name": "História das Copas",
+ "emoji": "🏆",
+ "tag": "Copas",
+ "col": "#8c6a1f",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1938?",
+   "type": "player",
+   "a": [
+    "meazza"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1938 FIFA World Cup",
+    [
+     "1938 FIFA World Cup"
+    ]
+   ],
+   "x": "Meazza também foi campeão em 1934."
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1950?",
+   "type": "player",
+   "a": [
+    "obdulio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1950 FIFA World Cup",
+    [
+     "1950 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1954?",
+   "type": "player",
+   "a": [
+    "fritz_walter"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1954 FIFA World Cup",
+    [
+     "1954 FIFA World Cup"
+    ]
+   ],
+   "x": "Fritz Walter tinha sido prisioneiro de guerra na União Soviética."
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1958?",
+   "type": "player",
+   "a": [
+    "bellini"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1958 FIFA World Cup",
+    [
+     "1958 FIFA World Cup"
+    ]
+   ],
+   "x": "Bellini ergueu a taça acima da cabeça, gesto que virou tradição."
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1962?",
+   "type": "player",
+   "a": [
+    "mauro_ramos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1962 FIFA World Cup",
+    [
+     "1962 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1966?",
+   "type": "player",
+   "a": [
+    "moore"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1970?",
+   "type": "player",
+   "a": [
+    "carlos_alberto"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1974?",
+   "type": "player",
+   "a": [
+    "beckenbauer"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1974 FIFA World Cup",
+    [
+     "1974 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1978?",
+   "type": "player",
+   "a": [
+    "passarella"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1978 FIFA World Cup",
+    [
+     "1978 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1982?",
+   "type": "player",
+   "a": [
+    "zoff"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1986?",
+   "type": "player",
+   "a": [
+    "maradona"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1986 FIFA World Cup",
+    [
+     "1986 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1990?",
+   "type": "player",
+   "a": [
+    "matthaus"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1990 FIFA World Cup",
+    [
+     "1990 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1994?",
+   "type": "player",
+   "a": [
+    "dunga"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 1998?",
+   "type": "player",
+   "a": [
+    "deschamps"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2002?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2006?",
+   "type": "player",
+   "a": [
+    "cannavaro"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2006 FIFA World Cup",
+    [
+     "2006 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2010?",
+   "type": "player",
+   "a": [
+    "casillas"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2014?",
+   "type": "player",
+   "a": [
+    "lahm"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2018?",
+   "type": "player",
+   "a": [
+    "lloris"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o capitão da seleção campeã do mundo em 2022?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "2022 FIFA World Cup",
+    [
+     "2022 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1958?",
+   "type": "player",
+   "a": [
+    "gilmar"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1958 FIFA World Cup",
+    [
+     "1958 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1962?",
+   "type": "player",
+   "a": [
+    "gilmar"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1962 FIFA World Cup",
+    [
+     "1962 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1966?",
+   "type": "player",
+   "a": [
+    "banks"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1966 FIFA World Cup",
+    [
+     "1966 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1970?",
+   "type": "player",
+   "a": [
+    "felix"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1970 FIFA World Cup",
+    [
+     "1970 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1974?",
+   "type": "player",
+   "a": [
+    "maier"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1974 FIFA World Cup",
+    [
+     "1974 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1978?",
+   "type": "player",
+   "a": [
+    "fillol"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1978 FIFA World Cup",
+    [
+     "1978 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1982?",
+   "type": "player",
+   "a": [
+    "zoff"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1982 FIFA World Cup",
+    [
+     "1982 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1994?",
+   "type": "player",
+   "a": [
+    "taffarel"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1994 FIFA World Cup",
+    [
+     "1994 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 1998?",
+   "type": "player",
+   "a": [
+    "barthez"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "1998 FIFA World Cup",
+    [
+     "1998 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 2002?",
+   "type": "player",
+   "a": [
+    "marcos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "2002 FIFA World Cup",
+    [
+     "2002 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 2006?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "2006 FIFA World Cup",
+    [
+     "2006 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 2010?",
+   "type": "player",
+   "a": [
+    "casillas"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "2010 FIFA World Cup",
+    [
+     "2010 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 2014?",
+   "type": "player",
+   "a": [
+    "neuer"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "2014 FIFA World Cup",
+    [
+     "2014 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem era o goleiro titular da seleção campeã do mundo em 2018?",
+   "type": "player",
+   "a": [
+    "lloris"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "2018 FIFA World Cup",
+    [
+     "2018 FIFA World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1958?",
+   "type": "player",
+   "a": [
+    "didi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1962?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1966?",
+   "type": "player",
+   "a": [
+    "charlton"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1982?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1986?",
+   "type": "player",
+   "a": [
+    "maradona"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1994?",
+   "type": "player",
+   "a": [
+    "romario"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 1998?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 2002?",
+   "type": "player",
+   "a": [
+    "kahn"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 2006?",
+   "type": "player",
+   "a": [
+    "zidane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 2014?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador da Copa de 2018?",
+   "type": "player",
+   "a": [
+    "modric"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup awards",
+    [
+     "FIFA World Cup awards"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 1998?",
+   "type": "player",
+   "a": [
+    "owen"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 2010?",
+   "type": "player",
+   "a": [
+    "thomas_muller"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 2014?",
+   "type": "player",
+   "a": [
+    "pogba"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 2018?",
+   "type": "player",
+   "a": [
+    "mbappe"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 1958?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi eleito o melhor jogador jovem da Copa de 1970?",
+   "type": "player",
+   "a": [
+    "cubillas"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA Young Player Award",
+    [
+     "FIFA Young Player Award"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Luva de Ouro da Copa de 1998?",
+   "type": "player",
+   "a": [
+    "barthez"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Glove",
+    [
+     "FIFA World Cup Golden Glove"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Luva de Ouro da Copa de 2002?",
+   "type": "player",
+   "a": [
+    "kahn"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Glove",
+    [
+     "FIFA World Cup Golden Glove"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Luva de Ouro da Copa de 2006?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Glove",
+    [
+     "FIFA World Cup Golden Glove"
+    ]
+   ]
+  },
+  {
+   "t": "Quem ganhou a Luva de Ouro da Copa de 2018?",
+   "type": "player",
+   "a": [
+    "courtois"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Glove",
+    [
+     "FIFA World Cup Golden Glove"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1938?",
+   "type": "player",
+   "a": [
+    "leonidas"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1950?",
+   "type": "player",
+   "a": [
+    "ademir"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1954?",
+   "type": "player",
+   "a": [
+    "kocsis"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1958?",
+   "type": "player",
+   "a": [
+    "fontaine"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1966?",
+   "type": "player",
+   "a": [
+    "eusebio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1978?",
+   "type": "player",
+   "a": [
+    "kempes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 1982?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem foi o artilheiro da Copa do Mundo de 2014?",
+   "type": "player",
+   "a": [
+    "james"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup Golden Boot",
+    [
+     "FIFA World Cup Golden Boot"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou dois gols na final da Copa de 1958, aos 17 anos?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o primeiro gol do Brasil na final da Copa de 1962, depois de a Tchecoslováquia sair na frente?",
+   "type": "player",
+   "a": [
+    "amarildo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou o primeiro gol do Brasil na final da Copa de 1970, de cabeça?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o terceiro gol do Brasil na final de 1970, de chute cruzado?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o gol do título da Alemanha Ocidental na final de 1974?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez dois gols na final da Copa de 1978?",
+   "type": "player",
+   "a": [
+    "kempes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem abriu o placar da final da Copa de 1982, contra a Alemanha Ocidental?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou o segundo gol da Argentina na final de 1986?",
+   "type": "player",
+   "a": [
+    "valdano"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem bateu o pênalti que decidiu a final da Copa de 1990?",
+   "type": "player",
+   "a": [
+    "brehme"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez dois gols de cabeça na final da Copa de 1998?",
+   "type": "player",
+   "a": [
+    "zidane"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem marcou na prorrogação da final de 2010, em Joanesburgo?",
+   "type": "player",
+   "a": [
+    "iniesta"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez três gols na final da Copa de 2022?",
+   "type": "player",
+   "a": [
+    "mbappe"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o segundo gol da Argentina na final da Copa de 2022?",
+   "type": "player",
+   "a": [
+    "dimaria"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Quem fez o gol do empate da França na final de 2006, de cavadinha?",
+   "type": "player",
+   "a": [
+    "zidane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup final",
+    [
+     "FIFA World Cup final"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção chegou à semifinal da Copa logo na estreia, em 1998?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Coreia do Sul",
+    "Argentina",
+    "Itália",
+    "Estados Unidos",
+    "Alemanha",
+    "Croácia"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Croácia"
+    ]
+   ],
+   "x": "Davor Šuker foi o artilheiro daquela Copa."
+  },
+  {
+   "t": "Qual seleção sediou a Copa de 1934?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Itália",
+    "Suíça",
+    "Uruguai",
+    "Chile",
+    "Croácia",
+    "México"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção sediou a Copa de 1954?",
+   "type": "txt",
+   "a": [
+    "Suíça"
+   ],
+   "choices": [
+    "Estados Unidos",
+    "Itália",
+    "Suíça",
+    "Alemanha",
+    "Hungria",
+    "Holanda"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Suíça"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção sediou a Copa de 1962?",
+   "type": "txt",
+   "a": [
+    "Chile"
+   ],
+   "choices": [
+    "Holanda",
+    "Chile",
+    "Croácia",
+    "Portugal",
+    "Argentina",
+    "Itália"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Chile"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção perdeu a final de 1958 em casa?",
+   "type": "txt",
+   "a": [
+    "Suécia"
+   ],
+   "choices": [
+    "Croácia",
+    "Coreia do Sul",
+    "Chile",
+    "Suécia",
+    "França",
+    "Inglaterra"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Suécia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção perdeu três finais de Copa sem nunca ganhar?",
+   "type": "txt",
+   "a": [
+    "Holanda"
+   ],
+   "choices": [
+    "Bélgica",
+    "México",
+    "Estados Unidos",
+    "Coreia do Sul",
+    "Japão",
+    "Holanda"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Holanda"
+    ]
+   ],
+   "x": "A Holanda perdeu as finais de 1974, 1978 e 2010."
+  },
+  {
+   "t": "Qual seleção terminou em terceiro lugar na Copa de 2018, com Hazard e De Bruyne?",
+   "type": "txt",
+   "a": [
+    "Bélgica"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Alemanha",
+    "Croácia",
+    "Bélgica",
+    "Argentina",
+    "Brasil"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Bélgica"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção foi a primeira anfitriã a cair na primeira fase, em 2010?",
+   "type": "txt",
+   "a": [
+    "África do Sul"
+   ],
+   "choices": [
+    "Hungria",
+    "Portugal",
+    "Uruguai",
+    "Croácia",
+    "Estados Unidos",
+    "África do Sul"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "África do Sul"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu a primeira Copa disputada na Europa, em 1934?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Itália",
+    "França",
+    "México",
+    "Suécia",
+    "Suíça",
+    "Estados Unidos"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção eliminou a Inglaterra nas quartas da Copa de 2022?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Argentina",
+    "França",
+    "Suíça",
+    "Suécia",
+    "Estados Unidos",
+    "Bélgica"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "França"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção ganhou a Copa de 1966, a única da sua história?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Alemanha",
+    "França",
+    "Chile",
+    "México",
+    "Inglaterra",
+    "Estados Unidos"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Inglaterra"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção foi vice-campeã em 2018, liderada por Modrić?",
+   "type": "txt",
+   "a": [
+    "Croácia"
+   ],
+   "choices": [
+    "Japão",
+    "Hungria",
+    "Croácia",
+    "Inglaterra",
+    "Coreia do Sul",
+    "Portugal"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Croácia"
+    ]
+   ]
+  },
+  {
+   "t": "Qual seleção venceu as duas primeiras Copas disputadas na América do Sul?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "México",
+    "Argentina",
+    "França",
+    "Suíça",
+    "Uruguai",
+    "Chile"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "Uruguai"
+    ]
+   ],
+   "x": "1930, em casa, e 1950, no Brasil."
+  }
+ ]
+}

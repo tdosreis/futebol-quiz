@@ -1,0 +1,6492 @@
+{
+ "id": "escalacao",
+ "name": "Complete a escalação",
+ "emoji": "📋",
+ "tag": "Escalação",
+ "col": "#2e6b3a",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Complete a escalação do Brasil campeão de 1958: quem é o meio-campista ao lado de Zito?",
+   "type": "player",
+   "a": [
+    "didi"
+   ],
+   "fixed": [
+    "obdulio",
+    "zizinho",
+    "rivera",
+    "gerson",
+    "coluna",
+    "masopust",
+    "kopa",
+    "liedholm",
+    "charlton",
+    "didi"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1958",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Djalma Santos",
+      "Bellini",
+      "Orlando",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "?"
+     ],
+     [
+      "Garrincha",
+      "Vavá",
+      "Pelé",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1958 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1958"
+    ]
+   ],
+   "x": "O Brasil venceu a Suécia por 5 a 2 em Estocolmo e ganhou sua primeira Copa."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1958: quem é o atacante ao lado de Vavá?",
+   "type": "player",
+   "a": [
+    "garrincha"
+   ],
+   "fixed": [
+    "coutinho",
+    "julinho",
+    "finney",
+    "pepe",
+    "garrincha",
+    "jairzinho",
+    "amarildo",
+    "ademir",
+    "seeler",
+    "mazzola"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1958",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Djalma Santos",
+      "Bellini",
+      "Orlando",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "Didi"
+     ],
+     [
+      "?",
+      "Vavá",
+      "Pelé",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1958 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1958"
+    ]
+   ],
+   "x": "O Brasil venceu a Suécia por 5 a 2 em Estocolmo e ganhou sua primeira Copa."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1958: quem é o defensor ao lado de Bellini?",
+   "type": "player",
+   "a": [
+    "djalma_santos"
+   ],
+   "fixed": [
+    "krol",
+    "marinho_chagas",
+    "facchetti",
+    "hong",
+    "djalma_santos",
+    "zanetti",
+    "mauro_ramos",
+    "aldair",
+    "dani_alves",
+    "moore"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1958",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "?",
+      "Bellini",
+      "Orlando",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "Didi"
+     ],
+     [
+      "Garrincha",
+      "Vavá",
+      "Pelé",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1958 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1958"
+    ]
+   ],
+   "x": "O Brasil venceu a Suécia por 5 a 2 em Estocolmo e ganhou sua primeira Copa."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1962: quem é o atacante entre Vavá e Zagallo?",
+   "type": "player",
+   "a": [
+    "amarildo"
+   ],
+   "fixed": [
+    "pepe",
+    "coutinho",
+    "law",
+    "julinho",
+    "tostao",
+    "pele",
+    "amarildo",
+    "finney",
+    "jairzinho",
+    "fritz_walter"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1962",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Djalma Santos",
+      "Mauro",
+      "Zózimo",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "Didi"
+     ],
+     [
+      "Garrincha",
+      "Vavá",
+      "?",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1962 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1962"
+    ]
+   ],
+   "x": "Amarildo substituiu Pelé, contundido, e marcou na final contra a Tchecoslováquia."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1962: quem é o defensor entre Djalma Santos e Zózimo?",
+   "type": "player",
+   "a": [
+    "mauro_ramos"
+   ],
+   "fixed": [
+    "figueroa",
+    "carlos_alberto",
+    "moore",
+    "bellini",
+    "facchetti",
+    "piazza",
+    "beckenbauer",
+    "mauro_ramos",
+    "brito",
+    "domingos_guia"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1962",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Djalma Santos",
+      "?",
+      "Zózimo",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "Didi"
+     ],
+     [
+      "Garrincha",
+      "Vavá",
+      "Amarildo",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1962 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1962"
+    ]
+   ],
+   "x": "Amarildo substituiu Pelé, contundido, e marcou na final contra a Tchecoslováquia."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1962: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "gilmar"
+   ],
+   "fixed": [
+    "banks",
+    "zoff",
+    "dasaev",
+    "felix",
+    "leao",
+    "yashin",
+    "gilmar",
+    "maier",
+    "kahn",
+    "cech"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1962",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Djalma Santos",
+      "Mauro",
+      "Zózimo",
+      "Nílton Santos"
+     ],
+     [
+      "Zito",
+      "Didi"
+     ],
+     [
+      "Garrincha",
+      "Vavá",
+      "Amarildo",
+      "Zagallo"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1962 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1962"
+    ]
+   ],
+   "x": "Amarildo substituiu Pelé, contundido, e marcou na final contra a Tchecoslováquia."
+  },
+  {
+   "t": "Complete a escalação do Brasil tricampeão de 1970: quem é o atacante entre Jairzinho e Pelé?",
+   "type": "player",
+   "a": [
+    "tostao"
+   ],
+   "fixed": [
+    "reinaldo",
+    "milla",
+    "vava",
+    "garrincha",
+    "dinamite",
+    "gerd_muller",
+    "coutinho",
+    "julinho",
+    "tostao",
+    "best"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1970",
+    "rows": [
+     [
+      "Félix"
+     ],
+     [
+      "C. Alberto",
+      "Brito",
+      "Piazza",
+      "Everaldo"
+     ],
+     [
+      "Clodoaldo",
+      "Gérson"
+     ],
+     [
+      "Jairzinho",
+      "?",
+      "Pelé",
+      "Rivellino"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1970 FIFA World Cup final",
+    [
+     "no Brasil tricampeão de 1970"
+    ]
+   ],
+   "x": "O time de 1970 é considerado por muitos o melhor de todos os tempos."
+  },
+  {
+   "t": "Complete a escalação do Brasil tricampeão de 1970: quem é o meio-campista ao lado de Gérson?",
+   "type": "player",
+   "a": [
+    "clodoaldo"
+   ],
+   "fixed": [
+    "giresse",
+    "clodoaldo",
+    "charlton",
+    "ardiles",
+    "masopust",
+    "zico",
+    "falcao",
+    "cerezo",
+    "zito",
+    "kopa"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1970",
+    "rows": [
+     [
+      "Félix"
+     ],
+     [
+      "C. Alberto",
+      "Brito",
+      "Piazza",
+      "Everaldo"
+     ],
+     [
+      "?",
+      "Gérson"
+     ],
+     [
+      "Jairzinho",
+      "Tostão",
+      "Pelé",
+      "Rivellino"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1970 FIFA World Cup final",
+    [
+     "no Brasil tricampeão de 1970"
+    ]
+   ],
+   "x": "O time de 1970 é considerado por muitos o melhor de todos os tempos."
+  },
+  {
+   "t": "Complete a escalação do Brasil tricampeão de 1970: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "felix"
+   ],
+   "fixed": [
+    "gilmar",
+    "fillol",
+    "banks",
+    "yashin",
+    "zoff",
+    "leao",
+    "maier",
+    "julio_cesar",
+    "felix",
+    "dasaev"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1970",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "C. Alberto",
+      "Brito",
+      "Piazza",
+      "Everaldo"
+     ],
+     [
+      "Clodoaldo",
+      "Gérson"
+     ],
+     [
+      "Jairzinho",
+      "Tostão",
+      "Pelé",
+      "Rivellino"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1970 FIFA World Cup final",
+    [
+     "no Brasil tricampeão de 1970"
+    ]
+   ],
+   "x": "O time de 1970 é considerado por muitos o melhor de todos os tempos."
+  },
+  {
+   "t": "Complete a escalação do Brasil tricampeão de 1970: quem é o defensor entre Brito e Everaldo?",
+   "type": "player",
+   "a": [
+    "piazza"
+   ],
+   "fixed": [
+    "tresor",
+    "piazza",
+    "mauro_ramos",
+    "moore",
+    "passarella",
+    "marinho_chagas",
+    "figueroa",
+    "djalma_santos",
+    "bellini",
+    "beckenbauer"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1970",
+    "rows": [
+     [
+      "Félix"
+     ],
+     [
+      "C. Alberto",
+      "Brito",
+      "?",
+      "Everaldo"
+     ],
+     [
+      "Clodoaldo",
+      "Gérson"
+     ],
+     [
+      "Jairzinho",
+      "Tostão",
+      "Pelé",
+      "Rivellino"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1970 FIFA World Cup final",
+    [
+     "no Brasil tricampeão de 1970"
+    ]
+   ],
+   "x": "O time de 1970 é considerado por muitos o melhor de todos os tempos."
+  },
+  {
+   "t": "Complete a escalação do Brasil de 1982 que caiu no Sarriá: quem é o meio-campista entre Cerezo e Sócrates?",
+   "type": "player",
+   "a": [
+    "falcao"
+   ],
+   "fixed": [
+    "cubillas",
+    "clodoaldo",
+    "laudrup",
+    "rivellino",
+    "zinho",
+    "matthaus",
+    "dunga",
+    "boniek",
+    "raí",
+    "falcao"
+   ],
+   "xi": {
+    "t": "Brasil × Itália · Copa de 1982",
+    "rows": [
+     [
+      "Waldir Peres"
+     ],
+     [
+      "Leandro",
+      "Oscar",
+      "Luisinho",
+      "Júnior"
+     ],
+     [
+      "Cerezo",
+      "?",
+      "Sócrates",
+      "Zico"
+     ],
+     [
+      "Serginho",
+      "Éder"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Brazil v Italy (1982 FIFA World Cup)",
+    [
+     "no Brasil de 1982 que caiu no Sarriá"
+    ]
+   ],
+   "x": "A seleção de Telê Santana encantou o mundo, mas perdeu por 3 a 2 para a Itália."
+  },
+  {
+   "t": "Complete a escalação do Brasil de 1982 que caiu no Sarriá: quem é o atacante ao lado de Serginho?",
+   "type": "player",
+   "a": [
+    "eder"
+   ],
+   "fixed": [
+    "gerd_muller",
+    "bebeto",
+    "muller_sp",
+    "romario",
+    "careca",
+    "baggio",
+    "reinaldo",
+    "eusebio",
+    "eder",
+    "casagrande"
+   ],
+   "xi": {
+    "t": "Brasil × Itália · Copa de 1982",
+    "rows": [
+     [
+      "Waldir Peres"
+     ],
+     [
+      "Leandro",
+      "Oscar",
+      "Luisinho",
+      "Júnior"
+     ],
+     [
+      "Cerezo",
+      "Falcão",
+      "Sócrates",
+      "Zico"
+     ],
+     [
+      "Serginho",
+      "?"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Brazil v Italy (1982 FIFA World Cup)",
+    [
+     "no Brasil de 1982 que caiu no Sarriá"
+    ]
+   ],
+   "x": "A seleção de Telê Santana encantou o mundo, mas perdeu por 3 a 2 para a Itália."
+  },
+  {
+   "t": "Complete a escalação do Brasil de 1982 que caiu no Sarriá: quem é o meio-campista ao lado de Falcão?",
+   "type": "player",
+   "a": [
+    "cerezo"
+   ],
+   "fixed": [
+    "deschamps",
+    "francescoli",
+    "rivellino",
+    "hagi",
+    "cerezo",
+    "raí",
+    "abedi",
+    "zinho",
+    "clodoaldo",
+    "dunga"
+   ],
+   "xi": {
+    "t": "Brasil × Itália · Copa de 1982",
+    "rows": [
+     [
+      "Waldir Peres"
+     ],
+     [
+      "Leandro",
+      "Oscar",
+      "Luisinho",
+      "Júnior"
+     ],
+     [
+      "?",
+      "Falcão",
+      "Sócrates",
+      "Zico"
+     ],
+     [
+      "Serginho",
+      "Éder"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Brazil v Italy (1982 FIFA World Cup)",
+    [
+     "no Brasil de 1982 que caiu no Sarriá"
+    ]
+   ],
+   "x": "A seleção de Telê Santana encantou o mundo, mas perdeu por 3 a 2 para a Itália."
+  },
+  {
+   "t": "Complete a escalação do Brasil de 1982 que caiu no Sarriá: quem é o defensor ao lado de Luisinho?",
+   "type": "player",
+   "a": [
+    "junior"
+   ],
+   "fixed": [
+    "jorginho",
+    "piazza",
+    "marinho_chagas",
+    "carlos_alberto",
+    "maldini",
+    "koeman",
+    "aldair",
+    "figueroa",
+    "branco",
+    "junior"
+   ],
+   "xi": {
+    "t": "Brasil × Itália · Copa de 1982",
+    "rows": [
+     [
+      "Waldir Peres"
+     ],
+     [
+      "Leandro",
+      "Oscar",
+      "Luisinho",
+      "?"
+     ],
+     [
+      "Cerezo",
+      "Falcão",
+      "Sócrates",
+      "Zico"
+     ],
+     [
+      "Serginho",
+      "Éder"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Brazil v Italy (1982 FIFA World Cup)",
+    [
+     "no Brasil de 1982 que caiu no Sarriá"
+    ]
+   ],
+   "x": "A seleção de Telê Santana encantou o mundo, mas perdeu por 3 a 2 para a Itália."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1994: quem é o meio-campista ao lado de Dunga?",
+   "type": "player",
+   "a": [
+    "mauro_silva"
+   ],
+   "fixed": [
+    "laudrup",
+    "rivaldo",
+    "nakata",
+    "ze_roberto",
+    "zico",
+    "djalminha",
+    "emerson",
+    "gullit",
+    "mauro_silva",
+    "cerezo"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1994",
+    "rows": [
+     [
+      "Taffarel"
+     ],
+     [
+      "Jorginho",
+      "Aldair",
+      "Márcio Santos",
+      "Branco"
+     ],
+     [
+      "?",
+      "Dunga",
+      "Mazinho",
+      "Zinho"
+     ],
+     [
+      "Bebeto",
+      "Romário"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1994 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1994"
+    ]
+   ],
+   "x": "O time de Parreira venceu a Itália nos pênaltis em Pasadena."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1994: quem é o meio-campista?",
+   "type": "player",
+   "a": [
+    "zinho"
+   ],
+   "fixed": [
+    "raí",
+    "alex",
+    "valderrama",
+    "ze_roberto",
+    "scholes",
+    "emerson",
+    "abedi",
+    "zinho",
+    "zico",
+    "djalminha"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1994",
+    "rows": [
+     [
+      "Taffarel"
+     ],
+     [
+      "Jorginho",
+      "Aldair",
+      "Márcio Santos",
+      "Branco"
+     ],
+     [
+      "Mauro Silva",
+      "Dunga",
+      "Mazinho",
+      "?"
+     ],
+     [
+      "Bebeto",
+      "Romário"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1994 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1994"
+    ]
+   ],
+   "x": "O time de Parreira venceu a Itália nos pênaltis em Pasadena."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1994: quem é o defensor entre Jorginho e Márcio Santos?",
+   "type": "player",
+   "a": [
+    "aldair"
+   ],
+   "fixed": [
+    "aldair",
+    "desailly",
+    "koeman",
+    "cafu",
+    "junior",
+    "hierro",
+    "roberto_carlos",
+    "brehme",
+    "lucio",
+    "hong"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1994",
+    "rows": [
+     [
+      "Taffarel"
+     ],
+     [
+      "Jorginho",
+      "?",
+      "Márcio Santos",
+      "Branco"
+     ],
+     [
+      "Mauro Silva",
+      "Dunga",
+      "Mazinho",
+      "Zinho"
+     ],
+     [
+      "Bebeto",
+      "Romário"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1994 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1994"
+    ]
+   ],
+   "x": "O time de Parreira venceu a Itália nos pênaltis em Pasadena."
+  },
+  {
+   "t": "Complete a escalação do Brasil campeão de 1994: quem é o defensor ao lado de Márcio Santos?",
+   "type": "player",
+   "a": [
+    "branco"
+   ],
+   "fixed": [
+    "cafu",
+    "branco",
+    "cannavaro",
+    "maldini",
+    "lucio",
+    "nesta",
+    "koeman",
+    "thuram",
+    "roberto_carlos",
+    "junior"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 1994",
+    "rows": [
+     [
+      "Taffarel"
+     ],
+     [
+      "Jorginho",
+      "Aldair",
+      "Márcio Santos",
+      "?"
+     ],
+     [
+      "Mauro Silva",
+      "Dunga",
+      "Mazinho",
+      "Zinho"
+     ],
+     [
+      "Bebeto",
+      "Romário"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1994 FIFA World Cup final",
+    [
+     "no Brasil campeão de 1994"
+    ]
+   ],
+   "x": "O time de Parreira venceu a Itália nos pênaltis em Pasadena."
+  },
+  {
+   "t": "Complete a escalação do Brasil pentacampeão de 2002: quem é o meio-campista entre Cafu e Kléberson?",
+   "type": "player",
+   "a": [
+    "gilberto_silva"
+   ],
+   "fixed": [
+    "emerson",
+    "gerrard",
+    "zinho",
+    "kaka",
+    "schweinsteiger",
+    "juninho",
+    "vampeta",
+    "dunga",
+    "lampard",
+    "gilberto_silva"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 2002",
+    "rows": [
+     [
+      "Marcos"
+     ],
+     [
+      "Lúcio",
+      "Edmílson",
+      "Roque Júnior"
+     ],
+     [
+      "Cafu",
+      "?",
+      "Kléberson",
+      "R. Carlos"
+     ],
+     [
+      "Ronaldinho",
+      "Rivaldo"
+     ],
+     [
+      "Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 FIFA World Cup final",
+    [
+     "no Brasil pentacampeão de 2002"
+    ]
+   ],
+   "x": "Felipão armou o time com três zagueiros e os três R no ataque."
+  },
+  {
+   "t": "Complete a escalação do Brasil pentacampeão de 2002: quem é o defensor ao lado de Edmílson?",
+   "type": "player",
+   "a": [
+    "lucio"
+   ],
+   "fixed": [
+    "lucio",
+    "maicon",
+    "aldair",
+    "desailly",
+    "hierro",
+    "cannavaro",
+    "jorginho",
+    "zanetti",
+    "dani_alves",
+    "marcelo"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 2002",
+    "rows": [
+     [
+      "Marcos"
+     ],
+     [
+      "?",
+      "Edmílson",
+      "Roque Júnior"
+     ],
+     [
+      "Cafu",
+      "Gilberto Silva",
+      "Kléberson",
+      "R. Carlos"
+     ],
+     [
+      "Ronaldinho",
+      "Rivaldo"
+     ],
+     [
+      "Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 FIFA World Cup final",
+    [
+     "no Brasil pentacampeão de 2002"
+    ]
+   ],
+   "x": "Felipão armou o time com três zagueiros e os três R no ataque."
+  },
+  {
+   "t": "Complete a escalação do Brasil pentacampeão de 2002: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "marcos"
+   ],
+   "fixed": [
+    "marcos",
+    "barthez",
+    "buffon",
+    "rogerio_ceni",
+    "dida",
+    "taffarel",
+    "zetti",
+    "julio_cesar",
+    "lloris",
+    "chilavert"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 2002",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Lúcio",
+      "Edmílson",
+      "Roque Júnior"
+     ],
+     [
+      "Cafu",
+      "Gilberto Silva",
+      "Kléberson",
+      "R. Carlos"
+     ],
+     [
+      "Ronaldinho",
+      "Rivaldo"
+     ],
+     [
+      "Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 FIFA World Cup final",
+    [
+     "no Brasil pentacampeão de 2002"
+    ]
+   ],
+   "x": "Felipão armou o time com três zagueiros e os três R no ataque."
+  },
+  {
+   "t": "Complete a escalação do Brasil pentacampeão de 2002: quem é o meio-campista ao lado de Ronaldinho?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "fixed": [
+    "ze_roberto",
+    "dunga",
+    "scholes",
+    "dimaria",
+    "vampeta",
+    "djalminha",
+    "zinho",
+    "riquelme",
+    "rivaldo",
+    "emerson"
+   ],
+   "xi": {
+    "t": "Brasil · final da Copa de 2002",
+    "rows": [
+     [
+      "Marcos"
+     ],
+     [
+      "Lúcio",
+      "Edmílson",
+      "Roque Júnior"
+     ],
+     [
+      "Cafu",
+      "Gilberto Silva",
+      "Kléberson",
+      "R. Carlos"
+     ],
+     [
+      "Ronaldinho",
+      "?"
+     ],
+     [
+      "Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 FIFA World Cup final",
+    [
+     "no Brasil pentacampeão de 2002"
+    ]
+   ],
+   "x": "Felipão armou o time com três zagueiros e os três R no ataque."
+  },
+  {
+   "t": "Complete a escalação da Argentina campeã de 1986: quem é o atacante ao lado de Maradona?",
+   "type": "player",
+   "a": [
+    "valdano"
+   ],
+   "fixed": [
+    "caniggia",
+    "kempes",
+    "van_basten",
+    "cruyff",
+    "bebeto",
+    "valdano",
+    "milla",
+    "batistuta",
+    "lato",
+    "muller_sp"
+   ],
+   "xi": {
+    "t": "Argentina · final da Copa de 1986",
+    "rows": [
+     [
+      "Pumpido"
+     ],
+     [
+      "Cuciuffo",
+      "Brown",
+      "Ruggeri"
+     ],
+     [
+      "Giusti",
+      "Batista",
+      "Burruchaga",
+      "Enrique",
+      "Olarticoechea"
+     ],
+     [
+      "Maradona",
+      "?"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1986 FIFA World Cup final",
+    [
+     "na Argentina campeã de 1986"
+    ]
+   ],
+   "x": "Brown, Valdano e Burruchaga marcaram na vitória por 3 a 2 sobre a Alemanha Ocidental."
+  },
+  {
+   "t": "Complete a escalação da Argentina campeã de 2022: quem é o meio-campista ao lado de Messi?",
+   "type": "player",
+   "a": [
+    "dimaria"
+   ],
+   "fixed": [
+    "pedri",
+    "arrascaeta",
+    "iniesta",
+    "busquets",
+    "schweinsteiger",
+    "foden",
+    "mascherano",
+    "dimaria",
+    "diego",
+    "bernardo_silva"
+   ],
+   "xi": {
+    "t": "Argentina · final da Copa de 2022",
+    "rows": [
+     [
+      "E. Martínez"
+     ],
+     [
+      "Molina",
+      "Romero",
+      "Otamendi",
+      "Tagliafico"
+     ],
+     [
+      "De Paul",
+      "Enzo",
+      "Mac Allister"
+     ],
+     [
+      "?",
+      "Messi",
+      "J. Álvarez"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2022 FIFA World Cup final",
+    [
+     "na Argentina campeã de 2022"
+    ]
+   ],
+   "x": "Di María sofreu o pênalti do primeiro gol e marcou o segundo."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 1998: quem é o meio-campista entre Karembeu e Petit?",
+   "type": "player",
+   "a": [
+    "deschamps"
+   ],
+   "fixed": [
+    "vieira",
+    "gerrard",
+    "beckham",
+    "okocha",
+    "laudrup",
+    "deschamps",
+    "kaka",
+    "mauro_silva",
+    "ronaldinho",
+    "xavi"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 1998",
+    "rows": [
+     [
+      "Barthez"
+     ],
+     [
+      "Thuram",
+      "Leboeuf",
+      "Desailly",
+      "Lizarazu"
+     ],
+     [
+      "Karembeu",
+      "?",
+      "Petit"
+     ],
+     [
+      "Zidane",
+      "Djorkaeff"
+     ],
+     [
+      "Guivarc’h"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1998 FIFA World Cup final",
+    [
+     "na França campeã de 1998"
+    ]
+   ],
+   "x": "Thuram, lateral-direito, fez os dois únicos gols da carreira pela seleção na semifinal."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 1998: quem é o defensor ao lado de Leboeuf?",
+   "type": "player",
+   "a": [
+    "thuram"
+   ],
+   "fixed": [
+    "baresi",
+    "koeman",
+    "brehme",
+    "puyol",
+    "lucio",
+    "jorginho",
+    "dani_alves",
+    "cannavaro",
+    "thuram",
+    "cafu"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 1998",
+    "rows": [
+     [
+      "Barthez"
+     ],
+     [
+      "?",
+      "Leboeuf",
+      "Desailly",
+      "Lizarazu"
+     ],
+     [
+      "Karembeu",
+      "Deschamps",
+      "Petit"
+     ],
+     [
+      "Zidane",
+      "Djorkaeff"
+     ],
+     [
+      "Guivarc’h"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1998 FIFA World Cup final",
+    [
+     "na França campeã de 1998"
+    ]
+   ],
+   "x": "Thuram, lateral-direito, fez os dois únicos gols da carreira pela seleção na semifinal."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 1998: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "barthez"
+   ],
+   "fixed": [
+    "buffon",
+    "julio_cesar",
+    "zetti",
+    "higuita",
+    "cech",
+    "barthez",
+    "marcos",
+    "kahn",
+    "chilavert",
+    "van_der_sar"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 1998",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Thuram",
+      "Leboeuf",
+      "Desailly",
+      "Lizarazu"
+     ],
+     [
+      "Karembeu",
+      "Deschamps",
+      "Petit"
+     ],
+     [
+      "Zidane",
+      "Djorkaeff"
+     ],
+     [
+      "Guivarc’h"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1998 FIFA World Cup final",
+    [
+     "na França campeã de 1998"
+    ]
+   ],
+   "x": "Thuram, lateral-direito, fez os dois únicos gols da carreira pela seleção na semifinal."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 2018: quem é o meio-campista ao lado de Pogba?",
+   "type": "player",
+   "a": [
+    "kante"
+   ],
+   "fixed": [
+    "busquets",
+    "casemiro",
+    "de_bruyne",
+    "james",
+    "kante",
+    "rivaldo",
+    "pirlo",
+    "ze_roberto",
+    "rodri",
+    "veron"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 2018",
+    "rows": [
+     [
+      "Lloris"
+     ],
+     [
+      "Pavard",
+      "Varane",
+      "Umtiti",
+      "Hernández"
+     ],
+     [
+      "?",
+      "Pogba",
+      "Matuidi"
+     ],
+     [
+      "Mbappé",
+      "Giroud",
+      "Griezmann"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2018 FIFA World Cup final",
+    [
+     "na França campeã de 2018"
+    ]
+   ],
+   "x": "Pogba, Griezmann e Mbappé marcaram no 4 a 2 contra a Croácia."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 2018: quem é o meio-campista entre Kanté e Matuidi?",
+   "type": "player",
+   "a": [
+    "pogba"
+   ],
+   "fixed": [
+    "xavi",
+    "james",
+    "gerrard",
+    "pedri",
+    "bellingham",
+    "bernardo_silva",
+    "de_bruyne",
+    "schweinsteiger",
+    "foden",
+    "pogba"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 2018",
+    "rows": [
+     [
+      "Lloris"
+     ],
+     [
+      "Pavard",
+      "Varane",
+      "Umtiti",
+      "Hernández"
+     ],
+     [
+      "Kanté",
+      "?",
+      "Matuidi"
+     ],
+     [
+      "Mbappé",
+      "Giroud",
+      "Griezmann"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2018 FIFA World Cup final",
+    [
+     "na França campeã de 2018"
+    ]
+   ],
+   "x": "Pogba, Griezmann e Mbappé marcaram no 4 a 2 contra a Croácia."
+  },
+  {
+   "t": "Complete a escalação da França campeã de 2018: quem é o atacante ao lado de Giroud?",
+   "type": "player",
+   "a": [
+    "griezmann"
+   ],
+   "fixed": [
+    "cavani",
+    "ribery",
+    "vinicius",
+    "klose",
+    "griezmann",
+    "gabriel_jesus",
+    "haaland",
+    "luis_fabiano",
+    "benzema",
+    "tulio"
+   ],
+   "xi": {
+    "t": "França · final da Copa de 2018",
+    "rows": [
+     [
+      "Lloris"
+     ],
+     [
+      "Pavard",
+      "Varane",
+      "Umtiti",
+      "Hernández"
+     ],
+     [
+      "Kanté",
+      "Pogba",
+      "Matuidi"
+     ],
+     [
+      "Mbappé",
+      "Giroud",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2018 FIFA World Cup final",
+    [
+     "na França campeã de 2018"
+    ]
+   ],
+   "x": "Pogba, Griezmann e Mbappé marcaram no 4 a 2 contra a Croácia."
+  },
+  {
+   "t": "Complete a escalação da Espanha campeã de 2010: quem é o meio-campista ao lado de Xabi Alonso?",
+   "type": "player",
+   "a": [
+    "busquets"
+   ],
+   "fixed": [
+    "busquets",
+    "arrascaeta",
+    "pogba",
+    "emerson",
+    "veron",
+    "david_silva",
+    "ballack",
+    "nedved",
+    "kroos",
+    "ruicosta"
+   ],
+   "xi": {
+    "t": "Espanha · final da Copa de 2010",
+    "rows": [
+     [
+      "Casillas"
+     ],
+     [
+      "S. Ramos",
+      "Piqué",
+      "Puyol",
+      "Capdevila"
+     ],
+     [
+      "?",
+      "Xabi Alonso"
+     ],
+     [
+      "Pedro",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Villa"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 FIFA World Cup final",
+    [
+     "na Espanha campeã de 2010"
+    ]
+   ],
+   "x": "A base do Barcelona de Guardiola levou a Espanha ao primeiro título mundial."
+  },
+  {
+   "t": "Complete a escalação da Espanha campeã de 2010: quem é o defensor entre Piqué e Capdevila?",
+   "type": "player",
+   "a": [
+    "puyol"
+   ],
+   "fixed": [
+    "thuram",
+    "marquinhos",
+    "puyol",
+    "dani_alves",
+    "lahm",
+    "thiago_silva",
+    "maicon",
+    "david_luiz",
+    "lucio",
+    "marcelo"
+   ],
+   "xi": {
+    "t": "Espanha · final da Copa de 2010",
+    "rows": [
+     [
+      "Casillas"
+     ],
+     [
+      "S. Ramos",
+      "Piqué",
+      "?",
+      "Capdevila"
+     ],
+     [
+      "Busquets",
+      "Xabi Alonso"
+     ],
+     [
+      "Pedro",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Villa"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 FIFA World Cup final",
+    [
+     "na Espanha campeã de 2010"
+    ]
+   ],
+   "x": "A base do Barcelona de Guardiola levou a Espanha ao primeiro título mundial."
+  },
+  {
+   "t": "Complete a escalação da Espanha campeã de 2010: quem é o atacante?",
+   "type": "player",
+   "a": [
+    "villa"
+   ],
+   "fixed": [
+    "robinho",
+    "edmundo",
+    "klose",
+    "messi",
+    "ribery",
+    "villa",
+    "pauleta",
+    "aguero",
+    "torres",
+    "raul"
+   ],
+   "xi": {
+    "t": "Espanha · final da Copa de 2010",
+    "rows": [
+     [
+      "Casillas"
+     ],
+     [
+      "S. Ramos",
+      "Piqué",
+      "Puyol",
+      "Capdevila"
+     ],
+     [
+      "Busquets",
+      "Xabi Alonso"
+     ],
+     [
+      "Pedro",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 FIFA World Cup final",
+    [
+     "na Espanha campeã de 2010"
+    ]
+   ],
+   "x": "A base do Barcelona de Guardiola levou a Espanha ao primeiro título mundial."
+  },
+  {
+   "t": "Complete a escalação da Espanha campeã de 2010: quem é o meio-campista entre Pedro e Iniesta?",
+   "type": "player",
+   "a": [
+    "xavi"
+   ],
+   "fixed": [
+    "xavi",
+    "hazard",
+    "mascherano",
+    "schweinsteiger",
+    "vampeta",
+    "ballack",
+    "david_silva",
+    "rivaldo",
+    "lampard",
+    "bernardo_silva"
+   ],
+   "xi": {
+    "t": "Espanha · final da Copa de 2010",
+    "rows": [
+     [
+      "Casillas"
+     ],
+     [
+      "S. Ramos",
+      "Piqué",
+      "Puyol",
+      "Capdevila"
+     ],
+     [
+      "Busquets",
+      "Xabi Alonso"
+     ],
+     [
+      "Pedro",
+      "?",
+      "Iniesta"
+     ],
+     [
+      "Villa"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 FIFA World Cup final",
+    [
+     "na Espanha campeã de 2010"
+    ]
+   ],
+   "x": "A base do Barcelona de Guardiola levou a Espanha ao primeiro título mundial."
+  },
+  {
+   "t": "Complete a escalação da Alemanha campeã de 2014: quem é o meio-campista ao lado de Kramer?",
+   "type": "player",
+   "a": [
+    "schweinsteiger"
+   ],
+   "fixed": [
+    "dimaria",
+    "kaka",
+    "modric",
+    "pogba",
+    "beckham",
+    "bruno_fernandes",
+    "ballack",
+    "schweinsteiger",
+    "vieira",
+    "de_bruyne"
+   ],
+   "xi": {
+    "t": "Alemanha · final da Copa de 2014",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "Lahm",
+      "Boateng",
+      "Hummels",
+      "Höwedes"
+     ],
+     [
+      "?",
+      "Kramer",
+      "Kroos"
+     ],
+     [
+      "Müller",
+      "Özil"
+     ],
+     [
+      "Klose"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2014 FIFA World Cup final",
+    [
+     "na Alemanha campeã de 2014"
+    ]
+   ],
+   "x": "Kramer saiu cedo com uma concussão e foi substituído por Schürrle, que deu o passe do gol de Götze."
+  },
+  {
+   "t": "Complete a escalação da Alemanha campeã de 2014: quem é o meio-campista ao lado de Müller?",
+   "type": "player",
+   "a": [
+    "ozil"
+   ],
+   "fixed": [
+    "de_bruyne",
+    "riquelme",
+    "ze_roberto",
+    "ballack",
+    "rodri",
+    "mascherano",
+    "ozil",
+    "dimaria",
+    "modric",
+    "bernardo_silva"
+   ],
+   "xi": {
+    "t": "Alemanha · final da Copa de 2014",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "Lahm",
+      "Boateng",
+      "Hummels",
+      "Höwedes"
+     ],
+     [
+      "Schweinsteiger",
+      "Kramer",
+      "Kroos"
+     ],
+     [
+      "Müller",
+      "?"
+     ],
+     [
+      "Klose"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2014 FIFA World Cup final",
+    [
+     "na Alemanha campeã de 2014"
+    ]
+   ],
+   "x": "Kramer saiu cedo com uma concussão e foi substituído por Schürrle, que deu o passe do gol de Götze."
+  },
+  {
+   "t": "Complete a escalação da Alemanha campeã de 2014: quem é o defensor ao lado de Boateng?",
+   "type": "player",
+   "a": [
+    "lahm"
+   ],
+   "fixed": [
+    "nesta",
+    "marquinhos",
+    "sergio_ramos",
+    "dani_alves",
+    "zanetti",
+    "puyol",
+    "van_dijk",
+    "lahm",
+    "cannavaro",
+    "roberto_carlos"
+   ],
+   "xi": {
+    "t": "Alemanha · final da Copa de 2014",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "?",
+      "Boateng",
+      "Hummels",
+      "Höwedes"
+     ],
+     [
+      "Schweinsteiger",
+      "Kramer",
+      "Kroos"
+     ],
+     [
+      "Müller",
+      "Özil"
+     ],
+     [
+      "Klose"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2014 FIFA World Cup final",
+    [
+     "na Alemanha campeã de 2014"
+    ]
+   ],
+   "x": "Kramer saiu cedo com uma concussão e foi substituído por Schürrle, que deu o passe do gol de Götze."
+  },
+  {
+   "t": "Complete a escalação da Itália campeã de 2006: quem é o meio-campista ao lado de Gattuso?",
+   "type": "player",
+   "a": [
+    "pirlo"
+   ],
+   "fixed": [
+    "pirlo",
+    "hazard",
+    "david_silva",
+    "vieira",
+    "beckham",
+    "mascherano",
+    "xavi",
+    "gerrard",
+    "de_bruyne",
+    "iniesta"
+   ],
+   "xi": {
+    "t": "Itália · final da Copa de 2006",
+    "rows": [
+     [
+      "Buffon"
+     ],
+     [
+      "Zambrotta",
+      "Cannavaro",
+      "Materazzi",
+      "Grosso"
+     ],
+     [
+      "Gattuso",
+      "?"
+     ],
+     [
+      "Camoranesi",
+      "Totti",
+      "Perrotta"
+     ],
+     [
+      "Toni"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 FIFA World Cup final",
+    [
+     "na Itália campeã de 2006"
+    ]
+   ],
+   "x": "Cannavaro, o capitão, ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação da Itália campeã de 2006: quem é o atacante entre Camoranesi e Perrotta?",
+   "type": "player",
+   "a": [
+    "totti"
+   ],
+   "fixed": [
+    "baggio",
+    "raul",
+    "lewandowski",
+    "kanu",
+    "totti",
+    "elber",
+    "suarez",
+    "aguero",
+    "tulio",
+    "del_piero"
+   ],
+   "xi": {
+    "t": "Itália · final da Copa de 2006",
+    "rows": [
+     [
+      "Buffon"
+     ],
+     [
+      "Zambrotta",
+      "Cannavaro",
+      "Materazzi",
+      "Grosso"
+     ],
+     [
+      "Gattuso",
+      "Pirlo"
+     ],
+     [
+      "Camoranesi",
+      "?",
+      "Perrotta"
+     ],
+     [
+      "Toni"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 FIFA World Cup final",
+    [
+     "na Itália campeã de 2006"
+    ]
+   ],
+   "x": "Cannavaro, o capitão, ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação da Itália campeã de 2006: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "buffon"
+   ],
+   "fixed": [
+    "van_der_sar",
+    "casillas",
+    "dida",
+    "vitor_baia",
+    "taffarel",
+    "chilavert",
+    "marcos",
+    "courtois",
+    "rogerio_ceni",
+    "buffon"
+   ],
+   "xi": {
+    "t": "Itália · final da Copa de 2006",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Zambrotta",
+      "Cannavaro",
+      "Materazzi",
+      "Grosso"
+     ],
+     [
+      "Gattuso",
+      "Pirlo"
+     ],
+     [
+      "Camoranesi",
+      "Totti",
+      "Perrotta"
+     ],
+     [
+      "Toni"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 FIFA World Cup final",
+    [
+     "na Itália campeã de 2006"
+    ]
+   ],
+   "x": "Cannavaro, o capitão, ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação da Itália campeã de 1982: quem é o defensor entre Collovati e Gentile?",
+   "type": "player",
+   "a": [
+    "scirea"
+   ],
+   "fixed": [
+    "aldair",
+    "junior",
+    "maldini",
+    "krol",
+    "piazza",
+    "baresi",
+    "jorginho",
+    "tresor",
+    "scirea",
+    "figueroa"
+   ],
+   "xi": {
+    "t": "Itália · final da Copa de 1982",
+    "rows": [
+     [
+      "Zoff"
+     ],
+     [
+      "Bergomi",
+      "Collovati",
+      "?",
+      "Gentile",
+      "Cabrini"
+     ],
+     [
+      "Oriali",
+      "Tardelli",
+      "Conti"
+     ],
+     [
+      "Rossi",
+      "Graziani"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1982 FIFA World Cup final",
+    [
+     "na Itália campeã de 1982"
+    ]
+   ],
+   "x": "Zoff foi campeão do mundo aos 40 anos, como capitão."
+  },
+  {
+   "t": "Complete a escalação da Itália campeã de 1982: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "zoff"
+   ],
+   "fixed": [
+    "maier",
+    "higuita",
+    "zoff",
+    "fillol",
+    "schmeichel",
+    "chilavert",
+    "dasaev",
+    "taffarel",
+    "leao",
+    "zetti"
+   ],
+   "xi": {
+    "t": "Itália · final da Copa de 1982",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Bergomi",
+      "Collovati",
+      "Scirea",
+      "Gentile",
+      "Cabrini"
+     ],
+     [
+      "Oriali",
+      "Tardelli",
+      "Conti"
+     ],
+     [
+      "Rossi",
+      "Graziani"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1982 FIFA World Cup final",
+    [
+     "na Itália campeã de 1982"
+    ]
+   ],
+   "x": "Zoff foi campeão do mundo aos 40 anos, como capitão."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1974: quem é o defensor ao lado de Beckenbauer?",
+   "type": "player",
+   "a": [
+    "breitner"
+   ],
+   "fixed": [
+    "brito",
+    "scirea",
+    "junior",
+    "marinho_chagas",
+    "carlos_alberto",
+    "krol",
+    "piazza",
+    "breitner",
+    "tresor",
+    "passarella"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1974",
+    "rows": [
+     [
+      "Maier"
+     ],
+     [
+      "Vogts",
+      "Schwarzenbeck",
+      "Beckenbauer",
+      "?"
+     ],
+     [
+      "Bonhof",
+      "Hoeneß",
+      "Overath"
+     ],
+     [
+      "Grabowski",
+      "G. Müller",
+      "Hölzenbein"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1974 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1974"
+    ]
+   ],
+   "x": "Breitner empatou de pênalti e Gerd Müller virou contra a Holanda."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1974: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "maier"
+   ],
+   "fixed": [
+    "dasaev",
+    "julio_cesar",
+    "felix",
+    "zoff",
+    "banks",
+    "maier",
+    "leao",
+    "fillol",
+    "ederson",
+    "cech"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1974",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Vogts",
+      "Schwarzenbeck",
+      "Beckenbauer",
+      "Breitner"
+     ],
+     [
+      "Bonhof",
+      "Hoeneß",
+      "Overath"
+     ],
+     [
+      "Grabowski",
+      "G. Müller",
+      "Hölzenbein"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1974 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1974"
+    ]
+   ],
+   "x": "Breitner empatou de pênalti e Gerd Müller virou contra a Holanda."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1974: quem é o atacante entre Grabowski e Hölzenbein?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "fixed": [
+    "dinamite",
+    "cruyff",
+    "kempes",
+    "eusebio",
+    "rummenigge",
+    "voller",
+    "lato",
+    "gerd_muller",
+    "seeler",
+    "pele"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1974",
+    "rows": [
+     [
+      "Maier"
+     ],
+     [
+      "Vogts",
+      "Schwarzenbeck",
+      "Beckenbauer",
+      "Breitner"
+     ],
+     [
+      "Bonhof",
+      "Hoeneß",
+      "Overath"
+     ],
+     [
+      "Grabowski",
+      "?",
+      "Hölzenbein"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1974 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1974"
+    ]
+   ],
+   "x": "Breitner empatou de pênalti e Gerd Müller virou contra a Holanda."
+  },
+  {
+   "t": "Complete a escalação da Holanda vice de 1974: quem é o defensor ao lado de Haan?",
+   "type": "player",
+   "a": [
+    "krol"
+   ],
+   "fixed": [
+    "tresor",
+    "scirea",
+    "figueroa",
+    "carlos_alberto",
+    "brito",
+    "krol",
+    "piazza",
+    "facchetti",
+    "marinho_chagas",
+    "moore"
+   ],
+   "xi": {
+    "t": "Holanda · final da Copa de 1974",
+    "rows": [
+     [
+      "Jongbloed"
+     ],
+     [
+      "Suurbier",
+      "Rijsbergen",
+      "Haan",
+      "?"
+     ],
+     [
+      "Jansen",
+      "Neeskens",
+      "Van Hanegem"
+     ],
+     [
+      "Rep",
+      "Cruyff",
+      "Rensenbrink"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1974 FIFA World Cup final",
+    [
+     "na Holanda vice de 1974"
+    ]
+   ],
+   "x": "A 'Laranja Mecânica' abriu o placar antes de o alemão tocar na bola."
+  },
+  {
+   "t": "Complete a escalação da Holanda vice de 1974: quem é o atacante ao lado de Cruyff?",
+   "type": "player",
+   "a": [
+    "rensenbrink"
+   ],
+   "fixed": [
+    "pele",
+    "valdano",
+    "voller",
+    "greaves",
+    "milla",
+    "gerd_muller",
+    "kempes",
+    "amarildo",
+    "dinamite",
+    "rensenbrink"
+   ],
+   "xi": {
+    "t": "Holanda · final da Copa de 1974",
+    "rows": [
+     [
+      "Jongbloed"
+     ],
+     [
+      "Suurbier",
+      "Rijsbergen",
+      "Haan",
+      "Krol"
+     ],
+     [
+      "Jansen",
+      "Neeskens",
+      "Van Hanegem"
+     ],
+     [
+      "Rep",
+      "Cruyff",
+      "?"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "1974 FIFA World Cup final",
+    [
+     "na Holanda vice de 1974"
+    ]
+   ],
+   "x": "A 'Laranja Mecânica' abriu o placar antes de o alemão tocar na bola."
+  },
+  {
+   "t": "Complete a escalação da Inglaterra campeã de 1966: quem é o defensor entre J. Charlton e Wilson?",
+   "type": "player",
+   "a": [
+    "moore"
+   ],
+   "fixed": [
+    "krol",
+    "figueroa",
+    "nilton_santos",
+    "tresor",
+    "facchetti",
+    "carlos_alberto",
+    "piazza",
+    "moore",
+    "brito",
+    "djalma_santos"
+   ],
+   "xi": {
+    "t": "Inglaterra · final da Copa de 1966",
+    "rows": [
+     [
+      "Banks"
+     ],
+     [
+      "Cohen",
+      "J. Charlton",
+      "?",
+      "Wilson"
+     ],
+     [
+      "Stiles",
+      "B. Charlton",
+      "Peters"
+     ],
+     [
+      "Ball",
+      "Hurst",
+      "Hunt"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1966 FIFA World Cup final",
+    [
+     "na Inglaterra campeã de 1966"
+    ]
+   ],
+   "x": "Bobby Moore, o capitão, recebeu a taça das mãos da rainha Elizabeth II."
+  },
+  {
+   "t": "Complete a escalação da Inglaterra campeã de 1966: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "banks"
+   ],
+   "fixed": [
+    "kahn",
+    "banks",
+    "maier",
+    "zoff",
+    "fillol",
+    "schmeichel",
+    "yashin",
+    "felix",
+    "gilmar",
+    "leao"
+   ],
+   "xi": {
+    "t": "Inglaterra · final da Copa de 1966",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Cohen",
+      "J. Charlton",
+      "Moore",
+      "Wilson"
+     ],
+     [
+      "Stiles",
+      "B. Charlton",
+      "Peters"
+     ],
+     [
+      "Ball",
+      "Hurst",
+      "Hunt"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1966 FIFA World Cup final",
+    [
+     "na Inglaterra campeã de 1966"
+    ]
+   ],
+   "x": "Bobby Moore, o capitão, recebeu a taça das mãos da rainha Elizabeth II."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1990: quem é o defensor ao lado de Buchwald?",
+   "type": "player",
+   "a": [
+    "brehme"
+   ],
+   "fixed": [
+    "koeman",
+    "roberto_carlos",
+    "thuram",
+    "passarella",
+    "maldini",
+    "nesta",
+    "hierro",
+    "scirea",
+    "brehme",
+    "junior"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1990",
+    "rows": [
+     [
+      "Illgner"
+     ],
+     [
+      "Berthold",
+      "Kohler",
+      "Augenthaler",
+      "Buchwald",
+      "?"
+     ],
+     [
+      "Häßler",
+      "Matthäus",
+      "Littbarski"
+     ],
+     [
+      "Völler",
+      "Klinsmann"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1990 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1990"
+    ]
+   ],
+   "x": "Brehme bateu o pênalti do título com a perna direita, embora fosse canhoto de origem... ou ambidestro."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1990: quem é o atacante ao lado de Klinsmann?",
+   "type": "player",
+   "a": [
+    "voller"
+   ],
+   "fixed": [
+    "caniggia",
+    "ronaldo",
+    "stoichkov",
+    "blokhin",
+    "lato",
+    "dalglish",
+    "voller",
+    "elber",
+    "muller_sp",
+    "rummenigge"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1990",
+    "rows": [
+     [
+      "Illgner"
+     ],
+     [
+      "Berthold",
+      "Kohler",
+      "Augenthaler",
+      "Buchwald",
+      "Brehme"
+     ],
+     [
+      "Häßler",
+      "Matthäus",
+      "Littbarski"
+     ],
+     [
+      "?",
+      "Klinsmann"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1990 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1990"
+    ]
+   ],
+   "x": "Brehme bateu o pênalti do título com a perna direita, embora fosse canhoto de origem... ou ambidestro."
+  },
+  {
+   "t": "Complete a escalação da Alemanha Ocidental campeã de 1990: quem é o atacante ao lado de Völler?",
+   "type": "player",
+   "a": [
+    "klinsmann"
+   ],
+   "fixed": [
+    "edilson",
+    "bergkamp",
+    "rummenigge",
+    "bebeto",
+    "eder",
+    "casagrande",
+    "elber",
+    "klinsmann",
+    "totti",
+    "baggio"
+   ],
+   "xi": {
+    "t": "Alemanha Ocidental · final de 1990",
+    "rows": [
+     [
+      "Illgner"
+     ],
+     [
+      "Berthold",
+      "Kohler",
+      "Augenthaler",
+      "Buchwald",
+      "Brehme"
+     ],
+     [
+      "Häßler",
+      "Matthäus",
+      "Littbarski"
+     ],
+     [
+      "Völler",
+      "?"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1990 FIFA World Cup final",
+    [
+     "na Alemanha Ocidental campeã de 1990"
+    ]
+   ],
+   "x": "Brehme bateu o pênalti do título com a perna direita, embora fosse canhoto de origem... ou ambidestro."
+  },
+  {
+   "t": "Complete a escalação do Uruguai campeão de 1950: quem é o meio-campista entre Gambetta e R. Andrade?",
+   "type": "player",
+   "a": [
+    "obdulio"
+   ],
+   "fixed": [
+    "kopa",
+    "didi",
+    "zizinho",
+    "mascherano",
+    "liedholm",
+    "zito",
+    "masopust",
+    "obdulio",
+    "luis_suarez_es",
+    "vampeta"
+   ],
+   "xi": {
+    "t": "Uruguai · Maracanã, 1950",
+    "rows": [
+     [
+      "Máspoli"
+     ],
+     [
+      "M. González",
+      "Tejera"
+     ],
+     [
+      "Gambetta",
+      "?",
+      "R. Andrade"
+     ],
+     [
+      "Ghiggia",
+      "Pérez",
+      "Míguez",
+      "Schiaffino",
+      "Morán"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Uruguay v Brazil (1950 FIFA World Cup)",
+    [
+     "no Uruguai campeão de 1950"
+    ]
+   ],
+   "x": "Schiaffino empatou e Ghiggia virou o jogo que o Brasil só precisava empatar."
+  },
+  {
+   "t": "Complete a escalação do Uruguai campeão de 1950: quem é o atacante ao lado de Pérez?",
+   "type": "player",
+   "a": [
+    "ghiggia"
+   ],
+   "fixed": [
+    "kubala",
+    "zagallo",
+    "distefano",
+    "nordahl",
+    "fontaine",
+    "ghiggia",
+    "seeler",
+    "fritz_walter",
+    "kocsis",
+    "leonidas"
+   ],
+   "xi": {
+    "t": "Uruguai · Maracanã, 1950",
+    "rows": [
+     [
+      "Máspoli"
+     ],
+     [
+      "M. González",
+      "Tejera"
+     ],
+     [
+      "Gambetta",
+      "Obdulio",
+      "R. Andrade"
+     ],
+     [
+      "?",
+      "Pérez",
+      "Míguez",
+      "Schiaffino",
+      "Morán"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Uruguay v Brazil (1950 FIFA World Cup)",
+    [
+     "no Uruguai campeão de 1950"
+    ]
+   ],
+   "x": "Schiaffino empatou e Ghiggia virou o jogo que o Brasil só precisava empatar."
+  },
+  {
+   "t": "Complete a escalação da Hungria vice de 1954: quem é o atacante entre Czibor e Hidegkuti?",
+   "type": "player",
+   "a": [
+    "kocsis"
+   ],
+   "fixed": [
+    "sivori",
+    "gento",
+    "nordahl",
+    "amarildo",
+    "kubala",
+    "julinho",
+    "greaves",
+    "kocsis",
+    "seeler",
+    "vava"
+   ],
+   "xi": {
+    "t": "Hungria · final da Copa de 1954",
+    "rows": [
+     [
+      "Grosics"
+     ],
+     [
+      "Buzánszky",
+      "Lóránt",
+      "Lantos"
+     ],
+     [
+      "Bozsik",
+      "Zakariás"
+     ],
+     [
+      "Czibor",
+      "?",
+      "Hidegkuti",
+      "Puskás",
+      "M. Tóth"
+     ]
+    ]
+   },
+   "d": 5,
+   "src": [
+    "pt",
+    "1954 FIFA World Cup final",
+    [
+     "na Hungria vice de 1954"
+    ]
+   ],
+   "x": "Os 'Magiares Mágicos' ficaram quatro anos sem perder até a final de Berna."
+  },
+  {
+   "t": "Complete a escalação da Hungria vice de 1954: quem é o atacante entre Kocsis e Puskás?",
+   "type": "player",
+   "a": [
+    "hidegkuti"
+   ],
+   "fixed": [
+    "piola",
+    "distefano",
+    "pele",
+    "ghiggia",
+    "garrincha",
+    "hidegkuti",
+    "nordahl",
+    "greaves",
+    "fontaine",
+    "pepe"
+   ],
+   "xi": {
+    "t": "Hungria · final da Copa de 1954",
+    "rows": [
+     [
+      "Grosics"
+     ],
+     [
+      "Buzánszky",
+      "Lóránt",
+      "Lantos"
+     ],
+     [
+      "Bozsik",
+      "Zakariás"
+     ],
+     [
+      "Czibor",
+      "Kocsis",
+      "?",
+      "Puskás",
+      "M. Tóth"
+     ]
+    ]
+   },
+   "d": 5,
+   "src": [
+    "pt",
+    "1954 FIFA World Cup final",
+    [
+     "na Hungria vice de 1954"
+    ]
+   ],
+   "x": "Os 'Magiares Mágicos' ficaram quatro anos sem perder até a final de Berna."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o meio-campista entre Piqué e Abidal?",
+   "type": "player",
+   "a": [
+    "mascherano"
+   ],
+   "fixed": [
+    "gilberto_silva",
+    "mascherano",
+    "riquelme",
+    "ruicosta",
+    "david_silva",
+    "veron",
+    "dimaria",
+    "arrascaeta",
+    "hazard",
+    "rivaldo"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2011",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Alves",
+      "Piqué",
+      "?",
+      "Abidal"
+     ],
+     [
+      "Busquets",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Pedro",
+      "Messi",
+      "Villa"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2011 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2011"
+    ]
+   ],
+   "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o defensor ao lado de Piqué?",
+   "type": "player",
+   "a": [
+    "dani_alves"
+   ],
+   "fixed": [
+    "david_luiz",
+    "thuram",
+    "thiago_silva",
+    "roberto_carlos",
+    "nesta",
+    "lahm",
+    "marcelo",
+    "maicon",
+    "dani_alves",
+    "cafu"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2011",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "?",
+      "Piqué",
+      "Mascherano",
+      "Abidal"
+     ],
+     [
+      "Busquets",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Pedro",
+      "Messi",
+      "Villa"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2011 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2011"
+    ]
+   ],
+   "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o atacante ao lado de Messi?",
+   "type": "player",
+   "a": [
+    "villa"
+   ],
+   "fixed": [
+    "torres",
+    "thomas_muller",
+    "aguero",
+    "romario",
+    "robinho",
+    "etoo",
+    "adriano",
+    "raul",
+    "pauleta",
+    "villa"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2011",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Alves",
+      "Piqué",
+      "Mascherano",
+      "Abidal"
+     ],
+     [
+      "Busquets",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Pedro",
+      "Messi",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2011 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2011"
+    ]
+   ],
+   "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2009: quem é o atacante ao lado de Eto’o?",
+   "type": "player",
+   "a": [
+    "henry"
+   ],
+   "fixed": [
+    "suarez",
+    "ribery",
+    "benzema",
+    "drogba",
+    "luis_fabiano",
+    "ronaldo",
+    "neymar",
+    "henry",
+    "denilson",
+    "griezmann"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2009",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Puyol",
+      "Touré",
+      "Piqué",
+      "Sylvinho"
+     ],
+     [
+      "Busquets",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Messi",
+      "Eto’o",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2009 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2009"
+    ]
+   ],
+   "x": "O trio de ataque marcou exatamente 100 gols naquela temporada."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2009: quem é o atacante entre Messi e Henry?",
+   "type": "player",
+   "a": [
+    "etoo"
+   ],
+   "fixed": [
+    "hulk",
+    "ribery",
+    "etoo",
+    "adriano",
+    "edilson",
+    "del_piero",
+    "mane",
+    "aguero",
+    "elber",
+    "kane"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2009",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Puyol",
+      "Touré",
+      "Piqué",
+      "Sylvinho"
+     ],
+     [
+      "Busquets",
+      "Xavi",
+      "Iniesta"
+     ],
+     [
+      "Messi",
+      "?",
+      "Henry"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2009 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2009"
+    ]
+   ],
+   "x": "O trio de ataque marcou exatamente 100 gols naquela temporada."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2006: quem é o meio-campista ao lado de Eto’o?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "fixed": [
+    "ronaldinho",
+    "vampeta",
+    "ruicosta",
+    "emerson",
+    "djalminha",
+    "lampard",
+    "gilberto_silva",
+    "figo",
+    "zinho",
+    "alex"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2006",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Oleguer",
+      "Puyol",
+      "Márquez",
+      "Van Bronckhorst"
+     ],
+     [
+      "Edmílson",
+      "Deco",
+      "Van Bommel"
+     ],
+     [
+      "Giuly",
+      "Eto’o",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2006"
+    ]
+   ],
+   "x": "Belletti, que saiu do banco, fez o gol da virada contra o Arsenal."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2006: quem é o meio-campista entre Edmílson e Van Bommel?",
+   "type": "player",
+   "a": [
+    "deco"
+   ],
+   "fixed": [
+    "riquelme",
+    "ruicosta",
+    "deco",
+    "modric",
+    "scholes",
+    "ballack",
+    "dimaria",
+    "figo",
+    "hazard",
+    "gerrard"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2006",
+    "rows": [
+     [
+      "Valdés"
+     ],
+     [
+      "Oleguer",
+      "Puyol",
+      "Márquez",
+      "Van Bronckhorst"
+     ],
+     [
+      "Edmílson",
+      "?",
+      "Van Bommel"
+     ],
+     [
+      "Giuly",
+      "Eto’o",
+      "Ronaldinho"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2006 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2006"
+    ]
+   ],
+   "x": "Belletti, que saiu do banco, fez o gol da virada contra o Arsenal."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2015: quem é o atacante entre Messi e Neymar?",
+   "type": "player",
+   "a": [
+    "suarez"
+   ],
+   "fixed": [
+    "lautaro",
+    "lewandowski",
+    "kane",
+    "mbappe",
+    "griezmann",
+    "cavani",
+    "suarez",
+    "nunez",
+    "thomas_muller",
+    "gabigol"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2015",
+    "rows": [
+     [
+      "Ter Stegen"
+     ],
+     [
+      "Alves",
+      "Piqué",
+      "Mascherano",
+      "Alba"
+     ],
+     [
+      "Rakitić",
+      "Busquets",
+      "Iniesta"
+     ],
+     [
+      "Messi",
+      "?",
+      "Neymar"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2015 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2015"
+    ]
+   ],
+   "x": "O trio MSN marcou 122 gols naquela temporada."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2015: quem é o atacante ao lado de Suárez?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "fixed": [
+    "luis_fabiano",
+    "hulk",
+    "kanu",
+    "gabigol",
+    "gabriel_jesus",
+    "neymar",
+    "raphinha",
+    "villa",
+    "adriano",
+    "crespo"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2015",
+    "rows": [
+     [
+      "Ter Stegen"
+     ],
+     [
+      "Alves",
+      "Piqué",
+      "Mascherano",
+      "Alba"
+     ],
+     [
+      "Rakitić",
+      "Busquets",
+      "Iniesta"
+     ],
+     [
+      "Messi",
+      "Suárez",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2015 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2015"
+    ]
+   ],
+   "x": "O trio MSN marcou 122 gols naquela temporada."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 2015: quem é o meio-campista ao lado de Busquets?",
+   "type": "player",
+   "a": [
+    "iniesta"
+   ],
+   "fixed": [
+    "iniesta",
+    "xavi",
+    "pedri",
+    "schweinsteiger",
+    "rodri",
+    "gilberto_silva",
+    "kaka",
+    "casemiro",
+    "david_silva",
+    "valverde"
+   ],
+   "xi": {
+    "t": "Barcelona · final da Champions 2015",
+    "rows": [
+     [
+      "Ter Stegen"
+     ],
+     [
+      "Alves",
+      "Piqué",
+      "Mascherano",
+      "Alba"
+     ],
+     [
+      "Rakitić",
+      "Busquets",
+      "?"
+     ],
+     [
+      "Messi",
+      "Suárez",
+      "Neymar"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2015 UEFA Champions League final",
+    [
+     "no Barcelona campeão europeu de 2015"
+    ]
+   ],
+   "x": "O trio MSN marcou 122 gols naquela temporada."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 1992: quem é o defensor entre Ferrer e Juan Carlos?",
+   "type": "player",
+   "a": [
+    "koeman"
+   ],
+   "fixed": [
+    "thuram",
+    "hong",
+    "jorginho",
+    "koeman",
+    "junior",
+    "nesta",
+    "aldair",
+    "zanetti",
+    "branco",
+    "maldini"
+   ],
+   "xi": {
+    "t": "Barcelona · final de 1992",
+    "rows": [
+     [
+      "Zubizarreta"
+     ],
+     [
+      "Nando",
+      "Ferrer",
+      "?",
+      "Juan Carlos"
+     ],
+     [
+      "Bakero",
+      "Eusebio",
+      "Guardiola"
+     ],
+     [
+      "Salinas",
+      "Stoichkov",
+      "Laudrup"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1992 European Cup final",
+    [
+     "no Barcelona campeão europeu de 1992"
+    ]
+   ],
+   "x": "O 'Dream Team' de Cruyff ganhou a primeira Copa dos Campeões do clube."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 1992: quem é o atacante entre Salinas e Laudrup?",
+   "type": "player",
+   "a": [
+    "stoichkov"
+   ],
+   "fixed": [
+    "shevchenko",
+    "stoichkov",
+    "butragueno",
+    "muller_sp",
+    "ronaldo",
+    "casagrande",
+    "klinsmann",
+    "tulio",
+    "denilson",
+    "caniggia"
+   ],
+   "xi": {
+    "t": "Barcelona · final de 1992",
+    "rows": [
+     [
+      "Zubizarreta"
+     ],
+     [
+      "Nando",
+      "Ferrer",
+      "Koeman",
+      "Juan Carlos"
+     ],
+     [
+      "Bakero",
+      "Eusebio",
+      "Guardiola"
+     ],
+     [
+      "Salinas",
+      "?",
+      "Laudrup"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1992 European Cup final",
+    [
+     "no Barcelona campeão europeu de 1992"
+    ]
+   ],
+   "x": "O 'Dream Team' de Cruyff ganhou a primeira Copa dos Campeões do clube."
+  },
+  {
+   "t": "Complete a escalação do Barcelona campeão europeu de 1992: quem é o meio-campista ao lado de Stoichkov?",
+   "type": "player",
+   "a": [
+    "laudrup"
+   ],
+   "fixed": [
+    "scholes",
+    "tigana",
+    "matthaus",
+    "lampard",
+    "zidane",
+    "djalminha",
+    "laudrup",
+    "zinho",
+    "cubillas",
+    "figo"
+   ],
+   "xi": {
+    "t": "Barcelona · final de 1992",
+    "rows": [
+     [
+      "Zubizarreta"
+     ],
+     [
+      "Nando",
+      "Ferrer",
+      "Koeman",
+      "Juan Carlos"
+     ],
+     [
+      "Bakero",
+      "Eusebio",
+      "Guardiola"
+     ],
+     [
+      "Salinas",
+      "Stoichkov",
+      "?"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1992 European Cup final",
+    [
+     "no Barcelona campeão europeu de 1992"
+    ]
+   ],
+   "x": "O 'Dream Team' de Cruyff ganhou a primeira Copa dos Campeões do clube."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 1989: quem é o meio-campista entre Colombo e Ancelotti?",
+   "type": "player",
+   "a": [
+    "rijkaard"
+   ],
+   "fixed": [
+    "okocha",
+    "dunga",
+    "beckham",
+    "rivaldo",
+    "hagi",
+    "zico",
+    "maradona",
+    "nedved",
+    "keane",
+    "rijkaard"
+   ],
+   "xi": {
+    "t": "Milan · final de 1989",
+    "rows": [
+     [
+      "G. Galli"
+     ],
+     [
+      "Tassotti",
+      "Costacurta",
+      "Baresi",
+      "Maldini"
+     ],
+     [
+      "Colombo",
+      "?",
+      "Ancelotti",
+      "Donadoni"
+     ],
+     [
+      "Gullit",
+      "Van Basten"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1989 European Cup final",
+    [
+     "no Milan campeão europeu de 1989"
+    ]
+   ],
+   "x": "O Milan de Sacchi goleou o Steaua por 4 a 0, com dois gols de Gullit e dois de Van Basten."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 1989: quem é o meio-campista ao lado de Van Basten?",
+   "type": "player",
+   "a": [
+    "gullit"
+   ],
+   "fixed": [
+    "gullit",
+    "maradona",
+    "giresse",
+    "francescoli",
+    "matthaus",
+    "okocha",
+    "keane",
+    "valderrama",
+    "vampeta",
+    "rivaldo"
+   ],
+   "xi": {
+    "t": "Milan · final de 1989",
+    "rows": [
+     [
+      "G. Galli"
+     ],
+     [
+      "Tassotti",
+      "Costacurta",
+      "Baresi",
+      "Maldini"
+     ],
+     [
+      "Colombo",
+      "Rijkaard",
+      "Ancelotti",
+      "Donadoni"
+     ],
+     [
+      "?",
+      "Van Basten"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1989 European Cup final",
+    [
+     "no Milan campeão europeu de 1989"
+    ]
+   ],
+   "x": "O Milan de Sacchi goleou o Steaua por 4 a 0, com dois gols de Gullit e dois de Van Basten."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 1989: quem é o defensor entre Costacurta e Maldini?",
+   "type": "player",
+   "a": [
+    "baresi"
+   ],
+   "fixed": [
+    "desailly",
+    "roberto_carlos",
+    "cannavaro",
+    "cafu",
+    "brehme",
+    "zanetti",
+    "passarella",
+    "hong",
+    "baresi",
+    "scirea"
+   ],
+   "xi": {
+    "t": "Milan · final de 1989",
+    "rows": [
+     [
+      "G. Galli"
+     ],
+     [
+      "Tassotti",
+      "Costacurta",
+      "?",
+      "Maldini"
+     ],
+     [
+      "Colombo",
+      "Rijkaard",
+      "Ancelotti",
+      "Donadoni"
+     ],
+     [
+      "Gullit",
+      "Van Basten"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1989 European Cup final",
+    [
+     "no Milan campeão europeu de 1989"
+    ]
+   ],
+   "x": "O Milan de Sacchi goleou o Steaua por 4 a 0, com dois gols de Gullit e dois de Van Basten."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 1989: quem é o defensor ao lado de Baresi?",
+   "type": "player",
+   "a": [
+    "maldini"
+   ],
+   "fixed": [
+    "thuram",
+    "junior",
+    "maldini",
+    "cannavaro",
+    "branco",
+    "scirea",
+    "brehme",
+    "roberto_carlos",
+    "hong",
+    "jorginho"
+   ],
+   "xi": {
+    "t": "Milan · final de 1989",
+    "rows": [
+     [
+      "G. Galli"
+     ],
+     [
+      "Tassotti",
+      "Costacurta",
+      "Baresi",
+      "?"
+     ],
+     [
+      "Colombo",
+      "Rijkaard",
+      "Ancelotti",
+      "Donadoni"
+     ],
+     [
+      "Gullit",
+      "Van Basten"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1989 European Cup final",
+    [
+     "no Milan campeão europeu de 1989"
+    ]
+   ],
+   "x": "O Milan de Sacchi goleou o Steaua por 4 a 0, com dois gols de Gullit e dois de Van Basten."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 2007: quem é o meio-campista ao lado de Seedorf?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "fixed": [
+    "vampeta",
+    "lampard",
+    "juninho",
+    "alex",
+    "zidane",
+    "gilberto_silva",
+    "ze_roberto",
+    "schweinsteiger",
+    "kaka",
+    "diego"
+   ],
+   "xi": {
+    "t": "Milan · final da Champions 2007",
+    "rows": [
+     [
+      "Dida"
+     ],
+     [
+      "Oddo",
+      "Nesta",
+      "Maldini",
+      "Jankulovski"
+     ],
+     [
+      "Gattuso",
+      "Pirlo",
+      "Ambrosini"
+     ],
+     [
+      "Seedorf",
+      "?"
+     ],
+     [
+      "Inzaghi"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2007 UEFA Champions League final",
+    [
+     "no Milan campeão europeu de 2007"
+    ]
+   ],
+   "x": "Kaká ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 2007: quem é o defensor entre Oddo e Maldini?",
+   "type": "player",
+   "a": [
+    "nesta"
+   ],
+   "fixed": [
+    "thuram",
+    "aldair",
+    "nesta",
+    "maicon",
+    "marcelo",
+    "sergio_ramos",
+    "cannavaro",
+    "lahm",
+    "cafu",
+    "thiago_silva"
+   ],
+   "xi": {
+    "t": "Milan · final da Champions 2007",
+    "rows": [
+     [
+      "Dida"
+     ],
+     [
+      "Oddo",
+      "?",
+      "Maldini",
+      "Jankulovski"
+     ],
+     [
+      "Gattuso",
+      "Pirlo",
+      "Ambrosini"
+     ],
+     [
+      "Seedorf",
+      "Kaká"
+     ],
+     [
+      "Inzaghi"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2007 UEFA Champions League final",
+    [
+     "no Milan campeão europeu de 2007"
+    ]
+   ],
+   "x": "Kaká ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação do Milan campeão europeu de 2007: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "dida"
+   ],
+   "fixed": [
+    "julio_cesar",
+    "higuita",
+    "rogerio_ceni",
+    "vitor_baia",
+    "lloris",
+    "dida",
+    "casillas",
+    "marcos",
+    "barthez",
+    "kahn"
+   ],
+   "xi": {
+    "t": "Milan · final da Champions 2007",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Oddo",
+      "Nesta",
+      "Maldini",
+      "Jankulovski"
+     ],
+     [
+      "Gattuso",
+      "Pirlo",
+      "Ambrosini"
+     ],
+     [
+      "Seedorf",
+      "Kaká"
+     ],
+     [
+      "Inzaghi"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2007 UEFA Champions League final",
+    [
+     "no Milan campeão europeu de 2007"
+    ]
+   ],
+   "x": "Kaká ganhou a Bola de Ouro no fim daquele ano."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2002: quem é o defensor entre Salgado e Helguera?",
+   "type": "player",
+   "a": [
+    "hierro"
+   ],
+   "fixed": [
+    "marcelo",
+    "maicon",
+    "hong",
+    "cannavaro",
+    "thiago_silva",
+    "puyol",
+    "sergio_ramos",
+    "maldini",
+    "jorginho",
+    "hierro"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2002",
+    "rows": [
+     [
+      "César"
+     ],
+     [
+      "Salgado",
+      "?",
+      "Helguera",
+      "R. Carlos"
+     ],
+     [
+      "Makélélé",
+      "Solari"
+     ],
+     [
+      "Figo",
+      "Zidane"
+     ],
+     [
+      "Raúl",
+      "Morientes"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2002"
+    ]
+   ],
+   "x": "Casillas entrou machucado no lugar de César e fez defesas decisivas no fim."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2002: quem é o meio-campista ao lado de Zidane?",
+   "type": "player",
+   "a": [
+    "figo"
+   ],
+   "fixed": [
+    "pirlo",
+    "schweinsteiger",
+    "rivaldo",
+    "xavi",
+    "ruicosta",
+    "figo",
+    "nakata",
+    "deco",
+    "nedved",
+    "gerrard"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2002",
+    "rows": [
+     [
+      "César"
+     ],
+     [
+      "Salgado",
+      "Hierro",
+      "Helguera",
+      "R. Carlos"
+     ],
+     [
+      "Makélélé",
+      "Solari"
+     ],
+     [
+      "?",
+      "Zidane"
+     ],
+     [
+      "Raúl",
+      "Morientes"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2002"
+    ]
+   ],
+   "x": "Casillas entrou machucado no lugar de César e fez defesas decisivas no fim."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2002: quem é o atacante ao lado de Morientes?",
+   "type": "player",
+   "a": [
+    "raul"
+   ],
+   "fixed": [
+    "drogba",
+    "cr7",
+    "ibrahimovic",
+    "owen",
+    "raul",
+    "kanu",
+    "elber",
+    "torres",
+    "villa",
+    "etoo"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2002",
+    "rows": [
+     [
+      "César"
+     ],
+     [
+      "Salgado",
+      "Hierro",
+      "Helguera",
+      "R. Carlos"
+     ],
+     [
+      "Makélélé",
+      "Solari"
+     ],
+     [
+      "Figo",
+      "Zidane"
+     ],
+     [
+      "?",
+      "Morientes"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2002 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2002"
+    ]
+   ],
+   "x": "Casillas entrou machucado no lugar de César e fez defesas decisivas no fim."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2017: quem é o meio-campista entre Modrić e Kroos?",
+   "type": "player",
+   "a": [
+    "casemiro"
+   ],
+   "fixed": [
+    "busquets",
+    "bruno_g",
+    "pirlo",
+    "ze_roberto",
+    "bruno_fernandes",
+    "kaka",
+    "rivaldo",
+    "diego",
+    "ronaldinho",
+    "casemiro"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2017",
+    "rows": [
+     [
+      "Navas"
+     ],
+     [
+      "Carvajal",
+      "Varane",
+      "Ramos",
+      "Marcelo"
+     ],
+     [
+      "Modrić",
+      "?",
+      "Kroos"
+     ],
+     [
+      "Isco"
+     ],
+     [
+      "Benzema",
+      "C. Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2017 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2017"
+    ]
+   ],
+   "x": "Casemiro marcou o segundo gol com um chute de longe desviado."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2017: quem é o defensor ao lado de Ramos?",
+   "type": "player",
+   "a": [
+    "marcelo"
+   ],
+   "fixed": [
+    "roberto_carlos",
+    "marcelo",
+    "marquinhos",
+    "militao",
+    "lucio",
+    "dani_alves",
+    "van_dijk",
+    "ruben_dias",
+    "david_luiz",
+    "nesta"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2017",
+    "rows": [
+     [
+      "Navas"
+     ],
+     [
+      "Carvajal",
+      "Varane",
+      "Ramos",
+      "?"
+     ],
+     [
+      "Modrić",
+      "Casemiro",
+      "Kroos"
+     ],
+     [
+      "Isco"
+     ],
+     [
+      "Benzema",
+      "C. Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2017 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2017"
+    ]
+   ],
+   "x": "Casemiro marcou o segundo gol com um chute de longe desviado."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2017: quem é o meio-campista ao lado de Casemiro?",
+   "type": "player",
+   "a": [
+    "kroos"
+   ],
+   "fixed": [
+    "musiala",
+    "pogba",
+    "ozil",
+    "rivaldo",
+    "kaka",
+    "diego",
+    "schweinsteiger",
+    "kroos",
+    "busquets",
+    "veron"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2017",
+    "rows": [
+     [
+      "Navas"
+     ],
+     [
+      "Carvajal",
+      "Varane",
+      "Ramos",
+      "Marcelo"
+     ],
+     [
+      "Modrić",
+      "Casemiro",
+      "?"
+     ],
+     [
+      "Isco"
+     ],
+     [
+      "Benzema",
+      "C. Ronaldo"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2017 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2017"
+    ]
+   ],
+   "x": "Casemiro marcou o segundo gol com um chute de longe desviado."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2022: quem é o defensor entre Carvajal e Alaba?",
+   "type": "player",
+   "a": [
+    "militao"
+   ],
+   "fixed": [
+    "taa",
+    "sergio_ramos",
+    "militao",
+    "ruben_dias",
+    "thiago_silva",
+    "maicon",
+    "marquinhos",
+    "dani_alves",
+    "marcelo",
+    "david_luiz"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2022",
+    "rows": [
+     [
+      "Courtois"
+     ],
+     [
+      "Carvajal",
+      "?",
+      "Alaba",
+      "Mendy"
+     ],
+     [
+      "Modrić",
+      "Casemiro",
+      "Kroos"
+     ],
+     [
+      "Valverde",
+      "Benzema",
+      "Vinícius"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2022 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2022"
+    ]
+   ],
+   "x": "Courtois fez nove defesas e foi eleito o melhor da final."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2022: quem é o meio-campista ao lado de Benzema?",
+   "type": "player",
+   "a": [
+    "valverde"
+   ],
+   "fixed": [
+    "schweinsteiger",
+    "de_bruyne",
+    "rodri",
+    "bernardo_silva",
+    "bruno_fernandes",
+    "valverde",
+    "mascherano",
+    "arrascaeta",
+    "bruno_g",
+    "xavi"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2022",
+    "rows": [
+     [
+      "Courtois"
+     ],
+     [
+      "Carvajal",
+      "Militão",
+      "Alaba",
+      "Mendy"
+     ],
+     [
+      "Modrić",
+      "Casemiro",
+      "Kroos"
+     ],
+     [
+      "?",
+      "Benzema",
+      "Vinícius"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2022 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2022"
+    ]
+   ],
+   "x": "Courtois fez nove defesas e foi eleito o melhor da final."
+  },
+  {
+   "t": "Complete a escalação do Real Madrid campeão europeu de 2022: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "courtois"
+   ],
+   "fixed": [
+    "cech",
+    "buffon",
+    "alisson",
+    "zetti",
+    "courtois",
+    "ederson",
+    "rogerio_ceni",
+    "casillas",
+    "neuer",
+    "lloris"
+   ],
+   "xi": {
+    "t": "Real Madrid · final da Champions 2022",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Carvajal",
+      "Militão",
+      "Alaba",
+      "Mendy"
+     ],
+     [
+      "Modrić",
+      "Casemiro",
+      "Kroos"
+     ],
+     [
+      "Valverde",
+      "Benzema",
+      "Vinícius"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2022 UEFA Champions League final",
+    [
+     "no Real Madrid campeão europeu de 2022"
+    ]
+   ],
+   "x": "Courtois fez nove defesas e foi eleito o melhor da final."
+  },
+  {
+   "t": "Complete a escalação do Manchester United campeão europeu de 1999: quem é o meio-campista ao lado de Butt?",
+   "type": "player",
+   "a": [
+    "beckham"
+   ],
+   "fixed": [
+    "keane",
+    "abedi",
+    "zinho",
+    "gerrard",
+    "emerson",
+    "vampeta",
+    "beckham",
+    "lampard",
+    "scholes",
+    "laudrup"
+   ],
+   "xi": {
+    "t": "Man. United · final de 1999",
+    "rows": [
+     [
+      "Schmeichel"
+     ],
+     [
+      "G. Neville",
+      "Johnsen",
+      "Stam",
+      "Irwin"
+     ],
+     [
+      "?",
+      "Butt",
+      "Blomqvist",
+      "Giggs"
+     ],
+     [
+      "Yorke",
+      "Cole"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1999 UEFA Champions League final",
+    [
+     "no Manchester United campeão europeu de 1999"
+    ]
+   ],
+   "x": "Sem Keane e Scholes, suspensos, Beckham jogou no meio e cobrou os dois escanteios dos gols."
+  },
+  {
+   "t": "Complete a escalação do Manchester United campeão europeu de 1999: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "schmeichel"
+   ],
+   "fixed": [
+    "vitor_baia",
+    "marcos",
+    "casillas",
+    "cech",
+    "schmeichel",
+    "kahn",
+    "julio_cesar",
+    "chilavert",
+    "taffarel",
+    "dida"
+   ],
+   "xi": {
+    "t": "Man. United · final de 1999",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "G. Neville",
+      "Johnsen",
+      "Stam",
+      "Irwin"
+     ],
+     [
+      "Beckham",
+      "Butt",
+      "Blomqvist",
+      "Giggs"
+     ],
+     [
+      "Yorke",
+      "Cole"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "1999 UEFA Champions League final",
+    [
+     "no Manchester United campeão europeu de 1999"
+    ]
+   ],
+   "x": "Sem Keane e Scholes, suspensos, Beckham jogou no meio e cobrou os dois escanteios dos gols."
+  },
+  {
+   "t": "Complete a escalação do Manchester United campeão europeu de 2008: quem é o meio-campista entre Hargreaves e Carrick?",
+   "type": "player",
+   "a": [
+    "scholes"
+   ],
+   "fixed": [
+    "diego",
+    "pogba",
+    "lampard",
+    "rivaldo",
+    "ozil",
+    "juninho",
+    "gerrard",
+    "ballack",
+    "scholes",
+    "beckham"
+   ],
+   "xi": {
+    "t": "Man. United · final da Champions 2008",
+    "rows": [
+     [
+      "Van der Sar"
+     ],
+     [
+      "Brown",
+      "Ferdinand",
+      "Vidić",
+      "Evra"
+     ],
+     [
+      "Hargreaves",
+      "?",
+      "Carrick"
+     ],
+     [
+      "C. Ronaldo",
+      "Rooney",
+      "Tevez"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2008 UEFA Champions League final",
+    [
+     "no Manchester United campeão europeu de 2008"
+    ]
+   ],
+   "x": "Van der Sar defendeu o pênalti de Anelka e decidiu a final de Moscou."
+  },
+  {
+   "t": "Complete a escalação do Manchester United campeão europeu de 2008: quem é o atacante entre C. Ronaldo e Tevez?",
+   "type": "player",
+   "a": [
+    "rooney"
+   ],
+   "fixed": [
+    "raul",
+    "torres",
+    "drogba",
+    "rooney",
+    "totti",
+    "owen",
+    "denilson",
+    "crespo",
+    "kane",
+    "thomas_muller"
+   ],
+   "xi": {
+    "t": "Man. United · final da Champions 2008",
+    "rows": [
+     [
+      "Van der Sar"
+     ],
+     [
+      "Brown",
+      "Ferdinand",
+      "Vidić",
+      "Evra"
+     ],
+     [
+      "Hargreaves",
+      "Scholes",
+      "Carrick"
+     ],
+     [
+      "C. Ronaldo",
+      "?",
+      "Tevez"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2008 UEFA Champions League final",
+    [
+     "no Manchester United campeão europeu de 2008"
+    ]
+   ],
+   "x": "Van der Sar defendeu o pênalti de Anelka e decidiu a final de Moscou."
+  },
+  {
+   "t": "Complete a escalação do Manchester United campeão europeu de 2008: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "van_der_sar"
+   ],
+   "fixed": [
+    "buffon",
+    "dida",
+    "higuita",
+    "cech",
+    "kahn",
+    "courtois",
+    "van_der_sar",
+    "marcos",
+    "vitor_baia",
+    "lloris"
+   ],
+   "xi": {
+    "t": "Man. United · final da Champions 2008",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Brown",
+      "Ferdinand",
+      "Vidić",
+      "Evra"
+     ],
+     [
+      "Hargreaves",
+      "Scholes",
+      "Carrick"
+     ],
+     [
+      "C. Ronaldo",
+      "Rooney",
+      "Tevez"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2008 UEFA Champions League final",
+    [
+     "no Manchester United campeão europeu de 2008"
+    ]
+   ],
+   "x": "Van der Sar defendeu o pênalti de Anelka e decidiu a final de Moscou."
+  },
+  {
+   "t": "Complete a escalação do Liverpool campeão europeu de 2019: quem é o defensor entre Matip e Robertson?",
+   "type": "player",
+   "a": [
+    "van_dijk"
+   ],
+   "fixed": [
+    "lucio",
+    "maicon",
+    "lahm",
+    "marcelo",
+    "van_dijk",
+    "ruben_dias",
+    "dani_alves",
+    "militao",
+    "marquinhos",
+    "david_luiz"
+   ],
+   "xi": {
+    "t": "Liverpool · final da Champions 2019",
+    "rows": [
+     [
+      "Alisson"
+     ],
+     [
+      "Alexander-Arnold",
+      "Matip",
+      "?",
+      "Robertson"
+     ],
+     [
+      "Henderson",
+      "Fabinho",
+      "Milner"
+     ],
+     [
+      "Salah",
+      "Firmino",
+      "Mané"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2019 UEFA Champions League final",
+    [
+     "no Liverpool campeão europeu de 2019"
+    ]
+   ],
+   "x": "Salah abriu o placar de pênalti com menos de dois minutos de jogo."
+  },
+  {
+   "t": "Complete a escalação do Liverpool campeão europeu de 2019: quem é o atacante ao lado de Firmino?",
+   "type": "player",
+   "a": [
+    "mane"
+   ],
+   "fixed": [
+    "raphinha",
+    "mane",
+    "ibrahimovic",
+    "torres",
+    "kane",
+    "etoo",
+    "gabriel_jesus",
+    "griezmann",
+    "lautaro",
+    "robinho"
+   ],
+   "xi": {
+    "t": "Liverpool · final da Champions 2019",
+    "rows": [
+     [
+      "Alisson"
+     ],
+     [
+      "Alexander-Arnold",
+      "Matip",
+      "Van Dijk",
+      "Robertson"
+     ],
+     [
+      "Henderson",
+      "Fabinho",
+      "Milner"
+     ],
+     [
+      "Salah",
+      "Firmino",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2019 UEFA Champions League final",
+    [
+     "no Liverpool campeão europeu de 2019"
+    ]
+   ],
+   "x": "Salah abriu o placar de pênalti com menos de dois minutos de jogo."
+  },
+  {
+   "t": "Complete a escalação do Liverpool campeão europeu de 2019: quem é o defensor ao lado de Matip?",
+   "type": "player",
+   "a": [
+    "taa"
+   ],
+   "fixed": [
+    "marcelo",
+    "ruben_dias",
+    "sergio_ramos",
+    "thiago_silva",
+    "maicon",
+    "lucio",
+    "lahm",
+    "david_luiz",
+    "taa",
+    "militao"
+   ],
+   "xi": {
+    "t": "Liverpool · final da Champions 2019",
+    "rows": [
+     [
+      "Alisson"
+     ],
+     [
+      "?",
+      "Matip",
+      "Van Dijk",
+      "Robertson"
+     ],
+     [
+      "Henderson",
+      "Fabinho",
+      "Milner"
+     ],
+     [
+      "Salah",
+      "Firmino",
+      "Mané"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2019 UEFA Champions League final",
+    [
+     "no Liverpool campeão europeu de 2019"
+    ]
+   ],
+   "x": "Salah abriu o placar de pênalti com menos de dois minutos de jogo."
+  },
+  {
+   "t": "Complete a escalação do Liverpool campeão europeu de 2005: quem é o meio-campista ao lado de Xabi Alonso?",
+   "type": "player",
+   "a": [
+    "gerrard"
+   ],
+   "fixed": [
+    "valderrama",
+    "scholes",
+    "de_bruyne",
+    "emerson",
+    "ballack",
+    "gerrard",
+    "beckham",
+    "mauro_silva",
+    "schweinsteiger",
+    "lampard"
+   ],
+   "xi": {
+    "t": "Liverpool · final da Champions 2005",
+    "rows": [
+     [
+      "Dudek"
+     ],
+     [
+      "Finnan",
+      "Carragher",
+      "Hyypiä",
+      "Traoré"
+     ],
+     [
+      "?",
+      "Xabi Alonso"
+     ],
+     [
+      "Riise",
+      "Luis García",
+      "Kewell"
+     ],
+     [
+      "Baroš"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2005 UEFA Champions League final",
+    [
+     "no Liverpool campeão europeu de 2005"
+    ]
+   ],
+   "x": "O capitão Gerrard começou a virada de Istambul com um gol de cabeça."
+  },
+  {
+   "t": "Complete a escalação do Bayern campeão europeu de 2013: quem é o atacante ao lado de Müller?",
+   "type": "player",
+   "a": [
+    "ribery"
+   ],
+   "fixed": [
+    "etoo",
+    "ribery",
+    "owen",
+    "benzema",
+    "tulio",
+    "henry",
+    "griezmann",
+    "shevchenko",
+    "gabriel_jesus",
+    "mbappe"
+   ],
+   "xi": {
+    "t": "Bayern · final da Champions 2013",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "Lahm",
+      "Boateng",
+      "Dante",
+      "Alaba"
+     ],
+     [
+      "J. Martínez",
+      "Schweinsteiger"
+     ],
+     [
+      "Robben",
+      "Müller",
+      "?"
+     ],
+     [
+      "Mandžukić"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2013 UEFA Champions League final",
+    [
+     "no Bayern campeão europeu de 2013"
+    ]
+   ],
+   "x": "Dante, zagueiro brasileiro, foi titular na tríplice coroa do Bayern."
+  },
+  {
+   "t": "Complete a escalação do Bayern campeão europeu de 2013: quem é o atacante entre Robben e Ribéry?",
+   "type": "player",
+   "a": [
+    "thomas_muller"
+   ],
+   "fixed": [
+    "thomas_muller",
+    "benzema",
+    "cr7",
+    "drogba",
+    "torres",
+    "klose",
+    "gabriel_jesus",
+    "hulk",
+    "robinho",
+    "cavani"
+   ],
+   "xi": {
+    "t": "Bayern · final da Champions 2013",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "Lahm",
+      "Boateng",
+      "Dante",
+      "Alaba"
+     ],
+     [
+      "J. Martínez",
+      "Schweinsteiger"
+     ],
+     [
+      "Robben",
+      "?",
+      "Ribéry"
+     ],
+     [
+      "Mandžukić"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2013 UEFA Champions League final",
+    [
+     "no Bayern campeão europeu de 2013"
+    ]
+   ],
+   "x": "Dante, zagueiro brasileiro, foi titular na tríplice coroa do Bayern."
+  },
+  {
+   "t": "Complete a escalação do Bayern campeão europeu de 2013: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "neuer"
+   ],
+   "fixed": [
+    "casillas",
+    "higuita",
+    "buffon",
+    "lloris",
+    "van_der_sar",
+    "julio_cesar",
+    "marcos",
+    "neuer",
+    "ederson",
+    "alisson"
+   ],
+   "xi": {
+    "t": "Bayern · final da Champions 2013",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Lahm",
+      "Boateng",
+      "Dante",
+      "Alaba"
+     ],
+     [
+      "J. Martínez",
+      "Schweinsteiger"
+     ],
+     [
+      "Robben",
+      "Müller",
+      "Ribéry"
+     ],
+     [
+      "Mandžukić"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2013 UEFA Champions League final",
+    [
+     "no Bayern campeão europeu de 2013"
+    ]
+   ],
+   "x": "Dante, zagueiro brasileiro, foi titular na tríplice coroa do Bayern."
+  },
+  {
+   "t": "Complete a escalação do Bayern campeão europeu de 2020: quem é o atacante?",
+   "type": "player",
+   "a": [
+    "lewandowski"
+   ],
+   "fixed": [
+    "saka",
+    "cr7",
+    "robinho",
+    "richarlison",
+    "lewandowski",
+    "messi",
+    "vinicius",
+    "haaland",
+    "hulk",
+    "osimhen"
+   ],
+   "xi": {
+    "t": "Bayern · final da Champions 2020",
+    "rows": [
+     [
+      "Neuer"
+     ],
+     [
+      "Kimmich",
+      "Boateng",
+      "Alaba",
+      "Davies"
+     ],
+     [
+      "Goretzka",
+      "Thiago"
+     ],
+     [
+      "Gnabry",
+      "Müller",
+      "Coman"
+     ],
+     [
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2020 UEFA Champions League final",
+    [
+     "no Bayern campeão europeu de 2020"
+    ]
+   ],
+   "x": "O Bayern ganhou todos os jogos daquela Champions, disputada em Lisboa no fim."
+  },
+  {
+   "t": "Complete a escalação do Manchester City campeão europeu de 2023: quem é o meio-campista ao lado de Stones?",
+   "type": "player",
+   "a": [
+    "rodri"
+   ],
+   "fixed": [
+    "hazard",
+    "modric",
+    "busquets",
+    "rodri",
+    "kroos",
+    "pedri",
+    "diego",
+    "casemiro",
+    "iniesta",
+    "bellingham"
+   ],
+   "xi": {
+    "t": "Man. City · final da Champions 2023",
+    "rows": [
+     [
+      "Ederson"
+     ],
+     [
+      "Walker",
+      "R. Dias",
+      "Akanji"
+     ],
+     [
+      "Stones",
+      "?"
+     ],
+     [
+      "B. Silva",
+      "De Bruyne",
+      "Gündoğan",
+      "Grealish"
+     ],
+     [
+      "Haaland"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 UEFA Champions League final",
+    [
+     "no Manchester City campeão europeu de 2023"
+    ]
+   ],
+   "x": "Rodri fez o gol do título, em Istambul."
+  },
+  {
+   "t": "Complete a escalação do Manchester City campeão europeu de 2023: quem é o atacante?",
+   "type": "player",
+   "a": [
+    "haaland"
+   ],
+   "fixed": [
+    "antony",
+    "salah",
+    "mbappe",
+    "ibrahimovic",
+    "raphinha",
+    "lewandowski",
+    "kane",
+    "griezmann",
+    "haaland",
+    "suarez"
+   ],
+   "xi": {
+    "t": "Man. City · final da Champions 2023",
+    "rows": [
+     [
+      "Ederson"
+     ],
+     [
+      "Walker",
+      "R. Dias",
+      "Akanji"
+     ],
+     [
+      "Stones",
+      "Rodri"
+     ],
+     [
+      "B. Silva",
+      "De Bruyne",
+      "Gündoğan",
+      "Grealish"
+     ],
+     [
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 UEFA Champions League final",
+    [
+     "no Manchester City campeão europeu de 2023"
+    ]
+   ],
+   "x": "Rodri fez o gol do título, em Istambul."
+  },
+  {
+   "t": "Complete a escalação do Manchester City campeão europeu de 2023: quem é o meio-campista entre B. Silva e Gündoğan?",
+   "type": "player",
+   "a": [
+    "de_bruyne"
+   ],
+   "fixed": [
+    "de_bruyne",
+    "busquets",
+    "bruno_g",
+    "foden",
+    "pogba",
+    "diego",
+    "hazard",
+    "kante",
+    "bellingham",
+    "musiala"
+   ],
+   "xi": {
+    "t": "Man. City · final da Champions 2023",
+    "rows": [
+     [
+      "Ederson"
+     ],
+     [
+      "Walker",
+      "R. Dias",
+      "Akanji"
+     ],
+     [
+      "Stones",
+      "Rodri"
+     ],
+     [
+      "B. Silva",
+      "?",
+      "Gündoğan",
+      "Grealish"
+     ],
+     [
+      "Haaland"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 UEFA Champions League final",
+    [
+     "no Manchester City campeão europeu de 2023"
+    ]
+   ],
+   "x": "Rodri fez o gol do título, em Istambul."
+  },
+  {
+   "t": "Complete a escalação do Manchester City campeão europeu de 2023: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "ederson"
+   ],
+   "fixed": [
+    "courtois",
+    "neuer",
+    "buffon",
+    "ederson",
+    "higuita",
+    "fillol",
+    "casillas",
+    "lloris",
+    "alisson",
+    "zoff"
+   ],
+   "xi": {
+    "t": "Man. City · final da Champions 2023",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Walker",
+      "R. Dias",
+      "Akanji"
+     ],
+     [
+      "Stones",
+      "Rodri"
+     ],
+     [
+      "B. Silva",
+      "De Bruyne",
+      "Gündoğan",
+      "Grealish"
+     ],
+     [
+      "Haaland"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2023 UEFA Champions League final",
+    [
+     "no Manchester City campeão europeu de 2023"
+    ]
+   ],
+   "x": "Rodri fez o gol do título, em Istambul."
+  },
+  {
+   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "julio_cesar"
+   ],
+   "fixed": [
+    "rogerio_ceni",
+    "alisson",
+    "dida",
+    "barthez",
+    "buffon",
+    "marcos",
+    "cech",
+    "lloris",
+    "ederson",
+    "julio_cesar"
+   ],
+   "xi": {
+    "t": "Inter · final da Champions 2010",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Maicon",
+      "Lúcio",
+      "Samuel",
+      "Chivu"
+     ],
+     [
+      "Zanetti",
+      "Cambiasso"
+     ],
+     [
+      "Eto’o",
+      "Sneijder",
+      "Pandev"
+     ],
+     [
+      "Milito"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "na Inter campeã europeia de 2010"
+    ]
+   ],
+   "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."
+  },
+  {
+   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor ao lado de Lúcio?",
+   "type": "player",
+   "a": [
+    "maicon"
+   ],
+   "fixed": [
+    "dani_alves",
+    "marcelo",
+    "lahm",
+    "van_dijk",
+    "maicon",
+    "cannavaro",
+    "marquinhos",
+    "david_luiz",
+    "roberto_carlos",
+    "thiago_silva"
+   ],
+   "xi": {
+    "t": "Inter · final da Champions 2010",
+    "rows": [
+     [
+      "Júlio César"
+     ],
+     [
+      "?",
+      "Lúcio",
+      "Samuel",
+      "Chivu"
+     ],
+     [
+      "Zanetti",
+      "Cambiasso"
+     ],
+     [
+      "Eto’o",
+      "Sneijder",
+      "Pandev"
+     ],
+     [
+      "Milito"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "na Inter campeã europeia de 2010"
+    ]
+   ],
+   "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."
+  },
+  {
+   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor entre Maicon e Samuel?",
+   "type": "player",
+   "a": [
+    "lucio"
+   ],
+   "fixed": [
+    "puyol",
+    "van_dijk",
+    "david_luiz",
+    "marcelo",
+    "thiago_silva",
+    "sergio_ramos",
+    "lucio",
+    "dani_alves",
+    "marquinhos",
+    "cafu"
+   ],
+   "xi": {
+    "t": "Inter · final da Champions 2010",
+    "rows": [
+     [
+      "Júlio César"
+     ],
+     [
+      "Maicon",
+      "?",
+      "Samuel",
+      "Chivu"
+     ],
+     [
+      "Zanetti",
+      "Cambiasso"
+     ],
+     [
+      "Eto’o",
+      "Sneijder",
+      "Pandev"
+     ],
+     [
+      "Milito"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "na Inter campeã europeia de 2010"
+    ]
+   ],
+   "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."
+  },
+  {
+   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor ao lado de Cambiasso?",
+   "type": "player",
+   "a": [
+    "zanetti"
+   ],
+   "fixed": [
+    "zanetti",
+    "maldini",
+    "david_luiz",
+    "thuram",
+    "lahm",
+    "van_dijk",
+    "puyol",
+    "cannavaro",
+    "marquinhos",
+    "dani_alves"
+   ],
+   "xi": {
+    "t": "Inter · final da Champions 2010",
+    "rows": [
+     [
+      "Júlio César"
+     ],
+     [
+      "Maicon",
+      "Lúcio",
+      "Samuel",
+      "Chivu"
+     ],
+     [
+      "?",
+      "Cambiasso"
+     ],
+     [
+      "Eto’o",
+      "Sneijder",
+      "Pandev"
+     ],
+     [
+      "Milito"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2010 UEFA Champions League final",
+    [
+     "na Inter campeã europeia de 2010"
+    ]
+   ],
+   "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."
+  },
+  {
+   "t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o meio-campista ao lado de Mikel?",
+   "type": "player",
+   "a": [
+    "lampard"
+   ],
+   "fixed": [
+    "alex",
+    "gerrard",
+    "riquelme",
+    "rivaldo",
+    "vieira",
+    "de_bruyne",
+    "beckham",
+    "lampard",
+    "veron",
+    "scholes"
+   ],
+   "xi": {
+    "t": "Chelsea · final da Champions 2012",
+    "rows": [
+     [
+      "Čech"
+     ],
+     [
+      "Bosingwa",
+      "Cahill",
+      "D. Luiz",
+      "A. Cole"
+     ],
+     [
+      "Mikel",
+      "?"
+     ],
+     [
+      "Kalou",
+      "Mata",
+      "Bertrand"
+     ],
+     [
+      "Drogba"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2012 UEFA Champions League final",
+    [
+     "no Chelsea campeão europeu de 2012"
+    ]
+   ],
+   "x": "Čech defendeu o pênalti de Robben na prorrogação."
+  },
+  {
+   "t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "cech"
+   ],
+   "fixed": [
+    "courtois",
+    "ederson",
+    "higuita",
+    "lloris",
+    "cech",
+    "casillas",
+    "buffon",
+    "rogerio_ceni",
+    "alisson",
+    "van_der_sar"
+   ],
+   "xi": {
+    "t": "Chelsea · final da Champions 2012",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Bosingwa",
+      "Cahill",
+      "D. Luiz",
+      "A. Cole"
+     ],
+     [
+      "Mikel",
+      "Lampard"
+     ],
+     [
+      "Kalou",
+      "Mata",
+      "Bertrand"
+     ],
+     [
+      "Drogba"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2012 UEFA Champions League final",
+    [
+     "no Chelsea campeão europeu de 2012"
+    ]
+   ],
+   "x": "Čech defendeu o pênalti de Robben na prorrogação."
+  },
+  {
+   "t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o defensor entre Cahill e A. Cole?",
+   "type": "player",
+   "a": [
+    "david_luiz"
+   ],
+   "fixed": [
+    "ruben_dias",
+    "maicon",
+    "marcelo",
+    "david_luiz",
+    "lucio",
+    "marquinhos",
+    "dani_alves",
+    "thiago_silva",
+    "sergio_ramos",
+    "lahm"
+   ],
+   "xi": {
+    "t": "Chelsea · final da Champions 2012",
+    "rows": [
+     [
+      "Čech"
+     ],
+     [
+      "Bosingwa",
+      "Cahill",
+      "?",
+      "A. Cole"
+     ],
+     [
+      "Mikel",
+      "Lampard"
+     ],
+     [
+      "Kalou",
+      "Mata",
+      "Bertrand"
+     ],
+     [
+      "Drogba"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "2012 UEFA Champions League final",
+    [
+     "no Chelsea campeão europeu de 2012"
+    ]
+   ],
+   "x": "Čech defendeu o pênalti de Robben na prorrogação."
+  },
+  {
+   "t": "Complete a escalação do Flamengo campeão mundial de 1981: quem é o defensor ao lado de Mozer?",
+   "type": "player",
+   "a": [
+    "junior"
+   ],
+   "fixed": [
+    "scirea",
+    "junior",
+    "koeman",
+    "marinho_chagas",
+    "branco",
+    "carlos_alberto",
+    "piazza",
+    "brito",
+    "jorginho",
+    "passarella"
+   ],
+   "xi": {
+    "t": "Flamengo · Mundial de 1981",
+    "rows": [
+     [
+      "Raul"
+     ],
+     [
+      "Leandro",
+      "Marinho",
+      "Mozer",
+      "?"
+     ],
+     [
+      "Andrade",
+      "Adílio",
+      "Zico"
+     ],
+     [
+      "Tita",
+      "Nunes",
+      "Lico"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Clube de Regatas do Flamengo",
+    [
+     "no Flamengo campeão mundial de 1981"
+    ]
+   ],
+   "x": "O Flamengo venceu o Liverpool por 3 a 0 em Tóquio."
+  },
+  {
+   "t": "Complete a escalação do Flamengo campeão da Libertadores de 2019: quem é o meio-campista ao lado de Everton Ribeiro?",
+   "type": "player",
+   "a": [
+    "arrascaeta"
+   ],
+   "fixed": [
+    "ozil",
+    "bernardo_silva",
+    "james",
+    "kaka",
+    "kante",
+    "pogba",
+    "bruno_fernandes",
+    "arrascaeta",
+    "casemiro",
+    "valverde"
+   ],
+   "xi": {
+    "t": "Flamengo · final da Libertadores 2019",
+    "rows": [
+     [
+      "Diego Alves"
+     ],
+     [
+      "Rafinha",
+      "Rodrigo Caio",
+      "Pablo Marí",
+      "Filipe Luís"
+     ],
+     [
+      "Willian Arão",
+      "Gerson",
+      "Everton Ribeiro",
+      "?"
+     ],
+     [
+      "Bruno Henrique",
+      "Gabigol"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2019",
+    [
+     "no Flamengo campeão da Libertadores de 2019"
+    ]
+   ],
+   "x": "O time de Jorge Jesus ganhou o Brasileirão e a Libertadores no mesmo fim de semana."
+  },
+  {
+   "t": "Complete a escalação do Flamengo campeão da Libertadores de 2019: quem é o atacante ao lado de Bruno Henrique?",
+   "type": "player",
+   "a": [
+    "gabigol"
+   ],
+   "fixed": [
+    "thomas_muller",
+    "richarlison",
+    "etoo",
+    "adriano",
+    "gabigol",
+    "vinicius",
+    "hulk",
+    "robinho",
+    "saka",
+    "endrick"
+   ],
+   "xi": {
+    "t": "Flamengo · final da Libertadores 2019",
+    "rows": [
+     [
+      "Diego Alves"
+     ],
+     [
+      "Rafinha",
+      "Rodrigo Caio",
+      "Pablo Marí",
+      "Filipe Luís"
+     ],
+     [
+      "Willian Arão",
+      "Gerson",
+      "Everton Ribeiro",
+      "Arrascaeta"
+     ],
+     [
+      "Bruno Henrique",
+      "?"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2019",
+    [
+     "no Flamengo campeão da Libertadores de 2019"
+    ]
+   ],
+   "x": "O time de Jorge Jesus ganhou o Brasileirão e a Libertadores no mesmo fim de semana."
+  },
+  {
+   "t": "Complete a escalação do Santos bicampeão mundial de 1962: quem é o atacante entre Dorval e Pelé?",
+   "type": "player",
+   "a": [
+    "coutinho"
+   ],
+   "fixed": [
+    "fritz_walter",
+    "fontaine",
+    "coutinho",
+    "cruyff",
+    "jairzinho",
+    "julinho",
+    "garrincha",
+    "amarildo",
+    "tostao",
+    "zagallo"
+   ],
+   "xi": {
+    "t": "Santos · 1962",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Lima",
+      "Mauro",
+      "Calvet",
+      "Dalmo"
+     ],
+     [
+      "Zito",
+      "Mengálvio"
+     ],
+     [
+      "Dorval",
+      "?",
+      "Pelé",
+      "Pepe"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "Santos FC",
+    [
+     "no Santos bicampeão mundial de 1962"
+    ]
+   ],
+   "x": "Pelé e Coutinho formaram uma das maiores duplas de ataque da história."
+  },
+  {
+   "t": "Complete a escalação do Santos bicampeão mundial de 1962: quem é o atacante ao lado de Pelé?",
+   "type": "player",
+   "a": [
+    "pepe"
+   ],
+   "fixed": [
+    "julinho",
+    "tostao",
+    "pepe",
+    "garrincha",
+    "zagallo",
+    "gerd_muller",
+    "mazzola",
+    "amarildo",
+    "vava",
+    "fontaine"
+   ],
+   "xi": {
+    "t": "Santos · 1962",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Lima",
+      "Mauro",
+      "Calvet",
+      "Dalmo"
+     ],
+     [
+      "Zito",
+      "Mengálvio"
+     ],
+     [
+      "Dorval",
+      "Coutinho",
+      "Pelé",
+      "?"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "Santos FC",
+    [
+     "no Santos bicampeão mundial de 1962"
+    ]
+   ],
+   "x": "Pelé e Coutinho formaram uma das maiores duplas de ataque da história."
+  },
+  {
+   "t": "Complete a escalação do Santos bicampeão mundial de 1962: quem é o meio-campista ao lado de Mengálvio?",
+   "type": "player",
+   "a": [
+    "zito"
+   ],
+   "fixed": [
+    "schiaffino",
+    "gerson",
+    "didi",
+    "rivera",
+    "rivellino",
+    "liedholm",
+    "zito",
+    "luis_suarez_es",
+    "kopa",
+    "zizinho"
+   ],
+   "xi": {
+    "t": "Santos · 1962",
+    "rows": [
+     [
+      "Gilmar"
+     ],
+     [
+      "Lima",
+      "Mauro",
+      "Calvet",
+      "Dalmo"
+     ],
+     [
+      "?",
+      "Mengálvio"
+     ],
+     [
+      "Dorval",
+      "Coutinho",
+      "Pelé",
+      "Pepe"
+     ]
+    ]
+   },
+   "d": 4,
+   "src": [
+    "pt",
+    "Santos FC",
+    [
+     "no Santos bicampeão mundial de 1962"
+    ]
+   ],
+   "x": "Pelé e Coutinho formaram uma das maiores duplas de ataque da história."
+  },
+  {
+   "t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "zetti"
+   ],
+   "fixed": [
+    "schmeichel",
+    "rogerio_ceni",
+    "taffarel",
+    "marcos",
+    "chilavert",
+    "fillol",
+    "buffon",
+    "dida",
+    "zetti",
+    "vitor_baia"
+   ],
+   "xi": {
+    "t": "São Paulo · Mundial de 1992",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Vítor",
+      "Adílson",
+      "Ronaldão",
+      "Ronaldo Luís"
+     ],
+     [
+      "Pintado",
+      "Cerezo",
+      "Raí",
+      "Cafu"
+     ],
+     [
+      "Palhinha",
+      "Müller"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "no São Paulo campeão mundial de 1992"
+    ]
+   ],
+   "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."
+  },
+  {
+   "t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o defensor ao lado de Raí?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "fixed": [
+    "aldair",
+    "branco",
+    "zanetti",
+    "cafu",
+    "jorginho",
+    "maldini",
+    "roberto_carlos",
+    "thuram",
+    "junior",
+    "brehme"
+   ],
+   "xi": {
+    "t": "São Paulo · Mundial de 1992",
+    "rows": [
+     [
+      "Zetti"
+     ],
+     [
+      "Vítor",
+      "Adílson",
+      "Ronaldão",
+      "Ronaldo Luís"
+     ],
+     [
+      "Pintado",
+      "Cerezo",
+      "Raí",
+      "?"
+     ],
+     [
+      "Palhinha",
+      "Müller"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "no São Paulo campeão mundial de 1992"
+    ]
+   ],
+   "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."
+  },
+  {
+   "t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o atacante ao lado de Palhinha?",
+   "type": "player",
+   "a": [
+    "muller_sp"
+   ],
+   "fixed": [
+    "muller_sp",
+    "romario",
+    "zamorano",
+    "elber",
+    "careca",
+    "stoichkov",
+    "edilson",
+    "van_basten",
+    "savio",
+    "ronaldo"
+   ],
+   "xi": {
+    "t": "São Paulo · Mundial de 1992",
+    "rows": [
+     [
+      "Zetti"
+     ],
+     [
+      "Vítor",
+      "Adílson",
+      "Ronaldão",
+      "Ronaldo Luís"
+     ],
+     [
+      "Pintado",
+      "Cerezo",
+      "Raí",
+      "Cafu"
+     ],
+     [
+      "Palhinha",
+      "?"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "São Paulo Futebol Clube",
+    [
+     "no São Paulo campeão mundial de 1992"
+    ]
+   ],
+   "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."
+  },
+  {
+   "t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o meio-campista entre Rogério e Zinho?",
+   "type": "player",
+   "a": [
+    "alex"
+   ],
+   "fixed": [
+    "keane",
+    "djalminha",
+    "emerson",
+    "kaka",
+    "dunga",
+    "rivaldo",
+    "alex",
+    "gilberto_silva",
+    "deschamps",
+    "veron"
+   ],
+   "xi": {
+    "t": "Palmeiras · Libertadores 1999",
+    "rows": [
+     [
+      "Marcos"
+     ],
+     [
+      "Arce",
+      "Júnior Baiano",
+      "Roque Júnior",
+      "Júnior"
+     ],
+     [
+      "César Sampaio",
+      "Rogério",
+      "?",
+      "Zinho"
+     ],
+     [
+      "Paulo Nunes",
+      "Oséas"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1999",
+    [
+     "no Palmeiras campeão da Libertadores de 1999"
+    ]
+   ],
+   "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."
+  },
+  {
+   "t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o goleiro?",
+   "type": "player",
+   "a": [
+    "marcos"
+   ],
+   "fixed": [
+    "chilavert",
+    "cech",
+    "casillas",
+    "rogerio_ceni",
+    "marcos",
+    "zetti",
+    "buffon",
+    "dida",
+    "schmeichel",
+    "taffarel"
+   ],
+   "xi": {
+    "t": "Palmeiras · Libertadores 1999",
+    "rows": [
+     [
+      "?"
+     ],
+     [
+      "Arce",
+      "Júnior Baiano",
+      "Roque Júnior",
+      "Júnior"
+     ],
+     [
+      "César Sampaio",
+      "Rogério",
+      "Alex",
+      "Zinho"
+     ],
+     [
+      "Paulo Nunes",
+      "Oséas"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1999",
+    [
+     "no Palmeiras campeão da Libertadores de 1999"
+    ]
+   ],
+   "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."
+  },
+  {
+   "t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o meio-campista ao lado de Alex?",
+   "type": "player",
+   "a": [
+    "zinho"
+   ],
+   "fixed": [
+    "matthaus",
+    "dunga",
+    "deco",
+    "zinho",
+    "ze_roberto",
+    "juninho",
+    "keane",
+    "diego",
+    "gilberto_silva",
+    "vampeta"
+   ],
+   "xi": {
+    "t": "Palmeiras · Libertadores 1999",
+    "rows": [
+     [
+      "Marcos"
+     ],
+     [
+      "Arce",
+      "Júnior Baiano",
+      "Roque Júnior",
+      "Júnior"
+     ],
+     [
+      "César Sampaio",
+      "Rogério",
+      "Alex",
+      "?"
+     ],
+     [
+      "Paulo Nunes",
+      "Oséas"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 1999",
+    [
+     "no Palmeiras campeão da Libertadores de 1999"
+    ]
+   ],
+   "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."
+  },
+  {
+   "t": "Complete a escalação do Atlético-MG campeão da Libertadores de 2013: quem é o meio-campista entre Tardelli e Bernard?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "fixed": [
+    "pirlo",
+    "ronaldinho",
+    "emerson",
+    "bruno_g",
+    "veron",
+    "ze_roberto",
+    "rivaldo",
+    "alex",
+    "dimaria",
+    "juninho"
+   ],
+   "xi": {
+    "t": "Atlético-MG · Libertadores 2013",
+    "rows": [
+     [
+      "Victor"
+     ],
+     [
+      "Marcos Rocha",
+      "Réver",
+      "Leonardo Silva",
+      "Richarlyson"
+     ],
+     [
+      "Pierre",
+      "Josué"
+     ],
+     [
+      "Tardelli",
+      "?",
+      "Bernard"
+     ],
+     [
+      "Jô"
+     ]
+    ]
+   },
+   "d": 2,
+   "src": [
+    "pt",
+    "Copa Libertadores da América de 2013",
+    [
+     "no Atlético-MG campeão da Libertadores de 2013"
+    ]
+   ],
+   "x": "Victor defendeu um pênalti nos acréscimos das quartas de final, contra o Tijuana."
+  },
+  {
+   "t": "Complete a escalação do Milan de 1994 que goleou o Barcelona: quem é o defensor entre Albertini e Boban?",
+   "type": "player",
+   "a": [
+    "desailly"
+   ],
+   "fixed": [
+    "desailly",
+    "branco",
+    "jorginho",
+    "junior",
+    "roberto_carlos",
+    "thuram",
+    "aldair",
+    "cafu",
+    "cannavaro",
+    "brehme"
+   ],
+   "xi": {
+    "t": "Milan · final da Champions 1994",
+    "rows": [
+     [
+      "S. Rossi"
+     ],
+     [
+      "Tassotti",
+      "F. Galli",
+      "Maldini",
+      "Panucci"
+     ],
+     [
+      "Donadoni",
+      "Albertini",
+      "?",
+      "Boban"
+     ],
+     [
+      "Savićević",
+      "Massaro"
+     ]
+    ]
+   },
+   "d": 3,
+   "src": [
+    "pt",
+    "1994 UEFA Champions League final",
+    [
+     "no Milan de 1994 que goleou o Barcelona"
+    ]
+   ],
+   "x": "Desailly marcou o quarto gol no 4 a 0 de Atenas."
+  }
+ ]
+}

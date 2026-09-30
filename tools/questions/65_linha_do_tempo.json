@@ -1,0 +1,3082 @@
+{
+ "id": "linhadotempo",
+ "name": "Linha do tempo",
+ "emoji": "⏳",
+ "tag": "Ordene",
+ "col": "#0f7b6c",
+ "diff": "Difícil",
+ "qs": [
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Bobby Charlton, Luka Modrić, Josef Masopust e Paolo Rossi?",
+   "type": "order",
+   "a": [
+    "masopust",
+    "charlton",
+    "rossi",
+    "modric"
+   ],
+   "order": [
+    {
+     "id": "charlton",
+     "y": 1966,
+     "label": "Bobby Charlton",
+     "sub": "1ª Bola de Ouro",
+     "face": "charlton"
+    },
+    {
+     "id": "modric",
+     "y": 2018,
+     "label": "Luka Modrić",
+     "sub": "1ª Bola de Ouro",
+     "face": "modric"
+    },
+    {
+     "id": "masopust",
+     "y": 1962,
+     "label": "Josef Masopust",
+     "sub": "1ª Bola de Ouro",
+     "face": "masopust"
+    },
+    {
+     "id": "rossi",
+     "y": 1982,
+     "label": "Paolo Rossi",
+     "sub": "1ª Bola de Ouro",
+     "face": "rossi"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Ronaldo Fenômeno, Beckenbauer, Denis Law e Ronaldinho?",
+   "type": "order",
+   "a": [
+    "law",
+    "beckenbauer",
+    "ronaldo",
+    "ronaldinho"
+   ],
+   "order": [
+    {
+     "id": "ronaldo",
+     "y": 1997,
+     "label": "Ronaldo Fenômeno",
+     "sub": "1ª Bola de Ouro",
+     "face": "ronaldo"
+    },
+    {
+     "id": "beckenbauer",
+     "y": 1972,
+     "label": "Beckenbauer",
+     "sub": "1ª Bola de Ouro",
+     "face": "beckenbauer"
+    },
+    {
+     "id": "law",
+     "y": 1964,
+     "label": "Denis Law",
+     "sub": "1ª Bola de Ouro",
+     "face": "law"
+    },
+    {
+     "id": "ronaldinho",
+     "y": 2005,
+     "label": "Ronaldinho",
+     "sub": "1ª Bola de Ouro",
+     "face": "ronaldinho"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Raymond Kopa, Ronaldo Fenômeno, Luís Figo e Rodri?",
+   "type": "order",
+   "a": [
+    "kopa",
+    "ronaldo",
+    "figo",
+    "rodri"
+   ],
+   "order": [
+    {
+     "id": "kopa",
+     "y": 1958,
+     "label": "Raymond Kopa",
+     "sub": "1ª Bola de Ouro",
+     "face": "kopa"
+    },
+    {
+     "id": "ronaldo",
+     "y": 1997,
+     "label": "Ronaldo Fenômeno",
+     "sub": "1ª Bola de Ouro",
+     "face": "ronaldo"
+    },
+    {
+     "id": "figo",
+     "y": 2000,
+     "label": "Luís Figo",
+     "sub": "1ª Bola de Ouro",
+     "face": "figo"
+    },
+    {
+     "id": "rodri",
+     "y": 2024,
+     "label": "Rodri",
+     "sub": "1ª Bola de Ouro",
+     "face": "rodri"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Di Stéfano, Michael Owen, Michel Platini e Oleg Blokhin?",
+   "type": "order",
+   "a": [
+    "distefano",
+    "blokhin",
+    "platini",
+    "owen"
+   ],
+   "order": [
+    {
+     "id": "distefano",
+     "y": 1957,
+     "label": "Di Stéfano",
+     "sub": "1ª Bola de Ouro",
+     "face": "distefano"
+    },
+    {
+     "id": "owen",
+     "y": 2001,
+     "label": "Michael Owen",
+     "sub": "1ª Bola de Ouro",
+     "face": "owen"
+    },
+    {
+     "id": "platini",
+     "y": 1983,
+     "label": "Michel Platini",
+     "sub": "1ª Bola de Ouro",
+     "face": "platini"
+    },
+    {
+     "id": "blokhin",
+     "y": 1975,
+     "label": "Oleg Blokhin",
+     "sub": "1ª Bola de Ouro",
+     "face": "blokhin"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Karim Benzema, Denis Law, Lothar Matthäus e Raymond Kopa?",
+   "type": "order",
+   "a": [
+    "kopa",
+    "law",
+    "matthaus",
+    "benzema"
+   ],
+   "order": [
+    {
+     "id": "benzema",
+     "y": 2022,
+     "label": "Karim Benzema",
+     "sub": "1ª Bola de Ouro",
+     "face": "benzema"
+    },
+    {
+     "id": "law",
+     "y": 1964,
+     "label": "Denis Law",
+     "sub": "1ª Bola de Ouro",
+     "face": "law"
+    },
+    {
+     "id": "matthaus",
+     "y": 1990,
+     "label": "Lothar Matthäus",
+     "sub": "1ª Bola de Ouro",
+     "face": "matthaus"
+    },
+    {
+     "id": "kopa",
+     "y": 1958,
+     "label": "Raymond Kopa",
+     "sub": "1ª Bola de Ouro",
+     "face": "kopa"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Beckenbauer, Luís Figo, Raymond Kopa e Kaká?",
+   "type": "order",
+   "a": [
+    "kopa",
+    "beckenbauer",
+    "figo",
+    "kaka"
+   ],
+   "order": [
+    {
+     "id": "beckenbauer",
+     "y": 1972,
+     "label": "Beckenbauer",
+     "sub": "1ª Bola de Ouro",
+     "face": "beckenbauer"
+    },
+    {
+     "id": "figo",
+     "y": 2000,
+     "label": "Luís Figo",
+     "sub": "1ª Bola de Ouro",
+     "face": "figo"
+    },
+    {
+     "id": "kopa",
+     "y": 1958,
+     "label": "Raymond Kopa",
+     "sub": "1ª Bola de Ouro",
+     "face": "kopa"
+    },
+    {
+     "id": "kaka",
+     "y": 2007,
+     "label": "Kaká",
+     "sub": "1ª Bola de Ouro",
+     "face": "kaka"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Oleg Blokhin, Michael Owen, Ronaldinho e Messi?",
+   "type": "order",
+   "a": [
+    "blokhin",
+    "owen",
+    "ronaldinho",
+    "messi"
+   ],
+   "order": [
+    {
+     "id": "blokhin",
+     "y": 1975,
+     "label": "Oleg Blokhin",
+     "sub": "1ª Bola de Ouro",
+     "face": "blokhin"
+    },
+    {
+     "id": "owen",
+     "y": 2001,
+     "label": "Michael Owen",
+     "sub": "1ª Bola de Ouro",
+     "face": "owen"
+    },
+    {
+     "id": "ronaldinho",
+     "y": 2005,
+     "label": "Ronaldinho",
+     "sub": "1ª Bola de Ouro",
+     "face": "ronaldinho"
+    },
+    {
+     "id": "messi",
+     "y": 2009,
+     "label": "Messi",
+     "sub": "1ª Bola de Ouro",
+     "face": "messi"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Oleg Blokhin, Stoichkov, Pavel Nedvěd e Ruud Gullit?",
+   "type": "order",
+   "a": [
+    "blokhin",
+    "gullit",
+    "stoichkov",
+    "nedved"
+   ],
+   "order": [
+    {
+     "id": "blokhin",
+     "y": 1975,
+     "label": "Oleg Blokhin",
+     "sub": "1ª Bola de Ouro",
+     "face": "blokhin"
+    },
+    {
+     "id": "stoichkov",
+     "y": 1994,
+     "label": "Stoichkov",
+     "sub": "1ª Bola de Ouro",
+     "face": "stoichkov"
+    },
+    {
+     "id": "nedved",
+     "y": 2003,
+     "label": "Pavel Nedvěd",
+     "sub": "1ª Bola de Ouro",
+     "face": "nedved"
+    },
+    {
+     "id": "gullit",
+     "y": 1987,
+     "label": "Ruud Gullit",
+     "sub": "1ª Bola de Ouro",
+     "face": "gullit"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Raymond Kopa, Rivaldo, Messi e Denis Law?",
+   "type": "order",
+   "a": [
+    "kopa",
+    "law",
+    "rivaldo",
+    "messi"
+   ],
+   "order": [
+    {
+     "id": "kopa",
+     "y": 1958,
+     "label": "Raymond Kopa",
+     "sub": "1ª Bola de Ouro",
+     "face": "kopa"
+    },
+    {
+     "id": "rivaldo",
+     "y": 1999,
+     "label": "Rivaldo",
+     "sub": "1ª Bola de Ouro",
+     "face": "rivaldo"
+    },
+    {
+     "id": "messi",
+     "y": 2009,
+     "label": "Messi",
+     "sub": "1ª Bola de Ouro",
+     "face": "messi"
+    },
+    {
+     "id": "law",
+     "y": 1964,
+     "label": "Denis Law",
+     "sub": "1ª Bola de Ouro",
+     "face": "law"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Gerd Müller, Ruud Gullit, Eusébio e Roberto Baggio?",
+   "type": "order",
+   "a": [
+    "eusebio",
+    "gerd_muller",
+    "gullit",
+    "baggio"
+   ],
+   "order": [
+    {
+     "id": "gerd_muller",
+     "y": 1970,
+     "label": "Gerd Müller",
+     "sub": "1ª Bola de Ouro",
+     "face": "gerd_muller"
+    },
+    {
+     "id": "gullit",
+     "y": 1987,
+     "label": "Ruud Gullit",
+     "sub": "1ª Bola de Ouro",
+     "face": "gullit"
+    },
+    {
+     "id": "eusebio",
+     "y": 1965,
+     "label": "Eusébio",
+     "sub": "1ª Bola de Ouro",
+     "face": "eusebio"
+    },
+    {
+     "id": "baggio",
+     "y": 1993,
+     "label": "Roberto Baggio",
+     "sub": "1ª Bola de Ouro",
+     "face": "baggio"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Fabio Cannavaro, Luís Figo, Johan Cruyff e Van Basten?",
+   "type": "order",
+   "a": [
+    "cruyff",
+    "van_basten",
+    "figo",
+    "cannavaro"
+   ],
+   "order": [
+    {
+     "id": "cannavaro",
+     "y": 2006,
+     "label": "Fabio Cannavaro",
+     "sub": "1ª Bola de Ouro",
+     "face": "cannavaro"
+    },
+    {
+     "id": "figo",
+     "y": 2000,
+     "label": "Luís Figo",
+     "sub": "1ª Bola de Ouro",
+     "face": "figo"
+    },
+    {
+     "id": "cruyff",
+     "y": 1971,
+     "label": "Johan Cruyff",
+     "sub": "1ª Bola de Ouro",
+     "face": "cruyff"
+    },
+    {
+     "id": "van_basten",
+     "y": 1988,
+     "label": "Van Basten",
+     "sub": "1ª Bola de Ouro",
+     "face": "van_basten"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Zidane, Karim Benzema, Luis Suárez Miramontes e Shevchenko?",
+   "type": "order",
+   "a": [
+    "luis_suarez_es",
+    "zidane",
+    "shevchenko",
+    "benzema"
+   ],
+   "order": [
+    {
+     "id": "zidane",
+     "y": 1998,
+     "label": "Zidane",
+     "sub": "1ª Bola de Ouro",
+     "face": "zidane"
+    },
+    {
+     "id": "benzema",
+     "y": 2022,
+     "label": "Karim Benzema",
+     "sub": "1ª Bola de Ouro",
+     "face": "benzema"
+    },
+    {
+     "id": "luis_suarez_es",
+     "y": 1960,
+     "label": "Luis Suárez Miramontes",
+     "sub": "1ª Bola de Ouro",
+     "face": "luis_suarez_es"
+    },
+    {
+     "id": "shevchenko",
+     "y": 2004,
+     "label": "Shevchenko",
+     "sub": "1ª Bola de Ouro",
+     "face": "shevchenko"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — George Weah, Messi, Lev Yashin e Michael Owen?",
+   "type": "order",
+   "a": [
+    "yashin",
+    "weah",
+    "owen",
+    "messi"
+   ],
+   "order": [
+    {
+     "id": "weah",
+     "y": 1995,
+     "label": "George Weah",
+     "sub": "1ª Bola de Ouro",
+     "face": "weah"
+    },
+    {
+     "id": "messi",
+     "y": 2009,
+     "label": "Messi",
+     "sub": "1ª Bola de Ouro",
+     "face": "messi"
+    },
+    {
+     "id": "yashin",
+     "y": 1963,
+     "label": "Lev Yashin",
+     "sub": "1ª Bola de Ouro",
+     "face": "yashin"
+    },
+    {
+     "id": "owen",
+     "y": 2001,
+     "label": "Michael Owen",
+     "sub": "1ª Bola de Ouro",
+     "face": "owen"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Zidane, George Weah, Ronaldinho e Raymond Kopa?",
+   "type": "order",
+   "a": [
+    "kopa",
+    "weah",
+    "zidane",
+    "ronaldinho"
+   ],
+   "order": [
+    {
+     "id": "zidane",
+     "y": 1998,
+     "label": "Zidane",
+     "sub": "1ª Bola de Ouro",
+     "face": "zidane"
+    },
+    {
+     "id": "weah",
+     "y": 1995,
+     "label": "George Weah",
+     "sub": "1ª Bola de Ouro",
+     "face": "weah"
+    },
+    {
+     "id": "ronaldinho",
+     "y": 2005,
+     "label": "Ronaldinho",
+     "sub": "1ª Bola de Ouro",
+     "face": "ronaldinho"
+    },
+    {
+     "id": "kopa",
+     "y": 1958,
+     "label": "Raymond Kopa",
+     "sub": "1ª Bola de Ouro",
+     "face": "kopa"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Karim Benzema, Zidane, Gianni Rivera e Fabio Cannavaro?",
+   "type": "order",
+   "a": [
+    "rivera",
+    "zidane",
+    "cannavaro",
+    "benzema"
+   ],
+   "order": [
+    {
+     "id": "benzema",
+     "y": 2022,
+     "label": "Karim Benzema",
+     "sub": "1ª Bola de Ouro",
+     "face": "benzema"
+    },
+    {
+     "id": "zidane",
+     "y": 1998,
+     "label": "Zidane",
+     "sub": "1ª Bola de Ouro",
+     "face": "zidane"
+    },
+    {
+     "id": "rivera",
+     "y": 1969,
+     "label": "Gianni Rivera",
+     "sub": "1ª Bola de Ouro",
+     "face": "rivera"
+    },
+    {
+     "id": "cannavaro",
+     "y": 2006,
+     "label": "Fabio Cannavaro",
+     "sub": "1ª Bola de Ouro",
+     "face": "cannavaro"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Bola de Ouro primeiro — Oleg Blokhin, Di Stéfano, Johan Cruyff e Cristiano Ronaldo?",
+   "type": "order",
+   "a": [
+    "distefano",
+    "cruyff",
+    "blokhin",
+    "cr7"
+   ],
+   "order": [
+    {
+     "id": "blokhin",
+     "y": 1975,
+     "label": "Oleg Blokhin",
+     "sub": "1ª Bola de Ouro",
+     "face": "blokhin"
+    },
+    {
+     "id": "distefano",
+     "y": 1957,
+     "label": "Di Stéfano",
+     "sub": "1ª Bola de Ouro",
+     "face": "distefano"
+    },
+    {
+     "id": "cruyff",
+     "y": 1971,
+     "label": "Johan Cruyff",
+     "sub": "1ª Bola de Ouro",
+     "face": "cruyff"
+    },
+    {
+     "id": "cr7",
+     "y": 2008,
+     "label": "Cristiano Ronaldo",
+     "sub": "1ª Bola de Ouro",
+     "face": "cr7"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "Ballon d'Or",
+    [
+     "Ballon d'Or"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Itália, França, Espanha e Suécia?",
+   "type": "order",
+   "a": [
+    "wc1934",
+    "wc1938",
+    "wc1958",
+    "wc1982"
+   ],
+   "order": [
+    {
+     "id": "wc1934",
+     "y": 1934,
+     "label": "Itália campeã",
+     "sub": "sede: Itália",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc1938",
+     "y": 1938,
+     "label": "Itália campeã",
+     "sub": "sede: França",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc1982",
+     "y": 1982,
+     "label": "Itália campeã",
+     "sub": "sede: Espanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Catar, Alemanha Ocidental, México e Brasil?",
+   "type": "order",
+   "a": [
+    "wc1970",
+    "wc1974",
+    "wc2014",
+    "wc2022"
+   ],
+   "order": [
+    {
+     "id": "wc2022",
+     "y": 2022,
+     "label": "Argentina campeã",
+     "sub": "sede: Catar",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1974",
+     "y": 1974,
+     "label": "Alemanha Ocidental campeã",
+     "sub": "sede: Alemanha Ocidental",
+     "flag": "Alemanha Ocidental"
+    },
+    {
+     "id": "wc1970",
+     "y": 1970,
+     "label": "Brasil campeã",
+     "sub": "sede: México",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2014",
+     "y": 2014,
+     "label": "Alemanha campeã",
+     "sub": "sede: Brasil",
+     "flag": "Alemanha"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Chile, Brasil, Itália e África do Sul?",
+   "type": "order",
+   "a": [
+    "wc1934",
+    "wc1962",
+    "wc2010",
+    "wc2014"
+   ],
+   "order": [
+    {
+     "id": "wc1962",
+     "y": 1962,
+     "label": "Brasil campeã",
+     "sub": "sede: Chile",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2014",
+     "y": 2014,
+     "label": "Alemanha campeã",
+     "sub": "sede: Brasil",
+     "flag": "Alemanha"
+    },
+    {
+     "id": "wc1934",
+     "y": 1934,
+     "label": "Itália campeã",
+     "sub": "sede: Itália",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc2010",
+     "y": 2010,
+     "label": "Espanha campeã",
+     "sub": "sede: África do Sul",
+     "flag": "Espanha"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Catar, Suécia, Itália e Rússia?",
+   "type": "order",
+   "a": [
+    "wc1958",
+    "wc1990",
+    "wc2018",
+    "wc2022"
+   ],
+   "order": [
+    {
+     "id": "wc2022",
+     "y": 2022,
+     "label": "Argentina campeã",
+     "sub": "sede: Catar",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1990",
+     "y": 1990,
+     "label": "Alemanha Ocidental campeã",
+     "sub": "sede: Itália",
+     "flag": "Alemanha Ocidental"
+    },
+    {
+     "id": "wc2018",
+     "y": 2018,
+     "label": "França campeã",
+     "sub": "sede: Rússia",
+     "flag": "França"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em México, Coreia do Sul e Japão, Espanha e Alemanha?",
+   "type": "order",
+   "a": [
+    "wc1982",
+    "wc1986",
+    "wc2002",
+    "wc2006"
+   ],
+   "order": [
+    {
+     "id": "wc1986",
+     "y": 1986,
+     "label": "Argentina campeã",
+     "sub": "sede: México",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1982",
+     "y": 1982,
+     "label": "Itália campeã",
+     "sub": "sede: Espanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc2006",
+     "y": 2006,
+     "label": "Itália campeã",
+     "sub": "sede: Alemanha",
+     "flag": "Itália"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Estados Unidos, Coreia do Sul e Japão, México e Itália?",
+   "type": "order",
+   "a": [
+    "wc1934",
+    "wc1970",
+    "wc1994",
+    "wc2002"
+   ],
+   "order": [
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1970",
+     "y": 1970,
+     "label": "Brasil campeã",
+     "sub": "sede: México",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1934",
+     "y": 1934,
+     "label": "Itália campeã",
+     "sub": "sede: Itália",
+     "flag": "Itália"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Uruguai, Espanha, Estados Unidos e Argentina?",
+   "type": "order",
+   "a": [
+    "wc1930",
+    "wc1978",
+    "wc1982",
+    "wc1994"
+   ],
+   "order": [
+    {
+     "id": "wc1930",
+     "y": 1930,
+     "label": "Uruguai campeã",
+     "sub": "sede: Uruguai",
+     "flag": "Uruguai"
+    },
+    {
+     "id": "wc1982",
+     "y": 1982,
+     "label": "Itália campeã",
+     "sub": "sede: Espanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1978",
+     "y": 1978,
+     "label": "Argentina campeã",
+     "sub": "sede: Argentina",
+     "flag": "Argentina"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em México, Itália, Coreia do Sul e Japão e Suécia?",
+   "type": "order",
+   "a": [
+    "wc1958",
+    "wc1986",
+    "wc1990",
+    "wc2002"
+   ],
+   "order": [
+    {
+     "id": "wc1986",
+     "y": 1986,
+     "label": "Argentina campeã",
+     "sub": "sede: México",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1990",
+     "y": 1990,
+     "label": "Alemanha Ocidental campeã",
+     "sub": "sede: Itália",
+     "flag": "Alemanha Ocidental"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Alemanha, Suécia, Inglaterra e Uruguai?",
+   "type": "order",
+   "a": [
+    "wc1930",
+    "wc1958",
+    "wc1966",
+    "wc2006"
+   ],
+   "order": [
+    {
+     "id": "wc2006",
+     "y": 2006,
+     "label": "Itália campeã",
+     "sub": "sede: Alemanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1966",
+     "y": 1966,
+     "label": "Inglaterra campeã",
+     "sub": "sede: Inglaterra",
+     "flag": "Inglaterra"
+    },
+    {
+     "id": "wc1930",
+     "y": 1930,
+     "label": "Uruguai campeã",
+     "sub": "sede: Uruguai",
+     "flag": "Uruguai"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Suécia, Argentina, Suíça e Coreia do Sul e Japão?",
+   "type": "order",
+   "a": [
+    "wc1954",
+    "wc1958",
+    "wc1978",
+    "wc2002"
+   ],
+   "order": [
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1978",
+     "y": 1978,
+     "label": "Argentina campeã",
+     "sub": "sede: Argentina",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1954",
+     "y": 1954,
+     "label": "Alemanha Ocidental campeã",
+     "sub": "sede: Suíça",
+     "flag": "Alemanha Ocidental"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Espanha, África do Sul, Estados Unidos e Suécia?",
+   "type": "order",
+   "a": [
+    "wc1958",
+    "wc1982",
+    "wc1994",
+    "wc2010"
+   ],
+   "order": [
+    {
+     "id": "wc1982",
+     "y": 1982,
+     "label": "Itália campeã",
+     "sub": "sede: Espanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc2010",
+     "y": 2010,
+     "label": "Espanha campeã",
+     "sub": "sede: África do Sul",
+     "flag": "Espanha"
+    },
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em México, Estados Unidos, Rússia e Coreia do Sul e Japão?",
+   "type": "order",
+   "a": [
+    "wc1986",
+    "wc1994",
+    "wc2002",
+    "wc2018"
+   ],
+   "order": [
+    {
+     "id": "wc1986",
+     "y": 1986,
+     "label": "Argentina campeã",
+     "sub": "sede: México",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2018",
+     "y": 2018,
+     "label": "França campeã",
+     "sub": "sede: Rússia",
+     "flag": "França"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Inglaterra, França, México e Coreia do Sul e Japão?",
+   "type": "order",
+   "a": [
+    "wc1966",
+    "wc1970",
+    "wc1998",
+    "wc2002"
+   ],
+   "order": [
+    {
+     "id": "wc1966",
+     "y": 1966,
+     "label": "Inglaterra campeã",
+     "sub": "sede: Inglaterra",
+     "flag": "Inglaterra"
+    },
+    {
+     "id": "wc1998",
+     "y": 1998,
+     "label": "França campeã",
+     "sub": "sede: França",
+     "flag": "França"
+    },
+    {
+     "id": "wc1970",
+     "y": 1970,
+     "label": "Brasil campeã",
+     "sub": "sede: México",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Coreia do Sul e Japão, Espanha, Catar e Estados Unidos?",
+   "type": "order",
+   "a": [
+    "wc1982",
+    "wc1994",
+    "wc2002",
+    "wc2022"
+   ],
+   "order": [
+    {
+     "id": "wc2002",
+     "y": 2002,
+     "label": "Brasil campeã",
+     "sub": "sede: Coreia do Sul e Japão",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1982",
+     "y": 1982,
+     "label": "Itália campeã",
+     "sub": "sede: Espanha",
+     "flag": "Itália"
+    },
+    {
+     "id": "wc2022",
+     "y": 2022,
+     "label": "Argentina campeã",
+     "sub": "sede: Catar",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Estados Unidos, França, Catar e Inglaterra?",
+   "type": "order",
+   "a": [
+    "wc1966",
+    "wc1994",
+    "wc1998",
+    "wc2022"
+   ],
+   "order": [
+    {
+     "id": "wc1994",
+     "y": 1994,
+     "label": "Brasil campeã",
+     "sub": "sede: Estados Unidos",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc1998",
+     "y": 1998,
+     "label": "França campeã",
+     "sub": "sede: França",
+     "flag": "França"
+    },
+    {
+     "id": "wc2022",
+     "y": 2022,
+     "label": "Argentina campeã",
+     "sub": "sede: Catar",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1966",
+     "y": 1966,
+     "label": "Inglaterra campeã",
+     "sub": "sede: Inglaterra",
+     "flag": "Inglaterra"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: ordene estas Copas do Mundo, com sedes em Argentina, Suécia, Brasil e México?",
+   "type": "order",
+   "a": [
+    "wc1958",
+    "wc1970",
+    "wc1978",
+    "wc2014"
+   ],
+   "order": [
+    {
+     "id": "wc1978",
+     "y": 1978,
+     "label": "Argentina campeã",
+     "sub": "sede: Argentina",
+     "flag": "Argentina"
+    },
+    {
+     "id": "wc1958",
+     "y": 1958,
+     "label": "Brasil campeã",
+     "sub": "sede: Suécia",
+     "flag": "Brasil"
+    },
+    {
+     "id": "wc2014",
+     "y": 2014,
+     "label": "Alemanha campeã",
+     "sub": "sede: Brasil",
+     "flag": "Alemanha"
+    },
+    {
+     "id": "wc1970",
+     "y": 1970,
+     "label": "Brasil campeã",
+     "sub": "sede: México",
+     "flag": "Brasil"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "FIFA World Cup",
+    [
+     "World Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Ajax, Manchester City, Celtic e Porto?",
+   "type": "order",
+   "a": [
+    "celtic",
+    "ajax",
+    "porto",
+    "mancity"
+   ],
+   "order": [
+    {
+     "id": "ajax",
+     "y": 1971,
+     "label": "Ajax",
+     "sub": "1º título europeu",
+     "crest": "ajax"
+    },
+    {
+     "id": "mancity",
+     "y": 2023,
+     "label": "Manchester City",
+     "sub": "1º título europeu",
+     "crest": "mancity"
+    },
+    {
+     "id": "celtic",
+     "y": 1967,
+     "label": "Celtic",
+     "sub": "1º título europeu",
+     "crest": "celtic"
+    },
+    {
+     "id": "porto",
+     "y": 1987,
+     "label": "Porto",
+     "sub": "1º título europeu",
+     "crest": "porto"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Borussia Dortmund, Milan, Real Madrid e PSG?",
+   "type": "order",
+   "a": [
+    "realmadrid",
+    "milan",
+    "dortmund",
+    "psg"
+   ],
+   "order": [
+    {
+     "id": "dortmund",
+     "y": 1997,
+     "label": "Borussia Dortmund",
+     "sub": "1º título europeu",
+     "crest": "dortmund"
+    },
+    {
+     "id": "milan",
+     "y": 1963,
+     "label": "Milan",
+     "sub": "1º título europeu",
+     "crest": "milan"
+    },
+    {
+     "id": "realmadrid",
+     "y": 1956,
+     "label": "Real Madrid",
+     "sub": "1º título europeu",
+     "crest": "realmadrid"
+    },
+    {
+     "id": "psg",
+     "y": 2025,
+     "label": "PSG",
+     "sub": "1º título europeu",
+     "crest": "psg"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Celtic, Ajax, PSG e PSV?",
+   "type": "order",
+   "a": [
+    "celtic",
+    "ajax",
+    "psv",
+    "psg"
+   ],
+   "order": [
+    {
+     "id": "celtic",
+     "y": 1967,
+     "label": "Celtic",
+     "sub": "1º título europeu",
+     "crest": "celtic"
+    },
+    {
+     "id": "ajax",
+     "y": 1971,
+     "label": "Ajax",
+     "sub": "1º título europeu",
+     "crest": "ajax"
+    },
+    {
+     "id": "psg",
+     "y": 2025,
+     "label": "PSG",
+     "sub": "1º título europeu",
+     "crest": "psg"
+    },
+    {
+     "id": "psv",
+     "y": 1988,
+     "label": "PSV",
+     "sub": "1º título europeu",
+     "crest": "psv"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Liverpool, Real Madrid, Bayern e Borussia Dortmund?",
+   "type": "order",
+   "a": [
+    "realmadrid",
+    "bayern",
+    "liverpool",
+    "dortmund"
+   ],
+   "order": [
+    {
+     "id": "liverpool",
+     "y": 1977,
+     "label": "Liverpool",
+     "sub": "1º título europeu",
+     "crest": "liverpool"
+    },
+    {
+     "id": "realmadrid",
+     "y": 1956,
+     "label": "Real Madrid",
+     "sub": "1º título europeu",
+     "crest": "realmadrid"
+    },
+    {
+     "id": "bayern",
+     "y": 1974,
+     "label": "Bayern",
+     "sub": "1º título europeu",
+     "crest": "bayern"
+    },
+    {
+     "id": "dortmund",
+     "y": 1997,
+     "label": "Borussia Dortmund",
+     "sub": "1º título europeu",
+     "crest": "dortmund"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Celtic, Porto, Inter de Milão e Benfica?",
+   "type": "order",
+   "a": [
+    "benfica",
+    "inter",
+    "celtic",
+    "porto"
+   ],
+   "order": [
+    {
+     "id": "celtic",
+     "y": 1967,
+     "label": "Celtic",
+     "sub": "1º título europeu",
+     "crest": "celtic"
+    },
+    {
+     "id": "porto",
+     "y": 1987,
+     "label": "Porto",
+     "sub": "1º título europeu",
+     "crest": "porto"
+    },
+    {
+     "id": "inter",
+     "y": 1964,
+     "label": "Inter de Milão",
+     "sub": "1º título europeu",
+     "crest": "inter"
+    },
+    {
+     "id": "benfica",
+     "y": 1961,
+     "label": "Benfica",
+     "sub": "1º título europeu",
+     "crest": "benfica"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Celtic, Borussia Dortmund, Feyenoord e Bayern?",
+   "type": "order",
+   "a": [
+    "celtic",
+    "feyenoord",
+    "bayern",
+    "dortmund"
+   ],
+   "order": [
+    {
+     "id": "celtic",
+     "y": 1967,
+     "label": "Celtic",
+     "sub": "1º título europeu",
+     "crest": "celtic"
+    },
+    {
+     "id": "dortmund",
+     "y": 1997,
+     "label": "Borussia Dortmund",
+     "sub": "1º título europeu",
+     "crest": "dortmund"
+    },
+    {
+     "id": "feyenoord",
+     "y": 1970,
+     "label": "Feyenoord",
+     "sub": "1º título europeu",
+     "crest": "feyenoord"
+    },
+    {
+     "id": "bayern",
+     "y": 1974,
+     "label": "Bayern",
+     "sub": "1º título europeu",
+     "crest": "bayern"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Barcelona, Liverpool, PSG e PSV?",
+   "type": "order",
+   "a": [
+    "liverpool",
+    "psv",
+    "barcelona",
+    "psg"
+   ],
+   "order": [
+    {
+     "id": "barcelona",
+     "y": 1992,
+     "label": "Barcelona",
+     "sub": "1º título europeu",
+     "crest": "barcelona"
+    },
+    {
+     "id": "liverpool",
+     "y": 1977,
+     "label": "Liverpool",
+     "sub": "1º título europeu",
+     "crest": "liverpool"
+    },
+    {
+     "id": "psg",
+     "y": 2025,
+     "label": "PSG",
+     "sub": "1º título europeu",
+     "crest": "psg"
+    },
+    {
+     "id": "psv",
+     "y": 1988,
+     "label": "PSV",
+     "sub": "1º título europeu",
+     "crest": "psv"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — PSG, Porto, Barcelona e Ajax?",
+   "type": "order",
+   "a": [
+    "ajax",
+    "porto",
+    "barcelona",
+    "psg"
+   ],
+   "order": [
+    {
+     "id": "psg",
+     "y": 2025,
+     "label": "PSG",
+     "sub": "1º título europeu",
+     "crest": "psg"
+    },
+    {
+     "id": "porto",
+     "y": 1987,
+     "label": "Porto",
+     "sub": "1º título europeu",
+     "crest": "porto"
+    },
+    {
+     "id": "barcelona",
+     "y": 1992,
+     "label": "Barcelona",
+     "sub": "1º título europeu",
+     "crest": "barcelona"
+    },
+    {
+     "id": "ajax",
+     "y": 1971,
+     "label": "Ajax",
+     "sub": "1º título europeu",
+     "crest": "ajax"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Juventus, Real Madrid, Bayern e Manchester United?",
+   "type": "order",
+   "a": [
+    "realmadrid",
+    "manutd",
+    "bayern",
+    "juventus"
+   ],
+   "order": [
+    {
+     "id": "juventus",
+     "y": 1985,
+     "label": "Juventus",
+     "sub": "1º título europeu",
+     "crest": "juventus"
+    },
+    {
+     "id": "realmadrid",
+     "y": 1956,
+     "label": "Real Madrid",
+     "sub": "1º título europeu",
+     "crest": "realmadrid"
+    },
+    {
+     "id": "bayern",
+     "y": 1974,
+     "label": "Bayern",
+     "sub": "1º título europeu",
+     "crest": "bayern"
+    },
+    {
+     "id": "manutd",
+     "y": 1968,
+     "label": "Manchester United",
+     "sub": "1º título europeu",
+     "crest": "manutd"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Juventus, Manchester City, Inter de Milão e Feyenoord?",
+   "type": "order",
+   "a": [
+    "inter",
+    "feyenoord",
+    "juventus",
+    "mancity"
+   ],
+   "order": [
+    {
+     "id": "juventus",
+     "y": 1985,
+     "label": "Juventus",
+     "sub": "1º título europeu",
+     "crest": "juventus"
+    },
+    {
+     "id": "mancity",
+     "y": 2023,
+     "label": "Manchester City",
+     "sub": "1º título europeu",
+     "crest": "mancity"
+    },
+    {
+     "id": "inter",
+     "y": 1964,
+     "label": "Inter de Milão",
+     "sub": "1º título europeu",
+     "crest": "inter"
+    },
+    {
+     "id": "feyenoord",
+     "y": 1970,
+     "label": "Feyenoord",
+     "sub": "1º título europeu",
+     "crest": "feyenoord"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — PSG, Bayern, Liverpool e Inter de Milão?",
+   "type": "order",
+   "a": [
+    "inter",
+    "bayern",
+    "liverpool",
+    "psg"
+   ],
+   "order": [
+    {
+     "id": "psg",
+     "y": 2025,
+     "label": "PSG",
+     "sub": "1º título europeu",
+     "crest": "psg"
+    },
+    {
+     "id": "bayern",
+     "y": 1974,
+     "label": "Bayern",
+     "sub": "1º título europeu",
+     "crest": "bayern"
+    },
+    {
+     "id": "liverpool",
+     "y": 1977,
+     "label": "Liverpool",
+     "sub": "1º título europeu",
+     "crest": "liverpool"
+    },
+    {
+     "id": "inter",
+     "y": 1964,
+     "label": "Inter de Milão",
+     "sub": "1º título europeu",
+     "crest": "inter"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem foi campeão europeu primeiro — Porto, Milan, Barcelona e Celtic?",
+   "type": "order",
+   "a": [
+    "milan",
+    "celtic",
+    "porto",
+    "barcelona"
+   ],
+   "order": [
+    {
+     "id": "porto",
+     "y": 1987,
+     "label": "Porto",
+     "sub": "1º título europeu",
+     "crest": "porto"
+    },
+    {
+     "id": "milan",
+     "y": 1963,
+     "label": "Milan",
+     "sub": "1º título europeu",
+     "crest": "milan"
+    },
+    {
+     "id": "barcelona",
+     "y": 1992,
+     "label": "Barcelona",
+     "sub": "1º título europeu",
+     "crest": "barcelona"
+    },
+    {
+     "id": "celtic",
+     "y": 1967,
+     "label": "Celtic",
+     "sub": "1º título europeu",
+     "crest": "celtic"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "European Cup"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Grêmio, São Paulo FC, Palmeiras e Corinthians?",
+   "type": "order",
+   "a": [
+    "palmeiras",
+    "saopaulo",
+    "gremio",
+    "corinthians"
+   ],
+   "order": [
+    {
+     "id": "gremio",
+     "y": 1981,
+     "label": "Grêmio",
+     "sub": "1º Brasileirão",
+     "crest": "gremio"
+    },
+    {
+     "id": "saopaulo",
+     "y": 1977,
+     "label": "São Paulo FC",
+     "sub": "1º Brasileirão",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1972,
+     "label": "Palmeiras",
+     "sub": "1º Brasileirão",
+     "crest": "palmeiras"
+    },
+    {
+     "id": "corinthians",
+     "y": 1990,
+     "label": "Corinthians",
+     "sub": "1º Brasileirão",
+     "crest": "corinthians"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Vasco, Atlético MG, Flamengo e Fluminense?",
+   "type": "order",
+   "a": [
+    "atleticomg",
+    "vasco",
+    "flamengo",
+    "fluminense"
+   ],
+   "order": [
+    {
+     "id": "vasco",
+     "y": 1974,
+     "label": "Vasco",
+     "sub": "1º Brasileirão",
+     "crest": "vasco"
+    },
+    {
+     "id": "atleticomg",
+     "y": 1971,
+     "label": "Atlético MG",
+     "sub": "1º Brasileirão",
+     "crest": "atleticomg"
+    },
+    {
+     "id": "flamengo",
+     "y": 1980,
+     "label": "Flamengo",
+     "sub": "1º Brasileirão",
+     "crest": "flamengo"
+    },
+    {
+     "id": "fluminense",
+     "y": 1984,
+     "label": "Fluminense",
+     "sub": "1º Brasileirão",
+     "crest": "fluminense"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Coritiba, Botafogo, Santos FC e Atlético MG?",
+   "type": "order",
+   "a": [
+    "atleticomg",
+    "coritiba",
+    "botafogo",
+    "santos"
+   ],
+   "order": [
+    {
+     "id": "coritiba",
+     "y": 1985,
+     "label": "Coritiba",
+     "sub": "1º Brasileirão",
+     "crest": "coritiba"
+    },
+    {
+     "id": "botafogo",
+     "y": 1995,
+     "label": "Botafogo",
+     "sub": "1º Brasileirão",
+     "crest": "botafogo"
+    },
+    {
+     "id": "santos",
+     "y": 2002,
+     "label": "Santos FC",
+     "sub": "1º Brasileirão",
+     "crest": "santos"
+    },
+    {
+     "id": "atleticomg",
+     "y": 1971,
+     "label": "Atlético MG",
+     "sub": "1º Brasileirão",
+     "crest": "atleticomg"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Grêmio, Fluminense, Santos FC e Guarani?",
+   "type": "order",
+   "a": [
+    "guarani",
+    "gremio",
+    "fluminense",
+    "santos"
+   ],
+   "order": [
+    {
+     "id": "gremio",
+     "y": 1981,
+     "label": "Grêmio",
+     "sub": "1º Brasileirão",
+     "crest": "gremio"
+    },
+    {
+     "id": "fluminense",
+     "y": 1984,
+     "label": "Fluminense",
+     "sub": "1º Brasileirão",
+     "crest": "fluminense"
+    },
+    {
+     "id": "santos",
+     "y": 2002,
+     "label": "Santos FC",
+     "sub": "1º Brasileirão",
+     "crest": "santos"
+    },
+    {
+     "id": "guarani",
+     "y": 1978,
+     "label": "Guarani",
+     "sub": "1º Brasileirão",
+     "crest": "guarani"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Fluminense, Internacional, Atlético MG e Bahia?",
+   "type": "order",
+   "a": [
+    "atleticomg",
+    "internacional",
+    "fluminense",
+    "bahia"
+   ],
+   "order": [
+    {
+     "id": "fluminense",
+     "y": 1984,
+     "label": "Fluminense",
+     "sub": "1º Brasileirão",
+     "crest": "fluminense"
+    },
+    {
+     "id": "internacional",
+     "y": 1975,
+     "label": "Internacional",
+     "sub": "1º Brasileirão",
+     "crest": "internacional"
+    },
+    {
+     "id": "atleticomg",
+     "y": 1971,
+     "label": "Atlético MG",
+     "sub": "1º Brasileirão",
+     "crest": "atleticomg"
+    },
+    {
+     "id": "bahia",
+     "y": 1988,
+     "label": "Bahia",
+     "sub": "1º Brasileirão",
+     "crest": "bahia"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Corinthians, Palmeiras, Athletico PR e Coritiba?",
+   "type": "order",
+   "a": [
+    "palmeiras",
+    "coritiba",
+    "corinthians",
+    "atleticopr"
+   ],
+   "order": [
+    {
+     "id": "corinthians",
+     "y": 1990,
+     "label": "Corinthians",
+     "sub": "1º Brasileirão",
+     "crest": "corinthians"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1972,
+     "label": "Palmeiras",
+     "sub": "1º Brasileirão",
+     "crest": "palmeiras"
+    },
+    {
+     "id": "atleticopr",
+     "y": 2001,
+     "label": "Athletico PR",
+     "sub": "1º Brasileirão",
+     "crest": "atleticopr"
+    },
+    {
+     "id": "coritiba",
+     "y": 1985,
+     "label": "Coritiba",
+     "sub": "1º Brasileirão",
+     "crest": "coritiba"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Bahia, Cruzeiro, Flamengo e Fluminense?",
+   "type": "order",
+   "a": [
+    "flamengo",
+    "fluminense",
+    "bahia",
+    "cruzeiro"
+   ],
+   "order": [
+    {
+     "id": "bahia",
+     "y": 1988,
+     "label": "Bahia",
+     "sub": "1º Brasileirão",
+     "crest": "bahia"
+    },
+    {
+     "id": "cruzeiro",
+     "y": 2003,
+     "label": "Cruzeiro",
+     "sub": "1º Brasileirão",
+     "crest": "cruzeiro"
+    },
+    {
+     "id": "flamengo",
+     "y": 1980,
+     "label": "Flamengo",
+     "sub": "1º Brasileirão",
+     "crest": "flamengo"
+    },
+    {
+     "id": "fluminense",
+     "y": 1984,
+     "label": "Fluminense",
+     "sub": "1º Brasileirão",
+     "crest": "fluminense"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Coritiba, Atlético MG, São Paulo FC e Cruzeiro?",
+   "type": "order",
+   "a": [
+    "atleticomg",
+    "saopaulo",
+    "coritiba",
+    "cruzeiro"
+   ],
+   "order": [
+    {
+     "id": "coritiba",
+     "y": 1985,
+     "label": "Coritiba",
+     "sub": "1º Brasileirão",
+     "crest": "coritiba"
+    },
+    {
+     "id": "atleticomg",
+     "y": 1971,
+     "label": "Atlético MG",
+     "sub": "1º Brasileirão",
+     "crest": "atleticomg"
+    },
+    {
+     "id": "saopaulo",
+     "y": 1977,
+     "label": "São Paulo FC",
+     "sub": "1º Brasileirão",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "cruzeiro",
+     "y": 2003,
+     "label": "Cruzeiro",
+     "sub": "1º Brasileirão",
+     "crest": "cruzeiro"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Grêmio, São Paulo FC, Santos FC e Botafogo?",
+   "type": "order",
+   "a": [
+    "saopaulo",
+    "gremio",
+    "botafogo",
+    "santos"
+   ],
+   "order": [
+    {
+     "id": "gremio",
+     "y": 1981,
+     "label": "Grêmio",
+     "sub": "1º Brasileirão",
+     "crest": "gremio"
+    },
+    {
+     "id": "saopaulo",
+     "y": 1977,
+     "label": "São Paulo FC",
+     "sub": "1º Brasileirão",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "santos",
+     "y": 2002,
+     "label": "Santos FC",
+     "sub": "1º Brasileirão",
+     "crest": "santos"
+    },
+    {
+     "id": "botafogo",
+     "y": 1995,
+     "label": "Botafogo",
+     "sub": "1º Brasileirão",
+     "crest": "botafogo"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou o Brasileirão primeiro (desde 1971) — Cruzeiro, Corinthians, Guarani e Vasco?",
+   "type": "order",
+   "a": [
+    "vasco",
+    "guarani",
+    "corinthians",
+    "cruzeiro"
+   ],
+   "order": [
+    {
+     "id": "cruzeiro",
+     "y": 2003,
+     "label": "Cruzeiro",
+     "sub": "1º Brasileirão",
+     "crest": "cruzeiro"
+    },
+    {
+     "id": "corinthians",
+     "y": 1990,
+     "label": "Corinthians",
+     "sub": "1º Brasileirão",
+     "crest": "corinthians"
+    },
+    {
+     "id": "guarani",
+     "y": 1978,
+     "label": "Guarani",
+     "sub": "1º Brasileirão",
+     "crest": "guarani"
+    },
+    {
+     "id": "vasco",
+     "y": 1974,
+     "label": "Vasco",
+     "sub": "1º Brasileirão",
+     "crest": "vasco"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Brasileirão"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — São Paulo FC, Fluminense, Grêmio e Juventude?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "juventude",
+    "fluminense",
+    "saopaulo"
+   ],
+   "order": [
+    {
+     "id": "saopaulo",
+     "y": 2023,
+     "label": "São Paulo FC",
+     "sub": "1ª Copa do Brasil",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "fluminense",
+     "y": 2007,
+     "label": "Fluminense",
+     "sub": "1ª Copa do Brasil",
+     "crest": "fluminense"
+    },
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    },
+    {
+     "id": "juventude",
+     "y": 1999,
+     "label": "Juventude",
+     "sub": "1ª Copa do Brasil",
+     "crest": "juventude"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Atlético MG, Internacional, Santos FC e Grêmio?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "internacional",
+    "santos",
+    "atleticomg"
+   ],
+   "order": [
+    {
+     "id": "atleticomg",
+     "y": 2014,
+     "label": "Atlético MG",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticomg"
+    },
+    {
+     "id": "internacional",
+     "y": 1992,
+     "label": "Internacional",
+     "sub": "1ª Copa do Brasil",
+     "crest": "internacional"
+    },
+    {
+     "id": "santos",
+     "y": 2010,
+     "label": "Santos FC",
+     "sub": "1ª Copa do Brasil",
+     "crest": "santos"
+    },
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Grêmio, Vasco, Internacional e Palmeiras?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "internacional",
+    "palmeiras",
+    "vasco"
+   ],
+   "order": [
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    },
+    {
+     "id": "vasco",
+     "y": 2011,
+     "label": "Vasco",
+     "sub": "1ª Copa do Brasil",
+     "crest": "vasco"
+    },
+    {
+     "id": "internacional",
+     "y": 1992,
+     "label": "Internacional",
+     "sub": "1ª Copa do Brasil",
+     "crest": "internacional"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1998,
+     "label": "Palmeiras",
+     "sub": "1ª Copa do Brasil",
+     "crest": "palmeiras"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Criciúma, Sport Recife, Athletico PR e Juventude?",
+   "type": "order",
+   "a": [
+    "criciuma",
+    "juventude",
+    "sport",
+    "atleticopr"
+   ],
+   "order": [
+    {
+     "id": "criciuma",
+     "y": 1991,
+     "label": "Criciúma",
+     "sub": "1ª Copa do Brasil",
+     "crest": "criciuma"
+    },
+    {
+     "id": "sport",
+     "y": 2008,
+     "label": "Sport Recife",
+     "sub": "1ª Copa do Brasil",
+     "crest": "sport"
+    },
+    {
+     "id": "atleticopr",
+     "y": 2019,
+     "label": "Athletico PR",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticopr"
+    },
+    {
+     "id": "juventude",
+     "y": 1999,
+     "label": "Juventude",
+     "sub": "1ª Copa do Brasil",
+     "crest": "juventude"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — São Paulo FC, Palmeiras, Cruzeiro e Grêmio?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "cruzeiro",
+    "palmeiras",
+    "saopaulo"
+   ],
+   "order": [
+    {
+     "id": "saopaulo",
+     "y": 2023,
+     "label": "São Paulo FC",
+     "sub": "1ª Copa do Brasil",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1998,
+     "label": "Palmeiras",
+     "sub": "1ª Copa do Brasil",
+     "crest": "palmeiras"
+    },
+    {
+     "id": "cruzeiro",
+     "y": 1993,
+     "label": "Cruzeiro",
+     "sub": "1ª Copa do Brasil",
+     "crest": "cruzeiro"
+    },
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Corinthians, Palmeiras, Criciúma e Atlético MG?",
+   "type": "order",
+   "a": [
+    "criciuma",
+    "corinthians",
+    "palmeiras",
+    "atleticomg"
+   ],
+   "order": [
+    {
+     "id": "corinthians",
+     "y": 1995,
+     "label": "Corinthians",
+     "sub": "1ª Copa do Brasil",
+     "crest": "corinthians"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1998,
+     "label": "Palmeiras",
+     "sub": "1ª Copa do Brasil",
+     "crest": "palmeiras"
+    },
+    {
+     "id": "criciuma",
+     "y": 1991,
+     "label": "Criciúma",
+     "sub": "1ª Copa do Brasil",
+     "crest": "criciuma"
+    },
+    {
+     "id": "atleticomg",
+     "y": 2014,
+     "label": "Atlético MG",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticomg"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Athletico PR, Sport Recife, São Paulo FC e Grêmio?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "sport",
+    "atleticopr",
+    "saopaulo"
+   ],
+   "order": [
+    {
+     "id": "atleticopr",
+     "y": 2019,
+     "label": "Athletico PR",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticopr"
+    },
+    {
+     "id": "sport",
+     "y": 2008,
+     "label": "Sport Recife",
+     "sub": "1ª Copa do Brasil",
+     "crest": "sport"
+    },
+    {
+     "id": "saopaulo",
+     "y": 2023,
+     "label": "São Paulo FC",
+     "sub": "1ª Copa do Brasil",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Juventude, Vasco, Corinthians e Criciúma?",
+   "type": "order",
+   "a": [
+    "criciuma",
+    "corinthians",
+    "juventude",
+    "vasco"
+   ],
+   "order": [
+    {
+     "id": "juventude",
+     "y": 1999,
+     "label": "Juventude",
+     "sub": "1ª Copa do Brasil",
+     "crest": "juventude"
+    },
+    {
+     "id": "vasco",
+     "y": 2011,
+     "label": "Vasco",
+     "sub": "1ª Copa do Brasil",
+     "crest": "vasco"
+    },
+    {
+     "id": "corinthians",
+     "y": 1995,
+     "label": "Corinthians",
+     "sub": "1ª Copa do Brasil",
+     "crest": "corinthians"
+    },
+    {
+     "id": "criciuma",
+     "y": 1991,
+     "label": "Criciúma",
+     "sub": "1ª Copa do Brasil",
+     "crest": "criciuma"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — Corinthians, Athletico PR, Palmeiras e Grêmio?",
+   "type": "order",
+   "a": [
+    "gremio",
+    "corinthians",
+    "palmeiras",
+    "atleticopr"
+   ],
+   "order": [
+    {
+     "id": "corinthians",
+     "y": 1995,
+     "label": "Corinthians",
+     "sub": "1ª Copa do Brasil",
+     "crest": "corinthians"
+    },
+    {
+     "id": "atleticopr",
+     "y": 2019,
+     "label": "Athletico PR",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticopr"
+    },
+    {
+     "id": "palmeiras",
+     "y": 1998,
+     "label": "Palmeiras",
+     "sub": "1ª Copa do Brasil",
+     "crest": "palmeiras"
+    },
+    {
+     "id": "gremio",
+     "y": 1989,
+     "label": "Grêmio",
+     "sub": "1ª Copa do Brasil",
+     "crest": "gremio"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Linha do tempo: quem ganhou a Copa do Brasil primeiro — São Paulo FC, Athletico PR, Juventude e Corinthians?",
+   "type": "order",
+   "a": [
+    "corinthians",
+    "juventude",
+    "atleticopr",
+    "saopaulo"
+   ],
+   "order": [
+    {
+     "id": "saopaulo",
+     "y": 2023,
+     "label": "São Paulo FC",
+     "sub": "1ª Copa do Brasil",
+     "crest": "saopaulo"
+    },
+    {
+     "id": "atleticopr",
+     "y": 2019,
+     "label": "Athletico PR",
+     "sub": "1ª Copa do Brasil",
+     "crest": "atleticopr"
+    },
+    {
+     "id": "juventude",
+     "y": 1999,
+     "label": "Juventude",
+     "sub": "1ª Copa do Brasil",
+     "crest": "juventude"
+    },
+    {
+     "id": "corinthians",
+     "y": 1995,
+     "label": "Corinthians",
+     "sub": "1ª Copa do Brasil",
+     "crest": "corinthians"
+    }
+   ],
+   "d": 3,
+   "src": [
+    "pt",
+    "Copa do Brasil",
+    [
+     "Copa do Brasil"
+    ]
+   ]
+  }
+ ]
+}

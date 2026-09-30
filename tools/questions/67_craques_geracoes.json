@@ -1,0 +1,1290 @@
+{
+ "id": "geracoes",
+ "name": "Craques de cada geração",
+ "emoji": "⭐",
+ "tag": "Gerações",
+ "col": "#b8860b",
+ "diff": "Média",
+ "qs": [
+  {
+   "t": "Anos 30: qual atacante italiano deu nome ao estádio que Milan e Inter dividem?",
+   "type": "player",
+   "a": [
+    "meazza"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Giuseppe Meazza",
+    [
+     "Giuseppe Meazza"
+    ]
+   ],
+   "x": "O San Siro se chama oficialmente Estádio Giuseppe Meazza."
+  },
+  {
+   "t": "Anos 30: qual atacante é o maior artilheiro da história do Campeonato Italiano?",
+   "type": "player",
+   "a": [
+    "piola"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Silvio Piola",
+    [
+     "Silvio Piola"
+    ]
+   ],
+   "x": "Piola fez 274 gols na Série A."
+  },
+  {
+   "t": "Anos 30: qual goleiro espanhol é tão lendário que o prêmio de melhor goleiro da Liga leva seu nome?",
+   "type": "player",
+   "a": [
+    "zamora"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Ricardo Zamora",
+    [
+     "Ricardo Zamora"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 40: qual atacante tcheco-austríaco é apontado por muitos como o maior goleador da história?",
+   "type": "player",
+   "a": [
+    "bican"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Josef Bican",
+    [
+     "Josef Bican"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 40: qual sueco foi cinco vezes artilheiro do Campeonato Italiano pelo Milan?",
+   "type": "player",
+   "a": [
+    "nordahl"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Gunnar Nordahl",
+    [
+     "Gunnar Nordahl"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 40: qual sueco formou o trio 'Gre-No-Li' no Milan, ao lado de Gren e Nordahl?",
+   "type": "player",
+   "a": [
+    "liedholm"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Nils Liedholm",
+    [
+     "Nils Liedholm"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 50: qual húngaro era o 'falso 9' que recuava para armar o jogo na goleada sobre a Inglaterra em 1953?",
+   "type": "player",
+   "a": [
+    "hidegkuti"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Nándor Hidegkuti",
+    [
+     "Nándor Hidegkuti"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 50: qual húngaro fez 11 gols na Copa de 1954 e depois jogou no Barcelona?",
+   "type": "player",
+   "a": [
+    "kocsis"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Sándor Kocsis",
+    [
+     "Sándor Kocsis"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 50: qual ponta-esquerda espanhol ganhou seis Copas dos Campeões com o Real Madrid?",
+   "type": "player",
+   "a": [
+    "gento"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Francisco Gento",
+    [
+     "Francisco Gento"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 50: qual inglês jogou a carreira inteira no Preston North End e foi duas vezes eleito o melhor da Inglaterra?",
+   "type": "player",
+   "a": [
+    "finney"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Tom Finney",
+    [
+     "Tom Finney"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 60: qual lateral-esquerdo da Inter reinventou a posição, atacando e fazendo gols?",
+   "type": "player",
+   "a": [
+    "facchetti"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Giacinto Facchetti",
+    [
+     "Giacinto Facchetti"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 60: qual alemão jogou quatro Copas e passou a carreira inteira no Hamburgo?",
+   "type": "player",
+   "a": [
+    "seeler"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Uwe Seeler",
+    [
+     "Uwe Seeler"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 60: qual inglês foi artilheiro histórico do Tottenham e brilhou também no Chelsea?",
+   "type": "player",
+   "a": [
+    "greaves"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jimmy Greaves",
+    [
+     "Jimmy Greaves"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual holandês perdeu duas finais de Copa seguidas e jogou no Anderlecht?",
+   "type": "player",
+   "a": [
+    "rensenbrink"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Rob Rensenbrink",
+    [
+     "Rob Rensenbrink"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual lateral holandês do Ajax e do Napoli foi titular nas finais de 1974 e 1978?",
+   "type": "player",
+   "a": [
+    "krol"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Ruud Krol",
+    [
+     "Ruud Krol"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual polonês foi eleito o terceiro melhor da Bola de Ouro de 1974 e jogou no Manchester City?",
+   "type": "player",
+   "a": [
+    "deyna"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Kazimierz Deyna",
+    [
+     "Kazimierz Deyna"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual peruano fez cinco gols em cada uma das Copas de 1970 e 1978?",
+   "type": "player",
+   "a": [
+    "cubillas"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Teófilo Cubillas",
+    [
+     "Teófilo Cubillas"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual tcheco bateu o pênalti de cavadinha que decidiu a Euro 1976?",
+   "type": "player",
+   "a": [
+    "panenka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Antonín Panenka",
+    [
+     "Antonín Panenka"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual escocês é o maior ídolo do Liverpool dos anos 1970 e 80?",
+   "type": "player",
+   "a": [
+    "dalglish"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Kenny Dalglish",
+    [
+     "Kenny Dalglish"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual lateral-esquerdo brasileiro de cabelo loiro brilhou na Copa de 1974?",
+   "type": "player",
+   "a": [
+    "marinho_chagas"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Marinho Chagas",
+    [
+     "Marinho Chagas"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 70: qual volante do Santos foi o grande marcador do Brasil de 1970?",
+   "type": "player",
+   "a": [
+    "clodoaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Clodoaldo",
+    [
+     "Clodoaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual meia francês formou o 'quadrado mágico' e depois foi técnico do Monaco e do Fulham?",
+   "type": "player",
+   "a": [
+    "tigana"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jean Tigana",
+    [
+     "Jean Tigana"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual goleiro soviético foi eleito o melhor do mundo pela IFFHS em 1988, antes de jogar no Sevilla?",
+   "type": "player",
+   "a": [
+    "dasaev"
+   ],
+   "d": 5,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Rinat Dasaev",
+    [
+     "Rinat Dasaev"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual argentino jogou dez anos no Tottenham e foi campeão do mundo em 1978?",
+   "type": "player",
+   "a": [
+    "ardiles"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Osvaldo Ardiles",
+    [
+     "Osvaldo Ardiles"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual argentino fez um gol na final de 1986 e depois dirigiu o Real Madrid?",
+   "type": "player",
+   "a": [
+    "valdano"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jorge Valdano",
+    [
+     "Jorge Valdano"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual atacante espanhol, a 'Quinta del Buitre', fez quatro gols contra a Dinamarca na Copa de 1986?",
+   "type": "player",
+   "a": [
+    "butragueno"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Emilio Butragueño",
+    [
+     "Emilio Butragueño"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual zagueiro alemão fez o gol do título da Copa de 1990 de pênalti?",
+   "type": "player",
+   "a": [
+    "brehme"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "penalty"
+   },
+   "src": [
+    "en",
+    "Andreas Brehme",
+    [
+     "Andreas Brehme"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual atacante do Grêmio marcou os dois gols do título mundial de 1983, contra o Hamburgo?",
+   "type": "player",
+   "a": [
+    "renato_gaucho"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Renato Portaluppi",
+    [
+     "Renato Portaluppi"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual ponta-esquerda do Atlético-MG tinha um chute tão forte que o chamavam de 'Canhão'?",
+   "type": "player",
+   "a": [
+    "eder"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Éder Aleixo",
+    [
+     "Éder Aleixo"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual centroavante do Atlético-MG comemorava gols com o punho cerrado, contra a ditadura?",
+   "type": "player",
+   "a": [
+    "reinaldo"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Reinaldo (futebolista)",
+    [
+     "Reinaldo (futebolista)"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 80: qual atacante do Corinthians era o 'Casão' da Democracia Corinthiana?",
+   "type": "player",
+   "a": [
+    "casagrande"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Casagrande",
+    [
+     "Casagrande"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual meia do Deportivo La Coruña foi campeão do mundo em 1994 e espanhol em 2000?",
+   "type": "player",
+   "a": [
+    "mauro_silva"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Mauro Silva",
+    [
+     "Mauro Silva"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual goleiro brasileiro defendeu dois pênaltis na semifinal da Copa de 1998, contra a Holanda?",
+   "type": "player",
+   "a": [
+    "taffarel"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Cláudio Taffarel",
+    [
+     "Cláudio Taffarel"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual atacante do Botafogo e do Goiás dizia que marcaria mil gols e foi artilheiro do Brasileirão de 1995?",
+   "type": "player",
+   "a": [
+    "tulio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Túlio Maravilha",
+    [
+     "Túlio Maravilha"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual meia brasileiro brilhou no Deportivo La Coruña e foi cortado da Copa de 2002 por indisciplina?",
+   "type": "player",
+   "a": [
+    "djalminha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Djalminha",
+    [
+     "Djalminha"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual atacante brasileiro foi artilheiro da Bundesliga pelo Bayern e jogou no Stuttgart?",
+   "type": "player",
+   "a": [
+    "elber"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Giovane Élber",
+    [
+     "Giovane Élber"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual ponta brasileiro de dribles de pedalada foi a transferência mais cara do mundo em 1998, para o Betis?",
+   "type": "player",
+   "a": [
+    "denilson"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Denílson de Oliveira",
+    [
+     "Denílson de Oliveira"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual nigeriano fez dois gols contra o Brasil na semifinal olímpica de 1996?",
+   "type": "player",
+   "a": [
+    "kanu"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Nwankwo Kanu",
+    [
+     "Nwankwo Kanu"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual nigeriano de dribles mágicos jogou no PSG e no Bolton?",
+   "type": "player",
+   "a": [
+    "okocha"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jay-Jay Okocha",
+    [
+     "Jay-Jay Okocha"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual japonês brilhou na Roma e no Parma e se aposentou aos 29 anos?",
+   "type": "player",
+   "a": [
+    "nakata"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Hidetoshi Nakata",
+    [
+     "Hidetoshi Nakata"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual irlandês capitão do Manchester United foi suspenso da final da Champions de 1999?",
+   "type": "player",
+   "a": [
+    "keane"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Roy Keane",
+    [
+     "Roy Keane"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual dinamarquês jogou no Barcelona e no Real Madrid e era irmão de Brian?",
+   "type": "player",
+   "a": [
+    "laudrup"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Michael Laudrup",
+    [
+     "Michael Laudrup"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual holandês fez o gol de falta da final da Copa dos Campeões de 1992, em Wembley?",
+   "type": "player",
+   "a": [
+    "koeman"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Ronald Koeman",
+    [
+     "Ronald Koeman"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 90: qual holandês tinha medo de avião e fez um gol de domínio perfeito contra a Argentina em 1998?",
+   "type": "player",
+   "a": [
+    "bergkamp"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Dennis Bergkamp",
+    [
+     "Dennis Bergkamp"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual volante brasileiro do Arsenal foi titular no penta e nos 'Invencíveis'?",
+   "type": "player",
+   "a": [
+    "gilberto_silva"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Gilberto Silva",
+    [
+     "Gilberto Silva"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual goleiro brasileiro do Milan ganhou a Champions de 2003 defendendo pênaltis na final?",
+   "type": "player",
+   "a": [
+    "dida"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Dida",
+    [
+     "Dida"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual lateral brasileiro da Inter fez a tríplice coroa de 2010 e é considerado um dos melhores da história?",
+   "type": "player",
+   "a": [
+    "maicon"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Maicon Douglas Sisenando",
+    [
+     "Maicon Douglas Sisenando"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual zagueiro brasileiro ganhou a Champions com a Inter e foi campeão do mundo em 2002?",
+   "type": "player",
+   "a": [
+    "lucio"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Lúcio",
+    [
+     "Lúcio"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual meia inglês fez mais de 200 gols como meio-campista, quase todos pelo Chelsea?",
+   "type": "player",
+   "a": [
+    "lampard"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Frank Lampard",
+    [
+     "Frank Lampard"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual meia inglês jogou a carreira inteira no Manchester United e era elogiado por Xavi e Zidane?",
+   "type": "player",
+   "a": [
+    "scholes"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Paul Scholes",
+    [
+     "Paul Scholes"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual goleiro tcheco usava capacete depois de uma fratura no crânio?",
+   "type": "player",
+   "a": [
+    "cech"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "gloves"
+   },
+   "src": [
+    "en",
+    "Petr Čech",
+    [
+     "Petr Čech"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual meia alemão foi vice da Copa, da Champions e da Bundesliga em 2002?",
+   "type": "player",
+   "a": [
+    "ballack"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Michael Ballack",
+    [
+     "Michael Ballack"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual francês do Bayern e do Olympique de Marselha tinha cicatrizes no rosto de um acidente de infância?",
+   "type": "player",
+   "a": [
+    "ribery"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Franck Ribéry",
+    [
+     "Franck Ribéry"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual português foi campeão europeu com o Porto e com o Barcelona, nascido no Brasil?",
+   "type": "player",
+   "a": [
+    "deco"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Deco",
+    [
+     "Deco"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual brasileiro jogou no Portuguesa, Real Madrid, Bayern, Palmeiras e Grêmio e parou aos 43 anos?",
+   "type": "player",
+   "a": [
+    "ze_roberto"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Zé Roberto",
+    [
+     "Zé Roberto"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual atacante espanhol fez o gol do título da Euro 2008?",
+   "type": "player",
+   "a": [
+    "torres"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Fernando Torres",
+    [
+     "Fernando Torres"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual meia argentino do Boca era o camisa 10 clássico, famoso pelo passe e pela pausa?",
+   "type": "player",
+   "a": [
+    "riquelme"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Juan Román Riquelme",
+    [
+     "Juan Román Riquelme"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual lateral argentino jogou quase 20 anos na Inter de Milão?",
+   "type": "player",
+   "a": [
+    "zanetti"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Javier Zanetti",
+    [
+     "Javier Zanetti"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2000: qual atacante argentino marcou pela Lazio, pela Inter, pelo Chelsea e pelo Milan?",
+   "type": "player",
+   "a": [
+    "crespo"
+   ],
+   "d": 4,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Hernán Crespo",
+    [
+     "Hernán Crespo"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual lateral-direito brasileiro é um dos jogadores com mais títulos da história?",
+   "type": "player",
+   "a": [
+    "dani_alves"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Daniel Alves",
+    [
+     "Daniel Alves"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual zagueiro brasileiro foi capitão do PSG e voltou ao Fluminense em 2024?",
+   "type": "player",
+   "a": [
+    "thiago_silva"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Thiago Silva",
+    [
+     "Thiago Silva"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual meia belga do Chelsea foi eleito o melhor da Premier League de 2014-15?",
+   "type": "player",
+   "a": [
+    "hazard"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Eden Hazard",
+    [
+     "Eden Hazard"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual egípcio fez 32 gols na Premier League de 2017-18?",
+   "type": "player",
+   "a": [
+    "salah"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Mohamed Salah",
+    [
+     "Mohamed Salah"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual senegalês formou o trio de ataque do Liverpool com Salah e Firmino?",
+   "type": "player",
+   "a": [
+    "mane"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Sadio Mané",
+    [
+     "Sadio Mané"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2010: qual zagueiro holandês chegou ao Liverpool em 2018 e virou capitão?",
+   "type": "player",
+   "a": [
+    "van_dijk"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Virgil van Dijk",
+    [
+     "Virgil van Dijk"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual meia inglês jogou no Dortmund e fez gol de bicicleta contra a Eslováquia na Euro 2024?",
+   "type": "player",
+   "a": [
+    "bellingham"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jude Bellingham",
+    [
+     "Jude Bellingham"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual meia alemão nascido em Stuttgart foi formado nas bases do Chelsea antes do Bayern?",
+   "type": "player",
+   "a": [
+    "musiala"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Jamal Musiala",
+    [
+     "Jamal Musiala"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual atacante espanhol foi eleito o melhor jovem da Euro 2024, um dia depois de fazer 17 anos?",
+   "type": "player",
+   "a": [
+    "yamal"
+   ],
+   "d": 1,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Lamine Yamal",
+    [
+     "Lamine Yamal"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual meia espanhol do Barcelona foi eleito o melhor jovem da Euro 2020?",
+   "type": "player",
+   "a": [
+    "pedri"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Pedri",
+    [
+     "Pedri"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual atacante formado no Arsenal perdeu um pênalti na final da Euro 2020?",
+   "type": "player",
+   "a": [
+    "saka"
+   ],
+   "d": 2,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Bukayo Saka",
+    [
+     "Bukayo Saka"
+    ]
+   ]
+  },
+  {
+   "t": "Anos 2020: qual volante brasileiro revelado no Athletico brilhou no Lyon e no Newcastle?",
+   "type": "player",
+   "a": [
+    "bruno_g"
+   ],
+   "d": 3,
+   "art": {
+    "icon": "jersey"
+   },
+   "src": [
+    "en",
+    "Bruno Guimarães",
+    [
+     "Bruno Guimarães"
+    ]
+   ]
+  }
+ ]
+}

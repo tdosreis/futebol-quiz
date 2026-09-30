@@ -1,0 +1,3597 @@
+{
+ "id": "duelo",
+ "name": "Duelo",
+ "emoji": "⚔️",
+ "tag": "Um contra um",
+ "col": "#8c2f2f",
+ "diff": "Fácil",
+ "qs": [
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Miroslav Klose ou Ronaldo Fenômeno?",
+   "type": "player",
+   "a": [
+    "klose"
+   ],
+   "fixed": [
+    "klose",
+    "ronaldo"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Miroslav Klose"
+    ]
+   ],
+   "x": "Klose chegou a 16 gols em 2014, um a mais que Ronaldo."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Ronaldo Fenômeno ou Gerd Müller?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "fixed": [
+    "ronaldo",
+    "gerd_muller"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Ronaldo Fenômeno"
+    ]
+   ],
+   "x": "Ronaldo fez 15; Gerd Müller, 14."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Pelé ou Just Fontaine?",
+   "type": "player",
+   "a": [
+    "fontaine"
+   ],
+   "fixed": [
+    "pele",
+    "fontaine"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Just Fontaine"
+    ]
+   ],
+   "x": "Fontaine fez 13 gols numa única Copa; Pelé somou 12 em quatro."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Gerd Müller ou Just Fontaine?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "fixed": [
+    "gerd_muller",
+    "fontaine"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Gerd Müller"
+    ]
+   ],
+   "x": "Gerd Müller fez 14 em duas Copas; Fontaine, 13 em uma."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Pelé ou Eusébio?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "fixed": [
+    "pele",
+    "eusebio"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Pelé"
+    ]
+   ],
+   "x": "Pelé fez 12 gols em Copas; Eusébio, 9, todos em 1966."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Rudi Völler ou Jürgen Klinsmann?",
+   "type": "player",
+   "a": [
+    "klinsmann"
+   ],
+   "fixed": [
+    "voller",
+    "klinsmann"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Jürgen Klinsmann"
+    ]
+   ],
+   "x": "Klinsmann fez 11 gols; Völler, 8."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Maradona ou Batistuta?",
+   "type": "player",
+   "a": [
+    "batistuta"
+   ],
+   "fixed": [
+    "maradona",
+    "batistuta"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Batistuta"
+    ]
+   ],
+   "x": "Batistuta fez 10 gols em Copas; Maradona, 8."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Paolo Rossi ou Mario Kempes?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "fixed": [
+    "rossi",
+    "kempes"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Paolo Rossi"
+    ]
+   ],
+   "x": "Paolo Rossi fez 9; Kempes, 6."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Vavá ou Garrincha?",
+   "type": "player",
+   "a": [
+    "vava"
+   ],
+   "fixed": [
+    "vava",
+    "garrincha"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Vavá"
+    ]
+   ],
+   "x": "Vavá fez 9 gols em duas Copas; Garrincha, 5."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Jairzinho ou Tostão?",
+   "type": "player",
+   "a": [
+    "jairzinho"
+   ],
+   "fixed": [
+    "jairzinho",
+    "tostao"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Jairzinho"
+    ]
+   ],
+   "x": "Jairzinho marcou em todos os jogos de 1970 e chegou a 9 gols em Copas."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Ronaldinho ou Rivaldo?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "fixed": [
+    "ronaldinho",
+    "rivaldo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Rivaldo"
+    ]
+   ],
+   "x": "Rivaldo fez 8 gols em Copas; Ronaldinho, 2."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Thomas Müller ou Miroslav Klose?",
+   "type": "player",
+   "a": [
+    "klose"
+   ],
+   "fixed": [
+    "thomas_muller",
+    "klose"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Miroslav Klose"
+    ]
+   ],
+   "x": "Thomas Müller parou em 10 gols; Klose chegou a 16."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Grzegorz Lato ou Zbigniew Boniek?",
+   "type": "player",
+   "a": [
+    "lato"
+   ],
+   "fixed": [
+    "lato",
+    "boniek"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Grzegorz Lato"
+    ]
+   ],
+   "x": "Lato fez 10 gols em Copas; Boniek, 6."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Karl-Heinz Rummenigge ou Gerd Müller?",
+   "type": "player",
+   "a": [
+    "gerd_muller"
+   ],
+   "fixed": [
+    "rummenigge",
+    "gerd_muller"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Gerd Müller"
+    ]
+   ],
+   "x": "Rummenigge fez 9; Gerd Müller, 14."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Cristiano Ronaldo ou Eusébio?",
+   "type": "player",
+   "a": [
+    "eusebio"
+   ],
+   "fixed": [
+    "cr7",
+    "eusebio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Eusébio"
+    ]
+   ],
+   "x": "Eusébio fez 9 gols só em 1966; Cristiano Ronaldo chegou a 8 somando cinco Copas até 2022."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Messi ou Maradona?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "fixed": [
+    "messi",
+    "maradona"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Messi"
+    ]
+   ],
+   "x": "Messi chegou a 13 gols em Copas em 2022; Maradona fez 8."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Romário ou Neymar?",
+   "type": "player",
+   "a": [
+    "neymar"
+   ],
+   "fixed": [
+    "romario",
+    "neymar"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Neymar"
+    ]
+   ],
+   "x": "Neymar fez 8 gols em Copas; Romário, 5."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Ronaldo Fenômeno ou Pelé?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "fixed": [
+    "ronaldo",
+    "pele"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Ronaldo Fenômeno"
+    ]
+   ],
+   "x": "Ronaldo fez 15 gols em Copas; Pelé, 12."
+  },
+  {
+   "t": "Duelo: quem marcou mais gols em Copas do Mundo (até 2022), Harry Kane ou Wayne Rooney?",
+   "type": "player",
+   "a": [
+    "kane"
+   ],
+   "fixed": [
+    "kane",
+    "rooney"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "goldenBoot"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup top goalscorers",
+    [
+     "Harry Kane"
+    ]
+   ],
+   "x": "Kane fez 8 gols em Copas até 2022; Rooney, 1."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Cristiano Ronaldo ou Messi?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "fixed": [
+    "cr7",
+    "messi"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Messi"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Johan Cruyff ou Beckenbauer?",
+   "type": "player",
+   "a": [
+    "cruyff"
+   ],
+   "fixed": [
+    "cruyff",
+    "beckenbauer"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Johan Cruyff"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Di Stéfano ou Michel Platini?",
+   "type": "player",
+   "a": [
+    "platini"
+   ],
+   "fixed": [
+    "distefano",
+    "platini"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Michel Platini"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Ronaldo Fenômeno ou Van Basten?",
+   "type": "player",
+   "a": [
+    "van_basten"
+   ],
+   "fixed": [
+    "ronaldo",
+    "van_basten"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Van Basten"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Zidane ou Ronaldo Fenômeno?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "fixed": [
+    "zidane",
+    "ronaldo"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ronaldo Fenômeno"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Beckenbauer ou Gerd Müller?",
+   "type": "player",
+   "a": [
+    "beckenbauer"
+   ],
+   "fixed": [
+    "beckenbauer",
+    "gerd_muller"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Beckenbauer"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Di Stéfano ou Ferenc Puskás?",
+   "type": "player",
+   "a": [
+    "distefano"
+   ],
+   "fixed": [
+    "distefano",
+    "puskas"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Di Stéfano"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Neymar ou Kaká?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "fixed": [
+    "neymar",
+    "kaka"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Kaká"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Toni Kroos ou Luka Modrić?",
+   "type": "player",
+   "a": [
+    "modric"
+   ],
+   "fixed": [
+    "kroos",
+    "modric"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Luka Modrić"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Lewandowski ou Karim Benzema?",
+   "type": "player",
+   "a": [
+    "benzema"
+   ],
+   "fixed": [
+    "lewandowski",
+    "benzema"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Karim Benzema"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Fabio Cannavaro ou Paolo Maldini?",
+   "type": "player",
+   "a": [
+    "cannavaro"
+   ],
+   "fixed": [
+    "cannavaro",
+    "maldini"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Fabio Cannavaro"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Luís Figo ou Rui Costa?",
+   "type": "player",
+   "a": [
+    "figo"
+   ],
+   "fixed": [
+    "figo",
+    "ruicosta"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Luís Figo"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Pavel Nedvěd ou Andrea Pirlo?",
+   "type": "player",
+   "a": [
+    "nedved"
+   ],
+   "fixed": [
+    "nedved",
+    "pirlo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Pavel Nedvěd"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Shevchenko ou Francesco Totti?",
+   "type": "player",
+   "a": [
+    "shevchenko"
+   ],
+   "fixed": [
+    "shevchenko",
+    "totti"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Shevchenko"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Steven Gerrard ou Michael Owen?",
+   "type": "player",
+   "a": [
+    "owen"
+   ],
+   "fixed": [
+    "gerrard",
+    "owen"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Michael Owen"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Dino Zoff ou Lev Yashin?",
+   "type": "player",
+   "a": [
+    "yashin"
+   ],
+   "fixed": [
+    "zoff",
+    "yashin"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Lev Yashin"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Mário Coluna ou Eusébio?",
+   "type": "player",
+   "a": [
+    "eusebio"
+   ],
+   "fixed": [
+    "coluna",
+    "eusebio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Eusébio"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, George Weah ou Didier Drogba?",
+   "type": "player",
+   "a": [
+    "weah"
+   ],
+   "fixed": [
+    "weah",
+    "drogba"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "George Weah"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Harry Kane ou Rodri?",
+   "type": "player",
+   "a": [
+    "rodri"
+   ],
+   "fixed": [
+    "kane",
+    "rodri"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Rodri"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Rivaldo ou Romário?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "fixed": [
+    "rivaldo",
+    "romario"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Rivaldo"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Ronaldinho ou Adriano?",
+   "type": "player",
+   "a": [
+    "ronaldinho"
+   ],
+   "fixed": [
+    "ronaldinho",
+    "adriano"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ronaldinho"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Lothar Matthäus ou Jürgen Klinsmann?",
+   "type": "player",
+   "a": [
+    "matthaus"
+   ],
+   "fixed": [
+    "matthaus",
+    "klinsmann"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Lothar Matthäus"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Frank Rijkaard ou Ruud Gullit?",
+   "type": "player",
+   "a": [
+    "gullit"
+   ],
+   "fixed": [
+    "rijkaard",
+    "gullit"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Ruud Gullit"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Stoichkov ou Gheorghe Hagi?",
+   "type": "player",
+   "a": [
+    "stoichkov"
+   ],
+   "fixed": [
+    "stoichkov",
+    "hagi"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Stoichkov"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Del Piero ou Roberto Baggio?",
+   "type": "player",
+   "a": [
+    "baggio"
+   ],
+   "fixed": [
+    "del_piero",
+    "baggio"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Roberto Baggio"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Bobby Charlton ou Bobby Moore?",
+   "type": "player",
+   "a": [
+    "charlton"
+   ],
+   "fixed": [
+    "charlton",
+    "moore"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Bobby Charlton"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Bolas de Ouro, Paolo Rossi ou Dino Zoff?",
+   "type": "player",
+   "a": [
+    "rossi"
+   ],
+   "fixed": [
+    "rossi",
+    "zoff"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "ballonDor"
+   },
+   "src": [
+    "pt",
+    "Ballon d'Or",
+    [
+     "Paolo Rossi"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Pelé ou Garrincha?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "fixed": [
+    "pele",
+    "garrincha"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Pelé"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Roberto Carlos ou Cafu?",
+   "type": "player",
+   "a": [
+    "cafu"
+   ],
+   "fixed": [
+    "roberto_carlos",
+    "cafu"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Cafu"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Rivaldo ou Ronaldo Fenômeno?",
+   "type": "player",
+   "a": [
+    "ronaldo"
+   ],
+   "fixed": [
+    "rivaldo",
+    "ronaldo"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Ronaldo Fenômeno"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Carlos Alberto ou Zagallo?",
+   "type": "player",
+   "a": [
+    "zagallo"
+   ],
+   "fixed": [
+    "carlos_alberto",
+    "zagallo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Zagallo"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Djalma Santos ou Bellini?",
+   "type": "player",
+   "a": [
+    "djalma_santos"
+   ],
+   "fixed": [
+    "djalma_santos",
+    "bellini"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Djalma Santos"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Vavá ou Amarildo?",
+   "type": "player",
+   "a": [
+    "vava"
+   ],
+   "fixed": [
+    "vava",
+    "amarildo"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Vavá"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Pelé ou Zagallo?",
+   "type": "player",
+   "a": [
+    "pele"
+   ],
+   "fixed": [
+    "pele",
+    "zagallo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Pelé"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Di Stéfano ou Ferenc Puskás?",
+   "type": "player",
+   "a": [
+    "distefano"
+   ],
+   "fixed": [
+    "distefano",
+    "puskas"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Di Stéfano"
+    ]
+   ],
+   "x": "Di Stéfano ganhou as cinco primeiras; Puskás, três."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Francisco Gento ou Di Stéfano?",
+   "type": "player",
+   "a": [
+    "gento"
+   ],
+   "fixed": [
+    "gento",
+    "distefano"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Francisco Gento"
+    ]
+   ],
+   "x": "Gento é o único com seis títulos da era antiga."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Cristiano Ronaldo ou Messi?",
+   "type": "player",
+   "a": [
+    "cr7"
+   ],
+   "fixed": [
+    "cr7",
+    "messi"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Cristiano Ronaldo"
+    ]
+   ],
+   "x": "Cristiano Ronaldo ganhou cinco; Messi, quatro."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Paolo Maldini ou Franco Baresi?",
+   "type": "player",
+   "a": [
+    "maldini"
+   ],
+   "fixed": [
+    "maldini",
+    "baresi"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Paolo Maldini"
+    ]
+   ],
+   "x": "Maldini ganhou cinco; Baresi, três."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Gianluigi Buffon ou Iker Casillas?",
+   "type": "player",
+   "a": [
+    "casillas"
+   ],
+   "fixed": [
+    "buffon",
+    "casillas"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Iker Casillas"
+    ]
+   ],
+   "x": "Buffon nunca ganhou a Champions."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Messi ou Neymar?",
+   "type": "player",
+   "a": [
+    "messi"
+   ],
+   "fixed": [
+    "messi",
+    "neymar"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Messi"
+    ]
+   ],
+   "x": "Neymar ganhou uma, em 2015."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Xavi ou Carles Puyol?",
+   "type": "player",
+   "a": [
+    "xavi"
+   ],
+   "fixed": [
+    "xavi",
+    "puyol"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Xavi"
+    ]
+   ],
+   "x": "Xavi ganhou quatro; Puyol, três."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Zidane ou Luka Modrić?",
+   "type": "player",
+   "a": [
+    "modric"
+   ],
+   "fixed": [
+    "zidane",
+    "modric"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Luka Modrić"
+    ]
+   ],
+   "x": "Modrić ganhou seis; Zidane, uma como jogador."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Ibrahimović ou Kaká?",
+   "type": "player",
+   "a": [
+    "kaka"
+   ],
+   "fixed": [
+    "ibrahimovic",
+    "kaka"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Kaká"
+    ]
+   ],
+   "x": "Ibrahimović nunca ganhou a Champions."
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Rivaldo ou Ronaldo Fenômeno?",
+   "type": "player",
+   "a": [
+    "rivaldo"
+   ],
+   "fixed": [
+    "rivaldo",
+    "ronaldo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "UEFA Champions League",
+    [
+     "Rivaldo"
+    ]
+   ],
+   "x": "Ronaldo Fenômeno nunca ganhou a Champions."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Fluminense ou Flamengo?",
+   "a": [
+    "flamengo"
+   ],
+   "fixed": [
+    "fluminense",
+    "flamengo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Flamengo"
+    ]
+   ],
+   "x": "Flamengo: 1895. Fluminense: 1902."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Corinthians ou Palmeiras?",
+   "a": [
+    "corinthians"
+   ],
+   "fixed": [
+    "corinthians",
+    "palmeiras"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Corinthians"
+    ]
+   ],
+   "x": "Corinthians: 1910. Palmeiras: 1914."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Grêmio ou Internacional?",
+   "a": [
+    "gremio"
+   ],
+   "fixed": [
+    "gremio",
+    "internacional"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Grêmio"
+    ]
+   ],
+   "x": "Grêmio: 1903. Internacional: 1909."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Santos FC ou São Paulo FC?",
+   "a": [
+    "santos"
+   ],
+   "fixed": [
+    "santos",
+    "saopaulo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Santos FC"
+    ]
+   ],
+   "x": "Santos FC: 1912. São Paulo FC: 1930."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Cruzeiro ou Atlético MG?",
+   "a": [
+    "atleticomg"
+   ],
+   "fixed": [
+    "cruzeiro",
+    "atleticomg"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Atlético MG"
+    ]
+   ],
+   "x": "Atlético MG: 1908. Cruzeiro: 1921."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Bahia ou Vitória?",
+   "a": [
+    "vitoria"
+   ],
+   "fixed": [
+    "bahia",
+    "vitoria"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Vitória"
+    ]
+   ],
+   "x": "Vitória: 1899. Bahia: 1931."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Náutico ou Sport Recife?",
+   "a": [
+    "nautico"
+   ],
+   "fixed": [
+    "nautico",
+    "sport"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Náutico"
+    ]
+   ],
+   "x": "Náutico: 1901. Sport Recife: 1905."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Athletico PR ou Coritiba?",
+   "a": [
+    "coritiba"
+   ],
+   "fixed": [
+    "atleticopr",
+    "coritiba"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Coritiba"
+    ]
+   ],
+   "x": "Coritiba: 1909. Athletico PR: 1924."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Ceará ou Fortaleza?",
+   "a": [
+    "ceara"
+   ],
+   "fixed": [
+    "ceara",
+    "fortaleza"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Ceará"
+    ]
+   ],
+   "x": "Ceará: 1914. Fortaleza: 1918."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Remo ou Paysandu?",
+   "a": [
+    "remo"
+   ],
+   "fixed": [
+    "remo",
+    "paysandu"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Remo"
+    ]
+   ],
+   "x": "Remo: 1911. Paysandu: 1914."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Guarani ou Ponte Preta?",
+   "a": [
+    "pontepreta"
+   ],
+   "fixed": [
+    "guarani",
+    "pontepreta"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Ponte Preta"
+    ]
+   ],
+   "x": "Ponte Preta: 1900. Guarani: 1911."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Avaí ou Figueirense?",
+   "a": [
+    "figueirense"
+   ],
+   "fixed": [
+    "avai",
+    "figueirense"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Figueirense"
+    ]
+   ],
+   "x": "Figueirense: 1921. Avaí: 1923."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Corinthians ou Vasco?",
+   "a": [
+    "vasco"
+   ],
+   "fixed": [
+    "corinthians",
+    "vasco"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Vasco"
+    ]
+   ],
+   "x": "Vasco: 1898. Corinthians: 1910."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Palmeiras ou Botafogo?",
+   "a": [
+    "botafogo"
+   ],
+   "fixed": [
+    "palmeiras",
+    "botafogo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Botafogo"
+    ]
+   ],
+   "x": "Botafogo: 1904. Palmeiras: 1914."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Santa Cruz ou Sport Recife?",
+   "a": [
+    "sport"
+   ],
+   "fixed": [
+    "santacruz",
+    "sport"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Sport Recife"
+    ]
+   ],
+   "x": "Sport Recife: 1905. Santa Cruz: 1914."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, América MG ou Cruzeiro?",
+   "a": [
+    "americamg"
+   ],
+   "fixed": [
+    "americamg",
+    "cruzeiro"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "América MG"
+    ]
+   ],
+   "x": "América MG: 1912. Cruzeiro: 1921."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Portuguesa ou São Paulo FC?",
+   "a": [
+    "portuguesa"
+   ],
+   "fixed": [
+    "portuguesa",
+    "saopaulo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Portuguesa"
+    ]
+   ],
+   "x": "Portuguesa: 1920. São Paulo FC: 1930."
+  },
+  {
+   "t": "Duelo: qual destes clubes foi fundado primeiro, Atlético GO ou Goiás?",
+   "a": [
+    "atleticogo"
+   ],
+   "fixed": [
+    "atleticogo",
+    "goias"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "terrace"
+   },
+   "src": [
+    "pt",
+    "Lista de clubes de futebol do Brasil",
+    [
+     "Atlético GO"
+    ]
+   ],
+   "x": "Atlético GO: 1937. Goiás: 1943."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Corinthians ou São Paulo FC?",
+   "a": [
+    "corinthians"
+   ],
+   "fixed": [
+    "corinthians",
+    "saopaulo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Corinthians"
+    ]
+   ],
+   "x": "Corinthians: 7. São Paulo FC: 6."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Santos FC ou Cruzeiro?",
+   "a": [
+    "cruzeiro"
+   ],
+   "fixed": [
+    "santos",
+    "cruzeiro"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Cruzeiro"
+    ]
+   ],
+   "x": "Cruzeiro: 3. Santos FC: 2."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Vasco ou Fluminense?",
+   "a": [
+    "vasco"
+   ],
+   "fixed": [
+    "vasco",
+    "fluminense"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Vasco"
+    ]
+   ],
+   "x": "Vasco: 4. Fluminense: 3."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Internacional ou Grêmio?",
+   "a": [
+    "internacional"
+   ],
+   "fixed": [
+    "internacional",
+    "gremio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Internacional"
+    ]
+   ],
+   "x": "Internacional: 3. Grêmio: 2."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Fluminense ou Corinthians?",
+   "a": [
+    "corinthians"
+   ],
+   "fixed": [
+    "fluminense",
+    "corinthians"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Corinthians"
+    ]
+   ],
+   "x": "Corinthians: 7. Fluminense: 3."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Flamengo ou São Paulo FC?",
+   "a": [
+    "flamengo"
+   ],
+   "fixed": [
+    "flamengo",
+    "saopaulo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Flamengo"
+    ]
+   ],
+   "x": "Flamengo: 8. São Paulo FC: 6."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Cruzeiro ou Grêmio?",
+   "a": [
+    "cruzeiro"
+   ],
+   "fixed": [
+    "cruzeiro",
+    "gremio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Cruzeiro"
+    ]
+   ],
+   "x": "Cruzeiro: 3. Grêmio: 2."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Sport Recife?",
+   "a": [
+    "bahia"
+   ],
+   "fixed": [
+    "bahia",
+    "sport"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Bahia"
+    ]
+   ],
+   "x": "Bahia: 1. Sport Recife: 0."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Botafogo?",
+   "a": [
+    "botafogo"
+   ],
+   "fixed": [
+    "bahia",
+    "botafogo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Botafogo"
+    ]
+   ],
+   "x": "Botafogo: 2. Bahia: 1."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Corinthians ou Palmeiras?",
+   "a": [
+    "palmeiras"
+   ],
+   "fixed": [
+    "corinthians",
+    "palmeiras"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Campeonato Brasileiro de Futebol",
+    [
+     "Palmeiras"
+    ]
+   ],
+   "x": "Palmeiras: 8. Corinthians: 7."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Flamengo ou São Paulo FC?",
+   "a": [
+    "flamengo"
+   ],
+   "fixed": [
+    "flamengo",
+    "saopaulo"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Flamengo"
+    ]
+   ],
+   "x": "Flamengo: 4. São Paulo FC: 3."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Cruzeiro ou Grêmio?",
+   "a": [
+    "gremio"
+   ],
+   "fixed": [
+    "cruzeiro",
+    "gremio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Grêmio"
+    ]
+   ],
+   "x": "Grêmio: 3. Cruzeiro: 2."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Internacional ou Corinthians?",
+   "a": [
+    "internacional"
+   ],
+   "fixed": [
+    "internacional",
+    "corinthians"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Internacional"
+    ]
+   ],
+   "x": "Internacional: 2. Corinthians: 1."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Cruzeiro ou Santos FC?",
+   "a": [
+    "santos"
+   ],
+   "fixed": [
+    "cruzeiro",
+    "santos"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Santos FC"
+    ]
+   ],
+   "x": "Santos FC: 3. Cruzeiro: 2."
+  },
+  {
+   "t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Flamengo ou Palmeiras?",
+   "a": [
+    "flamengo"
+   ],
+   "fixed": [
+    "flamengo",
+    "palmeiras"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa Libertadores da América",
+    [
+     "Flamengo"
+    ]
+   ],
+   "x": "Flamengo: 4. Palmeiras: 3."
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas do Mundo até 2022, Alemanha ou Brasil?",
+   "type": "txt",
+   "a": [
+    "Brasil"
+   ],
+   "choices": [
+    "Alemanha",
+    "Brasil"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas do Mundo até 2022, Argentina ou Uruguai?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Argentina",
+    "Uruguai"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Argentina"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas do Mundo até 2022, França ou Itália?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "França",
+    "Itália"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas do Mundo até 2022, Argentina ou Alemanha?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Argentina",
+    "Alemanha"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Alemanha"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas do Mundo até 2022, Inglaterra ou Uruguai?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Uruguai"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "FIFA World Cup",
+    [
+     "Uruguai"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Uruguai ou Brasil?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Uruguai",
+    "Brasil"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Uruguai"
+    ]
+   ],
+   "x": "Uruguai: 1930. Brasil: 1950."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Suécia ou Itália?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Suécia",
+    "Itália"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Itália"
+    ]
+   ],
+   "x": "Itália: 1934. Suécia: 1958."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, França ou Suíça?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "França",
+    "Suíça"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "França"
+    ]
+   ],
+   "x": "França: 1938. Suíça: 1954."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Brasil ou Inglaterra?",
+   "type": "txt",
+   "a": [
+    "Brasil"
+   ],
+   "choices": [
+    "Brasil",
+    "Inglaterra"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Brasil"
+    ]
+   ],
+   "x": "Brasil: 1950. Inglaterra: 1966."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Alemanha ou Suíça?",
+   "type": "txt",
+   "a": [
+    "Suíça"
+   ],
+   "choices": [
+    "Alemanha",
+    "Suíça"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Suíça"
+    ]
+   ],
+   "x": "Suíça: 1954. Alemanha: 1974."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Suécia ou Chile?",
+   "type": "txt",
+   "a": [
+    "Suécia"
+   ],
+   "choices": [
+    "Suécia",
+    "Chile"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Suécia"
+    ]
+   ],
+   "x": "Suécia: 1958. Chile: 1962."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Argentina ou Chile?",
+   "type": "txt",
+   "a": [
+    "Chile"
+   ],
+   "choices": [
+    "Argentina",
+    "Chile"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Chile"
+    ]
+   ],
+   "x": "Chile: 1962. Argentina: 1978."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Inglaterra ou México?",
+   "type": "txt",
+   "a": [
+    "Inglaterra"
+   ],
+   "choices": [
+    "Inglaterra",
+    "México"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Inglaterra"
+    ]
+   ],
+   "x": "Inglaterra: 1966. México: 1970."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Estados Unidos ou México?",
+   "type": "txt",
+   "a": [
+    "México"
+   ],
+   "choices": [
+    "Estados Unidos",
+    "México"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "México"
+    ]
+   ],
+   "x": "México: 1970. Estados Unidos: 1994."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Alemanha ou Espanha?",
+   "type": "txt",
+   "a": [
+    "Alemanha"
+   ],
+   "choices": [
+    "Alemanha",
+    "Espanha"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Alemanha"
+    ]
+   ],
+   "x": "Alemanha: 1974. Espanha: 1982."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Coreia do Sul ou Argentina?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Coreia do Sul",
+    "Argentina"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Argentina"
+    ]
+   ],
+   "x": "Argentina: 1978. Coreia do Sul: 2002."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, África do Sul ou Espanha?",
+   "type": "txt",
+   "a": [
+    "Espanha"
+   ],
+   "choices": [
+    "África do Sul",
+    "Espanha"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Espanha"
+    ]
+   ],
+   "x": "Espanha: 1982. África do Sul: 2010."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Estados Unidos ou Rússia?",
+   "type": "txt",
+   "a": [
+    "Estados Unidos"
+   ],
+   "choices": [
+    "Estados Unidos",
+    "Rússia"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Estados Unidos"
+    ]
+   ],
+   "x": "Estados Unidos: 1994. Rússia: 2018."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Catar ou Coreia do Sul?",
+   "type": "txt",
+   "a": [
+    "Coreia do Sul"
+   ],
+   "choices": [
+    "Catar",
+    "Coreia do Sul"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Coreia do Sul"
+    ]
+   ],
+   "x": "Coreia do Sul: 2002. Catar: 2022."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, México ou França?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "México",
+    "França"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "França"
+    ]
+   ],
+   "x": "França: 1938. México: 1970."
+  },
+  {
+   "t": "Duelo: qual destes países sediou uma Copa do Mundo primeiro, Brasil ou Espanha?",
+   "type": "txt",
+   "a": [
+    "Brasil"
+   ],
+   "choices": [
+    "Brasil",
+    "Espanha"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "globe"
+   },
+   "src": [
+    "en",
+    "FIFA World Cup hosts",
+    [
+     "Brasil"
+    ]
+   ],
+   "x": "Brasil: 1950. Espanha: 1982."
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Eurocopas (até 2024), Alemanha ou Espanha?",
+   "type": "txt",
+   "a": [
+    "Espanha"
+   ],
+   "choices": [
+    "Alemanha",
+    "Espanha"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA European Championship",
+    [
+     "Espanha"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Eurocopas (até 2024), Holanda ou França?",
+   "type": "txt",
+   "a": [
+    "França"
+   ],
+   "choices": [
+    "Holanda",
+    "França"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA European Championship",
+    [
+     "França"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Eurocopas (até 2024), Portugal ou Itália?",
+   "type": "txt",
+   "a": [
+    "Itália"
+   ],
+   "choices": [
+    "Portugal",
+    "Itália"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA European Championship",
+    [
+     "Itália"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Eurocopas (até 2024), Inglaterra ou Grécia?",
+   "type": "txt",
+   "a": [
+    "Grécia"
+   ],
+   "choices": [
+    "Inglaterra",
+    "Grécia"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA European Championship",
+    [
+     "Grécia"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Eurocopas (até 2024), Suécia ou Dinamarca?",
+   "type": "txt",
+   "a": [
+    "Dinamarca"
+   ],
+   "choices": [
+    "Suécia",
+    "Dinamarca"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "UEFA European Championship",
+    [
+     "Dinamarca"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas América (até 2024), Argentina ou Uruguai?",
+   "type": "txt",
+   "a": [
+    "Argentina"
+   ],
+   "choices": [
+    "Argentina",
+    "Uruguai"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Argentina"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas América (até 2024), Paraguai ou Brasil?",
+   "type": "txt",
+   "a": [
+    "Brasil"
+   ],
+   "choices": [
+    "Paraguai",
+    "Brasil"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Brasil"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas América (até 2024), Uruguai ou Brasil?",
+   "type": "txt",
+   "a": [
+    "Uruguai"
+   ],
+   "choices": [
+    "Uruguai",
+    "Brasil"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Uruguai"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas América (até 2024), Colômbia ou Equador?",
+   "type": "txt",
+   "a": [
+    "Colômbia"
+   ],
+   "choices": [
+    "Colômbia",
+    "Equador"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Colômbia"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: qual seleção ganhou mais Copas América (até 2024), Chile ou México?",
+   "type": "txt",
+   "a": [
+    "Chile"
+   ],
+   "choices": [
+    "Chile",
+    "México"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "pt",
+    "Copa América",
+    [
+     "Chile"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Milan ou Real Madrid?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Milan",
+    "Real Madrid"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Real Madrid"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Milan ou Liverpool?",
+   "type": "txt",
+   "a": [
+    "Milan"
+   ],
+   "choices": [
+    "Milan",
+    "Liverpool"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Milan"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Barcelona ou Ajax?",
+   "type": "txt",
+   "a": [
+    "Barcelona"
+   ],
+   "choices": [
+    "Barcelona",
+    "Ajax"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Barcelona"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Inter de Milão ou Ajax?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Ajax"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Ajax"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Borussia Dortmund ou Juventus?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Borussia Dortmund",
+    "Juventus"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Juventus"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Arsenal ou Manchester City?",
+   "type": "txt",
+   "a": [
+    "Manchester City"
+   ],
+   "choices": [
+    "Arsenal",
+    "Manchester City"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Manchester City"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Olympique de Marselha ou Monaco?",
+   "type": "txt",
+   "a": [
+    "Olympique de Marselha"
+   ],
+   "choices": [
+    "Olympique de Marselha",
+    "Monaco"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Olympique de Marselha"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Manchester United ou Liverpool?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Manchester United",
+    "Liverpool"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Bayern de Munique ou Barcelona?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Bayern de Munique",
+    "Barcelona"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Bayern de Munique"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Inter de Milão ou Benfica?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Benfica"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Inter de Milão"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Celtic ou Porto?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Celtic",
+    "Porto"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Porto"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem ganhou mais Copas dos Campeões/Champions (até 2025), Tottenham ou Chelsea?",
+   "type": "txt",
+   "a": [
+    "Chelsea"
+   ],
+   "choices": [
+    "Tottenham",
+    "Chelsea"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of European Cup and UEFA Champions League finals",
+    [
+     "Chelsea"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Italiano (até 2024-25), Inter de Milão ou Juventus?",
+   "type": "txt",
+   "a": [
+    "Juventus"
+   ],
+   "choices": [
+    "Inter de Milão",
+    "Juventus"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Juventus"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Italiano (até 2024-25), Milan ou Inter de Milão?",
+   "type": "txt",
+   "a": [
+    "Inter de Milão"
+   ],
+   "choices": [
+    "Milan",
+    "Inter de Milão"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Inter de Milão"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Italiano (até 2024-25), Napoli ou Lazio?",
+   "type": "txt",
+   "a": [
+    "Napoli"
+   ],
+   "choices": [
+    "Napoli",
+    "Lazio"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Napoli"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Italiano (até 2024-25), Lazio ou Roma?",
+   "type": "txt",
+   "a": [
+    "Roma"
+   ],
+   "choices": [
+    "Lazio",
+    "Roma"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Roma"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Espanhol (até 2024-25), Real Madrid ou Barcelona?",
+   "type": "txt",
+   "a": [
+    "Real Madrid"
+   ],
+   "choices": [
+    "Real Madrid",
+    "Barcelona"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Real Madrid"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Espanhol (até 2024-25), Atlético de Madrid ou Valencia?",
+   "type": "txt",
+   "a": [
+    "Atlético de Madrid"
+   ],
+   "choices": [
+    "Atlético de Madrid",
+    "Valencia"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Atlético de Madrid"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Espanhol (até 2024-25), Valencia ou Sevilla?",
+   "type": "txt",
+   "a": [
+    "Valencia"
+   ],
+   "choices": [
+    "Valencia",
+    "Sevilla"
+   ],
+   "duel": true,
+   "d": 4,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Valencia"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Alemão (até 2024-25), Borussia Dortmund ou Bayern de Munique?",
+   "type": "txt",
+   "a": [
+    "Bayern de Munique"
+   ],
+   "choices": [
+    "Borussia Dortmund",
+    "Bayern de Munique"
+   ],
+   "duel": true,
+   "d": 1,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Bayern de Munique"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Inglês (até 2024-25), Liverpool ou Arsenal?",
+   "type": "txt",
+   "a": [
+    "Liverpool"
+   ],
+   "choices": [
+    "Liverpool",
+    "Arsenal"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Liverpool"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Português (até 2024-25), Benfica ou Porto?",
+   "type": "txt",
+   "a": [
+    "Benfica"
+   ],
+   "choices": [
+    "Benfica",
+    "Porto"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Benfica"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Português (até 2024-25), Sporting ou Porto?",
+   "type": "txt",
+   "a": [
+    "Porto"
+   ],
+   "choices": [
+    "Sporting",
+    "Porto"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Porto"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Holandês (até 2024-25), PSV ou Ajax?",
+   "type": "txt",
+   "a": [
+    "Ajax"
+   ],
+   "choices": [
+    "PSV",
+    "Ajax"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Ajax"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Francês (até 2024-25), Paris Saint-Germain ou Olympique de Marselha?",
+   "type": "txt",
+   "a": [
+    "Paris Saint-Germain"
+   ],
+   "choices": [
+    "Paris Saint-Germain",
+    "Olympique de Marselha"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Paris Saint-Germain"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Inglês (até 2024-25), Manchester United ou Chelsea?",
+   "type": "txt",
+   "a": [
+    "Manchester United"
+   ],
+   "choices": [
+    "Manchester United",
+    "Chelsea"
+   ],
+   "duel": true,
+   "d": 2,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Manchester United"
+    ]
+   ]
+  },
+  {
+   "t": "Duelo: quem tem mais títulos do Campeonato Alemão (até 2024-25), Borussia Dortmund ou Bayer Leverkusen?",
+   "type": "txt",
+   "a": [
+    "Borussia Dortmund"
+   ],
+   "choices": [
+    "Borussia Dortmund",
+    "Bayer Leverkusen"
+   ],
+   "duel": true,
+   "d": 3,
+   "art": {
+    "icon": "trophy"
+   },
+   "src": [
+    "en",
+    "List of football champions",
+    [
+     "Borussia Dortmund"
+    ]
+   ]
+  }
+ ]
+}
