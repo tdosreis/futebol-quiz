@@ -739,8 +739,9 @@
 
     /* ── Held up to the light ── */
     .zoom { position: fixed; inset: 0; z-index: 900; }
-    .zoom-scrim { position: absolute; inset: 0; background: rgba(18,16,10,.66);
-      -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); animation: zoomFade .3s ease-out both; }
+    /* no backdrop blur: on a phone it re-blurs the whole page under the card
+       on every frame of the turn, which is most of why the turn stuttered */
+    .zoom-scrim { position: absolute; inset: 0; background: rgba(12,11,7,.86); animation: zoomFade .25s ease-out both; }
     .zoom.is-closing .zoom-scrim { animation: zoomFadeOut .28s ease-in both; }
     @keyframes zoomFade { from { opacity: 0; } }
     @keyframes zoomFadeOut { to { opacity: 0; } }
@@ -749,10 +750,11 @@
     /* the focus ring would be scaled up with the card into a thick band */
     .zoom-card:focus, .zoom-card:focus-visible { outline: none; }
     .zoom-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; transition: transform .56s cubic-bezier(.3,.85,.35,1); }
+      -webkit-transform-style: preserve-3d; transition: transform .42s cubic-bezier(.3,.8,.3,1); will-change: transform; }
     .zoom.is-turned .zoom-in { transform: rotateY(180deg); }
-    .zoom-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      filter: drop-shadow(0 18px 28px rgba(0,0,0,.35)); }
+    .zoom-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .zoom-face > .alb-slot, .zoom-face > .ins { filter: drop-shadow(0 18px 28px rgba(0,0,0,.35)); }
+    .zoom-face > .figx > .fig, .zoom-face > .figx > .figback { box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4); }
     .zoom-back { transform: rotateY(180deg); }
     .zoom-face > .alb-slot, .zoom-face > .ins { width: 100%; height: 100%; aspect-ratio: auto; }
     .zoom-face > .alb-slot > .fig { width: 100%; height: 100%; }
@@ -1670,6 +1672,16 @@
     .fig-flagbox > span { width: 72% !important; height: auto !important;
       box-shadow: 0 0 0 .5px rgba(0,0,0,.35) !important; border-radius: 2px !important; }
     .fig-msc svg { width: 100%; height: 100%; }
+    /* the seleção badge on a wash of the country's own colours */
+    .fig-x-selecao .fig-art { background:
+        radial-gradient(90% 70% at 50% 38%, color-mix(in srgb, var(--c1, #777) 38%, transparent), transparent 70%),
+        linear-gradient(160deg, color-mix(in srgb, var(--c2, #555) 30%, var(--retro-card2)), var(--retro-card2) 70%); }
+    .sel-art { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 100%; height: 100%; padding: 8% 12% 4%; }
+    .sel-art > svg { width: 100%; height: auto; max-height: 86%; display: block; overflow: visible;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,.3)); }
+    .sel-code { margin-top: 3%; font: 800 calc(var(--pw, 80px) * .075)/1 var(--font-c); letter-spacing: .3em;
+      padding-left: .3em; color: var(--retro-ink); opacity: .75; }
     .fig-x-mascote .fig-art { background: none; }
     /* the mascot as a question: square, and on plain card so the club's own
        colours do not answer it */
@@ -1855,12 +1867,14 @@
       -webkit-mask-composite: xor;
               mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
     /* the light that sweeps across every foil now and then, on its own clock */
-    .fig .fl-glare::before { content: ''; position: absolute; top: -10%; bottom: -10%; left: -60%; width: 60%;
+    /* moved with transform, never with left: animating a position re-lays
+       the page out on every frame, for every foil on it */
+    .fig .fl-glare::before { content: ''; position: absolute; top: -10%; bottom: -10%; left: 0; width: 60%;
       background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,.0) 30%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 70%, transparent 100%);
-      transform: translateX(calc(var(--gx, 0) * 40%)) skewX(-12deg);
+      transform: translateX(-110%) skewX(-12deg);
       animation: flSweep 7s cubic-bezier(.45,.05,.3,1) infinite; animation-delay: var(--d, 0s);
-      mix-blend-mode: soft-light; }
-    @keyframes flSweep { 0%, 72% { left: -60%; } 100% { left: 130%; } }
+      mix-blend-mode: soft-light; will-change: transform; }
+    @keyframes flSweep { 0%, 72% { transform: translateX(-110%) skewX(-12deg); } 100% { transform: translateX(290%) skewX(-12deg); } }
     /* and the steady sheen that follows the tilt */
     .fig .fl-glare::after { content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at calc(50% + var(--gx, 0) * 55%) calc(35% + var(--gy, 0) * 45%),
@@ -1889,7 +1903,7 @@
       background-size: calc(var(--pw, 80px) * .26) auto, 360% 360%;
       background-position: calc(var(--gx, 0) * 12px) calc(var(--gy, 0) * 12px),
                            calc(50% + var(--gx, 0) * 48%) calc(50% + var(--gy, 0) * 48%);
-      mix-blend-mode: color-dodge; opacity: .4; filter: saturate(1.25);
+      mix-blend-mode: color-dodge; opacity: .34; filter: saturate(1.25);
       -webkit-mask: radial-gradient(ellipse 48% 38% at 50% 40%, rgba(0,0,0,.28), #000 78%), linear-gradient(#000 0 60%, transparent 67%);
       -webkit-mask-composite: source-in;
               mask: radial-gradient(ellipse 48% 38% at 50% 40%, rgba(0,0,0,.28), #000 78%) intersect, linear-gradient(#000 0 60%, transparent 67%); }
@@ -1934,6 +1948,11 @@
     .fin-1 .fig-sn { background: linear-gradient(100deg, #b8bfc5, #f4f6f8, #a8afb5); color: #1b2024; }
     /* a signed card keeps its number clear of the ink: top corner */
     .var-assin .fig-sn { top: 5%; bottom: auto; }
+    /* a badge sticker keeps its number off the country code, and its foil
+       lighter: colour-dodge over a white flag burns it out */
+    .fig-extra .fig-sn { top: 5%; bottom: auto; }
+    .fig-extra.fin-2 .fl-foil { opacity: .22; }
+    .fig-extra.fin-3 .fl-foil { opacity: .3; }
     .var-erro .fig-sn, .var-aniv .fig-sn { left: auto; right: 7%; }
 
     /* ── autografada: silver marker across the picture ── */
@@ -2038,6 +2057,21 @@
     .figx .figback-l    { font-size: calc(var(--pw) * .036); }
     .figx .figback-h2   { font-size: calc(var(--pw) * .036); }
     .zoom-face > .figx { width: 100%; height: 100%; }
+    .figx-zoom > .alb-n { top: calc(var(--pw) * -.035); left: calc(var(--pw) * -.045); font-size: calc(var(--pw) * .052);
+      padding: .22em .55em; border-radius: .45em; }
+    /* the back at the size it is read: larger lettering, darker ink */
+    .figx-zoom .figback-n    { font-size: calc(var(--pw) * .036); }
+    .figx-zoom .figback-nm   { font-size: calc(var(--pw) * .064); }
+    .figx-zoom .figback-l    { font-size: calc(var(--pw) * .042); opacity: 1; line-height: 1.4; }
+    .figx-zoom .figback-h2   { font-size: calc(var(--pw) * .042); }
+    .figx-zoom .cert-t { font-size: calc(var(--pw) * .042) !important; }
+    .figx-zoom .cert-s { font-size: calc(var(--pw) * .038) !important; opacity: 1; }
+    .figx-zoom .cert-k { font-size: calc(var(--pw) * .042) !important; }
+    .figx-zoom .figback .gl { opacity: .13; }
+    /* the club's crest sits in the eye of the rosette, like a banknote's
+       watermark, instead of under the certificate */
+    .figx-zoom .figback.has-cert .figback-wm { right: auto; bottom: auto; left: 50%; top: 58%;
+      width: 30%; transform: translate(-50%, -50%); opacity: .12; }
     .newfig .figx .fig-sub { display: none; }
 
     /* ── the zoom: leaning, verifying ── */
@@ -2049,8 +2083,7 @@
     .zoom-acts { position: absolute; left: 50%; transform: translateX(-50%);
       bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); display: flex; gap: 8px; animation: zoomFade .4s ease-out both; }
     .zact { display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 13px; border-radius: 20px; border: 0;
-      background: rgba(255,255,255,.14); color: #F3EEDC; font: 700 12px/1 var(--font-s); cursor: pointer; white-space: nowrap;
-      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+      background: rgba(255,255,255,.14); color: #F3EEDC; font: 700 12px/1 var(--font-s); cursor: pointer; white-space: nowrap; }
     .zact:active { transform: scale(.96); }
     .zact.is-on { background: linear-gradient(100deg, #b98c42, #f1d27c, #b98c42); color: #2a1d05; }
     @media (max-width: 380px) { .zact { padding: 0 10px; font-size: 11px; gap: 4px; } }
@@ -2151,7 +2184,7 @@
       animation: pkNudge 1.6s ease-in-out infinite; }
     @keyframes pkNudge { 50% { transform: translateX(-5px); } }
     .pk-sheen { position: absolute; inset: 0; border-radius: 5px; pointer-events: none; overflow: hidden; z-index: 4; }
-    .pk-sheen::before { content: ''; position: absolute; top: -20%; bottom: -20%; width: 40%; left: -50%;
+    .pk-sheen::before { content: ''; position: absolute; top: -20%; bottom: -20%; width: 40%; left: 0;
       background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent); transform: skewX(-14deg);
       animation: flSweep 3.8s ease-in-out infinite; }
     .pack.is-torn .pk-top { transition: transform .6s cubic-bezier(.3,.7,.3,1), opacity .6s;
@@ -2170,7 +2203,7 @@
       transition-delay: calc(.18s + var(--k) * 20ms); }
     .pack.is-torn .pk-stack { z-index: 6; }
     .pk-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
-      transform: rotateY(180deg); transition: transform .7s cubic-bezier(.3,.85,.35,1); }
+      transform: rotateY(180deg); transition: transform .5s cubic-bezier(.3,.8,.3,1); will-change: transform; }
     .pk-card.is-flipped .pk-in { transform: rotateY(0deg); }
     .pk-card.is-flipped { transform: none !important; }
     .pk-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; }
@@ -2185,9 +2218,9 @@
     .pk-card.tier-3 { --glow: rgba(255,214,110,.95); --glow2: rgba(255,170,60,.45); }
     @keyframes pkShake { 0% { transform: translate(0, 0) rotate(0); } 25% { transform: translate(1.5px, -1px) rotate(.6deg); }
       50% { transform: translate(-1px, 1px) rotate(-.5deg); } 75% { transform: translate(1px, 1px) rotate(.4deg); } }
-    .pk-card.is-flipped.tier-2 .figx, .pk-card.is-flipped.tier-3 .figx { animation: pkLand .8s ease-out; }
-    @keyframes pkLand { 0% { filter: brightness(1.8) drop-shadow(0 0 30px var(--glow)); } 100% { filter: none; } }
-    .pk-card.is-flipped .figx { filter: drop-shadow(0 16px 24px rgba(0,0,0,.5)); }
+    .pk-card.is-flipped.tier-2 .fig, .pk-card.is-flipped.tier-3 .fig { animation: pkLand .8s ease-out; }
+    @keyframes pkLand { 0% { box-shadow: 0 0 0 3px var(--glow), 0 0 50px 16px var(--glow); } 100% { box-shadow: 0 16px 30px rgba(0,0,0,.5); } }
+    .pk-card.is-flipped .fig { box-shadow: 0 16px 30px rgba(0,0,0,.5); }
     /* the back of a sealed card */
     .pkb { position: relative; width: 100%; height: 100%; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;
       align-items: center; justify-content: center; gap: 6%; color: #E7C977; text-align: center;
@@ -10579,6 +10612,67 @@ const ALL_STICKERS = PL.map(p => p.id)
   .concat(ESCUDOS.map(SK.esc), SELECOES.map(SK.sel), MASCOTES.map(SK.msc));
 const ALL_SET = new Set(ALL_STICKERS);
 
+/* ── A seleção, printed as a badge ──
+   A flag stretched to the picture window read as a paint swatch. The badge
+   is the flag cut to a shield, the cloth folded so it catches the light, a
+   gold edge round it, and a star over it for every World Cup the country
+   has won — the way the shirts carry them. */
+let _selN = 0;
+const WC_STARS = (() => {
+  const byName = {};
+  Object.keys(CTRY_NAME).forEach(c => { byName[CTRY_NAME[c]] = c; });
+  const n = {};
+  Object.values(typeof WC_ED !== 'undefined' ? WC_ED : {}).forEach(([, w]) => {
+    const c = byName[w] || (w === 'Alemanha' ? 'GER' : null);
+    if (c) n[c] = (n[c] || 0) + 1;
+  });
+  return n;
+});
+let _wcStars = null;
+function selecaoArt(code) {
+  const id = 'sh' + (++_selN);
+  const art = FLAGS[code] || `<rect width="9" height="6" fill="#3a4a5a"/>`;
+  const stars = (_wcStars = _wcStars || WC_STARS())[code] || 0;
+  const shield = 'M50 4C63 11 79 12 94 9V60C94 88 72 104 50 114C28 104 6 88 6 60V9C21 12 37 11 50 4Z';
+  const star = (cx, cy, R) => {
+    let d = '';
+    for (let i = 0; i < 10; i++) {
+      const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? R * .45 : R;
+      d += (i ? 'L' : 'M') + (cx + Math.cos(a) * rr).toFixed(2) + ' ' + (cy + Math.sin(a) * rr).toFixed(2);
+    }
+    return d + 'Z';
+  };
+  const sw = 9.5, x0 = 50 - (stars - 1) * sw / 2;
+  const starRow = Array.from({ length: stars }, (_, i) => star(x0 + i * sw, 0, 4.2)).join('');
+  return `<span class="sel-art">
+    <svg viewBox="0 -12 100 128" aria-hidden="true">
+      <defs>
+        <clipPath id="${id}c"><path d="${shield}"/></clipPath>
+        <linearGradient id="${id}f" x1="0" x2="1" y1="0" y2=".25">
+          <stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".16" stop-color="#fff" stop-opacity=".2"/>
+          <stop offset=".34" stop-color="#000" stop-opacity=".14"/><stop offset=".52" stop-color="#fff" stop-opacity=".24"/>
+          <stop offset=".72" stop-color="#000" stop-opacity=".16"/><stop offset=".88" stop-color="#fff" stop-opacity=".14"/>
+          <stop offset="1" stop-color="#000" stop-opacity=".24"/></linearGradient>
+        <linearGradient id="${id}g" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#FFF4C9"/><stop offset=".3" stop-color="#D9B25A"/>
+          <stop offset=".55" stop-color="#8A6116"/><stop offset=".8" stop-color="#F1D27C"/><stop offset="1" stop-color="#9C7021"/></linearGradient>
+        <radialGradient id="${id}s" cx=".3" cy=".15" r=".7">
+          <stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      </defs>
+      ${stars ? `<path d="${starRow}" fill="url(#${id}g)" stroke="#5a3c08" stroke-width=".5"/>` : ''}
+      <path d="${shield}" transform="translate(0 2.5)" fill="rgba(0,0,0,.35)"/>
+      <g clip-path="url(#${id}c)">
+        <svg x="-40" y="4" width="180" height="110" viewBox="0 0 9 6" preserveAspectRatio="xMidYMid slice">${art}</svg>
+        <rect x="0" y="0" width="100" height="116" fill="url(#${id}f)"/>
+        <rect x="0" y="0" width="100" height="116" fill="url(#${id}s)"/>
+      </g>
+      <path d="${shield}" fill="none" stroke="url(#${id}g)" stroke-width="4.5"/>
+      <path d="${shield}" fill="none" stroke="rgba(40,25,5,.55)" stroke-width=".8" transform="translate(50 59) scale(.915) translate(-50 -59)"/>
+    </svg>
+    <span class="sel-code">${code}</span>
+  </span>`;
+}
+
 /* An escudo, a flag or a mascot printed as a figurinha — same band / picture /
    caption skeleton as `figurinha`, so a row of them lines up with a row of
    players and the pocket numbers sit in the same place. */
@@ -10598,7 +10692,8 @@ function figExtra(sid, size, opts) {
     art  = `<span class="fig-crest">${clubArt(st.id, '', false)}</span>`;
   } else if (st.kind === 'selecao') {
     band = 'SELEÇÃO';
-    art  = `<span class="fig-flagbox">${flagSVG(st.id, 60)}</span>`;
+    art  = selecaoArt(st.id);
+    tint = ` style="--c1:${ctryColors(st.id)[0]};--c2:${ctryColors(st.id)[1]}"`;
   } else {
     band = 'MASCOTE';
     /* One drawing used to serve every club that shares an animal, and a wash
@@ -10806,6 +10901,12 @@ function openZoom(src, front, back, lookFrom, opts) {
   if (!r.width || !r.height) return;
   const vw = window.innerWidth, vh = window.innerHeight;
   const k = Math.max(1, Math.min(Math.min(vw * 0.8, 340) / r.width, (vh * 0.68) / r.height));
+  /* A card built at its final size (`opts.w`) is laid out and drawn there,
+     crisp; only its flight out of the pocket is scaled. Blowing the pocket
+     up four times instead left Android drawing a 75px card stretched to
+     340 — soft lettering, a fuzzy guilloché, a slow turn. */
+  const native = !!opts.w;
+  const cw = native ? opts.w : r.width, ch = native ? opts.h : r.height;
   const z = document.createElement('div');
   z.className = 'zoom';
   z.setAttribute('role', 'dialog');
@@ -10813,7 +10914,7 @@ function openZoom(src, front, back, lookFrom, opts) {
   z.setAttribute('aria-label', 'Figurinha ampliada');
   z.innerHTML = `<div class="zoom-scrim"></div>
     <div class="zoom-card" tabindex="0" role="button" aria-label="Virar a figurinha"
-      style="width:${r.width}px;height:${r.height}px">
+      style="width:${cw}px;height:${ch}px">
       <div class="zoom-in">
         <div class="zoom-face zoom-front">${front}</div>
         <div class="zoom-face zoom-back">${back}</div>
@@ -10843,10 +10944,10 @@ function openZoom(src, front, back, lookFrom, opts) {
     clearTimeout(tiltT);
     tiltT = setTimeout(() => z.classList.remove('is-tilting'), 160);
   });
-  z.addEventListener('pointerleave', () => { card.style.removeProperty('--gx'); card.style.removeProperty('--gy'); });
+  z.addEventListener('pointerleave', () => { card.style.removeProperty('--gx'); card.style.removeProperty('--gy'); Tilt.lx = 9; });
   /* the album shrinks its lettering on small pockets with container queries;
      the copy is outside that container, so it takes the sizes it had */
-  if (lookFrom) {
+  if (lookFrom && !native) {
     const dst = z.querySelector('.zoom-front');
     ['.fig-band', '.fig-nm', '.fig-sub', '.fig-cap'].forEach(sel => {
       const a = lookFrom.querySelectorAll(sel), b = dst.querySelectorAll(sel);
@@ -10862,11 +10963,11 @@ function openZoom(src, front, back, lookFrom, opts) {
      at pocket size: what matters is how big it reads once scaled — 7px on the
      glass, still plain on a card this size — not how far it shrank from the
      pocket's own size */
-  try { fitFigText(z.querySelector('.zoom-front'), 7 / k, 0); } catch (e) {}
+  if (!native) try { fitFigText(z.querySelector('.zoom-front'), 7 / k, 0); } catch (e) {}
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cx = vw / 2, cy = vh / 2;
-  const at = rect => `translate(calc(-50% + ${rect.left + rect.width / 2 - cx}px), calc(-50% + ${rect.top + rect.height / 2 - cy}px)) scale(1)`;
-  const big = `translate(-50%, -50%) scale(${k})`;
+  const at = rect => `translate(calc(-50% + ${rect.left + rect.width / 2 - cx}px), calc(-50% + ${rect.top + rect.height / 2 - cy}px)) scale(${native ? (rect.width / cw).toFixed(4) : 1})`;
+  const big = native ? 'translate(-50%, -50%)' : `translate(-50%, -50%) scale(${k})`;
   card.style.transform = big;
   if (!still && card.animate) card.animate([{ transform: at(r) }, { transform: big }],
     { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
@@ -13313,9 +13414,10 @@ function copyAria(c) {
    copy's own code, so no two backs share it; a line of lettering too small
    to read without the zoom; and a round holographic seal with the serial. */
 const _glCache = new Map();
-function guilloche(key, cy) {
+function guilloche(key, cy, withWaves) {
   cy = cy || 112;
-  if (_glCache.has(key + cy)) return _glCache.get(key + cy);
+  const ck = key + cy + (withWaves ? 'w' : '');
+  if (_glCache.has(ck)) return _glCache.get(ck);
   const h = h53(key);
   const gcd = (a, b) => b ? gcd(b, a % b) : a;
   /* a rosette closes after r turns when R and r share nothing, so r is
@@ -13340,7 +13442,7 @@ function guilloche(key, cy) {
   };
   const ph = (h >>> 13) % 628 / 100;
   let waves = '';
-  for (let j = 0; j < 7; j++) {
+  for (let j = 0; withWaves && j < 7; j++) {
     let p = '';
     for (let x = 0; x <= 100; x += 2.5) {
       const y = 14 + j * 5.2 + Math.sin(x / 7 + ph + j * .55) * 1.8 + Math.sin(x / 3.1 + j) * .5;
@@ -13351,7 +13453,7 @@ function guilloche(key, cy) {
   const svg = `<svg class="gl" viewBox="0 0 100 172" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
     <g fill="none" stroke="currentColor" stroke-width=".32">${waves}
       <path d="${curve(d, 0)}"/><path d="${curve(d * .72, ph)}" stroke-width=".22"/></g></svg>`;
-  _glCache.set(key + cy, svg);
+  _glCache.set(ck, svg);
   return svg;
 }
 /* Lettering too small to print on a photocopier: round the edge of the back. */
@@ -13394,15 +13496,16 @@ function certBack(sid, c) {
       <span class="cert-seal">${sealSVG(c)}</span>
     </span>`;
 }
-const backPaper = (sid, c) => c ? guilloche(c.k + sid) + microText(sid, c) : '';
+const backPaper = (sid, c) => c ? guilloche(c.k + sid, 100) + microText(sid, c) : '';
 
 /* ── Motion: the phone's tilt moves the foil ──
    Android hands the tilt over freely; iOS asks once, and only from a tap,
    so the first tap on a card or a packet asks. The light is shared by the
    whole screen: tilt the phone over an album page and every foil on it
    catches it together. */
+const TILT_SCOPES = '.alb-sheet, .vit-pg, .pack-stage, .zoom-card, .hero-sticker, .newfigs, .cert-seal';
 const Tilt = {
-  on: false, asked: false, gx: 0, gy: 0, raf: 0,
+  on: false, asked: false, gx: 0, gy: 0, lx: 9, ly: 9, raf: 0,
   still: (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })(),
   start() {
     if (this.on || this.still || typeof window.DeviceOrientationEvent === 'undefined') return;
@@ -13412,11 +13515,18 @@ const Tilt = {
       this.gx = Math.max(-1, Math.min(1, e.gamma / 30));
       this.gy = Math.max(-1, Math.min(1, ((e.beta || 45) - 45) / 30));
       if (this.raf) return;
+      /* Only the parts of the screen that hold foil hear about it, and only
+         when the phone has actually moved: set on the root, the tilt restyled
+         every element on the page sixty times a second. */
+      if (Math.abs(this.gx - this.lx) < .012 && Math.abs(this.gy - this.ly) < .012) return;
       this.raf = requestAnimationFrame(() => {
         this.raf = 0;
-        const s = document.documentElement.style;
-        s.setProperty('--gx', this.gx.toFixed(3));
-        s.setProperty('--gy', this.gy.toFixed(3));
+        this.lx = this.gx; this.ly = this.gy;
+        const x = this.gx.toFixed(3), y = this.gy.toFixed(3);
+        document.querySelectorAll(TILT_SCOPES).forEach(el => {
+          if (el.classList.contains('zoom-card') && el.closest('.zoom.is-tilting')) return;
+          el.style.setProperty('--gx', x); el.style.setProperty('--gy', y);
+        });
       });
     });
   },
@@ -13559,7 +13669,7 @@ Object.assign(snd, {
    stock, the phone shivers, and the longer the wait the better the card.
 ═══════════════════════════════════════════════════ */
 function packBackFace(i) {
-  return `<span class="pkb">${guilloche('pk' + (i % 5), 86)}
+  return `<span class="pkb">${guilloche('pk' + (i % 5), 86, true)}
     <span class="pkb-frame"></span>
     <span class="pkb-ring"><span class="pkb-fq">FQ</span></span>
     <span class="pkb-t">Figurinha oficial</span>
@@ -13843,11 +13953,15 @@ function openWelcomePack() {
 }
 
 /* ── Zooming a copy: tilt it, verify it, show it off ── */
-function zoomCopy(src, sid) {
+function zoomCopy(src, sid, num) {
   if (!src) return;
   const c = anyCopy(sid);
-  const pw = parseFloat(src.style.getPropertyValue('--pw')) || src.getBoundingClientRect().width;
-  openZoom(src, figx(figAny(sid, c, 'lg'), pw), figx(backAny(sid, c), pw, 'figx-back'), null, { sid });
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const W = Math.round(Math.min(vw * .8, 340, (vh - 230) * 29 / 50));
+  const H = Math.round(W * 50 / 29);
+  const tab = num ? `<span class="alb-n">${String(num).padStart(3, '0')}</span>` : '';
+  const front = `<div class="figx figx-zoom" style="--pw:${W}px">${tab}${figAny(sid, c, 'lg')}</div>`;
+  openZoom(src, front, figx(backAny(sid, c), W, 'figx-back figx-zoom'), null, { sid, w: W, h: H });
 }
 function zoomActs(sid) {
   const c = anyCopy(sid);
@@ -15035,14 +15149,9 @@ function go() {
     const turn = el => {
       const slot = el.closest && el.closest('.alb-turn');
       if (!slot) return;
-      const f = slot.querySelector('.flip-front'), b = slot.querySelector('.flip-back');
-      if (!f || !b) return;
-      const pw = slot.getBoundingClientRect().width + 'px';
-      const tab = (slot.querySelector('.alb-n') || {}).outerHTML || '';
-      const wrap = (face, withTab) => `<div class="alb-slot zoom-slot" style="--pw:${pw}">${
-        withTab ? tab : ''}${face.innerHTML}</div>`;
       LS.set('albFlipped', true);
-      openZoom(slot, wrap(f, true), wrap(b, false), f, { sid: slot.dataset.fig });
+      const tabN = parseInt((slot.querySelector('.alb-n') || {}).textContent, 10) || 0;
+      zoomCopy(slot, slot.dataset.fig, tabN);
     };
     const sheet = document.querySelector('.alb-sheet');
     if (sheet) {

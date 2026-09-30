@@ -150,8 +150,14 @@
         and a guilloché seal on the back. Runs end in a packet to tear open,
         the vitrine shows the best ones off, complete teams print a gold
         team photo, and a great player's birthday prints a one-day edition.
-        Adds the Mr Dafoe font for the autographs. */
-const VERSION = 'v55';
+        Adds the Mr Dafoe font for the autographs.
+
+   v56: the zoomed figurinha is drawn at its real size instead of a pocket
+        stretched 4x (it was blurry), the turn is lighter (no backdrop blur,
+        no drop-shadow filters, the foil sweep moves by transform, the tilt
+        only restyles the foil), and the seleções are shield badges with a
+        star per World Cup won. */
+const VERSION = 'v56';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
