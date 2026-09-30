@@ -143,8 +143,15 @@
         formats: placar (guess the missing side of a scoreline), escalação
         (a line-up with one gap), duelo (two options), duplas (mark both),
         linha do tempo with faces and flags, quem sou eu with written clues,
-        and ache o intruso. */
-const VERSION = 'v54';
+        and ache o intruso.
+
+   v55: figurinhas are printed copies now — comum, prata, holográfica or
+        ouro, autografadas and misprints, graded and numbered, a check code
+        and a guilloché seal on the back. Runs end in a packet to tear open,
+        the vitrine shows the best ones off, complete teams print a gold
+        team photo, and a great player's birthday prints a one-day edition.
+        Adds the Mr Dafoe font for the autographs. */
+const VERSION = 'v55';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

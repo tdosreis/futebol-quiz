@@ -32,7 +32,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@400;600;700;800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Archivo:wght@400;600;700;800&family=Archivo+Narrow:wght@600;700&family=Mr+Dafoe&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
@@ -1775,7 +1775,7 @@
     .alb-colo-t { font-family: var(--font-c); font-weight: 700; font-size: 13px;
       letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
     .alb-colo-s { font-family: var(--font-d); font-style: italic; font-size: 11px; color: var(--ink-3); }
-    .alb-n { position: absolute; top: -4px; left: -4px; z-index: 5; background: var(--ink);
+    .alb-n { position: absolute; top: -4px; left: -4px; z-index: 12; background: var(--ink);
       color: var(--stock); font-family: var(--font-s); font-size: 7px; font-weight: 800;
       padding: 1.5px 4px; border-radius: 3px; font-variant-numeric: tabular-nums;
       box-shadow: 0 1px 2px var(--shadow); }
@@ -1824,6 +1824,491 @@
       }
       .conf, .gain { display: none !important; }
     }
+
+    /* ═══════════════════════════════════════════════════════════════
+       A TIRAGEM — the stocks a figurinha can be printed on
+
+       The album is paper, and common stock stays paper: no gloss, exactly
+       as it always was. Gloss is what the rarer stocks buy. Each one is a
+       few layers laid over the printed card, and everything that moves
+       reads two numbers, --gx and --gy, from -1 to 1: the phone's tilt, or
+       the finger over a zoomed card. Tilt the phone over a page and every
+       foil on it catches the same light.
+         prata        brushed silver band and frame, a white glint
+         holográfica  a rainbow that slides with the tilt, a star lattice
+         ouro         gold leaf band and frame, glitter, warm holo
+    ═══════════════════════════════════════════════════════════════ */
+    .fig .fl-frame, .fig .fl-foil, .fig .fl-glare, .fig .fl-glitter, .fig .fl-confetti, .fig .fl-forged {
+      position: absolute; inset: 0; pointer-events: none; border-radius: inherit; z-index: 6; }
+    .fig .fl-glare { overflow: hidden; }
+    /* The lettering is printed over the foil, not under it: a name washed out
+       by its own shine is a card nobody can read. The frame sits over all. */
+    .fig[class*=" fin-"] .fig-band, .fig[class*=" fin-"] .fig-cap { position: relative; z-index: 7; }
+    .fig .fl-frame { z-index: 8; }
+    /* a frame is the card's own edge in foil: a border cut out of a fill */
+    .fin-1, .fin-2 { --fw: max(2px, calc(var(--pw, 80px) * .035)); }
+    .fin-3 { --fw: max(2.5px, calc(var(--pw, 80px) * .05)); }
+    /* the band is printed inside the foil frame, not under it */
+    .fig[class*=" fin-"]:not(.fin-0) .fig-band { margin: var(--fw) var(--fw) 0; }
+    .fig .fl-frame { padding: var(--fw);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+    /* the light that sweeps across every foil now and then, on its own clock */
+    .fig .fl-glare::before { content: ''; position: absolute; top: -10%; bottom: -10%; left: -60%; width: 60%;
+      background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,.0) 30%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 70%, transparent 100%);
+      transform: translateX(calc(var(--gx, 0) * 40%)) skewX(-12deg);
+      animation: flSweep 7s cubic-bezier(.45,.05,.3,1) infinite; animation-delay: var(--d, 0s);
+      mix-blend-mode: soft-light; }
+    @keyframes flSweep { 0%, 72% { left: -60%; } 100% { left: 130%; } }
+    /* and the steady sheen that follows the tilt */
+    .fig .fl-glare::after { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at calc(50% + var(--gx, 0) * 55%) calc(35% + var(--gy, 0) * 45%),
+                  rgba(255,255,255,.34), rgba(255,255,255,0) 55%);
+      mix-blend-mode: overlay; }
+
+    /* ── prata ── */
+    .fin-1 .fl-frame { background: linear-gradient(calc(125deg + var(--gx, 0) * 50deg),
+        #7f868d 0%, #eef1f3 22%, #9da4ab 40%, #ffffff 55%, #8a9198 72%, #dfe3e6 100%); }
+    .fin-1 .fig-band { background: repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, rgba(0,0,0,.03) 1px 3px),
+        linear-gradient(100deg, #7d848b 0%, #d9dee2 calc(30% + var(--gx, 0) * 20%), #fbfcfc calc(44% + var(--gx, 0) * 20%), #9aa1a8 70%, #cfd4d8 100%) !important;
+      color: #1b2024 !important; text-shadow: 0 1px 0 rgba(255,255,255,.6); }
+    .fin-1 .fl-foil { background: linear-gradient(calc(115deg + var(--gy, 0) * 30deg), transparent 30%,
+        rgba(235,240,245,.4) calc(46% + var(--gx, 0) * 22%), transparent 62%); mix-blend-mode: overlay; }
+
+    /* ── holográfica ── */
+    .fin-2 .fl-frame { background: linear-gradient(calc(120deg + var(--gx, 0) * 90deg),
+        #ff9ad5, #9fd8ff 20%, #b4ffb0 40%, #ffe48a 60%, #d9a4ff 80%, #ff9ad5); }
+    .fin-2 .fig-band { background: linear-gradient(100deg,
+        hsl(calc(190 + var(--gx, 0) * 90) 95% 76%), hsl(calc(285 + var(--gx, 0) * 90) 92% 80%) 50%,
+        hsl(calc(40 + var(--gx, 0) * 90) 98% 74%)) !important;
+      color: #1a1030 !important; text-shadow: 0 1px 0 rgba(255,255,255,.55); }
+    .fin-2 .fl-foil {
+      background-image: var(--holostars),
+        repeating-linear-gradient(115deg, #ff7a7a 0%, #ffe06a 6%, #8dff7a 12%, #6ff2ff 18%, #7a96ff 24%, #d97aff 30%, #ff7a7a 36%);
+      background-size: calc(var(--pw, 80px) * .26) auto, 360% 360%;
+      background-position: calc(var(--gx, 0) * 12px) calc(var(--gy, 0) * 12px),
+                           calc(50% + var(--gx, 0) * 48%) calc(50% + var(--gy, 0) * 48%);
+      mix-blend-mode: color-dodge; opacity: .4; filter: saturate(1.25);
+      -webkit-mask: radial-gradient(ellipse 48% 38% at 50% 40%, rgba(0,0,0,.28), #000 78%), linear-gradient(#000 0 60%, transparent 67%);
+      -webkit-mask-composite: source-in;
+              mask: radial-gradient(ellipse 48% 38% at 50% 40%, rgba(0,0,0,.28), #000 78%) intersect, linear-gradient(#000 0 60%, transparent 67%); }
+
+    /* ── ouro ── */
+    .fin-3 .fl-frame {
+      background: linear-gradient(calc(120deg + var(--gx, 0) * 50deg),
+        #6f4c0f 0%, #f6dd8b 18%, #b88422 34%, #fff6d2 50%, #a8781d 66%, #f3d37a 84%, #7a5412 100%); }
+    .fin-3 .fl-frame::after { content: ''; position: absolute; inset: calc(var(--fw) - 1px);
+      border-radius: 3px; box-shadow: 0 0 0 1px rgba(60,40,5,.45); }
+    .fin-3 .fig-band { background: linear-gradient(100deg, #8a6116 0%, #e8c565 calc(28% + var(--gx, 0) * 20%),
+        #fff3c9 calc(42% + var(--gx, 0) * 20%), #c0902c 64%, #f1d27c 86%, #9c7021 100%) !important;
+      color: #2a1d05 !important; text-shadow: 0 1px 0 rgba(255,244,200,.7); }
+    .fin-3 .fl-foil { background: repeating-linear-gradient(115deg, #fff1b8 0%, #ffcf5c 8%, #fff9e0 13%, #e0a93a 20%, #fff1b8 28%);
+      background-size: 320% 320%;
+      background-position: calc(50% + var(--gx, 0) * 50%) calc(50% + var(--gy, 0) * 50%);
+      mix-blend-mode: overlay; opacity: .55;
+      -webkit-mask: radial-gradient(ellipse 50% 40% at 50% 40%, rgba(0,0,0,.35), #000 80%), linear-gradient(#000 0 60%, transparent 67%);
+      -webkit-mask-composite: source-in;
+              mask: radial-gradient(ellipse 50% 40% at 50% 40%, rgba(0,0,0,.35), #000 80%) intersect, linear-gradient(#000 0 60%, transparent 67%); }
+    .fin-3 .fl-glitter { background-image: var(--glitter), var(--glitter);
+      background-size: calc(var(--pw, 80px) * .9) auto, calc(var(--pw, 80px) * .63) auto;
+      background-position: calc(var(--gx, 0) * -10px) calc(var(--gy, 0) * -10px), calc(var(--gx, 0) * 14px + 17px) calc(var(--gy, 0) * 14px + 9px);
+      mix-blend-mode: plus-lighter; opacity: .75; animation: flTwinkle 2.6s ease-in-out infinite alternate;
+      -webkit-mask: linear-gradient(#000 0 60%, rgba(0,0,0,.3) 68%); mask: linear-gradient(#000 0 60%, rgba(0,0,0,.3) 68%); }
+    @keyframes flTwinkle { from { opacity: .35; } to { opacity: .85; } }
+    /* the name on a gold card is stamped in gold leaf */
+    .fin-3 .fig-nm { background: linear-gradient(100deg, #7a5412, #b88422 calc(40% + var(--gx, 0) * 30%), #6f4c0f);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+    :root[data-theme="dark"] .fin-3 .fig-nm { background-image: linear-gradient(100deg, #d9b25a, #fff1c1 calc(40% + var(--gx, 0) * 30%), #c79a4e); }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .fin-3 .fig-nm {
+      background-image: linear-gradient(100deg, #d9b25a, #fff1c1 calc(40% + var(--gx, 0) * 30%), #c79a4e); } }
+
+
+    /* ── the serial, printed small over the picture ── */
+    .fig-sn { position: absolute; left: 7%; bottom: 5%; z-index: 5; pointer-events: none;
+      font: 700 max(5px, calc(var(--pw, 80px) * .068))/1 var(--font-c); letter-spacing: .06em;
+      padding: .28em .45em .24em; border-radius: 2px; color: #fff; background: rgba(12,12,12,.62);
+      box-shadow: 0 0 0 .5px rgba(255,255,255,.25); }
+    .fin-3 .fig-sn { background: linear-gradient(100deg, #e9c768, #fff1c1, #d0a340); color: #2a1d05; }
+    .fin-2 .fig-sn { background: linear-gradient(100deg, #bfe6ff, #f0c8ff, #fff0b0); color: #1a1030; }
+    .fin-1 .fig-sn { background: linear-gradient(100deg, #b8bfc5, #f4f6f8, #a8afb5); color: #1b2024; }
+    /* a signed card keeps its number clear of the ink: top corner */
+    .var-assin .fig-sn { top: 5%; bottom: auto; }
+    .var-erro .fig-sn, .var-aniv .fig-sn { left: auto; right: 7%; }
+
+    /* ── autografada: silver marker across the picture ── */
+    .fig-sig { position: absolute; left: 3%; right: 3%; bottom: 10%; z-index: 5; pointer-events: none;
+      font-family: 'Mr Dafoe', 'Brush Script MT', cursive; font-weight: 400;
+      font-size: calc(var(--pw, 80px) * .27); line-height: .9; text-align: center; white-space: nowrap;
+      color: #f6f8ff; transform: rotate(-9deg);
+      text-shadow: 0 1px 1px rgba(0,0,0,.65), 0 0 4px rgba(20,40,120,.45); }
+    .fig-sig::after { content: ''; display: block; height: max(1px, calc(var(--pw, 80px) * .014)); margin: .02em 18% 0 30%;
+      border-radius: 50%; background: #f6f8ff; transform: rotate(3deg); box-shadow: 0 1px 1px rgba(0,0,0,.5); }
+
+    /* ── erro de impressão: the band slipped and the colours did not line up ── */
+    .var-erro .fig-band { transform: translateX(6%) rotate(-.9deg); transform-origin: left center; }
+    .fig-misreg { position: absolute; inset: 0; background-size: cover; background-position: top center;
+      transform: translate(3.5%, 1.8%); mix-blend-mode: multiply; opacity: .5; pointer-events: none;
+      filter: sepia(1) hue-rotate(150deg) saturate(4); }
+    .var-erro .fig-nm { text-shadow: calc(var(--pw, 80px) * .02) 0 0 rgba(0,160,200,.5); }
+
+    /* ── edição do dia ── */
+    .var-aniv .fl-confetti { background-image:
+        radial-gradient(circle, #ff5a5a 0 1.1px, transparent 1.6px), radial-gradient(circle, #ffd84a 0 1px, transparent 1.5px),
+        radial-gradient(circle, #5ad0ff 0 1px, transparent 1.5px), radial-gradient(circle, #8dff7a 0 .9px, transparent 1.4px);
+      background-size: 23% 13%, 31% 17%, 19% 11%, 27% 15%;
+      background-position: 3% 6%, 61% 2%, 37% 9%, 83% 7%;
+      -webkit-mask: linear-gradient(#000 0 22%, transparent 34% 76%, #000 90%);
+              mask: linear-gradient(#000 0 22%, transparent 34% 76%, #000 90%); opacity: .9; }
+
+    /* ── a copy whose seal does not match ── */
+    .is-forged .fig-shot img { filter: grayscale(1) contrast(.85) !important; }
+    .fig .fl-forged { display: flex; align-items: center; justify-content: center; z-index: 8;
+      font: 800 calc(var(--pw, 80px) * .12)/1 var(--font-c); letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(200,30,30,.85); }
+    .fig .fl-forged::before { content: attr(data-x); }
+    .fig .fl-forged { text-shadow: 0 0 1px #fff; transform: rotate(-24deg); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fig .fl-glare::before, .fin-3 .fl-glitter { animation: none; }
+    }
+
+    /* ── the team photograph ── */
+    .fig-team .fig-art { background: linear-gradient(180deg, #3f8a5a 0%, #2f6b45 60%, #28593a 100%); }
+    .team-ph { position: absolute; inset: 6% 5% 5%; display: flex; flex-direction: column; justify-content: center; gap: 4%; }
+    .team-row { display: flex; justify-content: center; gap: 2.5%; padding: 0 1%; }
+    .team-front { margin-top: -2%; }
+    .team-face { flex: 1 1 0; min-width: 0; max-width: 21%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+      box-shadow: 0 0 0 max(1px, calc(var(--pw, 80px) * .012)) #f3e7c4, 0 2px 4px rgba(0,0,0,.35); background: #d8c9a2; }
+    .team-face img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .team-flag { position: absolute; right: 2%; top: 0; width: calc(var(--pw, 80px) * .16); line-height: 0;
+      border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
+    .team-flag svg { width: 100%; height: auto; }
+    .team-ball { color: #f3e7c4; box-shadow: none; }
+
+    /* ── the back of a certified copy ── */
+    .figback.has-cert { background-color: var(--retro-card2); }
+    .figback .gl { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+      color: var(--figback-acc); opacity: .2; }
+    .figback .mt { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .figback .mt text { font: 700 1.55px var(--font-c); letter-spacing: .12px; fill: var(--figback-acc); opacity: .7; }
+    .figback.fin-3 .gl, .figback.fin-3 .mt text { color: #a47a1d; fill: #a47a1d; }
+    .figback.fin-2 .gl { color: #6a5acd; }
+    .figback.has-cert .figback-clubs { -webkit-line-clamp: 2; }
+    .cert { display: flex; align-items: flex-end; gap: 4%; margin-top: auto; padding-top: 4%;
+      border-top: 1px dashed color-mix(in srgb, var(--figback-acc) 45%, transparent); }
+    .figback.has-cert .figback-h2 { margin-top: 3%; padding-top: 0; }
+    .cert-l { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+    .cert-t { font: 800 5.6px/1.15 var(--font-c); letter-spacing: .08em; text-transform: uppercase; color: var(--figback-acc); }
+    .cert-s { font-size: 5.2px; line-height: 1.25; opacity: .85; }
+    .cert-k { font: 700 5.6px/1.2 ui-monospace, 'SFMono-Regular', Menlo, monospace; letter-spacing: .06em; margin-top: 1px; }
+    .cert-seal { flex: none; width: 27%; aspect-ratio: 1; border-radius: 50%; color: rgba(40,30,70,.55);
+      background: conic-gradient(from calc(var(--gx, 0) * 120deg), #ffd6f5, #c7f5ff, #fff6c2, #d4ffd9, #e6d4ff, #ffd6f5);
+      box-shadow: inset 0 0 0 .6px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2); position: relative; overflow: hidden; }
+    .cert-seal::after { content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background: linear-gradient(calc(120deg + var(--gy, 0) * 60deg), transparent 30%, rgba(255,255,255,.7) 50%, transparent 70%);
+      mix-blend-mode: overlay; }
+    .cert-seal svg { width: 100%; height: 100%; display: block; }
+    .cert-seal .seal-fq { font: 800 6.4px var(--font-d); fill: rgba(40,30,70,.75); }
+    .cert-seal .seal-n { font: 700 3.2px var(--font-c); fill: rgba(40,30,70,.75); letter-spacing: .1px; }
+    .cert-bad .cert-k { text-decoration: line-through; color: #c62828; }
+    .zoom-slot .cert-t, .figx-back .cert-t { font-size: calc(var(--pw) * .034); }
+    .zoom-slot .cert-s, .figx-back .cert-s { font-size: calc(var(--pw) * .031); }
+    .zoom-slot .cert-k, .figx-back .cert-k { font-size: calc(var(--pw) * .033); }
+
+    /* ── A card at a width of its own ──
+       The packet, the vitrine and the end screen print cards outside the
+       album's grid, so the lettering takes its size from the card's own
+       width (--pw) the way the zoomed pocket does. */
+    .figx { width: var(--pw); aspect-ratio: 29 / 50; position: relative; display: flex; flex: none; }
+    .figx > .fig, .figx > .figback { width: 100%; height: 100%; }
+    .figx .fig-band { font-size: calc(var(--pw) * .085); padding: calc(var(--pw) * .035) calc(var(--pw) * .06); letter-spacing: .1em; line-height: 1.3; }
+    .figx .fig-art { aspect-ratio: auto; flex: 1 1 0; min-height: 0; }
+    .figx .fig-cap { flex: none; height: calc(var(--pw) * .44); min-height: 0; padding: calc(var(--pw) * .03) calc(var(--pw) * .04); }
+    .figx .fig-nm { font-size: calc(var(--pw) * .118); -webkit-line-clamp: 2; }
+    .figx .fig-nm-long { font-size: calc(var(--pw) * .098); }
+    .figx .fig-sub { font-size: calc(var(--pw) * .074); margin-top: calc(var(--pw) * .02); display: block; }
+    .figx .fig-flag { width: calc(var(--pw) * .17); height: calc(var(--pw) * .115); right: 5%; top: 5%; }
+    .figx .fig { box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 6px 14px -6px rgba(0,0,0,.4); }
+    .figx .figback      { padding: calc(var(--pw) * .055); border-radius: calc(var(--pw) * .035); }
+    .figx .figback-n    { font-size: calc(var(--pw) * .030); }
+    .figx .figback-nm   { font-size: calc(var(--pw) * .055); margin-top: calc(var(--pw) * .022); }
+    .figx .figback-nick { font-size: calc(var(--pw) * .032); }
+    .figx .figback-rule { margin: calc(var(--pw) * .034) 0; }
+    .figx .figback-l    { font-size: calc(var(--pw) * .036); }
+    .figx .figback-h2   { font-size: calc(var(--pw) * .036); }
+    .zoom-face > .figx { width: 100%; height: 100%; }
+    .newfig .figx .fig-sub { display: none; }
+
+    /* ── the zoom: leaning, verifying ── */
+    .zoom-card { --rx: calc(var(--gy, 0) * -11deg); --ry: calc(var(--gx, 0) * 13deg); }
+    .zoom-in { transform: rotateX(var(--rx)) rotateY(var(--ry)); }
+    .zoom.is-turned .zoom-in { transform: rotateX(var(--rx)) rotateY(calc(180deg - var(--ry))); }
+    .zoom.is-tilting .zoom-in { transition: transform .14s ease-out; }
+    .zoom.has-acts .zoom-hint { bottom: calc(env(safe-area-inset-bottom, 0px) + 84px); }
+    .zoom-acts { position: absolute; left: 50%; transform: translateX(-50%);
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); display: flex; gap: 8px; animation: zoomFade .4s ease-out both; }
+    .zact { display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 13px; border-radius: 20px; border: 0;
+      background: rgba(255,255,255,.14); color: #F3EEDC; font: 700 12px/1 var(--font-s); cursor: pointer; white-space: nowrap;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .zact:active { transform: scale(.96); }
+    .zact.is-on { background: linear-gradient(100deg, #b98c42, #f1d27c, #b98c42); color: #2a1d05; }
+    @media (max-width: 380px) { .zact { padding: 0 10px; font-size: 11px; gap: 4px; } }
+    .zoom.is-closing .zoom-acts, .zoom.is-closing .zoom-ver { opacity: 0; transition: opacity .2s; }
+    .zoom-ver { position: absolute; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 64px);
+      width: min(86vw, 340px); display: flex; flex-direction: column; gap: 3px; text-align: center;
+      color: #F3EEDC; font: 500 11.5px/1.35 var(--font-s); pointer-events: none; }
+    .zoom-ver:empty { display: none; }
+    .zoom-ver b { font: 800 15px/1.2 var(--font-s); display: flex; gap: 6px; align-items: center; justify-content: center; }
+    .zoom.is-verified .zoom-ver b { color: #8ee6a8; }
+    .zoom.is-failed .zoom-ver b { color: #ff8f86; }
+    .zoom-ver .zv-scan { letter-spacing: .12em; text-transform: uppercase; font-weight: 700; font-size: 11px; opacity: .85; }
+    .zoom-scanline { position: absolute; left: -4%; right: -4%; top: 0; height: 2px; pointer-events: none; opacity: 0;
+      background: linear-gradient(90deg, transparent, #7dffb0, transparent); box-shadow: 0 0 8px 2px rgba(125,255,176,.6);
+      transform: translateZ(40px); }
+    .zoom.is-scanning .zoom-scanline { animation: zScan 1.1s ease-in-out both; }
+    @keyframes zScan { 0% { top: 0; opacity: 0; } 12% { opacity: 1; } 50% { top: 100%; } 88% { opacity: 1; } 100% { top: 0; opacity: 0; } }
+    .zoom.is-verified .zoom-card { animation: zOk .6s ease-out; }
+    @keyframes zOk { 40% { filter: drop-shadow(0 0 18px rgba(125,255,176,.7)); } }
+
+    /* ═══════════════════════════════════════════════════════════════
+       O PACOTE
+    ═══════════════════════════════════════════════════════════════ */
+    .pack { position: fixed; inset: 0; z-index: 950; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+    .pack-scrim { position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 42%, #1c3a2a 0%, #0c1712 55%, #050a07 100%);
+      opacity: 0; transition: opacity .35s; }
+    .pack.is-in .pack-scrim { opacity: 1; }
+    .pack.is-closing { opacity: 0; transition: opacity .25s; }
+    .pack-rays { position: absolute; left: 50%; top: 46%; width: 190vmax; height: 190vmax; transform: translate(-50%, -50%);
+      background: repeating-conic-gradient(from 0deg, rgba(241,210,124,.07) 0 6deg, transparent 6deg 18deg);
+      -webkit-mask: radial-gradient(circle, #000 0 12%, transparent 42%); mask: radial-gradient(circle, #000 0 12%, transparent 42%);
+      animation: pkSpin 60s linear infinite; opacity: 0; transition: opacity .6s; pointer-events: none; }
+    .pack.is-in .pack-rays { opacity: 1; }
+    @keyframes pkSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .pack-head { position: relative; text-align: center; color: #F3EEDC; display: flex; flex-direction: column; gap: 3px; }
+    .pack-eyebrow { font: 800 11px/1 var(--font-c); letter-spacing: .22em; text-transform: uppercase; color: #E7C977; }
+    .pack-sub { font: 500 12px/1.3 var(--font-s); opacity: .8; }
+    .pack-stage { position: relative; width: var(--w); height: var(--h); cursor: pointer; }
+    .pack.is-done .pack-stage { width: min(92vw, 440px); height: auto; min-height: var(--h); display: flex; align-items: center; cursor: default; }
+    .pack-cap { position: relative; min-height: 44px; display: flex; flex-direction: column; align-items: center; gap: 5px;
+      text-align: center; color: #F3EEDC; padding: 0 16px; }
+    .pk-tag { font: 800 12px/1 var(--font-c); letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px 5px;
+      border-radius: 4px; animation: pkPop .35s cubic-bezier(.2,1.6,.4,1) both; }
+    .tag-new { background: #2E7D4F; color: #fff; }
+    .tag-rep { background: rgba(255,255,255,.14); color: #F3EEDC; }
+    .tag-up  { background: linear-gradient(100deg, #9fd8ff, #e6a8ff, #ffe28a); color: #1a1030; }
+    .tag-x   { background: linear-gradient(100deg, #b98c42, #fff1c1, #b98c42); color: #2a1d05; }
+    .pk-line { font: 600 12px/1.35 var(--font-s); opacity: .85; }
+    @keyframes pkPop { from { transform: scale(.6); opacity: 0; } }
+    .pack-tray { position: relative; display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; min-height: 66px;
+      max-width: min(92vw, 440px); }
+    .pack.is-done .pack-tray { display: none; }
+    .pk-mini { display: block; animation: pkPop .3s ease-out both; }
+    .pack-foot { position: relative; display: flex; gap: 10px; }
+    .pack-x { z-index: 2; }
+
+    /* the envelope */
+    .pk-env { position: absolute; inset: 0; z-index: 5; filter: drop-shadow(0 22px 30px rgba(0,0,0,.55));
+      animation: pkFloat 3.2s ease-in-out infinite; }
+    @keyframes pkFloat { 50% { transform: translateY(-6px) rotate(-.6deg); } }
+    .pk-half { position: absolute; inset: 0; }
+    .pk-top { z-index: 2; transform-origin: 100% 15%; transform: rotate(calc(var(--tear, 0) * -7deg)) translateY(calc(var(--tear, 0) * -4px));
+      transition: transform .1s; }
+    .pk-art { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; overflow: hidden;
+      border-radius: 5px; color: #F3E6BE; text-align: center;
+      background:
+        radial-gradient(120% 70% at 25% 18%, rgba(255,255,255,.22), transparent 48%),
+        repeating-linear-gradient(135deg, rgba(241,210,124,.09) 0 5px, transparent 5px 13px),
+        linear-gradient(165deg, #237552 0%, #134a33 55%, #0b2e20 100%);
+      --z: 5px;
+      -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2 * var(--z)) 51% repeat-x,
+                    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(2 * var(--z)) 51% repeat-x;
+              mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2 * var(--z)) 51% repeat-x,
+                    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(2 * var(--z)) 51% repeat-x; }
+    .pk-crimp { width: 100%; flex: none; padding: 9px 0 5px; font: 800 7px/1 var(--font-c); letter-spacing: .3em; white-space: nowrap;
+      overflow: hidden; color: rgba(243,230,190,.55);
+      background: repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
+    .pk-crimp-b { margin-top: auto; padding: 5px 0 9px; }
+    .pk-emb { margin-top: 14%; width: 30%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: #2a1d05; background: radial-gradient(circle at 35% 30%, #fff6d0, #e8c565 45%, #a8781d 100%);
+      box-shadow: 0 0 0 3px rgba(0,0,0,.25), 0 0 0 5px #d9b25a, 0 6px 14px rgba(0,0,0,.4); }
+    .pk-kick { margin-top: 9%; font: 700 8.5px/1 var(--font-c); letter-spacing: .26em; text-transform: uppercase; color: #E7C977; }
+    .pk-ttl { font: italic 700 calc(var(--w) * .15)/1 var(--font-d); letter-spacing: -.02em; margin-top: 4px;
+      background: linear-gradient(100deg, #b98c42, #fff1c1 45%, #d9b25a 60%, #9c7021); -webkit-background-clip: text; background-clip: text;
+      color: transparent; filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)); }
+    .pk-ed { font: 600 9px/1.2 var(--font-s); opacity: .75; margin-top: 5px; }
+    .pk-cnt { margin-top: 9%; font: 700 10px/1 var(--font-c); letter-spacing: .14em; text-transform: uppercase;
+      padding: 5px 10px 4px; border-radius: 3px; background: #F3E6BE; color: #134a33; }
+    .pk-cnt b { font-size: 13px; }
+    .pk-fine { margin: 7% 10% 0; font: 500 6px/1.3 var(--font-s); opacity: .55; }
+    .pk-cut { position: absolute; left: 0; right: 0; top: 15%; height: 0; z-index: 3; pointer-events: none;
+      border-top: 1.5px dashed rgba(243,230,190,.7); }
+    .pk-cut-fill { position: absolute; left: 0; top: -1.5px; height: 1.5px; width: calc(var(--tear, 0) * 100%); background: #fff;
+      box-shadow: 0 0 6px 1px rgba(255,255,255,.8); }
+    .pk-cut span { position: absolute; right: 8px; top: -17px; display: flex; gap: 4px; align-items: center;
+      font: 800 8px/1 var(--font-c); letter-spacing: .2em; text-transform: uppercase; color: #F3E6BE;
+      animation: pkNudge 1.6s ease-in-out infinite; }
+    @keyframes pkNudge { 50% { transform: translateX(-5px); } }
+    .pk-sheen { position: absolute; inset: 0; border-radius: 5px; pointer-events: none; overflow: hidden; z-index: 4; }
+    .pk-sheen::before { content: ''; position: absolute; top: -20%; bottom: -20%; width: 40%; left: -50%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent); transform: skewX(-14deg);
+      animation: flSweep 3.8s ease-in-out infinite; }
+    .pack.is-torn .pk-top { transition: transform .6s cubic-bezier(.3,.7,.3,1), opacity .6s;
+      transform: translate(24%, -120%) rotate(-22deg); opacity: 0; }
+    .pack.is-torn .pk-cut, .pack.is-torn .pk-sheen { opacity: 0; transition: opacity .15s; }
+    .pack.is-torn .pk-env { animation: none; }
+    .pack.is-torn .pk-bot { transition: transform .7s cubic-bezier(.5,0,.7,.4) .12s, opacity .5s .3s;
+      transform: translateY(78%) rotate(3deg); opacity: 0; }
+
+    /* the cards inside */
+    .pk-stack { position: absolute; inset: 0; z-index: 4; }
+    .pk-card { position: absolute; inset: 0; perspective: 1100px;
+      transform: translateY(8%) scale(.94); opacity: 0;
+      transition: transform .55s cubic-bezier(.2,.9,.3,1.1), opacity .3s; }
+    .pack.is-torn .pk-card { opacity: 1; transform: translate(calc(var(--k) * 1.6px), calc(var(--k) * -1.6px)) rotate(calc(var(--k) * .7deg));
+      transition-delay: calc(.18s + var(--k) * 20ms); }
+    .pack.is-torn .pk-stack { z-index: 6; }
+    .pk-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+      transform: rotateY(180deg); transition: transform .7s cubic-bezier(.3,.85,.35,1); }
+    .pk-card.is-flipped .pk-in { transform: rotateY(0deg); }
+    .pk-card.is-flipped { transform: none !important; }
+    .pk-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; }
+    .pk-bk { transform: rotateY(180deg); }
+    .pk-card.is-away { transform: translate(-70%, 30%) rotate(-14deg) scale(.4) !important; opacity: 0 !important;
+      transition: transform .42s cubic-bezier(.5,0,.6,1), opacity .42s !important; }
+    /* the held breath: the back glows the colour of the stock underneath */
+    .pk-card.is-charging { animation: pkShake .12s linear infinite; }
+    .pk-card.is-charging .pkb { box-shadow: 0 0 0 2px var(--glow), 0 0 26px 8px var(--glow), 0 0 60px 18px var(--glow2); }
+    .pk-card.tier-1 { --glow: rgba(220,228,236,.85); --glow2: rgba(200,210,220,.35); }
+    .pk-card.tier-2 { --glow: rgba(210,150,255,.9);  --glow2: rgba(120,220,255,.4); }
+    .pk-card.tier-3 { --glow: rgba(255,214,110,.95); --glow2: rgba(255,170,60,.45); }
+    @keyframes pkShake { 0% { transform: translate(0, 0) rotate(0); } 25% { transform: translate(1.5px, -1px) rotate(.6deg); }
+      50% { transform: translate(-1px, 1px) rotate(-.5deg); } 75% { transform: translate(1px, 1px) rotate(.4deg); } }
+    .pk-card.is-flipped.tier-2 .figx, .pk-card.is-flipped.tier-3 .figx { animation: pkLand .8s ease-out; }
+    @keyframes pkLand { 0% { filter: brightness(1.8) drop-shadow(0 0 30px var(--glow)); } 100% { filter: none; } }
+    .pk-card.is-flipped .figx { filter: drop-shadow(0 16px 24px rgba(0,0,0,.5)); }
+    /* the back of a sealed card */
+    .pkb { position: relative; width: 100%; height: 100%; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 6%; color: #E7C977; text-align: center;
+      background: radial-gradient(90% 60% at 50% 45%, #1d6a49, #0f3a28 70%, #0a281c); transition: box-shadow .3s; }
+    .pkb .gl { position: absolute; inset: 0; width: 100%; height: 100%; color: #E7C977; opacity: .28; }
+    .pkb-frame { position: absolute; inset: 5%; border: 1px solid rgba(231,201,119,.55); border-radius: 4px; }
+    .pkb-frame::after { content: ''; position: absolute; inset: 3px; border: .5px solid rgba(231,201,119,.35); border-radius: 3px; }
+    .pkb-ring { position: relative; width: 36%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 35% 30%, #fff6d0, #e8c565 45%, #a8781d 100%); box-shadow: 0 0 0 3px #0f3a28, 0 0 0 4.5px #d9b25a; }
+    .pkb-fq { font: italic 800 calc(var(--w) * .1)/1 var(--font-d); color: #2a1d05; }
+    .pkb-t { position: relative; font: 800 calc(var(--w) * .052)/1 var(--font-c); letter-spacing: .24em; text-transform: uppercase; }
+    .pkb-s { position: relative; font: 600 calc(var(--w) * .04)/1 var(--font-s); opacity: .7; }
+
+    /* the summary */
+    .pk-sum { display: flex; flex-wrap: wrap; gap: 10px 8px; justify-content: center; width: 100%; }
+    .pk-sum-it { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; animation: pkPop .35s ease-out both; }
+    .pk-sum-more { align-self: center; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #F3EEDC;
+      font: 700 20px/1 var(--font-d); padding: 0 6px; }
+    .pk-sum-more small { font: 700 8px/1 var(--font-c); letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+    .pk-sum-tag { font: 800 7.5px/1 var(--font-c); letter-spacing: .12em; text-transform: uppercase; padding: 3px 5px 2px; border-radius: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      .pk-env, .pack-rays, .pk-cut span, .pk-sheen::before { animation: none; }
+      .pk-card, .pk-in, .pack.is-torn .pk-top, .pack.is-torn .pk-bot { transition: none !important; }
+    }
+
+    /* the packet waiting on the end screen */
+    .pack-teaser { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 330px; margin-top: 4px;
+      padding: 10px 14px 10px 10px; border-radius: 12px; border: 0; cursor: pointer; text-align: left;
+      background: linear-gradient(100deg, rgba(185,140,66,.16), rgba(185,140,66,.05)); color: var(--ink);
+      box-shadow: inset 0 0 0 1px rgba(185,140,66,.45); animation: ptBob 2.4s ease-in-out infinite; }
+    @keyframes ptBob { 50% { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(185,140,66,.8), 0 6px 16px -6px rgba(185,140,66,.6); } }
+    .pt-env { position: relative; width: 38px; height: 52px; flex: none; border-radius: 3px; display: flex; align-items: center; justify-content: center;
+      background: repeating-linear-gradient(135deg, rgba(241,210,124,.14) 0 3px, transparent 3px 7px), linear-gradient(165deg, #237552, #0b2e20);
+      box-shadow: 0 3px 8px rgba(0,0,0,.35); overflow: hidden; }
+    .pt-env i { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+      transform: translateX(-100%); animation: ptSheen 2.4s ease-in-out infinite; }
+    @keyframes ptSheen { 60%, 100% { transform: translateX(100%); } }
+    .pt-emb { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2a1d05;
+      background: radial-gradient(circle at 35% 30%, #fff6d0, #e8c565 45%, #a8781d); }
+    .pt-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .pt-txt b { font: 700 15px/1.1 var(--font-d); font-style: italic; }
+    .pt-txt span { font-size: 11.5px; color: var(--ink-3); }
+    @media (prefers-reduced-motion: reduce) { .pack-teaser, .pt-env i { animation: none; } }
+
+    /* the line of news on the cover */
+    .home-news { display: flex; align-items: center; gap: 8px; max-width: 340px; width: 100%; padding: 8px 12px;
+      border: 0; border-radius: 10px; cursor: pointer; text-align: left; font: 500 12px/1.3 var(--font-s); color: var(--ink);
+      background: rgba(185,140,66,.12); box-shadow: inset 0 0 0 1px rgba(185,140,66,.4); }
+    .home-news b { font-weight: 700; }
+    .hn-ic { width: 24px; height: 24px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
+      color: #2a1d05; background: radial-gradient(circle at 35% 30%, #fff6d0, #e8c565 45%, #a8781d); }
+    .home-news.is-gift { animation: ptBob 2.4s ease-in-out infinite; }
+
+    /* the album's way into the vitrine */
+    @media (max-width: 400px) { .alb-head > .small { display: none; } }
+    .alb-vit { display: inline-flex; align-items: center; gap: 4px; align-self: center; border: 0; cursor: pointer;
+      padding: 4px 9px; border-radius: 12px; font: 700 10.5px/1 var(--font-s); color: #2a1d05;
+      background: linear-gradient(100deg, #b98c42, #f1d27c, #b98c42); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       A VITRINE
+    ═══════════════════════════════════════════════════════════════ */
+    .vit-pg { padding-bottom: 28px; }
+    .vit-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .vit-chip { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px 7px; border-radius: 9px;
+      font: 700 9.5px/1 var(--font-c); letter-spacing: .12em; text-transform: uppercase; }
+    .vit-chip b { font: 700 20px/1 var(--font-d); letter-spacing: 0; }
+    .vit-f0 { background: var(--pocket); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--rule); }
+    .vit-f1 { background: linear-gradient(120deg, #8d949a, #eef1f3 45%, #9ea5ab); color: #1b2024; }
+    .vit-f2 { background: linear-gradient(120deg, #ffb3dd, #b6e3ff 35%, #c9ffc4 60%, #ffe9a3); color: #1a1030; }
+    .vit-f3 { background: linear-gradient(120deg, #8a6116, #f6dd8b 40%, #c0902c 70%, #f1d27c); color: #2a1d05; }
+    .vit-meta { font-size: 11.5px; color: var(--ink-3); text-align: center; margin-top: -4px; }
+    .vit-sec { display: flex; flex-direction: column; gap: 9px; }
+    .vit-h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+    .vit-h span { font: italic 700 19px/1.1 var(--font-d); }
+    .vit-h small { font-size: 10.5px; color: var(--ink-3); text-align: right; }
+    .vit-shelf { position: relative; display: grid; grid-template-columns: repeat(3, var(--pw)); justify-content: center; gap: 22px 12px;
+      padding: 16px 14px 20px; border-radius: 12px;
+      background: radial-gradient(120% 90% at 50% 0%, #2c1d14 0%, #1a110b 70%), #1a110b;
+      box-shadow: inset 0 0 0 1px rgba(231,201,119,.25), inset 0 12px 30px rgba(0,0,0,.5); }
+    .vit-shelf::before, .vit-shelf::after { content: ''; position: absolute; left: 8px; right: 8px; height: 6px; border-radius: 2px;
+      background: linear-gradient(180deg, #7a5230, #4a2f19); box-shadow: 0 3px 6px rgba(0,0,0,.5); }
+    .vit-shelf::before { top: calc(16px + var(--pw) * 50 / 29 + 3px); }
+    .vit-shelf::after { bottom: 12px; }
+    .vit-card { padding: 0; border: 0; background: none; cursor: pointer; display: block; position: relative; z-index: 1; }
+    .vit-card:active { transform: scale(.97); }
+    .vit-empty { aspect-ratio: 29 / 50; border-radius: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; color: rgba(231,201,119,.4); border: 1px dashed rgba(231,201,119,.3); position: relative; z-index: 1; }
+    .vit-empty small { font: 700 8px/1 var(--font-c); letter-spacing: .18em; text-transform: uppercase; }
+    .vit-grid { display: grid; grid-template-columns: repeat(4, var(--pw)); justify-content: center; gap: 10px 8px; }
+    .vit-sets { display: flex; flex-direction: column; gap: 7px; }
+    .vit-set { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px; background: var(--pocket);
+      box-shadow: inset 0 0 0 1px var(--rule); }
+    .vit-set.is-done { cursor: pointer; background: linear-gradient(100deg, rgba(185,140,66,.2), rgba(185,140,66,.06));
+      box-shadow: inset 0 0 0 1px rgba(185,140,66,.55); }
+    .vit-set-fl { width: 26px; flex: none; line-height: 0; border-radius: 3px; overflow: hidden; color: var(--ink-3); display: flex; justify-content: center; }
+    .vit-set-fl svg { width: 100%; height: auto; }
+    .vit-set-m { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .vit-set-n { display: flex; justify-content: space-between; gap: 8px; font: 700 13px/1.1 var(--font-s); }
+    .vit-set-n small { font: 700 10px/1.1 var(--font-c); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+    .vit-set-faces { display: flex; gap: 3px; flex-wrap: nowrap; overflow: hidden; }
+    .vit-set-faces i { width: 18px; height: 18px; border-radius: 50%; overflow: hidden; flex: none; background: var(--rule-2); }
+    .vit-set-faces img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+      filter: grayscale(1) brightness(.55) contrast(.8); opacity: .45; }
+    .vit-set-faces i.on img { filter: none; opacity: 1; }
+    .vit-set-bar { height: 3px; border-radius: 2px; background: var(--rule-2); overflow: hidden; }
+    .vit-set-bar i { display: block; height: 100%; background: var(--pitch); border-radius: 2px; }
+    .vit-set.is-done .vit-set-bar i { background: linear-gradient(90deg, #b98c42, #f1d27c); }
+    .vit-set-go { color: #b98c42; }
+    .vit-bday { display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; font-size: 12px; line-height: 1.4;
+      background: rgba(185,140,66,.14); box-shadow: inset 0 0 0 1px rgba(185,140,66,.45); color: var(--ink); }
+    .vit-bday svg { flex: none; margin-top: 2px; color: var(--brass); }
+    .vit-next { display: flex; gap: 6px; flex-wrap: wrap; }
+    .vit-next span { font-size: 11px; color: var(--ink-2); padding: 5px 8px; border-radius: 6px; background: var(--pocket);
+      box-shadow: inset 0 0 0 1px var(--rule); }
+    .vit-next b { color: var(--brass); font-weight: 700; margin-right: 3px; }
+    .vit-none { font-size: 12px; color: var(--ink-3); text-align: center; padding: 14px; border-radius: 10px; border: 1px dashed var(--rule); }
+    .vit-odds p { font-size: 11px; line-height: 1.5; color: var(--ink-3); margin: 0; }
+    .vit-odds-g { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .vit-odds-g span { display: flex; flex-direction: column; gap: 2px; padding: 7px 9px; border-radius: 8px; font-size: 10.5px; }
+    .vit-odds-g b { font: 700 12px/1.1 var(--font-s); }
   </style>
 </head>
 <body>
@@ -6748,6 +7233,7 @@ const _ico = (d, extra) => (c, s) =>
 
 const ICON = {
   check:  _ico('M4 12.5 9.5 18 20 6'),
+  share:  _ico('M5 12.5V19h14v-6.5M12 3.5v11M7.5 8 12 3.5 16.5 8'),
   cross:  _ico('M6 6l12 12M18 6L6 18'),
   close:  _ico('M6 6l12 12M18 6L6 18'),
   back:   _ico('M15 5l-7 7 7 7'),
@@ -9298,7 +9784,7 @@ function startDaily() {
   cat.qs = cat.qs.slice(0, 10);
   cat.name = 'Desafio Diário';
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; runPulls = []; runPackOpened = false; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = dealDisp(0);
@@ -9523,8 +10009,10 @@ function figurinhaBack(p, num) {
   /* a real sticker back carries the club's crest printed faint behind the
      text — the ink the printer had left over */
   const wm = p.clubs && p.clubs[0] && LOGOS[p.clubs[0]];
+  const c = copyOf(p.id);
   return `
-    <span class="figback">
+    <span class="figback${c ? ' has-cert fin-' + c.f : ''}">
+      ${backPaper(p.id, c)}
       ${wm ? `<img class="figback-wm" src="${wm}" alt="" aria-hidden="true" />` : ''}
       <span class="figback-h">
         <span class="figback-n">Nº ${String(num).padStart(3, '0')}</span>
@@ -9537,6 +10025,7 @@ function figurinhaBack(p, num) {
       ${yrs ? `<span class="figback-l">${yrs}</span>` : ''}
       ${f.clubs ? `<span class="figback-l figback-clubs">${f.clubs}</span>` : ''}
       ${f.honours.length ? `<span class="figback-h2">${f.honours.join(' · ')}</span>` : ''}
+      ${certBack(p.id, c)}
     </span>`;
 }
 
@@ -10124,11 +10613,13 @@ function figExtra(sid, size, opts) {
       br && br.c1, br && br.c2, m.v)}</span>`;
   }
 
-  return `<span class="fig fig-retro fig-extra fig-x-${st.kind} fig-${size}">
+  const c = opts.copy || null;
+  return `<span class="fig fig-retro fig-extra fig-x-${st.kind} fig-${size}${copyCls(sid, c)}">
     <span class="fig-band">${band}</span>
-    <span class="fig-art"${tint}>${art}</span>
+    <span class="fig-art"${tint}>${art}${artLayers(c, '')}</span>
     <span class="fig-cap"><span class="${nmCls}">${st.n}</span>
     <span class="fig-sub">${st.sub}</span></span>
+    ${foilLayers(sid, c)}
   </span>`;
 }
 
@@ -10308,7 +10799,8 @@ function medalBack(m, on) {
    where it came from. The card is scaled rather than re-laid-out, so it is
    the same card, just closer. */
 let _zoom = null;
-function openZoom(src, front, back, lookFrom) {
+function openZoom(src, front, back, lookFrom, opts) {
+  opts = opts || {};
   if (_zoom || !src) return;
   const r = src.getBoundingClientRect();
   if (!r.width || !r.height) return;
@@ -10326,11 +10818,32 @@ function openZoom(src, front, back, lookFrom) {
         <div class="zoom-face zoom-front">${front}</div>
         <div class="zoom-face zoom-back">${back}</div>
       </div>
+      <span class="zoom-scanline" aria-hidden="true"></span>
     </div>
     <button class="zoom-x" type="button" aria-label="Fechar">${ICON.close ? ICON.close('currentColor', 16) : '×'}</button>
-    <div class="zoom-hint">Toque na figurinha para virar</div>`;
+    <div class="zoom-hint">Toque na figurinha para virar${opts.sid && anyCopy(opts.sid) && anyCopy(opts.sid).f > 0 ? ' · incline para ver o brilho' : ''}</div>
+    ${opts.sid ? zoomActs(opts.sid) : ''}`;
   document.body.appendChild(z);
   const card = z.querySelector('.zoom-card');
+  if (opts.sid) { z.classList.add('has-acts'); wireZoomActs(z, opts.sid); }
+  Tilt.ask();
+  /* ── the light follows the finger ──
+     Over a zoomed card the pointer is the lamp: the card leans towards it and
+     the foil slides with it. Let go and it settles back to the phone's tilt. */
+  let tiltT = 0;
+  z.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch' && !e.isPrimary) return;
+    const rc = card.getBoundingClientRect();
+    const w = rc.width / 2 || 1, h = rc.height / 2 || 1;
+    const gx = Math.max(-1, Math.min(1, (e.clientX - (rc.left + rc.width / 2)) / Math.max(w, 120)));
+    const gy = Math.max(-1, Math.min(1, (e.clientY - (rc.top + rc.height / 2)) / Math.max(h, 160)));
+    card.style.setProperty('--gx', gx.toFixed(3));
+    card.style.setProperty('--gy', gy.toFixed(3));
+    z.classList.add('is-tilting');
+    clearTimeout(tiltT);
+    tiltT = setTimeout(() => z.classList.remove('is-tilting'), 160);
+  });
+  z.addEventListener('pointerleave', () => { card.style.removeProperty('--gx'); card.style.removeProperty('--gy'); });
   /* the album shrinks its lettering on small pockets with container queries;
      the copy is outside that container, so it takes the sizes it had */
   if (lookFrom) {
@@ -10358,7 +10871,7 @@ function openZoom(src, front, back, lookFrom) {
   if (!still && card.animate) card.animate([{ transform: at(r) }, { transform: big }],
     { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
   src.style.visibility = 'hidden';
-  const turnOver = () => { z.classList.toggle('is-turned'); snd.swipe(); };
+  const turnOver = () => { z.classList.remove('is-tilting'); z.classList.toggle('is-turned'); snd.swipe(); };
   const onKey = e => {
     if (e.key === 'Escape') { e.preventDefault(); close(); }
     else if ((e.key === 'Enter' || e.key === ' ') && document.activeElement === card) { e.preventDefault(); turnOver(); }
@@ -10367,7 +10880,8 @@ function openZoom(src, front, back, lookFrom) {
     if (!_zoom) return;
     _zoom = null;
     document.removeEventListener('keydown', onKey);
-    const done = () => { z.remove(); src.style.visibility = ''; };
+    const done = () => { z.remove(); src.style.visibility = '';
+      if (z.dataset.dirty && sc === 'vitrine') go(); };
     z.classList.add('is-closing');
     z.classList.remove('is-turned');
     const home = src.isConnected ? src.getBoundingClientRect() : r;
@@ -10431,7 +10945,7 @@ function startSurvival() {
   const extra = buildGame('dificil');
   cat.qs = cat.qs.concat(extra.qs);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; runPulls = []; runPackOpened = false; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -10596,7 +11110,7 @@ function startMilhao() {
   cat = buildMilhao();
   rung = 0; banked = 0; cashed = false;
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; runPulls = []; runPackOpened = false; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = getDisp(cat.qs[0]);
@@ -12303,17 +12817,24 @@ function figurinha(p, size, opts) {
              : `${POS_NAME[p.pos]} · ${p.era ? p.era[0] + '–' + p.era[1] : ''}`;
   const alt  = opts.decorative ? 'alt="" aria-hidden="true"' : `alt="${p.n}"`;
   const nmCls = 'fig-nm' + (p.n.length > 13 ? ' fig-nm-long' : '');
+  /* the printed copy, when this card is one: its stock, its variant, its
+     serial — see A TIRAGEM */
+  const c = opts.copy || null, sid = opts.sid || p.id;
+  const cc = copyCls(sid, c);
   const shot = `<div class="fig-shot"><img src="${p.img}" ${alt}
-      onerror="imgRetry(this)" /></div>`;
+      onerror="imgRetry(this)" />${c && c.v === 'erro'
+        ? `<span class="fig-misreg" aria-hidden="true" style="background-image:url('${p.img}')"></span>` : ''}</div>`;
+  const band = opts.band || bandTxt;
 
   if (era === 'retro') {
     /* the header band carries the country and the decade, the way the old
        albums carried the tournament — unless this board must not say so */
-    return `<span class="fig fig-retro fig-${size}">
-      <span class="fig-band${bandTxt ? '' : ' fig-band-mute'}">${bandTxt || ''}</span>
-      <span class="fig-art">${shot}</span>
+    return `<span class="fig fig-retro fig-${size}${cc}">
+      <span class="fig-band${band ? '' : ' fig-band-mute'}">${band || ''}</span>
+      <span class="fig-art">${shot}${artLayers(c, p.n)}</span>
       <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
       ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
+      ${foilLayers(sid, c)}
     </span>`;
   }
 
@@ -12325,17 +12846,19 @@ function figurinha(p, size, opts) {
   /* Country alone normally — "BRASIL 2001" ran out of band whatever the font.
      When the country is being hidden the decade takes its place, so a modern
      card does not sit blank-headed in a row of cards showing one. */
-  const mBand = opts.hideCtry
+  const mBand = opts.band || (opts.hideCtry
     ? (opts.hideEra || !yr ? '' : bandDec(yr))
-    : bandCtry(p.ctry);
-  return `<span class="fig fig-modern fig-${size}">
+    : bandCtry(p.ctry));
+  return `<span class="fig fig-modern fig-${size}${cc}">
     <span class="fig-band${mBand ? '' : ' fig-band-mute'}">${mBand}</span>
     <span class="fig-art"${opts.hideCtry ? '' : ` style="--c1:${c1};--c2:${c2};"`}>
       ${shot}
       ${(opts.noFlag || opts.hideCtry) ? '' : `<span class="fig-flag">${flagSVG(p.ctry, size === 'hero' ? 15 : size === 'lg' ? 9.5 : 7)}</span>`}
+      ${artLayers(c, p.n)}
     </span>
     <span class="fig-cap"><span class="${nmCls}">${p.n}</span>
     ${sub ? `<span class="fig-sub">${sub}</span>` : ''}</span>
+    ${foilLayers(sid, c)}
   </span>`;
 }
 
@@ -12401,14 +12924,17 @@ function figExtraBack(sid, num) {
       if (tit.length) lines.push(tit.join(' · '));
     }
   }
+  const c = copyOf(sid);
   return `
-    <span class="figback">
+    <span class="figback${c ? ' has-cert fin-' + c.f : ''}">
+      ${backPaper(sid, c)}
       <span class="figback-h">
         <span class="figback-n">Nº ${String(num).padStart(3, '0')}</span>
       </span>
       <span class="figback-nm">${st.n}</span>
       <span class="figback-rule"></span>
       ${lines.filter(Boolean).map(l => `<span class="figback-l">${l}</span>`).join('')}
+      ${certBack(sid, c)}
     </span>`;
 }
 
@@ -12484,6 +13010,1183 @@ function heroSticker() {
   return { p, num: PL.indexOf(p) + 1 };
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   A TIRAGEM — every figurinha in the album is one printed copy
+
+   A real sticker is not "Pelé", it is *this* Pelé: pulled from a packet on
+   a given day, printed on a given stock, a little off-centre or perfect,
+   numbered if it came from a short run. That is what makes two collectors'
+   albums different and one card worth more than another, and until now the
+   album only knew the name.
+
+   So each sticker you hold is a copy, rolled the moment you earn it:
+     · the stock — comum, prata, holográfica or ouro — out of 80 / 14 / 5 / 1
+       in a hundred, with better odds for harder play
+     · a variant, rarely — autografada, or a misprint off the press
+     · a condition grade, 7 to 10, the way graded cards are sold
+     · a serial out of the stock's print run, and the season it was pulled in
+     · a check code, printed on the back, sealed over all of the above
+
+   A right answer on a player you already hold is a repetida: it still comes
+   out of the packet, and if it is the better copy it takes the pocket.
+
+   Honest about the seal: the album lives on this phone, so the code keeps
+   out anybody editing the saved album by hand — it cannot stop someone
+   determined, and serials are numbered per album, not across every player.
+   That needs a server; this is the part that does not.
+═══════════════════════════════════════════════════════════════ */
+const FIN_NAME = ['Comum', 'Prata', 'Holográfica', 'Ouro'];
+const FIN_TIER = ['Comum', 'Rara', 'Épica', 'Lendária'];
+const FIN_RUN  = [0, 500, 150, 50];
+const VAR_NAME = { assin: 'Autografada', erro: 'Erro de impressão', aniv: 'Edição do dia', time: 'Foto oficial' };
+const VAR_RUN  = { assin: 25, erro: 10, aniv: 100, time: 100 };
+/* Everything pulled before the new year is the first edition. */
+const FIRST_ED_UNTIL = Date.UTC(2027, 0, 1);
+/* Condition, in tenths, and how often each comes out of the packet. */
+const GRADES = [[100, 4], [95, 12], [90, 25], [85, 22], [80, 17], [75, 10], [70, 10]];
+const gradeTxt  = g => (g / 10).toFixed(g % 10 ? 1 : 0).replace('.', ',');
+const gradeWord = g => g >= 100 ? 'Gema' : g >= 95 ? 'Impecável' : g >= 90 ? 'Quase perfeita'
+                     : g >= 85 ? 'Excelente' : g >= 80 ? 'Muito boa' : 'Boa';
+
+/* cyrb53: a fast 53-bit string hash — the seal and the serials. */
+function h53(str, seed) {
+  let h1 = 0xdeadbeef ^ (seed || 0), h2 = 0x41c6ce57 ^ (seed || 0);
+  for (let i = 0, ch; i < str.length; i++) {
+    ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1  = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+  h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2  = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+  h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+}
+/* Crockford-ish: no 0/O, no 1/I — a code read off a card is copied by hand. */
+const B32 = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+function b32(n, len) {
+  let s = '';
+  for (let i = 0; i < len; i++) { s += B32[n % 32]; n = Math.floor(n / 32); }
+  return s;
+}
+const SEAL = 'fqbr·tiragem·tri·70';
+
+let _vault = null;
+function saveVault() { if (_vault) LS.set('vault', _vault); }
+
+function sigOf(sid, c, v) {
+  const s = [sid, c.f, c.v || '', c.sn || 0, c.pr || 0, c.g, c.ed, c.t, c.p1 || 0, c.o || 0,
+             c.d || '', (v || _vault || {}).seed || ''].join('|');
+  return b32(h53(s + SEAL, 0x5f3a), 8);
+}
+const copyCode = c => c && c.k ? `FQ-${c.k.slice(0, 4)}-${c.k.slice(4, 8)}` : '';
+const isAuthentic = (sid, c) => !!c && c.k === sigOf(sid, c);
+const copyRank = c => !c ? -1 : c.f * 1000 + (c.v ? 400 : 0) + c.g;
+const serialTxt = c => c && c.pr ? `${String(c.sn).padStart(String(c.pr).length, '0')}/${c.pr}` : '';
+
+function rollCopy(sid, ctx) {
+  ctx = ctx || {};
+  const v = ctx.v || V();
+  v.n = (v.n || 0) + 1;
+  const isPl = !sid.includes(':');
+  const boost = ctx.boost || 1;
+  const r = Math.random();
+  const po = .012 * boost, ph = .05 * boost, pp = .14 * boost;
+  let f = r < po ? 3 : r < po + ph ? 2 : r < po + ph + pp ? 1 : 0;
+  if (ctx.minF) f = Math.max(f, ctx.minF);
+  let vr = ctx.forceVar || '';
+  if (!vr) {
+    const r2 = Math.random();
+    if (isPl && r2 < .025 * boost) vr = 'assin';
+    else if (r2 > 1 - .008 * boost) vr = 'erro';
+  }
+  let g = 70, u = Math.random() * 100;
+  for (const [gv, w] of GRADES) { if ((u -= w) < 0) { g = gv; break; } }
+  const t = Date.now();
+  const c = { f, g, t, ed: new Date(t).getFullYear() };
+  const pr = vr ? VAR_RUN[vr] : FIN_RUN[f];
+  if (vr) c.v = vr;
+  if (pr) { c.pr = pr; c.sn = 1 + (h53(v.seed + '|' + sid + '|' + v.n) % pr); }
+  if (t < FIRST_ED_UNTIL) c.p1 = 1;
+  if (ctx.legacy) c.o = 1;
+  if (ctx.day) c.d = ctx.day;
+  c.k = sigOf(sid, c, v);
+  return c;
+}
+
+/* The vault opens lazily — it needs the whole album defined first. The first
+   time, every sticker already collected is certified: the collection from
+   before tiragens existed is the Série Fundadora, and its best copies come
+   back to the player in a welcome packet. */
+function V() {
+  if (_vault) return _vault;
+  let v = LS.get('vault', null);
+  if (!v || v.v !== 1 || !v.c) {
+    const seed = (() => { try { const a = new Uint32Array(2); crypto.getRandomValues(a);
+      return a[0].toString(16) + a[1].toString(16); } catch (e) { return String(Math.random()).slice(2); } })();
+    v = { v: 1, seed, n: 0, c: {}, lim: {}, sets: {}, fav: [] };
+  }
+  _vault = v;
+  const first = !v.mig;
+  const legacy = [...album].filter(id => ALL_SET.has(id) && !v.c[id]);
+  if (legacy.length) {
+    const pulled = legacy.map(id => { const c = rollCopy(id, { v, legacy: first }); c.n = 1; v.c[id] = c; return id; });
+    if (first) v.welcome = pulled.filter(id => v.c[id].f > 0 || v.c[id].v)
+      .sort((a, b) => copyRank(v.c[b]) - copyRank(v.c[a])).slice(0, 14);
+  }
+  if (first) {
+    const sets = checkSets(null, true);
+    if (sets.length) v.welcome = (v.welcome || []).concat(sets);
+    if (v.welcome && !v.welcome.length) delete v.welcome;
+  }
+  v.mig = 1;
+  saveVault();
+  return v;
+}
+function copyOf(sid) { try { return V().c[sid] || null; } catch (e) { return null; } }
+
+/* What a run pulled out of the packet, in the order it came out. */
+let runPulls = [];
+let runPackOpened = false;
+
+/* A right answer rolls a copy of every sticker it earns. `fresh` are the ones
+   collect() just stuck in for the first time. */
+function pullCopies(ids, fresh, boost) {
+  if (!ids.length) return [];
+  const v = V(), out = [];
+  const isFresh = new Set(fresh);
+  ids.forEach(sid => {
+    if (!ALL_SET.has(sid)) return;
+    const c = rollCopy(sid, { v, boost });
+    const prev = v.c[sid];
+    const e = { sid, c, kind: 'fig', isNew: isFresh.has(sid) || !prev };
+    if (e.isNew) { c.n = 1; v.c[sid] = c; }
+    else {
+      const n = (prev.n || 1) + 1;
+      e.n = n; e.prev = prev;
+      if (copyRank(c) > copyRank(prev)) { c.n = n; v.c[sid] = c; e.up = true; }
+      else prev.n = n;
+    }
+    out.push(e);
+  });
+  out.push(...checkSets(null));
+  saveVault();
+  return out;
+}
+
+/* How lucky this answer is. Harder play earns better paper. */
+function pullBoost() {
+  const d = { moderado: .1, dificil: .25 }[diffKey] || 0;
+  return Math.min(1.6, 1 + d + Math.min(streak, 10) * .025 + (isMil ? Math.min(.45, rung * .03) : 0) + (isSurv ? .15 : 0));
+}
+
+/* ── Coleções: whole teams, and the photograph you get for them ──
+   A World Cup winning side is a set once the album holds four of its men,
+   and so are the Ballon d'Or winners. Complete one and the team photograph
+   is printed for you — gold, numbered out of a hundred. */
+let _sets = null;
+function figSets() {
+  if (_sets) return _sets;
+  const g = {};
+  PL.forEach(p => (p.wc || []).forEach(y => { (g[p.ctry + y] = g[p.ctry + y] || { ctry: p.ctry, y, ids: [] }).ids.push(p.id); }));
+  const wc = Object.values(g).filter(s => s.ids.length >= 4)
+    .sort((a, b) => (a.ctry === 'BRA' ? 0 : 1) - (b.ctry === 'BRA' ? 0 : 1) || a.y - b.y)
+    .map(s => ({ id: 'wc' + s.ctry + s.y, ctry: s.ctry, y: s.y, ids: s.ids,
+                 n: `${CTRY_NAME[s.ctry] || s.ctry} ${s.y}`, t: 'Campeões do mundo' }));
+  const bo = PL.filter(p => p.bo > 0).map(p => p.id);
+  _sets = wc.concat(bo.length ? [{ id: 'bola', ids: bo, n: 'Bolas de Ouro', t: 'Os melhores do mundo' }] : []);
+  return _sets;
+}
+function checkSets(out, silent) {
+  const v = _vault || V(), got = [];
+  figSets().forEach(s => {
+    if (v.sets[s.id] || !s.ids.every(id => album.has(id))) return;
+    const sid = 't:' + s.id;
+    const c = rollCopy(sid, { v, minF: 3, forceVar: 'time' });
+    c.n = 1; v.sets[s.id] = c;
+    got.push(silent ? sid : { sid, c, kind: 'set', isNew: true, set: s });
+  });
+  return got;
+}
+const setById = id => figSets().find(s => s.id === id);
+
+/* ── Edições do dia ──
+   On a great player's birthday, any run with three right answers prints his
+   card for that day, dated, and never again. Only players whose birthday is
+   beyond doubt are on this list. */
+const BDAYS = {
+  pele:[10,23], garrincha:[10,28], maradona:[10,30], zico:[3,3], romario:[1,29], ronaldo:[9,18],
+  ronaldinho:[3,21], rivaldo:[4,19], kaka:[4,22], neymar:[2,5], cr7:[2,5], messi:[6,24],
+  cruyff:[4,25], beckenbauer:[9,11], zidane:[6,23], socrates:[2,19], cafu:[6,7], roberto_carlos:[4,10],
+  eusebio:[1,25], distefano:[7,4], puskas:[4,1], platini:[6,21], van_basten:[10,31], maldini:[6,26],
+  henry:[8,17], iniesta:[5,11], xavi:[1,25], buffon:[1,28], yashin:[10,22], bebeto:[2,16],
+  carlos_alberto:[7,17], jairzinho:[12,25], tostao:[1,25], rivellino:[1,1], didi:[10,8], falcao:[10,16],
+  taffarel:[5,8], mbappe:[12,20], haaland:[7,21], vinicius:[7,12], modric:[9,9], gerd_muller:[11,3],
+  charlton:[10,11], best:[5,22], adriano:[2,17], zagallo:[8,9], gerson:[1,11], nilton_santos:[5,16],
+  djalma_santos:[2,27], vava:[11,12], leonidas:[9,6], careca:[10,5], dunga:[10,31], junior:[6,29],
+};
+const MES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+function todaysBdays(d) {
+  d = d || new Date();
+  return Object.keys(BDAYS).filter(id => BDAYS[id][0] === d.getMonth() + 1 && BDAYS[id][1] === d.getDate()
+    && PL.some(p => p.id === id));
+}
+function nextBdays(n) {
+  const now = new Date(), out = [];
+  for (let i = 1; i < 370 && out.length < n; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    todaysBdays(d).forEach(id => out.length < n && out.push({ id, d }));
+  }
+  return out;
+}
+/* Called when a run ends. */
+function awardBdays() {
+  if (nCorrect < 3) return [];
+  const v = V(), d = new Date(), out = [];
+  todaysBdays(d).forEach(id => {
+    const key = `${id}:${d.getFullYear()}`;
+    if (v.lim[key]) return;
+    const sid = 'b:' + key;
+    const c = rollCopy(sid, { v, minF: 2, forceVar: 'aniv', day: ymd(d) });
+    c.n = 1; v.lim[key] = c;
+    out.push({ sid, c, kind: 'lim', isNew: true, pid: id });
+  });
+  if (out.length) saveVault();
+  return out;
+}
+const bdayPlayer = sid => PL.find(p => p.id === sid.slice(2).split(':')[0]);
+const dayTxt = s => { const [y, m, d] = s.split('-'); return `${+d} ${MES[+m - 1]} ${y}`; };
+
+/* The copy behind any sticker id, whatever sheet it lives on. */
+function anyCopy(sid) {
+  const v = V();
+  if (sid.startsWith('t:')) return v.sets[sid.slice(2)] || null;
+  if (sid.startsWith('b:')) return v.lim[sid.slice(2)] || null;
+  return v.c[sid] || null;
+}
+
+/* ── Printing a copy ──
+   The finish is a class on the card and a few layers over it; everything that
+   moves reads --gx and --gy, the phone's tilt (or the finger over a zoomed
+   card), from -1 to 1. */
+function copyCls(sid, c) {
+  if (!c) return '';
+  return ` fin-${c.f}${c.v ? ' var-' + c.v : ''}${isAuthentic(sid, c) ? '' : ' is-forged'}`;
+}
+/* over the whole card */
+function foilLayers(sid, c) {
+  if (!c) return '';
+  const d = -((h53(sid) % 70) / 10);   // every card catches the light at its own moment
+  let s = '';
+  if (c.f > 0) s += `<span class="fl-frame" aria-hidden="true"></span><span class="fl-foil" aria-hidden="true"></span>`
+                  + `<span class="fl-glare" aria-hidden="true" style="--d:${d}s"></span>`;
+  if (c.f === 3) s += '<span class="fl-glitter" aria-hidden="true"></span>';
+  if (c.v === 'aniv') s += '<span class="fl-confetti" aria-hidden="true"></span>';
+  if (!isAuthentic(sid, c)) s += '<span class="fl-forged" aria-hidden="true">Falsificada</span>';
+  return s;
+}
+/* over the picture: the serial, and the ink a signed card carries */
+function artLayers(c, nm) {
+  if (!c) return '';
+  let s = '';
+  if (c.pr) s += `<span class="fig-sn" aria-hidden="true">${serialTxt(c)}</span>`;
+  if (c.v === 'assin' && nm) {
+    /* a long name is signed smaller, the way it is on a real card */
+    const sg = sigName(nm), k = Math.min(1, 7.5 / sg.length);
+    s += `<span class="fig-sig" aria-hidden="true" style="font-size:calc(var(--pw, 80px) * ${(.27 * k).toFixed(3)})">${sg}</span>`;
+  }
+  return s;
+}
+/* A signature is a first name or a nickname, never the whole of it. */
+function sigName(n) {
+  const w = n.replace(/\./g, '').split(/\s+/);
+  return n.length <= 11 ? n : (w[0].length >= 4 ? w[0] : w.slice(0, 2).join(' '));
+}
+function copyAria(c) {
+  if (!c) return '';
+  return ` · ${FIN_NAME[c.f]}${c.v ? ', ' + VAR_NAME[c.v] : ''}${c.pr ? ', número ' + serialTxt(c) : ''}`;
+}
+
+/* ── The back: guilloché, microtext, the seal ──
+   What money uses against copying, printed small: a rosette drawn from the
+   copy's own code, so no two backs share it; a line of lettering too small
+   to read without the zoom; and a round holographic seal with the serial. */
+const _glCache = new Map();
+function guilloche(key, cy) {
+  cy = cy || 112;
+  if (_glCache.has(key + cy)) return _glCache.get(key + cy);
+  const h = h53(key);
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  /* a rosette closes after r turns when R and r share nothing, so r is
+     nudged until they do: every rosette has at least five petals' worth */
+  const R = 17 + (h % 9), d = 6 + ((h >>> 9) % 10);
+  let r = 5 + ((h >>> 5) % 6);
+  while (gcd(R, r) > 1) r++;
+  const turns = r;
+  const k = 36 / (R - r + d);
+  const oy = cy;
+  const curve = (dd, rot) => {
+    const N = Math.min(900, 120 * turns);
+    let p = '';
+    for (let i = 0; i <= N; i++) {
+      const t = i / N * Math.PI * 2 * turns;
+      const x = (R - r) * Math.cos(t) + dd * Math.cos((R - r) / r * t);
+      const y = (R - r) * Math.sin(t) - dd * Math.sin((R - r) / r * t);
+      const cx = x * Math.cos(rot) - y * Math.sin(rot), cy = x * Math.sin(rot) + y * Math.cos(rot);
+      p += (i ? 'L' : 'M') + (50 + cx * k).toFixed(1) + ' ' + (oy + cy * k).toFixed(1);
+    }
+    return p;
+  };
+  const ph = (h >>> 13) % 628 / 100;
+  let waves = '';
+  for (let j = 0; j < 7; j++) {
+    let p = '';
+    for (let x = 0; x <= 100; x += 2.5) {
+      const y = 14 + j * 5.2 + Math.sin(x / 7 + ph + j * .55) * 1.8 + Math.sin(x / 3.1 + j) * .5;
+      p += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1);
+    }
+    waves += `<path d="${p}"/>`;
+  }
+  const svg = `<svg class="gl" viewBox="0 0 100 172" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width=".32">${waves}
+      <path d="${curve(d, 0)}"/><path d="${curve(d * .72, ph)}" stroke-width=".22"/></g></svg>`;
+  _glCache.set(key + cy, svg);
+  return svg;
+}
+/* Lettering too small to print on a photocopier: round the edge of the back. */
+function microText(sid, c) {
+  const who = (stk(sid) || {}).n || (sid.startsWith('t:') ? (setById(sid.slice(2)) || {}).n : '')
+            || (bdayPlayer(sid) || {}).n || '';
+  const unit = `FUTEBOL QUIZ BR · ${copyCode(c)} · ${(who || '').toUpperCase()} · ${
+    c.pr ? 'Nº ' + serialTxt(c) : FIN_NAME[c.f].toUpperCase()} · `;
+  const id = 'mt' + (h53(sid + c.k) % 1e9);
+  return `<svg class="mt" viewBox="0 0 100 172" aria-hidden="true" preserveAspectRatio="none">
+    <defs><path id="${id}" d="M4 2.6H96A1.4 1.4 0 0 1 97.4 4V168A1.4 1.4 0 0 1 96 169.4H4A1.4 1.4 0 0 1 2.6 168V4A1.4 1.4 0 0 1 4 2.6"/></defs>
+    <text><textPath href="#${id}">${unit.repeat(8)}</textPath></text></svg>`;
+}
+function sealSVG(c) {
+  let rays = '';
+  for (let i = 0; i < 36; i++) {
+    const a = i / 36 * Math.PI * 2;
+    rays += `M${(20 + Math.cos(a) * 9).toFixed(2)} ${(20 + Math.sin(a) * 9).toFixed(2)}L${(20 + Math.cos(a) * 18).toFixed(2)} ${(20 + Math.sin(a) * 18).toFixed(2)}`;
+  }
+  return `<svg viewBox="0 0 40 40" aria-hidden="true">
+    <path d="${rays}" stroke="currentColor" stroke-width=".35" opacity=".5"/>
+    <circle cx="20" cy="20" r="18.4" fill="none" stroke="currentColor" stroke-width=".5"/>
+    <circle cx="20" cy="20" r="8.6" fill="none" stroke="currentColor" stroke-width=".5"/>
+    <text x="20" y="19.6" text-anchor="middle" class="seal-fq">FQ</text>
+    <text x="20" y="24.4" text-anchor="middle" class="seal-n">${c.pr ? serialTxt(c) : c.ed}</text></svg>`;
+}
+/* The certificate block at the foot of a back, and the paper behind it. */
+function certBack(sid, c) {
+  if (!c) return '';
+  const ok = isAuthentic(sid, c);
+  const series = c.o ? 'Série fundadora' : c.p1 ? '1ª edição' : 'Temporada';
+  return `
+    <span class="cert${ok ? '' : ' cert-bad'}">
+      <span class="cert-l">
+        <span class="cert-t">${FIN_NAME[c.f]}${c.v ? ' · ' + VAR_NAME[c.v] : ''}</span>
+        <span class="cert-s">${c.pr ? `Nº ${serialTxt(c)} · ` : ''}Estado ${gradeTxt(c.g)}</span>
+        <span class="cert-s">${series} ${c.ed}${c.v === 'erro' ? ' · registro deslocado' : ''}</span>
+        <span class="cert-k">${copyCode(c)}</span>
+      </span>
+      <span class="cert-seal">${sealSVG(c)}</span>
+    </span>`;
+}
+const backPaper = (sid, c) => c ? guilloche(c.k + sid) + microText(sid, c) : '';
+
+/* ── Motion: the phone's tilt moves the foil ──
+   Android hands the tilt over freely; iOS asks once, and only from a tap,
+   so the first tap on a card or a packet asks. The light is shared by the
+   whole screen: tilt the phone over an album page and every foil on it
+   catches it together. */
+const Tilt = {
+  on: false, asked: false, gx: 0, gy: 0, raf: 0,
+  still: (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })(),
+  start() {
+    if (this.on || this.still || typeof window.DeviceOrientationEvent === 'undefined') return;
+    this.on = true;
+    window.addEventListener('deviceorientation', e => {
+      if (e.gamma == null) return;
+      this.gx = Math.max(-1, Math.min(1, e.gamma / 30));
+      this.gy = Math.max(-1, Math.min(1, ((e.beta || 45) - 45) / 30));
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = 0;
+        const s = document.documentElement.style;
+        s.setProperty('--gx', this.gx.toFixed(3));
+        s.setProperty('--gy', this.gy.toFixed(3));
+      });
+    });
+  },
+  ask() {
+    if (this.asked) return;
+    this.asked = true;
+    try {
+      const D = window.DeviceOrientationEvent;
+      if (D && typeof D.requestPermission === 'function') {
+        D.requestPermission().then(r => { if (r === 'granted') this.start(); }).catch(() => {});
+      } else this.start();
+    } catch (e) {}
+  },
+};
+try {
+  const D = window.DeviceOrientationEvent;
+  if (D && typeof D.requestPermission !== 'function') Tilt.start();
+} catch (e) {}
+
+/* The glitter of a gold card and the star lattice of a holo, drawn once. */
+(function foilTextures() {
+  try {
+    let seed = 7;
+    const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    let dots = '';
+    for (let i = 0; i < 70; i++) {
+      const x = (r() * 100).toFixed(1), y = (r() * 100).toFixed(1), s = (.35 + r() * .9).toFixed(2), o = (.35 + r() * .65).toFixed(2);
+      dots += r() < .22
+        ? `<path d="M${x} ${+y - s * 2.2}L${+x + s * .5} ${y}L${x} ${+y + s * 2.2}L${+x - s * .5} ${y}ZM${+x - s * 2.2} ${y}L${x} ${+y - s * .5}L${+x + s * 2.2} ${y}L${x} ${+y + s * .5}Z" fill="#fff" opacity="${o}"/>`
+        : `<circle cx="${x}" cy="${y}" r="${s * .45}" fill="#fff" opacity="${o}"/>`;
+    }
+    const star = (cx, cy, R) => {
+      let p = '';
+      for (let i = 0; i < 10; i++) {
+        const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? R * .45 : R;
+        p += (i ? 'L' : 'M') + (cx + Math.cos(a) * rr).toFixed(2) + ' ' + (cy + Math.sin(a) * rr).toFixed(2);
+      }
+      return p + 'Z';
+    };
+    const stars = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="${star(5, 5, 2.6)}${star(15, 15, 2.6)}" fill="#fff" opacity=".55"/><circle cx="15" cy="5" r=".7" fill="#fff" opacity=".5"/><circle cx="5" cy="15" r=".7" fill="#fff" opacity=".5"/></svg>`;
+    const s = document.documentElement.style;
+    s.setProperty('--glitter', `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${dots}</svg>`)}")`);
+    s.setProperty('--holostars', `url("data:image/svg+xml,${encodeURIComponent(stars)}")`);
+  } catch (e) {}
+})();
+
+/* ── Any copy, printed ──
+   One entry point for every kind of card a packet can hold: a player, a
+   badge, a birthday edition, a team photograph. */
+function figTeam(s, c, size) {
+  if (!s) return '';
+  const men = s.ids.map(id => PL.find(p => p.id === id)).filter(Boolean).slice(0, 12);
+  const half = Math.ceil(men.length / 2);
+  const face = p => `<span class="team-face"><img src="${p.img}" alt="" aria-hidden="true" onerror="imgRetry(this)" /></span>`;
+  const sid = 't:' + s.id;
+  return `<span class="fig fig-retro fig-team fig-${size}${copyCls(sid, c)}">
+    <span class="fig-band">${s.t}</span>
+    <span class="fig-art"><span class="team-ph">
+      <span class="team-row">${men.slice(0, half).map(face).join('')}</span>
+      <span class="team-row team-front">${men.slice(half).map(face).join('')}</span>
+      ${s.ctry ? `<span class="team-flag">${flagSVG(s.ctry, 12)}</span>` : `<span class="team-flag team-ball">${ICON.ball('currentColor', 12)}</span>`}
+    </span>${artLayers(c, '')}</span>
+    <span class="fig-cap"><span class="fig-nm">${s.n}</span><span class="fig-sub">Foto oficial</span></span>
+    ${foilLayers(sid, c)}
+  </span>`;
+}
+function figAny(sid, c, size) {
+  if (sid.startsWith('t:')) return figTeam(setById(sid.slice(2)), c, size);
+  if (sid.startsWith('b:')) {
+    const p = bdayPlayer(sid);
+    if (!p) return '';
+    const bd = BDAYS[p.id] || [1, 1];
+    return figurinha(p, size, { copy: c, sid, band: `Parabéns · ${bd[1]} ${MES[bd[0] - 1]}`,
+                                sub: c && c.d ? dayTxt(c.d) : 'Edição do dia', noFlag: false });
+  }
+  const st = stk(sid);
+  if (!st) return '';
+  if (st.kind === 'player') return figurinha(st.p, size, { copy: c, noYear: true,
+    sub: st.p.clubs && st.p.clubs[0] ? clubName(st.p.clubs[0]) : POS_NAME[st.p.pos] });
+  return figExtra(sid, size, { copy: c });
+}
+/* The back of a card that has no pocket: the birthday editions and the team
+   photographs. */
+function specialBack(sid, c) {
+  let head = 'Edição limitada', nm = '', lines = [];
+  if (sid.startsWith('t:')) {
+    const s = setById(sid.slice(2)) || { n: '', ids: [] };
+    head = 'Foto oficial'; nm = s.n;
+    lines = [s.t, s.ids.map(id => (PL.find(p => p.id === id) || {}).n).filter(Boolean).join(' · ')];
+  } else {
+    const p = bdayPlayer(sid) || { n: '' };
+    head = 'Edição do dia'; nm = p.n;
+    lines = [`Aniversário de ${p.n}`, c && c.d ? `Impressa só em ${dayTxt(c.d)}` : '', 'Nunca mais volta a ser impressa'];
+  }
+  return `<span class="figback has-cert fin-${c ? c.f : 0}">
+    ${backPaper(sid, c)}
+    <span class="figback-h"><span class="figback-n">${head}</span></span>
+    <span class="figback-nm">${nm}</span>
+    <span class="figback-rule"></span>
+    ${lines.filter(Boolean).map(l => `<span class="figback-l figback-clubs">${l}</span>`).join('')}
+    ${certBack(sid, c)}
+  </span>`;
+}
+function backAny(sid, c) {
+  if (sid.startsWith('t:') || sid.startsWith('b:')) return specialBack(sid, c);
+  const st = stk(sid);
+  if (!st) return '';
+  const num = ALL_STICKERS.indexOf(sid) + 1;
+  return st.kind === 'player' ? figurinhaBack(st.p, num) : figExtraBack(sid, num);
+}
+/* A card at a width of its own, lettered in proportion to it. */
+const figx = (inner, pw, cls) => `<div class="figx${cls ? ' ' + cls : ''}" style="--pw:${pw}px">${inner}</div>`;
+const buzz = pat => { try { if (navigator.vibrate) navigator.vibrate(pat); } catch (e) {} };
+
+Object.assign(snd, {
+  /* a foil wrapper tearing: crinkle, then the long rip */
+  tear() { crackle(.3, { grains: 26, vol: .03 });
+           noise(.34, { type: 'highpass', freq: 1800, to: 5200, q: .7, vol: .05, attack: .02, delay: .04 }); },
+  /* a card lifting off the stack */
+  deal() { noise(.09, { type: 'bandpass', freq: 1500, to: 900, q: .8, vol: .03, attack: .005 }); },
+  /* the held breath before a rare one turns */
+  charge(t) { tone(196, .5 + t * .25, { type: 'sine', vol: .035, to: 392 + t * 120 });
+              tone(294, .5 + t * .25, { type: 'sine', vol: .02, to: 588 + t * 180, delay: .05 }); },
+  /* foil catching the light: a bright arpeggio, more notes for rarer paper */
+  foil(t) {
+    [1046.5, 1318.5, 1568, 2093, 2637].slice(0, 2 + t).forEach((f, i) =>
+      tone(f, .5, { type: 'sine', vol: .045 - i * .004, delay: i * .065 }));
+    noise(.6, { type: 'highpass', freq: 6000, q: .4, vol: .018, attack: .05, delay: .05 });
+  },
+});
+
+/* ═══════════════════════════════════════════════════
+   O PACOTE — opening what the run earned
+
+   The stickers are already in the album the moment the answer is right;
+   the packet is how you find out *which* copies they are. Tear the top off
+   along the line (or tap it), and the cards come up face down, commons on
+   top and the good paper at the back, the way a real packet is packed.
+   A rare card holds its breath before it turns: it glows the colour of its
+   stock, the phone shivers, and the longer the wait the better the card.
+═══════════════════════════════════════════════════ */
+function packBackFace(i) {
+  return `<span class="pkb">${guilloche('pk' + (i % 5), 86)}
+    <span class="pkb-frame"></span>
+    <span class="pkb-ring"><span class="pkb-fq">FQ</span></span>
+    <span class="pkb-t">Figurinha oficial</span>
+    <span class="pkb-s">Futebol Quiz BR · ${new Date().getFullYear()}</span>
+  </span>`;
+}
+function packArt(n, meta) {
+  return `<span class="pk-art">
+    <span class="pk-crimp">${'FUTEBOL QUIZ BR · '.repeat(4)}</span>
+    <span class="pk-emb">${ICON.ball('currentColor', 30)}</span>
+    <span class="pk-kick">${meta.kick || 'Pacote da rodada'}</span>
+    <span class="pk-ttl">Figurinhas</span>
+    <span class="pk-ed">Temporada ${new Date().getFullYear()} · 1ª edição</span>
+    <span class="pk-cnt"><b>${n}</b> ${n === 1 ? 'figurinha' : 'figurinhas'}</span>
+    <span class="pk-fine">Pode conter figurinhas Prata, Holográficas e Ouro · autografadas · erros de impressão</span>
+    <span class="pk-crimp pk-crimp-b">${'FUTEBOL QUIZ BR · '.repeat(4)}</span>
+  </span>`;
+}
+/* The rip is never straight: a jagged line, different on every packet. */
+function tearPath() {
+  const pts = [];
+  const N = 16;
+  for (let i = 0; i <= N; i++) pts.push([i / N * 100, 15 + (i % 2 ? 1.1 : -.9) + (Math.random() - .5) * 1.2]);
+  const line = pts.map(([x, y]) => `${x.toFixed(1)}% ${y.toFixed(2)}%`);
+  return {
+    top: `polygon(0 0, 100% 0, ${line.slice().reverse().join(', ')})`,
+    bot: `polygon(${line.join(', ')}, 100% 100%, 0 100%)`,
+  };
+}
+const pullTier = e => e.kind === 'set' || e.kind === 'lim' ? 3 : Math.max(e.c.f, e.c.v ? 2 : 0);
+function pullTag(e) {
+  if (e.kind === 'set') return { t: 'Coleção completa!', cls: 'tag-x' };
+  if (e.kind === 'lim') return { t: 'Edição do dia!', cls: 'tag-x' };
+  if (e.kind === 'cert') return { t: 'Certificada', cls: 'tag-new' };
+  if (e.isNew) return { t: 'Nova!', cls: 'tag-new' };
+  if (e.up) return { t: `Melhorou: ${FIN_NAME[e.prev.f]} → ${FIN_NAME[e.c.f]}${e.c.v && !e.prev.v ? ' · ' + VAR_NAME[e.c.v] : ''}`, cls: 'tag-up' };
+  return { t: `Repetida · ${e.n}ª cópia`, cls: 'tag-rep' };
+}
+function pullLine(e) {
+  const c = e.c;
+  return [c.v ? VAR_NAME[c.v] : FIN_NAME[c.f], c.pr ? 'Nº ' + serialTxt(c) : '', 'Estado ' + gradeTxt(c.g)]
+    .filter(Boolean).join(' · ');
+}
+
+function openPack(pulls, meta) {
+  if (!pulls || !pulls.length || document.querySelector('.pack')) return;
+  meta = meta || {};
+  Tilt.ask();
+  const still = Tilt.still;
+  /* A long run fills a big packet. Every card worth a look is turned by hand
+     — anything new, anything better than common paper — up to a dozen; the
+     plain repeats go straight into the pile you see at the end. */
+  const worth = e => e.kind !== 'fig' || e.isNew || e.up || pullTier(e) > 0;
+  const byRank = (a, b) => (a.kind === 'set' || a.kind === 'lim') - (b.kind === 'set' || b.kind === 'lim') || copyRank(a.c) - copyRank(b.c);
+  let order = pulls.filter(worth).sort(byRank);
+  if (order.length > 12) order = order.slice(order.length - 12);
+  if (!order.length) order = pulls.slice().sort(byRank).slice(-3);
+  const skipped = pulls.filter(e => !order.includes(e));
+  const all = order.concat(skipped);
+  const n = order.length;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const W = Math.round(Math.max(120, Math.min(vw * .58, 232, (vh - 250) * 29 / 50)));
+  const H = Math.round(W * 50 / 29);
+  const tp = tearPath();
+  const rares = pulls.filter(e => pullTier(e) > 0).length;
+
+  const z = document.createElement('div');
+  z.className = 'pack';
+  z.setAttribute('role', 'dialog');
+  z.setAttribute('aria-modal', 'true');
+  z.setAttribute('aria-label', meta.title || 'Pacote de figurinhas');
+  z.style.setProperty('--w', W + 'px');
+  z.style.setProperty('--h', H + 'px');
+  z.innerHTML = `<div class="pack-scrim"></div>
+    <div class="pack-rays" aria-hidden="true"></div>
+    <div class="pack-head">
+      <span class="pack-eyebrow">${meta.title || 'Pacote da rodada'}</span>
+      <span class="pack-sub">${meta.sub || 'Rasgue na linha pontilhada'}</span>
+    </div>
+    <div class="pack-stage">
+      <div class="pk-stack">${order.map((e, i) => `
+        <div class="pk-card tier-${pullTier(e)}${e.c.f === 3 || e.kind !== 'fig' ? ' is-gold' : ''}" data-i="${i}"
+             style="--k:${n - 1 - i};z-index:${n - i}">
+          <div class="pk-in">
+            <div class="pk-face pk-front">${figx(figAny(e.sid, e.c, 'lg'), W)}</div>
+            <div class="pk-face pk-bk">${packBackFace(i)}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div class="pk-env">
+        <div class="pk-half pk-bot" style="clip-path:${tp.bot}">${packArt(pulls.length, meta)}</div>
+        <div class="pk-half pk-top" style="clip-path:${tp.top}">${packArt(pulls.length, meta)}</div>
+        <div class="pk-cut"><i class="pk-cut-fill"></i><span>${ICON.cut('currentColor', 11)} Abra aqui</span></div>
+        <span class="pk-sheen" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="pack-cap" aria-live="polite"></div>
+    <div class="pack-tray"></div>
+    <div class="pack-foot">
+      <button class="btn btn-ghost btn-sm pack-all" type="button">Abrir tudo</button>
+    </div>
+    <button class="zoom-x pack-x" type="button" aria-label="Fechar">${ICON.close('currentColor', 16)}</button>`;
+  document.body.appendChild(z);
+  requestAnimationFrame(() => z.classList.add('is-in'));
+  snd.swipe();
+
+  const env = z.querySelector('.pk-env'), top = z.querySelector('.pk-top');
+  const cap = z.querySelector('.pack-cap'), tray = z.querySelector('.pack-tray');
+  const cards = [...z.querySelectorAll('.pk-card')];
+  let phase = 'sealed', i = 0, busy = false;
+
+  /* ── tearing ── */
+  let drag = null;
+  const tear = () => {
+    if (phase !== 'sealed') return;
+    phase = 'torn';
+    snd.tear(); buzz(18);
+    z.classList.add('is-torn');
+    z.querySelector('.pack-sub').textContent = 'Toque para virar cada figurinha';
+    setTimeout(() => { phase = 'reveal'; z.classList.add('is-dealt'); }, still ? 0 : 720);
+  };
+  env.addEventListener('pointerdown', e => {
+    if (phase !== 'sealed') return;
+    drag = { x: e.clientX, y: e.clientY, moved: 0 };
+    try { env.setPointerCapture(e.pointerId); } catch (er) {}
+  });
+  env.addEventListener('pointermove', e => {
+    if (!drag || phase !== 'sealed') return;
+    const r = env.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+    drag.moved = Math.max(drag.moved, Math.abs(e.clientX - drag.x));
+    z.style.setProperty('--tear', p.toFixed(3));
+    if (drag.moved > 8 && Math.random() < .35) crackle(.05, { grains: 3, vol: .02 });
+    if (p > .92 && drag.moved > r.width * .45) { drag = null; tear(); }
+  });
+  env.addEventListener('pointerup', () => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    if (d.moved < 10) tear();
+    else if (phase === 'sealed') z.style.setProperty('--tear', 0);
+  });
+
+  /* ── turning the cards ── */
+  const flip = () => {
+    const card = cards[i], e = order[i], t = pullTier(e);
+    busy = true;
+    const turnNow = () => {
+      card.classList.remove('is-charging');
+      card.classList.add('is-flipped');
+      const tag = pullTag(e);
+      cap.innerHTML = `<span class="pk-tag ${tag.cls}">${tag.t}</span>
+        <span class="pk-line">${pullLine(e)}</span>`;
+      if (t > 0) { snd.foil(t); buzz(t >= 3 ? [30, 40, 60] : 25); } else snd.deal();
+      if (t >= 3 && !still) burst(34);
+      setTimeout(() => { busy = false; }, still ? 0 : 380);
+    };
+    if (t > 0 && !still) {
+      card.classList.add('is-charging');
+      snd.charge(t); buzz(t >= 2 ? [12, 60, 12, 60, 12] : 12);
+      setTimeout(turnNow, 450 + t * 280);
+    } else turnNow();
+  };
+  const stow = () => {
+    const card = cards[i], e = order[i];
+    card.classList.add('is-away');
+    snd.deal();
+    const mini = document.createElement('span');
+    mini.className = 'pk-mini';
+    mini.innerHTML = figx(figAny(e.sid, e.c, 'lg'), 38);
+    tray.appendChild(mini);
+    setTimeout(() => card.remove(), still ? 0 : 420);
+    cap.innerHTML = '';
+    i++;
+    if (i >= n) done();
+  };
+  const step = () => {
+    if (busy || phase !== 'reveal') return;
+    const card = cards[i];
+    if (!card) return;
+    if (card.classList.contains('is-flipped')) stow();
+    else flip();
+  };
+  const done = () => {
+    phase = 'done';
+    z.classList.add('is-done');
+    const best = all.reduce((b, e) => copyRank(e.c) > copyRank(b.c) ? e : b, all[0]);
+    const pw = Math.floor(Math.min(64, (Math.min(vw, 460) - 64) / Math.min(5, Math.max(3, all.length))));
+    const shown = all.slice().sort((a, b) => copyRank(b.c) - copyRank(a.c) || b.isNew - a.isNew).slice(0, 15);
+    z.querySelector('.pack-stage').innerHTML = `<div class="pk-sum">
+      ${shown.map(e => {
+        const tag = pullTag(e);
+        return `<span class="pk-sum-it" data-sid="${e.sid}">${figx(figAny(e.sid, e.c, 'lg'), pw)}
+          <span class="pk-sum-tag ${tag.cls}">${e.kind === 'set' ? 'Coleção' : e.kind === 'lim' ? 'Do dia'
+            : e.kind === 'cert' ? FIN_TIER[e.c.f] : e.isNew ? 'Nova' : e.up ? 'Melhorou' : e.n + 'ª cópia'}</span></span>`;
+      }).join('')}${all.length > shown.length ? `<span class="pk-sum-more">+${all.length - shown.length}<small>${
+        all.filter(e => !shown.includes(e)).every(e => e.kind === 'fig' && !e.isNew) ? 'repetidas' : 'mais'}</small></span>` : ''}</div>`;
+    tray.innerHTML = '';
+    cap.innerHTML = `<span class="pk-line">${all.length} ${all.length === 1 ? 'figurinha' : 'figurinhas'}${
+      rares ? ` · ${rares} ${rares === 1 ? 'especial' : 'especiais'}` : ''} · a melhor: ${pullLine(best)}</span>`;
+    z.querySelector('.pack-sub').textContent = 'Tudo colado no álbum';
+    z.querySelector('.pack-foot').innerHTML = `
+      <button class="btn btn-ghost btn-sm pack-vit" type="button">Vitrine</button>
+      <button class="btn btn-brass pack-alb" type="button">Ver no álbum</button>`;
+    z.querySelector('.pack-alb').addEventListener('click', () => close('album'));
+    z.querySelector('.pack-vit').addEventListener('click', () => close('vitrine'));
+  };
+  const openAll = () => {
+    if (phase === 'sealed') { tear(); setTimeout(openAll, still ? 0 : 760); return; }
+    if (phase !== 'reveal') return;
+    const best = Math.max(...order.slice(i).map(pullTier));
+    if (best > 0) { snd.foil(best); buzz(25); }
+    if (best >= 3 && !still) burst(30);
+    done();
+  };
+  const close = to => {
+    if (!z.isConnected) return;
+    document.removeEventListener('keydown', onKey);
+    z.classList.add('is-closing');
+    setTimeout(() => z.remove(), still ? 0 : 260);
+    if (meta.onClose) meta.onClose(to);
+  };
+  const onKey = e => {
+    if (e.key === 'Escape') { e.preventDefault(); phase === 'done' ? close() : openAll(); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); phase === 'sealed' ? tear() : step(); }
+  };
+  document.addEventListener('keydown', onKey);
+  z.querySelector('.pack-stage').addEventListener('click', e => {
+    if (phase === 'reveal') step();
+    else if (phase === 'done') {
+      const it = e.target.closest && e.target.closest('.pk-sum-it');
+      if (it) zoomCopy(it.querySelector('.figx'), it.dataset.sid);
+    }
+  });
+  z.querySelector('.pack-all').addEventListener('click', openAll);
+  z.querySelector('.pack-x').addEventListener('click', () => { if (phase !== 'done') openAll(); else close(); });
+}
+
+/* The packet waiting on the end screen, and what it held once opened. */
+function packStrip() {
+  if (!runPulls.length) return newStickerStrip();
+  const n = runPulls.length;
+  if (!runPackOpened) return `
+    <button id="bpack" class="pack-teaser" type="button" aria-label="Abrir o pacote da rodada: ${n} ${n === 1 ? 'figurinha' : 'figurinhas'}">
+      <span class="pt-env" aria-hidden="true"><span class="pt-emb">${ICON.ball('currentColor', 13)}</span><i></i></span>
+      <span class="pt-txt"><b>Pacote da rodada</b>
+        <span>${n} ${n === 1 ? 'figurinha' : 'figurinhas'} · toque para abrir</span></span>
+    </button>`;
+  const show = runPulls.slice().sort((a, b) => copyRank(b.c) - copyRank(a.c)).slice(0, 6);
+  const rest = n - show.length;
+  const fresh = runPulls.filter(e => e.isNew).length;
+  return `
+    <div class="newfigs">
+      <div class="eyebrow" style="color:var(--brass);">${n} ${n === 1 ? 'figurinha' : 'figurinhas'} no pacote${
+        fresh ? ` · ${fresh} ${fresh === 1 ? 'nova' : 'novas'}` : ''}</div>
+      <div class="newfigs-row">
+        ${show.map((e, i) => `<span class="newfig" style="animation-delay:${i * 70}ms;">${
+          figx(figAny(e.sid, e.c, 'lg'), 54)}</span>`).join('')}
+        ${rest > 0 ? `<span class="newfig-more">+${rest}</span>` : ''}
+      </div>
+    </div>`;
+}
+function openRunPack() {
+  openPack(runPulls, {
+    title: isMil ? 'Pacote do Milhão' : isSurv ? 'Pacote do mata-mata' : isDaily ? 'Pacote do diário' : 'Pacote da rodada',
+    onClose: to => { runPackOpened = true; if (to) { snd.swipe(); sc = to; } go(); },
+  });
+}
+function openWelcomePack() {
+  const v = V();
+  const pulls = (v.welcome || []).map(sid => {
+    const c = anyCopy(sid);
+    if (!c) return null;
+    return sid.startsWith('t:') ? { sid, c, kind: 'set', isNew: true } : { sid, c, kind: 'cert', isNew: false };
+  }).filter(Boolean);
+  if (!pulls.length) { delete v.welcome; saveVault(); go(); return; }
+  openPack(pulls, {
+    title: 'Pacote de boas-vindas', kick: 'Série fundadora',
+    sub: 'Suas figurinhas foram certificadas — estas são as melhores',
+    onClose: to => { delete v.welcome; saveVault(); if (to) { snd.swipe(); sc = to; } go(); },
+  });
+}
+
+/* ── Zooming a copy: tilt it, verify it, show it off ── */
+function zoomCopy(src, sid) {
+  if (!src) return;
+  const c = anyCopy(sid);
+  const pw = parseFloat(src.style.getPropertyValue('--pw')) || src.getBoundingClientRect().width;
+  openZoom(src, figx(figAny(sid, c, 'lg'), pw), figx(backAny(sid, c), pw, 'figx-back'), null, { sid });
+}
+function zoomActs(sid) {
+  const c = anyCopy(sid);
+  if (!c) return '';
+  const fav = V().fav.includes(sid);
+  const canFav = !sid.startsWith('b:') || true;
+  return `<div class="zoom-acts">
+    ${canFav ? `<button class="zact${fav ? ' is-on' : ''}" data-z="fav" type="button">${ICON.star('currentColor', 14)}<span>${fav ? 'Na vitrine' : 'Pôr na vitrine'}</span></button>` : ''}
+    <button class="zact" data-z="ver" type="button">${ICON.shield('currentColor', 14)}<span>Verificar</span></button>
+    <button class="zact" data-z="share" type="button">${ICON.share('currentColor', 14)}<span>Compartilhar</span></button>
+  </div>
+  <div class="zoom-ver" aria-live="polite"></div>`;
+}
+function wireZoomActs(z, sid) {
+  const bar = z.querySelector('.zoom-acts');
+  if (!bar) return;
+  bar.addEventListener('click', e => {
+    const b = e.target.closest && e.target.closest('.zact');
+    if (!b) return;
+    e.stopPropagation();
+    const act = b.dataset.z, v = V(), c = anyCopy(sid);
+    if (act === 'fav') {
+      const k = v.fav.indexOf(sid);
+      if (k >= 0) v.fav.splice(k, 1);
+      else { v.fav.unshift(sid); v.fav = v.fav.slice(0, 6); }
+      saveVault();
+      const on = v.fav.includes(sid);
+      b.classList.toggle('is-on', on);
+      b.querySelector('span').textContent = on ? 'Na vitrine' : 'Pôr na vitrine';
+      on ? snd.select() : snd.tap();
+      z.dataset.dirty = '1';
+    } else if (act === 'ver') {
+      const out = z.querySelector('.zoom-ver');
+      z.classList.remove('is-verified', 'is-failed');
+      z.classList.add('is-scanning');
+      out.innerHTML = '<span class="zv-scan">Lendo o selo…</span>';
+      snd.charge(1);
+      setTimeout(() => {
+        z.classList.remove('is-scanning');
+        const ok = isAuthentic(sid, c);
+        z.classList.add(ok ? 'is-verified' : 'is-failed');
+        const when = new Date(c.t);
+        out.innerHTML = ok
+          ? `<b>${ICON.check('currentColor', 13)} Autêntica</b>
+             <span>${copyCode(c)} confere com a tiragem · ${FIN_NAME[c.f]}${c.pr ? ' Nº ' + serialTxt(c) : ''}</span>
+             <span>Tirada em ${when.getDate()} ${MES[when.getMonth()]} ${when.getFullYear()}${c.o ? ' · Série fundadora' : ''} · estado ${gradeTxt(c.g)} (${gradeWord(c.g).toLowerCase()})</span>`
+          : `<b>${ICON.cross('currentColor', 13)} Não confere</b>
+             <span>O selo desta figurinha não bate com a tiragem. Foi alterada fora do jogo.</span>`;
+        ok ? snd.foil(1) : snd.wrong && snd.wrong();
+        buzz(ok ? 20 : [40, 50, 40]);
+      }, Tilt.still ? 0 : 1100);
+    } else if (act === 'share') {
+      snd.tap();
+      shareFig(sid).catch(() => {});
+    }
+  });
+}
+
+/* ── A picture of the card, to send ──
+   Drawn on a canvas at 1080×1350, the shape a phone's gallery and every
+   messenger shows whole: the card, its stock caught in the light, and the
+   certificate under it. */
+function loadImg(src) {
+  return new Promise(res => {
+    const im = new Image();
+    im.onload = () => res(im); im.onerror = () => res(null);
+    im.src = src;
+  });
+}
+const svgUrl = svg => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+  svg.includes('xmlns=') ? svg : svg.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"'));
+function rrect(x, ctx, a, b, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(a + r, b); ctx.arcTo(a + w, b, a + w, b + h, r); ctx.arcTo(a + w, b + h, a, b + h, r);
+  ctx.arcTo(a, b + h, a, b, r); ctx.arcTo(a, b, a + w, b, r); ctx.closePath();
+}
+async function shareFig(sid) {
+  const c = anyCopy(sid);
+  if (!c) return;
+  /* a font only loads once something on screen uses it; the canvas has to
+     ask for the ones it draws with */
+  try { await Promise.all(['92px "Mr Dafoe"', '700 30px "Archivo Narrow"', '600 24px Archivo', 'italic 600 34px Fraunces']
+    .map(f => document.fonts.load(f))); await document.fonts.ready; } catch (e) {}
+  const W = 1080, H = 1350;
+  const cv = document.createElement('canvas');
+  cv.width = W; cv.height = H;
+  const x = cv.getContext('2d');
+  /* the room: a dark green velvet with a light over the card */
+  let g = x.createRadialGradient(W / 2, 520, 60, W / 2, 620, 900);
+  g.addColorStop(0, '#24503a'); g.addColorStop(.55, '#10261b'); g.addColorStop(1, '#070d09');
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.fillStyle = 'rgba(255,255,255,.035)';
+  for (let i = 0; i < 1400; i++) x.fillRect(Math.random() * W, Math.random() * H, 1.4, 1.4);
+
+  const p = sid.startsWith('b:') ? bdayPlayer(sid) : (stk(sid) || {}).p;
+  const st = stk(sid), set = sid.startsWith('t:') ? setById(sid.slice(2)) : null;
+  const modern = p && !sid.startsWith('t:') && figEra(p) === 'modern';
+  const card = modern ? '#56BEB2' : '#EFE2C4', band = modern ? '#2A736C' : '#B23A2E',
+        ink = modern ? '#0C2F2C' : '#2B2116';
+  const cw = 480, ch = Math.round(cw * 50 / 29), cx = (W - cw) / 2, cy = 110;
+  const bh = 58, caph = 150;
+  /* shadow and body */
+  x.save(); x.shadowColor = 'rgba(0,0,0,.55)'; x.shadowBlur = 60; x.shadowOffsetY = 26;
+  rrect(0, x, cx, cy, cw, ch, 14); x.fillStyle = card; x.fill(); x.restore();
+  x.save(); rrect(0, x, cx, cy, cw, ch, 14); x.clip();
+  /* the band */
+  const fin = c.f;
+  const bandFill = () => {
+    if (fin === 0) return band;
+    const lg = x.createLinearGradient(cx, cy, cx + cw, cy + bh);
+    const stops = fin === 1 ? ['#7d848b', '#e9edf0', '#9aa1a8', '#d7dce0']
+                : fin === 2 ? ['#9fd8ff', '#e6a8ff', '#ffe28a', '#a8ffcf']
+                : ['#8a6116', '#f7e08a', '#b88422', '#fff1c1'];
+    stops.forEach((s, i) => lg.addColorStop(i / (stops.length - 1), s));
+    return lg;
+  };
+  x.fillStyle = bandFill(); x.fillRect(cx, cy, cw, bh);
+  x.fillStyle = fin === 0 ? '#F6EBD8' : '#1b1609';
+  x.font = '700 26px "Archivo Narrow", sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  const bandText = sid.startsWith('b:') ? `PARABÉNS · ${BDAYS[p.id][1]} ${MES[BDAYS[p.id][0] - 1]}`.toUpperCase()
+    : set ? set.t.toUpperCase() : p ? bandCtry(p.ctry) : st.kind === 'escudo' ? 'ESCUDO' : st.kind === 'selecao' ? 'SELEÇÃO' : 'MASCOTE';
+  x.fillText(bandText.split('').join(' '), W / 2, cy + bh / 2 + 1);
+  /* the picture */
+  const px = cx + 34, py = cy + bh + 26, pw = cw - 68, ph = ch - bh - caph - 44;
+  x.fillStyle = modern ? 'rgba(255,255,255,.18)' : '#E4D4AE'; x.fillRect(px, py, pw, ph);
+  const drawCover = (im, fit) => {
+    if (!im) return;
+    const r = fit ? Math.min(pw / im.width, ph / im.height) * .78 : Math.max(pw / im.width, ph / im.height);
+    const w = im.width * r, h = im.height * r;
+    x.drawImage(im, px + (pw - w) / 2, fit ? py + (ph - h) / 2 : py, w, h);
+  };
+  x.save(); x.beginPath(); x.rect(px, py, pw, ph); x.clip();
+  if (p) drawCover(await loadImg(p.img));
+  else if (set) {
+    const men = set.ids.map(id => PL.find(q => q.id === id)).filter(Boolean).slice(0, 12);
+    const rows = [men.slice(0, Math.ceil(men.length / 2)), men.slice(Math.ceil(men.length / 2))];
+    x.fillStyle = '#2f6b45'; x.fillRect(px, py, pw, ph);
+    for (let ri = 0; ri < 2; ri++) {
+      const row = rows[ri], s = Math.min(92, pw / Math.max(1, row.length) - 8);
+      for (let k = 0; k < row.length; k++) {
+        const im = await loadImg(row[k].img);
+        const fx = px + (pw - row.length * (s + 8)) / 2 + k * (s + 8) + 4, fy = py + ph * (ri ? .52 : .16);
+        x.save(); x.beginPath(); x.arc(fx + s / 2, fy + s / 2, s / 2, 0, 7); x.clip();
+        if (im) { const r = s / Math.min(im.width, im.height); x.drawImage(im, fx, fy, im.width * r, im.height * r); }
+        x.restore();
+        x.strokeStyle = '#f3e7c4'; x.lineWidth = 3; x.beginPath(); x.arc(fx + s / 2, fy + s / 2, s / 2, 0, 7); x.stroke();
+      }
+    }
+  } else if (st.kind === 'escudo') drawCover(await loadImg(LOGOS[st.id]), true);
+  else if (st.kind === 'selecao') drawCover(await loadImg(svgUrl(flagSVG(st.id, 300))), true);
+  else {
+    const br = CL.find(q => q.id === st.id), m = MASCOTS[st.id] || {};
+    drawCover(await loadImg(svgUrl((MASC_ART[m.art] || (() => '<svg/>'))(br && br.c1, br && br.c2, m.v))), true);
+  }
+  if (c.v === 'assin') {
+    x.save(); x.translate(px + pw / 2, py + ph - 70); x.rotate(-.16);
+    x.font = '92px "Mr Dafoe", cursive'; x.fillStyle = '#f4f6ff';
+    x.shadowColor = 'rgba(0,0,0,.6)'; x.shadowBlur = 6; x.shadowOffsetY = 2;
+    x.fillText(sigName((p || st).n), 0, 0); x.restore();
+  }
+  if (c.pr) {
+    x.font = '700 22px "Archivo Narrow", sans-serif';
+    const t = serialTxt(c), tw = x.measureText(t).width + 22;
+    x.fillStyle = fin === 3 ? '#e9c768' : 'rgba(12,12,12,.62)';
+    rrect(0, x, px + 12, py + ph - 44, tw, 32, 5); x.fill();
+    x.fillStyle = fin === 3 ? '#2a1d05' : '#fff'; x.textAlign = 'left';
+    x.fillText(t, px + 23, py + ph - 27);
+  }
+  x.restore();
+  /* the caption */
+  x.fillStyle = ink; x.textAlign = 'center';
+  const name = (set ? set.n : (p || st).n).toUpperCase();
+  let fs = 50; x.font = `700 ${fs}px "Archivo Narrow", sans-serif`;
+  while (x.measureText(name).width > cw - 50 && fs > 26) { fs -= 2; x.font = `700 ${fs}px "Archivo Narrow", sans-serif`; }
+  x.fillText(name, W / 2, cy + ch - caph / 2 - 16);
+  x.font = '600 24px Archivo, sans-serif'; x.globalAlpha = .8;
+  x.fillText(set ? 'Foto oficial' : p ? (p.clubs && p.clubs[0] ? clubName(p.clubs[0]) : POS_NAME[p.pos]) : st.sub, W / 2, cy + ch - caph / 2 + 30);
+  x.globalAlpha = 1;
+  /* the foil over all of it */
+  if (fin > 0) {
+    x.globalCompositeOperation = 'overlay';
+    const lg = x.createLinearGradient(cx, cy, cx + cw, cy + ch);
+    const rainbow = ['#ff8a8a', '#ffe57a', '#9dff8a', '#7ff5ff', '#8aa6ff', '#e08aff', '#ff8a8a'];
+    const stops = fin === 1 ? ['rgba(255,255,255,0)', 'rgba(255,255,255,.55)', 'rgba(255,255,255,0)']
+                : fin === 2 ? rainbow : ['#fff1b8', '#ffd36b', '#fff9e0', '#e0a93a', '#fff1b8'];
+    stops.forEach((s, i) => lg.addColorStop(i / (stops.length - 1), s));
+    x.globalAlpha = fin === 1 ? .7 : .45; x.fillStyle = lg; x.fillRect(cx, cy, cw, ch);
+    x.globalAlpha = 1; x.globalCompositeOperation = 'source-over';
+    if (fin === 3) {
+      for (let i = 0; i < 260; i++) {
+        x.fillStyle = `rgba(255,255,240,${Math.random() * .8})`;
+        const s = Math.random() * 2.6;
+        x.beginPath(); x.arc(cx + Math.random() * cw, cy + Math.random() * ch, s, 0, 7); x.fill();
+      }
+    }
+  }
+  x.restore();
+  if (fin > 0) {
+    const lg = x.createLinearGradient(cx, cy, cx + cw, cy + ch);
+    const stops = fin === 1 ? ['#8d949a', '#f4f6f8', '#9ea5ab', '#e8ecef'] : fin === 2
+      ? ['#ff9ad5', '#9fd8ff', '#b4ffb0', '#ffe48a', '#d9a4ff'] : ['#7a5412', '#f6dd8b', '#b88422', '#fff4c9', '#a8781d'];
+    stops.forEach((s, i) => lg.addColorStop(i / (stops.length - 1), s));
+    x.strokeStyle = lg; x.lineWidth = fin === 3 ? 16 : 11;
+    rrect(0, x, cx + x.lineWidth / 2, cy + x.lineWidth / 2, cw - x.lineWidth, ch - x.lineWidth, 12); x.stroke();
+  }
+  /* the certificate */
+  x.textAlign = 'center';
+  x.fillStyle = fin === 3 ? '#f1d27c' : fin === 2 ? '#cfe6ff' : fin === 1 ? '#e3e7ea' : '#E9DFC6';
+  x.font = '700 30px "Archivo Narrow", sans-serif';
+  const line = [c.v ? VAR_NAME[c.v] : FIN_NAME[c.f], c.pr ? 'Nº ' + serialTxt(c) : '', 'Estado ' + gradeTxt(c.g)].filter(Boolean).join('  ·  ').toUpperCase();
+  x.fillText(line.split('').join(' '), W / 2, cy + ch + 70);
+  x.fillStyle = 'rgba(233,223,198,.72)'; x.font = '600 25px Archivo, sans-serif';
+  x.fillText(`${copyCode(c)}  ·  ${c.o ? 'Série fundadora' : c.p1 ? '1ª edição' : 'Temporada'} ${c.ed}`, W / 2, cy + ch + 112);
+  x.font = 'italic 600 34px Fraunces, serif'; x.fillStyle = '#E9DFC6';
+  x.fillText('Futebol Quiz BR', W / 2, H - 58);
+  const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+  if (!blob) return;
+  const nm = (set ? set.n : (p || st).n);
+  const file = new File([blob], `figurinha-${sid.replace(/[^a-z0-9]+/gi, '-')}.png`, { type: 'image/png' });
+  const text = `Minha figurinha ${FIN_NAME[c.f].toLowerCase()}${c.pr ? ' Nº ' + serialTxt(c) : ''}: ${nm} · Futebol Quiz BR`;
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); return; }
+  } catch (e) { if (e && e.name === 'AbortError') return; }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = file.name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+
+/* ═══════════════════════════════════════════════════
+   A VITRINE — the cabinet
+
+   The album keeps every sticker in its pocket; the vitrine is where the good
+   ones are shown. Six on the shelf, chosen by the player; the team sets and
+   how far along each is; the birthday editions; and every copy that is
+   better than common paper, best first.
+═══════════════════════════════════════════════════ */
+function vitrineHtml() {
+  const v = V();
+  const all = Object.keys(v.c).filter(sid => album.has(sid));
+  const cnt = [0, 0, 0, 0];
+  let signed = 0, errs = 0, dups = 0;
+  all.forEach(sid => { const c = v.c[sid]; cnt[c.f]++; if (c.v === 'assin') signed++; if (c.v === 'erro') errs++; dups += (c.n || 1) - 1; });
+  const Wd = Math.min(window.innerWidth, 480) - 36;
+  const pwS = Math.floor((Wd - 28 - 2 * 12) / 3);
+  const pwR = Math.floor((Wd - 3 * 8) / 4);
+  const fav = v.fav.filter(sid => anyCopy(sid) && (album.has(sid) || sid.includes(':') && !stk(sid))).slice(0, 6);
+  const rares = all.filter(sid => v.c[sid].f > 0 || v.c[sid].v).sort((a, b) => copyRank(v.c[b]) - copyRank(v.c[a]));
+  const lims = Object.keys(v.lim).map(k => 'b:' + k);
+  const today = todaysBdays().filter(id => !v.lim[`${id}:${new Date().getFullYear()}`]);
+  const next = nextBdays(3);
+  const card = (sid, pw) => `<button class="vit-card" data-sid="${sid}" type="button"
+      aria-label="${(stk(sid) || bdayPlayer(sid) || setById(sid.slice(2)) || {}).n || ''}${copyAria(anyCopy(sid))}">${
+      figx(figAny(sid, anyCopy(sid), 'lg'), pw)}</button>`;
+  const chip = (k, n, t) => `<span class="vit-chip vit-f${k}"><b>${n}</b>${t}</span>`;
+  return `
+  <div class="pg vit-pg scroll-y" style="gap:12px;">
+    ${topbar('Vitrine')}
+    <div class="vit-chips">
+      ${chip(0, cnt[0], 'Comuns')}${chip(1, cnt[1], 'Prata')}${chip(2, cnt[2], 'Holo')}${chip(3, cnt[3], 'Ouro')}
+    </div>
+    <div class="vit-meta">${signed} ${signed === 1 ? 'autografada' : 'autografadas'} · ${errs} ${errs === 1 ? 'erro' : 'erros'} de impressão · ${dups} ${dups === 1 ? 'repetida' : 'repetidas'}</div>
+
+    <section class="vit-sec">
+      <div class="vit-h"><span>Em destaque</span><small>toque ★ numa figurinha ampliada</small></div>
+      <div class="vit-shelf" style="--pw:${pwS}px">
+        ${Array.from({ length: 6 }, (_, k) => fav[k] ? card(fav[k], pwS)
+          : `<span class="vit-empty" style="width:${pwS}px">${ICON.star('currentColor', 18)}<small>vazio</small></span>`).join('')}
+      </div>
+    </section>
+
+    <section class="vit-sec">
+      <div class="vit-h"><span>Coleções</span><small>complete o time e ganhe a foto oficial em ouro</small></div>
+      <div class="vit-sets">
+        ${figSets().map(s => {
+          const got = s.ids.filter(id => album.has(id)).length, done = !!v.sets[s.id];
+          return `<div class="vit-set${done ? ' is-done' : ''}" ${done ? `data-sid="t:${s.id}" role="button" tabindex="0"` : ''}>
+            <span class="vit-set-fl">${s.ctry ? flagSVG(s.ctry, 16) : ICON.ball('currentColor', 16)}</span>
+            <span class="vit-set-m">
+              <span class="vit-set-n">${s.n}<small>${done ? 'foto oficial ' + serialTxt(v.sets[s.id]) : `${got} de ${s.ids.length}`}</small></span>
+              <span class="vit-set-faces">${s.ids.slice(0, 14).map(id => {
+                const p = PL.find(q => q.id === id);
+                return p ? `<i class="${album.has(id) ? 'on' : ''}"><img src="${p.img}" alt="" loading="lazy" /></i>` : '';
+              }).join('')}</span>
+              <span class="vit-set-bar"><i style="width:${Math.round(got / s.ids.length * 100)}%"></i></span>
+            </span>
+            ${done ? `<span class="vit-set-go">${ICON.star('currentColor', 13)}</span>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </section>
+
+    <section class="vit-sec">
+      <div class="vit-h"><span>Edições do dia</span><small>só no aniversário do craque — nunca reimpressas</small></div>
+      ${today.length ? `<div class="vit-bday is-today">${ICON.star('currentColor', 14)}<span>Hoje é aniversário de <b>${
+        today.map(id => PL.find(p => p.id === id).n).join(' e ')}</b>. Acerte 3 perguntas em qualquer modo e leve a edição de hoje.</span></div>` : ''}
+      ${lims.length ? `<div class="vit-grid" style="--pw:${pwR}px">${lims.map(sid => card(sid, pwR)).join('')}</div>` : ''}
+      <div class="vit-next">${next.map(({ id, d }) => `<span><b>${d.getDate()} ${MES[d.getMonth()]}</b> ${PL.find(p => p.id === id).n}</span>`).join('')}</div>
+    </section>
+
+    <section class="vit-sec">
+      <div class="vit-h"><span>Raridades</span><small>${rares.length} de ${all.length} figurinhas</small></div>
+      ${rares.length ? `<div class="vit-grid" style="--pw:${pwR}px">${rares.map(sid => card(sid, pwR)).join('')}</div>`
+        : `<div class="vit-none">Nenhuma ainda. Acerte no difícil e em sequência: a sorte melhora com a dificuldade.</div>`}
+    </section>
+
+    <section class="vit-sec vit-odds">
+      <div class="vit-h"><span>Como sai cada papel</span></div>
+      <div class="vit-odds-g">
+        <span class="vit-f0"><b>Comum</b>80%</span><span class="vit-f1"><b>Prata</b>14% · tiragem 500</span>
+        <span class="vit-f2"><b>Holográfica</b>5% · tiragem 150</span><span class="vit-f3"><b>Ouro</b>1% · tiragem 50</span>
+      </div>
+      <p>Autografadas saem em 2,5% (tiragem 25) e erros de impressão em 0,8% (tiragem 10). Difícil, sequência, mata-mata e degraus altos do Milhão melhoram as chances. Cada figurinha tem estado de 7 a 10 e um código no verso: <b>Verificar</b> confere se ela é autêntica.</p>
+    </section>
+  </div>`;
+}
+function wireVitrine() {
+  const pg = document.querySelector('.vit-pg');
+  if (!pg) return;
+  const openIt = el => {
+    const b = el.closest && (el.closest('.vit-card') || el.closest('.vit-set.is-done'));
+    if (!b) return;
+    const sid = b.dataset.sid;
+    const src = b.classList.contains('vit-card') ? b.querySelector('.figx') : null;
+    if (src) zoomCopy(src, sid);
+    else {
+      /* a set row has no card on it: the photograph rises from the row */
+      const tmp = document.createElement('div');
+      tmp.innerHTML = figx(figAny(sid, anyCopy(sid), 'lg'), 96);
+      const fx = tmp.firstElementChild;
+      fx.style.cssText += ';position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;';
+      document.body.appendChild(fx);
+      zoomCopy(fx, sid);
+      setTimeout(() => fx.remove(), 50);
+    }
+  };
+  pg.addEventListener('click', e => openIt(e.target));
+  pg.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIt(e.target); } });
+}
 function html() {
 
   /* ── Home: the cover ────────────────────────────────────────── */
@@ -12518,7 +14221,8 @@ function html() {
 
       <div class="hero-sticker" style="position:relative;">
         <span class="alb-n" style="font-size:9px;padding:2px 6px;">Nº ${String(num).padStart(3, '0')}</span>
-        ${figurinha(hero, 'hero', { sub: `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}` })}
+        ${figurinha(hero, 'hero', { sub: `${POS_NAME[hero.pos]} · ${CTRY_NAME[hero.ctry] || hero.ctry}`,
+                                    copy: album.has(hero.id) ? copyOf(hero.id) : null })}
       </div>
 
       <p class="small muted home-intro" style="max-width:300px;font-size:12.5px;">
@@ -12557,6 +14261,20 @@ function html() {
         </div>`;
       })()}
 
+      ${(() => {
+        /* one line of news, when there is some: the welcome packet first,
+           then a birthday edition waiting to be won today */
+        const v = V();
+        if (v.welcome && v.welcome.length) return `<button id="bwelc" class="home-news is-gift" type="button">
+          <span class="hn-ic">${ICON.star('currentColor', 13)}</span>
+          <span><b>Pacote de boas-vindas</b> · suas figurinhas foram certificadas</span></button>`;
+        const t = todaysBdays().filter(id => !v.lim[`${id}:${new Date().getFullYear()}`]);
+        if (t.length) return `<button id="bvit" class="home-news" type="button">
+          <span class="hn-ic">${ICON.star('currentColor', 13)}</span>
+          <span>Aniversário de <b>${PL.find(p => p.id === t[0]).n}</b> · edição do dia</span></button>`;
+        return '';
+      })()}
+
       <button id="balb" class="mode mode-album" style="width:100%;max-width:340px;flex-direction:row;gap:11px;text-align:left;">
         <span class="mode-disc">${ICON.book('currentColor', 17)}</span>
         <span style="flex:1;min-width:0;">
@@ -12575,6 +14293,7 @@ function html() {
         <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
           muted ? ICON.mute('currentColor', 14) : ICON.sound('currentColor', 14)}</button>
         <button id="bmed"  class="link">Insígnias</button>
+        <button id="bvit2" class="link">Vitrine</button>
         <button id="bcred" class="link">Créditos</button>
       </div>
 
@@ -12681,6 +14400,7 @@ function html() {
       <div class="alb-top">
         ${topbar('Meu álbum')}
         <div class="alb-head">
+          <button id="balbvit" class="alb-vit" type="button">${ICON.star('currentColor', 12)} Vitrine</button>
           <span class="small muted">${albumPct()}% colado</span>
           <span class="display" style="font-size:20px;">${album.size}<span class="muted" style="font-size:13px;"> / ${total}</span></span>
         </div>
@@ -12737,16 +14457,17 @@ function html() {
               const sid = it.sid || p.id;
               const got = album.has(sid);
               const nm  = p ? p.n : (stk(sid) || {}).n || '';
+              const cp = got ? copyOf(sid) : null;
               const front = p
                 ? figurinha(p, 'lg', {
                     sub: (p.clubs && p.clubs[0]) ? clubName(p.clubs[0]) : POS_NAME[p.pos],
-                    noYear: true })
-                : figExtra(sid, 'lg');
+                    noYear: true, copy: cp })
+                : figExtra(sid, 'lg', { copy: cp });
               const back = p ? figurinhaBack(p, n) : figExtraBack(sid, n);
               return `<div class="alb-slot${got ? ' alb-turn' : ' empty'}${
                 runNewIds.includes(sid) ? ' alb-fresh' : ''}"${
                 got ? ` data-fig="${sid}" role="button" tabindex="0"
-                       aria-label="${nm} — toque para ampliar"` : ''}>
+                       aria-label="${nm}${copyAria(cp)} — toque para ampliar"` : ''}>
                 <span class="alb-n">${String(n).padStart(3, '0')}</span>
                 ${got
                   ? `<span class="flip"><span class="flip-in">
@@ -12809,6 +14530,8 @@ function html() {
      sheet of figurinhas especiais. It used to be one long scroll, and on a
      360×640 phone that was 1,391px of it hidden below the fold. The sets were
      already the sections; they just had to become the pages. */
+  if (sc === 'vitrine') return vitrineHtml();
+
   if (sc === 'medals') {
     const got  = new Set(earnedMedals().map(m => m.id));
     const sets = MEDAL_SETS.map(set => ({
@@ -12981,7 +14704,7 @@ function html() {
         <div><div class="v num brass">${money(Math.max(milBest(), banked))}</div><div class="k">Recorde</div></div>
       </div>
 
-      ${newStickerStrip()}
+      ${packStrip()}
       ${medalChips()}
 
       <div class="foot-row" style="margin-top:12px;">
@@ -13014,7 +14737,7 @@ function html() {
       <div class="bar"><i style="width:${pct}%;"></i></div>
       ${isRecord ? `<span class="chip chip-brass">${ICON.star('currentColor', 11)} Novo recorde</span>` : ''}
       ${medalChips()}
-      ${newStickerStrip()}
+      ${packStrip()}
       <div style="margin-top:6px;">${runlogEl()}</div>
       <div class="foot-row" style="margin-top:12px;">
         <button id="bshare" class="btn btn-ghost btn-sm">Compartilhar</button>
@@ -13293,6 +15016,12 @@ function go() {
   on('ins-prev',    () => { snd.page(); insPage = Math.max(0, insPage - 1); go(); });
   on('ins-next',    () => { snd.page(); insPage = Math.min(MEDAL_SETS.length - 1, insPage + 1); go(); });
   on('balb',        () => { snd.swipe();  sc = 'album';   go(); });
+  on('bvit',        () => { snd.swipe();  sc = 'vitrine'; go(); });
+  on('bvit2',       () => { snd.swipe();  sc = 'vitrine'; go(); });
+  on('balbvit',     () => { snd.swipe();  sc = 'vitrine'; go(); });
+  on('bwelc',       () => { snd.tap(); openWelcomePack(); });
+  on('bpack',       () => { snd.tap(); openRunPack(); });
+  if (sc === 'vitrine') wireVitrine();
 
   /* ── Opening the album on what you just won ──
      Two hundred and forty-eight pockets, and the three you just filled are
@@ -13313,7 +15042,7 @@ function go() {
       const wrap = (face, withTab) => `<div class="alb-slot zoom-slot" style="--pw:${pw}">${
         withTab ? tab : ''}${face.innerHTML}</div>`;
       LS.set('albFlipped', true);
-      openZoom(slot, wrap(f, true), wrap(b, false), f);
+      openZoom(slot, wrap(f, true), wrap(b, false), f, { sid: slot.dataset.fig });
     };
     const sheet = document.querySelector('.alb-sheet');
     if (sheet) {
@@ -13732,7 +15461,7 @@ function startGame() {
   seedFrom(runSeed);
   cat = buildGame(diffKey);
   qi = 0; sel.clear(); pts = 0; prevPts = 0; streak = 0;
-  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; gameN++;
+  nCorrect = 0; nPartial = 0; bestStreak = 0; lastGain = 0; runLog = []; runNew = 0; runNewIds = []; runPulls = []; runPackOpened = false; gameN++;
   resetLifes();
   sc = 'quiz'; tMax = qTime(); tLeft = tMax; lastMsg = '';
   disp = dealDisp(0);
@@ -14058,9 +15787,12 @@ function doReveal() {
   bestStreak = Math.max(bestStreak, streak);
 
   /* Getting it right sticks the figurinha in the album for good. */
-  const gotNew = p === 3 ? collect(earned(q)) : [];
+  const earnedNow = p === 3 ? earned(q) : [];
+  const gotNew = collect(earnedNow);
   runNew += gotNew.length;
   runNewIds.push(...gotNew);
+  /* and each of them comes out of the packet as a printed copy */
+  if (earnedNow.length) try { runPulls.push(...pullCopies(earnedNow, gotNew, pullBoost())); } catch (e) {}
 
   /* An ordering answer is scored by how many cards sit in the right place. */
   if (q.order) {
@@ -14229,6 +15961,7 @@ function finishRun() {
   }
   LS.set('stats', stats);
   window._newMedals = newMedals();
+  try { runPulls.push(...awardBdays()); } catch (e) {}
 }
 
 function startTmr() {
