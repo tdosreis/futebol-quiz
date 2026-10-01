@@ -30,9 +30,15 @@ Rendering: subtle visible brushwork, sophisticated hand-painted gouache texture 
 opaque paint, natural and slightly warm colours, gentle painterly simplification of the background \
 while keeping the subject detailed.
 
+Keep the photograph's own palette: a black-and-white photo stays a black-and-white (monochrome ink \
+wash) painting, a colour photo keeps its colours. Facial hair stays exactly as photographed — never add \
+a beard or moustache that is not there. Where the face is small in the frame, paint it with extra care \
+from the photo's own features rather than inventing them. The whole image must look painted with a \
+brush, including the face and clothes — not a smoothed or retouched photograph.
+
 Do not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, smooth the skin, \
-change facial proportions, change the identity, add or remove people, add text, logos, borders or \
-signatures. Return only the image."""
+change facial proportions, change the identity, add or remove people, add text, logos, pins, badges, \
+borders, frames, vignettes or signatures of any kind. Return only the image."""
 
 def players():
     """album id -> (name, image path), read from the app itself"""
