@@ -1,0 +1,73 @@
+# Repaint a few album photos with a Gemini image model, as a test.
+# Run it by hand from the Actions tab. It never touches img/ or master:
+# the results go to the run's artifacts and to the `gemini-tests` branch,
+# under ai-test/run-<number>/ (compare.jpg is the side-by-side to look at).
+name: Gemini paint test
+
+on:
+  workflow_dispatch:
+    inputs:
+      players:
+        description: 'Album ids to repaint (comma-separated)'
+        required: false
+        default: 'pele,ronaldo,messi,garrincha,didi'
+      model:
+        description: 'Gemini image model'
+        required: false
+        default: 'gemini-2.5-flash-image'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-paint-test
+  cancel-in-progress: false
+
+jobs:
+  paint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow (for the comparison sheet)
+        run: pip install --quiet pillow
+
+      - name: Repaint the test photos
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ inputs.model }}
+          PLAYERS: ${{ inputs.players }}
+          OUT: ai-test/run-${{ github.run_number }}
+        run: python3 tools/gemini/paint_test.py
+
+      - name: Keep the results as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-paint-test-${{ github.run_number }}
+          path: ai-test/
+          if-no-files-found: ignore
+
+      - name: Publish the results to the gemini-tests branch
+        if: success()
+        run: |
+          set -e
+          mv ai-test /tmp/ai-test
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898+github-actions[bot]@users.noreply.github.com'
+          if git fetch --quiet origin gemini-tests; then
+            git checkout --quiet -B gemini-tests FETCH_HEAD
+          else
+            git checkout --quiet --orphan gemini-tests
+            git rm -rf --quiet .
+          fi
+          mkdir -p ai-test
+          cp -r /tmp/ai-test/. ai-test/
+          git add ai-test
+          git commit --quiet -m "Gemini paint test, run ${{ github.run_number }} (${{ inputs.model }})"
+          git push --quiet origin gemini-tests
