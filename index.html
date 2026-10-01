@@ -2344,6 +2344,89 @@
     .vit-odds-g { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .vit-odds-g span { display: flex; flex-direction: column; gap: 2px; padding: 7px 9px; border-radius: 8px; font-size: 10.5px; }
     .vit-odds-g b { font: 700 12px/1.1 var(--font-s); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       O ATELIÊ — the frame painted to match the portraits
+
+       The figurinhas are gouache and watercolour; the screens around them
+       were flat colour and clean type. Here the page becomes the paper the
+       portraits were painted on (night paper by default, cream by day), and
+       the controls become paint on it: a gold brushstroke for the main
+       button, painted cards for the modes, dabs for the icons. The shapes are
+       masks (img/atelier, made by tools/make_atelier.py), so the colours
+       still come from the theme tokens. Scoped to the cover for now.
+    ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --at-paper: url(img/atelier/paper-day.webp);
+      --at-card: rgba(255, 252, 244, .72);
+      --at-card-2: rgba(255, 250, 236, .9);
+      --at-wash-op: .32;
+    }
+    :root[data-theme="dark"] {
+      --at-paper: url(img/atelier/paper-night.webp);
+      --at-card: rgba(236, 226, 200, .12);
+      --at-card-2: rgba(236, 226, 200, .18);
+      --at-wash-op: .5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --at-paper: url(img/atelier/paper-night.webp);
+        --at-card: rgba(236, 226, 200, .075);
+        --at-card-2: rgba(236, 226, 200, .12);
+        --at-wash-op: .5;
+      }
+    }
+    body.at-home, body.at-home #qz { background: var(--stock-2) var(--at-paper) repeat; background-size: 256px 256px; }
+    /* the album's ruled lines give way to washes laid on the paper */
+    body.at-home #qz::before { -webkit-mask-image: none; mask-image: none;
+      opacity: var(--at-wash-op);
+      background:
+        url(img/atelier/wash-indigo.webp) -18vw -6vh / 92vw auto no-repeat,
+        url(img/atelier/wash-umber.webp) right -22vw bottom -4vh / 78vw auto no-repeat,
+        url(img/atelier/wash-green.webp) left -26vw bottom 22vh / 62vw auto no-repeat; }
+
+    /* the title: ink lettering, Milhão laid over a gold wash */
+    .pg-home h1.display { text-shadow: 0 1px 0 rgba(0,0,0,.18); }
+    .pg-home h1 em.brass { position: relative; display: inline-block; padding: 0 .14em; }
+    .pg-home h1 em.brass::before { content: ''; position: absolute; left: -.2em; right: -.25em; top: .18em; bottom: .02em;
+      z-index: -1; background: url(img/atelier/wash-gold.webp) center / 100% 100% no-repeat; opacity: .55; }
+
+    /* the cover sticker is pinned to the page, a little askew */
+    .pg-home .hero-sticker { transform: rotate(-1.6deg);
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.32)) drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+    .pg-home .hero-sticker::before { content: ''; position: absolute; z-index: 13; top: -9px; left: 50%;
+      width: 58px; height: 18px; transform: translateX(-50%) rotate(2.5deg);
+      background: rgba(236, 226, 196, .62); box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      -webkit-mask: url(img/atelier/stroke-tab.webp) center / 100% 100%; mask: url(img/atelier/stroke-tab.webp) center / 100% 100%; }
+
+    /* Jogar agora: a gold gouache stroke */
+    .pg-home .btn-brass.btn-lg { border-radius: 0; padding: 19px 44px 20px;
+      background: linear-gradient(100deg, #b98c42, #d9b25a 40%, #e6c46f 55%, #c49a48 80%, #a87b30);
+      color: #2a1d05; box-shadow: none; filter: drop-shadow(0 4px 6px rgba(0,0,0,.28));
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+    .pg-home .btn-brass.btn-lg:hover { filter: drop-shadow(0 4px 6px rgba(0,0,0,.28)) brightness(1.06); }
+
+    /* the three modes and the album: painted cards */
+    .pg-home .mode { border: 0; border-radius: 0; background: var(--at-card);
+      -webkit-mask: url(img/atelier/stroke-card.webp) center / 100% 100%; mask: url(img/atelier/stroke-card.webp) center / 100% 100%; }
+    .pg-home .mode:hover { background: var(--at-card-2); box-shadow: none; }
+    .pg-home .mode-disc { border-radius: 0; background: var(--md);  color: #fff;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
+    .pg-home .mode-disc svg { filter: drop-shadow(0 0 .5px rgba(0,0,0,.4)); }
+    .pg-home .mode-album { padding: 14px 16px; }
+
+    /* the insígnias: little dabs of paint */
+    .pg-home .medal-dot { border-radius: 0; background: var(--at-card-2); box-shadow: none;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
+    .pg-home .medal-dot-off { background: var(--at-card); }
+    .pg-home .chip-brass { border: 0; border-radius: 0; background: rgba(185,140,66,.22);
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; padding: 7px 18px; }
+    .pg-home .home-news { border: 0; border-radius: 0; box-shadow: none; padding: 12px 18px; animation: none;
+      background: rgba(185,140,66,.2);
+      -webkit-mask: url(img/atelier/stroke-card.webp) center / 100% 100%; mask: url(img/atelier/stroke-card.webp) center / 100% 100%; }
+    .pg-home .alb-ring-lg::before { background: var(--stock-2) var(--at-paper); background-size: 256px 256px; }
+    .pg-home .home-foot .btn-icon { border: 0; background: var(--at-card-2); border-radius: 0;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
   </style>
 </head>
 <body>
@@ -14930,7 +15013,7 @@ function html() {
       </button>`;
 
     return `
-    <div class="pg pg-center" style="padding:14px 20px 14px;gap:10px;">
+    <div class="pg pg-center pg-home" style="padding:14px 20px 14px;gap:10px;">
 
       <div class="eyebrow" style="width:100%;display:flex;justify-content:space-between;">
         <span>Edição ${year}</span><b>Fig. Nº ${String(num).padStart(3, '0')}</b>
@@ -15715,6 +15798,7 @@ function go() {
   if (sc === 'quiz') _qKey = qk;
 
   const ct = document.getElementById('ct');
+  document.body.classList.toggle('at-home', sc === 'home');
   movedScreen = sc !== _lastSc;
   _lastSc = sc;
   if (ct) ct.classList.toggle('screen-in', movedScreen);
