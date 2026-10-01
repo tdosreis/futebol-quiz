@@ -135,6 +135,16 @@ def dab(name, n, seed):
     save(name, np.dstack([np.full((n, n, 3), 255, np.uint8), (a * 255).astype(np.uint8)]), 90)
 
 
+def filled(name, mask, bgr, alpha):
+    """A painted card in one colour: the shape of a stroke mask, filled, with
+    the paint a touch denser at the edge where it pooled."""
+    m = cv2.imread(os.path.join(OUT, mask), cv2.IMREAD_UNCHANGED)[..., 3].astype(np.float32) / 255
+    rim = np.clip(m - cv2.GaussianBlur(m, (0, 0), 3), 0, 1) * 2.2
+    a = np.clip(m * alpha * (1 + rim * .6), 0, 1)
+    rgb = np.ones(m.shape + (3,), np.float32) * np.array(bgr, np.float32)
+    save(name, np.dstack([rgb, a * 255]).astype(np.uint8), 88)
+
+
 if __name__ == '__main__':
     paper('paper-night.webp', base=(40, 28, 22), tint_a=(70, 40, 28), tint_b=(34, 36, 48), grain=.10, bloom=.6, seed=3)
     paper('paper-day.webp', base=(226, 238, 244), tint_a=(205, 222, 236), tint_b=(214, 232, 230), grain=.045, bloom=.5, seed=4)
@@ -147,3 +157,7 @@ if __name__ == '__main__':
     stroke('stroke-card.webp', 600, 420, 22, 'card')
     stroke('stroke-tab.webp', 240, 240, 23, 'card')
     dab('stroke-dab.webp', 200, 24)
+    filled('card-day.webp', 'stroke-card.webp', (240, 249, 253), .82)
+    filled('card-night.webp', 'stroke-card.webp', (200, 226, 236), .13)
+    filled('card-day-on.webp', 'stroke-card.webp', (228, 243, 250), .97)
+    filled('card-night-on.webp', 'stroke-card.webp', (200, 226, 236), .22)

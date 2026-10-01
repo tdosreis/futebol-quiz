@@ -181,8 +181,12 @@
         silhouette, an illuminated initial. 
    v61: 291 player portraits repainted by hand-style gouache and watercolour
         (Gemini, tools/gemini); the six that failed or drifted keep their
-        photograph. The picture cache is renamed so phones fetch them. */
-const VERSION = 'v61';
+        photograph. The picture cache is renamed so phones fetch them. 
+   v62: the atelier — every screen painted to match the portraits: night
+        paper by default (cream by day), watercolour washes, gold and green
+        brushstroke buttons, painted cards for tiles, lifelines and panels,
+        dabs of paint for the icons. Materials in img/atelier. */
+const VERSION = 'v62';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

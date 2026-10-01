@@ -2358,12 +2358,16 @@
     ═══════════════════════════════════════════════════════════════ */
     :root {
       --at-paper: url(img/atelier/paper-day.webp);
+      --at-card-img: url(img/atelier/card-day.webp);
+      --at-card-on: url(img/atelier/card-day-on.webp);
       --at-card: rgba(255, 252, 244, .72);
       --at-card-2: rgba(255, 250, 236, .9);
       --at-wash-op: .32;
     }
     :root[data-theme="dark"] {
       --at-paper: url(img/atelier/paper-night.webp);
+      --at-card-img: url(img/atelier/card-night.webp);
+      --at-card-on: url(img/atelier/card-night-on.webp);
       --at-card: rgba(236, 226, 200, .12);
       --at-card-2: rgba(236, 226, 200, .18);
       --at-wash-op: .5;
@@ -2371,14 +2375,16 @@
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
         --at-paper: url(img/atelier/paper-night.webp);
+        --at-card-img: url(img/atelier/card-night.webp);
+        --at-card-on: url(img/atelier/card-night-on.webp);
         --at-card: rgba(236, 226, 200, .075);
         --at-card-2: rgba(236, 226, 200, .12);
         --at-wash-op: .5;
       }
     }
-    body.at-home, body.at-home #qz { background: var(--stock-2) var(--at-paper) repeat; background-size: 256px 256px; }
+    body, #qz, .sheet { background: var(--stock-2) var(--at-paper) repeat; background-size: 256px 256px; }
     /* the album's ruled lines give way to washes laid on the paper */
-    body.at-home #qz::before { -webkit-mask-image: none; mask-image: none;
+    #qz::before { -webkit-mask-image: none; mask-image: none;
       opacity: var(--at-wash-op);
       background:
         url(img/atelier/wash-indigo.webp) -18vw -6vh / 92vw auto no-repeat,
@@ -2386,6 +2392,39 @@
         url(img/atelier/wash-green.webp) left -26vw bottom 22vh / 62vw auto no-repeat; }
 
     /* the title: ink lettering, Milhão laid over a gold wash */
+
+    /* ── every screen: the same paper, the same paint ── */
+    /* painted cards: the shape is a picture behind the content (not a mask),
+       so a tile's number tab or a badge can still sit over its edge */
+    .b:not(.b-fig):not(.b-gone), .qcard, .ajuda, .btn-ghost, .safe-box, .expert-box, .ficha,
+    .vit-set, .pack-teaser, .stats, .newfigs-row, .credit-sec {
+      background-color: transparent; background-image: var(--at-card-img);
+      background-size: 100% 100%; background-repeat: no-repeat; background-position: center;
+      border-color: transparent; border-radius: 4px; }
+    .b:not(.b-fig):not(.b-gone) { box-shadow: none; }
+    .qcard { box-shadow: none; }
+    .ajuda { box-shadow: none; border-color: transparent !important; }
+    .btn-ghost { box-shadow: none; }
+    .btn-ghost:hover, .ajuda:not(:disabled):hover, .b:not(.b-fig):not(.b-gone):hover { background-image: var(--at-card-on); }
+    .stats { padding: 12px 22px; }
+    /* a chosen tile gets a ring of paint, not a ruled outline */
+    .b-sel:not(.b-fig) { background-image: var(--at-card-on); box-shadow: 0 0 0 2px var(--ink), 0 4px 10px var(--shadow-2); border-radius: 6px; }
+    /* the main buttons are brushstrokes wherever they are */
+    .btn-primary, .btn-brass { border-radius: 0; box-shadow: none; padding-left: 30px; padding-right: 30px;
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%;
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,.22)); }
+    .btn-brass { background: linear-gradient(100deg, #b98c42, #d9b25a 40%, #e6c46f 55%, #c49a48 80%, #a87b30); color: #2a1d05; }
+    .btn-primary:not(:disabled) { background: linear-gradient(100deg, #1d6a49, #2b8a60 45%, #3a9c6e 60%, #23704d); color: #F3F1E8; }
+    .btn-primary:disabled { background: var(--rule); }
+    .btn-icon:not(.btn-primary):not(.btn-brass) { border-radius: 0; box-shadow: none; background: var(--at-card-on) center / 100% 100% no-repeat; }
+    .aj-disc, .mode-disc { border-radius: 0; background: var(--aj, var(--md)); color: #fff;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
+    .chip { border-radius: 0; border-color: transparent; background-color: transparent;
+      background-image: var(--at-card-img); background-size: 100% 100%; }
+    .chip-brass { background-image: none; background-color: rgba(185,140,66,.22);
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+    .timer, .bar { border-radius: 0; -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+    .timer > i { border-radius: 0; }
     .pg-home h1.display { text-shadow: 0 1px 0 rgba(0,0,0,.18); }
     .pg-home h1 em.brass { position: relative; display: inline-block; padding: 0 .14em; }
     .pg-home h1 em.brass::before { content: ''; position: absolute; left: -.2em; right: -.25em; top: .18em; bottom: .02em;
