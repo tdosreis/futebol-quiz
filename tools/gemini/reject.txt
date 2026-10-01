@@ -1,0 +1,6 @@
+# Paintings reviewed and kept out of the app (the photograph stays).
+img/01c9eb3147d30e5a.webp   # Arena do Grêmio: came back as the photograph, unpainted
+img/0be967c3d2359f38.webp   # MetLife: unpainted
+img/2199b7b7f22e4fdd.webp   # Emirates aerial: unpainted
+img/29e4bf594fcd70df.webp   # Maracanã aerial: unpainted
+antony                      # the source is a cartoon; the painting invents a real face

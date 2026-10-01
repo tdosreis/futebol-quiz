@@ -18,12 +18,42 @@ sys.path.insert(0, HERE)
 from batch import key_white
 
 
-def rekey(im):
+def rekey(im, src=None):
+    """Take the paper ground out of a painted emblem. When the original crest
+    has its own transparent outline and the painting lines up with it, that
+    outline is the cut — it keeps a white ring that touches the paper (the
+    Fenerbahçe ring) which keying by colour would eat. Otherwise, key by colour."""
     rgb = im[..., :3].copy()
     if im.shape[2] == 4:
         a = im[..., 3:4] / 255.
         rgb = (rgb * a + 255 * (1 - a)).astype(np.uint8)
-    return key_white(rgb)
+    keyed = key_white(rgb)
+    if src is None or src.ndim < 3 or src.shape[2] != 4:
+        return keyed
+    sa = src[..., 3]
+    ys, xs = np.where(sa > 40)
+    if not len(xs):
+        return keyed
+    sa = sa[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+    ka = keyed[..., 3]
+    ky, kx = np.where(ka > 40)
+    if not len(kx):
+        return keyed
+    y0, y1, x0, x1 = ky.min(), ky.max() + 1, kx.min(), kx.max() + 1
+    body = keyed[y0:y1, x0:x1].copy()
+    # the painted emblem must have the original's proportions to borrow its outline
+    if abs((x1 - x0) / (y1 - y0) - sa.shape[1] / sa.shape[0]) > .06:
+        return keyed
+    sa = cv2.resize(sa, (x1 - x0, y1 - y0), interpolation=cv2.INTER_LINEAR)
+    inter = ((sa > 128) & (body[..., 3] > 128)).sum()
+    union = ((sa > 128) | (body[..., 3] > 128)).sum()
+    if union == 0 or inter / union < .86:
+        return keyed
+    # composite the painting's own pixels under the original outline: where the
+    # paper was keyed away, the painted RGB is still in `rgb`
+    out = np.dstack([rgb[y0:y1, x0:x1], cv2.GaussianBlur(sa, (0, 0), .6)])
+    m = max(2, int(max(out.shape[:2]) * .04))
+    return cv2.copyMakeBorder(out, m, m, m, m, cv2.BORDER_CONSTANT, value=(0, 0, 0, 0))
 
 
 def main():
@@ -49,7 +79,7 @@ def main():
             skipped += 1
             continue
         if r['kind'] == 'emblem':
-            im = rekey(im)
+            im = rekey(im, cv2.imread(os.path.join(ROOT, rel), cv2.IMREAD_UNCHANGED))
         # as large as the app ever draws it, at 2x, and no larger: the album
         # is cached on the phone, every kilobyte is paid for once per player
         cap = {'player': 640, 'scene': 640, 'emblem': 320, 'flag': 240}[r['kind']]
