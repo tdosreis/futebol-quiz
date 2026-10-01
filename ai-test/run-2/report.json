@@ -1,0 +1,51 @@
+{
+ "model": "gemini-3-pro-image-preview",
+ "prompt": "Transform this photograph into a premium painterly illustration: editorial gouache realism, as if a skilled portrait painter had hand-painted this exact photograph.\n\nPreserve, exactly as in the source photo: the person's identity and exact facial structure, realistic eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions, clothing (including shirt colours, badges and details) and the original composition and framing. The result must remain immediately recognizable as the same person in the source photo.\n\nRendering: subtle visible brushwork, sophisticated hand-painted gouache texture with soft, matte opaque paint, natural and slightly warm colours, gentle painterly simplification of the background while keeping the subject detailed.\n\nKeep the photograph's own palette: a black-and-white photo stays a black-and-white (monochrome ink wash) painting, a colour photo keeps its colours. Facial hair stays exactly as photographed — never add a beard or moustache that is not there. Where the face is small in the frame, paint it with extra care from the photo's own features rather than inventing them. The whole image must look painted with a brush, including the face and clothes — not a smoothed or retouched photograph.\n\nDo not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, smooth the skin, change facial proportions, change the identity, add or remove people, add text, logos, pins, badges, borders, frames, vignettes or signatures of any kind. Return only the image.",
+ "results": [
+  {
+   "id": "pele",
+   "name": "Pelé",
+   "source": "img/d609af6f47604b15.webp",
+   "ok": true,
+   "file": "pele-painted.jpg",
+   "seconds": 16.1,
+   "note": ""
+  },
+  {
+   "id": "ronaldo",
+   "name": "Ronaldo Fenômeno",
+   "source": "img/f69a84f12e6c3e2d.webp",
+   "ok": true,
+   "file": "ronaldo-painted.jpg",
+   "seconds": 16.2,
+   "note": ""
+  },
+  {
+   "id": "messi",
+   "name": "Messi",
+   "source": "img/0859a19b8b37b5bf.webp",
+   "ok": true,
+   "file": "messi-painted.jpg",
+   "seconds": 15.1,
+   "note": ""
+  },
+  {
+   "id": "garrincha",
+   "name": "Garrincha",
+   "source": "img/fa4679be155093f7.webp",
+   "ok": true,
+   "file": "garrincha-painted.jpg",
+   "seconds": 15.1,
+   "note": ""
+  },
+  {
+   "id": "didi",
+   "name": "Didi",
+   "source": "img/94bf9a8f11ebefd0.webp",
+   "ok": true,
+   "file": "didi-painted.jpg",
+   "seconds": 14.6,
+   "note": ""
+  }
+ ]
+}
