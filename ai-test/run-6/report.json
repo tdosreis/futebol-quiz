@@ -1,0 +1,327 @@
+{
+ "model": "gemini-3-pro-image-preview",
+ "style": "atelier_full",
+ "prompt": "Repaint this photograph as a museum-quality hand-painted portrait, in the manner of a contemporary master portrait painter working in gouache and watercolour on heavy cold-press paper.\n\nThe subject — face, hair, shoulders and kit — is fully and confidently painted: sculpted planes of light and shadow, expressive visible brushstrokes, warm skin glazes with cool shadow notes, crisp highlights in the eyes. Away from the subject the painting deliberately loosens: the background is re-imagined as soft abstract washes and gestural strokes in colours taken from the photo, with wet-in-wet blooms, layered glazes and a few drips. The paper grain shows through the thin washes.\n\nFull bleed, painted on a toned ground: the artist first covered the whole sheet with a wash in the photo's own background colours, so there is no white paper anywhere in the picture. Every edge and every corner is solid paint — background washes, strokes and blooms run straight off all four sides of the image, as if the painting were cropped from a larger canvas. No vignette, no white or cream border, no unpainted margin, no fade-out, no drips ending on white paper. Keep the original framing and crop. It must read unmistakably as a painting, never as a filtered photograph.\n\nPreserve, exactly as in the source photo: the person's identity and exact facial structure, realistic eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions and clothing (shirt colours, badges, details). The result must remain immediately recognizable as the same person. Facial hair stays exactly as photographed — never add a beard or moustache. Where the face is small in the frame, paint it with extra care from the photo's own features rather than inventing them. A black-and-white photo becomes a monochrome painting (ink, charcoal and grey washes); a colour photo keeps its colours.\n\nDo not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, change facial proportions, change the identity, add or remove people, add text, logos, pins, badges or signatures of any kind. Return only the image.",
+ "results": [
+  {
+   "id": "leonidas",
+   "name": "Leônidas da Silva",
+   "source": "img/329d1f766658da65.webp",
+   "ok": true,
+   "file": "leonidas-painted.jpg",
+   "seconds": 16.8,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 93520
+   }
+  },
+  {
+   "id": "zico",
+   "name": "Zico",
+   "source": "img/89327837f14f3c13.webp",
+   "ok": true,
+   "file": "zico-painted.jpg",
+   "seconds": 16.6,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 15066
+   }
+  },
+  {
+   "id": "socrates",
+   "name": "Sócrates",
+   "source": "img/cec165242fdd66eb.webp",
+   "ok": true,
+   "file": "socrates-painted.jpg",
+   "seconds": 17.0,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 27809
+   }
+  },
+  {
+   "id": "romario",
+   "name": "Romário",
+   "source": "img/0d187854e036c104.webp",
+   "ok": true,
+   "file": "romario-painted.jpg",
+   "seconds": 15.6,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 26486
+   }
+  },
+  {
+   "id": "cafu",
+   "name": "Cafu",
+   "source": "img/ac9b72fbf485640d.webp",
+   "ok": true,
+   "file": "cafu-painted.jpg",
+   "seconds": 15.3,
+   "note": "",
+   "edges": {
+    "top": 24,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 29572
+   }
+  },
+  {
+   "id": "ronaldinho",
+   "name": "Ronaldinho",
+   "source": "img/dffa17aea5fe72c7.webp",
+   "ok": true,
+   "file": "ronaldinho-painted.jpg",
+   "seconds": 17.5,
+   "note": "",
+   "edges": {
+    "top": 16,
+    "bottom": 54,
+    "left": 13,
+    "right": 10,
+    "patched": 64151
+   }
+  },
+  {
+   "id": "kaka",
+   "name": "Kaká",
+   "source": "img/3c7e7132b3e8c2da.webp",
+   "ok": true,
+   "file": "kaka-painted.jpg",
+   "seconds": 15.7,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 41166
+   }
+  },
+  {
+   "id": "neymar",
+   "name": "Neymar",
+   "source": "img/4ac976b184cc63fc.webp",
+   "ok": true,
+   "file": "neymar-painted.jpg",
+   "seconds": 16.5,
+   "note": "",
+   "edges": {
+    "top": 11,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 27055
+   }
+  },
+  {
+   "id": "vinicius",
+   "name": "Vinícius Jr.",
+   "source": "img/c1a715e0c0f81882.webp",
+   "ok": true,
+   "file": "vinicius-painted.jpg",
+   "seconds": 19.3,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 91670
+   }
+  },
+  {
+   "id": "puskas",
+   "name": "Ferenc Puskás",
+   "source": "img/b24057226b77cc3d.webp",
+   "ok": true,
+   "file": "puskas-painted.jpg",
+   "seconds": 16.4,
+   "note": "",
+   "edges": {
+    "top": 21,
+    "bottom": 0,
+    "left": 33,
+    "right": 6,
+    "patched": 61655
+   }
+  },
+  {
+   "id": "yashin",
+   "name": "Lev Yashin",
+   "source": "img/0b276412bf3f5bd8.webp",
+   "ok": true,
+   "file": "yashin-painted.jpg",
+   "seconds": 16.4,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 49
+   }
+  },
+  {
+   "id": "eusebio",
+   "name": "Eusébio",
+   "source": "img/18923a812a393569.webp",
+   "ok": true,
+   "file": "eusebio-painted.jpg",
+   "seconds": 15.6,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 34,
+    "left": 0,
+    "right": 2,
+    "patched": 63444
+   }
+  },
+  {
+   "id": "cruyff",
+   "name": "Johan Cruyff",
+   "source": "img/174077928ee92afd.webp",
+   "ok": true,
+   "file": "cruyff-painted.jpg",
+   "seconds": 15.2,
+   "note": "",
+   "edges": {
+    "top": 13,
+    "bottom": 72,
+    "left": 62,
+    "right": 18,
+    "patched": 54404
+   }
+  },
+  {
+   "id": "beckenbauer",
+   "name": "Beckenbauer",
+   "source": "img/51fdbdc7c90eb840.webp",
+   "ok": true,
+   "file": "beckenbauer-painted.jpg",
+   "seconds": 21.0,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 32221
+   }
+  },
+  {
+   "id": "maradona",
+   "name": "Maradona",
+   "source": "img/3e42a2c3cad24abd.webp",
+   "ok": true,
+   "file": "maradona-painted.jpg",
+   "seconds": 18.2,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 48287
+   }
+  },
+  {
+   "id": "zidane",
+   "name": "Zidane",
+   "source": "img/d2c6410686305d9c.webp",
+   "ok": true,
+   "file": "zidane-painted.jpg",
+   "seconds": 17.3,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 18577
+   }
+  },
+  {
+   "id": "buffon",
+   "name": "Gianluigi Buffon",
+   "source": "img/6e42572899f9dce9.webp",
+   "ok": true,
+   "file": "buffon-painted.jpg",
+   "seconds": 17.1,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 6739
+   }
+  },
+  {
+   "id": "cr7",
+   "name": "Cristiano Ronaldo",
+   "source": "img/bca7c83998971046.webp",
+   "ok": true,
+   "file": "cr7-painted.jpg",
+   "seconds": 16.1,
+   "note": "",
+   "edges": {
+    "top": 26,
+    "bottom": 2,
+    "left": 0,
+    "right": 51,
+    "patched": 141864
+   }
+  },
+  {
+   "id": "mbappe",
+   "name": "Kylian Mbappé",
+   "source": "img/4a0342f90a220ca9.webp",
+   "ok": true,
+   "file": "mbappe-painted.jpg",
+   "seconds": 18.4,
+   "note": "",
+   "edges": {
+    "top": 31,
+    "bottom": 99,
+    "left": 54,
+    "right": 22,
+    "patched": 106685
+   }
+  },
+  {
+   "id": "haaland",
+   "name": "Erling Haaland",
+   "source": "img/5564dc0bb05fda53.webp",
+   "ok": true,
+   "file": "haaland-painted.jpg",
+   "seconds": 16.6,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 90,
+    "left": 0,
+    "right": 0,
+    "patched": 165355
+   }
+  }
+ ]
+}
