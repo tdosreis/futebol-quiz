@@ -1,0 +1,51 @@
+{
+ "model": "gemini-2.5-flash-image",
+ "prompt": "Transform this photograph into a premium painterly illustration: editorial gouache realism, as if a skilled portrait painter had hand-painted this exact photograph.\n\nPreserve, exactly as in the source photo: the person's identity and exact facial structure, realistic eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions, clothing (including shirt colours, badges and details) and the original composition and framing. The result must remain immediately recognizable as the same person in the source photo.\n\nRendering: subtle visible brushwork, sophisticated hand-painted gouache texture with soft, matte opaque paint, natural and slightly warm colours, gentle painterly simplification of the background while keeping the subject detailed.\n\nDo not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, smooth the skin, change facial proportions, change the identity, add or remove people, add text, logos, borders or signatures. Return only the image.",
+ "results": [
+  {
+   "id": "pele",
+   "name": "Pelé",
+   "source": "img/d609af6f47604b15.webp",
+   "ok": true,
+   "file": "pele-painted.png",
+   "seconds": 16.9,
+   "note": "` ` `"
+  },
+  {
+   "id": "ronaldo",
+   "name": "Ronaldo Fenômeno",
+   "source": "img/f69a84f12e6c3e2d.webp",
+   "ok": true,
+   "file": "ronaldo-painted.png",
+   "seconds": 6.2,
+   "note": "`"
+  },
+  {
+   "id": "messi",
+   "name": "Messi",
+   "source": "img/0859a19b8b37b5bf.webp",
+   "ok": true,
+   "file": "messi-painted.png",
+   "seconds": 6.8,
+   "note": ""
+  },
+  {
+   "id": "garrincha",
+   "name": "Garrincha",
+   "source": "img/fa4679be155093f7.webp",
+   "ok": true,
+   "file": "garrincha-painted.png",
+   "seconds": 6.3,
+   "note": "`"
+  },
+  {
+   "id": "didi",
+   "name": "Didi",
+   "source": "img/94bf9a8f11ebefd0.webp",
+   "ok": true,
+   "file": "didi-painted.png",
+   "seconds": 6.5,
+   "note": ""
+  }
+ ]
+}
