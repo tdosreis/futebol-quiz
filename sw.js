@@ -178,15 +178,18 @@
         the clubs still without one are drawn as shields in their colours;
         and every written answer now has a picture — a dated stamp for a
         year, a scoreboard, a formation on a pitch, a medallion, a portrait
-        silhouette, an illuminated initial. */
-const VERSION = 'v60';
+        silhouette, an illuminated initial. 
+   v61: 291 player portraits repainted by hand-style gouache and watercolour
+        (Gemini, tools/gemini); the six that failed or drifted keep their
+        photograph. The picture cache is renamed so phones fetch them. */
+const VERSION = 'v61';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
    updates. Wiping them with every version meant the first game after an
    update re-downloaded every picture, and on a weak signal cards came up
    blank. */
-const IMG_CACHE = 'futebol-quiz-img-2';
+const IMG_CACHE = 'futebol-quiz-img-3';
 
 const SHELL = [
   '/futebol-quiz/',

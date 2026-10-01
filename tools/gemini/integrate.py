@@ -61,6 +61,7 @@ def main():
     ap.add_argument('stage')
     ap.add_argument('--reject', default='')
     ap.add_argument('--dry', action='store_true')
+    ap.add_argument('--kinds', default='player,scene,emblem,flag')
     a = ap.parse_args()
     reject = set()
     if a.reject and os.path.exists(a.reject):
@@ -70,7 +71,7 @@ def main():
         r = json.load(open(st))
         rel = r['path']
         key = r.get('player') or rel
-        if not r.get('ok') or rel in reject or key in reject:
+        if not r.get('ok') or rel in reject or key in reject or r['kind'] not in a.kinds.split(','):
             skipped += 1
             continue
         src = os.path.join(a.stage, rel)
