@@ -738,7 +738,7 @@
       background: #33291B; }
 
     /* ── Held up to the light ── */
-    .zoom { position: fixed; inset: 0; z-index: 900; }
+    .zoom { position: fixed; inset: 0; z-index: 1000; }   /* above the packet (950): a card is zoomed from its summary */
     /* no backdrop blur: on a phone it re-blurs the whole page under the card
        on every frame of the turn, which is most of why the turn stuttered */
     .zoom-scrim { position: absolute; inset: 0; background: rgba(12,11,7,.86); animation: zoomFade .25s ease-out both; }
@@ -7494,7 +7494,7 @@ const PL_META = {
   rogerio_ceni: { pos:'GK', era:[1990,2015], ctry:'BRA', clubs:['saopaulo'] },
   courtois: { pos:'GK', era:[2009,2026], ctry:'BEL', clubs:['genk','chelsea','atletico','realmadrid'] },
   van_der_sar: { pos:'GK', era:[1990,2011], ctry:'NED', clubs:['ajax','juventus','fulham','manutd'] },
-  alex: { pos:'MF', era:[1995,2012], ctry:'BRA', clubs:['palmeiras','cruzeiro','fenerbahce','coritiba'] },
+  alex: { pos:'MF', era:[1995,2014], ctry:'BRA', clubs:['palmeiras','cruzeiro','fenerbahce','coritiba','flamengo','parma'] },
   pirlo: { pos:'MF', era:[1995,2017], ctry:'ITA', clubs:['brescia','inter','milan','juventus','nycfc'] },
   iniesta: { pos:'MF', era:[2002,2024], ctry:'ESP', clubs:['barcelona','vissel'] },
   casemiro: { pos:'MF', era:[2010,2026], ctry:'BRA', clubs:['saopaulo','realmadrid','manutd'] },

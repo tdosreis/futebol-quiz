@@ -166,8 +166,13 @@
 
    v58: back to the original photographs — the filter paintings were not
         close enough to hand-painted work. The picture cache is renamed
-        again so phones drop the painted copies. tools/paint stays. */
-const VERSION = 'v58';
+        again so phones drop the painted copies. tools/paint stays.
+
+   v59: a card tapped on the packet's summary zoomed behind the packet and
+        left a blank pocket; the zoom now sits above it. Alex's career gains
+        Flamengo and Parma (and runs to 2014), so neither can be offered as
+        a wrong answer. */
+const VERSION = 'v59';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
