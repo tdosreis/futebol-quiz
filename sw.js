@@ -193,8 +193,15 @@
    v64: the details — opaque paper cards instead of streaky translucent ones,
         the quiz header as lettering, the question photo mounted as a print,
         the verdict on a torn sheet, the end numbers set as a table, paint
-        dabs for the round log, a gold wash behind the trophy. */
-const VERSION = 'v64';
+        dabs for the round log, a gold wash behind the trophy.
+   v65: sound and effects — a room reverb on every cue; a kalimba that climbs
+        with each answer of a streak, the crowd cheering a streak and
+        groaning a miss, a referee's whistle at time-out and full time,
+        clock ticks in the last five seconds, a counting scoreboard; right
+        answers splash green paint around the slip with the points rising
+        in gold, misses bleed red, streaks warm the page's edges, and wins
+        rain painted flecks. */
+const VERSION = 'v65';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

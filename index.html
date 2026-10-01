@@ -2621,6 +2621,40 @@
     .pack-teaser:hover { transform: translateY(-2px) rotate(-.4deg); }
     .pack-teaser .pt-env { transform: rotate(-5deg); box-shadow: 0 4px 8px rgba(0,0,0,.4); }
     .notch { border-radius: 0 !important; -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+
+    /* ═══ FX — paint that moves ═══ */
+    #fx { position: fixed; inset: 0; pointer-events: none; z-index: 900; overflow: hidden; }
+    #fx-u { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    #fx i, #fx-u i { position: absolute; display: block; }
+    .fx-bloom { transform: translate(-50%, -50%) rotate(var(--r)) scale(.2); background: var(--c); opacity: 0;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%;
+      animation: fxBloom 1.2s cubic-bezier(.2,.7,.2,1) forwards; }
+    @keyframes fxBloom { 0% { opacity: .75; transform: translate(-50%, -50%) rotate(var(--r)) scale(.4); }
+      55% { opacity: .45; } 100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--r)) scale(1.5); } }
+    .fx-drop { transform: translate(-50%, -50%); background: var(--c); border-radius: 50%;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%;
+      animation: fxDrop .9s cubic-bezier(.15,.6,.3,1) forwards; }
+    @keyframes fxDrop { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); }
+      15% { opacity: .95; }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 26px)) scale(1); } }
+    .fx-float { transform: translate(-50%, -50%); font: italic 700 36px/1 var(--font-d); color: var(--c); white-space: nowrap;
+      -webkit-text-stroke: 1px rgba(40,26,8,.55); text-shadow: 0 3px 12px rgba(0,0,0,.55); animation: fxFloat 1.4s cubic-bezier(.2,.7,.2,1) forwards; }
+    @keyframes fxFloat { 0% { opacity: 0; transform: translate(-50%, -30%) scale(.6); } 18% { opacity: 1; transform: translate(-50%, -60%) scale(1.08); }
+      100% { opacity: 0; transform: translate(-50%, -190%) scale(1); } }
+    .fx-edge { inset: 0; box-shadow: inset 0 0 46px 0 var(--c); opacity: 0; animation: fxEdge 1.5s ease-out forwards; }
+    @keyframes fxEdge { 25% { opacity: var(--o); } 100% { opacity: 0; } }
+    .fx-ripple { width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; border: 1.5px solid rgba(224,185,104,.7);
+      animation: fxRipple .6s ease-out forwards; }
+    @keyframes fxRipple { to { transform: scale(7); opacity: 0; border-width: .5px; } }
+    .fx-fleck { top: -20px; background: var(--c);
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%;
+      animation: fxFleck linear forwards; }
+    @keyframes fxFleck { 0% { transform: translate(0, 0) rotate(0); opacity: 1; }
+      100% { transform: translate(var(--dx), 108vh) rotate(var(--rot)); opacity: .85; } }
+    /* the right slip is pressed down onto the page */
+    .fx-stamp { animation: fxStamp .5s cubic-bezier(.3,1.6,.4,1) !important; }
+    @keyframes fxStamp { 0% { transform: scale(1); } 30% { transform: scale(.93) rotate(-1deg); } 100% { transform: scale(1) rotate(0); } }
+    @media (prefers-reduced-motion: reduce) { #fx { display: none; } .fx-stamp { animation: none !important; } }
   </style>
 </head>
 <body>
@@ -2642,16 +2676,40 @@ function AC() {
    anything bright before it reaches a phone speaker, and a gentle compressor
    so two cues landing together never stack into a hard peak. */
 let _BUS = null, _BUS_AC = null;
+/* …and a room. Dry cues on a phone speaker sound like a toy; a short,
+   dark reverb — a stadium heard from the stands, not a cathedral — puts air
+   around every note. The impulse is made here, not downloaded: two seconds
+   of decaying pink-ish noise, a little wider on the right than the left. */
+function roomIR(ac) {
+  const len = Math.floor(ac.sampleRate * 1.9), ir = ac.createBuffer(2, len, ac.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = ir.getChannelData(ch);
+    let lp = 0;
+    for (let i = 0; i < len; i++) {
+      const t = i / len;
+      lp = lp * .62 + (Math.random() * 2 - 1) * .38;          // darken: the room soaks up the top
+      d[i] = lp * Math.pow(1 - t, 2.6) * (i < ac.sampleRate * .012 ? i / (ac.sampleRate * .012) : 1);
+    }
+  }
+  return ir;
+}
 function bus() {
   const ac = AC();
   if (_BUS_AC !== ac) {
+    const inp = ac.createGain();
     const lp = ac.createBiquadFilter();
     lp.type = 'lowpass'; lp.frequency.value = 5600; lp.Q.value = 0.5;
     const cmp = ac.createDynamicsCompressor();
     cmp.threshold.value = -20; cmp.knee.value = 12; cmp.ratio.value = 4;
     cmp.attack.value = 0.003; cmp.release.value = 0.15;
-    lp.connect(cmp); cmp.connect(ac.destination);
-    _BUS = lp; _BUS_AC = ac;
+    inp.connect(lp); lp.connect(cmp); cmp.connect(ac.destination);
+    try {
+      const rv = ac.createConvolver(); rv.buffer = roomIR(ac);
+      const pre = ac.createDelay(.1); pre.delayTime.value = .022;
+      const wet = ac.createGain(); wet.gain.value = .2;
+      lp.connect(pre); pre.connect(rv); rv.connect(wet); wet.connect(cmp);
+    } catch (e) {}
+    _BUS = inp; _BUS_AC = ac;
   }
   return _BUS;
 }
@@ -2825,6 +2883,158 @@ const snd = {
              tone(880, .26, { type: 'sine', vol: .055, delay: .09 });
              tone(1318.5, .2, { type: 'sine', vol: .03, delay: .16 }); },
 };
+
+/* ── New voices ─────────────────────────────────────────────
+   A kalimba for anything that goes right: a sine with the instrument's two
+   inharmonic overtones, which ring for a moment and die, and a tine's click.
+   A pad for the big moments, slow to swell. And the stands themselves: a
+   crowd that rises, groans or holds its breath, made of three bands of
+   noise each breathing at its own rate, so it never sounds like one hiss. */
+function kalimba(f, opt) {
+  if (muted) return;
+  opt = opt || {};
+  const v = opt.vol === undefined ? .09 : opt.vol, d = opt.delay || 0, len = opt.dur || .9;
+  tone(f, len, { type: 'sine', vol: v, delay: d });
+  tone(f * 2.01, len * .35, { type: 'sine', vol: v * .22, delay: d });
+  tone(f * 5.43, len * .12, { type: 'sine', vol: v * .12, delay: d });
+  noise(.012, { freq: 3800, q: 2, vol: v * .25, attack: .001, delay: d });
+}
+function pad(freqs, dur, opt) {
+  if (muted) return;
+  opt = opt || {};
+  try {
+    const ac = AC(), t0 = ac.currentTime + (opt.delay || 0), v = opt.vol === undefined ? .035 : opt.vol;
+    const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.setValueAtTime(700, t0);
+    lp.frequency.linearRampToValueAtTime(2600, t0 + dur * .5);
+    const g = ac.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(v, t0 + Math.min(.35, dur * .3));
+    g.gain.setValueAtTime(v, t0 + dur * .6);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    lp.connect(g); g.connect(bus());
+    freqs.forEach(f => [-7, 7].forEach(cents => {
+      const o = ac.createOscillator(); o.type = 'triangle';
+      o.frequency.value = f; o.detune.value = cents;
+      o.connect(lp); o.start(t0); o.stop(t0 + dur + .05);
+    }));
+  } catch (e) {}
+}
+/* the stands: `shape` is 'cheer' (a swell that peaks and settles), 'groan'
+   (a falling 'ohh', two vowel formants sliding down) or 'hush' */
+function crowd(dur, opt) {
+  if (muted) return;
+  opt = opt || {};
+  try {
+    const ac = AC(), t0 = ac.currentTime + (opt.delay || 0), v = opt.vol === undefined ? .05 : opt.vol;
+    const shape = opt.shape || 'cheer';
+    const bands = shape === 'groan' ? [[620, 340, 5], [1150, 760, 6]] : [[380, 520, .8], [1100, 1500, .9], [2600, 3000, 1.1]];
+    bands.forEach(([f0, f1, q], i) => {
+      const src = ac.createBufferSource(); src.buffer = pinkNoise(ac); src.loop = true;
+      const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = q;
+      bp.frequency.setValueAtTime(f0, t0); bp.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
+      const g = ac.createGain(), am = ac.createGain(), lfo = ac.createOscillator();
+      lfo.frequency.value = 3.1 + i * 1.7 + Math.random(); am.gain.value = .25;
+      lfo.connect(am); am.connect(g.gain);
+      const peak = v * (shape === 'groan' ? (i ? .55 : 1) : [1, .7, .35][i]);
+      g.gain.setValueAtTime(0.0001, t0);
+      if (shape === 'groan') {
+        g.gain.exponentialRampToValueAtTime(peak, t0 + .12);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      } else {
+        g.gain.exponentialRampToValueAtTime(peak, t0 + dur * .3);
+        g.gain.exponentialRampToValueAtTime(peak * .5, t0 + dur * .6);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      }
+      src.connect(bp); bp.connect(g); g.connect(bus());
+      src.start(t0, Math.random()); src.stop(t0 + dur + .05); lfo.start(t0); lfo.stop(t0 + dur + .05);
+    });
+  } catch (e) {}
+}
+/* a referee's whistle: the pea rattling in the chamber is a fast wobble of pitch */
+function whistle(dur, opt) {
+  if (muted) return;
+  opt = opt || {};
+  try {
+    const ac = AC(), t0 = ac.currentTime + (opt.delay || 0), v = opt.vol === undefined ? .045 : opt.vol;
+    const o = ac.createOscillator(), g = ac.createGain(), lfo = ac.createOscillator(), dep = ac.createGain();
+    o.type = 'sine'; o.frequency.value = opt.f || 2750;
+    lfo.frequency.value = 26; dep.gain.value = 140;
+    lfo.connect(dep); dep.connect(o.frequency);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(v, t0 + .03);
+    g.gain.setValueAtTime(v, t0 + dur - .06);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(bus());
+    o.start(t0); o.stop(t0 + dur + .05); lfo.start(t0); lfo.stop(t0 + dur + .05);
+    noise(dur, { type: 'highpass', freq: 3500, q: .5, vol: v * .25, attack: .02, delay: opt.delay || 0 });
+  } catch (e) {}
+}
+/* C major pentatonic, two octaves up from C5: each answer in a streak lands
+   a step higher, so a run of right answers climbs like a melody */
+const PENTA = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66, 1318.51, 1567.98, 1760];
+const pStep = k => PENTA[Math.max(0, Math.min(PENTA.length - 1, k))];
+
+Object.assign(snd, {
+  /* a paper slip pressed onto the table: a soft wooden tok */
+  select() { noise(.05, { type: 'lowpass', freq: 1100, q: .7, vol: .045, attack: .002 });
+             tone(540, .07, { type: 'sine', vol: .03, to: 430 }); },
+  correct(k) {
+    k = k || 0;
+    noise(.04, { type: 'lowpass', freq: 1500, q: .8, vol: .06, attack: .002 });   // the sticker pressed down
+    const r = Math.min(k, 5);
+    kalimba(pStep(r), { vol: .085, delay: .02 });
+    kalimba(pStep(r + 2), { vol: .075, delay: .1 });
+    kalimba(pStep(r + 4), { vol: .07, delay: .18, dur: 1.2 });
+    if (k >= 2) crowd(1.6, { shape: 'cheer', vol: Math.min(.06, .022 + k * .007), delay: .08 });
+    if (k >= 4) [0, 1, 2].forEach(i => kalimba(pStep(7 + i) * 2, { vol: .02, delay: .32 + i * .06, dur: .5 }));
+  },
+  almost() { kalimba(587.33, { vol: .075 }); kalimba(659.25, { vol: .06, delay: .12 }); },
+  wrong() {                                                       // a wooden knock, and the stands groan
+    tone(150, .3, { type: 'sine', vol: .11, to: 88 });
+    noise(.12, { type: 'lowpass', freq: 420, q: .7, vol: .07, delay: .01 });
+    crowd(1.1, { shape: 'groan', vol: .045, delay: .06 });
+  },
+  lock() { noise(.08, { type: 'lowpass', freq: 650, q: .6, vol: .08 });
+           tone(196, .25, { type: 'sine', vol: .08 });
+           pad([98, 146.83], 1.6, { vol: .022, delay: .05 }); },
+  heartbeat() { tone(70, .14, { type: 'sine', vol: .1, to: 52 });
+                tone(64, .12, { type: 'sine', vol: .07, to: 48, delay: .16 }); },
+  tick(n) { noise(.02, { freq: n <= 3 ? 2600 : 2100, q: 2.5, vol: .09, attack: .001 });
+            tone(n <= 3 ? 1320 : 990, .05, { type: 'sine', vol: .045 }); },
+  whistle() { whistle(.22, { vol: .04 }); whistle(.5, { vol: .045, delay: .3 }); },
+  /* the ladder: each rung a step higher than the last */
+  rung(k) {
+    k = k || 0;
+    noise(.17, { type: 'highpass', freq: 600, to: 3000, q: .5, vol: .04 });
+    kalimba(pStep(k % 6), { vol: .08, delay: .05 });
+    kalimba(pStep(k % 6 + 2), { vol: .075, delay: .14 });
+    kalimba(pStep(k % 6 + 4), { vol: .07, delay: .23, dur: 1.2 });
+    pad([pStep(k % 6) / 4, pStep(k % 6 + 2) / 2], 1.4, { vol: .02, delay: .05 });
+  },
+  fanfare() {                                                     // the million: the whole stadium
+    pad([130.81, 196, 261.63, 329.63, 392], 4, { vol: .04 });
+    [0, 2, 4, 5, 7, 9].forEach((k, i) => kalimba(pStep(k), { vol: .08, delay: .1 + i * .11, dur: 1.4 }));
+    crowd(4.2, { shape: 'cheer', vol: .075, delay: .15 });
+    whistle(.3, { vol: .035, delay: 1.1 }); whistle(.3, { vol: .035, delay: 1.5 }); whistle(.8, { vol: .04, delay: 1.9 });
+    noise(.8, { type: 'highpass', freq: 5000, q: .4, vol: .02, delay: .2 });
+  },
+  cash() { kalimba(783.99, { vol: .08 }); kalimba(1046.5, { vol: .08, delay: .09 });
+           noise(.25, { type: 'highpass', freq: 5200, q: .5, vol: .02, delay: .1 }); },
+  drop() {
+    tone(300, .6, { type: 'sine', vol: .09, to: 70 });
+    noise(.4, { type: 'lowpass', freq: 900, to: 180, q: .6, vol: .05 });
+    crowd(1.6, { shape: 'groan', vol: .06, delay: .1 });
+  },
+  /* the end of a game: the referee calls it, and the stands answer */
+  final(good) { whistle(.25, { vol: .04 }); whistle(.25, { vol: .04, delay: .32 }); whistle(.7, { vol: .045, delay: .64 });
+                if (good) crowd(2.6, { shape: 'cheer', vol: .05, delay: .7 }); },
+  count(k) { noise(.012, { freq: 2400 + k * 1600, q: 3, vol: .03, attack: .001 });
+             tone(700 + k * 700, .03, { type: 'sine', vol: .016 }); },
+  land() { noise(.05, { type: 'lowpass', freq: 900, q: .7, vol: .07, attack: .002 });
+           kalimba(523.25, { vol: .07 }); kalimba(659.25, { vol: .06, delay: .03 }); kalimba(783.99, { vol: .06, delay: .06, dur: 1.3 }); },
+  freeze() { [1568, 1244.5, 1046.5].forEach((f, i) => kalimba(f, { vol: .045, delay: i * .06, dur: .6 }));
+             noise(.5, { type: 'highpass', freq: 4500, q: .6, vol: .02, attack: .1 }); },
+});
 
 /* ═══════════════════════════════════════════════════
    DATA — CLUBS
@@ -14541,8 +14751,10 @@ Object.assign(snd, {
   /* foil catching the light: a bright arpeggio, more notes for rarer paper */
   foil(t) {
     [1046.5, 1318.5, 1568, 2093, 2637].slice(0, 2 + t).forEach((f, i) =>
-      tone(f, .5, { type: 'sine', vol: .045 - i * .004, delay: i * .065 }));
+      kalimba(f, { vol: .06 - i * .006, delay: i * .065, dur: .8 }));
     noise(.6, { type: 'highpass', freq: 6000, q: .4, vol: .018, attack: .05, delay: .05 });
+    if (t >= 2) pad([261.63, 329.63, 392], 1.8, { vol: .025, delay: .05 });
+    if (t >= 3) crowd(2.2, { shape: 'cheer', vol: .05, delay: .1 });
   },
 });
 
@@ -15942,8 +16154,102 @@ function ladderOverlay() {
   </div>`;
 }
 
+
+/* ═══════════════════════════════════════════════════
+   FX — paint that moves
+
+   Everything here is paint, like the rest of the app: a right answer
+   splashes green watercolour from its slip and throws droplets, the points
+   rise off it in gold, a streak warms the edges of the page, a wrong one
+   bleeds red. All of it lives on one fixed layer above the screen (the
+   screen re-renders on every tap, the layer does not), is made of the same
+   dab mask as the icons, and is skipped when the phone asks for less motion.
+═══════════════════════════════════════════════════ */
+let _fxEnd = 0;
+const FX_STILL = (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
+const fx = {
+  /* two layers: paint that splashes goes *under* the board (inside the page,
+     beneath the screen), so it blooms around a slip instead of over its
+     words; lettering and light go over everything */
+  layer(under) {
+    const id = under ? 'fx-u' : 'fx';
+    let l = document.getElementById(id);
+    if (!l) {
+      l = document.createElement('div'); l.id = id; l.setAttribute('aria-hidden', 'true');
+      (under && document.getElementById('qz') || document.body).appendChild(l);
+    }
+    return l;
+  },
+  add(cls, css, life, under) {
+    const e = document.createElement('i');
+    e.className = cls; e.style.cssText = css;
+    this.layer(under).appendChild(e);
+    setTimeout(() => e.remove(), life || 1400);
+    return e;
+  },
+  centre(el) { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height }; },
+  /* a splash of watercolour: one bloom behind, droplets thrown out */
+  splash(el, col, n) {
+    if (FX_STILL || !el) return;
+    const c = this.centre(el), sz = Math.max(c.w, c.h) * 1.15;
+    this.add('fx-bloom', `left:${c.x}px;top:${c.y}px;width:${sz}px;height:${sz}px;--c:${col};--r:${(Math.random() * 360) | 0}deg`, 1300, true);
+    for (let i = 0; i < (n || 12); i++) {
+      const a = Math.random() * Math.PI * 2, d = sz * (.45 + Math.random() * .55), s = 5 + Math.random() * 11;
+      this.add('fx-drop', `left:${c.x}px;top:${c.y}px;width:${s}px;height:${s}px;--c:${col};` +
+        `--dx:${(Math.cos(a) * d).toFixed(0)}px;--dy:${(Math.sin(a) * d * .8).toFixed(0)}px;` +
+        `animation-delay:${(Math.random() * .08).toFixed(2)}s`, 1100, true);
+    }
+  },
+  /* the points lift off the slip in gold lettering */
+  float(el, txt, col) {
+    if (!el) return;
+    const c = this.centre(el);
+    this.add('fx-float', `left:${c.x}px;top:${c.y - c.h * .2}px;--c:${col || '#E0B968'}`, 1500).textContent = txt;
+  },
+  /* the page's edges warm (a streak) or bleed (a fall) */
+  edge(col, strong) { if (!FX_STILL) this.add('fx-edge', `--c:${col};--o:${strong ? .55 : .3}`, 1600); },
+  /* a ring of water where a finger touched a slip */
+  ripple(x, y) { if (!FX_STILL) this.add('fx-ripple', `left:${x}px;top:${y}px`, 700); },
+  /* a shower of paint flecks from the top of the page */
+  rain(n, cols) {
+    if (FX_STILL) return;
+    cols = cols || ['#E0B968', '#C79A4E', '#3A9C6E', '#F3EEDE', '#B3402F'];
+    for (let i = 0; i < n; i++) {
+      const s = 7 + Math.random() * 12;
+      this.add('fx-fleck', `left:${(Math.random() * 100).toFixed(1)}vw;width:${s}px;height:${s * (.6 + Math.random() * .8)}px;` +
+        `--c:${cols[(Math.random() * cols.length) | 0]};--dx:${((Math.random() - .5) * 160).toFixed(0)}px;` +
+        `--rot:${((Math.random() * 720) + 180).toFixed(0)}deg;animation-duration:${(2.2 + Math.random() * 1.6).toFixed(2)}s;` +
+        `animation-delay:${(Math.random() * .7).toFixed(2)}s`, 4800);
+    }
+  },
+};
+/* after the board turns over: what the answer looks like */
+function fxReveal(p, gain, k, big) {
+  requestAnimationFrame(() => {
+    const ok = [...document.querySelectorAll('#ct .b-correct')];
+    const bad = [...document.querySelectorAll('#ct .b-wrong')];
+    if (p === 3) {
+      ok.forEach(el => { fx.splash(el, '#3A9C6E', 10 + Math.min(k, 6) * 2); el.classList.add('fx-stamp'); });
+      if (ok[0] && gain) fx.float(ok[0], '+' + gain);
+      if (k >= 3) { fx.edge('#E0B968', k >= 5); ok.forEach(el => fx.splash(el, '#E0B968', 6)); }
+      if (big) fx.rain(70);
+    } else {
+      bad.forEach(el => fx.splash(el, p === 1 ? '#C79A4E' : '#B3402F', 7));
+      ok.forEach(el => el.classList.add('fx-stamp'));
+      if (p === 0) fx.edge('#B3402F', false);
+      if (p === 1 && ok[0] && gain) fx.float(ok[0], '+' + gain, '#C79A4E');
+    }
+  });
+}
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest && e.target.closest('#ct .b, #ct .cv-row, #ct .btn-brass, #ct .btn-primary');
+  if (b) fx.ripple(e.clientX, e.clientY);
+}, { passive: true });
+
 /* ── A shower of paper, only for the million ── */
 function burst(n) {
+  /* the paper confetti is paint now, like everything else */
+  if (typeof fx !== 'undefined') return fx.rain(n * 2);
   const cols = ['var(--brass)', 'var(--pitch)', 'var(--ink)', 'var(--pocket)'];
   const frag = document.createDocumentFragment();
   for (let i = 0; i < n; i++) {
@@ -16215,6 +16521,7 @@ function go() {
   on('bunlock', unlockAnswer);
   on('brep',    () => { snd.swipe(); startGame(); });
   on('bmilrep', () => { snd.rung();  startMilhao(); });
+  if (sc === 'end' && _fxEnd) { const k = _fxEnd; _fxEnd = 0; setTimeout(() => fx.rain(k === 2 ? 90 : 34), 350); }
   on('bdiff',   () => { snd.swipe(); sc = 'difficulty'; go(); });
   on('bstop',   cashOut);
 
@@ -16275,14 +16582,18 @@ function go() {
          would come back to a number that is not their score. This timer is the
          guarantee; the animation is only the nice part. */
       const land = setTimeout(() => show(to), dur + 120);
+      let lastTk = 0;
       const tick = now => {
         /* clamped at both ends: a rAF callback can carry a timestamp from
            before the one performance.now() handed back, and an unclamped k
            then runs the easing backwards into negative numbers. */
         const k = Math.max(0, Math.min(1, (now - t0) / dur));
         show(Math.round(to * (1 - Math.pow(1 - k, 3))));
+        /* the counter clicks over like a scoreboard, climbing in pitch,
+           slower as it slows; and lands with a chord and a stamp */
+        if (k < 1 && now - lastTk > 55 + k * 120) { lastTk = now; snd.count(k); }
         if (k < 1) requestAnimationFrame(tick);
-        else clearTimeout(land);
+        else { clearTimeout(land); snd.land(); endN.classList.add('fx-stamp'); }
       };
       requestAnimationFrame(tick);
     }
@@ -16818,14 +17129,14 @@ function doReveal() {
 
   if (isMil) {
     if      (p === 3 && isFinal()) snd.fanfare();
-    else if (p === 3)              snd.rung();
+    else if (p === 3)              snd.rung(rung);
     else                           snd.drop();
     /* Settle the money now, while we know the answer. The pause that
        follows is only there for the drama — nothing about the outcome
        should depend on a timer firing. */
     if (p !== 3)          banked = safetyNet();
     else if (isFinal())   { banked = LADDER[LADDER.length - 1].v; cashed = true; }
-  } else if (p === 3) snd.correct();
+  } else if (p === 3) snd.correct(streak - 1);
   else if (p === 1)   snd.almost();
   else                snd.wrong();
 
@@ -16880,6 +17191,7 @@ function doReveal() {
       <i class="next-fill"></i></button></div>`;
 
   go();
+  fxReveal(p, gain, streak, isMil && p === 3 && isFinal());
   scheduleAdvance(p, wait);
 }
 
@@ -16965,6 +17277,9 @@ function finishRun() {
   LS.set('stats', stats);
   window._newMedals = newMedals();
   try { runPulls.push(...awardBdays()); } catch (e) {}
+  const good = isMil ? banked > 0 : acc >= .5;
+  setTimeout(() => snd.final(good), isMil && banked >= LADDER[LADDER.length - 1].v ? 2600 : 250);
+  _fxEnd = good ? (acc >= .8 || (isMil && banked >= LADDER[LADDER.length - 1].v) ? 2 : 1) : 0;
 }
 
 function startTmr() {
@@ -16981,7 +17296,8 @@ function startTmr() {
     }
     const cn = document.getElementById('clock-n');
     if (cn) { cn.textContent = tLeft; if (tLeft <= 5) cn.parentElement.classList.add('timer-low'); }
-    if (tLeft <= 0 && sc === 'quiz') doReveal();
+    if (sc === 'quiz' && tLeft > 0 && tLeft <= 5) snd.tick(tLeft);
+    if (tLeft <= 0 && sc === 'quiz') { snd.whistle(); doReveal(); }
   }, 1000);
 }
 
