@@ -17,3 +17,4 @@ android/build/
 # the test tools boot a copy of the page with a probe injected; they clean
 # up after themselves, but a killed run leaves one behind
 _*.html
+__pycache__/
