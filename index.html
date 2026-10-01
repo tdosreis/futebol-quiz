@@ -2746,6 +2746,44 @@
     .vit-odds-g span { border-radius: 0; box-shadow: none;
       -webkit-mask: url(img/atelier/stroke-card.webp) center / 100% 100%; mask: url(img/atelier/stroke-card.webp) center / 100% 100%; padding: 10px 12px; }
     .vit-odds-g .vit-f0 { background: linear-gradient(120deg, #6f6a5e, #a49e8c 60%, #7d776a); color: #1b1a16; }
+
+    /* ═══ A FIGURINHA AMPLIADA — a card hung in a gallery ═══
+       The page behind goes dark, the paper's grain still in it, and a lamp
+       lights the wall behind the card in the colour of its stock. A label
+       names it the way a museum would; the buttons are paint. */
+    .zoom { --zg: rgba(243, 230, 200, .18); }
+    .zoom[data-f="1"] { --zg: rgba(210, 222, 230, .2); }
+    .zoom[data-f="2"] { --zg: rgba(186, 160, 255, .2); }
+    .zoom[data-f="3"] { --zg: rgba(232, 190, 100, .4); }
+    .zoom[data-f="v"] { --zg: rgba(240, 120, 90, .2); }
+    .zoom-scrim { background:
+        radial-gradient(90% 62% at 50% 46%, var(--zg), transparent 75%),
+        radial-gradient(120% 90% at 50% 50%, rgba(8,8,10,.6), rgba(4,4,6,.93)),
+        url(img/atelier/paper-night.webp) 0 0 / 256px 256px, #14131a; }
+    .zoom-x { border-radius: 0; background: rgba(236,226,200,.14); color: #F3EEDC;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
+    .zoom-x:hover { background: rgba(236,226,200,.24); }
+    .zoom-label { position: absolute; left: 22px; right: 76px; top: calc(env(safe-area-inset-top, 0px) + 18px);
+      display: flex; flex-direction: column; gap: 4px; color: #F3EEDC; pointer-events: none;
+      animation: zoomFade .5s ease-out .1s both; transition: opacity .25s; }
+    .zl-n { font: 700 9.5px/1 var(--font-s); letter-spacing: .24em; color: #E0B968; }
+    .zl-t { font: 600 26px/1.02 var(--font-d); letter-spacing: -.02em; }
+    .zl-s { font: italic 500 13px/1.3 var(--font-d); color: rgba(243,238,222,.7); }
+    .zoom.is-scanning .zoom-label, .zoom.is-verified .zoom-label, .zoom.is-failed .zoom-label { opacity: 0; }
+    .zoom-ver { top: calc(env(safe-area-inset-top, 0px) + 16px); width: min(80vw, 320px); }
+    .zoom-ver b { font: 600 22px/1.1 var(--font-d); }
+    .zoom-ver span { font: italic 500 12.5px/1.35 var(--font-d); color: rgba(243,238,222,.8); }
+    .zoom-hint { font: italic 500 13px/1.3 var(--font-d); letter-spacing: 0; color: rgba(243,238,222,.62); }
+    .zact { height: 46px; padding: 0 20px; border-radius: 0; background: rgba(236,226,200,.15);
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+    .zact:hover { background: rgba(236,226,200,.24); }
+    .zact.is-on { background: linear-gradient(100deg, #b98c42, #d9b25a 40%, #e6c46f 55%, #c49a48 80%, #a87b30); }
+    @media (max-width: 380px) { .zact { padding: 0 13px; } }
+    /* the card throws a shadow on the wall it hangs on — drawn behind it,
+       not as a filter: a filter on the turning card flattens its 3D and the
+       back would show the front mirrored */
+    .zoom-card::before { content: ''; position: absolute; left: 6%; right: 6%; top: 8%; bottom: -4%;
+      background: rgba(0,0,0,.55); filter: blur(22px); border-radius: 10px; transform: translateZ(-1px); pointer-events: none; }
   </style>
 </head>
 <body>
@@ -12014,11 +12052,13 @@ function openZoom(src, front, back, lookFrom, opts) {
       <span class="zoom-scanline" aria-hidden="true"></span>
     </div>
     <button class="zoom-x" type="button" aria-label="Fechar">${ICON.close ? ICON.close('currentColor', 16) : '×'}</button>
+    ${opts.sid ? zoomLabel(opts.sid) : ''}
     <div class="zoom-hint">Toque na figurinha para virar${opts.sid && anyCopy(opts.sid) && anyCopy(opts.sid).f > 0 ? ' · incline para ver o brilho' : ''}</div>
     ${opts.sid ? zoomActs(opts.sid) : ''}`;
   document.body.appendChild(z);
   const card = z.querySelector('.zoom-card');
-  if (opts.sid) { z.classList.add('has-acts'); wireZoomActs(z, opts.sid); }
+  if (opts.sid) { z.classList.add('has-acts'); wireZoomActs(z, opts.sid);
+    const zc = anyCopy(opts.sid); if (zc) z.dataset.f = zc.v ? 'v' : zc.f; }
   Tilt.ask();
   /* ── the light follows the finger ──
      Over a zoomed card the pointer is the lamp: the card leans towards it and
@@ -15153,6 +15193,18 @@ function zoomCopy(src, sid, num) {
   const tab = num ? `<span class="alb-n">${String(num).padStart(3, '0')}</span>` : '';
   const front = `<div class="figx figx-zoom" style="--pw:${W}px">${tab}${figAny(sid, c, 'lg')}</div>`;
   openZoom(src, front, figx(backAny(sid, c), W, 'figx-back figx-zoom'), null, { sid, w: W, h: H });
+}
+/* the museum label: what the card is, set like the caption under a painting */
+function zoomLabel(sid) {
+  try {
+    const c = anyCopy(sid), it = stk(sid) || bdayPlayer(sid) || setById(sid.slice(2)) || {};
+    const n = ALL_STICKERS.indexOf(sid) + 1;
+    return `<div class="zoom-label">
+      ${n > 0 ? `<span class="zl-n">Nº ${String(n).padStart(3, '0')}</span>` : ''}
+      <span class="zl-t">${it.n || ''}</span>
+      ${c ? `<span class="zl-s">${pullLine({ c })}</span>` : ''}
+    </div>`;
+  } catch (e) { return ''; }
 }
 function zoomActs(sid) {
   const c = anyCopy(sid);

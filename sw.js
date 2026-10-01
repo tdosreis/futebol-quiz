@@ -205,8 +205,11 @@
         lettered title over a brushstroke of the era's colour, the index as
         flags with a gold stroke under the open one; the vitrine with a
         title, paint swatches for the four stocks, a painted cabinet and the
-        collections as a contents list. */
-const VERSION = 'v66';
+        collections as a contents list.
+   v67: the zoomed figurinha hangs in a gallery — a dark painted wall lit
+        behind the card in the colour of its stock, a museum label (number,
+        name, stock, serial, grade), brushstroke actions, a dab to close. */
+const VERSION = 'v67';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
