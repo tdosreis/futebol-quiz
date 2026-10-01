@@ -35,7 +35,11 @@ import paint_test as pt          # the approved prompts and the API call
 from fill_edges import finish
 
 SCENE = """Repaint this photograph as a museum-quality hand-painted picture, in the manner of a \
-contemporary master painter working in gouache and watercolour on heavy cold-press paper.
+contemporary master painter working in gouache and watercolour on heavy cold-press paper. This is a \
+complete re-rendering in paint, not a filter: there must be no photographic detail left anywhere — \
+buildings, sky, pitch, crowd, cars and signs are all rebuilt from visible brushstrokes, simplified \
+into confident painted planes, broken edges and loose washes, the way a plein-air painter would \
+paint the scene on location.
 
 The main subject — whatever the photo is of: a stadium, a trophy, a ball, a match, a crowd, an object — \
 is fully and confidently painted with expressive visible brushstrokes, sculpted light and shadow and \
@@ -116,7 +120,9 @@ def key_white(img):
     white that touches the border, so white inside the emblem stays"""
     import cv2, numpy as np
     h, w = img.shape[:2]
-    near = (img.min(axis=2) > 232).astype(np.uint8)
+    # painted "white" paper is off-white and grainy: light and unsaturated is enough
+    near = ((img.min(axis=2) > 200) & (img.max(axis=2).astype(int) - img.min(axis=2) < 28)).astype(np.uint8)
+    near = cv2.morphologyEx(near, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))
     mask = np.zeros((h + 2, w + 2), np.uint8)
     flood = near.copy()
     for x, y in [(0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1), (w // 2, 0), (w // 2, h - 1), (0, h // 2), (w - 1, h // 2)]:
