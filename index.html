@@ -2358,16 +2358,18 @@
     ═══════════════════════════════════════════════════════════════ */
     :root {
       --at-paper: url(img/atelier/paper-day.webp);
-      --at-card-img: url(img/atelier/card-day.webp);
-      --at-card-on: url(img/atelier/card-day-on.webp);
+      --at-card-img: url(img/atelier/slip-day.webp);
+      --at-card-on: url(img/atelier/slip-day-on.webp);
+      --at-lift: rgba(255, 253, 246, .55);
       --at-card: rgba(255, 252, 244, .72);
       --at-card-2: rgba(255, 250, 236, .9);
       --at-wash-op: .32;
     }
     :root[data-theme="dark"] {
       --at-paper: url(img/atelier/paper-night.webp);
-      --at-card-img: url(img/atelier/card-night.webp);
-      --at-card-on: url(img/atelier/card-night-on.webp);
+      --at-card-img: url(img/atelier/slip-night.webp);
+      --at-card-on: url(img/atelier/slip-night-on.webp);
+      --at-lift: rgba(236, 226, 200, .07);
       --at-card: rgba(236, 226, 200, .12);
       --at-card-2: rgba(236, 226, 200, .18);
       --at-wash-op: .5;
@@ -2375,8 +2377,9 @@
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
         --at-paper: url(img/atelier/paper-night.webp);
-        --at-card-img: url(img/atelier/card-night.webp);
-        --at-card-on: url(img/atelier/card-night-on.webp);
+        --at-card-img: url(img/atelier/slip-night.webp);
+        --at-card-on: url(img/atelier/slip-night-on.webp);
+        --at-lift: rgba(236, 226, 200, .07);
         --at-card: rgba(236, 226, 200, .075);
         --at-card-2: rgba(236, 226, 200, .12);
         --at-wash-op: .5;
@@ -2485,7 +2488,7 @@
       font: 700 10px/1 var(--font-s); letter-spacing: .26em; text-transform: uppercase; color: rgba(243,238,222,.92);
       text-shadow: 0 1px 3px rgba(0,0,0,.5); }
     .cv-cap { position: absolute; z-index: 2; right: 22px; bottom: 30%; max-width: 46%; text-align: right;
-      font: 600 13px/1.25 var(--font-d); color: #F3EEDE; text-shadow: 0 1px 6px rgba(0,0,0,.75); }
+      font: 600 13px/1.25 var(--font-d); color: #F3EEDE; text-shadow: 0 1px 2px rgba(0,0,0,.85), 0 0 14px rgba(0,0,0,.6); }
     .cv-cap b { display: block; font: 700 9px/1 var(--font-s); letter-spacing: .22em; color: var(--brass-2, #E0B968); margin-bottom: 5px; }
     .cv-cap i { display: block; font: 600 10.5px/1.3 var(--font-s); font-style: normal; opacity: .82; margin-top: 2px; }
     .cv-body { position: relative; z-index: 2; margin-top: -118px; padding: 0 22px; display: flex; flex-direction: column; gap: 20px;
@@ -2576,6 +2579,48 @@
     /* the lifelines: dabs of paint with a word under them, no card */
     .ajuda { background: none !important; min-width: 0; padding: 4px 6px; }
     .ajuda .aj-disc { width: 34px; height: 34px; }
+
+    /* ═══ OS DETALHES ═══ */
+    /* the verdict comes up on a sheet of paper torn off along the top */
+    .rvl-sheet { border: 0; border-radius: 0; background: linear-gradient(var(--at-lift), var(--at-lift)), var(--at-paper) var(--stock-2); background-size: auto, 256px 256px;
+      padding-top: 22px; box-shadow: none; filter: drop-shadow(0 -8px 14px rgba(0,0,0,.35));
+      -webkit-mask: url(img/atelier/edge-torn.webp) top / 100% 20px no-repeat, linear-gradient(#000, #000) 0 19px / 100% 100% no-repeat;
+              mask: url(img/atelier/edge-torn.webp) top / 100% 20px no-repeat, linear-gradient(#000, #000) 0 19px / 100% 100% no-repeat; }
+    .bonus { border: 0; background: var(--at-card-on) center / 100% 100% no-repeat; border-radius: 0; padding: 3px 9px; }
+    /* the round's log: one dab of paint per question */
+    .runlog { gap: 4px; }
+    .runlog i { width: 16px; height: 16px; border-radius: 0;
+      -webkit-mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; mask: url(img/atelier/stroke-dab.webp) center / 100% 100%; }
+    .end-trophy { position: relative; margin: 2px 0 -4px; padding: 10px 30px; }
+    .end-trophy::before { content: ''; position: absolute; inset: -6px -30px; z-index: -1; opacity: .45;
+      background: url(img/atelier/wash-gold.webp?2) center / 100% 100% no-repeat; }
+    /* the quiz's header is lettering on the page, not two grey patches */
+    .qz-screen #bexit { background: none !important; width: 30px; height: 30px; color: var(--ink-2); }
+    .qz-screen #bexit:hover { color: var(--ink); }
+    .qz-screen > div:first-child .chip:not(.chip-brass) { background: none; padding: 0 2px;
+      font: 700 10px/1 var(--font-s); letter-spacing: .22em; }
+    /* the question's photograph is a print mounted on the page: an ivory
+       border, a little askew, its own shadow */
+    .qz-screen .qart-wide.print { padding: 4px 4px 5px; background: #EFE6CF; border-radius: 1px;
+      box-shadow: 0 7px 14px -4px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3) !important;
+      transform: rotate(-1.8deg); }
+    .qz-screen .qart-wide.print img { border-radius: 0; filter: saturate(.92) sepia(.08); }
+    /* a button that can't be pressed yet is a faint stroke, not a muddy one */
+    .btn-primary:disabled { background: var(--ink-3) !important; opacity: .28; color: var(--stock); filter: none; }
+    /* the contents list: the numeral sits on the title's line */
+    .cv-row { align-items: start; }
+    .cv-n { padding-top: 3px; }
+    .cv-ic { align-self: center; }
+    /* end of the game: the numbers set like a table, without a box */
+    .pg .stats { background: none !important; padding: 6px 0; gap: 0; }
+    .pg .stats > div { padding: 0 20px; }
+    .pg .stats > div + div { border-left: 1px solid var(--rule); }
+    .pg .stats .v { font: 600 26px/1 var(--font-d); letter-spacing: -.02em; }
+    .pack-teaser { box-shadow: none; border-radius: 0; animation: none; background: var(--at-card-img) center / 100% 100% no-repeat;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.3)); transition: transform .2s; }
+    .pack-teaser:hover { transform: translateY(-2px) rotate(-.4deg); }
+    .pack-teaser .pt-env { transform: rotate(-5deg); box-shadow: 0 4px 8px rgba(0,0,0,.4); }
+    .notch { border-radius: 0 !important; -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
   </style>
 </head>
 <body>
@@ -15689,7 +15734,7 @@ function html() {
       <span class="chip chip-soft" style="color:${curDiff.col};">
         ${isSurv ? `${ICON.shield('currentColor', 11)} Mata-mata · ${nCorrect} ${nCorrect === 1 ? 'acerto' : 'acertos'} seguidos`
                  : `${(ICON[curDiff.ic] || ICON.star)('currentColor', 11)} ${curDiff.label} · ${total} perguntas`}</span>
-      ${pct >= 80 ? `<div style="margin:2px 0 -4px;">${ART.trophy(52)}</div>` : ''}
+      ${pct >= 80 ? `<div class="end-trophy">${ART.trophy(52)}</div>` : ''}
       <div class="display" style="font-size:34px;margin-top:6px;"><em>${msg}</em></div>
       <div id="endpts" class="display num" style="font-size:64px;line-height:1;font-weight:600;"
         data-to="${pts}">${pts}</div>

@@ -139,6 +139,18 @@ def dab(name, n, seed):
     save(name, np.dstack([np.full((n, n, 3), 255, np.uint8), (a * 255).astype(np.uint8)]), 90)
 
 
+def torn(name, w, h, seed):
+    """Alpha mask of a torn paper edge along the top: opaque below a ragged
+    line, with a few loose fibres standing out of it."""
+    rng = np.random.default_rng(seed)
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    line = h * .5 + noise(1, w, w * .03, rng)[0] * h * .16 + noise(1, w, w * .006, rng)[0] * h * .07
+    a = np.clip((yy - line[None, :]) * .9, 0, 1)
+    fib = np.clip(noise(h, w, .7, rng) - 1.6, 0, 1) * np.clip(1 - np.abs(yy - line[None, :]) / 4, 0, 1)
+    a = np.clip(a + fib, 0, 1)
+    save(name, np.dstack([np.full((h, w, 3), 255, np.uint8), (a * 255).astype(np.uint8)]), 90)
+
+
 def filled(name, mask, bgr, alpha, solid=False, seed=0):
     """A painted card in one colour: the shape of a stroke mask, filled, with
     the paint a touch denser at the edge where it pooled. A solid card (a
@@ -173,6 +185,7 @@ if __name__ == '__main__':
     stroke('stroke-card.webp', 600, 420, 22, 'card')
     stroke('stroke-tab.webp', 240, 240, 23, 'card')
     dab('stroke-dab.webp', 200, 24)
+    torn('edge-torn.webp', 1200, 40, 25)
     filled('card-day.webp', 'stroke-card.webp', (240, 249, 253), .82)
     filled('card-night.webp', 'stroke-card.webp', (200, 226, 236), .13)
     filled('card-day-on.webp', 'stroke-card.webp', (228, 243, 250), .97)
@@ -182,4 +195,10 @@ if __name__ == '__main__':
     filled('slip-ivory.webp', 'stroke-card.webp', (214, 232, 242), .97, solid=True, seed=31)
     filled('slip-gold.webp', 'stroke-card.webp', (118, 196, 232), .98, solid=True, seed=31)
     filled('slip-good.webp', 'stroke-card.webp', (150, 206, 166), .98, solid=True, seed=31)
+    # the night cards: the same torn slip in a deep umber paper, opaque — a
+    # translucent card let the page's grain streak through it like dirt
+    filled('slip-night.webp', 'stroke-card.webp', (44, 37, 33), 1, solid=True, seed=32)
+    filled('slip-night-on.webp', 'stroke-card.webp', (56, 48, 42), 1, solid=True, seed=33)
+    filled('slip-day.webp', 'stroke-card.webp', (226, 241, 248), 1, solid=True, seed=34)
+    filled('slip-day-on.webp', 'stroke-card.webp', (238, 249, 253), 1, solid=True, seed=35)
     filled('slip-bad.webp', 'stroke-card.webp', (150, 156, 222), .98, solid=True, seed=31)

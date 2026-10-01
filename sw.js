@@ -189,8 +189,12 @@
    v63: the cover is a magazine cover — a painted portrait full bleed, the
         title over its foot, the modes as a contents list, the album as a fan
         of stickers; answers are ivory paper slips dealt on the page, painted
-        gold when chosen, green or red at the verdict. Washes feathered. */
-const VERSION = 'v63';
+        gold when chosen, green or red at the verdict. Washes feathered.
+   v64: the details — opaque paper cards instead of streaky translucent ones,
+        the quiz header as lettering, the question photo mounted as a print,
+        the verdict on a torn sheet, the end numbers set as a table, paint
+        dabs for the round log, a gold wash behind the trophy. */
+const VERSION = 'v64';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
