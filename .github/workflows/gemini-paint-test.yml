@@ -38,8 +38,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Pillow (for the comparison sheet)
-        run: pip install --quiet pillow
+      - name: Install Pillow and OpenCV (comparison sheet, edge clean-up)
+        run: pip install --quiet pillow opencv-python-headless numpy
 
       - name: Repaint the test photos
         env:

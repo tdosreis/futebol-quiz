@@ -55,10 +55,12 @@ highlights in the eyes. Away from the subject the painting deliberately loosens:
 re-imagined as soft abstract washes and gestural strokes in colours taken from the photo, with \
 wet-in-wet blooms, layered glazes and a few drips. The paper grain shows through the thin washes.
 
-Full bleed: the paint covers the entire canvas right up to all four edges. No vignette, no white or \
-unpainted border, no paper showing around the edges, no fade-out to white — the loose background \
-washes themselves fill every corner. Keep the original framing and crop. It must read unmistakably as \
-a painting, never as a filtered photograph.""",
+Full bleed, painted on a toned ground: the artist first covered the whole sheet with a wash in the \
+photo's own background colours, so there is no white paper anywhere in the picture. Every edge and every \
+corner is solid paint — background washes, strokes and blooms run straight off all four sides of the \
+image, as if the painting were cropped from a larger canvas. No vignette, no white or cream border, no \
+unpainted margin, no fade-out, no drips ending on white paper. Keep the original framing and crop. It \
+must read unmistakably as a painting, never as a filtered photograph.""",
     # run 2: the whole frame painted, edge to edge
     'gouache': """Transform this photograph into a premium painterly illustration: editorial gouache realism, \
 as if a skilled portrait painter had hand-painted this exact photograph, edge to edge. Subtle visible \
@@ -135,9 +137,17 @@ def main():
                 reason = (res.get('candidates') or [{}])[0].get('finishReason') or res.get('promptFeedback')
                 raise RuntimeError(f'no image returned ({reason}) {note[:200]}')
             ext = 'png' if 'png' in img.get('mimeType', img.get('mime_type', 'image/png')) else 'jpg'
-            open(os.path.join(out, f'{pid}-painted.{ext}'), 'wb').write(base64.b64decode(img['data']))
+            data = base64.b64decode(img['data'])
+            fixed = finish_edges(data) if style == 'atelier_full' else None
+            if fixed:
+                open(os.path.join(out, f'{pid}-raw.{ext}'), 'wb').write(data)
+                data, ext, edge_info = fixed[0], 'jpg', fixed[1]
+            else:
+                edge_info = None
+            open(os.path.join(out, f'{pid}-painted.{ext}'), 'wb').write(data)
             report['results'].append({'id': pid, 'name': name, 'source': rel, 'ok': True,
-                                      'file': f'{pid}-painted.{ext}', 'seconds': round(time.time() - t0, 1), 'note': note[:300]})
+                                      'file': f'{pid}-painted.{ext}', 'seconds': round(time.time() - t0, 1), 'note': note[:300],
+                                      'edges': edge_info})
             print(f'✓ {pid} ({name}) in {time.time() - t0:.1f}s')
         except Exception as e:
             report['results'].append({'id': pid, 'name': name, 'source': rel, 'ok': False, 'error': str(e)[:500]})
@@ -149,6 +159,23 @@ def main():
     print(f'{ok}/{len(ids)} painted → {out}')
     if ok == 0:
         sys.exit(1)
+
+def finish_edges(data):
+    """Safety net for full bleed: trim unpainted paper off the edges and paint
+    over any left in the margin (tools/gemini/fill_edges.py). Returns None when
+    OpenCV is not installed, so the raw image is kept."""
+    try:
+        import cv2, numpy as np
+        sys.path.insert(0, os.path.dirname(__file__))
+        from fill_edges import finish
+    except ImportError:
+        return None
+    img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+    if img is None:
+        return None
+    fixed, info = finish(img)
+    ok, buf = cv2.imencode('.jpg', fixed, [cv2.IMWRITE_JPEG_QUALITY, 92])
+    return (buf.tobytes(), info) if ok else None
 
 def sheet(out, report):
     """original | painted, one row per player, to look at on a phone"""
