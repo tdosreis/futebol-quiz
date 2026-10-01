@@ -8,7 +8,8 @@ results — plus the originals and a side-by-side sheet — to OUT.
 
 Environment:
   GEMINI_API_KEY  required; read from the environment and never printed
-  GEMINI_MODEL    image model id (default gemini-2.5-flash-image)
+  GEMINI_MODEL    image model id (default gemini-3-pro-image-preview)
+  STYLE           atelier (portrait study dissolving into paper) or gouache (painted edge to edge)
   PLAYERS         comma-separated album ids (default: five representative ones)
   OUT             output folder (default ai-test/local)
 """
@@ -18,27 +19,41 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 API = 'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent'
 DEFAULT_PLAYERS = 'pele,ronaldo,messi,garrincha,didi'   # 1970 colour, modern stage, suit, full-length, b/w
 
-PROMPT = """Transform this photograph into a premium painterly illustration: editorial gouache realism, \
-as if a skilled portrait painter had hand-painted this exact photograph.
+# What every style keeps: the person, exactly.
+IDENTITY = """Preserve, exactly as in the source photo: the person's identity and exact facial structure, \
+realistic eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions and \
+clothing (shirt colours, badges, details). The result must remain immediately recognizable as the same \
+person. Facial hair stays exactly as photographed — never add a beard or moustache. Where the face is \
+small in the frame, paint it with extra care from the photo's own features rather than inventing them. \
+A black-and-white photo becomes a monochrome painting (ink, charcoal and grey washes); a colour photo \
+keeps its colours.
 
-Preserve, exactly as in the source photo: the person's identity and exact facial structure, realistic \
-eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions, clothing \
-(including shirt colours, badges and details) and the original composition and framing. The result must \
-remain immediately recognizable as the same person in the source photo.
+Do not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, change facial \
+proportions, change the identity, add or remove people, add text, logos, pins, badges or signatures of \
+any kind. Return only the image."""
 
-Rendering: subtle visible brushwork, sophisticated hand-painted gouache texture with soft, matte \
-opaque paint, natural and slightly warm colours, gentle painterly simplification of the background \
-while keeping the subject detailed.
+STYLES = {
+    # the look of run 1's Ronaldo: a portrait painted on paper, the subject finished, the rest left loose
+    'atelier': """Repaint this photograph as a museum-quality hand-painted portrait study, in the manner of a \
+contemporary master portrait painter working in gouache and watercolour on heavy cold-press paper.
 
-Keep the photograph's own palette: a black-and-white photo stays a black-and-white (monochrome ink \
-wash) painting, a colour photo keeps its colours. Facial hair stays exactly as photographed — never add \
-a beard or moustache that is not there. Where the face is small in the frame, paint it with extra care \
-from the photo's own features rather than inventing them. The whole image must look painted with a \
-brush, including the face and clothes — not a smoothed or retouched photograph.
+The subject — face, hair, shoulders and kit — is fully and confidently painted: sculpted planes of \
+light and shadow, expressive visible brushstrokes, warm skin glazes with cool shadow notes, crisp \
+highlights in the eyes. Away from the subject the painting deliberately loosens: the background is \
+re-imagined as soft abstract washes and a few gestural strokes in colours taken from the photo, with \
+wet-in-wet blooms and drips, and towards the outer edges the paint thins and dissolves into bare, \
+textured off-white paper, as in an unfinished artist's study. The paper grain shows through the thin \
+washes. It must read unmistakably as a painting, never as a filtered photograph.""",
+    # run 2: the whole frame painted, edge to edge
+    'gouache': """Transform this photograph into a premium painterly illustration: editorial gouache realism, \
+as if a skilled portrait painter had hand-painted this exact photograph, edge to edge. Subtle visible \
+brushwork, sophisticated matte gouache texture, natural slightly warm colours, the background gently \
+simplified while the subject stays detailed. The whole image, face and clothes included, must look \
+brushed, not retouched. No borders, frames or vignettes.""",
+}
 
-Do not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, smooth the skin, \
-change facial proportions, change the identity, add or remove people, add text, logos, pins, badges, \
-borders, frames, vignettes or signatures of any kind. Return only the image."""
+def prompt_for(style):
+    return STYLES.get(style, STYLES['atelier']) + '\n\n' + IDENTITY
 
 def players():
     """album id -> (name, image path), read from the app itself"""
@@ -48,10 +63,12 @@ def players():
         out[m.group(1)] = (m.group(2), m.group(3))
     return out
 
+PROMPT_TEXT = ''
+
 def call(model, key, img_bytes, mime, attempts=4):
     body = {
         'contents': [{'parts': [
-            {'text': PROMPT},
+            {'text': PROMPT_TEXT},
             {'inline_data': {'mime_type': mime, 'data': base64.b64encode(img_bytes).decode()}},
         ]}],
         'generationConfig': {'responseModalities': ['TEXT', 'IMAGE']},
@@ -77,12 +94,15 @@ def main():
     key = os.environ.get('GEMINI_API_KEY', '').strip()
     if not key:
         sys.exit('GEMINI_API_KEY is not set')
-    model = os.environ.get('GEMINI_MODEL', '').strip() or 'gemini-2.5-flash-image'
+    model = os.environ.get('GEMINI_MODEL', '').strip() or 'gemini-3-pro-image-preview'
+    style = os.environ.get('STYLE', '').strip() or 'atelier'
+    global PROMPT_TEXT
+    PROMPT_TEXT = prompt_for(style)
     ids = [x.strip() for x in (os.environ.get('PLAYERS') or DEFAULT_PLAYERS).split(',') if x.strip()]
     out = os.environ.get('OUT') or os.path.join('ai-test', 'local')
     os.makedirs(out, exist_ok=True)
     pl = players()
-    report = {'model': model, 'prompt': PROMPT, 'results': []}
+    report = {'model': model, 'style': style, 'prompt': PROMPT_TEXT, 'results': []}
     for pid in ids:
         if pid not in pl:
             print(f'· {pid}: not an album id, skipped'); report['results'].append({'id': pid, 'ok': False, 'error': 'unknown id'}); continue
@@ -131,7 +151,7 @@ def sheet(out, report):
         a = a.resize((int(a.width * H / a.height), H)); b = b.resize((int(b.width * H / b.height), H))
         row = Image.new('RGB', (a.width + b.width + 30, H + 40), (24, 26, 20))
         row.paste(a, (0, 40)); row.paste(b, (a.width + 30, 40))
-        ImageDraw.Draw(row).text((8, 10), f"{r['name']}  -  original | {report['model']}", fill=(235, 228, 205))
+        ImageDraw.Draw(row).text((8, 10), f"{r['name']}  -  original | {report['model']} · {report.get('style', '')}", fill=(235, 228, 205))
         rows.append(row)
     if not rows:
         return

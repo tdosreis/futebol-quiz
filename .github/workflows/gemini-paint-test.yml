@@ -14,7 +14,11 @@ on:
       model:
         description: 'Gemini image model'
         required: false
-        default: 'gemini-2.5-flash-image'
+        default: 'gemini-3-pro-image-preview'
+      style:
+        description: 'atelier (portrait study dissolving into paper) or gouache (painted edge to edge)'
+        required: false
+        default: 'atelier'
 
 permissions:
   contents: write
@@ -41,6 +45,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ inputs.model }}
+          STYLE: ${{ inputs.style }}
           PLAYERS: ${{ inputs.players }}
           OUT: ai-test/run-${{ github.run_number }}
         run: python3 tools/gemini/paint_test.py
@@ -69,5 +74,5 @@ jobs:
           mkdir -p ai-test
           cp -r /tmp/ai-test/. ai-test/
           git add ai-test
-          git commit --quiet -m "Gemini paint test, run ${{ github.run_number }} (${{ inputs.model }})"
+          git commit --quiet -m "Gemini paint test, run ${{ github.run_number }} (${{ inputs.model }}, ${{ inputs.style }})"
           git push --quiet origin gemini-tests
