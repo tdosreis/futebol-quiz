@@ -200,8 +200,13 @@
         clock ticks in the last five seconds, a counting scoreboard; right
         answers splash green paint around the slip with the points rising
         in gold, misses bleed red, streaks warm the page's edges, and wins
-        rain painted flecks. */
-const VERSION = 'v65';
+        rain painted flecks.
+   v66: the album and the vitrine in the atelier — deckled era pages with a
+        lettered title over a brushstroke of the era's colour, the index as
+        flags with a gold stroke under the open one; the vitrine with a
+        title, paint swatches for the four stocks, a painted cabinet and the
+        collections as a contents list. */
+const VERSION = 'v66';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

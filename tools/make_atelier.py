@@ -149,6 +149,8 @@ def torn(name, w, h, seed):
     fib = np.clip(noise(h, w, .7, rng) - 1.6, 0, 1) * np.clip(1 - np.abs(yy - line[None, :]) / 4, 0, 1)
     a = np.clip(a + fib, 0, 1)
     save(name, np.dstack([np.full((h, w, 3), 255, np.uint8), (a * 255).astype(np.uint8)]), 90)
+    # and the same edge for the foot of a sheet
+    save(name.replace('.webp', '-b.webp'), np.dstack([np.full((h, w, 3), 255, np.uint8), (a[::-1] * 255).astype(np.uint8)]), 90)
 
 
 def filled(name, mask, bgr, alpha, solid=False, seed=0):
