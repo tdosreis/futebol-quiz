@@ -85,6 +85,10 @@ def wash(name, w, h, color, seed, density=.85, edge=.55, shape='blob'):
         body *= 1 - np.clip(1 - dd, 0, 1) * .35
         body += np.clip(1 - np.abs(dd - 1) * 7, 0, 1) * a * .06
     alpha = np.clip(body + rim * a * edge * .5, 0, 1)
+    # never touch the image's own edge: a wash cut by its rectangle shows a
+    # hard straight line on the page
+    win = np.clip(np.minimum(np.minimum(xx, w - 1 - xx) / (w * .14), np.minimum(yy, h - 1 - yy) / (h * .14)), 0, 1)
+    alpha *= win * win * (3 - 2 * win)
     c = np.array(color, np.float32)
     rgb = np.ones((h, w, 3), np.float32) * c * (1 - .35 * rim[..., None] * edge)
     out = np.dstack([np.clip(rgb, 0, 255), alpha * 255]).astype(np.uint8)
@@ -135,11 +139,23 @@ def dab(name, n, seed):
     save(name, np.dstack([np.full((n, n, 3), 255, np.uint8), (a * 255).astype(np.uint8)]), 90)
 
 
-def filled(name, mask, bgr, alpha):
+def filled(name, mask, bgr, alpha, solid=False, seed=0):
     """A painted card in one colour: the shape of a stroke mask, filled, with
-    the paint a touch denser at the edge where it pooled."""
+    the paint a touch denser at the edge where it pooled. A solid card (a
+    paper slip) keeps only the torn outline: it is opaque inside, and its
+    texture is in the colour — a soft wash and paper tooth — not the alpha,
+    which on the dark page would show through as mottling."""
     m = cv2.imread(os.path.join(OUT, mask), cv2.IMREAD_UNCHANGED)[..., 3].astype(np.float32) / 255
     rim = np.clip(m - cv2.GaussianBlur(m, (0, 0), 3), 0, 1) * 2.2
+    if solid:
+        m = np.clip((cv2.GaussianBlur(m, (0, 0), 2.5) - .35) * 4, 0, 1)
+        h, w = m.shape
+        rng = np.random.default_rng(seed)
+        tone = 1 + noise(h, w, 40, rng)[..., None] * .025 + noise(h, w, .8, rng)[..., None] * .018
+        edge = np.clip(1 - cv2.GaussianBlur(m, (0, 0), 6), 0, 1)[..., None]
+        rgb = np.array(bgr, np.float32) * tone * (1 - edge * .22)
+        save(name, np.dstack([np.clip(rgb, 0, 255), m * alpha * 255]).astype(np.uint8), 88)
+        return
     a = np.clip(m * alpha * (1 + rim * .6), 0, 1)
     rgb = np.ones(m.shape + (3,), np.float32) * np.array(bgr, np.float32)
     save(name, np.dstack([rgb, a * 255]).astype(np.uint8), 88)
@@ -161,3 +177,9 @@ if __name__ == '__main__':
     filled('card-night.webp', 'stroke-card.webp', (200, 226, 236), .13)
     filled('card-day-on.webp', 'stroke-card.webp', (228, 243, 250), .97)
     filled('card-night-on.webp', 'stroke-card.webp', (200, 226, 236), .22)
+    # answer slips: ivory paper laid on the page, and the same slip painted
+    # gold (chosen), green (right) and red (wrong)
+    filled('slip-ivory.webp', 'stroke-card.webp', (214, 232, 242), .97, solid=True, seed=31)
+    filled('slip-gold.webp', 'stroke-card.webp', (118, 196, 232), .98, solid=True, seed=31)
+    filled('slip-good.webp', 'stroke-card.webp', (150, 206, 166), .98, solid=True, seed=31)
+    filled('slip-bad.webp', 'stroke-card.webp', (150, 156, 222), .98, solid=True, seed=31)

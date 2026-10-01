@@ -185,8 +185,12 @@
    v62: the atelier — every screen painted to match the portraits: night
         paper by default (cream by day), watercolour washes, gold and green
         brushstroke buttons, painted cards for tiles, lifelines and panels,
-        dabs of paint for the icons. Materials in img/atelier. */
-const VERSION = 'v62';
+        dabs of paint for the icons. Materials in img/atelier.
+   v63: the cover is a magazine cover — a painted portrait full bleed, the
+        title over its foot, the modes as a contents list, the album as a fan
+        of stickers; answers are ivory paper slips dealt on the page, painted
+        gold when chosen, green or red at the verdict. Washes feathered. */
+const VERSION = 'v63';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
