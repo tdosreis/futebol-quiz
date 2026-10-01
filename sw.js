@@ -171,8 +171,15 @@
    v59: a card tapped on the packet's summary zoomed behind the packet and
         left a blank pocket; the zoom now sits above it. Alex's career gains
         Flamengo and Parma (and runs to 2014), so neither can be offered as
-        a wrong answer. */
-const VERSION = 'v59';
+        a wrong answer.
+
+   v60: 135 real crests for clubs that were only initials (Leicester,
+        CSKA, Toulouse, Nantes, Rennes, Estrela Vermelha…, in img/crests);
+        the clubs still without one are drawn as shields in their colours;
+        and every written answer now has a picture — a dated stamp for a
+        year, a scoreboard, a formation on a pitch, a medallion, a portrait
+        silhouette, an illuminated initial. */
+const VERSION = 'v60';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

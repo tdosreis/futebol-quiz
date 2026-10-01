@@ -552,7 +552,9 @@
     .opt-face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block;
       filter: sepia(.18) contrast(1.04); }
     .opt-mono { font: 800 13px/1 var(--font-b, Archivo, system-ui); letter-spacing: .02em; color: #6B6A60; }
-    .opt-ink svg { width: 100%; height: 100%; display: block; }
+    .opt-ink svg { width: 78%; height: 82%; display: block; overflow: visible; }
+    .opt-glyph svg { width: 100%; height: 100%; }
+    .opt-face.opt-ink svg { width: 100%; height: 100%; }
     /* a rivalry: the two sides overlapping, the way the fixture list prints them */
     .opt-pair { gap: 0; }
     .opt-pair .opt-art { width: 32px; height: 32px; box-shadow: 0 0 0 2px var(--pocket), inset 0 0 0 1px rgba(32,36,30,.16); }
@@ -7381,7 +7383,7 @@ const CLUB_NAMES = {
 };
 function clubName(id) {
   const c = CL.find(x => x.id === id);
-  return c ? c.n : (CLUB_NAMES[id] || id);
+  return c ? c.n : (CLUB_NAMES[id] || (typeof XCREST_NAME !== 'undefined' && XCREST_NAME[id]) || id);
 }
 
 
@@ -7928,6 +7930,382 @@ const LOGOS = {
   zaragoza:       'img/f6b4434cffde5e27.webp',
 };
 
+/* ── Escudos for the clubs that only had their initials ──
+   About two hundred clubs turn up as written answers — Leicester, CSKA,
+   Toulouse, Estrela Vermelha — and none had a crest, so each was drawn as a
+   coloured disc with two letters. These are their real crests, from the
+   football-logos collection (github.com/luukhopman/football-logos). Like
+   NONFREE_CRESTS they are club trademarks, shipped only to identify the club
+   in the quiz, and the credits list them. Clubs the album already names keep
+   their own id (and so become album escudos); the rest get an `x_` id that
+   only the answer tiles use. */
+Object.assign(LOGOS, {
+   "betis": "img/crests/real-betis-balompie.webp",
+   "leeds": "img/crests/leeds-united.webp",
+   "genoa": "img/crests/genoa-cfc.webp",
+   "hamburger": "img/crests/hamburger-sv.webp",
+   "gladbach": "img/crests/borussia-monchengladbach.webp",
+   "frankfurt": "img/crests/eintracht-frankfurt.webp",
+   "leicester": "img/crests/leicester-city.webp",
+   "forest": "img/crests/nottingham-forest.webp",
+   "lille": "img/crests/losc-lille.webp",
+   "montpellier": "img/crests/montpellier-hsc.webp",
+   "strasbourg": "img/crests/rc-strasbourg-alsace.webp",
+   "anderlecht": "img/crests/rsc-anderlecht.webp",
+   "norrkoping": "img/crests/ifk-norrkoping.webp",
+   "legia": "img/crests/legia-warszawa.webp",
+   "stal": "img/crests/stal-mielec.webp",
+   "steaua": "img/crests/fcsb.webp",
+   "bohemians": "img/crests/bohemians-prague-1905.webp",
+   "rapid": "img/crests/rapid-vienna.webp",
+   "spartak": "img/crests/spartak-moscow.webp",
+   "valladolid": "img/crests/real-valladolid-cf.webp",
+   "udinese": "img/crests/udinese-calcio.webp",
+   "olympiacos": "img/crests/olympiacos-piraeus.webp",
+   "cska": "img/crests/cska-sofia.webp",
+   "nice": "img/crests/ogc-nice.webp",
+   "reims": "img/crests/stade-reims.webp",
+   "bologna": "img/crests/bologna-fc-1909.webp",
+   "saintetienne": "img/crests/as-saint-etienne.webp",
+   "malmo": "img/crests/malmo-ff.webp",
+   "lech": "img/crests/lech-poznan.webp",
+   "dinamo": "img/crests/gnk-dinamo-zagreb.webp",
+   "basel": "img/crests/fc-basel-1893.webp",
+   "dinamomoscow": "img/crests/dynamo-moscow.webp",
+   "dynamokyiv": "img/crests/dynamo-kyiv.webp",
+   "espanyol": "img/crests/rcd-espanyol-barcelona.webp",
+   "genk": "img/crests/krc-genk.webp",
+   "mallorca": "img/crests/rcd-mallorca.webp",
+   "newcastle": "img/crests/newcastle-united.webp",
+   "panathinaikos": "img/crests/panathinaikos-fc.webp",
+   "rennes": "img/crests/stade-rennais-fc.webp",
+   "salzburg": "img/crests/red-bull-salzburg.webp",
+   "schalke": "img/crests/fc-schalke-04.webp",
+   "southampton": "img/crests/southampton-fc.webp",
+   "sparta": "img/crests/ac-sparta-prague.webp",
+   "villarreal": "img/crests/villarreal-cf.webp",
+   "westham": "img/crests/west-ham-united.webp",
+   "wolfsburg": "img/crests/vfl-wolfsburg.webp",
+   "zenit": "img/crests/zenit-st-petersburg.webp",
+   "x_aston_villa": "img/crests/aston-villa.webp",
+   "x_az_alkmaar": "img/crests/az-alkmaar.webp",
+   "x_twente_enschede_fc": "img/crests/twente-enschede-fc.webp",
+   "x_rangers_fc": "img/crests/rangers-fc.webp",
+   "x_aberdeen_fc": "img/crests/aberdeen-fc.webp",
+   "x_heart_of_midlothian_fc": "img/crests/heart-of-midlothian-fc.webp",
+   "x_real_sociedad": "img/crests/real-sociedad.webp",
+   "x_dundee_united_fc": "img/crests/dundee-united-fc.webp",
+   "x_hibernian_fc": "img/crests/hibernian-fc.webp",
+   "x_sc_braga": "img/crests/sc-braga.webp",
+   "x_athletic_bilbao": "img/crests/athletic-bilbao.webp",
+   "x_1_fc_koln": "img/crests/1-fc-koln.webp",
+   "x_vitoria_guimaraes_sc": "img/crests/vitoria-guimaraes-sc.webp",
+   "x_boavista_fc": "img/crests/boavista-fc.webp",
+   "x_brighton_hove_albion": "img/crests/brighton-hove-albion.webp",
+   "x_crystal_palace": "img/crests/crystal-palace.webp",
+   "x_fc_utrecht": "img/crests/fc-utrecht.webp",
+   "x_fc_nantes": "img/crests/fc-nantes.webp",
+   "x_besiktas_jk": "img/crests/besiktas-jk.webp",
+   "x_trabzonspor": "img/crests/trabzonspor.webp",
+   "x_ca_osasuna": "img/crests/ca-osasuna.webp",
+   "x_basaksehir_fk": "img/crests/basaksehir-fk.webp",
+   "x_ipswich_town": "img/crests/ipswich-town.webp",
+   "x_rb_leipzig": "img/crests/rb-leipzig.webp",
+   "x_sunderland_afc": "img/crests/sunderland-afc.webp",
+   "x_wolverhampton_wanderers": "img/crests/wolverhampton-wanderers.webp",
+   "x_deportivo_alaves": "img/crests/deportivo-alaves.webp",
+   "x_brentford_fc": "img/crests/brentford-fc.webp",
+   "x_elche_cf": "img/crests/elche-cf.webp",
+   "x_shakhtar_donetsk": "img/crests/shakhtar-donetsk.webp",
+   "x_rc_lens": "img/crests/rc-lens.webp",
+   "x_belenenses_sad": "img/crests/belenenses-sad.webp",
+   "x_gd_estoril_praia": "img/crests/gd-estoril-praia.webp",
+   "x_celta_de_vigo": "img/crests/celta-de-vigo.webp",
+   "x_getafe_cf": "img/crests/getafe-cf.webp",
+   "x_levante_ud": "img/crests/levante-ud.webp",
+   "x_cska_moscow": "img/crests/cska-moscow.webp",
+   "x_cadiz_cf": "img/crests/cadiz-cf.webp",
+   "x_granada_cf": "img/crests/granada-cf.webp",
+   "x_1_fc_union_berlin": "img/crests/1-fc-union-berlin.webp",
+   "x_hertha_bsc": "img/crests/hertha-bsc.webp",
+   "x_fc_toulouse": "img/crests/fc-toulouse.webp",
+   "x_fc_metz": "img/crests/fc-metz.webp",
+   "x_club_brugge_kv": "img/crests/club-brugge-kv.webp",
+   "x_standard_liege": "img/crests/standard-liege.webp",
+   "x_kaa_gent": "img/crests/kaa-gent.webp",
+   "x_paok_thessaloniki": "img/crests/paok-thessaloniki.webp",
+   "x_aris_thessaloniki": "img/crests/aris-thessaloniki.webp",
+   "x_aek_athens": "img/crests/aek-athens.webp",
+   "x_red_star_belgrade": "img/crests/red-star-belgrade.webp",
+   "x_vitesse_arnhem": "img/crests/vitesse-arnhem.webp",
+   "x_vfl_bochum": "img/crests/vfl-bochum.webp",
+   "x_sparta_rotterdam": "img/crests/sparta-rotterdam.webp",
+   "x_kilmarnock_fc": "img/crests/kilmarnock-fc.webp",
+   "x_lokomotiv_moscow": "img/crests/lokomotiv-moscow.webp",
+   "x_rubin_kazan": "img/crests/rubin-kazan.webp",
+   "x_afc_bournemouth": "img/crests/afc-bournemouth.webp",
+   "x_malaga_cf": "img/crests/malaga-cf.webp",
+   "x_girona_fc": "img/crests/girona-fc.webp",
+   "x_tsg_1899_hoffenheim": "img/crests/tsg-1899-hoffenheim.webp",
+   "x_1_fsv_mainz_05": "img/crests/1-fsv-mainz-05.webp",
+   "x_sc_freiburg": "img/crests/sc-freiburg.webp",
+   "x_fc_augsburg": "img/crests/fc-augsburg.webp",
+   "x_cs_maritimo": "img/crests/cs-maritimo.webp",
+   "x_ifk_goteborg": "img/crests/ifk-goteborg.webp",
+   "x_aik": "img/crests/aik.webp",
+   "x_djurgardens_if": "img/crests/djurgardens-if.webp",
+   "x_hammarby_if": "img/crests/hammarby-if.webp",
+   "x_hnk_hajduk_split": "img/crests/hnk-hajduk-split.webp",
+   "x_fk_partizan_belgrade": "img/crests/fk-partizan-belgrade.webp",
+   "x_ferencvarosi_tc": "img/crests/ferencvarosi-tc.webp",
+   "x_motherwell_fc": "img/crests/motherwell-fc.webp",
+   "x_celtic_fc": "img/crests/celtic-fc.webp",
+   "x_acf_fiorentina": "img/crests/acf-fiorentina.webp",
+   "x_cagliari_calcio": "img/crests/cagliari-calcio.webp",
+   "x_venezia_fc": "img/crests/venezia-fc.webp",
+   "x_us_salernitana_1919": "img/crests/us-salernitana-1919.webp",
+   "x_le_havre_ac": "img/crests/le-havre-ac.webp",
+   "x_sc_heerenveen": "img/crests/sc-heerenveen.webp",
+   "x_royal_antwerp_fc": "img/crests/royal-antwerp-fc.webp",
+   "x_austria_vienna": "img/crests/austria-vienna.webp",
+   "x_sk_sturm_graz": "img/crests/sk-sturm-graz.webp",
+   "x_burnley_fc": "img/crests/burnley-fc.webp",
+   "x_sheffield_united": "img/crests/sheffield-united.webp",
+   "x_rayo_vallecano": "img/crests/rayo-vallecano.webp",
+   "x_ud_las_palmas": "img/crests/ud-las-palmas.webp",
+   "x_fc_st_pauli": "img/crests/fc-st-pauli.webp",
+   "x_torpedo_moscow": "img/crests/torpedo-moscow.webp"
+  });
+/* the club behind an `x_` id, for anything that prints its name */
+const XCREST_NAME = {
+   "x_aston_villa": "Aston Villa",
+   "x_az_alkmaar": "AZ Alkmaar",
+   "x_twente_enschede_fc": "Twente Enschede FC",
+   "x_rangers_fc": "Rangers FC",
+   "x_aberdeen_fc": "Aberdeen FC",
+   "x_heart_of_midlothian_fc": "Heart of Midlothian FC",
+   "x_real_sociedad": "Real Sociedad",
+   "x_dundee_united_fc": "Dundee United FC",
+   "x_hibernian_fc": "Hibernian FC",
+   "x_sc_braga": "SC Braga",
+   "x_athletic_bilbao": "Athletic Bilbao",
+   "x_1_fc_koln": "1.FC Köln",
+   "x_vitoria_guimaraes_sc": "Vitória Guimarães SC",
+   "x_boavista_fc": "Boavista FC",
+   "x_brighton_hove_albion": "Brighton & Hove Albion",
+   "x_crystal_palace": "Crystal Palace",
+   "x_fc_utrecht": "FC Utrecht",
+   "x_fc_nantes": "FC Nantes",
+   "x_besiktas_jk": "Besiktas JK",
+   "x_trabzonspor": "Trabzonspor",
+   "x_ca_osasuna": "CA Osasuna",
+   "x_basaksehir_fk": "Basaksehir FK",
+   "x_ipswich_town": "Ipswich Town",
+   "x_rb_leipzig": "RB Leipzig",
+   "x_sunderland_afc": "Sunderland AFC",
+   "x_wolverhampton_wanderers": "Wolverhampton Wanderers",
+   "x_deportivo_alaves": "Deportivo Alavés",
+   "x_brentford_fc": "Brentford FC",
+   "x_elche_cf": "Elche CF",
+   "x_shakhtar_donetsk": "Shakhtar Donetsk",
+   "x_rc_lens": "RC Lens",
+   "x_belenenses_sad": "Belenenses SAD",
+   "x_gd_estoril_praia": "GD Estoril Praia",
+   "x_celta_de_vigo": "Celta de Vigo",
+   "x_getafe_cf": "Getafe CF",
+   "x_levante_ud": "Levante UD",
+   "x_cska_moscow": "CSKA Moscow",
+   "x_cadiz_cf": "Cádiz CF",
+   "x_granada_cf": "Granada CF",
+   "x_1_fc_union_berlin": "1.FC Union Berlin",
+   "x_hertha_bsc": "Hertha BSC",
+   "x_fc_toulouse": "FC Toulouse",
+   "x_fc_metz": "FC Metz",
+   "x_club_brugge_kv": "Club Brugge KV",
+   "x_standard_liege": "Standard Liège",
+   "x_kaa_gent": "KAA Gent",
+   "x_paok_thessaloniki": "PAOK Thessaloniki",
+   "x_aris_thessaloniki": "Aris Thessaloniki",
+   "x_aek_athens": "AEK Athens",
+   "x_red_star_belgrade": "Red Star Belgrade",
+   "x_vitesse_arnhem": "Vitesse Arnhem",
+   "x_vfl_bochum": "VfL Bochum",
+   "x_sparta_rotterdam": "Sparta Rotterdam",
+   "x_kilmarnock_fc": "Kilmarnock FC",
+   "x_lokomotiv_moscow": "Lokomotiv Moscow",
+   "x_rubin_kazan": "Rubin Kazan",
+   "x_afc_bournemouth": "AFC Bournemouth",
+   "x_malaga_cf": "Málaga CF",
+   "x_girona_fc": "Girona FC",
+   "x_tsg_1899_hoffenheim": "TSG 1899 Hoffenheim",
+   "x_1_fsv_mainz_05": "1.FSV Mainz 05",
+   "x_sc_freiburg": "SC Freiburg",
+   "x_fc_augsburg": "FC Augsburg",
+   "x_cs_maritimo": "CS Marítimo",
+   "x_ifk_goteborg": "IFK Göteborg",
+   "x_aik": "AIK",
+   "x_djurgardens_if": "Djurgårdens IF",
+   "x_hammarby_if": "Hammarby IF",
+   "x_hnk_hajduk_split": "HNK Hajduk Split",
+   "x_fk_partizan_belgrade": "FK Partizan Belgrade",
+   "x_ferencvarosi_tc": "Ferencvárosi TC",
+   "x_motherwell_fc": "Motherwell FC",
+   "x_celtic_fc": "Celtic FC",
+   "x_acf_fiorentina": "ACF Fiorentina",
+   "x_cagliari_calcio": "Cagliari Calcio",
+   "x_venezia_fc": "Venezia FC",
+   "x_us_salernitana_1919": "US Salernitana 1919",
+   "x_le_havre_ac": "Le Havre AC",
+   "x_sc_heerenveen": "SC Heerenveen",
+   "x_royal_antwerp_fc": "Royal Antwerp FC",
+   "x_austria_vienna": "Austria Vienna",
+   "x_sk_sturm_graz": "SK Sturm Graz",
+   "x_burnley_fc": "Burnley FC",
+   "x_sheffield_united": "Sheffield United",
+   "x_rayo_vallecano": "Rayo Vallecano",
+   "x_ud_las_palmas": "UD Las Palmas",
+   "x_fc_st_pauli": "FC St. Pauli",
+   "x_torpedo_moscow": "Torpedo Moscow"
+  };
+/* an answer as the questions write it (folded) -> its crest */
+const XCREST = {
+   "aston villa": "x_aston_villa",
+   "az alkmaar": "x_az_alkmaar",
+   "twente": "x_twente_enschede_fc",
+   "rangers": "x_rangers_fc",
+   "aberdeen": "x_aberdeen_fc",
+   "hearts": "x_heart_of_midlothian_fc",
+   "schalke 04": "schalke",
+   "hamburgo": "hamburger",
+   "newcastle united": "newcastle",
+   "newcastle": "newcastle",
+   "real sociedad": "x_real_sociedad",
+   "dundee united": "x_dundee_united_fc",
+   "hibernian": "x_hibernian_fc",
+   "braga": "x_sc_braga",
+   "real betis": "betis",
+   "betis": "betis",
+   "athletic bilbao": "x_athletic_bilbao",
+   "nottingham forest": "forest",
+   "colonia": "x_1_fc_koln",
+   "leeds united": "leeds",
+   "leeds": "leeds",
+   "vitoria de guimaraes": "x_vitoria_guimaraes_sc",
+   "boavista": "x_boavista_fc",
+   "brighton": "x_brighton_hove_albion",
+   "villarreal": "villarreal",
+   "crystal palace": "x_crystal_palace",
+   "utrecht": "x_fc_utrecht",
+   "west ham": "westham",
+   "wolfsburg": "wolfsburg",
+   "nantes": "x_fc_nantes",
+   "besiktas": "x_besiktas_jk",
+   "trabzonspor": "x_trabzonspor",
+   "leicester city": "leicester",
+   "espanyol": "espanyol",
+   "osasuna": "x_ca_osasuna",
+   "rennes": "rennes",
+   "basaksehir": "x_basaksehir_fk",
+   "southampton": "southampton",
+   "ipswich town": "x_ipswich_town",
+   "dinamo de kiev": "dynamokyiv",
+   "rb leipzig": "x_rb_leipzig",
+   "leipzig": "x_rb_leipzig",
+   "sunderland": "x_sunderland_afc",
+   "wolverhampton": "x_wolverhampton_wanderers",
+   "alaves": "x_deportivo_alaves",
+   "brentford": "x_brentford_fc",
+   "elche": "x_elche_cf",
+   "mallorca": "mallorca",
+   "shakhtar donetsk": "x_shakhtar_donetsk",
+   "saint-etienne": "saintetienne",
+   "reims": "reims",
+   "nice": "nice",
+   "lens": "x_rc_lens",
+   "genoa": "genoa",
+   "belenenses": "x_belenenses_sad",
+   "olympiacos": "olympiacos",
+   "estoril": "x_gd_estoril_praia",
+   "celta de vigo": "x_celta_de_vigo",
+   "getafe": "x_getafe_cf",
+   "levante": "x_levante_ud",
+   "cska moscou": "x_cska_moscow",
+   "spartak moscou": "spartak",
+   "cadiz": "x_cadiz_cf",
+   "granada": "x_granada_cf",
+   "eintracht frankfurt": "frankfurt",
+   "frankfurt": "frankfurt",
+   "union berlin": "x_1_fc_union_berlin",
+   "hertha bsc": "x_hertha_bsc",
+   "hertha berlim": "x_hertha_bsc",
+   "toulouse": "x_fc_toulouse",
+   "metz": "x_fc_metz",
+   "lille": "lille",
+   "club brugge": "x_club_brugge_kv",
+   "anderlecht": "anderlecht",
+   "standard liege": "x_standard_liege",
+   "gent": "x_kaa_gent",
+   "genk": "genk",
+   "panathinaikos": "panathinaikos",
+   "paok": "x_paok_thessaloniki",
+   "aris": "x_aris_thessaloniki",
+   "aek": "x_aek_athens",
+   "aek atenas": "x_aek_athens",
+   "borussia monchengladbach": "gladbach",
+   "steaua bucareste": "steaua",
+   "estrela vermelha": "x_red_star_belgrade",
+   "vitesse": "x_vitesse_arnhem",
+   "basel": "basel",
+   "bochum": "x_vfl_bochum",
+   "sparta roterda": "x_sparta_rotterdam",
+   "kilmarnock": "x_kilmarnock_fc",
+   "zenit": "zenit",
+   "lokomotiv moscou": "x_lokomotiv_moscow",
+   "rubin kazan": "x_rubin_kazan",
+   "dinamo moscou": "dinamomoscow",
+   "bournemouth": "x_afc_bournemouth",
+   "malaga": "x_malaga_cf",
+   "girona": "x_girona_fc",
+   "hoffenheim": "x_tsg_1899_hoffenheim",
+   "mainz": "x_1_fsv_mainz_05",
+   "freiburg": "x_sc_freiburg",
+   "augsburg": "x_fc_augsburg",
+   "maritimo": "x_cs_maritimo",
+   "ifk goteborg": "x_ifk_goteborg",
+   "malmo": "malmo",
+   "aik": "x_aik",
+   "djurgarden": "x_djurgardens_if",
+   "hammarby": "x_hammarby_if",
+   "dinamo zagreb": "dinamo",
+   "hajduk split": "x_hnk_hajduk_split",
+   "partizan": "x_fk_partizan_belgrade",
+   "ferencvaros": "x_ferencvarosi_tc",
+   "cska sofia": "cska",
+   "motherwell": "x_motherwell_fc",
+   "celtic": "x_celtic_fc",
+   "fiorentina": "x_acf_fiorentina",
+   "bologna": "bologna",
+   "cagliari": "x_cagliari_calcio",
+   "venezia": "x_venezia_fc",
+   "salernitana": "x_us_salernitana_1919",
+   "udinese": "udinese",
+   "montpellier": "montpellier",
+   "le havre": "x_le_havre_ac",
+   "heerenveen": "x_sc_heerenveen",
+   "antwerp": "x_royal_antwerp_fc",
+   "red bull salzburg": "salzburg",
+   "rapid viena": "rapid",
+   "austria viena": "x_austria_vienna",
+   "sturm graz": "x_sk_sturm_graz",
+   "burnley": "x_burnley_fc",
+   "sheffield united": "x_sheffield_united",
+   "rayo vallecano": "x_rayo_vallecano",
+   "las palmas": "x_ud_las_palmas",
+   "st. pauli": "x_fc_st_pauli",
+   "torpedo moscou": "x_torpedo_moscow",
+   "steaua": "steaua"
+  };
+
 /* ═══════════════════════════════════════════════════
    IMAGES — PLAYER PORTRAITS (Wikimedia Commons)
 ═══════════════════════════════════════════════════ */
@@ -7966,6 +8344,142 @@ const STAD_IMGS = {
    CC licences require attribution; shown on the Créditos screen.
 ═══════════════════════════════════════════════════ */
 const CREDITS = {
+  /* escudos que eram só iniciais — marcas dos clubes, para identificá-los */
+  'img/crests/1-fc-koln.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/1-fc-union-berlin.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/1-fsv-mainz-05.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/aberdeen-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ac-sparta-prague.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/acf-fiorentina.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/aek-athens.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/afc-bournemouth.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/aik.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/aris-thessaloniki.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/as-saint-etienne.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/aston-villa.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/athletic-bilbao.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/austria-vienna.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/az-alkmaar.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/basaksehir-fk.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/belenenses-sad.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/besiktas-jk.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/boavista-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/bohemians-prague-1905.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/bologna-fc-1909.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/borussia-monchengladbach.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/brentford-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/brighton-hove-albion.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/burnley-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ca-osasuna.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/cadiz-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/cagliari-calcio.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/celta-de-vigo.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/celtic-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/club-brugge-kv.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/crystal-palace.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/cs-maritimo.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/cska-moscow.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/cska-sofia.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/deportivo-alaves.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/djurgardens-if.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/dundee-united-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/dynamo-kyiv.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/dynamo-moscow.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/eintracht-frankfurt.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/elche-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-augsburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-basel-1893.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-metz.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-nantes.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-schalke-04.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-st-pauli.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-toulouse.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fc-utrecht.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fcsb.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ferencvarosi-tc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/fk-partizan-belgrade.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/gd-estoril-praia.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/genoa-cfc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/getafe-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/girona-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/gnk-dinamo-zagreb.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/granada-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/hamburger-sv.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/hammarby-if.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/heart-of-midlothian-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/hertha-bsc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/hibernian-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/hnk-hajduk-split.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ifk-goteborg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ifk-norrkoping.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ipswich-town.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/kaa-gent.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/kilmarnock-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/krc-genk.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/le-havre-ac.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/lech-poznan.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/leeds-united.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/legia-warszawa.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/leicester-city.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/levante-ud.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/lokomotiv-moscow.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/losc-lille.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/malaga-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/malmo-ff.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/montpellier-hsc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/motherwell-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/newcastle-united.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/nottingham-forest.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ogc-nice.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/olympiacos-piraeus.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/panathinaikos-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/paok-thessaloniki.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rangers-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rapid-vienna.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rayo-vallecano.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rb-leipzig.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rc-lens.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rc-strasbourg-alsace.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rcd-espanyol-barcelona.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rcd-mallorca.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/real-betis-balompie.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/real-sociedad.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/real-valladolid-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/red-bull-salzburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/red-star-belgrade.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/royal-antwerp-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rsc-anderlecht.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/rubin-kazan.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sc-braga.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sc-freiburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sc-heerenveen.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/shakhtar-donetsk.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sheffield-united.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sk-sturm-graz.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/southampton-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sparta-rotterdam.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/spartak-moscow.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/stade-reims.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/stade-rennais-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/stal-mielec.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/standard-liege.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/sunderland-afc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/torpedo-moscow.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/trabzonspor.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/tsg-1899-hoffenheim.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/twente-enschede-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/ud-las-palmas.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/udinese-calcio.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/us-salernitana-1919.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/venezia-fc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/vfl-bochum.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/vfl-wolfsburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/villarreal-cf.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/vitesse-arnhem.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/vitoria-guimaraes-sc.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/west-ham-united.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/wolverhampton-wanderers.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
+  'img/crests/zenit-st-petersburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
   /* retratos das páginas novas */
   'img/3366a91bc8991992.webp': { a:'Futebol Quiz BR (ilustração)', l:'Arte original' },
   'img/be57d249306d99a6.webp': { a:'Ailura', l:'CC BY-SA 3.0 at' },
@@ -12132,6 +12646,7 @@ function optIndex() {
   const club = {}, flag = {}, face = {}, stad = {};
   Object.keys(LOGOS).forEach(id => { club[_fold(clubName(id))] = id; });
   Object.entries(CLUB_ALIAS).forEach(([k, id]) => { if (LOGOS[id]) club[k] = id; });
+  Object.entries(XCREST).forEach(([k, id]) => { if (LOGOS[id]) club[k] = id; });
   Object.entries(FLAG_OF).forEach(([k, iso]) => { flag[_fold(k)] = iso; });
   Object.entries(CTRY_NAME).forEach(([c, n]) => { if (CTRY_ISO[c]) flag[_fold(n)] = CTRY_ISO[c]; });
   /* a name two men in the album share is nobody's in particular */
@@ -12229,9 +12744,88 @@ function optArtFor(q) {
     out = {};
     q.choices.forEach((c, i) => { out[c] = res[i] && res[i].k === kind && !res[i].blank ? res[i] : { k: kind, blank: true, n: c }; });
     out._kind = kind;
+  } else {
+    /* Nothing on this board can be a crest, a flag or a face — years,
+       scores, formations, coaches, laws of the game; or the crests would give
+       the answer away ("La Celeste" over a sky-blue flag). Each answer still
+       gets a picture: one drawn for what kind of answer it is, which tells
+       nothing. */
+    out = {};
+    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c }; });
+    out._kind = 'glyph';
   }
   _optMemo.set(q, out);
   return out;
+}
+
+/* ── Pictures for answers that are not things ──
+   A year is a dated stamp, a score a little scoreboard, a formation the
+   players on a pitch, a number a medallion, a man the album has no photo of
+   a portrait in silhouette, and anything else an illuminated initial — all on
+   the same cream disc as a crest, so a board reads as one set. */
+function optGlyphSVG(text, asPerson) {
+  const t = String(text).trim();
+  const ink = '#20241E', gold = '#B98C42', esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  let m;
+  if ((m = t.match(/^(\d)-(\d)-(\d)(?:-(\d))?$/))) {
+    const lines = [m[1], m[2], m[3], m[4]].filter(Boolean).map(Number);
+    let dots = '';
+    const rows = lines.length + 1;
+    dots += `<circle cx="20" cy="34" r="2" fill="#F4F1E7"/>`;
+    lines.forEach((nn, li) => {
+      const y = 34 - (li + 1) * (26 / rows);
+      for (let k = 0; k < nn; k++) dots += `<circle cx="${(6 + (k + .5) * 28 / nn).toFixed(1)}" cy="${y.toFixed(1)}" r="2" fill="#F4F1E7"/>`;
+    });
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="3" fill="#2F6B45"/>
+      <path d="M3 20h34M20 3v0" stroke="#F4F1E7" stroke-opacity=".5" stroke-width=".7"/>
+      <circle cx="20" cy="20" r="4.5" fill="none" stroke="#F4F1E7" stroke-opacity=".5" stroke-width=".7"/>
+      <rect x="13" y="31" width="14" height="6" fill="none" stroke="#F4F1E7" stroke-opacity=".5" stroke-width=".7"/>${dots}</svg>`;
+  }
+  if ((m = t.match(/^(\d+) a (\d+)/))) {
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="9" width="36" height="22" rx="3" fill="${ink}"/>
+      <rect x="5" y="12" width="13" height="16" rx="1.5" fill="#2B302A"/><rect x="22" y="12" width="13" height="16" rx="1.5" fill="#2B302A"/>
+      <text x="11.5" y="25" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="13" fill="#F1D27C">${m[1]}</text>
+      <text x="28.5" y="25" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="13" fill="#F1D27C">${m[2]}</text>
+      <circle cx="20" cy="17" r=".9" fill="#F1D27C"/><circle cx="20" cy="23" r=".9" fill="#F1D27C"/></svg>`;
+  }
+  if ((m = t.match(/^(1[89]|20)(\d\d)$/))) {
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="6" width="26" height="29" rx="2.5" fill="#F4F1E7" stroke="${ink}" stroke-width="1"/>
+      <rect x="7" y="6" width="26" height="8" rx="2.5" fill="#B23A2E"/><rect x="7" y="11" width="26" height="3" fill="#B23A2E"/>
+      <circle cx="13" cy="6" r="1.4" fill="${ink}"/><circle cx="27" cy="6" r="1.4" fill="${ink}"/>
+      <text x="20" y="12.4" text-anchor="middle" font-family="Archivo Narrow, sans-serif" font-weight="700" font-size="5.6" fill="#F6EBD8" letter-spacing=".4">${m[1]}</text>
+      <text x="20" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="15" fill="${ink}">${m[2]}</text></svg>`;
+  }
+  if ((m = t.match(/^(\d+(?:,\d+)?)\s*(metros|m|minutos|gols|anos)?$/))) {
+    const unit = m[2] ? ({ metros: 'm', m: 'm', minutos: 'min', gols: 'gols', anos: 'anos' })[m[2]] : '';
+    const fs = m[1].length > 4 ? 9 : m[1].length > 2 ? 11 : 14;
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="${gold}" stroke-width="1.6"/>
+      <circle cx="20" cy="20" r="13.2" fill="none" stroke="${gold}" stroke-width=".5" stroke-dasharray="1 1.4"/>
+      <text x="20" y="${unit ? 21.5 : 24.5}" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="${fs}" fill="${ink}">${esc(m[1])}</text>
+      ${unit ? `<text x="20" y="29" text-anchor="middle" font-family="Archivo Narrow, sans-serif" font-weight="700" font-size="5.4" fill="${gold}" letter-spacing=".6">${unit.toUpperCase()}</text>` : ''}</svg>`;
+  }
+  const words = t.split(/\s+/);
+  const person = asPerson || words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+    words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w));
+  if (person) {
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#D8CBA8"/>
+      <circle cx="20" cy="15.5" r="6.4" fill="#5E5A4C"/><path d="M7 36c1.5-8 7-11.5 13-11.5S31.5 28 33 36Z" fill="#5E5A4C"/>
+      <rect x="11" y="28.5" width="18" height="7.5" rx="2" fill="#F4F1E7" stroke="${ink}" stroke-width=".6"/>
+      <text x="20" y="34.3" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="5.4" fill="${ink}" letter-spacing=".3">${esc(optMono(t))}</text></svg>`;
+  }
+  const L = (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0].toUpperCase();
+  return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="2" fill="#F4F1E7" stroke="${gold}" stroke-width="1.4"/>
+    <rect x="8.5" y="8.5" width="23" height="23" fill="none" stroke="${gold}" stroke-width=".5"/>
+    <path d="M8.5 8.5l4 4M31.5 8.5l-4 4M8.5 31.5l4-4M31.5 31.5l-4-4" stroke="${gold}" stroke-width=".6"/>
+    <text x="20" y="26.5" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="700" font-size="17" fill="#8E2A20">${esc(L)}</text></svg>`;
+}
+/* a club with no crest and no colours on record still gets a shield, in a
+   pair of heraldic colours chosen from its name so it is always the same */
+const HERALD = [['#1F4E8C', '#F4F1E7'], ['#9E2B25', '#F4F1E7'], ['#1E6B45', '#F4F1E7'], ['#20241E', '#F4F1E7'],
+                ['#5B2C83', '#F4F1E7'], ['#C7962C', '#20241E'], ['#9E2B25', '#20241E'], ['#1F4E8C', '#C7962C']];
+function heraldInk(name) {
+  let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  const [a, b] = HERALD[h % HERALD.length];
+  return [a, b, 'svhod'[(h >> 3) % 5]];
 }
 
 /* the initials of a club or man the album has no picture of, on the same
@@ -12251,25 +12845,39 @@ function qFlagInner(code) {
     onerror="this.outerHTML=this.nextElementSibling.innerHTML" /><template>${svg}</template>`;
 }
 
-/* A club's colours as a round badge: the shirt's pattern in its two colours,
-   a plate across the middle, and the initials on the plate. */
+/* A club with no crest file, drawn as one: a shield in the shirt's two
+   colours and pattern, a cream ribbon across it with the club's initials, a
+   gold edge and a little light on the enamel — so it sits in the same cream
+   disc, at the same size, as the real crests on the tiles around it. */
+let _bdgN = 0;
 function optBadge(ink, name) {
-  const [a, b, pat] = ink, P = {
-    s: `<rect width="40" height="40" fill="${a}"/>`,
-    v: `<rect width="40" height="40" fill="${a}"/>` + [5, 15, 25, 35].map(x =>
-         `<rect x="${x}" width="5" height="40" fill="${b}"/>`).join(''),
-    h: `<rect width="40" height="40" fill="${a}"/><rect x="20" width="20" height="40" fill="${b}"/>`,
-    o: `<rect width="40" height="40" fill="${a}"/>` + [0, 10, 20, 30].map(y =>
+  const [a, b, pat] = ink, id = 'bd' + (++_bdgN), H = 46, P = {
+    s: `<rect width="40" height="${H}" fill="${a}"/>`,
+    v: `<rect width="40" height="${H}" fill="${a}"/>` + [5, 15, 25, 35].map(x =>
+         `<rect x="${x}" width="5" height="${H}" fill="${b}"/>`).join(''),
+    h: `<rect width="40" height="${H}" fill="${a}"/><rect x="20" width="20" height="${H}" fill="${b}"/>`,
+    o: `<rect width="40" height="${H}" fill="${a}"/>` + [0, 10, 20, 30, 40].map(y =>
          `<rect y="${y}" width="40" height="5" fill="${b}"/>`).join(''),
-    d: `<rect width="40" height="40" fill="${a}"/><path d="M-4 30 L30 -4 L44 10 L10 44 Z" fill="${b}"/>`,
-    c: `<rect width="40" height="40" fill="${a}"/>` + [0, 1, 2, 3].map(i => [0, 1, 2, 3].map(j =>
+    d: `<rect width="40" height="${H}" fill="${a}"/><path d="M-4 34 L34 -4 L48 10 L10 48 Z" fill="${b}"/>`,
+    c: `<rect width="40" height="${H}" fill="${a}"/>` + [0, 1, 2, 3].map(i => [0, 1, 2, 3, 4].map(j =>
          (i + j) % 2 ? `<rect x="${i * 10}" y="${j * 10}" width="10" height="10" fill="${b}"/>` : '').join('')).join(''),
   };
-  return `<svg viewBox="0 0 40 40" aria-hidden="true">${P[pat] || P.s}
-    <rect x="4" y="13.5" width="32" height="13" rx="2.5" fill="#F4F1E7" stroke="#20241E" stroke-width="1"/>
-    <text x="20" y="23.6" text-anchor="middle" font-size="9.6" font-weight="800"
-      font-family="Archivo, system-ui" fill="#20241E" letter-spacing=".3">${optMono(name)}</text>
-    <circle cx="20" cy="20" r="19.4" fill="none" stroke="#20241E" stroke-opacity=".35" stroke-width="1.2"/></svg>`;
+  const shield = 'M3 4.5C10 6 15 4 20 2C25 4 30 6 37 4.5V22C37 33 29 40.5 20 44C11 40.5 3 33 3 22Z';
+  const ini = optMono(name);
+  return `<svg viewBox="0 0 40 46" aria-hidden="true">
+    <defs><clipPath id="${id}"><path d="${shield}"/></clipPath>
+      <linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4C9"/>
+        <stop offset=".45" stop-color="#C9A04E"/><stop offset=".7" stop-color="#8A6116"/><stop offset="1" stop-color="#E8C565"/></linearGradient>
+      <radialGradient id="${id}l" cx=".3" cy=".18" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".38"/>
+        <stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+    <g clip-path="url(#${id})">${P[pat] || P.s}<rect width="40" height="${H}" fill="url(#${id}l)"/></g>
+    <path d="M1.5 19.5h37v9.5h-37z" fill="rgba(0,0,0,.25)"/>
+    <path d="M0 18h40v9.5H0z" fill="#F4F1E7" stroke="#20241E" stroke-width=".7"/>
+    <path d="M0 18l-0 9.5 3-4.75z" fill="#20241E" opacity=".35"/><path d="M40 18v9.5l-3-4.75z" fill="#20241E" opacity=".35"/>
+    <text x="20" y="25.6" text-anchor="middle" font-size="${ini.length > 2 ? 7.2 : 8.4}" font-weight="800"
+      font-family="Archivo, system-ui" fill="#20241E" letter-spacing=".5">${ini}</text>
+    <path d="${shield}" fill="none" stroke="url(#${id}g)" stroke-width="2.2"/>
+    <path d="${shield}" fill="none" stroke="#20241E" stroke-opacity=".5" stroke-width=".5"/></svg>`;
 }
 
 /* one club's disc on a tile: the crest file, or its colours */
@@ -12283,8 +12891,9 @@ function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n)}</span>`;
   if (r.k === 'club') return r.blank
-    ? `<span class="opt-art opt-crest"><span class="opt-mono">${optMono(r.n)}</span></span>`
+    ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
         onerror="this.parentElement.innerHTML='<span class=\\'opt-mono\\'>${optMono(clubName(r.id))}</span>'" /></span>`;
   if (r.k === 'ctry') return r.blank
@@ -12292,7 +12901,7 @@ function optArtHtml(r) {
     : `<span class="opt-art opt-flags">${r.iso.map(iso => `<img class="opt-flag" src="${flagFile(iso)}" alt="" aria-hidden="true"
         onerror="this.style.visibility='hidden'" />`).join('')}</span>`;
   if (r.k === 'face') return r.blank
-    ? `<span class="opt-art opt-face"><span class="opt-mono">${optMono(r.n)}</span></span>`
+    ? `<span class="opt-art opt-face opt-ink">${optGlyphSVG(r.n, true)}</span>`
     : `<span class="opt-art opt-face"><img src="${r.img}" alt="" aria-hidden="true"
         onerror="this.style.visibility='hidden'" /></span>`;
   if (r.k === 'stad') return r.blank
