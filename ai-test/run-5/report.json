@@ -1,0 +1,87 @@
+{
+ "model": "gemini-3-pro-image-preview",
+ "style": "atelier_full",
+ "prompt": "Repaint this photograph as a museum-quality hand-painted portrait, in the manner of a contemporary master portrait painter working in gouache and watercolour on heavy cold-press paper.\n\nThe subject — face, hair, shoulders and kit — is fully and confidently painted: sculpted planes of light and shadow, expressive visible brushstrokes, warm skin glazes with cool shadow notes, crisp highlights in the eyes. Away from the subject the painting deliberately loosens: the background is re-imagined as soft abstract washes and gestural strokes in colours taken from the photo, with wet-in-wet blooms, layered glazes and a few drips. The paper grain shows through the thin washes.\n\nFull bleed, painted on a toned ground: the artist first covered the whole sheet with a wash in the photo's own background colours, so there is no white paper anywhere in the picture. Every edge and every corner is solid paint — background washes, strokes and blooms run straight off all four sides of the image, as if the painting were cropped from a larger canvas. No vignette, no white or cream border, no unpainted margin, no fade-out, no drips ending on white paper. Keep the original framing and crop. It must read unmistakably as a painting, never as a filtered photograph.\n\nPreserve, exactly as in the source photo: the person's identity and exact facial structure, realistic eyes, apparent age, hairstyle, facial hair, expression, head angle, pose, body proportions and clothing (shirt colours, badges, details). The result must remain immediately recognizable as the same person. Facial hair stays exactly as photographed — never add a beard or moustache. Where the face is small in the frame, paint it with extra care from the photo's own features rather than inventing them. A black-and-white photo becomes a monochrome painting (ink, charcoal and grey washes); a colour photo keeps its colours.\n\nDo not: add anime features, enlarge the eyes, caricature, beautify, slim, de-age, change facial proportions, change the identity, add or remove people, add text, logos, pins, badges or signatures of any kind. Return only the image.",
+ "results": [
+  {
+   "id": "pele",
+   "name": "Pelé",
+   "source": "img/d609af6f47604b15.webp",
+   "ok": true,
+   "file": "pele-painted.jpg",
+   "seconds": 16.2,
+   "note": "",
+   "edges": {
+    "top": 7,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 42580
+   }
+  },
+  {
+   "id": "ronaldo",
+   "name": "Ronaldo Fenômeno",
+   "source": "img/f69a84f12e6c3e2d.webp",
+   "ok": true,
+   "file": "ronaldo-painted.jpg",
+   "seconds": 15.2,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 8254
+   }
+  },
+  {
+   "id": "messi",
+   "name": "Messi",
+   "source": "img/0859a19b8b37b5bf.webp",
+   "ok": true,
+   "file": "messi-painted.jpg",
+   "seconds": 17.0,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 2332
+   }
+  },
+  {
+   "id": "garrincha",
+   "name": "Garrincha",
+   "source": "img/fa4679be155093f7.webp",
+   "ok": true,
+   "file": "garrincha-painted.jpg",
+   "seconds": 16.7,
+   "note": "",
+   "edges": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "patched": 5143
+   }
+  },
+  {
+   "id": "didi",
+   "name": "Didi",
+   "source": "img/94bf9a8f11ebefd0.webp",
+   "ok": true,
+   "file": "didi-painted.jpg",
+   "seconds": 16.1,
+   "note": "",
+   "edges": {
+    "top": 24,
+    "bottom": 72,
+    "left": 38,
+    "right": 54,
+    "patched": 54518
+   }
+  }
+ ]
+}
