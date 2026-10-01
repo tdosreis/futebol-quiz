@@ -2542,7 +2542,7 @@
     /* ═══ O TABULEIRO — the question set on the page, the answers as paper
        slips laid on it. Ivory on the night paper reads like cards dealt on a
        table; the chosen one is painted gold, the verdict green or red. ═══ */
-    .qcard { background: none !important; padding: 2px 2px 4px; min-height: 0; }
+    .qcard { background: none !important; padding: 2px 2px 4px; min-height: 0; flex-shrink: 0; }
     .qcard::before { display: none; }
     .qcard > p { font-size: clamp(19px, 5.4vw, 23px); line-height: 1.22; letter-spacing: -.012em; font-weight: 600; }
     .b:not(.b-fig):not(.b-gone) {
@@ -2581,6 +2581,27 @@
     .ajuda .aj-disc { width: 34px; height: 34px; }
 
     /* ═══ OS DETALHES ═══ */
+    /* the question's picture and the answers' pictures, a size up — a face
+       or a crest should read at a glance — but only where the screen has
+       the room; the small-screen sizes above stay as they are */
+    @media (min-height: 661px) and (min-width: 360px) {
+      .qz-screen .qart-wide { width: 124px; height: 82px; }
+      .qz-screen .qart-face { width: 80px; height: 80px; }
+      .qz-screen .qart-flag { width: 92px; height: 62px; }
+      .qz-screen .qart-map { width: 86px; height: 90px; }
+      .qz-screen .qart-crest { width: 76px; height: 76px; }
+      .qz-screen .qart-crest.qart-hero { width: 98px; height: 98px; }
+      .qz-screen .opt-crest, .qz-screen .opt-face { width: 46px; height: 46px; }
+      .qz-screen .opt-flag { width: 48px; height: 36px; }
+      .qz-screen .opt-flags .opt-flag + .opt-flag, .qz-screen .opt-flags .opt-flag:first-child:not(:last-child) { width: 36px; height: 26px; }
+      .qz-screen .opt-stad { width: 70px; height: 44px; }
+      .qz-screen .opt-pair .opt-art { width: 38px; height: 38px; }
+      .qz-screen .b-text.b-art { padding-top: 12px; }
+    }
+    /* a flag over the question is mounted like the photographs, not ringed */
+    .qz-screen .qart-flag { padding: 4px 4px 5px; background: #EFE6CF; border-radius: 1px; overflow: hidden;
+      box-shadow: 0 7px 14px -4px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3) !important; transform: rotate(-1.8deg); }
+    .qz-screen .qart-flag svg, .qz-screen .qart-flag img { border-radius: 0; }
     /* the verdict comes up on a sheet of paper torn off along the top */
     .rvl-sheet { border: 0; border-radius: 0; background: linear-gradient(var(--at-lift), var(--at-lift)), var(--at-paper) var(--stock-2); background-size: auto, 256px 256px;
       padding-top: 22px; box-shadow: none; filter: drop-shadow(0 -8px 14px rgba(0,0,0,.35));
@@ -6143,12 +6164,12 @@ const CATS = [
       {"t": "Qual destes jogadores NUNCA foi campeão do mundo com a Seleção?", "a": ["Zico"], "type": "txt", "choices": ["Kaká", "Zico", "Rivaldo", "Bebeto", "Romário", "Cafu"], "d": 1, "icon": "trophy"},
       {"t": "Qual destes clubes NUNCA foi rebaixado no Brasileirão?", "a": ["São Paulo"], "type": "txt", "choices": ["Vasco", "Corinthians", "São Paulo", "Palmeiras", "Cruzeiro", "Grêmio"], "d": 2, "x": "Flamengo e São Paulo são os únicos grandes que nunca caíram.", "icon": "terrace"},
       {"t": "Qual destes estádios NÃO fica na cidade de São Paulo?", "a": ["Vila Belmiro"], "type": "txt", "choices": ["Allianz Parque", "Neo Química Arena", "Canindé", "Vila Belmiro", "Morumbis", "Pacaembu"], "d": 2, "x": "A Vila Belmiro fica em Santos, no litoral.", "icon": "stadium"},
-      {"t": "Qual destes clubes NÃO é de Pernambuco?", "a": ["CRB"], "type": "txt", "choices": ["Retrô", "Santa Cruz", "Salgueiro", "Sport", "Náutico", "CRB"], "d": 3, "x": "O CRB é de Maceió, em Alagoas.", "icon": "map"},
-      {"t": "Qual destes clubes NÃO é da Bahia?", "a": ["Confiança"], "type": "txt", "choices": ["Juazeirense", "Jacuipense", "Bahia de Feira", "Bahia", "Confiança", "Vitória"], "d": 4, "x": "O Confiança é de Aracaju, em Sergipe.", "icon": "map"},
-      {"t": "Qual destes clubes NÃO é de Santa Catarina?", "a": ["Londrina"], "type": "txt", "choices": ["Avaí", "Londrina", "Joinville", "Criciúma", "Figueirense", "Chapecoense"], "d": 3, "x": "O Londrina é do norte do Paraná.", "icon": "map"},
-      {"t": "Qual destes clubes NÃO é de Goiás?", "a": ["Cuiabá"], "type": "txt", "choices": ["Atlético-GO", "Aparecidense", "Goiás", "Cuiabá", "Vila Nova", "Anápolis"], "d": 2, "x": "O Cuiabá é de Mato Grosso.", "icon": "map"},
-      {"t": "Qual destes clubes NÃO é do Ceará?", "a": ["ABC"], "type": "txt", "choices": ["Fortaleza", "Ferroviário", "Floresta", "Ceará", "ABC", "Icasa"], "d": 3, "x": "O ABC é de Natal, no Rio Grande do Norte.", "icon": "map"},
-      {"t": "Qual destes clubes NÃO é do Pará?", "a": ["Sampaio Corrêa"], "type": "txt", "choices": ["Paysandu", "Sampaio Corrêa", "Remo", "Águia de Marabá", "Tuna Luso", "Castanhal"], "d": 3, "x": "O Sampaio Corrêa é de São Luís, no Maranhão.", "icon": "map"},
+      {"t": "Qual destes clubes NÃO é de Pernambuco?", "a": ["CRB"], "type": "txt", "choices": ["Retrô", "Santa Cruz", "Salgueiro", "Sport", "Náutico", "CRB"], "d": 3, "x": "O CRB é de Maceió, em Alagoas.", "uf": "PE"},
+      {"t": "Qual destes clubes NÃO é da Bahia?", "a": ["Confiança"], "type": "txt", "choices": ["Juazeirense", "Jacuipense", "Bahia de Feira", "Bahia", "Confiança", "Vitória"], "d": 4, "x": "O Confiança é de Aracaju, em Sergipe.", "uf": "BA"},
+      {"t": "Qual destes clubes NÃO é de Santa Catarina?", "a": ["Londrina"], "type": "txt", "choices": ["Avaí", "Londrina", "Joinville", "Criciúma", "Figueirense", "Chapecoense"], "d": 3, "x": "O Londrina é do norte do Paraná.", "uf": "SC"},
+      {"t": "Qual destes clubes NÃO é de Goiás?", "a": ["Cuiabá"], "type": "txt", "choices": ["Atlético-GO", "Aparecidense", "Goiás", "Cuiabá", "Vila Nova", "Anápolis"], "d": 2, "x": "O Cuiabá é de Mato Grosso.", "uf": "GO"},
+      {"t": "Qual destes clubes NÃO é do Ceará?", "a": ["ABC"], "type": "txt", "choices": ["Fortaleza", "Ferroviário", "Floresta", "Ceará", "ABC", "Icasa"], "d": 3, "x": "O ABC é de Natal, no Rio Grande do Norte.", "uf": "CE"},
+      {"t": "Qual destes clubes NÃO é do Pará?", "a": ["Sampaio Corrêa"], "type": "txt", "choices": ["Paysandu", "Sampaio Corrêa", "Remo", "Águia de Marabá", "Tuna Luso", "Castanhal"], "d": 3, "x": "O Sampaio Corrêa é de São Luís, no Maranhão.", "uf": "PA"},
       {"t": "Qual destes clubes NÃO é português?", "a": ["Anderlecht"], "type": "txt", "choices": ["Anderlecht", "Vitória de Guimarães", "Porto", "Braga", "Benfica", "Sporting"], "d": 2, "x": "O Anderlecht é o clube mais vitorioso da Bélgica.", "icon": "terrace"},
       {"t": "Qual destes atacantes NÃO é argentino?", "a": ["Luis Suárez"], "type": "txt", "choices": ["Tévez", "Di María", "Luis Suárez", "Agüero", "Messi", "Batistuta"], "d": 1, "icon": "globe"},
       {"t": "Qual destes jogadores NÃO é uruguaio?", "a": ["Falcao García"], "type": "txt", "choices": ["Francescoli", "Cavani", "Recoba", "Forlán", "Falcao García", "Luis Suárez"], "d": 2, "icon": "globe"},
@@ -13353,12 +13374,17 @@ function optArtFor(q) {
     (c.id && Object.keys(CLUB_ALIAS).some(a => CLUB_ALIAS[a] === c.id && named(a)))));
   const leagueTold = res.some(r => r && r.league && ((CTRY_WORDS[r.iso[0]] && word(CTRY_WORDS[r.iso[0]]).test(t)) ||
     (qFlag && r.iso[0] === qFlag)));
+  /* a board that is plainly about clubs — "qual destes clubes…" — with crests
+     for most of them: the rest get the shield in colours made from their name,
+     rather than the whole board falling back to letters */
+  if (kind === 'club' && got >= n / 2 && got < n && /\b(clube|clubes|time|times|equipe)\b/.test(t))
+    res.forEach((r, i) => { if (!r) { res[i] = { k: 'club', ink: heraldInk(q.choices[i]), n: q.choices[i] }; count.club++; } });
   const shown = pairTold || leagueTold || (kind === 'club' && (q._crestIsQ || q.msc)) ||
                 onTile('club', r => !!qCrest && r.id === qCrest) ||
                 onTile('ctry', r => qFlag && r.iso.includes(qFlag)) ||
                 onTile('face', r => !!qFace && r.img === qFace) ||
                 (kind === 'stad' && (q.stad || q.qimg));
-  if (kind && got >= Math.min(n, Math.max(4, n - 2)) && !shown && !(looks && kind !== 'face')) {
+  if (kind && count[kind] >= Math.min(n, Math.max(4, n - 2)) && !shown && !(looks && kind !== 'face')) {
     out = {};
     q.choices.forEach((c, i) => { out[c] = res[i] && res[i].k === kind && !res[i].blank ? res[i] : { k: kind, blank: true, n: c }; });
     out._kind = kind;
@@ -13369,11 +13395,25 @@ function optArtFor(q) {
        gets a picture: one drawn for what kind of answer it is, which tells
        nothing. */
     out = {};
-    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c }; });
+    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c, L: glyphInitial(c, q.choices) }; });
     out._kind = 'glyph';
   }
   _optMemo.set(q, out);
   return out;
+}
+
+/* A board of "Derby della …" or "F…" clubs would print the same letter on
+   every slip. When the first letters collide, each answer takes the first
+   letter of the word that tells it apart from the others. */
+const GLYPH_STOP = /^(o|a|os|as|um|uma|the|de|da|do|das|dos|del|della|delle|di|d|la|le|el|los|las|der|die|das|van|von|e|y|and|fc|sc|ec)$/i;
+function glyphInitial(c, all) {
+  const first = s => (_fold(s).replace(/^(o|a|os|as|um|uma|the)\s+/, '').match(/[a-z0-9]/) || ['?'])[0];
+  const mine = first(c);
+  if (all.filter(x => first(x) === mine).length < 2) return null;
+  const words = String(c).replace(/['’]/g, ' ').split(/\s+/).filter(w => w && !GLYPH_STOP.test(w));
+  const others = all.filter(x => x !== c).map(x => _fold(x));
+  const w = words.find(w => !others.every(o => o.includes(_fold(w)))) || words[words.length - 1] || c;
+  return (w.match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0];
 }
 
 /* ── Pictures for answers that are not things ──
@@ -13381,7 +13421,7 @@ function optArtFor(q) {
    players on a pitch, a number a medallion, a man the album has no photo of
    a portrait in silhouette, and anything else an illuminated initial — all on
    the same cream disc as a crest, so a board reads as one set. */
-function optGlyphSVG(text, asPerson) {
+function optGlyphSVG(text, asPerson, initial) {
   const t = String(text).trim();
   const ink = '#20241E', gold = '#B98C42', esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   let m;
@@ -13422,7 +13462,10 @@ function optGlyphSVG(text, asPerson) {
       ${unit ? `<text x="20" y="29" text-anchor="middle" font-family="Archivo Narrow, sans-serif" font-weight="700" font-size="5.4" fill="${gold}" letter-spacing=".6">${unit.toUpperCase()}</text>` : ''}</svg>`;
   }
   const words = t.split(/\s+/);
-  const person = asPerson || words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+  /* "Derby del Sole" has a person's shape — capitalised words around a
+     "del" — but a match, a cup or a ground is never a man */
+  const thing = /\b(derby|derbi|cl[aá]ssico|clasico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
+  const person = asPerson || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
     words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w));
   if (person) {
     return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#D8CBA8"/>
@@ -13430,7 +13473,7 @@ function optGlyphSVG(text, asPerson) {
       <rect x="11" y="28.5" width="18" height="7.5" rx="2" fill="#F4F1E7" stroke="${ink}" stroke-width=".6"/>
       <text x="20" y="34.3" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="5.4" fill="${ink}" letter-spacing=".3">${esc(optMono(t))}</text></svg>`;
   }
-  const L = (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0].toUpperCase();
+  const L = (initial || (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0]).toUpperCase();
   return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="2" fill="#F4F1E7" stroke="${gold}" stroke-width="1.4"/>
     <rect x="8.5" y="8.5" width="23" height="23" fill="none" stroke="${gold}" stroke-width=".5"/>
     <path d="M8.5 8.5l4 4M31.5 8.5l-4 4M8.5 31.5l4-4M31.5 31.5l-4-4" stroke="${gold}" stroke-width=".6"/>
@@ -13509,7 +13552,7 @@ function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
-  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n)}</span>`;
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, false, r.L)}</span>`;
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"

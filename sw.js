@@ -208,8 +208,14 @@
         collections as a contents list.
    v67: the zoomed figurinha hangs in a gallery — a dark painted wall lit
         behind the card in the colour of its stock, a museum label (number,
-        name, stock, serial, grade), brushstroke actions, a dab to close. */
-const VERSION = 'v67';
+        name, stock, serial, grade), brushstroke actions, a dab to close.
+   v68: fixes — a long question no longer runs under the header and the
+        board; clubs with no crest get a shield in their colours instead of
+        the whole board turning to letters; "Derby del Sole" is not a man;
+        boards of "Derby della…" print the letter that tells them apart;
+        "não é do Ceará" (and five more) show the state on the map; the
+        question's flag is mounted like a print; pictures a size larger. */
+const VERSION = 'v68';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
