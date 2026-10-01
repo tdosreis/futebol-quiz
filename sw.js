@@ -220,8 +220,13 @@
         club shows its crest (Atlético, Liverpool, Santos) rather than a flag
         or a stadium; men with no photo are a sepia bust, coaches in a suit;
         the line-up on a painted pitch with names on slips; the scoreboard
-        on dark paper. */
-const VERSION = 'v69';
+        on dark paper.
+   v70: the figurinha in the atelier — printed on cold-press paper, the
+        painting on a mat with a hairline, the country in small capitals over
+        a brushstroke of its colours, the name in the serif, the club in
+        italic; numbers on paper labels; the verdict's card back on a slip;
+        busts that differ by hairline, suit and tie. */
+const VERSION = 'v70';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

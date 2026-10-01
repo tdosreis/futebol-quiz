@@ -2581,6 +2581,66 @@
     .ajuda .aj-disc { width: 34px; height: 34px; }
 
     /* ═══ OS DETALHES ═══ */
+
+    /* ═══ A FIGURINHA NO ATELIÊ ═══
+       The card is printed on the same cold-press paper the portraits were
+       painted on: the painting is mounted on a mat with a hairline round it,
+       the country is lettered in small capitals over a brushstroke of the
+       national colours (or the old stock's red), and the name is set in the
+       serif the rest of the app speaks. The foils keep their frames. */
+    .fig-retro, .fig-modern { --fp: #EEE3C8; --fp-ink: #2C2316; --fp-rule: rgba(90,66,30,.38);
+      background: var(--fp) url(img/atelier/paper-day.webp) 0 0 / 160px 160px; background-blend-mode: multiply;
+      color: var(--fp-ink); box-shadow: inset 0 0 0 1px rgba(90,66,30,.32), 0 1px 3px var(--shadow); }
+    .fig-modern { --fp: #F3EEE1; --fp-rule: rgba(40,46,40,.3); }
+    .fig-retro .fig-band, .fig-modern .fig-band { position: relative; background: none; color: var(--fp-ink);
+      box-shadow: none; font-family: var(--font-s); font-weight: 800; letter-spacing: .16em; padding-bottom: 5px; }
+    .fig-retro .fig-band::after, .fig-modern .fig-band::after { content: ''; position: absolute; left: 22%; right: 22%; bottom: 1px;
+      height: max(2px, calc(var(--pw, 80px) * .035)); background: var(--fp-stroke, #B23A2E); opacity: .85;
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
+    .fig-modern .fig-band::after { background: linear-gradient(90deg, var(--c1, #17593F) 0 50%, var(--c2, #B8860B) 50% 100%); }
+    .fig-band-mute::after { display: none; }
+    /* the painting on its mat */
+    .fig-retro .fig-art, .fig-modern .fig-art { padding: 4% 7% 0; background: none !important; }
+    .fig-modern .fig-shot { position: relative; inset: auto; left: auto; right: auto; top: auto; bottom: auto; height: 100%; border-radius: 0; }
+    .fig-retro .fig-shot, .fig-modern .fig-shot { box-shadow: 0 0 0 1px var(--fp-rule), 0 0 0 3px var(--fp), 0 0 0 3.6px var(--fp-rule),
+      inset 0 0 6px rgba(60,40,10,.18); border-radius: 0; background: #E4D9BE; }
+    .fig-retro .fig-shot img { filter: sepia(.12) saturate(.97); }
+    .fig-retro .fig-shot::after { background: radial-gradient(118% 88% at 50% 38%, transparent 62%, rgba(80,60,30,.16)); }
+    .fig-modern .fig-art::after { display: none; }
+    .fig-modern .fig-flag { box-shadow: 0 0 0 1.5px #F3EEE1, 0 1px 2px rgba(0,0,0,.35); border-radius: 1px; }
+    /* the name: serif lettering, the club in italic */
+    .fig-retro .fig-nm, .fig-modern .fig-nm { font-family: var(--font-d); font-weight: 650; text-transform: none; letter-spacing: -.005em; }
+    .fig-retro .fig-sub, .fig-modern .fig-sub { font-family: var(--font-d); font-style: italic; font-weight: 500; opacity: .75; }
+    .b-fig .fig-sm .fig-nm { font-size: 10.4px; } .b-fig .fig-sm .fig-nm-long { font-size: 9px; }
+    @media (min-width: 400px) { .b-fig .fig-sm .fig-nm { font-size: 11.4px; } .b-fig .fig-sm .fig-nm-long { font-size: 9.8px; } }
+    /* a foil card's lettering stays legible over its ribbon */
+    .fig[class*=" fin-"]:not(.fin-0) .fig-band::after { display: none; }
+    /* in the dark the card is still paper, a touch toned down */
+    :root[data-theme="dark"] .fig-retro, :root[data-theme="dark"] .fig-modern { --fp: #E6DABC; }
+    :root[data-theme="dark"] .fig-modern { --fp: #ECE5D3; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .fig-retro { --fp: #E6DABC; }
+      :root:not([data-theme="light"]) .fig-modern { --fp: #ECE5D3; }
+    }
+    /* the gold name on a gold card, on paper */
+    .fin-3.fig-retro .fig-nm, .fin-3.fig-modern .fig-nm { background-image: linear-gradient(100deg, #7a5412, #b88422 calc(40% + var(--gx, 0) * 30%), #6f4c0f) !important; }
+    /* the number on a board: an italic numeral on a paper label */
+    .b-fig .tab, .alb-n { background: url(img/atelier/slip-ivory.webp) center / 100% 100% no-repeat !important; color: #5A3E0C !important;
+      font: italic 700 11px/1 var(--font-d) !important; letter-spacing: 0 !important; padding: 4px 7px 4px 6px !important; border-radius: 0 !important;
+      box-shadow: none !important; filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
+    .alb-n { font-size: 9px !important; padding: 3px 5px 3px 4px !important; top: -5px !important; left: -5px !important; }
+    .alb-slot .fig-band { padding-left: 26% !important; padding-right: 6% !important; }
+    .alb-slot .fig-band::after { left: 30%; right: 14%; }
+    .b-fig.b-sel .tab, .b-fig.b-correct .tab { background-image: url(img/atelier/slip-gold.webp) !important; }
+    /* the back of the card in the verdict: a slip, not a ruled box */
+    .ficha { border: 0 !important; border-radius: 0; box-shadow: none !important; padding: 14px 16px;
+      background: var(--at-card-img) center / 100% 100% no-repeat !important; }
+    .ficha-art.print { border-radius: 2px; padding: 2px; background: #EFE6CF; transform: rotate(-3deg); box-shadow: 0 3px 6px rgba(0,0,0,.35); }
+    .ficha-n { font: 600 17px/1.15 var(--font-d); }
+    .ficha-l { font: italic 500 12px/1.4 var(--font-d); }
+    .ficha-h { font: 700 9.5px/1.4 var(--font-s); letter-spacing: .1em; text-transform: uppercase; }
+    .ficha-tag { border-radius: 0 !important; background: linear-gradient(100deg, #b98c42, #e6c46f 50%, #b98c42) !important;
+      -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; padding: 4px 12px !important; }
     /* the line-up on a painted pitch: mown stripes in watercolour green over
        the paper's grain, chalk lines, a torn edge; the names on ivory slips */
     .xi { border-radius: 0; box-shadow: none !important; padding: 12px 12px 14px;
@@ -13496,17 +13556,27 @@ function optGlyphSVG(text, asPerson, initial) {
     /* a man the album has no picture of: a sepia bust on the cream disc, as an
        old programme would print a player it had no photograph of — in a
        shirt, or in a suit and tie when the board is a board of coaches */
+    /* no two busts on a board alike: the hairline, the suit and the tie are
+       chosen from the name, so six coaches read as six men */
+    let hh = 0; for (const ch of t) hh = (hh * 33 + ch.charCodeAt(0)) >>> 0;
+    const hair = ['', '<path d="M13.4 13.2c0-5.6 3-8.4 6.6-8.4s6.6 2.8 6.6 8.4c-1.4-2.6-3.6-3.9-6.6-3.9s-5.2 1.3-6.6 3.9Z" fill="#2E2620"/>',
+      '<path d="M13.2 15c-.4-6.6 2.6-10.4 6.8-10.4 4.6 0 7.4 3.6 6.8 10.4-.8-1.4-1.6-4.6-3-5.6-2.2 1.4-5.6 1.6-8.6.8-1.2 1.4-1.6 3.2-2 4.8Z" fill="#2E2620"/>',
+      '<path d="M13.6 12.6c.6-4.6 3.2-7.2 6.4-7.2s5.8 2.6 6.4 7.2c-2-1.8-4-2.4-6.4-2.4s-4.4.6-6.4 2.4Z" fill="#A79D8C"/>',
+      '<path d="M13.2 16.2c-1-7.2 2.2-11.4 6.8-11.4s7.8 4.2 6.8 11.4c-.6-3.2-1.8-5.4-3.4-6.4-1.8 1-5.2 1-6.8 0-1.6 1-2.8 3.2-3.4 6.4Z" fill="#3A3028"/>'][hh % 5];
+    const suit = ['#3B3229', '#2A3244', '#4A3A2C', '#2F2F33'][(hh >> 3) % 4];
+    const tie  = ['#8E2A20', '#1F4E8C', '#2F6B45', '#B98C42', '#5B2C83'][(hh >> 5) % 5];
     const shirt = String(asPerson).startsWith('coach')
-      ? `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="#3B3229"/>
-         <path d="M15.6 25.6 20 32l4.4-6.4-4.4-1Z" fill="#EFE6CF"/><path d="M18.9 27.3h2.2l.9 8.2-2 2-2-2Z" fill="#8E2A20"/>`
-      : `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="#4E5B46"/>
+      ? `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="${suit}"/>
+         <path d="M15.6 25.6 20 32l4.4-6.4-4.4-1Z" fill="#EFE6CF"/><path d="M18.9 27.3h2.2l.9 8.2-2 2-2-2Z" fill="${tie}"/>`
+      : `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="${['#4E5B46', '#7A2E26', '#2A4A7A', '#C4A04A', '#3B3229'][(hh >> 3) % 5]}"/>
          <path d="M15.4 25.7c1.2 2.6 2.8 3.9 4.6 3.9s3.4-1.3 4.6-3.9" fill="none" stroke="#E6DCC2" stroke-width="1.4"/>`;
     return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#E9DFC6"/>
       <clipPath id="pc"><circle cx="20" cy="20" r="18.5"/></clipPath><g clip-path="url(#pc)">
       <path d="M17.4 19.5h5.2v6.6h-5.2Z" fill="#5A4C3D"/>
-      <ellipse cx="20" cy="14.6" rx="6.6" ry="7.4" fill="#5A4C3D"/>${shirt}</g>
+      <ellipse cx="20" cy="14.6" rx="6.6" ry="7.4" fill="#5A4C3D"/>${hair}${shirt}</g>
       <circle cx="20" cy="20" r="18.5" fill="none" stroke="#B98C42" stroke-width=".9"/></svg>`;
   }
+
   const L = (initial || (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0]).toUpperCase();
   return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="2" fill="#F4F1E7" stroke="${gold}" stroke-width="1.4"/>
     <rect x="8.5" y="8.5" width="23" height="23" fill="none" stroke="${gold}" stroke-width=".5"/>
