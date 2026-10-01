@@ -1,0 +1,97 @@
+# Repaint every raster image in the app into the gemini-batch branch
+# (ai-batch/<same path as the source>). Nothing in img/ or master changes:
+# the paintings are reviewed there first and swapped in by a separate commit.
+# Safe to start again: anything already painted is skipped.
+name: Gemini paint batch
+
+on:
+  workflow_dispatch:
+    inputs:
+      kinds:
+        description: 'player,scene,emblem,flag (comma list)'
+        required: false
+        default: 'player,scene,emblem,flag'
+      only:
+        description: 'Only these paths or player ids (comma list, optional)'
+        required: false
+        default: ''
+      force:
+        description: 'Redo these paths or player ids even if painted (comma list, optional)'
+        required: false
+        default: ''
+      model:
+        description: 'Gemini image model'
+        required: false
+        default: 'gemini-3-pro-image-preview'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-paint-batch
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make sure the staging branch exists
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898+github-actions[bot]@users.noreply.github.com'
+          if ! git ls-remote --exit-code origin gemini-batch >/dev/null; then
+            git checkout -q --orphan gemini-batch
+            git rm -rfq .
+            printf '# Gemini paint batch\n\nPaintings of every image in the app, staged for review.\n' > README.md
+            git add README.md
+            git commit -qm 'Gemini batch: staging branch'
+            git push -q origin gemini-batch
+          fi
+
+  paint:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow and OpenCV
+        run: pip install --quiet pillow opencv-python-headless numpy
+
+      - name: Check out the staging branch beside the sources
+        run: |
+          git config --global user.name  'github-actions[bot]'
+          git config --global user.email '41898+github-actions[bot]@users.noreply.github.com'
+          git fetch -q origin gemini-batch
+          git worktree add -q -B gemini-batch stage FETCH_HEAD
+
+      - name: Paint this shard
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ inputs.model }}
+          KINDS: ${{ inputs.kinds }}
+          ONLY: ${{ inputs.only }}
+          FORCE: ${{ inputs.force }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: '6'
+          OUT: stage/ai-batch
+          STAGE: stage
+          COMMIT_EVERY: '10'
+        run: python3 tools/gemini/batch.py
+
+      - name: Publish the rest
+        if: always()
+        env:
+          STAGE: stage
+          SHARD: ${{ matrix.shard }}
+        run: tools/gemini/publish.sh 'end of shard'
