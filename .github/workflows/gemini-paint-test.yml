@@ -16,9 +16,9 @@ on:
         required: false
         default: 'gemini-3-pro-image-preview'
       style:
-        description: 'atelier (portrait study dissolving into paper) or gouache (painted edge to edge)'
+        description: 'atelier_full (full bleed), atelier (fades to paper) or gouache'
         required: false
-        default: 'atelier'
+        default: 'atelier_full'
 
 permissions:
   contents: write

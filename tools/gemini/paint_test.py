@@ -9,7 +9,8 @@ results — plus the originals and a side-by-side sheet — to OUT.
 Environment:
   GEMINI_API_KEY  required; read from the environment and never printed
   GEMINI_MODEL    image model id (default gemini-3-pro-image-preview)
-  STYLE           atelier (portrait study dissolving into paper) or gouache (painted edge to edge)
+  STYLE           atelier_full (default: run 3's brushwork, full bleed), atelier (dissolving into
+                  bare paper) or gouache (smooth editorial gouache, edge to edge)
   PLAYERS         comma-separated album ids (default: five representative ones)
   OUT             output folder (default ai-test/local)
 """
@@ -44,6 +45,20 @@ re-imagined as soft abstract washes and a few gestural strokes in colours taken 
 wet-in-wet blooms and drips, and towards the outer edges the paint thins and dissolves into bare, \
 textured off-white paper, as in an unfinished artist's study. The paper grain shows through the thin \
 washes. It must read unmistakably as a painting, never as a filtered photograph.""",
+    # run 3's atelier, full-bleed: the same hand, but the washes reach every edge
+    'atelier_full': """Repaint this photograph as a museum-quality hand-painted portrait, in the manner of a \
+contemporary master portrait painter working in gouache and watercolour on heavy cold-press paper.
+
+The subject — face, hair, shoulders and kit — is fully and confidently painted: sculpted planes of \
+light and shadow, expressive visible brushstrokes, warm skin glazes with cool shadow notes, crisp \
+highlights in the eyes. Away from the subject the painting deliberately loosens: the background is \
+re-imagined as soft abstract washes and gestural strokes in colours taken from the photo, with \
+wet-in-wet blooms, layered glazes and a few drips. The paper grain shows through the thin washes.
+
+Full bleed: the paint covers the entire canvas right up to all four edges. No vignette, no white or \
+unpainted border, no paper showing around the edges, no fade-out to white — the loose background \
+washes themselves fill every corner. Keep the original framing and crop. It must read unmistakably as \
+a painting, never as a filtered photograph.""",
     # run 2: the whole frame painted, edge to edge
     'gouache': """Transform this photograph into a premium painterly illustration: editorial gouache realism, \
 as if a skilled portrait painter had hand-painted this exact photograph, edge to edge. Subtle visible \
@@ -95,7 +110,7 @@ def main():
     if not key:
         sys.exit('GEMINI_API_KEY is not set')
     model = os.environ.get('GEMINI_MODEL', '').strip() or 'gemini-3-pro-image-preview'
-    style = os.environ.get('STYLE', '').strip() or 'atelier'
+    style = os.environ.get('STYLE', '').strip() or 'atelier_full'
     global PROMPT_TEXT
     PROMPT_TEXT = prompt_for(style)
     ids = [x.strip() for x in (os.environ.get('PLAYERS') or DEFAULT_PLAYERS).split(',') if x.strip()]
