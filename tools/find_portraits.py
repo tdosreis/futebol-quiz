@@ -15,6 +15,9 @@ TARGETS = {
  "muller_sp":   ["Category:Müller (footballer, born 1966)", "Müller footballer Brazil"],
  "zico":        ["Category:Zico", "Zico footballer"],
  "leao":        ["Category:Émerson Leão", "Emerson Leão"],
+ # the photo in the album (Alex_de_Souza_EBC.jpg) is a namesake, not the
+ # Coritiba/Palmeiras/Cruzeiro/Fenerbahçe midfielder
+ "alex":        ["Category:Alex (footballer, born 1977)", "Alex de Souza Fenerbahçe"],
 }
 
 def get(u):
