@@ -212,6 +212,12 @@ def main():
             rec.update(ok=False, error=str(e)[:400])
             failed += 1
             print(f'✗ {rel} [{kind}] {str(e)[:200]}', flush=True)
+            if 'HTTP 402' in str(e) or 'HTTP 403' in str(e):
+                # no credit (or no access): every call after this fails the same way
+                os.makedirs(os.path.dirname(st), exist_ok=True)
+                json.dump(rec, open(st, 'w'), ensure_ascii=False)
+                print('stopping: the Gemini account has no credit for this model', flush=True)
+                break
         os.makedirs(os.path.dirname(st), exist_ok=True)
         json.dump(rec, open(st, 'w'), ensure_ascii=False)
         if every and new and new % every == 0:
