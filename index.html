@@ -2581,6 +2581,25 @@
     .ajuda .aj-disc { width: 34px; height: 34px; }
 
     /* ═══ OS DETALHES ═══ */
+    /* the line-up on a painted pitch: mown stripes in watercolour green over
+       the paper's grain, chalk lines, a torn edge; the names on ivory slips */
+    .xi { border-radius: 0; box-shadow: none !important; padding: 12px 12px 14px;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 140' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23F4F1E6' stroke-opacity='.42' stroke-width='1.3'%3E%3Crect x='6' y='6' width='288' height='128'/%3E%3Cpath d='M150 6v128'/%3E%3Ccircle cx='150' cy='70' r='20'/%3E%3Crect x='6' y='38' width='34' height='64'/%3E%3Crect x='260' y='38' width='34' height='64'/%3E%3Crect x='6' y='54' width='12' height='32'/%3E%3Crect x='282' y='54' width='12' height='32'/%3E%3C/g%3E%3C/svg%3E") center / 100% 100% no-repeat,
+        url(img/atelier/paper-day.webp) 0 0 / 256px 256px,
+        repeating-linear-gradient(90deg, #2A5C33 0 34px, #25542E 34px 68px);
+      background-blend-mode: normal, soft-light, normal;
+      -webkit-mask: url(img/atelier/stroke-card.webp) center / 100% 100%; mask: url(img/atelier/stroke-card.webp) center / 100% 100%; }
+    .xi-lbl { font: 700 9.5px/1 var(--font-s); letter-spacing: .22em; opacity: .85; }
+    .xi-p { font: 600 11px/1.1 var(--font-d); letter-spacing: -.01em; color: #22251F; border-radius: 0; padding: 3px 5px 4px;
+      background: url(img/atelier/slip-ivory.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.35)); }
+    .xi-q { background: url(img/atelier/slip-gold.webp) center / 100% 100% no-repeat; color: #3a2708; font: 700 14px/1 var(--font-d);
+      padding: 3px 12px 4px; box-shadow: none; animation: xiQ 1.6s ease-in-out infinite; }
+    @keyframes xiQ { 50% { transform: translateY(-2px) rotate(-2deg); } }
+    @media (prefers-reduced-motion: reduce) { .xi-q { animation: none; } }
+    /* the scoreboard, on a sheet of dark paper */
+    .qsc { border-radius: 0; box-shadow: none; background: url(img/atelier/slip-night-on.webp) center / 100% 100% no-repeat; padding: 12px 14px 13px; }
+    .qsc-lbl { font: 700 9.5px/1 var(--font-s); letter-spacing: .22em; }
     /* the question's picture and the answers' pictures, a size up — a face
        or a crest should read at a glance — but only where the screen has
        the room; the small-screen sizes above stay as they are */
@@ -8516,7 +8535,7 @@ const LOGOS = {
   inter:          'img/9b127e8057b34e1a.webp',
   juventus:       'img/632172f8e325d492.webp',
   lagalaxy:       'img/9429f6f28aecb879.webp',
-  marseille:      'img/f350571d77e5360e.webp',
+  marseille:      'img/om-crest.webp',
   milan:          'img/41fc33985ee82deb.webp',
   nycfc:          'img/97b0f8fadbb8f1b7.webp',
   parma:          'img/399f0482d6402e61.webp',
@@ -9481,7 +9500,7 @@ const CREDITS = {
   'img/41fc33985ee82deb.webp': { a:'A.C. Milan Uploaded by Vargklo at en.wikipedia', l:'Public domain' },
   'img/9b127e8057b34e1a.webp': { a:'FC Internazionale Milano S.p.A. / Bureau Borsche', l:'Public domain' },
   'img/632172f8e325d492.webp': { a:'Interbrand – Global Brand Consultancy / Juventus Football Club SpA', l:'Public domain' },
-  'img/f350571d77e5360e.webp': { a:'Olympique de Marseille', l:'Public domain' },
+  'img/om-crest.webp': { a:'Olympique de Marseille (redrawn badge)', l:'Public domain' },
   'img/c4c3276631cc848a.webp': { a:'AFC Ajax', l:'Public domain' },
   'img/7c74ccd679196cef.webp': { a:'FutureBrand Creative Agency / ACF Fiorentina S.r.l. a socio unico', l:'Public domain' },
   'img/399f0482d6402e61.webp': { a:'Parma Calcio 1913', l:'Public domain' },
@@ -13324,6 +13343,11 @@ function optResolve(text) {
   if (two.length === 2 && X.flag[two[0]] && X.flag[two[1]])
     return { k: 'ctry', iso: [X.flag[two[0]], X.flag[two[1]]] };
   if (X.face[f]) return { k: 'face', img: X.face[f].img, era: X.face[f].era };
+  /* "Lionel Messi" for the album's "Messi": a full name whose surname is a
+     man the album knows by that one name */
+  const sur = f.split(/\s+/);
+  if (sur.length === 2 && X.face[sur[1]] && !/\s/.test(_fold(X.face[sur[1]].n)))
+    return { k: 'face', img: X.face[sur[1]].img, era: X.face[sur[1]].era };
   if (X.stad[f]) return { k: 'stad', img: X.stad[f] };
   const g = X.grounds.find(p => p.q.test(f));
   if (g) return { k: 'stad', img: g.img };
@@ -13395,7 +13419,8 @@ function optArtFor(q) {
        gets a picture: one drawn for what kind of answer it is, which tells
        nothing. */
     out = {};
-    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c, L: glyphInitial(c, q.choices) }; });
+    const coach = /\b(tecnico|tecnicos|treinador|treinadores|tecnica)\b/.test(t);
+    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach }; });
     out._kind = 'glyph';
   }
   _optMemo.set(q, out);
@@ -13465,13 +13490,22 @@ function optGlyphSVG(text, asPerson, initial) {
   /* "Derby del Sole" has a person's shape — capitalised words around a
      "del" — but a match, a cup or a ground is never a man */
   const thing = /\b(derby|derbi|cl[aá]ssico|clasico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
-  const person = asPerson || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+  const person = asPerson === true || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
     words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w));
   if (person) {
-    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#D8CBA8"/>
-      <circle cx="20" cy="15.5" r="6.4" fill="#5E5A4C"/><path d="M7 36c1.5-8 7-11.5 13-11.5S31.5 28 33 36Z" fill="#5E5A4C"/>
-      <rect x="11" y="28.5" width="18" height="7.5" rx="2" fill="#F4F1E7" stroke="${ink}" stroke-width=".6"/>
-      <text x="20" y="34.3" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="5.4" fill="${ink}" letter-spacing=".3">${esc(optMono(t))}</text></svg>`;
+    /* a man the album has no picture of: a sepia bust on the cream disc, as an
+       old programme would print a player it had no photograph of — in a
+       shirt, or in a suit and tie when the board is a board of coaches */
+    const shirt = String(asPerson).startsWith('coach')
+      ? `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="#3B3229"/>
+         <path d="M15.6 25.6 20 32l4.4-6.4-4.4-1Z" fill="#EFE6CF"/><path d="M18.9 27.3h2.2l.9 8.2-2 2-2-2Z" fill="#8E2A20"/>`
+      : `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="#4E5B46"/>
+         <path d="M15.4 25.7c1.2 2.6 2.8 3.9 4.6 3.9s3.4-1.3 4.6-3.9" fill="none" stroke="#E6DCC2" stroke-width="1.4"/>`;
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#E9DFC6"/>
+      <clipPath id="pc"><circle cx="20" cy="20" r="18.5"/></clipPath><g clip-path="url(#pc)">
+      <path d="M17.4 19.5h5.2v6.6h-5.2Z" fill="#5A4C3D"/>
+      <ellipse cx="20" cy="14.6" rx="6.6" ry="7.4" fill="#5A4C3D"/>${shirt}</g>
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="#B98C42" stroke-width=".9"/></svg>`;
   }
   const L = (initial || (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0]).toUpperCase();
   return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="28" rx="2" fill="#F4F1E7" stroke="${gold}" stroke-width="1.4"/>
@@ -13552,7 +13586,7 @@ function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
-  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, false, r.L)}</span>`;
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.coach ? 'coach-maybe' : false, r.L)}</span>`;
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
@@ -13794,6 +13828,21 @@ function realArt(key, q) {
     onerror="this.parentElement.style.display='none'" /></div>`;
 }
 
+function namedClub(q) {
+  if (!q || !q.t || q.crest || q.uf) return null;
+  if (q.type === 'club' || q.type === 'clubs') return null;
+  const X = optIndex(), t = ' ' + _fold(q.t).replace(/[^a-z0-9 ]/g, ' ') + ' ';
+  let best = null;
+  Object.keys(X.club).forEach(k => {
+    if (k.length < 4 || !LOGOS[X.club[k]]) return;
+    if (t.includes(' ' + k + ' ') && (!best || k.length > best.length)) best = k;
+  });
+  if (!best) return null;
+  const id = X.club[best];
+  if ((q.choices || []).some(c => { const r = optResolve(c); return r && r.k === 'club'; })) return null;
+  if ((q.a || []).some(a => _fold(String(a)) === best || a === id)) return null;
+  return id;
+}
 const topicArt = q => { const t = _fold(q.t || ''); const hit = TOPIC_ART.find(([, re]) => re.test(t)); return hit ? hit[0] : ''; };
 
 /* what a category falls back to when a question names nothing to draw */
@@ -13841,6 +13890,11 @@ function questionArtRaw(q) {
   /* a match photograph can have the man who answers standing in it */
   if (q.qimg && q.type !== 'player')  return `<div class="qart qart-wide print"><img src="${q.qimg}" alt="Momento do jogo referido na pergunta" style="object-position:center;"
         onerror="this.parentElement.style.display='none'" /></div>`;
+  /* "…levou o Atlético de Madrid aos títulos…": the club the question names
+     says more than its country's flag or a stadium at large — as long as no
+     answer on the board is a club, so its crest cannot point at one */
+  const nc = namedClub(q);
+  if (nc) return `<div class="qart qart-crest">${clubArt(nc, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
   if (q.flag && FLAGS[q.flag] && !artReveals(q, { ctry: q.flag }))
     /* the wrapper carries the label, so the drawing inside it is decorative —
        otherwise a screen reader announces the flag twice */

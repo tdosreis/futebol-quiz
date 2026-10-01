@@ -214,8 +214,14 @@
         the whole board turning to letters; "Derby del Sole" is not a man;
         boards of "Derby della…" print the letter that tells them apart;
         "não é do Ceará" (and five more) show the state on the map; the
-        question's flag is mounted like a print; pictures a size larger. */
-const VERSION = 'v68';
+        question's flag is mounted like a print; pictures a size larger.
+   v69: Marseille's crest was Inter's (the source had it wrong) — a redrawn
+        OM badge; "Lionel Messi" finds the album's Messi; a question naming a
+        club shows its crest (Atlético, Liverpool, Santos) rather than a flag
+        or a stadium; men with no photo are a sepia bust, coaches in a suit;
+        the line-up on a painted pitch with names on slips; the scoreboard
+        on dark paper. */
+const VERSION = 'v69';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
