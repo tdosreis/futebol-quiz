@@ -258,12 +258,6 @@
   "aka": []
  },
  {
-  "n": "Birgit Prinz",
-  "uses": 8,
-  "coach": false,
-  "aka": []
- },
- {
   "n": "Emiliano Martínez",
   "uses": 8,
   "coach": false,
@@ -400,12 +394,6 @@
   "aka": []
  },
  {
-  "n": "Aitana Bonmatí",
-  "uses": 6,
-  "coach": false,
-  "aka": []
- },
- {
   "n": "Xabi Alonso",
   "uses": 6,
   "coach": true,
@@ -461,18 +449,6 @@
   "aka": []
  },
  {
-  "n": "Alexia Putellas",
-  "uses": 5,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Alex Morgan",
-  "uses": 5,
-  "coach": false,
-  "aka": []
- },
- {
   "n": "Unai Emery",
   "uses": 5,
   "coach": true,
@@ -521,24 +497,6 @@
   "aka": []
  },
  {
-  "n": "Abby Wambach",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Homare Sawa",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Christine Sinclair",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
   "n": "Salvatore Schillaci",
   "uses": 4,
   "coach": false,
@@ -570,51 +528,9 @@
   "aka": []
  },
  {
-  "n": "Ada Hegerberg",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Sam Kerr",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Pernille Harder",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Megan Rapinoe",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Lucy Bronze",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Beth Mead",
-  "uses": 4,
-  "coach": false,
-  "aka": []
- },
- {
   "n": "Muricy Ramalho",
   "uses": 4,
   "coach": true,
-  "aka": []
- },
- {
-  "n": "Wendie Renard",
-  "uses": 4,
-  "coach": false,
   "aka": []
  },
  {
@@ -717,18 +633,6 @@
   "n": "Dick Advocaat",
   "uses": 3,
   "coach": true,
-  "aka": []
- },
- {
-  "n": "Jenni Hermoso",
-  "uses": 3,
-  "coach": false,
-  "aka": []
- },
- {
-  "n": "Mia Hamm",
-  "uses": 3,
-  "coach": false,
   "aka": []
  },
  {

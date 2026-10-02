@@ -3813,19 +3813,10 @@ const CATS = [
         type:'txt', choices:['Branca','Amarela','Azul','Verde','Vermelha','Cinza'], a:['Branca'], flag:'BRA' },
       { t:'O que levou o Brasil a abandonar a camisa branca?',
         type:'txt', choices:['A derrota de 1950 no Maracanã','Uma exigência da FIFA','A cor sujava demais','Um pedido do governo','A Copa de 1938','Um concurso de 1930'], a:['A derrota de 1950 no Maracanã'], flag:'BRA' },
-      { t:'Quem é a maior artilheira da história das Copas do Mundo femininas?',
-        type:'txt', choices:['Marta','Formiga','Cristiane','Birgit Prinz','Abby Wambach','Sun Wen'], a:['Marta'], icon:'trophy' },
       { t:'Como é chamada a derrota do Brasil para o Uruguai na decisão de 1950?',
         type:'txt', choices:['Maracanaço','Mineiraço','Fatídico','Desastre de 50','Tragédia Carioca','Maracanãzinho'], a:['Maracanaço'], flag:'BRA' },
       { t:'Como ficou conhecida a derrota do Brasil por 7 a 1 em 2014?',
         type:'txt', choices:['Mineiraço','Maracanaço','Belorizontino','Sete-Um','Tragédia de BH','Desastre do Mineirão'], a:['Mineiraço'], flag:'BRA' },
-      /* ── o futebol feminino ── */
-      { t:'Em que ano foi disputada a primeira Copa do Mundo Feminina?',
-        type:'txt', choices:['1991','1970','1983','1995','1999','2003'], a:['1991'], icon:'trophy' },
-      { t:'Qual foi a primeira brasileira a marcar em quatro Copas do Mundo?',
-        type:'txt', choices:['Marta','Formiga','Cristiane','Sissi','Pretinha','Debinha'], a:['Marta'], icon:'boot' },
-      { t:'Qual jogadora disputou sete Copas do Mundo, um recorde absoluto?',
-        type:'txt', choices:['Formiga','Marta','Cristiane','Birgit Prinz','Homare Sawa','Christine Sinclair'], a:['Formiga'], icon:'trophy' },
       /* ── a era moderna ── */
       { t:'Qual seleção venceu a Copa do Mundo de 2022, no Catar?',
         type:'txt', choices:['Argentina','França','Croácia','Marrocos','Brasil','Inglaterra'], a:['Argentina'], icon:'trophy' },
@@ -3907,52 +3898,6 @@ const CATS = [
       { t:'Qual clube paranaense é o "Furacão"?',         a:['atleticopr'] },
       { t:'Qual clube catarinense é o "Leão da Ilha"?',   a:['avai'] },
       { t:'Qual clube paraense é o "Papão da Curuzu"?',   a:['paysandu'] },
-    ]
-  },
-  {
-    /* The album had no women's page at all, which is a hole where some of the
-       best-known football in Brazil lives: Marta's six world-player awards,
-       Formiga's seven World Cups, and the thirty-eight years the game was
-       banned here outright. */
-    id:'feminino', name:'Futebol Feminino', emoji:'🥅',
-    tag:'A outra metade do jogo', col:'#8E2F6B', diff:'Médio',
-    qs:[
-      /* ── Marta e as brasileiras ── */
-      { t:'Quem é a maior artilheira da história das Copas do Mundo, somando a masculina e a feminina?',
-        type:'txt', choices:['Marta','Miroslav Klose','Cristiane','Ronaldo','Abby Wambach','Birgit Prinz'], a:['Marta'], icon:'trophy' },
-      { t:'Quantas vezes Marta foi eleita a melhor jogadora do mundo pela FIFA?',
-        type:'txt', choices:['Seis','Duas','Três','Quatro','Cinco','Sete'], a:['Seis'], icon:'trophy' },
-      { t:'Qual jogadora brasileira disputou sete Copas do Mundo, um recorde no futebol?',
-        type:'txt', choices:['Formiga','Marta','Cristiane','Sissi','Tamires','Katéia'], a:['Formiga'], icon:'boot' },
-      { t:'Quem é a maior artilheira da história da seleção brasileira feminina?',
-        type:'txt', choices:['Marta','Cristiane','Formiga','Sissi','Pretinha','Debinha'], a:['Marta'], icon:'boot' },
-      { t:'Em que ano o futebol feminino deixou de ser proibido por lei no Brasil?',
-        type:'txt', choices:['1979','1941','1950','1964','1971','1988'], a:['1979'], icon:'rules' },
-      /* ── as Copas ── */
-      { t:'Qual seleção venceu a primeira Copa do Mundo Feminina, em 1991?',
-        type:'txt', choices:['Estados Unidos','Noruega','Alemanha','China','Suécia','Brasil'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Qual seleção é a maior campeã da Copa do Mundo Feminina?',
-        type:'txt', choices:['Estados Unidos','Alemanha','Noruega','Japão','Suécia','Espanha'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Qual seleção venceu a Copa do Mundo Feminina de 2023?',
-        type:'txt', choices:['Espanha','Inglaterra','Estados Unidos','Alemanha','Suécia','Austrália'], a:['Espanha'], icon:'trophy' },
-      { t:'Qual seleção venceu a Copa do Mundo Feminina de 2019, na França?',
-        type:'txt', choices:['Estados Unidos','Holanda','Inglaterra','Suécia','Alemanha','França'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Quais países sediaram juntos a Copa do Mundo Feminina de 2023?',
-        type:'txt', choices:['Austrália e Nova Zelândia','Canadá e Estados Unidos','França e Bélgica','Japão e Coreia do Sul','Alemanha e Áustria','Suécia e Noruega'],
-        a:['Austrália e Nova Zelândia'], icon:'globe' },
-      { t:'Qual país vai sediar a Copa do Mundo Feminina de 2027?',
-        type:'txt', choices:['Brasil','Estados Unidos','México','Alemanha','África do Sul','Argentina'], a:['Brasil'], icon:'globe' },
-      /* ── clubes e Olimpíadas ── */
-      { t:'Qual clube brasileiro é o maior campeão da Libertadores Feminina?',
-        type:'txt', choices:['Corinthians','São Paulo','Santos','Palmeiras','Flamengo','Internacional'], a:['Corinthians'], icon:'trophy' },
-      { t:'Em que ano foi disputada a primeira Copa Libertadores Feminina?',
-        type:'txt', choices:['2009','1999','2004','2013','2016','2001'], a:['2009'], icon:'trophy' },
-      { t:'Em qual Olimpíada a seleção brasileira feminina ganhou sua primeira medalha de prata?',
-        type:'txt', choices:['Atenas 2004','Sydney 2000','Pequim 2008','Londres 2012','Atlanta 1996','Rio 2016'], a:['Atenas 2004'], icon:'trophy' },
-      { t:'Qual seleção venceu o ouro olímpico do futebol feminino em Paris 2024?',
-        type:'txt', choices:['Estados Unidos','Brasil','Alemanha','Espanha','Canadá','Japão'], a:['Estados Unidos'], icon:'trophy' },
-      { t:'Qual seleção venceu a Eurocopa Feminina de 2022, jogando em casa?',
-        type:'txt', choices:['Inglaterra','Alemanha','Holanda','Suécia','França','Espanha'], a:['Inglaterra'], icon:'trophy' },
     ]
   },
   {
@@ -4593,33 +4538,6 @@ const CATS = [
     ]
   },
   {
-    id:"feminino_mundo", name:"Elas pelo Mundo", emoji:"🥅",
-    tag:"Craques, seleções e clubes do futebol feminino", col:"#A23B6C", diff:"Variado",
-    qs:[
-      {"t": "Qual jogadora espanhola ganhou a Bola de Ouro em 2021 e em 2022?", "a": ["Alexia Putellas"], "type": "txt", "choices": ["Alexia Putellas", "Aitana Bonmatí", "Jenni Hermoso", "Ada Hegerberg", "Sam Kerr", "Marta"], "d": 2, "x": "Putellas ganhou as duas Bolas de Ouro jogando pelo Barcelona.", "flag": "ESP"},
-      {"t": "Qual meia espanhola ganhou a Bola de Ouro três vezes seguidas, de 2023 a 2025?", "a": ["Aitana Bonmatí"], "type": "txt", "choices": ["Aitana Bonmatí", "Alexia Putellas", "Jenni Hermoso", "Salma Paralluelo", "Mapi León", "Irene Paredes"], "d": 2, "x": "Aitana ganhou as três seguidas jogando pelo Barcelona.", "flag": "ESP"},
-      {"t": "Qual norueguesa foi a primeira vencedora da Bola de Ouro feminina, em 2018?", "a": ["Ada Hegerberg"], "type": "txt", "choices": ["Ada Hegerberg", "Caroline Graham Hansen", "Pernille Harder", "Megan Rapinoe", "Lucy Bronze", "Dzsenifer Marozsán"], "d": 3, "x": "Hegerberg passou anos fora da seleção norueguesa, em protesto contra a federação do país.", "flag": "NOR"},
-      {"t": "Qual americana ganhou a Bola de Ouro feminina e a Chuteira de Ouro da Copa em 2019?", "a": ["Megan Rapinoe"], "type": "txt", "choices": ["Megan Rapinoe", "Alex Morgan", "Carli Lloyd", "Rose Lavelle", "Tobin Heath", "Julie Ertz"], "d": 3, "x": "Rapinoe era a capitã dos Estados Unidos e liderou a campanha por salários iguais aos dos homens.", "icon": "trophy"},
-      {"t": "Qual canadense é a maior artilheira da história do futebol de seleções?", "a": ["Christine Sinclair"], "type": "txt", "choices": ["Christine Sinclair", "Abby Wambach", "Marta", "Mia Hamm", "Birgit Prinz", "Alex Morgan"], "d": 3, "x": "Sinclair passou dos 190 gols com a camisa do Canadá.", "icon": "globe"},
-      {"t": "Qual seleção venceu a Eurocopa Feminina de 2025, na final contra a Espanha?", "a": ["Inglaterra"], "type": "txt", "choices": ["Inglaterra", "Alemanha", "Holanda", "França", "Suécia", "Itália"], "d": 2, "x": "A Inglaterra venceu nos pênaltis e ficou com o bicampeonato europeu.", "flag": "ESP"},
-      {"t": "Qual seleção é a maior campeã da Eurocopa Feminina?", "a": ["Alemanha"], "type": "txt", "choices": ["Alemanha", "Noruega", "Inglaterra", "Suécia", "Holanda", "Espanha"], "d": 3, "x": "A Alemanha venceu oito vezes, seis delas seguidas.", "icon": "trophy"},
-      {"t": "Qual seleção venceu a Copa do Mundo Feminina de 2011, na Alemanha?", "a": ["Japão"], "type": "txt", "choices": ["Japão", "Estados Unidos", "Suécia", "França", "Alemanha", "Brasil"], "d": 3, "x": "O Japão venceu os Estados Unidos nos pênaltis, meses depois do tsunami que atingiu o país.", "flag": "GER"},
-      {"t": "Qual seleção venceu as Copas do Mundo Femininas de 2003 e de 2007?", "a": ["Alemanha"], "type": "txt", "choices": ["Alemanha", "Estados Unidos", "Noruega", "Suécia", "Brasil", "China"], "d": 3, "x": "Em 2007, a Alemanha foi campeã sem sofrer nenhum gol no torneio.", "icon": "trophy"},
-      {"t": "Qual seleção a Espanha venceu na final da Copa do Mundo Feminina de 2023?", "a": ["Inglaterra"], "type": "txt", "choices": ["Inglaterra", "Suécia", "Austrália", "Estados Unidos", "Holanda", "Japão"], "d": 2, "x": "A Espanha venceu por 1 a 0, com gol de Olga Carmona, em Sydney.", "flag": "ESP"},
-      {"t": "Qual americana converteu o pênalti do título mundial de 1999 e comemorou tirando a camisa?", "a": ["Brandi Chastain"], "type": "txt", "choices": ["Brandi Chastain", "Mia Hamm", "Julie Foudy", "Kristine Lilly", "Michelle Akers", "Briana Scurry"], "d": 4, "x": "Foi contra a China, na Rose Bowl, diante de mais de 90 mil pessoas.", "icon": "trophy"},
-      {"t": "Qual seleção ganhou o ouro olímpico no futebol feminino em Tóquio 2020?", "a": ["Canadá"], "type": "txt", "choices": ["Canadá", "Suécia", "Estados Unidos", "Austrália", "Japão", "Holanda"], "d": 3, "x": "O Canadá venceu a Suécia nos pênaltis da final.", "icon": "trophy"},
-      {"t": "Qual clube francês venceu oito Champions League femininas?", "a": ["Lyon"], "type": "txt", "choices": ["Lyon", "PSG", "Montpellier", "Olympique de Marselha", "Paris FC", "Bordeaux"], "d": 3, "x": "O Lyon dominou o futebol europeu feminino entre 2011 e 2022.", "flag": "FRA"},
-      {"t": "Qual clube espanhol venceu a Champions League feminina em 2021, 2023 e 2024?", "a": ["Barcelona"], "type": "txt", "choices": ["Barcelona", "Real Madrid", "Atlético de Madrid", "Levante", "Athletic Bilbao", "Sevilla"], "d": 2, "x": "O Barcelona também chegou às finais de 2019 e de 2022.", "flag": "ESP"},
-      {"t": "Qual clube inglês venceu a Champions League feminina de 2025, contra o Barcelona?", "a": ["Arsenal"], "type": "txt", "choices": ["Arsenal", "Chelsea", "Manchester City", "Manchester United", "Liverpool", "Tottenham"], "d": 3, "x": "Foi o segundo título europeu do Arsenal, dezoito anos depois do primeiro.", "crest": "barcelona"},
-      {"t": "Qual seleção venceu a Copa América Feminina de 2025, nos pênaltis contra a Colômbia?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Argentina", "Chile", "Paraguai", "Venezuela", "Equador"], "d": 2, "x": "Foi mais um título de um Brasil que venceu quase todas as edições do torneio.", "flag": "COL"},
-      {"t": "Qual seleção é a maior campeã da Copa América Feminina?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Argentina", "Colômbia", "Chile", "Paraguai", "Uruguai"], "d": 1, "x": "O Brasil venceu quase todas as edições disputadas desde 1991.", "icon": "trophy"},
-      {"t": "Qual técnica sueca comandou a seleção brasileira feminina de 2019 a 2023?", "a": ["Pia Sundhage"], "type": "txt", "choices": ["Pia Sundhage", "Jill Ellis", "Sarina Wiegman", "Emma Hayes", "Vera Pauw", "Martina Voss-Tecklenburg"], "d": 3, "x": "Antes do Brasil, Pia tinha sido bicampeã olímpica como técnica dos Estados Unidos.", "flag": "BRA"},
-      {"t": "Qual técnica holandesa levou a Holanda ao título da Euro de 2017 e a Inglaterra ao da Euro de 2022?", "a": ["Sarina Wiegman"], "type": "txt", "choices": ["Sarina Wiegman", "Pia Sundhage", "Emma Hayes", "Jill Ellis", "Vera Pauw", "Andries Jonker"], "d": 3, "x": "Wiegman também levou as duas seleções a finais de Copa do Mundo.", "flag": "NED"},
-      {"t": "Qual técnico levou a seleção brasileira feminina à final olímpica de Paris 2024?", "a": ["Arthur Elias"], "type": "txt", "choices": ["Arthur Elias", "Pia Sundhage", "Vadão", "Emily Lima", "Kleiton Lima", "Jorge Barcellos"], "d": 3, "x": "Arthur Elias chegou à seleção depois de anos vencendo tudo no Corinthians.", "flag": "BRA"},
-      {"t": "Qual atacante é a maior artilheira da história da seleção da Austrália?", "a": ["Sam Kerr"], "type": "txt", "choices": ["Sam Kerr", "Lisa De Vanna", "Caitlin Foord", "Mary Fowler", "Hayley Raso", "Kyah Simon"], "d": 3, "x": "Kerr também foi artilheira dos campeonatos australiano, americano e inglês.", "icon": "globe"},
-    ]
-  },
-  {
     id:"selecoes_mundo", name:"Seleções", emoji:"🏳️",
     tag:"Apelidos, entidades, Euros e Liga das Nações", col:"#1F5E7A", diff:"Variado",
     qs:[
@@ -5229,15 +5147,13 @@ const CATS = [
       {"t": "Qual seleção venceu a Copa do Mundo de Futsal de 2024, contra a Argentina?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Portugal", "Espanha", "Irã", "Rússia", "Ucrânia"], "d": 3, "x": "O Brasil é o maior campeão mundial de futsal.", "flag": "ARG"},
       {"t": "Qual seleção venceu a Copa do Mundo de Futebol de Areia de 2024, contra a Itália?", "a": ["Brasil"], "type": "txt", "choices": ["Brasil", "Portugal", "Rússia", "Japão", "Irã", "Espanha"], "d": 4, "x": "O Brasil é o maior campeão mundial do futebol de areia.", "flag": "ITA"},
       {"t": "Qual jogador ganhou a Bola de Ouro como melhor do Mundial de Clubes de 2025?", "a": ["Cole Palmer"], "type": "txt", "choices": ["Cole Palmer", "Ousmane Dembélé", "Vitinha", "João Pedro", "Achraf Hakimi", "Enzo Fernández"], "d": 3, "x": "Ele marcou dois gols na final contra o PSG.", "crest": "chelsea"},
-      {"t": "Qual país vai sediar a Copa do Mundo Feminina de 2031, com México, Costa Rica e Jamaica?", "a": ["Estados Unidos"], "type": "txt", "choices": ["Estados Unidos", "Canadá", "Brasil", "Colômbia", "Panamá", "Honduras"], "d": 3, "x": "O torneio terá quatro países-sede na América do Norte e no Caribe.", "icon": "trophy"},
-      {"t": "Qual país vai sediar a Copa do Mundo Feminina de 2035?", "a": ["Reino Unido"], "type": "txt", "choices": ["Reino Unido", "Espanha", "França", "Alemanha", "Itália", "Holanda"], "d": 3, "x": "Será a primeira Copa do Mundo feminina disputada no Reino Unido.", "icon": "trophy"},
       {"t": "A Eurocopa de 2028 será disputada no Reino Unido e em qual outro país?", "a": ["Irlanda"], "type": "txt", "choices": ["Irlanda", "Islândia", "Dinamarca", "Noruega", "Holanda", "Bélgica"], "d": 3, "x": "Os jogos serão divididos entre estádios do Reino Unido e da Irlanda.", "icon": "trophy"},
       {"t": "A Eurocopa de 2032 será dividida entre a Itália e qual outro país?", "a": ["Turquia"], "type": "txt", "choices": ["Turquia", "Grécia", "Espanha", "Croácia", "Suíça", "Áustria"], "d": 3, "x": "Itália e Turquia vão dividir a Eurocopa de 2032.", "flag": "ITA"},
     ]
   },
   {
     id:"olimpiadas_tacas", name:"Ouros e Taças Esquecidas", emoji:"🥇",
-    tag:"Olimpíadas, futebol feminino europeu e velhas taças da UEFA", col:"#8E5A16", diff:"Variado",
+    tag:"Olimpíadas e velhas taças da UEFA", col:"#8E5A16", diff:"Variado",
     qs:[
       {"t": "Qual seleção ganhou o ouro olímpico em Pequim 2008, com Messi no time?", "a": ["Argentina"], "type": "txt", "choices": ["Argentina", "Nigéria", "Brasil", "Bélgica", "Holanda", "Itália"], "d": 3, "x": "Messi e Di María estavam naquele time campeão.", "who": "messi"},
       {"t": "Qual seleção ganhou o ouro olímpico em Londres 2012, na final contra o Brasil?", "a": ["México"], "type": "txt", "choices": ["México", "Japão", "Coreia do Sul", "Espanha", "Uruguai", "Senegal"], "d": 3, "x": "O México venceu por 2 a 1, com dois gols de Oribe Peralta.", "flag": "BRA"},
@@ -5247,12 +5163,7 @@ const CATS = [
       {"t": "Qual seleção ganhou o ouro olímpico em Seul 1988, na final contra o Brasil?", "a": ["União Soviética"], "type": "txt", "choices": ["União Soviética", "Alemanha Ocidental", "Itália", "Suécia", "Argentina", "Coreia do Sul"], "d": 4, "x": "A União Soviética venceu o Brasil por 2 a 1 na prorrogação.", "flag": "BRA"},
       {"t": "Qual seleção ganhou o ouro olímpico em Los Angeles 1984, na final contra o Brasil?", "a": ["França"], "type": "txt", "choices": ["França", "Iugoslávia", "Itália", "Estados Unidos", "Alemanha Ocidental", "Canadá"], "d": 4, "x": "A França venceu o Brasil por 2 a 0 na final.", "flag": "BRA"},
       {"t": "Qual seleção ganhou o ouro olímpico no futebol em 1952, 1964 e 1968?", "a": ["Hungria"], "type": "txt", "choices": ["Hungria", "Uruguai", "Grã-Bretanha", "Argentina", "Polônia", "Iugoslávia"], "d": 4, "x": "A Hungria tem três ouros olímpicos no futebol masculino.", "icon": "trophy"},
-      {"t": "Qual clube alemão venceu a primeira Copa da UEFA feminina, em 2002?", "a": ["Frankfurt"], "type": "txt", "choices": ["Frankfurt", "Turbine Potsdam", "Wolfsburg", "Bayern de Munique", "Duisburg", "Essen"], "d": 5, "x": "O Frankfurt venceu o Umeå na decisão.", "flag": "GER"},
-      {"t": "Qual clube alemão venceu a Champions League feminina em 2013 e em 2014?", "a": ["Wolfsburg"], "type": "txt", "choices": ["Wolfsburg", "Frankfurt", "Turbine Potsdam", "Bayern de Munique", "Duisburg", "Essen"], "d": 4, "x": "O Wolfsburg venceu o Lyon em 2013 e o Tyresö em 2014.", "flag": "GER"},
       {"t": "Qual seleção venceu a Eurocopa Feminina de 2017, disputada em casa?", "a": ["Holanda"], "type": "txt", "choices": ["Holanda", "Dinamarca", "Inglaterra", "Áustria", "Alemanha", "Noruega"], "d": 3, "x": "A Holanda venceu a Dinamarca por 4 a 2 na final.", "icon": "trophy"},
-      {"t": "Qual inglesa foi eleita a melhor jogadora da Eurocopa Feminina de 2022?", "a": ["Beth Mead"], "type": "txt", "choices": ["Beth Mead", "Alessia Russo", "Lucy Bronze", "Leah Williamson", "Chloe Kelly", "Ella Toone"], "d": 4, "x": "Beth Mead também foi a artilheira do torneio.", "flag": "ENG"},
-      {"t": "Quem marcou o gol do título inglês na prorrogação da final da Eurocopa Feminina de 2022?", "a": ["Chloe Kelly"], "type": "txt", "choices": ["Chloe Kelly", "Beth Mead", "Alessia Russo", "Ella Toone", "Lauren Hemp", "Leah Williamson"], "d": 3, "x": "O gol saiu num escanteio, já no fim da prorrogação.", "flag": "GER"},
-      {"t": "Quem marcou o gol do título espanhol na final da Copa do Mundo Feminina de 2023?", "a": ["Olga Carmona"], "type": "txt", "choices": ["Olga Carmona", "Aitana Bonmatí", "Alexia Putellas", "Jenni Hermoso", "Salma Paralluelo", "Mariona Caldentey"], "d": 3, "x": "Olga Carmona só soube da morte do pai depois do jogo.", "flag": "ENG"},
       {"t": "Qual clube inglês venceu a primeira Copa da UEFA, em 1972, numa final inglesa contra o Wolverhampton?", "a": ["Tottenham"], "type": "txt", "choices": ["Tottenham", "Liverpool", "Leeds United", "Ipswich Town", "Arsenal", "Everton"], "d": 4, "x": "Foi a primeira final da competição, entre dois clubes ingleses.", "icon": "trophy"},
       {"t": "Qual clube inglês venceu a Copa da UEFA de 1981, comandado por Bobby Robson?", "a": ["Ipswich Town"], "type": "txt", "choices": ["Ipswich Town", "Tottenham", "Liverpool", "Aston Villa", "Nottingham Forest", "Everton"], "d": 4, "x": "Bobby Robson depois comandaria a seleção inglesa.", "icon": "trophy"},
       {"t": "Qual clube sueco venceu a Copa da UEFA em 1982 e em 1987?", "a": ["IFK Göteborg"], "type": "txt", "choices": ["IFK Göteborg", "Malmö", "AIK", "Djurgården", "Hammarby", "Helsingborg"], "d": 4, "x": "É o único clube sueco campeão de uma competição europeia.", "flag": "SWE"},
@@ -6219,34 +6130,6 @@ const CATS = [
     ]
   },
   {
-    id:"feminino", name:"Futebol feminino", emoji:"⚽",
-    tag:"Feminino", col:"#8c3a6b", diff:"Média",
-    qs:[
-      {"t": "Fui eleita seis vezes a melhor jogadora do mundo pela FIFA, cinco delas seguidas (2006 a 2010). Quem sou eu?", "a": ["Marta"], "type": "txt", "choices": ["Sun Wen", "Marta", "Alexia Putellas", "Ada Hegerberg", "Abby Wambach", "Cristiane"], "d": 1, "icon": "ballonDor"},
-      {"t": "Joguei sete Copas do Mundo, de 1995 a 2019, recorde entre homens e mulheres. Quem sou eu?", "a": ["Formiga"], "type": "txt", "choices": ["Kerolin", "Birgit Prinz", "Formiga", "Alex Morgan", "Ludmila", "Cristiane"], "d": 3, "icon": "ball"},
-      {"t": "Sou a maior artilheira da história do futebol olímpico, com 14 gols. Quem sou eu?", "a": ["Cristiane"], "type": "txt", "choices": ["Birgit Prinz", "Vivianne Miedema", "Alex Morgan", "Cristiane", "Pernille Harder", "Ludmila"], "d": 4, "icon": "goldenBoot"},
-      {"t": "Fui artilheira da Copa do Mundo feminina de 1999, dividindo o prêmio com a chinesa Sun Wen. Quem sou eu?", "a": ["Sissi"], "type": "txt", "choices": ["Formiga", "Marta", "Aitana Bonmatí", "Homare Sawa", "Beth Mead", "Sissi"], "d": 4, "icon": "goldenBoot"},
-      {"t": "Sou espanhola, do Barcelona, e ganhei a Bola de Ouro em 2023 e 2024. Quem sou eu?", "a": ["Aitana Bonmatí"], "type": "txt", "choices": ["Lucy Bronze", "Cristiane", "Sam Kerr", "Alex Morgan", "Aitana Bonmatí", "Olga Carmona"], "d": 2, "icon": "ballonDor"},
-      {"t": "Marquei três gols em 16 minutos na final da Copa de 2015, um deles do meio de campo. Quem sou eu?", "a": ["Carli Lloyd"], "type": "txt", "choices": ["Alex Morgan", "Carli Lloyd", "Aitana Bonmatí", "Christine Sinclair", "Debinha", "Alexia Putellas"], "d": 3, "icon": "ball"},
-      {"t": "Sou japonesa, capitã e melhor jogadora da Copa de 2011, vencida pelo Japão. Quem sou eu?", "a": ["Homare Sawa"], "type": "txt", "choices": ["Pernille Harder", "Megan Rapinoe", "Homare Sawa", "Kerolin", "Cristiane", "Wendie Renard"], "d": 3, "icon": "ball"},
-      {"t": "Sou alemã e fui eleita três vezes a melhor jogadora do mundo pela FIFA. Quem sou eu?", "a": ["Birgit Prinz"], "type": "txt", "choices": ["Olga Carmona", "Pernille Harder", "Wendie Renard", "Sam Kerr", "Birgit Prinz", "Christine Sinclair"], "d": 4, "icon": "ball"},
-      {"t": "Fiz o gol do título da Euro 2022 na prorrogação, em Wembley, e comemorei tirando a camisa. Quem sou eu?", "a": ["Chloe Kelly"], "type": "txt", "choices": ["Homare Sawa", "Debinha", "Ada Hegerberg", "Chloe Kelly", "Wendie Renard", "Birgit Prinz"], "d": 4, "icon": "ball"},
-      {"t": "Sou australiana, fui a capitã da seleção na Copa de 2023, em casa, e duas vezes artilheira da liga inglesa pelo Chelsea. Quem sou eu?", "a": ["Sam Kerr"], "type": "txt", "choices": ["Cristiane", "Kerolin", "Chloe Kelly", "Sissi", "Sun Wen", "Sam Kerr"], "d": 3, "icon": "ball"},
-      {"t": "Sou uma lenda americana dos anos 1990, bicampeã do mundo e dos Jogos Olímpicos. Quem sou eu?", "a": ["Mia Hamm"], "type": "txt", "choices": ["Debinha", "Lucy Bronze", "Beth Mead", "Megan Rapinoe", "Ludmila", "Mia Hamm"], "d": 3, "icon": "ball"},
-      {"t": "Sou francesa, zagueira, e fui a capitã do Lyon em várias das suas oito Champions femininas. Quem sou eu?", "a": ["Wendie Renard"], "type": "txt", "choices": ["Aitana Bonmatí", "Alexia Putellas", "Ludmila", "Cristiane", "Wendie Renard", "Christine Sinclair"], "d": 4, "icon": "ball"},
-      {"t": "Qual seleção feminina tem mais títulos mundiais?", "a": ["Estados Unidos"], "type": "txt", "choices": ["Espanha", "Japão", "Austrália", "França", "China", "Estados Unidos"], "d": 1, "x": "São quatro: 1991, 1999, 2015 e 2019.", "icon": "trophy"},
-      {"t": "Qual seleção ganhou a Copa do Mundo feminina de 1995, na Suécia?", "a": ["Noruega"], "type": "txt", "choices": ["Noruega", "Canadá", "Alemanha", "Holanda", "Japão", "França"], "d": 4, "icon": "trophy"},
-      {"t": "Qual foi a melhor campanha do Brasil numa Copa do Mundo feminina?", "a": ["Vice-campeão em 2007"], "type": "txt", "choices": ["Campeão em 2007", "Campeão em 2019", "Vice-campeão em 2007", "Vice-campeão em 2011", "Semifinalista em 2015", "Terceiro em 1999"], "d": 2, "x": "Na final de 2007, na China, o Brasil perdeu por 2 a 0 para a Alemanha.", "icon": "trophy"},
-      {"t": "Qual seleção ganhou a Euro feminina de 2022 e de 2025?", "a": ["Inglaterra"], "type": "txt", "choices": ["Austrália", "Holanda", "Espanha", "Inglaterra", "Estados Unidos", "Brasil"], "d": 2, "icon": "trophy"},
-      {"t": "Qual clube é o maior campeão da Champions League feminina?", "a": ["Lyon"], "type": "txt", "choices": ["Arsenal", "Lyon", "Wolfsburg", "Barcelona", "Chelsea", "Frankfurt"], "d": 2, "x": "O Lyon já tem oito títulos.", "icon": "trophy"},
-      {"t": "Quantos gols Marta marcou em Copas do Mundo, recorde entre homens e mulheres?", "a": ["17"], "type": "txt", "choices": ["18", "15", "16", "14", "17", "19"], "d": 4, "icon": "goldenBoot"},
-      {"t": "Quantas Copas do Mundo Formiga disputou?", "a": ["Sete"], "type": "txt", "choices": ["Cinco", "Oito", "Seis", "Sete", "Nove", "Quatro"], "d": 3, "icon": "trophy"},
-      {"t": "Em que ano foi entregue a primeira Bola de Ouro feminina?", "a": ["2018"], "type": "txt", "choices": ["2019", "2017", "2020", "2015", "2018", "2016"], "d": 3, "icon": "ballonDor"},
-      {"t": "Qual goleira americana, bicampeã do mundo, foi eleita a melhor goleira da Copa de 2011 e da de 2015?", "a": ["Hope Solo"], "type": "txt", "choices": ["Mary Earps", "Briana Scurry", "Hope Solo", "Alyssa Naeher", "Bárbara", "Nadine Angerer"], "d": 4, "icon": "gloves"},
-      {"t": "Qual goleira inglesa foi eleita a melhor goleira da Copa do Mundo feminina de 2023?", "a": ["Mary Earps"], "type": "txt", "choices": ["Mary Earps", "Nadine Angerer", "Cata Coll", "Alyssa Naeher", "Sari van Veenendaal", "Hope Solo"], "d": 4, "icon": "gloves"},
-    ]
-  },
-  {
     id:"qualdestesnunca", name:"Qual destes nunca?", emoji:"🚫",
     tag:"Intrusos", col:"#8c3a3a", diff:"Média",
     qs:[
@@ -6506,7 +6389,7 @@ const CATS = [
       {"t": "Final europeia de 2013: quem enfrentou o Bayern de Munique neste placar?", "a": ["Borussia Dortmund"], "type": "txt", "choices": ["Tottenham", "Bayer Leverkusen", "Borussia Dortmund", "Ajax", "Olympique de Marselha", "Sampdoria"], "score": {"lbl": "Champions League 2013 · Final", "h": "Bayern de Munique", "hg": 2, "ag": 1, "a": "?"}, "d": 2, "x": "A primeira final entre alemães, com gol de Robben no fim."},
       {"t": "Final europeia de 2014: quem enfrentou o Real Madrid neste placar?", "a": ["Atlético de Madrid"], "type": "txt", "choices": ["Liverpool", "Ajax", "Feyenoord", "Celtic", "Paris Saint-Germain", "Atlético de Madrid"], "score": {"lbl": "Champions League 2014 · Final", "h": "Real Madrid", "hg": 4, "ag": 1, "a": "?", "x": "após a prorrogação"}, "d": 2, "x": "Sergio Ramos empatou aos 93 minutos: a 'Décima'."},
       {"t": "Final europeia de 2015: quem enfrentou o Barcelona neste placar?", "a": ["Juventus"], "type": "txt", "choices": ["Arsenal", "Juventus", "Manchester United", "Chelsea", "Monaco", "Ajax"], "score": {"lbl": "Champions League 2015 · Final", "h": "Barcelona", "hg": 3, "ag": 1, "a": "?"}, "d": 2, "x": "O trio MSN marcou dois dos três gols em Berlim."},
-      {"t": "Final europeia de 2016: quem enfrentou o Atlético de Madrid neste placar?", "a": ["Real Madrid"], "type": "txt", "choices": ["Tottenham", "Sampdoria", "Liverpool", "Chelsea", "Real Madrid", "Valencia"], "score": {"lbl": "Champions League 2016 · Final", "h": "?", "hg": 1, "ag": 1, "a": "Atlético de Madrid", "x": "Real 5 × 3 nos pênaltis"}, "d": 2, "x": "Cristiano Ronaldo bateu o último pênalti em Milão."},
+      {"t": "Final europeia de 2016: quem enfrentou o Atlético de Madrid neste placar?", "a": ["Real Madrid"], "type": "txt", "choices": ["Tottenham", "Sampdoria", "Liverpool", "Chelsea", "Real Madrid", "Valencia"], "score": {"lbl": "Champions League 2016 · Final", "h": "?", "hg": 1, "ag": 1, "a": "Atlético de Madrid", "x": "Real Madrid 5 × 3 nos pênaltis"}, "d": 2, "x": "Cristiano Ronaldo bateu o último pênalti em Milão."},
       {"t": "Final europeia de 2017: quem enfrentou o Real Madrid neste placar?", "a": ["Juventus"], "type": "txt", "choices": ["Celtic", "Bayer Leverkusen", "Olympique de Marselha", "Porto", "Valencia", "Juventus"], "score": {"lbl": "Champions League 2017 · Final", "h": "Real Madrid", "hg": 4, "ag": 1, "a": "?"}, "d": 2, "x": "O primeiro bicampeão da era Champions League."},
       {"t": "Final europeia de 2018: quem enfrentou o Real Madrid neste placar?", "a": ["Liverpool"], "type": "txt", "choices": ["Paris Saint-Germain", "Inter de Milão", "Valencia", "Arsenal", "PSV", "Liverpool"], "score": {"lbl": "Champions League 2018 · Final", "h": "Real Madrid", "hg": 3, "ag": 1, "a": "?"}, "d": 2, "x": "A bicicleta de Bale em Kiev."},
       {"t": "Final europeia de 2019: quem enfrentou o Tottenham neste placar?", "a": ["Liverpool"], "type": "txt", "choices": ["Liverpool", "Olympique de Marselha", "Feyenoord", "Celtic", "Juventus", "Porto"], "score": {"lbl": "Champions League 2019 · Final", "h": "?", "hg": 2, "ag": 0, "a": "Tottenham"}, "d": 2, "x": "Salah e Origi marcaram na final inglesa de Madri."},
@@ -6519,7 +6402,7 @@ const CATS = [
       {"t": "Libertadores de 1962: quem enfrentou o Santos FC neste placar?", "a": ["Peñarol"], "type": "txt", "choices": ["Athletico PR", "Palmeiras", "River Plate", "Atlético MG", "Peñarol", "São Paulo FC"], "score": {"lbl": "Libertadores 1962 · Jogo extra", "h": "Santos FC", "hg": 3, "ag": 0, "a": "?", "x": "em Buenos Aires"}, "d": 3, "x": "O primeiro título continental de um clube brasileiro."},
       {"t": "Libertadores de 1963: quem enfrentou o Boca Juniors neste placar?", "a": ["Santos FC"], "type": "txt", "choices": ["Santos FC", "Atlético MG", "River Plate", "Grêmio", "Palmeiras", "Peñarol"], "score": {"lbl": "Libertadores 1963 · Final (volta)", "h": "Boca Juniors", "hg": 1, "ag": 2, "a": "?", "x": "La Bombonera"}, "d": 3, "x": "O Santos de Pelé foi bicampeão dentro da Bombonera."},
       {"t": "Libertadores de 1983: quem enfrentou o Peñarol neste placar?", "a": ["Grêmio"], "type": "txt", "choices": ["Fluminense", "Athletico PR", "Cruzeiro", "Palmeiras", "Atlético MG", "Grêmio"], "score": {"lbl": "Libertadores 1983 · Final (volta)", "h": "?", "hg": 2, "ag": 1, "a": "Peñarol", "x": "Estádio Olímpico"}, "d": 3, "x": "O primeiro título continental do Grêmio."},
-      {"t": "Libertadores de 2000: quem enfrentou o Palmeiras neste placar?", "a": ["Boca Juniors"], "type": "txt", "choices": ["Peñarol", "Flamengo", "River Plate", "Botafogo", "Boca Juniors", "São Paulo FC"], "score": {"lbl": "Libertadores 2000 · Final (volta)", "h": "Palmeiras", "hg": 0, "ag": 0, "a": "?", "x": "Boca 4 × 2 nos pênaltis"}, "d": 3, "x": "O Boca de Bianchi e Riquelme venceu no Morumbi."},
+      {"t": "Libertadores de 2000: quem enfrentou o Palmeiras neste placar?", "a": ["Boca Juniors"], "type": "txt", "choices": ["Peñarol", "Flamengo", "River Plate", "Botafogo", "Boca Juniors", "São Paulo FC"], "score": {"lbl": "Libertadores 2000 · Final (volta)", "h": "Palmeiras", "hg": 0, "ag": 0, "a": "?", "x": "Boca Juniors 4 × 2 nos pênaltis"}, "d": 3, "x": "O Boca de Bianchi e Riquelme venceu no Morumbi."},
       {"t": "Libertadores de 2003: quem enfrentou o Santos FC neste placar?", "a": ["Boca Juniors"], "type": "txt", "choices": ["Boca Juniors", "Grêmio", "Fluminense", "Flamengo", "Cruzeiro", "Corinthians"], "score": {"lbl": "Libertadores 2003 · Final (volta)", "h": "Santos FC", "hg": 1, "ag": 3, "a": "?", "x": "Morumbi"}, "d": 3, "x": "O Boca de Tevez foi campeão também no Brasil."},
       {"t": "Libertadores de 2005: quem enfrentou o São Paulo FC neste placar?", "a": ["Athletico PR"], "type": "txt", "choices": ["Athletico PR", "Grêmio", "Corinthians", "Internacional", "Santos FC", "Cruzeiro"], "score": {"lbl": "Libertadores 2005 · Final (volta)", "h": "São Paulo FC", "hg": 4, "ag": 0, "a": "?", "x": "Morumbi"}, "d": 3, "x": "A primeira final da Libertadores entre dois brasileiros."},
       {"t": "Libertadores de 2006: quem enfrentou o São Paulo FC neste placar?", "a": ["Internacional"], "type": "txt", "choices": ["Grêmio", "Boca Juniors", "Athletico PR", "Cruzeiro", "Internacional", "Palmeiras"], "score": {"lbl": "Libertadores 2006 · Final (ida)", "h": "São Paulo FC", "hg": 1, "ag": 2, "a": "?", "x": "Morumbi"}, "d": 3, "x": "Rafael Sóbis marcou duas vezes no Morumbi."},
@@ -10018,7 +9901,6 @@ function _qBase(q) {
   if (cid === 'curiosos') return 3;
   if (cid === 'torcida') return 2;
   if (cid === 'sulamerica') return 3;
-  if (cid === 'feminino')   return 3;
   if (cid === 'estados')  return 1;
   if (cid === 'estadios') return 2;
   if (cid === 'lendas')   return 2;
@@ -13446,6 +13328,14 @@ function optResolve(text) {
 const LOOKS = /bandeira|escudo|emblema|brasao|distintivo|simbolo|logo d[oa]s?\b|logotipo|logomarca|mascote|uniforme|camisa|camiseta|cores?\b|listras|alvi|rubro|tricolor|bicolor|colorado|azul|vermelh|verde|branc|pret[oa]|amarel|grena|celeste|laranja|roxo|dourad|foto|imagem|rosto/;
 
 const _optMemo = new WeakMap();
+/* a question from a page of coaches is about a coach, whatever verb it uses
+   ("Levei o Tottenham à final…", "assumi a seleção…") */
+let _coachQs = null;
+function coachQ(q) {
+  if (!_coachQs) { _coachQs = new Set();
+    CATS.filter(c => /^(quemsoueutec|treinadores)$/.test(c.id)).forEach(c => c.qs.forEach(x => _coachQs.add(x.t))); }
+  return _coachQs.has(q.t);
+}
 function optArtFor(q) {
   if (!q || q.type !== 'txt' || !q.choices) return null;
   if (_optMemo.has(q)) return _optMemo.get(q);
@@ -13518,7 +13408,7 @@ function optArtFor(q) {
     const place = /\b(estadios?|arenas?|campo|palco|liga|campeonato|partida|cidades?|sede|batalha|apelid\w* (do|da|de) (jogo|partida|estadio))\b/.test(t);
     const players = (count.face || 0) >= 2 ||
       /\b(jogador(es|a|as)?|craques?|elenco|goleiros?|atacantes?|zagueiros?|artilheir\w*|camisa \d+|convocad\w*|quem sou eu)\b/.test(t);
-    const coach = /\b(tecnicos?|tecnica|treinador(es)?|trein(ou|ei|ava|aram)|dirig(i|iu|ia|iram)|comand(ou|ei|ava))\b/.test(t);
+    const coach = /\b(tecnicos?|tecnica|treinador(es)?|trein(ou|ei|ava|aram)|dirig(i|iu|ia|iram)|comand(ou|ei|ava))\b/.test(t) || coachQ(q);
     /* a man the album has painted keeps his portrait even on a board of
        busts — a face beside five silhouettes says nothing about the answer,
        and a bust where his painting exists looks like a mistake. Not when the
@@ -16772,7 +16662,7 @@ function html() {
     <div class="qcard${isMil ? ' qcard-brass' : ''}${q.score || q.xi ? ' qcard-strip' : ''}">
       ${art}
       <p>${q.t}</p>
-      ${q.score ? scoreStrip(q.score) : q.xi ? xiStrip(q.xi) : ''}
+      ${q.score ? scoreStrip(q.score, q) : q.xi ? xiStrip(q.xi) : ''}
     </div>`}
 
     ${expertBox}
@@ -17655,14 +17545,20 @@ function teamImg(name) {
   const ini = String(name).split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
   return `<span class="qsc-mono">${ini}</span>`;
 }
-function scoreStrip(sc) {
+function scoreStrip(st, q) {
+  /* the line under the score ("Chelsea 4 × 3 nos pênaltis") must not name
+     the side the question is asking for until the answer is shown */
+  let x = st.x || '';
+  if (x && q && sc !== 'reveal')
+    (q.a || []).forEach(a => { const nm = clubName(a) || a;
+      x = x.replace(new RegExp(String(nm).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '???'); });
   const side = n => n === '?'
     ? `<span class="qsc-t qsc-q"><span class="qsc-qm">?</span><b>???</b></span>`
     : `<span class="qsc-t">${teamImg(n)}<b>${n}</b></span>`;
   return `<div class="qstrip qsc" role="img" aria-label="Placar">
-    <span class="qsc-lbl">${sc.lbl || ''}</span>
-    <div class="qsc-row">${side(sc.h)}<span class="qsc-g num">${sc.hg}<i>×</i>${sc.ag}</span>${side(sc.a)}</div>
-    ${sc.x ? `<span class="qsc-x">${sc.x}</span>` : ''}</div>`;
+    <span class="qsc-lbl">${st.lbl || ''}</span>
+    <div class="qsc-row">${side(st.h)}<span class="qsc-g num">${st.hg}<i>×</i>${st.ag}</span>${side(st.a)}</div>
+    ${x ? `<span class="qsc-x">${x}</span>` : ''}</div>`;
 }
 function xiStrip(xi) {
   const cols = xi.rows.map(r => `<div class="xi-col">${r.map(n => n === '?'
