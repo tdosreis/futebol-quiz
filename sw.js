@@ -266,8 +266,10 @@
         and badges keep a known club's own colours.
    v81: no answer is a bare letter any more: matches and country lists show
         their flags, months a calendar, instruments are drawn, composers a
-        note, sentences a quote, unknown clubs a badge, players a bust. */
-const VERSION = 'v81';
+        note, sentences a quote, unknown clubs a badge, players a bust.
+   v82: "never top scorer of a World Cup" asks for the Chuteira de Ouro
+        plainly; Messi's 21 Copa goals and Mbappé's 22 brought up to date. */
+const VERSION = 'v82';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

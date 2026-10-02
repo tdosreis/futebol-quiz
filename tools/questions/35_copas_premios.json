@@ -25,7 +25,7 @@
     { "t": "Quem foi o artilheiro da Copa do Mundo de 2006, na Alemanha?", "type": "player",
       "a": ["klose"],
       "d": 3, "art": {"icon": "boot"}, "src": ["en", "2006 FIFA World Cup", ["Klose", "Golden Boot"]],
-      "x": "Klose se tornaria o maior artilheiro da história das Copas em 2014, até ser superado por Mbappé em 2026.", "xs": ["Klose"] },
+      "x": "Klose se tornaria o maior artilheiro da história das Copas em 2014, até ser superado em 2026 por Messi e por Mbappé.", "xs": ["Klose"] },
     { "t": "Quem foi o artilheiro da Copa do Mundo de 1998, com 6 gols?", "type": "txt",
       "choices": ["Davor Šuker", "Gabriel Batistuta", "Christian Vieri", "Ronaldo", "Marcelo Salas", "Luis Hernández"], "a": ["Davor Šuker"],
       "d": 3, "art": {"icon": "boot"}, "src": ["en", "1998 FIFA World Cup", ["Šuker", "Golden Boot"]],
