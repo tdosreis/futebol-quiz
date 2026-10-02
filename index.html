@@ -2581,6 +2581,10 @@
     .ajuda .aj-disc { width: 34px; height: 34px; }
 
     /* ═══ OS DETALHES ═══ */
+    /* a painted mascot fills its picture, like a portrait */
+    .fig-msc-paint { width: 100%; height: 100%; }
+    .fig-msc-paint img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fig-x-mascote .fig-art:has(.fig-msc-paint) { padding: 4% 7% 0; }
 
     /* ═══ A FIGURINHA NO ATELIÊ ═══
        The card is printed on the same cold-press paper the portraits were
@@ -9059,6 +9063,18 @@ const STAD_IMGS = {
    IMAGE CREDITS — Wikimedia Commons
    CC licences require attribution; shown on the Créditos screen.
 ═══════════════════════════════════════════════════ */
+/* ── Portraits of people the album has no sticker of — coaches, pioneers,
+   referees, players from other albums — painted in the same hand from a free
+   photograph (tools/gemini: sources.py finds it, batch.py paints it,
+   integrate.py writes this list). Keyed by name; `aka` are the other names
+   the questions use. */
+/*PEOPLE:start*/
+const PEOPLE = {};
+/*PEOPLE:end*/
+/* the clubs whose mascot has been painted (img/msc-club/<club>.webp) */
+/*MSCPAINT:start*/
+const MSC_PAINTED = new Set([]);
+/*MSCPAINT:end*/
 const CREDITS = {
   /* escudos que eram só iniciais — marcas dos clubes, para identificá-los */
   'img/crests/1-fc-koln.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
@@ -9646,6 +9662,7 @@ const CREDITS = {
   'img/9d58e5483683d4ec.webp': { a:'Ank Kumar', l:'CC BY-SA 4.0' },
   'img/03d8d3ecd7ebb46e.webp': { a:'Gabrielhsp', l:'CC BY-SA 4.0' },
 };
+Object.values(PEOPLE).forEach(e => { CREDITS[e.img] = { a: `${e.a} (pintura sobre foto)`, l: e.l }; });
 
 /* ═══════════════════════════════════════════════════
    MIXED GAME BUILDER
@@ -11934,7 +11951,9 @@ function figExtra(sid, size, opts) {
     const br = CL.find(c => c.id === st.id);
     const m  = MASCOTS[st.id] || {};
     tint = br ? ` style="background:${hexA(br.c1, .16)}"` : '';
-    art  = `<span class="fig-msc">${(MASC_ART[m.art] || (() => ''))(
+    art  = MSC_PAINTED.has(st.id)
+      ? `<span class="fig-msc fig-msc-paint"><img src="img/msc-club/${st.id}.webp" alt="" aria-hidden="true" loading="lazy"></span>`
+      : `<span class="fig-msc">${(MASC_ART[m.art] || (() => ''))(
       br && br.c1, br && br.c2, m.v)}</span>`;
   }
 
@@ -13377,6 +13396,9 @@ function optIndex() {
     if (w.length > 1) { const s = w[w.length - 1]; last[s] = last[s] ? null : p; }
   });
   Object.keys(seen).forEach(n => { if (seen[n] > 1) delete face[n]; });
+  /* the people the album has no sticker of, painted from a photograph */
+  Object.entries(PEOPLE).forEach(([n, e]) => [n, ...(e.aka || [])].forEach(x => {
+    const k = _fold(x); if (!face[k]) face[k] = { img: e.img, n: x, era: null }; }));
   Object.keys(last).forEach(s => { if (last[s] && !(s in face) && s.length >= 4) face[s] = last[s]; });
   Object.keys(STAD_IMGS).forEach(id => { if (STAD[id]) stad[_fold(STAD[id].name)] = STAD_IMGS[id]; });
   /* the grounds abroad are the photographs PHOTO_ART sets a scene with —
@@ -13415,7 +13437,7 @@ function optResolve(text) {
 }
 
 /* asked about the look of the thing: its picture would be the answer */
-const LOOKS = /bandeira|escudo|emblema|brasao|distintivo|simbolo|logo|mascote|uniforme|camisa|camiseta|cores?\b|listras|alvi|rubro|tricolor|bicolor|colorado|azul|vermelh|verde|branc|pret[oa]|amarel|grena|celeste|laranja|roxo|dourad|foto|imagem|rosto/;
+const LOOKS = /bandeira|escudo|emblema|brasao|distintivo|simbolo|logo d[oa]s?\b|logotipo|logomarca|mascote|uniforme|camisa|camiseta|cores?\b|listras|alvi|rubro|tricolor|bicolor|colorado|azul|vermelh|verde|branc|pret[oa]|amarel|grena|celeste|laranja|roxo|dourad|foto|imagem|rosto/;
 
 const _optMemo = new WeakMap();
 function optArtFor(q) {
@@ -13429,7 +13451,11 @@ function optArtFor(q) {
   const eras = res.filter(r => r && r.k === 'face' && r.era).map(r => r.era[0]).sort((a, b) => a - b);
   if (eras.length >= 3) {
     const mid = eras[eras.length >> 1];
-    res.forEach((r, i) => { if (r && r.k === 'face' && r.era && Math.abs(r.era[0] - mid) > 15)
+    /* only a one-word name can be a namesake ("Coutinho"); "Johan Cruyff" or a
+       legend the album prints as one name (Pelé) is the man himself, whatever
+       generation the rest of the board is from */
+    res.forEach((r, i) => { if (r && r.k === 'face' && r.era && Math.abs(r.era[0] - mid) > 15 &&
+        !/\s/.test(q.choices[i].trim()) && !(PL.find(p => p.img === r.img && FAMOUS.has(p.id))))
       res[i] = { k: 'face', blank: true, n: q.choices[i] }; });
   }
   const count = {};
@@ -13481,6 +13507,9 @@ function optArtFor(q) {
     out = {};
     /* a board of coaches, whether the question says "técnico" or tells it in
        the first person: "dirigi a Seleção", "treinou o Milan" */
+    /* a board of grounds, cities, leagues or matches: the answers are named
+       after men ("Magalhães Pinto", "Urbano Caldeira") but are not men */
+    const place = /\b(estadios?|arenas?|campo|palco|liga|campeonato|partida|cidades?|sede|batalha|apelid\w* (do|da|de) (jogo|partida|estadio))\b/.test(t);
     const coach = /\b(tecnicos?|tecnica|treinador(es)?|trein(ou|ei|ava|aram)|dirig(i|iu|ia|iram)|comand(ou|ei|ava))\b/.test(t);
     /* a man the album has painted keeps his portrait even on a board of
        busts — a face beside five silhouettes says nothing about the answer,
@@ -13489,7 +13518,7 @@ function optArtFor(q) {
     q.choices.forEach((c, i) => {
       const r = res[i];
       out[c] = r && r.k === 'face' && !r.blank && r.img !== qFace && !looks
-        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach };
+        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach, club: !!(r && r.k === 'club') || (place && !coach) };
     });
     out._kind = 'glyph';
   }
@@ -13559,10 +13588,10 @@ function optGlyphSVG(text, asPerson, initial) {
   const words = t.split(/\s+/);
   /* "Derby del Sole" has a person's shape — capitalised words around a
      "del" — but a match, a cup or a ground is never a man */
-  const thing = /\b(derby|derbi|cl[aá]ss?ico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
+  const thing = /\b(trag[eé]dia|guerra|time|laranja|total|division|goleo|arena|park|stadium|stade|stadion|bridge|trafford|bowl|siro|nou|mam[eé]s|bombonera|monumental|cilindro|batalha|milagre|noite|jogo|s[eé]rie|rio|porto|cidade|calder[oó]n|maracan[aã]|pacaembu|morumbi|wembley|anfield|derby|derbi|cl[aá]ss?ico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
   /* on a board of coaches a one-word name ("Tite") is still a man */
-  const person = asPerson === true || (String(asPerson).startsWith('coach') && !thing && !/\d/.test(t)) || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
-    words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w));
+  const person = asPerson !== 'no' && (asPerson === true || (String(asPerson).startsWith('coach') && !thing && !/\d/.test(t)) || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+    words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w)));
   if (person) {
     /* a man the album has no picture of: a sepia bust on the cream disc, as an
        old programme would print a player it had no photograph of — in a
@@ -13667,7 +13696,7 @@ function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
-  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.coach ? 'coach-maybe' : false, r.L)}</span>`;
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.club ? 'no' : r.coach ? 'coach-maybe' : false, r.L)}</span>`;
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
@@ -13964,6 +13993,7 @@ function questionArtRaw(q) {
     return `<div class="qart qart-crest qart-hero qart-msc" role="img"
       aria-label="Mascote de um clube brasileiro">${(() => {
         const br = CL.find(c => c.id === q.msc), m = MASCOTS[q.msc];
+        if (MSC_PAINTED.has(q.msc)) return `<img src="img/msc-club/${q.msc}.webp" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
         return MASC_ART[m.art](br && br.c1, br && br.c2, m.v);
       })()}</div>`;
   if (q.crest && (q._crestIsQ || (!artReveals(q, { club: q.crest }) && !crestDecoy(q)))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${

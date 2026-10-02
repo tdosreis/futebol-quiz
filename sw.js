@@ -229,8 +229,12 @@
    v71: a board of coaches is found by its verbs too ("dirigi a Seleção"),
         a one-word coach (Tite) is a bust, not a letter; a man the album has
         painted keeps his portrait on a board of busts (Zidane, Cruyff,
-        Zagallo…); "El Clásico" is not a man. */
-const VERSION = 'v71';
+        Zagallo…); "El Clásico" is not a man.
+   v72: "logo depois" is not a logo (the Bundesliga board gets its crests);
+        Pelé and Cruyff keep their faces beside modern players; grounds,
+        cities, leagues and matches are never busts; ready for painted
+        portraits of people outside the album and painted mascots. */
+const VERSION = 'v72';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

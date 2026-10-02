@@ -1,0 +1,371 @@
+[
+ {
+  "id": "atleticomg",
+  "club": "Atlético MG",
+  "n": "Galo",
+  "art": "galo",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "crb",
+  "club": "CRB",
+  "n": "Galo",
+  "art": "galo",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#111"
+ },
+ {
+  "id": "cruzeiro",
+  "club": "Cruzeiro",
+  "n": "Raposa",
+  "art": "raposa",
+  "v": "",
+  "c1": "#002F8B",
+  "c2": "#EEE"
+ },
+ {
+  "id": "palmeiras",
+  "club": "Palmeiras",
+  "n": "Porco",
+  "art": "porco",
+  "v": "",
+  "c1": "#005C30",
+  "c2": "#EEE"
+ },
+ {
+  "id": "flamengo",
+  "club": "Flamengo",
+  "n": "Urubu",
+  "art": "urubu",
+  "v": "",
+  "c1": "#CC1011",
+  "c2": "#111"
+ },
+ {
+  "id": "santos",
+  "club": "Santos FC",
+  "n": "Peixe",
+  "art": "peixe",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "sport",
+  "club": "Sport Recife",
+  "n": "Leão",
+  "art": "leao",
+  "v": "coroa",
+  "c1": "#C00000",
+  "c2": "#111"
+ },
+ {
+  "id": "vitoria",
+  "club": "Vitória",
+  "n": "Leão",
+  "art": "leao",
+  "v": "barra",
+  "c1": "#B80000",
+  "c2": "#111"
+ },
+ {
+  "id": "fortaleza",
+  "club": "Fortaleza",
+  "n": "Leão do Pici",
+  "art": "leao",
+  "v": "pici",
+  "c1": "#003A9B",
+  "c2": "#A81C1C"
+ },
+ {
+  "id": "avai",
+  "club": "Avaí",
+  "n": "Leão da Ilha",
+  "art": "leao",
+  "v": "ilha",
+  "c1": "#1B4E9B",
+  "c2": "#EEE"
+ },
+ {
+  "id": "remo",
+  "club": "Remo",
+  "n": "Leão Azul",
+  "art": "leao",
+  "v": "azul",
+  "c1": "#0B1E4B",
+  "c2": "#EEE"
+ },
+ {
+  "id": "americamg",
+  "club": "América MG",
+  "n": "Coelho",
+  "art": "coelho",
+  "v": "",
+  "c1": "#1A6B3C",
+  "c2": "#EEE"
+ },
+ {
+  "id": "pontepreta",
+  "club": "Ponte Preta",
+  "n": "Macaca",
+  "art": "macaca",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "criciuma",
+  "club": "Criciúma",
+  "n": "Tigre",
+  "art": "tigre",
+  "v": "",
+  "c1": "#D4A800",
+  "c2": "#111"
+ },
+ {
+  "id": "bragantino",
+  "club": "Bragantino",
+  "n": "Massa Bruta",
+  "art": "touro",
+  "v": "",
+  "c1": "#B80000",
+  "c2": "#EEE"
+ },
+ {
+  "id": "atleticogo",
+  "club": "Atlético GO",
+  "n": "Dragão",
+  "art": "dragao",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#111"
+ },
+ {
+  "id": "santacruz",
+  "club": "Santa Cruz",
+  "n": "Cobra Coral",
+  "art": "cobra",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#111"
+ },
+ {
+  "id": "goias",
+  "club": "Goiás",
+  "n": "Periquito",
+  "art": "periquito",
+  "v": "",
+  "c1": "#0A7A3C",
+  "c2": "#EEE"
+ },
+ {
+  "id": "abc",
+  "club": "ABC",
+  "n": "Elefante",
+  "art": "elefante",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "sampaio",
+  "club": "Sampaio Corrêa",
+  "n": "Tubarão",
+  "art": "tubarao",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#E8B10A"
+ },
+ {
+  "id": "nautico",
+  "club": "Náutico",
+  "n": "Timbu",
+  "art": "timbu",
+  "v": "",
+  "c1": "#B80000",
+  "c2": "#EEE"
+ },
+ {
+  "id": "vasco",
+  "club": "Vasco",
+  "n": "Almirante",
+  "art": "almirante",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "corinthians",
+  "club": "Corinthians",
+  "n": "Mosqueteiro",
+  "art": "mosqueteiro",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "gremio",
+  "club": "Grêmio",
+  "n": "Mosqueteiro",
+  "art": "mosqueteiro",
+  "v": "",
+  "c1": "#3E72B8",
+  "c2": "#111"
+ },
+ {
+  "id": "internacional",
+  "club": "Internacional",
+  "n": "Saci",
+  "art": "saci",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#EEE"
+ },
+ {
+  "id": "fluminense",
+  "club": "Fluminense",
+  "n": "Pó de Arroz",
+  "art": "poDeArroz",
+  "v": "",
+  "c1": "#8B1D3B",
+  "c2": "#2E7D52"
+ },
+ {
+  "id": "botafogo",
+  "club": "Botafogo",
+  "n": "Biriba",
+  "art": "cachorro",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "saopaulo",
+  "club": "São Paulo FC",
+  "n": "Santo Paulo",
+  "art": "santo",
+  "v": "",
+  "c1": "#CC0000",
+  "c2": "#111"
+ },
+ {
+  "id": "atleticopr",
+  "club": "Athletico PR",
+  "n": "Furacão",
+  "art": "furacao",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#111"
+ },
+ {
+  "id": "bahia",
+  "club": "Bahia",
+  "n": "Super-Homem",
+  "art": "heroi",
+  "v": "",
+  "c1": "#003A9B",
+  "c2": "#C00000"
+ },
+ {
+  "id": "ceara",
+  "club": "Ceará",
+  "n": "Vovô",
+  "art": "vovo",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "coritiba",
+  "club": "Coritiba",
+  "n": "Coxa",
+  "art": "coxa",
+  "v": "",
+  "c1": "#005C30",
+  "c2": "#EEE"
+ },
+ {
+  "id": "cuiaba",
+  "club": "Cuiabá",
+  "n": "Dourado",
+  "art": "dourado",
+  "v": "",
+  "c1": "#0A6B3C",
+  "c2": "#E8B10A"
+ },
+ {
+  "id": "juventude",
+  "club": "Juventude",
+  "n": "Papo",
+  "art": "papo",
+  "v": "",
+  "c1": "#0A7A3C",
+  "c2": "#EEE"
+ },
+ {
+  "id": "chapecoense",
+  "club": "Chapecoense",
+  "n": "Verdão do Oeste",
+  "art": "verdao",
+  "v": "",
+  "c1": "#0A7A3C",
+  "c2": "#EEE"
+ },
+ {
+  "id": "figueirense",
+  "club": "Figueirense",
+  "n": "Figueira",
+  "art": "figueira",
+  "v": "",
+  "c1": "#111",
+  "c2": "#EEE"
+ },
+ {
+  "id": "paysandu",
+  "club": "Paysandu",
+  "n": "Papão",
+  "art": "papao",
+  "v": "",
+  "c1": "#1B4E9B",
+  "c2": "#EEE"
+ },
+ {
+  "id": "portuguesa",
+  "club": "Portuguesa",
+  "n": "Lusa",
+  "art": "caravela",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#0A7A3C"
+ },
+ {
+  "id": "csa",
+  "club": "CSA",
+  "n": "Azulão",
+  "art": "azulao",
+  "v": "",
+  "c1": "#2B2F9B",
+  "c2": "#EEE"
+ },
+ {
+  "id": "mirassol",
+  "club": "Mirassol",
+  "n": "Leão",
+  "art": "leao",
+  "v": "faixa",
+  "c1": "#E8B10A",
+  "c2": "#0A7A3C"
+ },
+ {
+  "id": "botafogosp",
+  "club": "Botafogo-SP",
+  "n": "Pantera",
+  "art": "pantera",
+  "v": "",
+  "c1": "#C00000",
+  "c2": "#111"
+ }
+]

@@ -1,0 +1,726 @@
+[
+ {
+  "n": "Carlo Ancelotti",
+  "uses": 25,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "José Mourinho",
+  "uses": 24,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Pep Guardiola",
+  "uses": 23,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Luis Enrique",
+  "uses": 21,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Louis van Gaal",
+  "uses": 19,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Alex Ferguson",
+  "uses": 15,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Fabio Capello",
+  "uses": 15,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Thomas Tuchel",
+  "uses": 15,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Hansi Flick",
+  "uses": 15,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Rafael Benítez",
+  "uses": 15,
+  "coach": true,
+  "aka": [
+   "Rafa Benítez"
+  ]
+ },
+ {
+  "n": "Bob Paisley",
+  "uses": 14,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Carlos Alberto Parreira",
+  "uses": 14,
+  "coach": true,
+  "aka": [
+   "Parreira"
+  ]
+ },
+ {
+  "n": "Marcello Lippi",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jürgen Klopp",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Guus Hiddink",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jorge Jesus",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Vicente del Bosque",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jupp Heynckes",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Antonio Conte",
+  "uses": 13,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Luiz Felipe Scolari",
+  "uses": 12,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Brian Clough",
+  "uses": 12,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Marcelo Gallardo",
+  "uses": 12,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Helenio Herrera",
+  "uses": 11,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Telê Santana",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Tite",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Vanderlei Luxemburgo",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Mano Menezes",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jorge Sampaoli",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Diego Simeone",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ramón Díaz",
+  "uses": 10,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Marcelo Bielsa",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Lionel Scaloni",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Rinus Michels",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Mauricio Pochettino",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Julian Nagelsmann",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ottmar Hitzfeld",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Arrigo Sacchi",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Claudio Ranieri",
+  "uses": 9,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Eric Cantona",
+  "uses": 9,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Jean-Pierre Papin",
+  "uses": 9,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Sebastião Lazaroni",
+  "uses": 8,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Carlos Bilardo",
+  "uses": 8,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Birgit Prinz",
+  "uses": 8,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Emiliano Martínez",
+  "uses": 8,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Enzo Bearzot",
+  "uses": 8,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Vicente Feola",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Arsène Wenger",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Alfio Basile",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Roberto Mancini",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Diego Forlán",
+  "uses": 7,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Abel Ferreira",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Oswaldo de Oliveira",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Gerardo Martino",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Laurent Blanc",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Joachim Löw",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Helmut Schön",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Alfredo Di Stéfano",
+  "uses": 7,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Ênio Andrade",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Levir Culpi",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Béla Guttmann",
+  "uses": 7,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Oleg Salenko",
+  "uses": 6,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Aimé Jacquet",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Bill Shankly",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Otto Rehhagel",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Óscar Tabárez",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Aitana Bonmatí",
+  "uses": 6,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Xabi Alonso",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Vittorio Pozzo",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Paulo Autuori",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Abel Braga",
+  "uses": 6,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ali Daei",
+  "uses": 6,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Matt Busby",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Carlos Bianchi",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Julen Lopetegui",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "César Luis Menotti",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Alexia Putellas",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Alex Morgan",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Unai Emery",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Davor Šuker",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Alf Ramsey",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Marco van Basten",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Paulo César Carpegiani",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Fernando Diniz",
+  "uses": 5,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Alberto Spencer",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Matthias Sammer",
+  "uses": 5,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Abby Wambach",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Homare Sawa",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Christine Sinclair",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Salvatore Schillaci",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Cuca",
+  "uses": 4,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Giovanni Trapattoni",
+  "uses": 4,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Mikel Arteta",
+  "uses": 4,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Howard Webb",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Ada Hegerberg",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Sam Kerr",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Pernille Harder",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Megan Rapinoe",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Lucy Bronze",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Beth Mead",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Muricy Ramalho",
+  "uses": 4,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Wendie Renard",
+  "uses": 4,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Tito Vilanova",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ernesto Valverde",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ralf Rangnick",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Mario Götze",
+  "uses": 3,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Vítor Pereira",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Ricardo Gareca",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Niko Kovač",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jock Stein",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Luciano Spalletti",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Maurizio Sarri",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Gennaro Gattuso",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Vincent Kompany",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Roberto Martínez",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Carlos Queiroz",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Bora Milutinović",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Sven-Göran Eriksson",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Dick Advocaat",
+  "uses": 3,
+  "coach": true,
+  "aka": []
+ },
+ {
+  "n": "Jenni Hermoso",
+  "uses": 3,
+  "coach": false,
+  "aka": []
+ },
+ {
+  "n": "Mia Hamm",
+  "uses": 3,
+  "coach": false,
+  "aka": []
+ }
+]

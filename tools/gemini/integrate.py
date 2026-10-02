@@ -9,7 +9,7 @@ a crest painted on off-white paper loses its ground. Rejected or failed
 images keep their original photograph — the app never shows a blank.
 The originals stay in git history; reverting the commit restores them.
 """
-import argparse, glob, json, os, sys
+import argparse, glob, json, os, re, sys
 import cv2, numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -61,12 +61,13 @@ def main():
     ap.add_argument('stage')
     ap.add_argument('--reject', default='')
     ap.add_argument('--dry', action='store_true')
-    ap.add_argument('--kinds', default='player,scene,emblem,flag')
+    ap.add_argument('--kinds', default='player,scene,emblem,flag,person,mascot')
     a = ap.parse_args()
     reject = set()
     if a.reject and os.path.exists(a.reject):
         reject = {l.split('#')[0].strip() for l in open(a.reject) if l.split('#')[0].strip()}
     done = skipped = 0
+    credits = {}
     for st in sorted(glob.glob(os.path.join(a.stage, 'status', '**', '*.json'), recursive=True)):
         r = json.load(open(st))
         rel = r['path']
@@ -83,20 +84,45 @@ def main():
             im = rekey(im, cv2.imread(os.path.join(ROOT, rel), cv2.IMREAD_UNCHANGED))
         # as large as the app ever draws it, at 2x, and no larger: the album
         # is cached on the phone, every kilobyte is paid for once per player
-        cap = {'player': 640, 'scene': 640, 'emblem': 320, 'flag': 240}[r['kind']]
+        cap = {'player': 640, 'scene': 640, 'emblem': 320, 'flag': 240, 'person': 480, 'mascot': 480}[r['kind']]
         h, w = im.shape[:2]
         if max(h, w) > cap:
             k = cap / max(h, w)
             im = cv2.resize(im, (round(w * k), round(h * k)), interpolation=cv2.INTER_AREA)
         dst = os.path.join(ROOT, rel)
-        if not os.path.exists(dst):
+        new_file = r['kind'] in ('person', 'mascot')     # these have no original to replace
+        if not os.path.exists(dst) and not new_file:
             skipped += 1
             continue
+        if new_file:
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            if r['kind'] == 'person' and r.get('credit'):
+                credits[rel] = r['credit']
         if not a.dry:
             ok, buf = cv2.imencode('.webp', im, [cv2.IMWRITE_WEBP_QUALITY, 86])
             open(dst, 'wb').write(buf.tobytes())
         done += 1
     print(f'{done} paintings swapped in, {skipped} kept as they were')
+    if not a.dry:
+        write_lists(credits)
+
+
+def write_lists(new_credits):
+    """rewrite the PEOPLE and MSC_PAINTED lists in index.html from what is in img/"""
+    path = os.path.join(ROOT, 'index.html')
+    html = open(path, encoding='utf-8').read()
+    m = re.search(r'/\*PEOPLE:start\*/\nconst PEOPLE = (\{.*?\});\n/\*PEOPLE:end\*/', html, re.S)
+    people = json.loads(m.group(1)) if m and m.group(1).strip() != '{}' else {}
+    for rel, c in new_credits.items():
+        people[c['n']] = {'img': rel, 'a': c.get('a', 'Wikimedia Commons'), 'l': c.get('l', ''), 'aka': c.get('aka', [])}
+    people = {n: e for n, e in people.items() if os.path.exists(os.path.join(ROOT, e['img']))}
+    block = 'const PEOPLE = ' + json.dumps(people, ensure_ascii=False, indent=1, sort_keys=True) + ';'
+    html = re.sub(r'(/\*PEOPLE:start\*/\n).*?(\n/\*PEOPLE:end\*/)', lambda x: x.group(1) + block + x.group(2), html, flags=re.S)
+    clubs = sorted(os.path.basename(p)[:-5] for p in glob.glob(os.path.join(ROOT, 'img', 'msc-club', '*.webp')))
+    block = 'const MSC_PAINTED = new Set(' + json.dumps(clubs) + ');'
+    html = re.sub(r'(/\*MSCPAINT:start\*/\n).*?(\n/\*MSCPAINT:end\*/)', lambda x: x.group(1) + block + x.group(2), html, flags=re.S)
+    open(path, 'w', encoding='utf-8').write(html)
+    print(f'lists: {len(people)} portraits, {len(clubs)} painted mascots')
 
 
 if __name__ == '__main__':

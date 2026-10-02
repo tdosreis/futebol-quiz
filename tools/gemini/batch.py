@@ -9,6 +9,12 @@ What gets painted, and how:
            (img/ logos, img/crests, img/msc)  shapes and lettering, background
                                                keyed back to transparent
   flag     img/flags                      -> painted cloth, exact design
+  person   tools/gemini/people.json       -> the same portrait hand, from a free
+           (coaches, pioneers, players       photograph found on Wikipedia (sources.py),
+            the album has no picture of)     written to img/people/<slug>.webp
+  mascot   tools/gemini/mascots.json      -> an original full-length cartoon mascot in
+                                             the club's colours, painted in the album's
+                                             hand: img/msc-club/<club>.webp
 
 Output: OUT/<same relative path as the source>, as .webp, cropped to the
 source's proportions; OUT/status/<path>.json records how each one went.
@@ -25,6 +31,8 @@ Environment:
   OUT              staging root (default ai-batch)
   COMMIT_EVERY     if set, call ./publish.sh every N new images
   LIMIT            stop after this many new images (0 = no limit)
+  FETCH_ONLY       if set, person items only fetch and stage their source
+                   photograph (OUT/src/...) — no Gemini call, no cost
 """
 import base64, glob, json, os, re, subprocess, sys, time
 
@@ -33,6 +41,7 @@ ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import paint_test as pt          # the approved prompts and the API call
 from fill_edges import finish
+import sources
 
 SCENE = """Repaint this photograph as a museum-quality hand-painted picture, in the manner of a \
 contemporary master painter working in gouache and watercolour on heavy cold-press paper. This is a \
@@ -78,6 +87,79 @@ texture and slight hand-painted edges between colours. Full bleed: the flag fill
 edge to edge, no border, no background, no vignette, no signature. Return only the image."""
 
 
+MASCOT = """Paint an original full-length cartoon football mascot character, in the manner of a master \
+illustrator of classic 1990s Brazilian sticker albums, now painted by hand in gouache and watercolour on \
+heavy cold-press paper.
+
+The character: {who}. It is the mascot of {club}, known as "{name}". The reference image shows only which \
+kind of creature or figure it is — design a new, original, charming character of that kind, standing or \
+running, full body, friendly and full of personality, with a big expressive face.
+
+It wears a plain football kit in the club's colours: {colors}. No crest, no badge, no logo, no sponsor, \
+no letters and no numbers anywhere.
+
+Rendering: confident ink-and-brush outlines, rich opaque gouache with visible brushwork and soft \
+watercolour shading, warm highlights. Background: a soft watercolour wash in the club's colours that runs \
+off every edge — no white paper, no frame, no border, no text, no signature. Square composition, the \
+character centred and filling most of the picture. Return only the image."""
+
+# what each figure is, for the prompt (the reference picture gives the shape)
+MASCOT_WHO = {
+    'galo': 'a proud rooster', 'raposa': 'a clever fox', 'porco': 'a cheerful pig', 'urubu': 'a black vulture',
+    'peixe': 'a jolly fish', 'leao': 'a lion', 'coelho': 'a rabbit', 'macaca': 'a female monkey',
+    'tigre': 'a tiger', 'touro': 'a strong bull', 'dragao': 'a friendly dragon', 'cobra': 'a coral snake',
+    'periquito': 'a green parakeet', 'elefante': 'an elephant', 'tubarao': 'a shark', 'timbu': 'an opossum',
+    'almirante': 'an old navy admiral with a white beard, a bicorne hat and a telescope',
+    'mosqueteiro': 'a musketeer with a plumed wide-brimmed hat, cape and fencing sword',
+    'saci': 'the Saci-pererê of Brazilian folklore: a one-legged boy with a red cap, drawn with warmth and respect',
+    'poDeArroz': 'a dapper old-fashioned gentleman in a top hat and tailcoat',
+    'cachorro': 'a scruffy black-and-white mongrel dog', 'santo': 'a kindly cartoon saint with a halo',
+    'furacao': 'a whirling hurricane with a face', 'heroi': 'a cheerful superhero with a cape',
+    'vovo': 'a lively grandfather with white hair', 'coxa': 'a sporty old man with a white beard',
+    'dourado': 'a golden river fish', 'papo': 'a smiling cartoon figure', 'verdao': 'a green figure',
+    'figueira': 'a fig tree with a friendly face', 'papao': 'a big friendly monster',
+    'caravela': 'a Portuguese caravel ship with a face', 'azulao': 'a blue songbird',
+    'pantera': 'a black panther',
+}
+LEAO_V = {'coroa': ' wearing a small crown', 'pici': '', 'ilha': '', 'azul': ' with a blue mane', 'barra': '', 'faixa': ''}
+COLOR_NAMES = {'#111': 'black', '#EEE': 'white'}
+
+
+def color_words(c1, c2):
+    import colorsys
+    def name(h):
+        if h in COLOR_NAMES: return COLOR_NAMES[h]
+        h = h.lstrip('#')
+        if len(h) == 3: h = ''.join(x * 2 for x in h)
+        r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+        hu, l, s = colorsys.rgb_to_hls(r, g, b)
+        if s < .15 or l < .1 or l > .92:
+            return 'black' if l < .2 else 'white' if l > .85 else 'grey'
+        hue = hu * 360
+        base = ('red' if hue < 15 or hue >= 345 else 'orange' if hue < 40 else 'gold' if hue < 55 else
+                'yellow' if hue < 70 else 'green' if hue < 165 else 'turquoise' if hue < 190 else
+                'sky blue' if hue < 205 else 'blue' if hue < 250 else 'purple' if hue < 290 else
+                'magenta' if hue < 330 else 'crimson')
+        return ('deep ' if l < .32 else 'light ' if l > .7 else '') + base
+    return ' and '.join(dict.fromkeys(name(c) for c in (c1, c2) if c))
+
+
+def slug(s):
+    import unicodedata
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
+    return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
+
+
+def people():
+    p = os.path.join(HERE, 'people.json')
+    return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else []
+
+
+def mascots():
+    p = os.path.join(HERE, 'mascots.json')
+    return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else []
+
+
 def manifest():
     """every raster image the app uses -> kind"""
     src = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
@@ -98,11 +180,43 @@ def manifest():
         items[os.path.relpath(p, ROOT)] = 'emblem'
     for p in sorted(glob.glob(os.path.join(ROOT, 'img', 'flags', '*.webp'))):
         items[os.path.relpath(p, ROOT)] = 'flag'
+    for pe in people():
+        items[f'img/people/{slug(pe["n"])}.webp'] = 'person'
+    for m in mascots():
+        if m['art'] != 'papo':
+            items[f'img/msc-club/{m["id"]}.webp'] = 'mascot'
     return items, {v: k for k, v in players.items()}
 
 
-def prompt(kind):
-    return {'player': pt.prompt_for('atelier_full'), 'scene': SCENE, 'emblem': EMBLEM, 'flag': FLAG}[kind]
+def prompt(kind, rel=None):
+    if kind == 'mascot':
+        m = next(x for x in mascots() if rel.endswith('/' + x['id'] + '.webp'))
+        who = MASCOT_WHO.get(m['art'], 'a friendly mascot') + (LEAO_V.get(m['v'], '') if m['art'] == 'leao' else '')
+        return MASCOT.format(who=who, club=m['club'], name=m['n'], colors=color_words(m['c1'], m['c2']))
+    return {'player': pt.prompt_for('atelier_full'), 'person': pt.prompt_for('atelier_full'),
+            'scene': SCENE, 'emblem': EMBLEM, 'flag': FLAG}[kind]
+
+
+def source(kind, rel, out):
+    """the bytes to paint from, and a credit when the source is a found photo"""
+    if kind == 'person':
+        cached = os.path.join(out, 'src', rel.replace('.webp', '.jpg'))
+        meta = cached + '.json'
+        if os.path.exists(cached) and os.path.exists(meta):
+            return open(cached, 'rb').read(), json.load(open(meta))
+        pe = next(x for x in people() if rel.endswith('/' + slug(x['n']) + '.webp'))
+        hit = sources.find(pe['n'])
+        if not hit:
+            raise RuntimeError('no free photograph found')
+        data, credit = hit
+        credit['n'] = pe['n']; credit['aka'] = pe.get('aka', [])
+        os.makedirs(os.path.dirname(cached), exist_ok=True)
+        open(cached, 'wb').write(data); json.dump(credit, open(meta, 'w'), ensure_ascii=False)
+        return data, credit
+    if kind == 'mascot':
+        m = next(x for x in mascots() if rel.endswith('/' + x['id'] + '.webp'))
+        return open(os.path.join(ROOT, 'img', 'msc', m['art'] + '.webp'), 'rb').read(), None
+    return open(os.path.join(ROOT, rel), 'rb').read(), None
 
 
 def fit_to(img, w, h):
@@ -144,10 +258,19 @@ def postprocess(kind, data, src_path):
     img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
     if img is None:
         raise RuntimeError('undecodable image')
-    srcim = cv2.imread(src_path, cv2.IMREAD_UNCHANGED)
-    sh, sw = srcim.shape[:2]
+    if src_path:
+        srcim = cv2.imread(src_path, cv2.IMREAD_UNCHANGED)
+        sh, sw = srcim.shape[:2]
+    else:
+        sh, sw = (5, 4) if kind == 'person' else (1, 1)
     info = {}
-    if kind in ('player', 'scene'):
+    if kind == 'person':
+        img, info = finish(img)
+        img = fit_to(img, 4, 5)
+    elif kind == 'mascot':
+        img, info = finish(img)
+        img = fit_to(img, 1, 1)
+    elif kind in ('player', 'scene'):
         img, info = finish(img)
         img = fit_to(img, sw, sh)
     elif kind == 'flag':
@@ -157,7 +280,8 @@ def postprocess(kind, data, src_path):
     # keep it light: never smaller than the source, at most 720px long side
     h, w = img.shape[:2]
     scale = min(1.0, 720 / max(h, w))
-    scale = max(scale, min(1.0, max(sh, sw) / max(h, w)))
+    if src_path:
+        scale = max(scale, min(1.0, max(sh, sw) / max(h, w)))
     if scale < 1:
         img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
     ok, buf = cv2.imencode('.webp', img, [cv2.IMWRITE_WEBP_QUALITY, 86])
@@ -167,12 +291,13 @@ def postprocess(kind, data, src_path):
 
 
 def main():
+    fetch_only = bool(os.environ.get('FETCH_ONLY'))
     key = os.environ.get('GEMINI_API_KEY', '').strip()
-    if not key:
+    if not key and not fetch_only:
         sys.exit('GEMINI_API_KEY is not set')
     model = os.environ.get('GEMINI_MODEL', '').strip() or 'gemini-3-pro-image-preview'
     out = os.environ.get('OUT') or 'ai-batch'
-    kinds = set(x for x in (os.environ.get('KINDS') or 'player,scene,emblem,flag').split(',') if x)
+    kinds = set(x for x in (os.environ.get('KINDS') or 'player,scene,emblem,flag,person,mascot').split(',') if x)
     shard, shards = int(os.environ.get('SHARD') or 0), int(os.environ.get('SHARDS') or 1)
     limit = int(os.environ.get('LIMIT') or 0)
     every = int(os.environ.get('COMMIT_EVERY') or 0)
@@ -181,6 +306,8 @@ def main():
     only = [resolve(x) for x in (os.environ.get('ONLY') or '').split(',') if x.strip()]
     force = set(resolve(x) for x in (os.environ.get('FORCE') or '').split(',') if x.strip())
     todo = [p for p in sorted(items) if (p in only if only else items[p] in kinds)]
+    if fetch_only:
+        todo = [p for p in todo if items[p] == 'person']
     todo = [p for i, p in enumerate(todo) if i % shards == shard]
     print(f'{len(items)} images in the app; this shard: {len(todo)} ({", ".join(sorted(kinds)) if not only else "selected"})')
     done = new = failed = 0
@@ -191,18 +318,24 @@ def main():
             done += 1
             continue
         kind = items[rel]
-        pt.PROMPT_TEXT = prompt(kind)
-        raw = open(os.path.join(ROOT, rel), 'rb').read()
         t0 = time.time()
         rec = {'path': rel, 'kind': kind, 'model': model, 'player': next((k for k, v in by_id.items() if v == rel), None)}
         try:
-            res = pt.call(model, key, raw, 'image/webp', attempts=6)
+            raw, credit = source(kind, rel, out)
+            if credit: rec['credit'] = credit
+            if fetch_only:
+                if kind == 'person': print(f'· fetched {rel} <- {credit.get("article")} [{credit.get("l")}]', flush=True)
+                continue
+            pt.PROMPT_TEXT = prompt(kind, rel)
+            mime = 'image/jpeg' if kind == 'person' else 'image/webp'
+            res = pt.call(model, key, raw, mime, attempts=6)
             parts = (res.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
             img = next((p.get('inlineData') or p.get('inline_data') for p in parts
                         if p.get('inlineData') or p.get('inline_data')), None)
             if not img:
                 raise RuntimeError(f"no image ({(res.get('candidates') or [{}])[0].get('finishReason')})")
-            data, info = postprocess(kind, base64.b64decode(img['data']), os.path.join(ROOT, rel))
+            data, info = postprocess(kind, base64.b64decode(img['data']),
+                                     None if kind in ('person', 'mascot') else os.path.join(ROOT, rel))
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             open(dst, 'wb').write(data)
             rec.update(ok=True, seconds=round(time.time() - t0, 1), edges=info)

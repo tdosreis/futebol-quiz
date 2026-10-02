@@ -8,9 +8,14 @@ on:
   workflow_dispatch:
     inputs:
       kinds:
-        description: 'player,scene,emblem,flag (comma list)'
+        description: 'player,scene,emblem,flag,person,mascot (comma list)'
         required: false
-        default: 'player,scene,emblem,flag'
+        default: 'player,scene,emblem,flag,person,mascot'
+      fetch_only:
+        description: 'Only fetch the source photos of the people (no Gemini calls, no cost)'
+        required: false
+        type: boolean
+        default: false
       only:
         description: 'Only these paths or player ids (comma list, optional)'
         required: false
@@ -82,6 +87,7 @@ jobs:
           KINDS: ${{ inputs.kinds }}
           ONLY: ${{ inputs.only }}
           FORCE: ${{ inputs.force }}
+          FETCH_ONLY: ${{ inputs.fetch_only && '1' || '' }}
           SHARD: ${{ matrix.shard }}
           SHARDS: '6'
           OUT: stage/ai-batch
