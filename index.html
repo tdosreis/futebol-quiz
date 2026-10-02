@@ -13479,8 +13479,18 @@ function optArtFor(q) {
        gets a picture: one drawn for what kind of answer it is, which tells
        nothing. */
     out = {};
-    const coach = /\b(tecnico|tecnicos|treinador|treinadores|tecnica)\b/.test(t);
-    q.choices.forEach(c => { out[c] = { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach }; });
+    /* a board of coaches, whether the question says "técnico" or tells it in
+       the first person: "dirigi a Seleção", "treinou o Milan" */
+    const coach = /\b(tecnicos?|tecnica|treinador(es)?|trein(ou|ei|ava|aram)|dirig(i|iu|ia|iram)|comand(ou|ei|ava))\b/.test(t);
+    /* a man the album has painted keeps his portrait even on a board of
+       busts — a face beside five silhouettes says nothing about the answer,
+       and a bust where his painting exists looks like a mistake. Not when the
+       question's own picture is that face, or the question asks for a look. */
+    q.choices.forEach((c, i) => {
+      const r = res[i];
+      out[c] = r && r.k === 'face' && !r.blank && r.img !== qFace && !looks
+        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach };
+    });
     out._kind = 'glyph';
   }
   _optMemo.set(q, out);
@@ -13549,8 +13559,9 @@ function optGlyphSVG(text, asPerson, initial) {
   const words = t.split(/\s+/);
   /* "Derby del Sole" has a person's shape — capitalised words around a
      "del" — but a match, a cup or a ground is never a man */
-  const thing = /\b(derby|derbi|cl[aá]ssico|clasico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
-  const person = asPerson === true || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+  const thing = /\b(derby|derbi|cl[aá]ss?ico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
+  /* on a board of coaches a one-word name ("Tite") is still a man */
+  const person = asPerson === true || (String(asPerson).startsWith('coach') && !thing && !/\d/.test(t)) || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
     words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w));
   if (person) {
     /* a man the album has no picture of: a sepia bust on the cream disc, as an

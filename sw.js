@@ -225,8 +225,12 @@
         painting on a mat with a hairline, the country in small capitals over
         a brushstroke of its colours, the name in the serif, the club in
         italic; numbers on paper labels; the verdict's card back on a slip;
-        busts that differ by hairline, suit and tie. */
-const VERSION = 'v70';
+        busts that differ by hairline, suit and tie.
+   v71: a board of coaches is found by its verbs too ("dirigi a Seleção"),
+        a one-word coach (Tite) is a bust, not a letter; a man the album has
+        painted keeps his portrait on a board of busts (Zidane, Cruyff,
+        Zagallo…); "El Clásico" is not a man. */
+const VERSION = 'v71';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
