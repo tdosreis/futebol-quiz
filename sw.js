@@ -276,8 +276,11 @@
         the share card draws it straight from the photograph; a club board
         never shows a man's face for a club's name ("Charlton").
    v85: the Placar vote reads on the paper slips at night — every percentage
-        legible, the bars inside the slip, and the crowd's pick clearly ahead. */
-const VERSION = 'v85';
+        legible, the bars inside the slip, and the crowd's pick clearly ahead.
+   v86: every mascot photograph re-cut from its original so the whole
+        animal fits the disc (the urubu had lost its head); two portraits
+        painted as small full-length figures brought closer. */
+const VERSION = 'v86';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
