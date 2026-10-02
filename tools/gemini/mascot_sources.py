@@ -31,8 +31,8 @@ SUBJECT = {
     'leao':        ['Panthera leo male lion portrait', 'male lion mane'],
     'coelho':      ['Oryctolagus cuniculus rabbit', 'wild rabbit portrait'],
     'macaca':      ['Sapajus capuchin monkey', 'capuchin monkey portrait'],
-    'tigre':       ['Panthera tigris tiger portrait', 'Bengal tiger'],
-    'touro':       ['bull Bos taurus portrait', 'bull horns pasture'],
+    'tigre':       ['Panthera tigris tigris Bengal tiger walking', 'Bengal tiger Ranthambore'],
+    'touro':       ['Hereford bull', 'Nelore bull', 'bull in pasture'],
     'dragao':      ['Varanus komodoensis Komodo dragon', 'Komodo dragon'],
     'cobra':       ['Micrurus coral snake', 'coral snake'],
     'periquito':   ['Brotogeris chiriri parakeet', 'Brotogeris tirica'],
@@ -43,7 +43,7 @@ SUBJECT = {
     'mosqueteiro': ['musketeer costume', 'musketeer reenactment'],
     'saci':        ['Saci Pererê', 'Saci-pererê folclore'],
     'poDeArroz':   ['top hat', 'silk top hat'],
-    'cachorro':    ['mixed-breed dog black and white portrait', 'black and white dog portrait'],
+    'cachorro':    ['Smooth Fox Terrier', 'Fox Terrier dog'],
     'santo':       ['Saint Paul statue', 'São Paulo apóstolo estátua'],
     'furacao':     ['hurricane from space', 'hurricane satellite'],
     'heroi':       ['caped superhero costume cosplay', 'cape costume'],
@@ -55,7 +55,7 @@ SUBJECT = {
     'papao':       ['Paysandu Papão', 'folk monster costume'],
     'caravela':    ['caravel replica sailing', 'caravela'],
     'azulao':      ['Cyanoloxia brissonii', 'ultramarine grosbeak'],
-    'pantera':     ['black panther melanistic jaguar', 'melanistic leopard'],
+    'pantera':     ['Panthera onca melanistic black jaguar', 'black leopard Panthera pardus melanistic'],
 }
 
 
