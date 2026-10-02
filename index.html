@@ -5163,7 +5163,6 @@ const CATS = [
       {"t": "Qual seleção ganhou o ouro olímpico em Seul 1988, na final contra o Brasil?", "a": ["União Soviética"], "type": "txt", "choices": ["União Soviética", "Alemanha Ocidental", "Itália", "Suécia", "Argentina", "Coreia do Sul"], "d": 4, "x": "A União Soviética venceu o Brasil por 2 a 1 na prorrogação.", "flag": "BRA"},
       {"t": "Qual seleção ganhou o ouro olímpico em Los Angeles 1984, na final contra o Brasil?", "a": ["França"], "type": "txt", "choices": ["França", "Iugoslávia", "Itália", "Estados Unidos", "Alemanha Ocidental", "Canadá"], "d": 4, "x": "A França venceu o Brasil por 2 a 0 na final.", "flag": "BRA"},
       {"t": "Qual seleção ganhou o ouro olímpico no futebol em 1952, 1964 e 1968?", "a": ["Hungria"], "type": "txt", "choices": ["Hungria", "Uruguai", "Grã-Bretanha", "Argentina", "Polônia", "Iugoslávia"], "d": 4, "x": "A Hungria tem três ouros olímpicos no futebol masculino.", "icon": "trophy"},
-      {"t": "Qual seleção venceu a Eurocopa Feminina de 2017, disputada em casa?", "a": ["Holanda"], "type": "txt", "choices": ["Holanda", "Dinamarca", "Inglaterra", "Áustria", "Alemanha", "Noruega"], "d": 3, "x": "A Holanda venceu a Dinamarca por 4 a 2 na final.", "icon": "trophy"},
       {"t": "Qual clube inglês venceu a primeira Copa da UEFA, em 1972, numa final inglesa contra o Wolverhampton?", "a": ["Tottenham"], "type": "txt", "choices": ["Tottenham", "Liverpool", "Leeds United", "Ipswich Town", "Arsenal", "Everton"], "d": 4, "x": "Foi a primeira final da competição, entre dois clubes ingleses.", "icon": "trophy"},
       {"t": "Qual clube inglês venceu a Copa da UEFA de 1981, comandado por Bobby Robson?", "a": ["Ipswich Town"], "type": "txt", "choices": ["Ipswich Town", "Tottenham", "Liverpool", "Aston Villa", "Nottingham Forest", "Everton"], "d": 4, "x": "Bobby Robson depois comandaria a seleção inglesa.", "icon": "trophy"},
       {"t": "Qual clube sueco venceu a Copa da UEFA em 1982 e em 1987?", "a": ["IFK Göteborg"], "type": "txt", "choices": ["IFK Göteborg", "Malmö", "AIK", "Djurgården", "Hammarby", "Helsingborg"], "d": 4, "x": "É o único clube sueco campeão de uma competição europeia.", "flag": "SWE"},
@@ -14031,8 +14030,8 @@ const QICON = {
 const PHOTO_ART = [
   { img:'img/9d58e5483683d4ec.webp', q:/copas? do mundo|copa de (19|20)\d\d|copas de (19|20)\d\d|mundial de (19[3-9]|20[0-3])\d\b/, clue:/^$/, not:/feminin|clubes|sub-(17|20)/ },
   { img:'img/03d8d3ecd7ebb46e.webp', q:/libertadores/, clue:/^$/, not:/feminin/ },
-  { img:'img/ee4f53bf49bbfde3.webp', q:/champions league|liga dos campeoes|copas? dos campeoes/, clue:/^$/, not:/feminin/ },
-  { img:'img/0af4923731c6c0f0.webp', q:/copa america/, clue:/^$/, not:/feminin/ },
+  { img:'img/ee4f53bf49bbfde3.webp', q:/champions|liga dos campeoes|copas? dos campeoes/, clue:/^$/, not:/feminin/ },
+  { img:'img/0af4923731c6c0f0.webp', q:/copas? america/, clue:/^$/, not:/feminin/ },
   { img:'img/1bf59fab37c46525.webp', q:/eurocopa|\beuro (19|20)\d\d/, clue:/^$/, not:/feminin/ },
   { img:'img/aba3465fd14e7872.webp', q:/premier league/, clue:/manchester city/, not:/^$/ },
   { img:'img/d97760d70ea2740b.webp', q:/\bfa cup\b|copa da inglaterra/, clue:/^$/, not:/^$/ },
@@ -14061,7 +14060,6 @@ const PHOTO_ART = [
   { img:'img/ac4c800e276855e1.webp', q:/wembley/, clue:/^$/, not:/^$/ },
   { img:'img/719acf8812ed57bb.webp', q:/estadio da luz/, clue:/benfica/, not:/^$/ },
   { img:'img/d0954e948b6c5b08.webp', q:/hampden/, clue:/queen's park|queens park/, not:/^$/ },
-  { img:'img/688a4a475f46f22b.webp', q:/arbitr|cartao (amarelo|vermelho)|\bvar\b|impedimento/, clue:/^$/, not:/^$/ }
 ];
 /* two of the drawn fallbacks have a real photograph that says the same */
 const FALLBACK_PHOTO = { ball: 'img/fd49175bd81940cc.webp', rules: 'img/688a4a475f46f22b.webp' };
@@ -14197,6 +14195,146 @@ const INK_ART = {
     <path d="M14 58h20" stroke="#EDE6D2" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
     <rect x="80" y="58.6" width="12" height="3.4" rx="1" fill="#D9CFB8"/></svg>`,
 };
+/* ── A picture of the question's own subject ──
+   When a question names no man, club, flag or ground the album has a picture
+   of — or naming it would answer it — it still has a subject: the Bola de
+   Ouro, a stopwatch, a nickname, a continent, a state. Each is drawn here as
+   a small engraving on the same night-blue plate, so a question gets an
+   image of what it is about rather than a stock photograph of a football. */
+const UF_ADJ = { pernambucan:'PE', carioca:'RJ', mineir:'MG', paulista:'SP', paranaense:'PR', gaucho:'RS', gaucha:'RS',
+  cearense:'CE', baian:'BA', catarinense:'SC', paraense:'PA', goian:'GO', potiguar:'RN', alagoan:'AL', maranhense:'MA',
+  amazonense:'AM', capixaba:'ES', sergipan:'SE', paraiban:'PB', piauiense:'PI', 'mato-grossense':'MT', 'sul-mato-grossense':'MS',
+  recife:'PE', 'porto alegre':'RS', 'belo horizonte':'MG', salvador:'BA', curitiba:'PR', belem:'PA', florianopolis:'SC', goiania:'GO', manaus:'AM' };
+const SUBJ_RE = new RegExp('\\b(' + Object.keys(UF_ADJ).map(k => k.replace('-', '\\-')).join('|') + ')(o|a|os|as)?\\b');
+const plate = (inner, defs = '') => `<svg viewBox="0 0 104 68" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>
+  <radialGradient id="spb" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#141B2A"/></radialGradient>
+  <linearGradient id="spg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1BF"/><stop offset=".4" stop-color="#E2B551"/><stop offset=".75" stop-color="#9C7424"/><stop offset="1" stop-color="#E8C565"/></linearGradient>${defs}</defs>
+  <rect width="104" height="68" fill="url(#spb)"/><g opacity=".45"><circle cx="12" cy="10" r=".8" fill="#E8C565"/><circle cx="92" cy="12" r=".7" fill="#E8C565"/><circle cx="86" cy="58" r=".8" fill="#E8C565"/><circle cx="16" cy="56" r=".6" fill="#E8C565"/></g>${inner}</svg>`;
+const laurel = (cx, cy, s = 1) => [-1, 1].map(d => `<g transform="translate(${cx} ${cy}) scale(${d * s} ${s})" fill="#B98C42">
+  <path d="M-4 18C-14 14-20 4-19-8" fill="none" stroke="#B98C42" stroke-width="1.2"/>
+  ${[0, 1, 2, 3, 4].map(i => { const a = -1.1 + i * .42, x = -18 + i * 3.2 - (i > 2 ? (i - 2) * 1.4 : 0), y = -6 + i * 5.2;
+    return `<ellipse cx="${x}" cy="${y}" rx="1.6" ry="3.4" transform="rotate(${(a * 57).toFixed(0)} ${x} ${y})"/>`; }).join('')}</g>`).join('');
+const CONT = {
+  na: 'M10 14C18 8 34 8 38 14 36 20 30 22 28 28 24 30 22 34 26 38 20 36 14 28 10 22Z',
+  sa: 'M27 39C34 38 38 42 36 50 34 56 31 62 29 62 28 56 26 48 26 43Z',
+  eu: 'M47 14C53 9 61 11 61 17 57 20 52 22 47 20Z',
+  af: 'M47 25C56 23 64 27 64 33 62 42 58 50 54 52 52 46 50 40 46 34Z',
+  as: 'M62 10C73 6 90 8 96 16 94 24 86 28 80 30 74 34 68 30 65 26 63 21 61 16 62 10Z',
+  oc: 'M82 46C88 44 94 46 94 52 90 56 84 54 82 50Z',
+};
+const SUBJECTS = [
+  /* a club or a man from a state: the map with that state lit */
+  [q => { const m = _fold(q.t).match(SUBJ_RE); return m && UF_ADJ[m[1]]; },
+   uf => `<div class="qart qart-map qart-draw">${ART.mapBR(72, uf)}</div>`, 'raw'],
+  /* a continent: the world, with that continent in gold */
+  [q => { const t = _fold(q.t);
+    return /\b(africanas?|africanos?|da africa|copa africana|nacoes africanas)\b/.test(t) ? 'af' : /sul-american/.test(t) ? 'sa'
+      : /\b(asiatic\w*|da asia|copa da asia)\b/.test(t) ? 'as' : /\boceania\b/.test(t) ? 'oc'
+      : /\b(concacaf|norte-american\w*|centro-american\w*|caribe|copa ouro)\b/.test(t) ? 'na'
+      : /\b(europeias?|europeus?|da europa)\b/.test(t) ? 'eu' : ''; },
+   k => plate(Object.keys(CONT).map(c => `<path d="${CONT[c]}" fill="${c === k ? 'url(#spg)' : '#3E5A78'}" stroke="${c === k ? '#5A3E0C' : '#22324A'}" stroke-width=".8"/>`).join('') +
+     `<path d="M4 34h96" stroke="#F4F1E7" stroke-opacity=".12"/>`)],
+  /* a nickname in quotes: the name on a ribbon */
+  [q => { const t = q.t; if (!/apelid|chamad[oa]s? de|conhecid[oa]s? como|alcunha|e o ['"“‘]/i.test(_fold(t)) && !/\b(é|era|são) (o|a|os|as) ['"“‘]/i.test(t)) return '';
+    const m = t.match(/['"“‘]([^'"”’]{2,28})['"”’]/); return m ? m[1] : ''; },
+   nm => { const fs = nm.length > 16 ? 8.4 : nm.length > 10 ? 10 : 12.5;
+     return plate(`<path d="M8 26h10l-4 7 4 7H8l3-7Z" fill="#B9A57C"/><path d="M96 26H86l4 7-4 7h10l-3-7Z" fill="#B9A57C"/>
+       <path d="M14 22h76v20H14Z" fill="#EFE6CF"/><path d="M14 42l4 4v-4ZM90 42l-4 4v-4Z" fill="#8C7A5A"/>
+       <path d="M14 22h76M14 42h76" stroke="#B98C42" stroke-width=".8"/>
+       <text x="52" y="${35.6 - (12.5 - fs) * .25}" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="700"
+         font-size="${fs}" fill="#20241E"${nm.length > 20 ? ' textLength="70" lengthAdjust="spacingAndGlyphs"' : ''}>“${nm.replace(/&/g, '&amp;').replace(/</g, '&lt;')}”</text>`); }],
+  [q => /bolas? de ouro|ballon d|melhor jogador do mundo|fifa (the )?best/.test(_fold(q.t)),
+   () => plate(laurel(52, 36, .95) + `<circle cx="52" cy="32" r="15" fill="url(#spg)" stroke="#5A3E0C" stroke-width=".6"/>
+     <path d="M52 24l5 3.6-2 6h-6l-2-6Z" fill="#8A6116" opacity=".55"/><path d="M52 24v-7M57 27.6l7-2.6M55 33.6l4 6M49 33.6l-4 6M47 27.6l-7-2.6" stroke="#8A6116" stroke-width=".8" opacity=".6"/>
+     <ellipse cx="46" cy="25" rx="4" ry="2.4" fill="#FFF8DC" opacity=".55" transform="rotate(-30 46 25)"/>
+     <rect x="42" y="50" width="20" height="4" rx="1" fill="#3B3229"/>`)],
+  [q => /chuteira de ouro|chuteiras de ouro/.test(_fold(q.t)),
+   () => plate(`<path d="M30 22h14l2 12c8 1 20 3 26 8 2 2 1 5-2 6H32c-3 0-4-2-4-5Z" fill="url(#spg)" stroke="#5A3E0C" stroke-width=".8"/>
+     <path d="M36 26l8 6M36 30l8 6" stroke="#8A6116" stroke-width="1"/><path d="M34 51v3M42 51v3M50 51v3M58 51v3M66 51v3" stroke="#8A6116" stroke-width="2" stroke-linecap="round"/>
+     <rect x="24" y="56" width="56" height="4" rx="1" fill="#3B3229"/>`)],
+  [q => /luvas? de ouro|melhor goleiro/.test(_fold(q.t)),
+   () => plate(`<path d="M40 54V34c0-3 2-4 4-4l1-12c0-2 3-2 3 0v11l1-14c0-2 3-2 3 0l1 14 1-12c0-2 3-2 3 0v13l2-8c1-2 3-1 3 1l-2 14c-1 6-3 9-6 11v6Z" fill="url(#spg)" stroke="#5A3E0C" stroke-width=".8"/>
+     <rect x="38" y="54" width="22" height="5" rx="1" fill="#3B3229"/>`)],
+  [q => /jules rimet/.test(_fold(q.t)),
+   () => plate(`<path d="M44 14c4 6 12 6 16 0 4 4 4 10 0 14l-3 4h-10l-3-4c-4-4-4-10 0-14Z" fill="url(#spg)"/>
+     <path d="M38 12c4 2 6 6 8 10M66 12c-4 2-6 6-8 10" stroke="url(#spg)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+     <path d="M48 32h8l-1 8h-6Z" fill="url(#spg)"/><path d="M42 40h20v5l-2 3H44l-2-3Z" fill="#2A3A6A" stroke="url(#spg)" stroke-width="1"/>
+     <rect x="40" y="48" width="24" height="6" rx="1" fill="#3B3229"/>`)],
+  [q => /\bminutos\b|acrescimo|tempo de jogo|cronometr/.test(_fold(q.t)),
+   () => plate(`<circle cx="52" cy="36" r="17" fill="#EFE6CF" stroke="url(#spg)" stroke-width="3"/>
+     <rect x="48" y="12" width="8" height="5" rx="1" fill="url(#spg)"/><path d="M66 20l3-3" stroke="url(#spg)" stroke-width="2.4" stroke-linecap="round"/>
+     ${Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return `<path d="M${(52 + Math.sin(a) * 13).toFixed(1)} ${(36 - Math.cos(a) * 13).toFixed(1)}L${(52 + Math.sin(a) * 15).toFixed(1)} ${(36 - Math.cos(a) * 15).toFixed(1)}" stroke="#20241E" stroke-width="${i % 3 ? .6 : 1.2}"/>`; }).join('')}
+     <path d="M52 36V25" stroke="#8E2A20" stroke-width="1.6" stroke-linecap="round"/><path d="M52 36l7 4" stroke="#20241E" stroke-width="1.2" stroke-linecap="round"/><circle cx="52" cy="36" r="1.4" fill="#20241E"/>`)],
+  [q => /\b(metros|largura|altura|distancia|dimens\w*|tamanho)\b/.test(_fold(q.t)),
+   () => plate(`<rect x="18" y="16" width="68" height="40" fill="#2F6B45" opacity=".55"/>
+     <path d="M26 50V24h52v26" fill="none" stroke="#F4F1E7" stroke-width="2.2"/>
+     <path d="M28 26h48M28 30h48M28 34h48M28 38h48M28 42h48M28 46h48M32 24v26M40 24v26M48 24v26M56 24v26M64 24v26M72 24v26" stroke="#F4F1E7" stroke-width=".3" opacity=".5"/>
+     <path d="M26 58h52M26 56v4M78 56v4M84 24v26M82 24h4M82 50h4" stroke="#E8C565" stroke-width="1"/>
+     <path d="M28 58l3-1.6v3.2ZM76 58l-3-1.6v3.2ZM84 26l-1.6 3h3.2ZM84 48l-1.6-3h3.2Z" fill="#E8C565"/>`)],
+  [q => /substitui/.test(_fold(q.t)),
+   () => plate(`<rect x="30" y="18" width="44" height="28" rx="3" fill="#20241E" stroke="#4A4A52" stroke-width="2"/>
+     <path d="M40 26l6 6h-4v6h-4v-6h-4Z" fill="#4FAF7C"/><path d="M64 38l-6-6h4v-6h4v6h4Z" fill="#D0573F"/>
+     <path d="M50 46v10M54 46v10" stroke="#4A4A52" stroke-width="2.4"/>`)],
+  [q => /\b(arbitr\w*|apito|juiz)\b/.test(_fold(q.t)),
+   () => plate(`<path d="M30 34c0-8 6-12 14-12h26v12H58c0 8-6 14-14 14s-14-6-14-14Z" fill="url(#spg)" stroke="#5A3E0C" stroke-width=".8"/>
+     <circle cx="44" cy="35" r="5" fill="#8A6116" opacity=".5"/><path d="M70 24c6 0 10 4 12 10" stroke="#B23A2E" stroke-width="2" fill="none"/>
+     <path d="M76 18l4-3M78 24l5-1M74 14l1-4" stroke="#E8C565" stroke-width="1" stroke-linecap="round"/>`)],
+];
+
+/* a trophy with its competition's name on a ribbon, for the cups the album
+   has no photograph of — never when the competition is itself an answer */
+const COMP_NAMES = [
+  [/copa da uefa|liga europa/, 'Copa da UEFA'], [/copa do rei/, 'Copa do Rei'], [/mundial de clubes|campeao mundial de clubes|copa intercontinental/, 'Mundial de Clubes'],
+  [/copa do nordeste/, 'Copa do Nordeste'], [/liga das nacoes/, 'Liga das Nações'], [/copa sul-americana|\bsul-americana de (19|20)\d\d/, 'Sul-Americana'],
+  [/\brecopa\b/, 'Recopa'], [/copa do brasil/, 'Copa do Brasil'], [/liga conferencia/, 'Liga Conferência'], [/mls cup/, 'MLS Cup'],
+  [/sub-20/, 'Mundial Sub-20'], [/sub-17/, 'Mundial Sub-17'], [/copa das confederacoes/, 'Confederações'], [/copa africana|nacoes africanas/, 'Copa Africana'],
+  [/copa da asia/, 'Copa da Ásia'], [/copa ouro/, 'Copa Ouro'], [/brasileirao|campeonato brasileiro/, 'Brasileirão'], [/bundesliga|campeonato alemao/, 'Bundesliga'],
+  [/\bserie a\b|campeonato italiano|calcio/, 'Serie A'], [/la liga|campeonato espanhol/, 'La Liga'], [/premier league|campeonato ingles/, 'Premier League'],
+  [/campeonato paulista|paulistao/, 'Paulistão'], [/campeonato carioca|cariocao/, 'Carioca'], [/campeonato gaucho|gauchao/, 'Gauchão'], [/campeonato mineiro/, 'Mineiro'],
+  [/ligue 1|campeonato frances/, 'Ligue 1'], [/eredivisie|campeonato holandes/, 'Eredivisie'], [/campeonato portugues|primeira liga/, 'Liga Portugal'],
+  [/copa da inglaterra|fa cup/, 'FA Cup'], [/copa da italia/, 'Copa da Itália'], [/copa da alemanha/, 'Copa da Alemanha'], [/supercopa/, 'Supercopa'],
+  [/champions|liga dos campeoes|copa dos campeoes/, 'Champions League'], [/libertadores/, 'Libertadores'], [/copas? america/, 'Copa América'], [/eurocopa|\beuro (19|20)\d\d/, 'Eurocopa'],
+];
+const ribbon = (txt, y = 50) => { const fs = txt.length > 16 ? 6.6 : txt.length > 11 ? 7.6 : 8.6;
+  return `<path d="M14 ${y - 6}h8l-3 5 3 5h-8l2-5Z" fill="#B9A57C"/><path d="M90 ${y - 6}h-8l3 5-3 5h8l-2-5Z" fill="#B9A57C"/>
+  <path d="M19 ${y - 8}h66v13H19Z" fill="#EFE6CF"/><path d="M19 ${y - 8}h66M19 ${y + 5}h66" stroke="#B98C42" stroke-width=".7"/>
+  <text x="52" y="${y + .6}" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="${fs}" fill="#20241E"${txt.length > 22 ? ' textLength="62" lengthAdjust="spacingAndGlyphs"' : ''}>${txt.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text>`; };
+const said = q => _fold([...(q.choices || []), ...(q.a || []).map(a => clubName(a) || a)].join(' | '));
+const PRE_SUBJECTS = [
+  /* a World Cup by its year: a poster, the year in gold */
+  [q => { const t = _fold(q.t); if (/feminin|sub-\d\d|clubes|olimp/.test(t)) return '';
+    const m = t.match(/\b(?:copa(?: do mundo)?|mundial|campe\w+ do mundo|final)(?: de| em| da copa de)? ((?:19[3-9]|20[0-3])\d)\b/) ||
+      (!/copa (do brasil|america|africana|da asia|do rei|libertadores|sul|ouro|das confed|do nordeste|da uefa|da italia|da alemanha|da inglaterra|intercontinental)/.test(t) &&
+        t.match(/\bcopas?\b[^?]{0,40}?\b((?:19[3-9]|20[0-3])\d)\b/));
+    return m && WC_ED[m[1]] && !/\b(19|20)\d\d\b/.test(said(q)) ? m[1] : ''; },
+   y => plate(`<path d="M52 10c6 0 9 4 8 9-1 4-4 6-5 9l1 4h-8l1-4c-1-3-4-5-5-9-1-5 2-9 8-9Z" fill="url(#spg)" opacity=".9"/>
+     <rect x="46" y="32" width="12" height="3" rx="1" fill="#2F6B45"/>
+     <text x="52" y="52" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="17" fill="url(#spg)" letter-spacing="1">${y}</text>
+     <text x="52" y="61" text-anchor="middle" font-family="Archivo Narrow, sans-serif" font-weight="700" font-size="5.6" fill="#E8C565" letter-spacing="1.6">COPA DO MUNDO</text>`)],
+];
+const MORE_SUBJECTS = [
+  [q => { const t = _fold(q.t), ss = said(q); const hit = COMP_NAMES.find(([re]) => re.test(t) && !re.test(ss)); return hit ? hit[1] : ''; },
+   nm => plate(`<path d="M42 10h20c0 10-4 15-10 16-6-1-10-6-10-16Z" fill="url(#spg)"/>
+     <path d="M42 12c-6 0-7 8 0 9M62 12c6 0 7 8 0 9" fill="none" stroke="#B98C42" stroke-width="2"/>
+     <path d="M50 26h4v6h-4Z" fill="url(#spg)"/><rect x="45" y="32" width="14" height="5" rx="1" fill="#3B3229"/>` + ribbon(nm, 48))],
+  [q => { const m = q.t.match(/(?:manda seus jogos n[oa]s? |joga n[oa] |jogos em |estádio )(?:estádio )?([A-ZÁÉÍÓÚÂÊÔÃÕÇ][^?,]{2,28}?)(?:,|\?| em )/);
+    return m && !_fold(said(q)).includes(_fold(m[1])) ? m[1].trim() : ''; },
+   nm => plate(`<ellipse cx="52" cy="26" rx="30" ry="13" fill="#5A4C3D"/><ellipse cx="52" cy="25" rx="23" ry="9" fill="#C9BFA6"/>
+     <ellipse cx="52" cy="25.6" rx="17" ry="6" fill="#2F6B45"/><path d="M52 19.6v12" stroke="#F4F1E7" stroke-width=".5"/>
+     <path d="M22 26v-12M82 26v-12" stroke="#20241E" stroke-width="1.2"/><rect x="19.6" y="10" width="5" height="4" fill="#20241E"/><rect x="79.4" y="10" width="5" height="4" fill="#20241E"/>` + ribbon(nm, 52))],
+  [q => { const m = _fold(q.t).match(/\btem (o|a) ([a-z]+) como (mascote|simbolo)/); return m ? (m[1] === 'a' ? 'A ' : 'O ') + m[2][0].toUpperCase() + m[2].slice(1) : ''; },
+   nm => plate(`<circle cx="52" cy="26" r="13" fill="#EFE6CF" opacity=".12"/><path d="M40 30c0-8 5-14 12-14s12 6 12 14c-3-3-7-4-12-4s-9 1-12 4Z" fill="url(#spg)" opacity=".85"/>
+     <circle cx="47.5" cy="24" r="1.6" fill="#20241E"/><circle cx="56.5" cy="24" r="1.6" fill="#20241E"/>` + ribbon(nm, 50))],
+];
+function subjectArt(q, pre) {
+  if (pre) { for (const [test, paint] of PRE_SUBJECTS) { const hit = test(q); if (hit) return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Ilustração">${paint(hit)}</div>`; } return ''; }
+  for (const [test, paint, mode] of SUBJECTS.concat(MORE_SUBJECTS)) {
+    const hit = test(q);
+    if (hit) return mode === 'raw' ? paint(hit) : `<div class="qart qart-wide print qart-ink" role="img" aria-label="Ilustração">${paint(hit)}</div>`;
+  }
+  return '';
+}
+
 function questionArtRaw(q) {
   if (q.order) return '';   // the cards themselves are the question
   if (q.score || q.xi) return '';   // the scoreboard or the pitch is the picture
@@ -14260,12 +14398,9 @@ function questionArtRaw(q) {
     return realArt('route', q);
   }
   { const named = inferArt(q); if (named) return named; }
+  { const own = subjectArt(q, true); if (own) return own; }
   { const shot = photoArt(q); if (shot) return shot; }
-  /* the question's own topic outranks the category's mark, and the icon a
-     question was written with — which was the category's mark by another
-     name ("boot" on every Craques question, the Bola de Ouro ones included) */
-  const topic = topicArt(q);
-  if (topic) return realArt(topic, q);
+  { const own = subjectArt(q); if (own) return own; }
   /* a card of clues with nothing of its own to show is a mystery, not a
      football on the grass; a question of laws and moves is a chalkboard */
   if (q.clues || /\bquem sou eu\b/i.test(q.t || '')) return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Retrato misterioso">${INK_ART.who}</div>`;
@@ -14273,7 +14408,13 @@ function questionArtRaw(q) {
     return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Globo">${INK_ART.globe}</div>`;
   if ((q._cat && q._cat.id === 'regras_jogadas') || /\b(drible|dribles|jogada|jargao|lance de)\b/.test(_fold(q.t || '')))
     return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Quadro de táticas">${INK_ART.chalk}</div>`;
+  /* the question's own topic outranks the category's mark, and the icon a
+     question was written with — which was the category's mark by another
+     name ("boot" on every Craques question, the Bola de Ouro ones included) */
+  const topic = topicArt(q);
+  if (topic) return realArt(topic, q);
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
+  if (key === 'rules') return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Quadro de táticas">${INK_ART.chalk}</div>`;
   if (FALLBACK_PHOTO[key]) return `<div class="qart qart-wide print"><img src="${FALLBACK_PHOTO[key]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + QICON['${key}'](92) + '</div>'" /></div>`;
   return realArt(QICON[key] ? key : 'ball', q);

@@ -250,8 +250,12 @@
         both scored twice).
    v76: no women's football questions (three pages and the strays elsewhere);
         a scoreboard's penalty line no longer names the side being asked for;
-        a page of coaches draws coaches in suits whatever verb it uses. */
-const VERSION = 'v76';
+        a page of coaches draws coaches in suits whatever verb it uses.
+   v77: every question pictures its own subject: a World Cup by its year, a
+        cup or a ground by its name on a ribbon, a nickname in quotes, the
+        state or continent it names, the Bola de Ouro, a stopwatch, a goal
+        with its measures, a whistle — instead of a stock football photo. */
+const VERSION = 'v77';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
