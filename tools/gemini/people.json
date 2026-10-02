@@ -65,7 +65,8 @@
   "n": "Bob Paisley",
   "uses": 14,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "skip": "source is not a usable portrait"
  },
  {
   "n": "Carlos Alberto Parreira",
@@ -151,7 +152,8 @@
   "n": "Tite",
   "uses": 10,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "wiki": "Adenor Leonardo Bachi"
  },
  {
   "n": "Vanderlei Luxemburgo",
@@ -271,7 +273,8 @@
   "n": "Enzo Bearzot",
   "uses": 8,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "skip": "source is not a usable portrait"
  },
  {
   "n": "Vicente Feola",
@@ -313,7 +316,8 @@
   "n": "Oswaldo de Oliveira",
   "uses": 7,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "wiki": "Oswaldo de Oliveira"
  },
  {
   "n": "Gerardo Martino",
@@ -349,7 +353,8 @@
   "n": "Ênio Andrade",
   "uses": 7,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "wiki": "Ênio Andrade"
  },
  {
   "n": "Levir Culpi",
@@ -379,7 +384,8 @@
   "n": "Bill Shankly",
   "uses": 6,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "skip": "source is not a usable portrait"
  },
  {
   "n": "Otto Rehhagel",
@@ -445,7 +451,8 @@
   "n": "Julen Lopetegui",
   "uses": 5,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "skip": "source is not a usable portrait"
  },
  {
   "n": "César Luis Menotti",
@@ -541,7 +548,8 @@
   "n": "Cuca",
   "uses": 4,
   "coach": true,
-  "aka": []
+  "aka": [],
+  "wiki": "Cuca (treinador)"
  },
  {
   "n": "Giovanni Trapattoni",

@@ -181,7 +181,8 @@ def manifest():
     for p in sorted(glob.glob(os.path.join(ROOT, 'img', 'flags', '*.webp'))):
         items[os.path.relpath(p, ROOT)] = 'flag'
     for pe in people():
-        items[f'img/people/{slug(pe["n"])}.webp'] = 'person'
+        if not pe.get('skip'):
+            items[f'img/people/{slug(pe["n"])}.webp'] = 'person'
     for m in mascots():
         if m['art'] != 'papo':
             items[f'img/msc-club/{m["id"]}.webp'] = 'mascot'
@@ -205,7 +206,7 @@ def source(kind, rel, out):
         if os.path.exists(cached) and os.path.exists(meta):
             return open(cached, 'rb').read(), json.load(open(meta))
         pe = next(x for x in people() if rel.endswith('/' + slug(x['n']) + '.webp'))
-        hit = sources.find(pe['n'])
+        hit = sources.find(pe.get('wiki') or pe['n'])
         if not hit:
             raise RuntimeError('no free photograph found')
         data, credit = hit
