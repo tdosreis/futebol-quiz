@@ -268,8 +268,11 @@
         their flags, months a calendar, instruments are drawn, composers a
         note, sentences a quote, unknown clubs a badge, players a bust.
    v82: "never top scorer of a World Cup" asks for the Chuteira de Ouro
-        plainly; Messi's 21 Copa goals and Mbappé's 22 brought up to date. */
-const VERSION = 'v82';
+        plainly; Messi's 21 Copa goals and Mbappé's 22 brought up to date.
+   v83: the 2025-26 season as it ended (Arsenal, Inter, Barcelona, Bayern,
+        PSG, Aston Villa, Crystal Palace, Ronaldo in six Copas, Messi's
+        eight); facts behind other questions brought up to date. */
+const VERSION = 'v83';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

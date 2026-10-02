@@ -45,7 +45,7 @@
     { "t": "Qual jogador é o maior artilheiro da história do futebol de seleções masculino?", "type": "player",
       "a": ["cr7"],
       "d": 2, "art": {"icon": "globe"}, "src": ["en", "Cristiano Ronaldo", ["international"]],
-      "x": "Ele marcou em cinco Copas do Mundo diferentes, de 2006 a 2022.", "xs": ["Portugal"] },
+      "x": "Ele foi o primeiro a marcar em seis Copas do Mundo diferentes, de 2006 a 2026.", "xs": ["Portugal"] },
     { "t": "Qual goleiro italiano ficou 1.142 minutos sem sofrer gols pela seleção, um recorde?", "type": "player",
       "a": ["zoff"],
       "d": 4, "art": {"flag": "ITA"}, "src": ["en", "Dino Zoff", ["1,142"]],

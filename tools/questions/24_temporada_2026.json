@@ -53,6 +53,16 @@
     { "t": "Qual clube conquistou o Brasileirão de 2025, o nono título nacional da sua história?",
       "a": ["flamengo"],
       "d": 2, "art": {"icon": "trophy"}, "src": ["en", "2025 Campeonato Brasileiro Série A", ["Flamengo", "ninth"]],
-      "x": "No mesmo ano, o Flamengo também venceu a Libertadores.", "xs": ["Libertadores"] }
+      "x": "No mesmo ano, o Flamengo também venceu a Libertadores.", "xs": ["Libertadores"] },
+    {"t": "Qual clube venceu a Premier League de 2025-26, o primeiro título inglês em 22 anos?", "a": ["Arsenal"], "type": "txt", "choices": ["Arsenal", "Manchester City", "Liverpool", "Chelsea", "Aston Villa", "Newcastle United"], "d": 2, "x": "Foi o quarto título de Premier League do Arsenal, o primeiro desde os Invencíveis de 2003-04."},
+    {"t": "Qual clube inglês venceu a Liga Europa de 2026, com 3 a 0 na final em Istambul?", "a": ["Aston Villa"], "type": "txt", "choices": ["Aston Villa", "Nottingham Forest", "Manchester United", "Tottenham", "Chelsea", "Newcastle United"], "d": 3, "x": "O Aston Villa venceu o Freiburg e voltou a ganhar uma taça europeia, 44 anos depois da Copa dos Campeões de 1982."},
+    {"t": "Qual clube venceu a Liga Conferência de 2026, contra o Rayo Vallecano em Leipzig?", "a": ["Crystal Palace"], "type": "txt", "choices": ["Crystal Palace", "Fiorentina", "Real Betis", "Chelsea", "Shakhtar Donetsk", "AEK Atenas"], "d": 3, "x": "Foi o primeiro título europeu do Crystal Palace, campeão da FA Cup um ano antes."},
+    {"t": "Qual clube venceu o Campeonato Italiano de 2025-26?", "a": ["Inter de Milão"], "type": "txt", "choices": ["Inter de Milão", "Napoli", "Juventus", "Milan", "Atalanta", "Roma"], "d": 2, "x": "Foi o 21º título italiano da Inter."},
+    {"t": "Qual clube venceu o Campeonato Espanhol de 2025-26, ficando com o bicampeonato?", "a": ["Barcelona"], "type": "txt", "choices": ["Barcelona", "Real Madrid", "Atlético de Madrid", "Athletic Bilbao", "Villarreal", "Real Sociedad"], "d": 2, "x": "O Barcelona garantiu o 29º título espanhol vencendo o Real Madrid por 2 a 0."},
+    {"t": "Qual clube venceu a Bundesliga de 2025-26 com quatro rodadas de antecedência?", "a": ["Bayern de Munique"], "type": "txt", "choices": ["Bayern de Munique", "Borussia Dortmund", "Bayer Leverkusen", "RB Leipzig", "Stuttgart", "Hoffenheim"], "d": 1, "x": "Foi o 34º título do Bayern na Bundesliga."},
+    {"t": "Qual clube venceu o Campeonato Francês de 2025-26, o quinto seguido?", "a": ["PSG"], "type": "txt", "choices": ["PSG", "Lens", "Olympique de Marselha", "Monaco", "Lyon", "Lille"], "d": 1, "x": "Foi o 14º título francês do PSG, recorde no país."},
+    {"t": "Qual atacante se tornou em 2026 o primeiro jogador a marcar em seis Copas do Mundo?", "a": ["cr7"], "type": "player", "d": 2, "x": "Cristiano Ronaldo marcou em todas as Copas de 2006 a 2026 e passou Eusébio como maior artilheiro de Portugal em Copas."},
+    {"t": "Quantos gols Messi marcou na Copa do Mundo de 2026?", "a": ["Oito"], "type": "txt", "choices": ["Oito", "Cinco", "Seis", "Sete", "Dez", "Quatro"], "d": 4, "x": "Com eles, Messi chegou a 21 gols em Copas; Mbappé terminou com 22."},
+    {"t": "Quem foi o artilheiro da Copa do Mundo de 2026, com 10 gols?", "a": ["mbappe"], "type": "player", "d": 2, "x": "Mbappé terminou a Copa com 22 gols em Copas do Mundo, o maior artilheiro da história."}
   ]
 }

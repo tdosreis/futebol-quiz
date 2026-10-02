@@ -53,7 +53,7 @@
     { "t": "Qual alemão disputou cinco Copas do Mundo, de 1982 a 1998?", "type": "player",
       "a": ["matthaus"],
       "d": 3, "art": {"flag": "GER"}, "src": ["en", "Lothar Matthäus", ["1982", "1998", "World Cup"]],
-      "x": "São 25 jogos em Copas do Mundo, um recorde.", "xs": ["25"] },
+      "x": "Foram 25 jogos em Copas do Mundo, recorde até Messi passar dele em 2022.", "xs": ["25"] },
     { "t": "Qual atacante alemão campeão do mundo em 1990 ganhou a Champions de 1993 com o Olympique de Marselha?", "type": "player",
       "a": ["voller"],
       "d": 4, "art": {"crest": "marseille"}, "src": ["en", "Rudi Völler", ["Marseille", "1993"]],

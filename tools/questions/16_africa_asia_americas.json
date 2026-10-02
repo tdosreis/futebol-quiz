@@ -101,7 +101,7 @@
     { "t": "Qual seleção é a maior campeã da Copa Ouro da CONCACAF?", "type": "txt",
       "choices": ["México", "Estados Unidos", "Canadá", "Costa Rica", "Honduras", "Jamaica"], "a": ["México"],
       "d": 2, "art": {"icon": "trophy"}, "src": ["en", "CONCACAF Gold Cup", ["Mexico"]],
-      "x": "O México é o maior campeão da competição, com doze títulos.", "xs": ["Mexico"] },
+      "x": "O México é o maior campeão da competição, com dez títulos, o último em 2025.", "xs": ["Mexico"] },
     { "t": "Qual seleção da CONCACAF passou em primeiro num grupo com Uruguai, Itália e Inglaterra na Copa de 2014?", "type": "txt",
       "choices": ["Costa Rica", "México", "Estados Unidos", "Honduras", "Panamá", "Jamaica"], "a": ["Costa Rica"],
       "d": 3, "art": {"flag": "ITA"}, "src": ["en", "2014 FIFA World Cup Group D", ["Costa Rica", "Uruguay", "England"]],
@@ -145,6 +145,6 @@
     { "t": "Em que estádio foi disputada a final do Mundial de Clubes de 2025?", "type": "txt",
       "choices": ["MetLife Stadium", "Rose Bowl", "SoFi Stadium", "Hard Rock Stadium", "Mercedes-Benz Stadium", "Lincoln Financial Field"], "a": ["MetLife Stadium"],
       "d": 4, "art": {"crest": "chelsea"}, "src": ["en", "2025 FIFA Club World Cup final", ["MetLife"]],
-      "x": "O mesmo estádio vai receber a final da Copa do Mundo de 2026.", "xs": ["2026"] }
+      "x": "O mesmo estádio recebeu, um ano depois, a final da Copa do Mundo de 2026.", "xs": ["2026"] }
   ]
 }

@@ -33,7 +33,7 @@
     { "t": "Qual seleção europeia é chamada de 'La Roja'?", "type": "txt",
       "choices": ["Espanha", "Portugal", "Suíça", "Dinamarca", "Polônia", "Turquia"], "a": ["Espanha"],
       "d": 2, "art": {"icon": "globe"}, "src": ["en", "Spain national football team", ["La Roja"]],
-      "x": "A Espanha venceu a Copa do Mundo de 2010 e quatro Eurocopas.", "xs": ["2010"] },
+      "x": "A Espanha venceu as Copas do Mundo de 2010 e 2026 e quatro Eurocopas.", "xs": ["2010"] },
     { "t": "Qual seleção é chamada de 'Vatreni', os ardentes?", "type": "txt",
       "choices": ["Croácia", "Sérvia", "Eslovênia", "Bósnia", "Montenegro", "Macedônia do Norte"], "a": ["Croácia"],
       "d": 3, "art": {"icon": "globe"}, "src": ["en", "Croatia national football team", ["Vatreni"]],
