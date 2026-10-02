@@ -32,7 +32,7 @@ SUBJECT = {
     'coelho':      ['Oryctolagus cuniculus rabbit', 'wild rabbit portrait'],
     'macaca':      ['Sapajus capuchin monkey', 'capuchin monkey portrait'],
     'tigre':       ['Panthera tigris tigris Bengal tiger walking', 'Bengal tiger Ranthambore'],
-    'touro':       ['Hereford bull', 'Nelore bull', 'bull in pasture'],
+    'touro':       ['Bos taurus bull standing', 'Nelore cattle bull', 'Brahman bull'],
     'dragao':      ['Varanus komodoensis Komodo dragon', 'Komodo dragon'],
     'cobra':       ['Micrurus coral snake', 'coral snake'],
     'periquito':   ['Brotogeris chiriri parakeet', 'Brotogeris tirica'],

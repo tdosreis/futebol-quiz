@@ -136,7 +136,8 @@
   "art": "tigre",
   "v": "",
   "c1": "#D4A800",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "tigre-1"
  },
  {
   "id": "bragantino",
@@ -264,7 +265,8 @@
   "art": "cachorro",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "cachorro-1"
  },
  {
   "id": "saopaulo",
@@ -398,6 +400,7 @@
   "art": "pantera",
   "v": "",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "pantera-1"
  }
 ]
