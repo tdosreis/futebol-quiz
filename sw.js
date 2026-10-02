@@ -233,8 +233,12 @@
    v72: "logo depois" is not a logo (the Bundesliga board gets its crests);
         Pelé and Cruyff keep their faces beside modern players; grounds,
         cities, leagues and matches are never busts; ready for painted
-        portraits of people outside the album and painted mascots. */
-const VERSION = 'v72';
+        portraits of people outside the album and painted mascots.
+   v73: a board of players is busts even for one-word names (Mazinho,
+        Viola); trophies and tournaments are never busts; decades read
+        "Anos 2000" on a calendar stamp; an audit of the bank fixed facts
+        that had drifted (Klose's record, Atlético's 1937 title, lineups). */
+const VERSION = 'v73';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

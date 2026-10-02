@@ -2953,22 +2953,22 @@
    "x": "Os 'Magiares Mágicos' ficaram quatro anos sem perder até a final de Berna."
   },
   {
-   "t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o meio-campista entre Piqué e Abidal?",
+   "t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o zagueiro entre Piqué e Abidal?",
    "type": "player",
    "a": [
     "mascherano"
    ],
    "fixed": [
-    "gilberto_silva",
+    "puyol",
     "mascherano",
-    "riquelme",
-    "ruicosta",
-    "david_silva",
-    "veron",
-    "dimaria",
-    "arrascaeta",
-    "hazard",
-    "rivaldo"
+    "thiago_silva",
+    "cannavaro",
+    "lucio",
+    "sergio_ramos",
+    "marquinhos",
+    "david_luiz",
+    "van_dijk",
+    "ruben_dias"
    ],
    "xi": {
     "t": "Barcelona · final da Champions 2011",
@@ -5543,22 +5543,22 @@
    "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."
   },
   {
-   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor ao lado de Cambiasso?",
+   "t": "Complete a escalação da Inter campeã europeia de 2010: quem é o meio-campista ao lado de Cambiasso?",
    "type": "player",
    "a": [
     "zanetti"
    ],
    "fixed": [
     "zanetti",
-    "maldini",
-    "david_luiz",
-    "thuram",
-    "lahm",
-    "van_dijk",
-    "puyol",
-    "cannavaro",
-    "marquinhos",
-    "dani_alves"
+    "pirlo",
+    "vieira",
+    "kante",
+    "rijkaard",
+    "dunga",
+    "mauro_silva",
+    "busquets",
+    "gilberto_silva",
+    "veron"
    ],
    "xi": {
     "t": "Inter · final da Champions 2010",
@@ -5705,7 +5705,7 @@
    "x": "Čech defendeu o pênalti de Robben na prorrogação."
   },
   {
-   "t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o defensor entre Cahill e A. Cole?",
+   "t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o defensor entre Bosingwa e Cahill?",
    "type": "player",
    "a": [
     "david_luiz"
@@ -5730,8 +5730,8 @@
      ],
      [
       "Bosingwa",
-      "Cahill",
       "?",
+      "Cahill",
       "A. Cole"
      ],
      [
@@ -6123,7 +6123,7 @@
    "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."
   },
   {
-   "t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o defensor ao lado de Raí?",
+   "t": "Complete a escalação do São Paulo campeão mundial de 1992: quem fecha o meio-campo ao lado de Raí?",
    "type": "player",
    "a": [
     "cafu"
@@ -6437,7 +6437,7 @@
    "x": "Victor defendeu um pênalti nos acréscimos das quartas de final, contra o Tijuana."
   },
   {
-   "t": "Complete a escalação do Milan de 1994 que goleou o Barcelona: quem é o defensor entre Albertini e Boban?",
+   "t": "Complete a escalação do Milan de 1994 que goleou o Barcelona: quem é o meio-campista entre Albertini e Boban?",
    "type": "player",
    "a": [
     "desailly"

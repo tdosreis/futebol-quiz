@@ -1176,29 +1176,6 @@
    ]
   },
   {
-   "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Djalma Santos ou Bellini?",
-   "type": "player",
-   "a": [
-    "djalma_santos"
-   ],
-   "fixed": [
-    "djalma_santos",
-    "bellini"
-   ],
-   "duel": true,
-   "d": 4,
-   "art": {
-    "icon": "trophy"
-   },
-   "src": [
-    "pt",
-    "FIFA World Cup",
-    [
-     "Djalma Santos"
-    ]
-   ]
-  },
-  {
    "t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Vavá ou Amarildo?",
    "type": "player",
    "a": [
@@ -2058,29 +2035,6 @@
     ]
    ],
    "x": "Cruzeiro: 3. Grêmio: 2."
-  },
-  {
-   "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Sport Recife?",
-   "a": [
-    "bahia"
-   ],
-   "fixed": [
-    "bahia",
-    "sport"
-   ],
-   "duel": true,
-   "d": 3,
-   "art": {
-    "icon": "trophy"
-   },
-   "src": [
-    "pt",
-    "Campeonato Brasileiro de Futebol",
-    [
-     "Bahia"
-    ]
-   ],
-   "x": "Bahia: 1. Sport Recife: 0."
   },
   {
    "t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Botafogo?",

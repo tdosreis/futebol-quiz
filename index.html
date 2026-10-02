@@ -3395,12 +3395,12 @@ const CATS = [
     tag:'Onde fica o clube?', col:'#1A6B9E', diff:'Fácil',
     qs:[
       { t:'Selecione TODOS os times do Rio de Janeiro',                         a:['flamengo','fluminense','vasco','botafogo'], uf:'RJ' },
-      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional'], uf:'RS' },
+      { t:'Selecione TODOS os times do Rio Grande do Sul',                      a:['gremio','internacional','juventude'], uf:'RS' },
       { t:'Selecione TODOS os times de Minas Gerais',                           a:['cruzeiro','atleticomg','americamg'], uf:'MG' },
-      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo'], uf:'SP' },
+      { t:'Selecione os times da cidade de São Paulo (não do interior)',         a:['corinthians','palmeiras','saopaulo','portuguesa'], uf:'SP' },
       { t:'Selecione TODOS os times do Ceará',                                  a:['fortaleza','ceara'], uf:'CE' },
       { t:'Selecione TODOS os times do Paraná',                                 a:['atleticopr','coritiba'], uf:'PR' },
-      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico'], uf:'PE' },
+      { t:'Selecione TODOS os times de Pernambuco',                             a:['sport','nautico','santacruz'], uf:'PE' },
       { t:'Selecione TODOS os times da Bahia',                                  a:['bahia','vitoria'], uf:'BA' },
     ]
   },
@@ -3504,7 +3504,7 @@ const CATS = [
       /* ── 1958: a primeira ── */
       { t:'Quem foi o capitão do Brasil no primeiro título mundial, em 1958, na Suécia?',     a:['bellini'],     type:'player' },
       { t:'Qual goleiro foi campeão do mundo com o Brasil em 1958 e 1962?',                   a:['gilmar'],      type:'player' },
-      { t:'Qual lateral-direito foi campeão em 1958 e 1962 e entrou na seleção de quatro Copas?', a:['djalma_santos'], type:'player' },
+      { t:'Qual lateral-direito foi campeão em 1958 e 1962 e disputou quatro Copas do Mundo?', a:['djalma_santos'], type:'player' },
       { t:'Qual volante do Santos foi campeão do mundo em 1958 e 1962?',                      a:['zito'],        type:'player' },
       { t:'Qual atacante marcou dois gols na final da Copa de 1958, contra a Suécia?',        a:['vava'],        type:'player' },
       { t:'Qual meia do Botafogo criou a "folha seca" e foi eleito o melhor da Copa de 1958?', a:['didi'],       type:'player' },
@@ -3522,7 +3522,7 @@ const CATS = [
       { t:'Qual ponta jogou toda a carreira no Santos ao lado de Pelé e Coutinho?',           a:['pepe'],        type:'player' },
       /* ── os anos 70 e 80 no Brasil ── */
       { t:'Qual atacante do Atlético Mineiro foi artilheiro do Brasileirão de 1977, com 28 gols?', a:['reinaldo'], type:'player' },
-      { t:'Qual atacante canhoto marcou o gol de falta do Brasil contra a Escócia em 1982?',  a:['eder'],        type:'player' },
+      { t:'Qual atacante canhoto marcou o gol de cobertura do Brasil contra a Escócia em 1982?',  a:['eder'],        type:'player' },
       { t:'Qual volante formou o meio-campo de 1982 ao lado de Falcão, Sócrates e Zico?',     a:['cerezo'],      type:'player' },
       { t:'Qual atacante do Corinthians foi símbolo da Democracia Corinthiana com Sócrates?', a:['casagrande'],  type:'player' },
       { t:'Qual atacante do Grêmio decidiu o Mundial de 1983 contra o Hamburgo?',             a:['renato_gaucho'], type:'player' },
@@ -3550,7 +3550,7 @@ const CATS = [
       { t:'Qual alemão foi capitão campeão do mundo em 1954, no "Milagre de Berna"?',         a:['fritz_walter'], type:'player' },
       { t:'Qual alemão foi campeão do mundo em 1990 e ganhou a Bola de Ouro no mesmo ano?',   a:['matthaus'],    type:'player' },
       { t:'Qual camaronês marcou 4 gols na Copa de 1990, já com 38 anos?',                    a:['milla'],       type:'player' },
-      { t:'Qual húngaro fez 11 gols na Copa de 1954, recorde de uma única edição?',           a:['kocsis'],      type:'player' },
+      { t:'Qual húngaro fez 11 gols na Copa de 1954 e foi o artilheiro daquela edição?',           a:['kocsis'],      type:'player' },
       { t:'Qual ponta do Real Madrid ganhou seis Copas da Europa entre 1956 e 1966?',         a:['gento'],       type:'player' },
       { t:'Qual holandês ganhou a Bola de Ouro em 1987 e foi capitão da Eurocopa de 1988?',   a:['gullit'],      type:'player' },
       { t:'Qual zagueiro da Inter foi capitão da Itália campeã da Eurocopa de 1968?',         a:['facchetti'],   type:'player' },
@@ -4058,19 +4058,19 @@ const CATS = [
       { t:'Qual francês foi tricampeão da Bola de Ouro seguido (1983, 1984, 1985), todos pela Juventus?',                        a:['platini'],     type:'player' },
       { t:'Quem ganhou a Bola de Ouro de 2018, sendo o primeiro croata a conquistar o troféu em toda a história?',               a:['modric'],      type:'player' },
       { t:'Quem foi o único africano a vencer a Bola de Ouro, em 1995, e depois se tornou presidente de seu país?',              a:['weah'],        type:'player' },
-      { t:'Quem ganhou a Bola de Ouro de 1993 mesmo sem ter vencido títulos coletivos importantes naquele ano?',                 a:['baggio'],      type:'player' },
+      { t:'Qual italiano da Juventus ganhou a Bola de Ouro de 1993?',                 a:['baggio'],      type:'player' },
       { t:'Quem ganhou o prêmio FIFA Best de Melhor Jogador do Mundo em 2020 e 2021, batendo recordes na Bundesliga?',           a:['lewandowski'], type:'player' },
       { t:'Qual francês marcou 9 gols em apenas 5 jogos na Eurocopa de 1984, um recorde histórico do torneio?',                  a:['platini'],     type:'player' },
       { t:'Quem venceu a Bola de Ouro em 1988, 1989 e 1992, e marcou um voleio antológico na final da Eurocopa de 1988?',       a:['van_basten'],  type:'player' },
       /* ── Liga dos Campeões ── */
-      { t:'Qual ivoriano empatou a final da Champions League de 2012 nos acréscimos, forçando a prorrogação para o Chelsea?',    a:['drogba'],      type:'player' },
+      { t:'Qual ivoriano empatou a final da Champions League de 2012 aos 88 minutos, forçando a prorrogação para o Chelsea?',    a:['drogba'],      type:'player' },
       { t:'Quem foi artilheiro da Champions League de 2019-20 com 15 gols, na campanha do título do Bayern de Munique?',          a:['lewandowski'], type:'player' },
-      { t:'Quem é o maior artilheiro da história da UEFA Champions League, com mais de 140 gols na competição?',                 a:['cr7'],         type:'player' },
+      { t:'Quem é o maior artilheiro da história da UEFA Champions League, com 140 gols na competição?',                 a:['cr7'],         type:'player' },
       { t:'Quem ganhou a Champions League de 2021-22 pelo Real Madrid e foi eleito o melhor jogador do mundo naquele ano?',      a:['benzema'],     type:'player' },
       { t:'Quem marcou um gol de bicicleta histórico contra a Juventus nas quartas de final da Champions de 2017-18?',           a:['cr7'],         type:'player' },
       { t:'Quem ganhou 5 títulos da Liga dos Campeões ao longo da carreira — um com o Man United e quatro com o Real Madrid?',   a:['cr7'],         type:'player' },
       /* ── Artilheiros e carreiras ── */
-      { t:'Qual sueco marcou mais de 600 gols na carreira e é o maior artilheiro da história da Seleção Sueca?',                 a:['ibrahimovic'], type:'player' },
+      { t:'Qual sueco marcou mais de 500 gols na carreira e é o maior artilheiro da história da Seleção Sueca?',                 a:['ibrahimovic'], type:'player' },
       { t:'Qual polonês bateu o recorde histórico com 41 gols em uma única temporada da Bundesliga, em 2020-21?',                a:['lewandowski'], type:'player' },
       { t:'Quem é o maior artilheiro da história do Arsenal, com mais de 220 gols pelo clube?',                                    a:['henry'],       type:'player' },
       { t:'Qual argentino marcou em 11 rodadas seguidas da Serie A em 1994-95, um recorde da época?',                            a:['batistuta'],   type:'player' },
@@ -4447,7 +4447,7 @@ const CATS = [
       {"t": "Qual meia espanhol do Barcelona ganhou o prêmio Golden Boy de 2021?", "a": ["pedri"], "type": "player", "d": 3, "x": "Pedri chegou ao Barcelona vindo do Las Palmas.", "crest": "barcelona"},
       {"t": "Qual atacante espanhol marcou o gol do título na final da Eurocopa de 2008, contra a Alemanha?", "a": ["torres"], "type": "player", "d": 3, "x": "Torres tocou por cima do goleiro Lehmann, em Viena.", "flag": "GER"},
       {"t": "Qual atacante é o maior artilheiro da história da seleção espanhola?", "a": ["villa"], "type": "player", "d": 3, "x": "Villa marcou em duas Copas do Mundo e foi peça do título espanhol de 2010.", "flag": "ESP"},
-      {"t": "Qual zagueiro espanhol foi capitão do Real Madrid nas Champions de 1998, 2000 e 2002?", "a": ["hierro"], "type": "player", "d": 4, "x": "Hierro é um dos zagueiros que mais marcaram gols na história do Real Madrid.", "crest": "realmadrid"},
+      {"t": "Qual zagueiro espanhol foi capitão do Real Madrid nas Champions de 2000 e 2002?", "a": ["hierro"], "type": "player", "d": 4, "x": "Hierro é um dos zagueiros que mais marcaram gols na história do Real Madrid.", "crest": "realmadrid"},
       {"t": "Qual atacante italiano é o maior artilheiro da história da Inter de Milão e dá nome ao San Siro?", "a": ["meazza"], "type": "player", "d": 4, "x": "O San Siro se chama oficialmente Stadio Giuseppe Meazza.", "crest": "inter"},
       {"t": "Qual atacante é o maior artilheiro da história da Serie A italiana?", "a": ["piola"], "type": "player", "d": 4, "x": "Foram 274 gols no Campeonato Italiano, recorde que resiste desde os anos 1950.", "flag": "ITA"},
       {"t": "Qual lateral italiano da Inter revolucionou a posição com seus gols nos anos 1960?", "a": ["facchetti"], "type": "player", "d": 4, "x": "Facchetti foi o capitão da Itália campeã da Eurocopa de 1968.", "crest": "inter"},
@@ -4459,7 +4459,7 @@ const CATS = [
       {"t": "Qual goleiro português foi campeão da Champions de 2004 pelo Porto?", "a": ["vitor_baia"], "type": "player", "d": 4, "x": "Vítor Baía também venceu a Recopa Europeia jogando pelo Barcelona.", "crest": "porto"},
       {"t": "Qual atacante português foi três vezes artilheiro do Campeonato Francês?", "a": ["pauleta"], "type": "player", "d": 4, "x": "Pauleta é um dos maiores artilheiros da história do PSG.", "crest": "psg"},
       {"t": "Qual meia português formou uma dupla famosa com Batistuta na Fiorentina?", "a": ["ruicosta"], "type": "player", "d": 4, "x": "Rui Costa voltou ao Benfica como dirigente e virou presidente do clube.", "crest": "fiorentina"},
-      {"t": "Qual meia nascido em Moçambique foi capitão do Benfica bicampeão europeu?", "a": ["coluna"], "type": "player", "d": 5, "x": "Coluna jogou as finais europeias de 1961 e 1962 ao lado de Eusébio.", "crest": "benfica"},
+      {"t": "Qual meia nascido em Moçambique foi peça-chave do Benfica bicampeão europeu?", "a": ["coluna"], "type": "player", "d": 5, "x": "Coluna jogou as finais europeias de 1961 e 1962 ao lado de Eusébio.", "crest": "benfica"},
       {"t": "Qual zagueiro português foi eleito o jogador da temporada 2020-21 da Premier League?", "a": ["ruben_dias"], "type": "player", "d": 3, "x": "Rúben Dias chegou ao Manchester City em 2020, vindo do Benfica.", "crest": "mancity"},
       {"t": "Qual francês ganhou a Bola de Ouro de 1958 jogando pelo Real Madrid?", "a": ["kopa"], "type": "player", "d": 4, "x": "Kopa venceu três Copas dos Campeões seguidas ao lado de Di Stéfano.", "crest": "realmadrid"},
       {"t": "Qual zagueiro francês marcou de voleio na prorrogação da semifinal de 1982, em Sevilha?", "a": ["tresor"], "type": "player", "d": 5, "x": "A França perdeu aquela semifinal para a Alemanha nos pênaltis.", "flag": "GER"},
@@ -4468,7 +4468,7 @@ const CATS = [
       {"t": "Qual volante francês foi campeão inglês com o Leicester e com o Chelsea em temporadas seguidas?", "a": ["kante"], "type": "player", "d": 2, "x": "Kanté foi campeão inglês pelo Leicester em 2016 e pelo Chelsea em 2017.", "crest": "chelsea"},
       {"t": "Qual francês era o capitão do Arsenal invicto na Premier League de 2003-04?", "a": ["vieira"], "type": "player", "d": 3, "x": "Vieira era o capitão daquele Arsenal que passou a temporada inteira sem perder.", "crest": "arsenal"},
       {"t": "Qual lateral francês marcou os dois gols da virada contra a Croácia na semifinal de 1998?", "a": ["thuram"], "type": "player", "d": 3, "x": "Foram os dois únicos gols de Thuram em toda a carreira pela seleção francesa.", "flag": "CRO"},
-      {"t": "Qual meia francês voltou à Juventus em 2016 na transferência mais cara do mundo até então?", "a": ["pogba"], "type": "player", "d": 3, "x": "Pogba tinha deixado o mesmo United de graça, quatro anos antes.", "crest": "manutd"},
+      {"t": "Qual meia francês voltou ao Manchester United em 2016 na transferência mais cara do mundo até então?", "a": ["pogba"], "type": "player", "d": 3, "x": "Pogba tinha deixado o United de graça rumo à Juventus, quatro anos antes.", "crest": "manutd"},
       {"t": "Qual francês foi eleito o melhor em campo na final da Copa de 2018?", "a": ["griezmann"], "type": "player", "d": 3, "x": "Griezmann abriu o placar na vitória por 4 a 2 sobre a Croácia.", "flag": "CRO"},
       {"t": "Qual ponta francês do Bayern terminou em terceiro na Bola de Ouro de 2013?", "a": ["ribery"], "type": "player", "d": 4, "x": "Naquele ano, Ribéry venceu a tríplice coroa com o Bayern.", "crest": "bayern"},
       {"t": "Qual goleiro alemão foi eleito o melhor jogador da Copa de 2002, mesmo perdendo a final?", "a": ["kahn"], "type": "player", "d": 3, "x": "Kahn é o único goleiro a ganhar a Bola de Ouro de uma Copa do Mundo.", "flag": "BRA"},
@@ -5136,7 +5136,7 @@ const CATS = [
       {"t": "Quem foi o artilheiro da Copa do Mundo de 2022, no Catar?", "a": ["mbappe"], "type": "player", "d": 2, "x": "Foram oito gols, três deles na final.", "icon": "boot"},
       {"t": "Quem foi o artilheiro da Copa do Mundo de 2018, na Rússia?", "a": ["kane"], "type": "player", "d": 2, "x": "Foram seis gols, metade deles de pênalti.", "icon": "boot"},
       {"t": "Quem foi o artilheiro da Copa do Mundo de 2010, na África do Sul?", "a": ["thomas_muller"], "type": "player", "d": 3, "x": "Ele tinha 20 anos e também levou o prêmio de melhor jovem do torneio.", "icon": "boot"},
-      {"t": "Quem foi o artilheiro da Copa do Mundo de 2006, na Alemanha?", "a": ["klose"], "type": "player", "d": 3, "x": "Klose se tornaria o maior artilheiro da história das Copas em 2014.", "icon": "boot"},
+      {"t": "Quem foi o artilheiro da Copa do Mundo de 2006, na Alemanha?", "a": ["klose"], "type": "player", "d": 3, "x": "Klose se tornaria o maior artilheiro da história das Copas em 2014, até ser superado por Mbappé em 2026.", "icon": "boot"},
       {"t": "Quem foi o artilheiro da Copa do Mundo de 1998, com 6 gols?", "a": ["Davor Šuker"], "type": "txt", "choices": ["Davor Šuker", "Gabriel Batistuta", "Christian Vieri", "Ronaldo", "Marcelo Salas", "Luis Hernández"], "d": 3, "x": "A Croácia terminou em terceiro lugar na sua primeira Copa do Mundo.", "icon": "boot"},
       {"t": "Quem foi o artilheiro da Copa do Mundo de 1986, com 6 gols?", "a": ["Gary Lineker"], "type": "txt", "choices": ["Gary Lineker", "Diego Maradona", "Emilio Butragueño", "Careca", "Igor Belanov", "Preben Elkjær"], "d": 3, "x": "Lineker nunca recebeu um cartão amarelo em toda a carreira.", "icon": "boot"},
       {"t": "Quem foi o artilheiro da Copa do Mundo de 1970, com 10 gols?", "a": ["gerd_muller"], "type": "player", "d": 3, "x": "Foram dez gols em seis jogos.", "icon": "boot"},
@@ -5283,13 +5283,13 @@ const CATS = [
       {"t": "Atacante revelado pelo Flamengo que chegou ao Real Madrid em 2018, aos 18 anos. Quem sou eu?", "a": ["vinicius"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Lateral-direito capitão do tri, que depois jogou no New York Cosmos ao lado de Pelé e Beckenbauer. Quem sou eu?", "a": ["carlos_alberto"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Ponta apelidado de Furacão, que marcou em todos os jogos do Brasil na Copa de 1970. Quem sou eu?", "a": ["jairzinho"], "type": "player", "d": 2, "icon": "jersey"},
-      {"t": "Meia gaúcho revelado pelo Internacional, chamado de Rei de Roma pela torcida italiana. Quem sou eu?", "a": ["falcao"], "type": "player", "d": 2, "icon": "jersey"},
+      {"t": "Meia revelado pelo Internacional, chamado de Rei de Roma pela torcida italiana. Quem sou eu?", "a": ["falcao"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Camisa 10 argentino, campeão do mundo em 1986 e ídolo eterno do Napoli. Quem sou eu?", "a": ["maradona"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Atacante argentino recordista de Bolas de Ouro, campeão do mundo no Catar em 2022. Quem sou eu?", "a": ["messi"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Atacante português, cinco vezes campeão da Champions e maior artilheiro da história das seleções. Quem sou eu?", "a": ["cr7"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Meia francês que fez dois gols de cabeça na final da Copa de 1998 contra o Brasil. Quem sou eu?", "a": ["zidane"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Atacante holandês, três vezes Bola de Ouro, autor de um voleio histórico na final da Euro de 1988. Quem sou eu?", "a": ["van_basten"], "type": "player", "d": 2, "icon": "jersey"},
-      {"t": "Atacante alemão, maior artilheiro da história das Copas do Mundo, com 16 gols. Quem sou eu?", "a": ["klose"], "type": "player", "d": 1, "icon": "jersey"},
+      {"t": "Atacante alemão que marcou 16 gols em Copas do Mundo, recorde que durou até 2026. Quem sou eu?", "a": ["klose"], "type": "player", "d": 1, "icon": "jersey"},
       {"t": "Atacante argentino apelidado de Batigol, ídolo da Fiorentina nos anos 90. Quem sou eu?", "a": ["batistuta"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Atacante búlgaro, Bola de Ouro de 1994 e um dos artilheiros da Copa daquele ano. Quem sou eu?", "a": ["stoichkov"], "type": "player", "d": 2, "icon": "jersey"},
       {"t": "Camisa 14 holandês, símbolo do futebol total e três vezes eleito Bola de Ouro. Quem sou eu?", "a": ["cruyff"], "type": "player", "d": 2, "icon": "jersey"},
@@ -6602,7 +6602,7 @@ const CATS = [
       {"t": "Complete a escalação do Uruguai campeão de 1950: quem é o atacante ao lado de Pérez?", "a": ["ghiggia"], "type": "player", "fixed": ["kubala", "zagallo", "distefano", "nordahl", "fontaine", "ghiggia", "seeler", "fritz_walter", "kocsis", "leonidas"], "xi": {"t": "Uruguai · Maracanã, 1950", "rows": [["Máspoli"], ["M. González", "Tejera"], ["Gambetta", "Obdulio", "R. Andrade"], ["?", "Pérez", "Míguez", "Schiaffino", "Morán"]]}, "d": 3, "x": "Schiaffino empatou e Ghiggia virou o jogo que o Brasil só precisava empatar."},
       {"t": "Complete a escalação da Hungria vice de 1954: quem é o atacante entre Czibor e Hidegkuti?", "a": ["kocsis"], "type": "player", "fixed": ["sivori", "gento", "nordahl", "amarildo", "kubala", "julinho", "greaves", "kocsis", "seeler", "vava"], "xi": {"t": "Hungria · final da Copa de 1954", "rows": [["Grosics"], ["Buzánszky", "Lóránt", "Lantos"], ["Bozsik", "Zakariás"], ["Czibor", "?", "Hidegkuti", "Puskás", "M. Tóth"]]}, "d": 5, "x": "Os 'Magiares Mágicos' ficaram quatro anos sem perder até a final de Berna."},
       {"t": "Complete a escalação da Hungria vice de 1954: quem é o atacante entre Kocsis e Puskás?", "a": ["hidegkuti"], "type": "player", "fixed": ["piola", "distefano", "pele", "ghiggia", "garrincha", "hidegkuti", "nordahl", "greaves", "fontaine", "pepe"], "xi": {"t": "Hungria · final da Copa de 1954", "rows": [["Grosics"], ["Buzánszky", "Lóránt", "Lantos"], ["Bozsik", "Zakariás"], ["Czibor", "Kocsis", "?", "Puskás", "M. Tóth"]]}, "d": 5, "x": "Os 'Magiares Mágicos' ficaram quatro anos sem perder até a final de Berna."},
-      {"t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o meio-campista entre Piqué e Abidal?", "a": ["mascherano"], "type": "player", "fixed": ["gilberto_silva", "mascherano", "riquelme", "ruicosta", "david_silva", "veron", "dimaria", "arrascaeta", "hazard", "rivaldo"], "xi": {"t": "Barcelona · final da Champions 2011", "rows": [["Valdés"], ["Alves", "Piqué", "?", "Abidal"], ["Busquets", "Xavi", "Iniesta"], ["Pedro", "Messi", "Villa"]]}, "d": 2, "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."},
+      {"t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o zagueiro entre Piqué e Abidal?", "a": ["mascherano"], "type": "player", "fixed": ["puyol", "mascherano", "thiago_silva", "cannavaro", "lucio", "sergio_ramos", "marquinhos", "david_luiz", "van_dijk", "ruben_dias"], "xi": {"t": "Barcelona · final da Champions 2011", "rows": [["Valdés"], ["Alves", "Piqué", "?", "Abidal"], ["Busquets", "Xavi", "Iniesta"], ["Pedro", "Messi", "Villa"]]}, "d": 2, "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."},
       {"t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o defensor ao lado de Piqué?", "a": ["dani_alves"], "type": "player", "fixed": ["david_luiz", "thuram", "thiago_silva", "roberto_carlos", "nesta", "lahm", "marcelo", "maicon", "dani_alves", "cafu"], "xi": {"t": "Barcelona · final da Champions 2011", "rows": [["Valdés"], ["?", "Piqué", "Mascherano", "Abidal"], ["Busquets", "Xavi", "Iniesta"], ["Pedro", "Messi", "Villa"]]}, "d": 2, "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."},
       {"t": "Complete a escalação do Barcelona campeão europeu de 2011: quem é o atacante ao lado de Messi?", "a": ["villa"], "type": "player", "fixed": ["torres", "thomas_muller", "aguero", "romario", "robinho", "etoo", "adriano", "raul", "pauleta", "villa"], "xi": {"t": "Barcelona · final da Champions 2011", "rows": [["Valdés"], ["Alves", "Piqué", "Mascherano", "Abidal"], ["Busquets", "Xavi", "Iniesta"], ["Pedro", "Messi", "?"]]}, "d": 2, "x": "Mascherano, volante de origem, jogou como zagueiro no Barça de Guardiola."},
       {"t": "Complete a escalação do Barcelona campeão europeu de 2009: quem é o atacante ao lado de Eto’o?", "a": ["henry"], "type": "player", "fixed": ["suarez", "ribery", "benzema", "drogba", "luis_fabiano", "ronaldo", "neymar", "henry", "denilson", "griezmann"], "xi": {"t": "Barcelona · final da Champions 2009", "rows": [["Valdés"], ["Puyol", "Touré", "Piqué", "Sylvinho"], ["Busquets", "Xavi", "Iniesta"], ["Messi", "Eto’o", "?"]]}, "d": 2, "x": "O trio de ataque marcou exatamente 100 gols naquela temporada."},
@@ -6651,10 +6651,10 @@ const CATS = [
       {"t": "Complete a escalação da Inter campeã europeia de 2010: quem é o goleiro?", "a": ["julio_cesar"], "type": "player", "fixed": ["rogerio_ceni", "alisson", "dida", "barthez", "buffon", "marcos", "cech", "lloris", "ederson", "julio_cesar"], "xi": {"t": "Inter · final da Champions 2010", "rows": [["?"], ["Maicon", "Lúcio", "Samuel", "Chivu"], ["Zanetti", "Cambiasso"], ["Eto’o", "Sneijder", "Pandev"], ["Milito"]]}, "d": 2, "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."},
       {"t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor ao lado de Lúcio?", "a": ["maicon"], "type": "player", "fixed": ["dani_alves", "marcelo", "lahm", "van_dijk", "maicon", "cannavaro", "marquinhos", "david_luiz", "roberto_carlos", "thiago_silva"], "xi": {"t": "Inter · final da Champions 2010", "rows": [["Júlio César"], ["?", "Lúcio", "Samuel", "Chivu"], ["Zanetti", "Cambiasso"], ["Eto’o", "Sneijder", "Pandev"], ["Milito"]]}, "d": 2, "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."},
       {"t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor entre Maicon e Samuel?", "a": ["lucio"], "type": "player", "fixed": ["puyol", "van_dijk", "david_luiz", "marcelo", "thiago_silva", "sergio_ramos", "lucio", "dani_alves", "marquinhos", "cafu"], "xi": {"t": "Inter · final da Champions 2010", "rows": [["Júlio César"], ["Maicon", "?", "Samuel", "Chivu"], ["Zanetti", "Cambiasso"], ["Eto’o", "Sneijder", "Pandev"], ["Milito"]]}, "d": 2, "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."},
-      {"t": "Complete a escalação da Inter campeã europeia de 2010: quem é o defensor ao lado de Cambiasso?", "a": ["zanetti"], "type": "player", "fixed": ["zanetti", "maldini", "david_luiz", "thuram", "lahm", "van_dijk", "puyol", "cannavaro", "marquinhos", "dani_alves"], "xi": {"t": "Inter · final da Champions 2010", "rows": [["Júlio César"], ["Maicon", "Lúcio", "Samuel", "Chivu"], ["?", "Cambiasso"], ["Eto’o", "Sneijder", "Pandev"], ["Milito"]]}, "d": 2, "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."},
+      {"t": "Complete a escalação da Inter campeã europeia de 2010: quem é o meio-campista ao lado de Cambiasso?", "a": ["zanetti"], "type": "player", "fixed": ["zanetti", "pirlo", "vieira", "kante", "rijkaard", "dunga", "mauro_silva", "busquets", "gilberto_silva", "veron"], "xi": {"t": "Inter · final da Champions 2010", "rows": [["Júlio César"], ["Maicon", "Lúcio", "Samuel", "Chivu"], ["?", "Cambiasso"], ["Eto’o", "Sneijder", "Pandev"], ["Milito"]]}, "d": 2, "x": "Três brasileiros foram titulares na tríplice coroa de Mourinho."},
       {"t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o meio-campista ao lado de Mikel?", "a": ["lampard"], "type": "player", "fixed": ["alex", "gerrard", "riquelme", "rivaldo", "vieira", "de_bruyne", "beckham", "lampard", "veron", "scholes"], "xi": {"t": "Chelsea · final da Champions 2012", "rows": [["Čech"], ["Bosingwa", "Cahill", "D. Luiz", "A. Cole"], ["Mikel", "?"], ["Kalou", "Mata", "Bertrand"], ["Drogba"]]}, "d": 2, "x": "Čech defendeu o pênalti de Robben na prorrogação."},
       {"t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o goleiro?", "a": ["cech"], "type": "player", "fixed": ["courtois", "ederson", "higuita", "lloris", "cech", "casillas", "buffon", "rogerio_ceni", "alisson", "van_der_sar"], "xi": {"t": "Chelsea · final da Champions 2012", "rows": [["?"], ["Bosingwa", "Cahill", "D. Luiz", "A. Cole"], ["Mikel", "Lampard"], ["Kalou", "Mata", "Bertrand"], ["Drogba"]]}, "d": 2, "x": "Čech defendeu o pênalti de Robben na prorrogação."},
-      {"t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o defensor entre Cahill e A. Cole?", "a": ["david_luiz"], "type": "player", "fixed": ["ruben_dias", "maicon", "marcelo", "david_luiz", "lucio", "marquinhos", "dani_alves", "thiago_silva", "sergio_ramos", "lahm"], "xi": {"t": "Chelsea · final da Champions 2012", "rows": [["Čech"], ["Bosingwa", "Cahill", "?", "A. Cole"], ["Mikel", "Lampard"], ["Kalou", "Mata", "Bertrand"], ["Drogba"]]}, "d": 2, "x": "Čech defendeu o pênalti de Robben na prorrogação."},
+      {"t": "Complete a escalação do Chelsea campeão europeu de 2012: quem é o defensor entre Bosingwa e Cahill?", "a": ["david_luiz"], "type": "player", "fixed": ["ruben_dias", "maicon", "marcelo", "david_luiz", "lucio", "marquinhos", "dani_alves", "thiago_silva", "sergio_ramos", "lahm"], "xi": {"t": "Chelsea · final da Champions 2012", "rows": [["Čech"], ["Bosingwa", "?", "Cahill", "A. Cole"], ["Mikel", "Lampard"], ["Kalou", "Mata", "Bertrand"], ["Drogba"]]}, "d": 2, "x": "Čech defendeu o pênalti de Robben na prorrogação."},
       {"t": "Complete a escalação do Flamengo campeão mundial de 1981: quem é o defensor ao lado de Mozer?", "a": ["junior"], "type": "player", "fixed": ["scirea", "junior", "koeman", "marinho_chagas", "branco", "carlos_alberto", "piazza", "brito", "jorginho", "passarella"], "xi": {"t": "Flamengo · Mundial de 1981", "rows": [["Raul"], ["Leandro", "Marinho", "Mozer", "?"], ["Andrade", "Adílio", "Zico"], ["Tita", "Nunes", "Lico"]]}, "d": 3, "x": "O Flamengo venceu o Liverpool por 3 a 0 em Tóquio."},
       {"t": "Complete a escalação do Flamengo campeão da Libertadores de 2019: quem é o meio-campista ao lado de Everton Ribeiro?", "a": ["arrascaeta"], "type": "player", "fixed": ["ozil", "bernardo_silva", "james", "kaka", "kante", "pogba", "bruno_fernandes", "arrascaeta", "casemiro", "valverde"], "xi": {"t": "Flamengo · final da Libertadores 2019", "rows": [["Diego Alves"], ["Rafinha", "Rodrigo Caio", "Pablo Marí", "Filipe Luís"], ["Willian Arão", "Gerson", "Everton Ribeiro", "?"], ["Bruno Henrique", "Gabigol"]]}, "d": 2, "x": "O time de Jorge Jesus ganhou o Brasileirão e a Libertadores no mesmo fim de semana."},
       {"t": "Complete a escalação do Flamengo campeão da Libertadores de 2019: quem é o atacante ao lado de Bruno Henrique?", "a": ["gabigol"], "type": "player", "fixed": ["thomas_muller", "richarlison", "etoo", "adriano", "gabigol", "vinicius", "hulk", "robinho", "saka", "endrick"], "xi": {"t": "Flamengo · final da Libertadores 2019", "rows": [["Diego Alves"], ["Rafinha", "Rodrigo Caio", "Pablo Marí", "Filipe Luís"], ["Willian Arão", "Gerson", "Everton Ribeiro", "Arrascaeta"], ["Bruno Henrique", "?"]]}, "d": 2, "x": "O time de Jorge Jesus ganhou o Brasileirão e a Libertadores no mesmo fim de semana."},
@@ -6662,13 +6662,13 @@ const CATS = [
       {"t": "Complete a escalação do Santos bicampeão mundial de 1962: quem é o atacante ao lado de Pelé?", "a": ["pepe"], "type": "player", "fixed": ["julinho", "tostao", "pepe", "garrincha", "zagallo", "gerd_muller", "mazzola", "amarildo", "vava", "fontaine"], "xi": {"t": "Santos · 1962", "rows": [["Gilmar"], ["Lima", "Mauro", "Calvet", "Dalmo"], ["Zito", "Mengálvio"], ["Dorval", "Coutinho", "Pelé", "?"]]}, "d": 4, "x": "Pelé e Coutinho formaram uma das maiores duplas de ataque da história."},
       {"t": "Complete a escalação do Santos bicampeão mundial de 1962: quem é o meio-campista ao lado de Mengálvio?", "a": ["zito"], "type": "player", "fixed": ["schiaffino", "gerson", "didi", "rivera", "rivellino", "liedholm", "zito", "luis_suarez_es", "kopa", "zizinho"], "xi": {"t": "Santos · 1962", "rows": [["Gilmar"], ["Lima", "Mauro", "Calvet", "Dalmo"], ["?", "Mengálvio"], ["Dorval", "Coutinho", "Pelé", "Pepe"]]}, "d": 4, "x": "Pelé e Coutinho formaram uma das maiores duplas de ataque da história."},
       {"t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o goleiro?", "a": ["zetti"], "type": "player", "fixed": ["schmeichel", "rogerio_ceni", "taffarel", "marcos", "chilavert", "fillol", "buffon", "dida", "zetti", "vitor_baia"], "xi": {"t": "São Paulo · Mundial de 1992", "rows": [["?"], ["Vítor", "Adílson", "Ronaldão", "Ronaldo Luís"], ["Pintado", "Cerezo", "Raí", "Cafu"], ["Palhinha", "Müller"]]}, "d": 3, "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."},
-      {"t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o defensor ao lado de Raí?", "a": ["cafu"], "type": "player", "fixed": ["aldair", "branco", "zanetti", "cafu", "jorginho", "maldini", "roberto_carlos", "thuram", "junior", "brehme"], "xi": {"t": "São Paulo · Mundial de 1992", "rows": [["Zetti"], ["Vítor", "Adílson", "Ronaldão", "Ronaldo Luís"], ["Pintado", "Cerezo", "Raí", "?"], ["Palhinha", "Müller"]]}, "d": 3, "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."},
+      {"t": "Complete a escalação do São Paulo campeão mundial de 1992: quem fecha o meio-campo ao lado de Raí?", "a": ["cafu"], "type": "player", "fixed": ["aldair", "branco", "zanetti", "cafu", "jorginho", "maldini", "roberto_carlos", "thuram", "junior", "brehme"], "xi": {"t": "São Paulo · Mundial de 1992", "rows": [["Zetti"], ["Vítor", "Adílson", "Ronaldão", "Ronaldo Luís"], ["Pintado", "Cerezo", "Raí", "?"], ["Palhinha", "Müller"]]}, "d": 3, "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."},
       {"t": "Complete a escalação do São Paulo campeão mundial de 1992: quem é o atacante ao lado de Palhinha?", "a": ["muller_sp"], "type": "player", "fixed": ["muller_sp", "romario", "zamorano", "elber", "careca", "stoichkov", "edilson", "van_basten", "savio", "ronaldo"], "xi": {"t": "São Paulo · Mundial de 1992", "rows": [["Zetti"], ["Vítor", "Adílson", "Ronaldão", "Ronaldo Luís"], ["Pintado", "Cerezo", "Raí", "Cafu"], ["Palhinha", "?"]]}, "d": 3, "x": "O time de Telê Santana venceu o Barcelona de Cruyff por 2 a 1."},
       {"t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o meio-campista entre Rogério e Zinho?", "a": ["alex"], "type": "player", "fixed": ["keane", "djalminha", "emerson", "kaka", "dunga", "rivaldo", "alex", "gilberto_silva", "deschamps", "veron"], "xi": {"t": "Palmeiras · Libertadores 1999", "rows": [["Marcos"], ["Arce", "Júnior Baiano", "Roque Júnior", "Júnior"], ["César Sampaio", "Rogério", "?", "Zinho"], ["Paulo Nunes", "Oséas"]]}, "d": 3, "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."},
       {"t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o goleiro?", "a": ["marcos"], "type": "player", "fixed": ["chilavert", "cech", "casillas", "rogerio_ceni", "marcos", "zetti", "buffon", "dida", "schmeichel", "taffarel"], "xi": {"t": "Palmeiras · Libertadores 1999", "rows": [["?"], ["Arce", "Júnior Baiano", "Roque Júnior", "Júnior"], ["César Sampaio", "Rogério", "Alex", "Zinho"], ["Paulo Nunes", "Oséas"]]}, "d": 3, "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."},
       {"t": "Complete a escalação do Palmeiras campeão da Libertadores de 1999: quem é o meio-campista ao lado de Alex?", "a": ["zinho"], "type": "player", "fixed": ["matthaus", "dunga", "deco", "zinho", "ze_roberto", "juninho", "keane", "diego", "gilberto_silva", "vampeta"], "xi": {"t": "Palmeiras · Libertadores 1999", "rows": [["Marcos"], ["Arce", "Júnior Baiano", "Roque Júnior", "Júnior"], ["César Sampaio", "Rogério", "Alex", "?"], ["Paulo Nunes", "Oséas"]]}, "d": 3, "x": "Marcos virou 'São Marcos' com as defesas daquela campanha."},
       {"t": "Complete a escalação do Atlético-MG campeão da Libertadores de 2013: quem é o meio-campista entre Tardelli e Bernard?", "a": ["ronaldinho"], "type": "player", "fixed": ["pirlo", "ronaldinho", "emerson", "bruno_g", "veron", "ze_roberto", "rivaldo", "alex", "dimaria", "juninho"], "xi": {"t": "Atlético-MG · Libertadores 2013", "rows": [["Victor"], ["Marcos Rocha", "Réver", "Leonardo Silva", "Richarlyson"], ["Pierre", "Josué"], ["Tardelli", "?", "Bernard"], ["Jô"]]}, "d": 2, "x": "Victor defendeu um pênalti nos acréscimos das quartas de final, contra o Tijuana."},
-      {"t": "Complete a escalação do Milan de 1994 que goleou o Barcelona: quem é o defensor entre Albertini e Boban?", "a": ["desailly"], "type": "player", "fixed": ["desailly", "branco", "jorginho", "junior", "roberto_carlos", "thuram", "aldair", "cafu", "cannavaro", "brehme"], "xi": {"t": "Milan · final da Champions 1994", "rows": [["S. Rossi"], ["Tassotti", "F. Galli", "Maldini", "Panucci"], ["Donadoni", "Albertini", "?", "Boban"], ["Savićević", "Massaro"]]}, "d": 3, "x": "Desailly marcou o quarto gol no 4 a 0 de Atenas."},
+      {"t": "Complete a escalação do Milan de 1994 que goleou o Barcelona: quem é o meio-campista entre Albertini e Boban?", "a": ["desailly"], "type": "player", "fixed": ["desailly", "branco", "jorginho", "junior", "roberto_carlos", "thuram", "aldair", "cafu", "cannavaro", "brehme"], "xi": {"t": "Milan · final da Champions 1994", "rows": [["S. Rossi"], ["Tassotti", "F. Galli", "Maldini", "Panucci"], ["Donadoni", "Albertini", "?", "Boban"], ["Savićević", "Massaro"]]}, "d": 3, "x": "Desailly marcou o quarto gol no 4 a 0 de Atenas."},
     ]
   },
   {
@@ -6725,7 +6725,6 @@ const CATS = [
       {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Roberto Carlos ou Cafu?", "a": ["cafu"], "type": "player", "fixed": ["roberto_carlos", "cafu"], "d": 2, "icon": "trophy"},
       {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Rivaldo ou Ronaldo Fenômeno?", "a": ["ronaldo"], "type": "player", "fixed": ["rivaldo", "ronaldo"], "d": 2, "icon": "trophy"},
       {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Carlos Alberto ou Zagallo?", "a": ["zagallo"], "type": "player", "fixed": ["carlos_alberto", "zagallo"], "d": 3, "icon": "trophy"},
-      {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Djalma Santos ou Bellini?", "a": ["djalma_santos"], "type": "player", "fixed": ["djalma_santos", "bellini"], "d": 4, "icon": "trophy"},
       {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Vavá ou Amarildo?", "a": ["vava"], "type": "player", "fixed": ["vava", "amarildo"], "d": 4, "icon": "trophy"},
       {"t": "Duelo: quem ganhou mais Copas do Mundo como jogador, Pelé ou Zagallo?", "a": ["pele"], "type": "player", "fixed": ["pele", "zagallo"], "d": 3, "icon": "trophy"},
       {"t": "Duelo: quem ganhou mais Copas dos Campeões / Champions League, Di Stéfano ou Ferenc Puskás?", "a": ["distefano"], "type": "player", "fixed": ["distefano", "puskas"], "d": 3, "x": "Di Stéfano ganhou as cinco primeiras; Puskás, três.", "icon": "trophy"},
@@ -6763,7 +6762,6 @@ const CATS = [
       {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Fluminense ou Corinthians?", "a": ["corinthians"], "fixed": ["fluminense", "corinthians"], "d": 3, "x": "Corinthians: 7. Fluminense: 3.", "icon": "trophy"},
       {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Flamengo ou São Paulo FC?", "a": ["flamengo"], "fixed": ["flamengo", "saopaulo"], "d": 3, "x": "Flamengo: 8. São Paulo FC: 6.", "icon": "trophy"},
       {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Cruzeiro ou Grêmio?", "a": ["cruzeiro"], "fixed": ["cruzeiro", "gremio"], "d": 3, "x": "Cruzeiro: 3. Grêmio: 2.", "icon": "trophy"},
-      {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Sport Recife?", "a": ["bahia"], "fixed": ["bahia", "sport"], "d": 3, "x": "Bahia: 1. Sport Recife: 0.", "icon": "trophy"},
       {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Bahia ou Botafogo?", "a": ["botafogo"], "fixed": ["bahia", "botafogo"], "d": 3, "x": "Botafogo: 2. Bahia: 1.", "icon": "trophy"},
       {"t": "Duelo: quem tem mais títulos do Brasileirão (desde 1971, até 2025), Corinthians ou Palmeiras?", "a": ["palmeiras"], "fixed": ["corinthians", "palmeiras"], "d": 3, "x": "Palmeiras: 8. Corinthians: 7.", "icon": "trophy"},
       {"t": "Duelo: quem tem mais títulos da Libertadores (até 2025), Flamengo ou São Paulo FC?", "a": ["flamengo"], "fixed": ["flamengo", "saopaulo"], "d": 3, "x": "Flamengo: 4. São Paulo FC: 3.", "icon": "trophy"},
@@ -7054,7 +7052,7 @@ const CATS = [
       {"t": "Anos 80: qual argentino jogou dez anos no Tottenham e foi campeão do mundo em 1978?", "a": ["ardiles"], "type": "player", "d": 4, "icon": "jersey"},
       {"t": "Anos 80: qual argentino fez um gol na final de 1986 e depois dirigiu o Real Madrid?", "a": ["valdano"], "type": "player", "d": 4, "icon": "jersey"},
       {"t": "Anos 80: qual atacante espanhol, a 'Quinta del Buitre', fez quatro gols contra a Dinamarca na Copa de 1986?", "a": ["butragueno"], "type": "player", "d": 4, "icon": "jersey"},
-      {"t": "Anos 80: qual zagueiro alemão fez o gol do título da Copa de 1990 de pênalti?", "a": ["brehme"], "type": "player", "d": 3, "icon": "penalty"},
+      {"t": "Anos 80: qual lateral alemão fez o gol do título da Copa de 1990 de pênalti?", "a": ["brehme"], "type": "player", "d": 3, "icon": "penalty"},
       {"t": "Anos 80: qual atacante do Grêmio marcou os dois gols do título mundial de 1983, contra o Hamburgo?", "a": ["renato_gaucho"], "type": "player", "d": 3, "icon": "jersey"},
       {"t": "Anos 80: qual ponta-esquerda do Atlético-MG tinha um chute tão forte que o chamavam de 'Canhão'?", "a": ["eder"], "type": "player", "d": 4, "icon": "jersey"},
       {"t": "Anos 80: qual centroavante do Atlético-MG comemorava gols com o punho cerrado, contra a ditadura?", "a": ["reinaldo"], "type": "player", "d": 3, "icon": "jersey"},
@@ -7249,11 +7247,11 @@ const CATS = [
       {"t": "Qual clube manda seus jogos no estádio Frasqueirão?", "a": ["abc"], "d": 4, "icon": "stadium"},
       {"t": "Qual clube manda seus jogos no estádio Arena MRV?", "a": ["atleticomg"], "d": 2, "icon": "stadium"},
       {"t": "Qual clube manda seus jogos no estádio Independência?", "a": ["americamg"], "d": 4, "icon": "stadium"},
-      {"t": "Qual clube manda seus jogos no estádio Estádio Nilton Santos?", "a": ["botafogo"], "d": 2, "icon": "stadium"},
+      {"t": "Qual clube manda seus jogos no Estádio Nilton Santos?", "a": ["botafogo"], "d": 2, "icon": "stadium"},
       {"t": "Qual clube manda seus jogos no estádio São Januário?", "a": ["vasco"], "d": 2, "stad": "saojanua"},
       {"t": "Qual clube manda seus jogos no estádio Morumbis?", "a": ["saopaulo"], "d": 2, "stad": "morumbi"},
       {"t": "Qual clube manda seus jogos no estádio Vila Belmiro?", "a": ["santos"], "d": 2, "stad": "vilabelmiro"},
-      {"t": "Qual clube manda seus jogos no estádio Estádio José Maria de Campos Maia?", "a": ["mirassol"], "d": 4, "icon": "stadium"},
+      {"t": "Qual clube manda seus jogos no Estádio José Maria de Campos Maia, o Maião?", "a": ["mirassol"], "d": 4, "icon": "stadium"},
       {"t": "Qual clube manda seus jogos no estádio Santa Cruz, em Ribeirão Preto?", "a": ["botafogosp"], "d": 4, "icon": "stadium"},
       {"t": "De qual clube Rogério Ceni é ídolo?", "a": ["saopaulo"], "d": 3, "x": "Rogério Ceni marcou mais de cem gols como goleiro.", "icon": "jersey"},
       {"t": "De qual clube Marcos é ídolo?", "a": ["palmeiras"], "d": 3, "x": "São Marcos jogou a carreira inteira no Palmeiras.", "icon": "jersey"},
@@ -8426,7 +8424,7 @@ const CL_META = {
   corinthians:{f:1910,br:7,lib:1},palmeiras:{f:1914,br:12,lib:3},
   saopaulo:{f:1930,br:6,lib:3},   santos:{f:1912,br:8,lib:3},
   gremio:{f:1903,br:2,lib:3},     internacional:{f:1909,br:3,lib:2},
-  cruzeiro:{f:1921,br:4,lib:2},   atleticomg:{f:1908,br:2,lib:1},
+  cruzeiro:{f:1921,br:4,lib:2},   atleticomg:{f:1908,br:3,lib:1},
   atleticopr:{f:1924,br:1,lib:0}, bahia:{f:1931,br:2,lib:0},
   fortaleza:{f:1918,br:0,lib:0},  ceara:{f:1914,br:0,lib:0},
   sport:{f:1905,br:1,lib:0},      pontepreta:{f:1900,br:0,lib:0},
@@ -10816,7 +10814,8 @@ function GEN_QS(tier) {
     const span = [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
     const near = span.filter(d => d !== dec && Math.abs(d - dec) <= 30);
     if (near.length < 4) return;
-    const label = d => `Anos ${String(d).slice(2)}`;
+    /* "Anos 00" reads as nothing; the 2000s are spelled out */
+    const label = d => d >= 2000 ? `Anos ${d}` : `Anos ${String(d).slice(2)}`;
     out.push({
       t: `Em que década ${p.n} começou a carreira?`,
       type: 'txt',
@@ -13510,6 +13509,8 @@ function optArtFor(q) {
     /* a board of grounds, cities, leagues or matches: the answers are named
        after men ("Magalhães Pinto", "Urbano Caldeira") but are not men */
     const place = /\b(estadios?|arenas?|campo|palco|liga|campeonato|partida|cidades?|sede|batalha|apelid\w* (do|da|de) (jogo|partida|estadio))\b/.test(t);
+    const players = (count.face || 0) >= 2 ||
+      /\b(jogador(es|a|as)?|craques?|elenco|goleiros?|atacantes?|zagueiros?|artilheir\w*|camisa \d+|convocad\w*|quem sou eu)\b/.test(t);
     const coach = /\b(tecnicos?|tecnica|treinador(es)?|trein(ou|ei|ava|aram)|dirig(i|iu|ia|iram)|comand(ou|ei|ava))\b/.test(t);
     /* a man the album has painted keeps his portrait even on a board of
        busts — a face beside five silhouettes says nothing about the answer,
@@ -13518,7 +13519,8 @@ function optArtFor(q) {
     q.choices.forEach((c, i) => {
       const r = res[i];
       out[c] = r && r.k === 'face' && !r.blank && r.img !== qFace && !looks
-        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach, club: !!(r && r.k === 'club') || (place && !coach) };
+        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach, man: players && !coach && !place,
+                club: !!(r && r.k === 'club') || (place && !coach) };
     });
     out._kind = 'glyph';
   }
@@ -13570,6 +13572,15 @@ function optGlyphSVG(text, asPerson, initial) {
       <text x="28.5" y="25" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="13" fill="#F1D27C">${m[2]}</text>
       <circle cx="20" cy="17" r=".9" fill="#F1D27C"/><circle cx="20" cy="23" r=".9" fill="#F1D27C"/></svg>`;
   }
+  /* a decade: the same calendar stamp, with "anos" over the decade */
+  if ((m = t.match(/^anos (\d{2}|\d{4})$/i))) {
+    const d = m[1].length === 4 ? m[1] : m[1];
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="6" width="28" height="29" rx="2.5" fill="#F4F1E7" stroke="${ink}" stroke-width="1"/>
+      <rect x="6" y="6" width="28" height="8" rx="2.5" fill="#B23A2E"/><rect x="6" y="11" width="28" height="3" fill="#B23A2E"/>
+      <circle cx="13" cy="6" r="1.4" fill="${ink}"/><circle cx="27" cy="6" r="1.4" fill="${ink}"/>
+      <text x="20" y="12.4" text-anchor="middle" font-family="Archivo Narrow, sans-serif" font-weight="700" font-size="5.2" fill="#F6EBD8" letter-spacing=".5">ANOS</text>
+      <text x="20" y="${d.length === 4 ? 28.6 : 30}" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="${d.length === 4 ? 9.2 : 15}" fill="${ink}">${d.length === 4 ? d : "’" + d}</text></svg>`;
+  }
   if ((m = t.match(/^(1[89]|20)(\d\d)$/))) {
     return `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="6" width="26" height="29" rx="2.5" fill="#F4F1E7" stroke="${ink}" stroke-width="1"/>
       <rect x="7" y="6" width="26" height="8" rx="2.5" fill="#B23A2E"/><rect x="7" y="11" width="26" height="3" fill="#B23A2E"/>
@@ -13588,9 +13599,9 @@ function optGlyphSVG(text, asPerson, initial) {
   const words = t.split(/\s+/);
   /* "Derby del Sole" has a person's shape — capitalised words around a
      "del" — but a match, a cup or a ground is never a man */
-  const thing = /\b(trag[eé]dia|guerra|time|laranja|total|division|goleo|arena|park|stadium|stade|stadion|bridge|trafford|bowl|siro|nou|mam[eé]s|bombonera|monumental|cilindro|batalha|milagre|noite|jogo|s[eé]rie|rio|porto|cidade|calder[oó]n|maracan[aã]|pacaembu|morumbi|wembley|anfield|derby|derbi|cl[aá]ss?ico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
+  const thing = /\b(clubes|mundial|recopa|supercopa|libertadores|champions|sul-americana|intercontinental|ta[cç]a|trag[eé]dia|guerra|time|laranja|total|division|goleo|arena|park|stadium|stade|stadion|bridge|trafford|bowl|siro|nou|mam[eé]s|bombonera|monumental|cilindro|batalha|milagre|noite|jogo|s[eé]rie|rio|porto|cidade|calder[oó]n|maracan[aã]|pacaembu|morumbi|wembley|anfield|derby|derbi|cl[aá]ss?ico|classique|klassiker|copa|ta[cç]a|liga|league|est[aá]dio|torneio|campeonato|trof[eé]u|final|bola|chuteira|fc|sc|ec|clube|club)\b/i.test(t);
   /* on a board of coaches a one-word name ("Tite") is still a man */
-  const person = asPerson !== 'no' && (asPerson === true || (String(asPerson).startsWith('coach') && !thing && !/\d/.test(t)) || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
+  const person = asPerson !== 'no' && (asPerson === true || (/^(coach|man)/.test(String(asPerson)) && !thing && !/\d/.test(t)) || !thing && words.length >= 2 && words.length <= 4 && !/\d/.test(t) &&
     words.every(w => /^(d[aeo]s?|van|von|de|del|la|le|di|du|da|dos|y|mac|al|el|bin)$/i.test(w) || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇÖÜÑŁŠŽĆČ]/.test(w)));
   if (person) {
     /* a man the album has no picture of: a sepia bust on the cream disc, as an
@@ -13696,7 +13707,7 @@ function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
-  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.club ? 'no' : r.coach ? 'coach-maybe' : false, r.L)}</span>`;
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.club ? 'no' : r.coach ? 'coach-maybe' : r.man ? 'man-maybe' : false, r.L)}</span>`;
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
