@@ -243,8 +243,12 @@
         a pitch with the spot lit, a mascot, a shirt in its colour; women get
         their own busts; small round portraits zoom onto the face; "Quem sou
         eu?" opens on a mystery portrait, rules on a chalkboard; Antony's
-        card waits for its portrait in ink. */
-const VERSION = 'v74';
+        card waits for its portrait in ink.
+   v75: governing bodies are seals in their own colours (no longer six
+        identical globes); questions about them open on a drawn globe; the
+        1958 final question no longer has two right answers (Pelé and Vavá
+        both scored twice). */
+const VERSION = 'v75';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

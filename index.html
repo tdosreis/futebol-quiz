@@ -3512,7 +3512,7 @@ const CATS = [
       { t:'Qual goleiro foi campeão do mundo com o Brasil em 1958 e 1962?',                   a:['gilmar'],      type:'player' },
       { t:'Qual lateral-direito foi campeão em 1958 e 1962 e disputou quatro Copas do Mundo?', a:['djalma_santos'], type:'player' },
       { t:'Qual volante do Santos foi campeão do mundo em 1958 e 1962?',                      a:['zito'],        type:'player' },
-      { t:'Qual atacante marcou dois gols na final da Copa de 1958, contra a Suécia?',        a:['vava'],        type:'player' },
+      { t:'Além de Pelé, qual atacante marcou dois gols na final da Copa de 1958?',        a:['vava'],        type:'player' },
       { t:'Qual meia do Botafogo criou a "folha seca" e foi eleito o melhor da Copa de 1958?', a:['didi'],       type:'player' },
       { t:'Qual lateral-esquerdo bicampeão do mundo é chamado de "Enciclopédia do Futebol"?', a:['nilton_santos'], type:'player' },
       /* ── 1962: o bi sem Pelé ── */
@@ -4109,7 +4109,7 @@ const CATS = [
       {"t": "Em que país foi disputada a Copa do Mundo de 1954?", "a": ["Suíça"], "type": "txt", "choices": ["Suíça", "Alemanha", "Suécia", "Áustria", "Itália", "França"], "d": 3, "x": "Foi a Copa com mais gols por jogo da história: 140 no total, com a final no Wankdorf, em Berna.", "icon": "trophy"},
       {"t": "Qual seleção era a grande favorita e perdeu a final de 1954 para a Alemanha Ocidental?", "a": ["Hungria"], "type": "txt", "choices": ["Hungria", "Áustria", "Uruguai", "Brasil", "Iugoslávia", "Suíça"], "d": 3, "x": "Foi o 'Milagre de Berna': a Hungria de Puskás abriu 2 a 0 e perdeu por 3 a 2.", "flag": "GER"},
       {"t": "Qual seleção eliminou o Brasil nas quartas de final da Copa de 1954, na 'Batalha de Berna'?", "a": ["Hungria"], "type": "txt", "choices": ["Hungria", "Uruguai", "Áustria", "Alemanha Ocidental", "Iugoslávia", "Suíça"], "d": 4, "x": "Ficou conhecido como a Batalha de Berna, um dos jogos mais violentos da história das Copas.", "flag": "BRA"},
-      {"t": "Que país sediou a Copa de 1958 e chegou à final contra o Brasil?", "a": ["Suécia"], "type": "txt", "choices": ["Suécia", "Alemanha Ocidental", "França", "Inglaterra", "Suíça", "Dinamarca"], "d": 2, "x": "O Brasil venceu a final por 5 a 2, no Råsunda, com dois gols de Vavá.", "flag": "BRA"},
+      {"t": "Que país sediou a Copa de 1958 e chegou à final contra o Brasil?", "a": ["Suécia"], "type": "txt", "choices": ["Suécia", "Alemanha Ocidental", "França", "Inglaterra", "Suíça", "Dinamarca"], "d": 2, "x": "O Brasil venceu a final por 5 a 2, no Råsunda, com dois gols de Vavá e dois de Pelé.", "flag": "BRA"},
       {"t": "Qual seleção terminou em terceiro na Copa de 1958, puxada pelos 13 gols de Just Fontaine?", "a": ["França"], "type": "txt", "choices": ["França", "Alemanha Ocidental", "Suécia", "País de Gales", "Iugoslávia", "Hungria"], "d": 3, "x": "Just Fontaine fez 13 gols, recorde para uma única Copa que dura até hoje.", "who": "fontaine"},
       {"t": "Em que país foi disputada a Copa do Mundo de 1962?", "a": ["Chile"], "type": "txt", "choices": ["Chile", "Argentina", "Uruguai", "México", "Peru", "Brasil"], "d": 2, "x": "O Chile manteve a Copa mesmo depois do grande terremoto de 1960, e terminou em terceiro lugar.", "icon": "trophy"},
       {"t": "Qual seleção o Brasil venceu na final da Copa de 1962?", "a": ["Tchecoslováquia"], "type": "txt", "choices": ["Tchecoslováquia", "Hungria", "Iugoslávia", "Chile", "Alemanha Ocidental", "Inglaterra"], "d": 3, "x": "O Brasil venceu por 3 a 1 em Santiago, com Garrincha decisivo e Pelé fora por lesão.", "flag": "BRA"},
@@ -13597,7 +13597,7 @@ function glyphTopic(c, t, r) {
   if (/tragedia|desastre|hillsborough|heysel|superga|^fatidico$/.test(f)) return 'ribbon';
   if (/derby|derbi|classico|clasico|klassiker|classique|klassieker|old firm|superclas|^(fla-flu|gre-?nal|choque-rei|majestoso|san-sao|ba-vi|re-pa|atle-tiba|comclassico)$/.test(f) ||
       (/\b(classico|derby|derbi|duelo entre)\b/.test(t) && /-/.test(f))) return 'derby';
-  if (/^(uefa|afc|caf|conmebol|concacaf|ofc|fifa|ifab)$/.test(f)) return 'globe';
+  if (/^(uefa|afc|caf|conmebol|concacaf|ofc|fifa|ifab|coi|cbf)$/.test(f)) return 'seal';
   if (/\b(copa|recopa|supercopa|libertadores|champions|mundial|taca|trofeu|eurocopa|finalissima|intertoto|conferencia|liga europa|liga das nacoes|copa ouro|torneio)\b/.test(f)) return 'cup';
   if (/\b(liga|league|serie [abc]|bundesliga|eredivisie|ligue \d|division|championship|primeira|allsvenskan|superliga|campeonato|conference|tercera|liga mx|pro league)\b/.test(f)) return 'table';
   if (/\b(estilo|filosofia|escola|tatic\w*|esquema|sistema de jogo|jogo de|forma de jogar)\b/.test(t)) return 'chalk';
@@ -13740,6 +13740,20 @@ function topicSVG(topic, text) {
       return disc(`<circle cx="20" cy="20" r="11.5" fill="#2A4A7A"/><path d="M14 13c3 0 5 2 4 5s-4 2-5 5 1 5-1 6M24 10c-1 3 2 4 4 4s3 3 1 5-4 1-4 4 2 4 3 5" fill="#4E7A54"/>
         <circle cx="20" cy="20" r="11.5" fill="none" stroke="${ink}" stroke-width=".8"/><ellipse cx="20" cy="20" rx="5" ry="11.5" fill="none" stroke="${cream}" stroke-width=".4" opacity=".7"/>
         <path d="M8.5 20h23M10 14h20M10 26h20" stroke="${cream}" stroke-width=".4" opacity=".7"/>`);
+    case 'seal': {
+      /* a governing body is its seal: a gold-edged medallion with its letters,
+         each in a colour of its own — never its continent, which would answer
+         "quem organiza o futebol sul-americano?" by itself */
+      const col = { fifa:'#1F4E8C', uefa:'#20241E', conmebol:'#2F6B45', concacaf:'#7A2E4E', caf:'#9C6A1E', afc:'#8E2A20', ofc:'#1F6B6B', ifab:'#5B2C83' }[f]
+        || ['#1F4E8C', '#8E2A20', '#2F6B45', '#5B2C83', '#20241E', '#9C6A1E', '#1F6B6B', '#7A2E4E'][h % 8];
+      const L = t.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 8);
+      const fs = L.length > 4 ? 6.4 : L.length > 3 ? 7 : 9, fit = L.length > 4 ? ' textLength="20" lengthAdjust="spacingAndGlyphs"' : '';
+      const rays = Array.from({ length: 24 }, (_, i) => { const a = i * Math.PI / 12;
+        return `<path d="M${(20 + Math.cos(a) * 13.4).toFixed(1)} ${(20 + Math.sin(a) * 13.4).toFixed(1)}L${(20 + Math.cos(a + .13) * 16.6).toFixed(1)} ${(20 + Math.sin(a + .13) * 16.6).toFixed(1)}L${(20 + Math.cos(a + .26) * 13.4).toFixed(1)} ${(20 + Math.sin(a + .26) * 13.4).toFixed(1)}Z" fill="${gold}"/>`; }).join('');
+      return disc(`${rays}<circle cx="20" cy="20" r="13.4" fill="${col}"/><circle cx="20" cy="20" r="11.6" fill="none" stroke="#F1D27C" stroke-width=".6" stroke-dasharray="1 1"/>
+        <path d="M13 24.6h14" stroke="#F1D27C" stroke-width=".5"/><circle cx="20" cy="13.4" r="1.2" fill="#F1D27C"/>
+        <text x="20" y="${22.4 + (fs - 8) * .2}" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="${fs}" fill="#F6EBD8"${fit}>${L}</text>`);
+    }
     case 'chalk':
       return disc(`<rect x="6" y="9" width="28" height="21" rx="1.5" fill="#24382C" stroke="#7A5A30" stroke-width="1.6"/>
         <path d="M11 14l3 3M14 14l-3 3M26 23l3 3M29 23l-3 3" stroke="${cream}" stroke-width="1"/>
@@ -14271,6 +14285,17 @@ const INK_ART = {
     <path d="M26 70c1-14 9-21 20-23 2-.5 3.4-1.6 3.8-3.4v-4.6c-3.8-2.2-6.4-7-6.8-13-.8-9.4 4.6-17.4 11.6-17.4s12.4 8 11.6 17.4c-.4 6-3 10.8-6.8 13v4.6c.4 1.8 1.8 2.9 3.8 3.4 11 2 19 9 20 23Z" fill="url(#iws)"/>
     <path d="M26 70c1-14 9-21 20-23 2-.5 3.4-1.6 3.8-3.4v-4.6c-3.8-2.2-6.4-7-6.8-13-.8-9.4 4.6-17.4 11.6-17.4s12.4 8 11.6 17.4c-.4 6-3 10.8-6.8 13v4.6c.4 1.8 1.8 2.9 3.8 3.4 11 2 19 9 20 23Z" fill="url(#iwh)"/>
     <text x="54.6" y="35" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="700" font-size="22" fill="#F1D27C">?</text></svg>`,
+  globe: `<svg viewBox="0 0 104 68" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>
+    <radialGradient id="igb" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#141B2A"/></radialGradient>
+    <radialGradient id="igs" cx=".38" cy=".32" r=".7"><stop offset="0" stop-color="#3E6A9A"/><stop offset="1" stop-color="#1F3A5E"/></radialGradient></defs>
+    <rect width="104" height="68" fill="url(#igb)"/>
+    <path d="M30 60h44" stroke="#B98C42" stroke-width="2"/><path d="M52 52v8" stroke="#B98C42" stroke-width="2.4"/>
+    <path d="M28 30a24 24 0 0 0 48 0" fill="none" stroke="#B98C42" stroke-width="1.6"/>
+    <circle cx="52" cy="30" r="20" fill="url(#igs)"/>
+    <g fill="#7E9B6A" opacity=".95"><path d="M38 20c4-3 9-2 10 1s-2 5-5 6-3 5-6 4-3-8 1-11Z"/><path d="M50 34c3-1 6 1 6 5s-3 9-5 9-3-5-3-8 0-5 2-6Z"/>
+      <path d="M57 16c4-2 10-1 12 3s0 6-4 6-5 3-8 2-4-9 0-11Z"/><path d="M62 33c2 0 4 2 3 4s-3 2-4 1-1-5 1-5Z"/></g>
+    <g fill="none" stroke="#F4F1E7" stroke-width=".5" opacity=".45"><ellipse cx="52" cy="30" rx="9" ry="20"/><path d="M32 30h40M34 21h36M34 39h36"/></g>
+    <circle cx="52" cy="30" r="20" fill="none" stroke="#000" stroke-opacity=".3"/></svg>`,
   chalk: `<svg viewBox="0 0 104 68" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <rect width="104" height="68" fill="#6E4F2C"/><rect x="4" y="4" width="96" height="60" rx="2" fill="#22352A"/>
     <rect x="4" y="4" width="96" height="60" rx="2" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/>
@@ -14354,6 +14379,8 @@ function questionArtRaw(q) {
   /* a card of clues with nothing of its own to show is a mystery, not a
      football on the grass; a question of laws and moves is a chalkboard */
   if (q.clues || /\bquem sou eu\b/i.test(q.t || '')) return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Retrato misterioso">${INK_ART.who}</div>`;
+  if (/\b(entidade|confederac\w*|federac\w*|orgao)\b/.test(_fold(q.t || '')))
+    return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Globo">${INK_ART.globe}</div>`;
   if ((q._cat && q._cat.id === 'regras_jogadas') || /\b(drible|dribles|jogada|jargao|lance de)\b/.test(_fold(q.t || '')))
     return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Quadro de táticas">${INK_ART.chalk}</div>`;
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
