@@ -91,9 +91,10 @@ MASCOT = """Paint an original full-length cartoon football mascot character, in 
 illustrator of classic 1990s Brazilian sticker albums, now painted by hand in gouache and watercolour on \
 heavy cold-press paper.
 
-The character: {who}. It is the mascot of {club}, known as "{name}". The reference image shows only which \
-kind of creature or figure it is — design a new, original, charming character of that kind, standing or \
-running, full body, friendly and full of personality, with a big expressive face.
+The character: {who}. It is the mascot of {club}, known as "{name}". The reference image is a photograph \
+of the real animal or object — keep its true anatomy, proportions, markings and texture, and turn it into a \
+new, original, charming character of that kind, standing or running, full body, friendly and full of \
+personality, with a big expressive face.
 
 It wears a plain football kit in the club's colours: {colors}. No crest, no badge, no logo, no sponsor, \
 no letters and no numbers anywhere.
@@ -216,6 +217,15 @@ def source(kind, rel, out):
         return data, credit
     if kind == 'mascot':
         m = next(x for x in mascots() if rel.endswith('/' + x['id'] + '.webp'))
+        # a reviewed reference photograph of the real animal or object, when one
+        # was chosen (mascots.json "src", fetched by mascot_sources.py); the
+        # emoji only as a last resort
+        if m.get('src'):
+            ph = os.path.join(out, 'src', 'img', 'msc-src', m['src'] + '.jpg')
+            if os.path.exists(ph):
+                meta = ph[:-4] + '.json'
+                credit = json.load(open(meta)) if os.path.exists(meta) else None
+                return open(ph, 'rb').read(), credit
         return open(os.path.join(ROOT, 'img', 'msc', m['art'] + '.webp'), 'rb').read(), None
     return open(os.path.join(ROOT, rel), 'rb').read(), None
 
@@ -328,7 +338,7 @@ def main():
                 if kind == 'person': print(f'· fetched {rel} <- {credit.get("article")} [{credit.get("l")}]', flush=True)
                 continue
             pt.PROMPT_TEXT = prompt(kind, rel)
-            mime = 'image/jpeg' if kind == 'person' else 'image/webp'
+            mime = 'image/jpeg' if kind == 'person' or raw[:3] == b'\xff\xd8\xff' else 'image/png' if raw[:4] == b'\x89PNG' else 'image/webp'
             res = pt.call(model, key, raw, mime, attempts=6)
             parts = (res.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
             img = next((p.get('inlineData') or p.get('inline_data') for p in parts
