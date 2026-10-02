@@ -254,8 +254,10 @@
    v77: every question pictures its own subject: a World Cup by its year, a
         cup or a ground by its name on a ribbon, a nickname in quotes, the
         state or continent it names, the Bola de Ouro, a stopwatch, a goal
-        with its measures, a whistle — instead of a stock football photo. */
-const VERSION = 'v77';
+        with its measures, a whistle — instead of a stock football photo.
+   v78: "Quem foi companheiro de…" asked across eras (Best and Van der Sar
+        at Fulham); it now asks who else played for the club. */
+const VERSION = 'v78';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

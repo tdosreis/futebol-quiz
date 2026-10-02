@@ -10448,14 +10448,16 @@ function GEN_QS(tier) {
     });
   });
 
-  /* 25. Team-mates abroad: who shared a dressing room with this player? */
+  /* 25. The same shirt abroad: who else wore it? Not "team-mate" — the album
+     knows the clubs a man played for, not the years, and George Best and Van
+     der Sar both played for Fulham a quarter of a century apart. */
   pick(PL.filter(p => (p.clubs || []).some(c => !CIDS.has(c) && (abroad[c] || []).length >= 2)), 5).forEach(p => {
     const cs = (p.clubs || []).filter(c => !CIDS.has(c) && (abroad[c] || []).length >= 2);
     const c  = rndOf(cs);
     const mates = abroad[c].filter(x => x.id !== p.id);
     if (!mates.length) return;
     out.push({
-      t: `Quem foi companheiro de ${p.n} ${inClub(c)}?`,
+      t: `Além de ${p.n}, quem também jogou ${inClub(c)}?`,
       a: [rndOf(mates).id], type: 'player',
       pool: PL.filter(x => x.id !== p.id && !(x.clubs || []).includes(c)).map(x => x.id),
       face: p.img, _cat: GC3.abroad, d: 3,
