@@ -9101,6 +9101,34 @@ const CREDITS = {
   'img/crests/zenit-st-petersburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
   /* retratos das páginas novas */
   'img/antony-ink.webp': { a:'Futebol Quiz BR (ilustração)', l:'Arte original' },
+  'img/msc-photo/almirante.webp': { a:"Paul R. Burley", l:'CC BY-SA 4.0' },
+  'img/msc-photo/azulao.webp': { a:"Quartl", l:'CC BY-SA 3.0' },
+  'img/msc-photo/cachorro.webp': { a:"Bob Harvey", l:'CC BY-SA 2.0' },
+  'img/msc-photo/caravela.webp': { a:"Kolforn", l:'CC BY 3.0' },
+  'img/msc-photo/cobra.webp': { a:"JoelAmaya", l:'CC BY-SA 4.0' },
+  'img/msc-photo/coelho.webp': { a:"JJ Harrison (https://www.jjharrison.com.au/)", l:'CC BY-SA 3.0' },
+  'img/msc-photo/dourado.webp': { a:"Instituto Hercule Florence", l:'Public domain' },
+  'img/msc-photo/dragao.webp': { a:"Charles J. Sharp", l:'CC BY-SA 4.0' },
+  'img/msc-photo/elefante.webp': { a:"Muhammad Mahdi Karim", l:'GFDL 1.2' },
+  'img/msc-photo/figueira.webp': { a:"കാക്കര", l:'CC BY-SA 3.0' },
+  'img/msc-photo/furacao.webp': { a:"NASA (ISS Expedition 8)", l:'Public domain' },
+  'img/msc-photo/galo.webp': { a:"User:Fir0002", l:'GFDL 1.2' },
+  'img/msc-photo/leao.webp': { a:"Charles J. Sharp", l:'CC BY-SA 4.0' },
+  'img/msc-photo/macaca.webp': { a:"Miguelrangeljr", l:'CC BY-SA 4.0' },
+  'img/msc-photo/mosqueteiro.webp': { a:"DArtagnan1632", l:'CC BY-SA 4.0' },
+  'img/msc-photo/pantera.webp': { a:"Ashmita Panda", l:'CC BY-SA 4.0' },
+  'img/msc-photo/peixe.webp': { a:"Zac Wolf", l:'CC BY-SA 2.5' },
+  'img/msc-photo/periquito.webp': { a:"Giles Laurent", l:'CC BY-SA 4.0' },
+  'img/msc-photo/poDeArroz.webp': { a:"Nikodem Nijaki", l:'CC BY-SA 3.0' },
+  'img/msc-photo/porco.webp': { a:"Gzen92", l:'CC BY-SA 4.0' },
+  'img/msc-photo/raposa.webp': { a:"Alberto Peracchio", l:'CC BY-SA 4.0' },
+  'img/msc-photo/saci.webp': { a:"Estela Neto", l:'CC BY-SA 4.0' },
+  'img/msc-photo/santo.webp': { a:"Didier Descouens", l:'Public domain' },
+  'img/msc-photo/tigre.webp': { a:"Joselodos", l:'CC0' },
+  'img/msc-photo/timbu.webp': { a:"Cody Pope", l:'CC BY-SA 2.5' },
+  'img/msc-photo/touro.webp': { a:"Oleg Yunakov", l:'CC BY-SA 4.0' },
+  'img/msc-photo/tubarao.webp': { a:"Luc Viatour", l:'CC BY-SA 3.0' },
+  'img/msc-photo/urubu.webp': { a:"Mdf", l:'CC BY-SA 3.0' },
   'img/be57d249306d99a6.webp': { a:'Ailura', l:'CC BY-SA 3.0 at' },
   'img/ec1c1abe9ae60b45.webp': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/74376336e55dce35.webp': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
@@ -11640,6 +11668,18 @@ const mscDisc = (k, c1, c2) => `<svg viewBox="0 0 80 80" width="100%" aria-hidde
   <image href="img/msc/${k}.webp" x="13" y="12" width="54" height="54"${MSC_IMG[k] ? ` style="filter:${MSC_IMG[k]}"` : ''}/>
 </svg>`;
 Object.keys(MSC_IMG).forEach(k => { MASC_ART[k] = (c1, c2) => mscDisc(k, c1, c2); });
+/* Better than a toy: a real photograph of the animal (or the hat, the ship,
+   the saint) each mascot is — freely licensed, from Wikimedia Commons — in the
+   same disc, until the painted mascot is ready. */
+const MSC_PHOTO = new Set(['almirante', 'azulao', 'cachorro', 'caravela', 'cobra', 'coelho', 'dourado', 'dragao', 'elefante', 'figueira', 'furacao', 'galo', 'leao', 'macaca', 'mosqueteiro', 'pantera', 'peixe', 'periquito', 'poDeArroz', 'porco', 'raposa', 'saci', 'santo', 'tigre', 'timbu', 'touro', 'tubarao', 'urubu']);
+const mscPhoto = (k, c1, c2) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="true"
+  style="display:block;width:100%;height:100%;"><defs><clipPath id="mp-${k}"><circle cx="40" cy="40" r="33"/></clipPath></defs>
+  <rect width="80" height="80" fill="var(--retro-card)"/>
+  <circle cx="40" cy="40" r="35.5" fill="${c2 || '#E9DDC1'}"/>
+  <image href="img/msc-photo/${k}.webp" x="7" y="7" width="66" height="66" preserveAspectRatio="xMidYMid slice" clip-path="url(#mp-${k})"/>
+  <circle cx="40" cy="40" r="33" fill="none" stroke="${c1 || '#2E4A3A'}" stroke-width="2.5"/>
+</svg>`;
+MSC_PHOTO.forEach(k => { MASC_ART[k] = (c1, c2) => mscPhoto(k, c1, c2); });
 
 /* Which club wears which. A drawing is shared by everyone who shares the
    animal — that is how the terraces say it too. */
@@ -13386,7 +13426,11 @@ function optArtFor(q) {
      rather than the whole board falling back to letters */
   if (kind === 'club' && got >= n / 2 && got < n && /\b(clube|clubes|time|times|equipe)\b/.test(t))
     res.forEach((r, i) => { if (!r) { res[i] = { k: 'club', ink: heraldInk(q.choices[i]), n: q.choices[i] }; count.club++; } });
-  const shown = pairTold || leagueTold || (kind === 'club' && (q._crestIsQ || q.msc)) ||
+  /* a nickname, mascot or symbol is often written or drawn on the crest
+     itself — Bordeaux's says "Girondins", Sport's has the lion */
+  const crestTells = kind === 'club' && (/\b(mascote|simbolo)\b/.test(t) ||
+    (/apelid|conhecid[oa]s? como|chamad[oa]s? de/.test(t) && /['"“‘]/.test(q.t)));
+  const shown = pairTold || leagueTold || (kind === 'club' && (q._crestIsQ || q.msc || crestTells)) ||
                 onTile('club', r => !!qCrest && r.id === qCrest) ||
                 onTile('ctry', r => qFlag && r.iso.includes(qFlag)) ||
                 onTile('face', r => !!qFace && r.img === qFace) ||
@@ -13817,10 +13861,15 @@ function optGlyphSVG(text, asPerson, initial, topic) {
 }
 /* a club with no crest and no colours on record still gets a shield, in a
    pair of heraldic colours chosen from its name so it is always the same */
-const HERALD = [['#1F4E8C', '#F4F1E7'], ['#9E2B25', '#F4F1E7'], ['#1E6B45', '#F4F1E7'], ['#20241E', '#F4F1E7'],
-                ['#5B2C83', '#F4F1E7'], ['#C7962C', '#20241E'], ['#9E2B25', '#20241E'], ['#1F4E8C', '#C7962C']];
+/* muted inks only: a bright pair would read as the club's real colours
+   (Bordeaux in red), and the album does not know them */
+const HERALD = [['#3B3229', '#E9DDC1'], ['#4A4A52', '#E9DDC1'], ['#5A4C3D', '#D9C9A2'], ['#2F3A44', '#E9DDC1'],
+                ['#3B3229', '#C9A04E'], ['#4A4A52', '#C9A04E']];
 function heraldInk(name) {
   let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  /* a club the album knows keeps its own colours (Flamengo red and black) */
+  const cl = CL.find(c => _fold(c.n) === _fold(name)) || (() => { const r = optResolve(name); return r && r.k === 'club' && CL.find(c => c.id === r.id); })();
+  if (cl && cl.c1 && cl.c2) return [cl.c1, cl.c2, 'svhod'[(h >> 3) % 5]];
   const [a, b] = HERALD[h % HERALD.length];
   return [a, b, 'svhod'[(h >> 3) % 5]];
 }
@@ -14367,7 +14416,8 @@ function questionArtRaw(q) {
       aria-label="Mascote de um clube brasileiro">${(() => {
         const br = CL.find(c => c.id === q.msc), m = MASCOTS[q.msc];
         if (MSC_PAINTED.has(q.msc)) return `<img src="img/msc-club/${q.msc}.webp" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
-        return MASC_ART[m.art](br && br.c1, br && br.c2, m.v);
+        /* no club colours round it: they would name the club, which is the question */
+        return MASC_ART[m.art](undefined, undefined, m.v);
       })()}</div>`;
   if (q.crest && (q._crestIsQ || (!artReveals(q, { club: q.crest }) && !crestDecoy(q)))) return `<div class="qart qart-crest${q._crestIsQ ? ' qart-hero' : ''}">${
         clubArt(q.crest, 'max-width:100%;max-height:100%;object-fit:contain;', true)}</div>`;
