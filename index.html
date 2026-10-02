@@ -2566,6 +2566,12 @@
     .b-fig.b-wrong { box-shadow: 0 0 0 3px #D0573F !important; }
     /* Quem sou eu: the question and its clues in the same hand as every other */
     .qcard-clue > p { font-family: var(--font-d); font-size: 24px; font-weight: 600; }
+    /* the clue card reads like every other question: the picture beside the
+       title, in the display serif, and the clues set under them */
+    .clue-head { display: flex; align-items: center; gap: 14px; width: 100%; }
+    .clue-head .clue-title { font-family: var(--font-d); font-size: 28px; font-weight: 600; line-height: 1.1; margin: 0; }
+    .qart-ink { overflow: hidden; }
+    .qart-ink svg { width: 100%; height: 100%; display: block; }
     .clues li { font-family: var(--font-d); font-size: 17px; line-height: 1.3; }
     .b-sel:not(.b-fig), .b-locked:not(.b-fig) { background-image: url(img/atelier/slip-gold.webp) !important; box-shadow: none !important;
       transform: translateY(-3px) rotate(-1deg) !important; filter: drop-shadow(0 8px 10px rgba(0,0,0,.38)); }
@@ -7718,8 +7724,9 @@ const PL = [
   { id:'rodrygo', n:'Rodrygo', img:'img/e9f512ce80257f30.webp' },
   { id:'militao', n:'Éder Militão', img:'img/fc77d206306d7542.webp' },
   /* no free photograph of him turned up — the one the fetcher took was a
-     church in Antony, the town near Paris — so his card is drawn */
-  { id:'antony', n:'Antony', img:'img/3366a91bc8991992.webp' },
+     church in Antony, the town near Paris — so his card waits for its
+     portrait as an old album's empty slot does: a figure in ink on the page */
+  { id:'antony', n:'Antony', img:'img/antony-ink.webp' },
   { id:'saka', n:'Bukayo Saka', img:'img/0e4283a2f9b46f3c.webp' },
   { id:'pedri', n:'Pedri', img:'img/32593eea1fe20575.webp' },
   { id:'bellingham', n:'Jude Bellingham', img:'img/ec1c1abe9ae60b45.webp' },
@@ -9211,7 +9218,7 @@ const CREDITS = {
   'img/crests/wolverhampton-wanderers.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
   'img/crests/zenit-st-petersburg.webp': { a:'football-logos (luukhopman) · marca do clube', l:'Uso nominativo' },
   /* retratos das páginas novas */
-  'img/3366a91bc8991992.webp': { a:'Futebol Quiz BR (ilustração)', l:'Arte original' },
+  'img/antony-ink.webp': { a:'Futebol Quiz BR (ilustração)', l:'Arte original' },
   'img/be57d249306d99a6.webp': { a:'Ailura', l:'CC BY-SA 3.0 at' },
   'img/ec1c1abe9ae60b45.webp': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
   'img/74376336e55dce35.webp': { a:'Bryan Berlin', l:'CC BY-SA 4.0' },
@@ -13516,11 +13523,25 @@ function optArtFor(q) {
        busts — a face beside five silhouettes says nothing about the answer,
        and a bust where his painting exists looks like a mistake. Not when the
        question's own picture is that face, or the question asks for a look. */
+    /* what each answer is — a dribble, a derby, a ground, a cup — so it is
+       drawn as one. On a board that asks for the odd one out, every slip is
+       drawn as the kind most of them are: a stadium among five derbies would
+       otherwise be the answer printed in pictures. */
+    const woman = /\b(jogadoras?|artilheira|capita|rainha|goleira|zagueira|campea olimpica)\b|\b(qual|a primeira|a unica) brasileira\b|\bsou [a-z]+a,/.test(t);
+    /* "quem sou eu" or "jogadora" says the answers are people even when the
+       question mentions a league or a ground on the way */
+    const man = (players || woman) && !coach && (!place || /\b(quem sou eu|jogador(a|es|as)?)\b/.test(t));
+    const tops = q.choices.map((c, i) => (coach || (man && !(res[i] && res[i].k === 'club'))) ? '' : glyphTopic(c, t, res[i]));
+    const tally = {}; tops.forEach(x => { if (x) tally[x] = (tally[x] || 0) + 1; });
+    const major = Object.keys(tally).sort((a, b) => tally[b] - tally[a])[0];
+    const odd = /\b(nao|nunca|intruso)\b/.test(t);
+    if (major && tally[major] >= n / 2 && !['club', 'num', 'globe'].includes(major))
+      tops.forEach((x, i) => { if (!x || (odd && x !== major)) tops[i] = major; });
     q.choices.forEach((c, i) => {
       const r = res[i];
       out[c] = r && r.k === 'face' && !r.blank && r.img !== qFace && !looks
-        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach, man: players && !coach && !place,
-                club: !!(r && r.k === 'club') || (place && !coach) };
+        ? r : { k: 'glyph', n: c, L: glyphInitial(c, q.choices), coach, man, woman,
+                topic: tops[i], club: !!(r && r.k === 'club') || (place && !coach && !man) };
     });
     out._kind = 'glyph';
   }
@@ -13542,13 +13563,245 @@ function glyphInitial(c, all) {
   return (w.match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0];
 }
 
+/* ── What kind of thing an answer is, when it has no picture of its own ──
+   A board of dribbles, derbies, grounds, cups or cities used to print an
+   illuminated initial on every slip: six letters that say nothing. Each kind
+   now has its own little engraving — the dribble drawn as a move, the derby
+   as two shields, the ground as a bowl, the cup as a cup — so a board reads
+   at a glance as what it is about, and still never tells which one it is. */
+const NUM_WORD = { nenhum:0, nenhuma:0, zero:0, um:1, uma:1, dois:2, duas:2, tres:3, quatro:4, cinco:5, seis:6,
+  sete:7, oito:8, nove:9, dez:10, onze:11, doze:12, treze:13, quatorze:14, catorze:14, quinze:15, vinte:20 };
+const DRIBBLE = /^(caneta|chapeu|chapelinho|elastico|lambreta|carretilha|pedalada|trivela|drible da vaca|bicicleta|letra|rabona|voleio|cavadinha|folha seca|gol olimpico|chilena|meia-lua|calcanhar|peixinho|cabecada)$/;
+const FIELD = /^(escanteio|penalti|tiro de meta|lateral|arremesso lateral|bola ao chao|tiro livre( direto| indireto)?|impedimento|grande area|pequena area|meio-campo|circulo central|zona de ataque|area tecnica|marca do penalti|linha de fundo|var|tecnologia da linha do gol|impedimento semiautomatico|spray de barreira|chip na bola|cartao amarelo|cartao vermelho)$/;
+/* where a position stands on a pitch drawn upright, attacking upwards */
+const POS_SPOT = { goleiro:[20,33], zagueiro:[20,28], libero:[20,30.5], lateral:[12.5,26], 'lateral-direito':[27.5,26], 'lateral-esquerdo':[12.5,26],
+  ala:[12.5,21], volante:[20,23.5], meia:[20,17], 'meio-campista':[20,19], 'meia-atacante':[20,13.5], ponta:[27.5,11],
+  'ponta-direita':[27.5,11], 'ponta-esquerda':[12.5,11], centroavante:[20,8.5], atacante:[20,9.5], 'segundo atacante':[17,11] };
+function glyphTopic(c, t, r) {
+  const f = _fold(String(c)).trim();
+  if (NUM_WORD[f] !== undefined) return 'num';
+  /* what the question asks for decides first: "Roma" on a board of host
+     cities is the city, and every answer to "qual tragédia" is one */
+  if (/\b(tragedia|desastre)\b/.test(t)) return 'ribbon';
+  if (/\b(cidade|cidades|capital)\b/.test(t) && !(r && r.k === 'club' && r.pair)) return 'city';
+  if (r && r.k === 'club') return r.pair ? 'derby' : 'club';
+  if (r && r.k === 'ctry') return 'globe';
+  if (/\bposic\w*/.test(t) && POS_SPOT[f]) return 'pos';
+  if (DRIBBLE.test(f)) return 'move';
+  if (FIELD.test(f)) return 'field';
+  if (/^(branca|branco|amarela|amarelo|azul|verde|vermelha|vermelho|preta|preto|cinza|laranja|roxa|roxo|rosa|grena|bordo)$/.test(f) && /\b(cor|camisa|uniforme)/.test(t)) return 'shirt';
+  if (/mascote/.test(t)) return 'mascot';
+  if (/\b(cao|cachorro|cadela)\b/.test(t)) return 'dog';
+  if (/\bbola oficial|nome da bola|a bola d[ae]/.test(t)) return 'ball';
+  if (/^(atlanta|sydney|atenas|pequim|londres|rio|toquio|paris|seul|barcelona|los angeles|moscou|montreal|munique|melbourne|helsinque) \d{4}$/.test(f)) return 'torch';
+  if (/tragedia|desastre|hillsborough|heysel|superga|^fatidico$/.test(f)) return 'ribbon';
+  if (/derby|derbi|classico|clasico|klassiker|classique|klassieker|old firm|superclas|^(fla-flu|gre-?nal|choque-rei|majestoso|san-sao|ba-vi|re-pa|atle-tiba|comclassico)$/.test(f) ||
+      (/\b(classico|derby|derbi|duelo entre)\b/.test(t) && /-/.test(f))) return 'derby';
+  if (/^(uefa|afc|caf|conmebol|concacaf|ofc|fifa|ifab)$/.test(f)) return 'globe';
+  if (/\b(copa|recopa|supercopa|libertadores|champions|mundial|taca|trofeu|eurocopa|finalissima|intertoto|conferencia|liga europa|liga das nacoes|copa ouro|torneio)\b/.test(f)) return 'cup';
+  if (/\b(liga|league|serie [abc]|bundesliga|eredivisie|ligue \d|division|championship|primeira|allsvenskan|superliga|campeonato|conference|tercera|liga mx|pro league)\b/.test(f)) return 'table';
+  if (/\b(estilo|filosofia|escola|tatic\w*|esquema|sistema de jogo|jogo de|forma de jogar)\b/.test(t)) return 'chalk';
+  if (/\bgol (de ouro|de prata|relampago|de honra|decisivo|contra|de placa)\b|morte subita/.test(f)) return 'net';
+  if (/\b(ficou conhecid[oa]|chamad[oa]|apelidad[oa])\b.{0,30}\b(jogo|partida|semifinal|final|vitoria|derrota|conflito|confronto|goleada|decisao)\b|\b(jogo|partida|semifinal|final|vitoria|derrota|goleada)\b.{0,60}\bficou conhecid[oa]\b/.test(t)) return 'match';
+  if (/\b(cidade|cidades|capital|sede da final|onde (fica|foi|aconteceu)|em que lugar)\b/.test(t)) return 'city';
+  if (/\b(estadio|estadios|arena|palco|campo do|casa d[oa])\b/.test(t)) return 'ground';
+  if (/\bapelid\w*|conhecid[oa] como|chamad[oa] de\b/.test(t) && !/\b(jogador|craque|atacante|goleiro|tecnico)\b/.test(t)) return 'pennant';
+  if (String(c).trim().split(/\s+/).length >= 4 && /^[A-ZÁÉÍÓÚ][a-záéíóúãõç]/.test(String(c).trim()) &&
+      /\s(o|a|de|da|do|um|uma|mais|que|em|na|no|pelo|pela)\s/i.test(String(c))) return 'quote';
+  return '';
+}
+
+function topicSVG(topic, text) {
+  const t = String(text).trim(), f = _fold(t).trim();
+  const ink = '#20241E', gold = '#B98C42', red = '#8E2A20', cream = '#F4F1E7', pitch = '#2F6B45';
+  let h = 0; for (const ch of t) h = (h * 33 + ch.charCodeAt(0)) >>> 0;
+  const disc = (inner, bg = '#EFE6CF') => `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="${bg}"/>${inner}
+    <circle cx="20" cy="20" r="18.5" fill="none" stroke="${gold}" stroke-width=".9"/></svg>`;
+  const ball = (x, y, r = 3) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${ink}" stroke-width=".8"/>
+    <path d="M${x} ${y - r * .45}l${r * .42} ${r * .3}-${r * .16} ${r * .5}h-${r * .52}l-${r * .16}-${r * .5}Z" fill="${ink}"/>`;
+  const arrow = (d, end) => `<path d="${d}" fill="none" stroke="${red}" stroke-width="1.3" stroke-dasharray="2 1.6" stroke-linecap="round"/>${
+    end ? `<path d="${end}" fill="${red}"/>` : ''}`;
+  const leg = d => `<path d="${d}" fill="none" stroke="${ink}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  switch (topic) {
+    case 'num': {
+      const n = NUM_WORD[f];
+      return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="${gold}" stroke-width="1.6"/>
+        <circle cx="20" cy="20" r="13.2" fill="none" stroke="${gold}" stroke-width=".5" stroke-dasharray="1 1.4"/>
+        <text x="20" y="25.5" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="${n > 9 ? 13 : 16}" fill="${ink}">${n}</text></svg>`;
+    }
+    case 'move': {
+      const M = {
+        caneta: leg('M20 9 13 31M20 9 27 31') + `<circle cx="20" cy="6" r="2.6" fill="${ink}"/>` + ball(7, 29, 2.6) + arrow('M10 29H33', 'M33 26.6 37 29 33 31.4Z'),
+        chapeu: `<circle cx="24" cy="13" r="2.8" fill="${ink}"/>` + leg('M24 16v8M24 24l-3 8M24 24l3 8M24 18l-4 3M24 18l4 3') + ball(9, 30, 2.6) + arrow('M10 26C11 6 31 2 34 22', 'M31.6 21.6 34.4 25.6 36.6 21Z'),
+        chapelinho: `<circle cx="24" cy="13" r="2.8" fill="${ink}"/>` + leg('M24 16v8M24 24l-3 8M24 24l3 8') + ball(9, 30, 2.6) + arrow('M10 26C12 8 30 6 33 22', 'M30.6 21.6 33.4 25.6 35.6 21Z'),
+        elastico: `<path d="M8 30.4c0-1.4 1-2.2 2.4-2.2h4.4c2.4 0 4.6 1.2 6.4 2.4l.8 2.2H8Z" fill="${ink}"/>` + ball(24, 26, 2.8) + arrow('M24 22C33 21 33 13 25 12S12 15 10 20', 'M12 21.6 8.6 22 10 18.4Z'),
+        pedalada: ball(20, 30, 3) + arrow('M20 26C10 26 9 14 16 13s6 7 4 13') + arrow('M20 26C30 26 31 14 24 13s-6 7-4 13') + `<path d="M6 34c2.6-1.2 5.4-1.2 8 0l.4 1.6H6ZM26 34c2.6-1.2 5.4-1.2 8 0l-.4 1.6H26Z" fill="${ink}"/>`,
+        trivela: `<path d="M4 29.4c0-1.4 1-2.2 2.4-2.2h4.4c2.4 0 4.6 1.2 6.4 2.4l.8 2.2H4Z" fill="${ink}"/>` + ball(18, 27, 2.8) + arrow('M21 26C33 24 35 12 29 6', 'M27 8.4 28.6 4.2 31.2 7.8Z'),
+        lambreta: leg('M17 8v25') + `<path d="M14 33h6" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/>` + ball(23, 31, 2.6) + arrow('M24 28C30 10 14 2 8 14', 'M6 12.2 7.2 16.6 10.4 13.6Z'),
+        carretilha: leg('M17 8v25') + `<path d="M14 33h6" stroke="${ink}" stroke-width="2.6" stroke-linecap="round"/>` + ball(23, 31, 2.6) + arrow('M24 28C30 10 14 2 8 14', 'M6 12.2 7.2 16.6 10.4 13.6Z'),
+        'drible da vaca': `<circle cx="20" cy="17" r="2.8" fill="${ink}"/>` + leg('M20 20v8M20 28l-3 5M20 28l3 5') + ball(6, 30, 2.4) + arrow('M8 28C8 8 20 4 33 26', 'M30.6 25.6 34 29 35.2 24.6Z') + arrow('M9 32C16 38 28 37 33 30'),
+        bicicleta: leg('M7 30 21 24 30 8') + `<circle cx="7" cy="27" r="2.6" fill="${ink}"/>` + leg('M21 24l-4 8') + ball(32, 5.5, 2.6) + `<path d="M26 4l-3-1M27 9l-3 0" stroke="${ink}" stroke-width=".8"/>`,
+        letra: leg('M13 8 25 33M27 8 15 33') + ball(30, 31, 2.6) + arrow('M30 27C31 20 35 18 37 18'),
+        rabona: leg('M13 8 25 33M27 8 15 33') + ball(30, 31, 2.6) + arrow('M30 27C31 20 35 18 37 18'),
+        voleio: leg('M8 34 24 19') + ball(28, 15, 3) + `<path d="M33 9l2-2M34 13l3-1M30 8l1-3" stroke="${ink}" stroke-width="1" stroke-linecap="round"/>`,
+        cavadinha: `<path d="M7 16V7h26v9" fill="none" stroke="${ink}" stroke-width="1.6"/><path d="M8 8h24v8H8Z" fill="${ink}" opacity=".08"/>` + ball(20, 33, 2.6) + arrow('M20 30C18 20 18 16 20 11', 'M17.8 12.6 20 9 22.2 12.6Z'),
+        'folha seca': `<path d="M8 11V5h24v6" fill="none" stroke="${ink}" stroke-width="1.6"/>` + ball(10, 33, 2.6) + arrow('M12 30C16 6 30 2 26 10', 'M24.2 8.6 25.6 12.8 28.4 9.6Z'),
+        'gol olimpico': `<path d="M8 34V20" stroke="${ink}" stroke-width="1.2"/><path d="M8 20l6 2-6 3Z" fill="${red}"/><path d="M26 6v8h10" fill="none" stroke="${ink}" stroke-width="1.6"/>` + ball(11, 32, 2.4) + arrow('M13 30C26 30 30 22 30 13'),
+        chilena: leg('M7 30 21 24 30 8') + `<circle cx="7" cy="27" r="2.6" fill="${ink}"/>` + ball(32, 5.5, 2.6),
+        calcanhar: `<path d="M14 30c3-2 8-2 11 0l1 3H13Z" fill="${ink}"/>` + ball(10, 31, 2.6) + arrow('M8 29C5 28 4 26 3 24'),
+        peixinho: leg('M5 24 26 18') + `<circle cx="29" cy="17" r="2.8" fill="${ink}"/>` + ball(34, 15, 2.4),
+        cabecada: `<circle cx="20" cy="18" r="3.4" fill="${ink}"/>` + leg('M20 22v8M20 30l-3 4M20 30l3 4') + ball(27, 11, 2.6),
+        'meia-lua': `<circle cx="20" cy="16" r="2.8" fill="${ink}"/>` + leg('M20 19v8M20 27l-3 5M20 27l3 5') + ball(6, 30, 2.4) + arrow('M8 28C4 6 32 4 34 28'),
+      };
+      if (M[f]) return disc(M[f]);
+      /* a move the book has no drawing of: a ball and the path it takes */
+      const ys = 8 + (h % 10), xe = 30 + (h >> 4) % 6;
+      return disc(ball(9, 30, 2.6) + arrow(`M11 28C${14 + (h >> 2) % 8} ${ys} ${24 + (h >> 6) % 6} ${ys} ${xe} ${18 + (h >> 8) % 8}`));
+    }
+    case 'field': {
+      const W = 'stroke="#F4F1E7" stroke-width=".7" fill="none"';
+      const base = `<rect x="9" y="3.5" width="22" height="33" rx="1" fill="${pitch}"/><rect x="10.5" y="5" width="19" height="30" ${W}/>
+        <path d="M10.5 20h19" ${W}/><circle cx="20" cy="20" r="3.4" ${W}/>
+        <rect x="15" y="5" width="10" height="5" ${W}/><rect x="17.5" y="5" width="5" height="2" ${W}/>
+        <rect x="15" y="30" width="10" height="5" ${W}/><rect x="17.5" y="33" width="5" height="2" ${W}/>`;
+      const hi = 'fill="#F1D27C" stroke="#8E2A20" stroke-width=".8"', hs = 'stroke="#F1D27C" stroke-width="2.6" fill="none" stroke-linecap="round"';
+      const X = {
+        escanteio: `<path d="M10.5 31.5a3.5 3.5 0 0 1 3.5 3.5" ${hs}/><path d="M10.5 35V26" stroke="${ink}" stroke-width="1.1"/><path d="M10.5 26l5 1.8-5 2Z" fill="${red}"/>`,
+        penalti: `<circle cx="20" cy="31.5" r="2.2" ${hi}/>`, 'marca do penalti': `<circle cx="20" cy="31.5" r="2.2" ${hi}/>`,
+        'tiro de meta': `<rect x="16.5" y="32" width="7" height="3" ${hi}/>`,
+        lateral: `<path d="M10.5 9v22" ${hs}/>`, 'arremesso lateral': `<path d="M10.5 9v22" ${hs}/>`,
+        'bola ao chao': `<circle cx="20" cy="20" r="2.4" ${hi}/>`,
+        'tiro livre': `<circle cx="20" cy="25" r="2" ${hi}/><path d="M16 28.6h8" stroke="#F1D27C" stroke-width="2" stroke-linecap="round"/>`,
+        'tiro livre direto': `<circle cx="20" cy="25" r="2" ${hi}/><path d="M16 28.6h8" stroke="#F1D27C" stroke-width="2" stroke-linecap="round"/>`,
+        'tiro livre indireto': `<circle cx="20" cy="25" r="2" ${hi}/><path d="M16 28.6h8" stroke="#F1D27C" stroke-width="2" stroke-linecap="round"/>`,
+        impedimento: `<path d="M10.5 12h19" stroke="#F1D27C" stroke-width="1" stroke-dasharray="1.5 1"/><circle cx="15" cy="10.5" r="1.2" fill="${red}"/><circle cx="24" cy="13.6" r="1.2" fill="#fff"/>`,
+        'impedimento semiautomatico': `<path d="M10.5 12h19" stroke="#F1D27C" stroke-width="1" stroke-dasharray="1.5 1"/><circle cx="15" cy="10.5" r="1.2" fill="${red}"/><circle cx="24" cy="13.6" r="1.2" fill="#fff"/>`,
+        'grande area': `<rect x="15" y="30" width="10" height="5" ${hi}/>`,
+        'pequena area': `<rect x="16.5" y="32" width="7" height="3" ${hi}/>`,
+        'meio-campo': `<path d="M10.5 20h19" ${hs}/>`, 'circulo central': `<circle cx="20" cy="20" r="3.4" ${hs}/>`,
+        'zona de ataque': `<rect x="10.5" y="5" width="19" height="10" fill="#F1D27C" opacity=".7"/>`,
+        'area tecnica': `<rect x="6" y="17" width="3" height="6" fill="#F1D27C"/>`,
+        'linha de fundo': `<path d="M10.5 35h19" ${hs}/>`,
+      };
+      if (/^(var|impedimento semiauto)/.test(f) && f === 'var')
+        return disc(`<rect x="7" y="9" width="26" height="17" rx="1.5" fill="${ink}"/><rect x="9" y="11" width="22" height="13" fill="${pitch}"/>
+          <path d="M18 14.5v6l5-3Z" fill="#F4F1E7"/><path d="M16 30h8M20 26v4" stroke="${ink}" stroke-width="1.6"/>`);
+      if (f === 'tecnologia da linha do gol')
+        return disc(`<path d="M7 28V12h26v16" fill="none" stroke="${ink}" stroke-width="1.6"/><path d="M7 28h26" stroke="#F1D27C" stroke-width="1.6"/>` + ball(20, 25.5, 2.6) + `<circle cx="31" cy="10" r="3" fill="${red}"/><path d="M30 10l1 1 2-2" stroke="#fff" stroke-width=".8" fill="none"/>`);
+      if (f === 'spray de barreira')
+        return disc(`<rect x="15" y="13" width="9" height="20" rx="2" fill="${ink}"/><rect x="17" y="9" width="5" height="4" fill="${gold}"/><path d="M24 11h3" stroke="${ink}" stroke-width="1.4"/><path d="M28 9c3-1 5 1 6 3M28 11h6M28 13c3 1 5 0 6-1" stroke="${gold}" stroke-width=".8" fill="none" stroke-dasharray="1 1"/>`);
+      if (f === 'chip na bola') return disc(ball(20, 20, 9) + `<rect x="17" y="17" width="6" height="6" fill="${gold}" stroke="${ink}" stroke-width=".6"/>`);
+      if (/^cartao/.test(f)) return disc(`<rect x="14" y="9" width="12" height="18" rx="1.5" fill="${/vermelho/.test(f) ? '#C0392B' : '#E8C02F'}" transform="rotate(12 20 18)" stroke="${ink}" stroke-width=".6"/>`);
+      return disc(base + (X[f] || ''), '#E7DDC4');
+    }
+    case 'pos': {
+      const [x, y] = POS_SPOT[f] || [10 + (h % 20), 7 + ((h >> 4) % 26)];
+      return disc(`<rect x="9" y="3.5" width="22" height="33" rx="1" fill="${pitch}"/>
+        <path d="M10.5 5h19v30h-19ZM10.5 20h19M15 5v5h10V5M15 35v-5h10v5" stroke="#F4F1E7" stroke-width=".6" fill="none" opacity=".8"/>
+        <circle cx="20" cy="20" r="3.2" stroke="#F4F1E7" stroke-width=".6" fill="none" opacity=".8"/>
+        <circle cx="${x}" cy="${y}" r="2.6" fill="${red}" stroke="#F4F1E7" stroke-width=".8"/>`, '#E7DDC4');
+    }
+    case 'derby': {
+      const [a1, b1] = heraldInk(t), [a2, b2] = heraldInk(t + '·');
+      const sh = (x, a, b) => `<path d="M${x} 11c3 1 5 0 7-1.5 2 1.5 4 2.5 7 1.5v8c0 6-4 9.5-7 11-3-1.5-7-5-7-11Z" fill="${a}" stroke="${ink}" stroke-width=".8"/>
+        <path d="M${x + 7} 9.5v20.5" stroke="${b}" stroke-width="2.2" opacity=".85"/>`;
+      return disc(sh(5, a1, b1) + sh(21, a2 === a1 ? b1 : a2, a2 === a1 ? a1 : b2) +
+        `<circle cx="20" cy="20" r="4.4" fill="${cream}" stroke="${gold}" stroke-width="1"/><path d="M18 18l4 4M22 18l-4 4" stroke="${red}" stroke-width="1.4" stroke-linecap="round"/>`);
+    }
+    case 'ground': {
+      const roof = ['#5A4C3D', '#8E2A20', '#1F4E8C', '#2F6B45', '#4A4A52'][h % 5];
+      return disc(`<ellipse cx="20" cy="23" rx="15" ry="9" fill="${roof}"/><ellipse cx="20" cy="22" rx="11.5" ry="6.4" fill="#C9BFA6"/>
+        <ellipse cx="20" cy="22.6" rx="8.6" ry="4.4" fill="${pitch}"/><path d="M20 18.2v8.8" stroke="${cream}" stroke-width=".5"/>
+        <path d="M5 23v-9M35 23v-9" stroke="${ink}" stroke-width="1"/><rect x="3.4" y="11.6" width="3.2" height="2.6" fill="${ink}"/><rect x="33.4" y="11.6" width="3.2" height="2.6" fill="${ink}"/>
+        <path d="M5 11.6l-2-2M5 11.6l2-2M35 11.6l-2-2M35 11.6l2-2" stroke="#E8C565" stroke-width=".6"/>`);
+    }
+    case 'city': {
+      let s = '', x = 6;
+      for (let i = 0; i < 7; i++) { const w = 3 + ((h >> i) & 3), ht = 6 + ((h >> (i * 2 + 3)) & 15);
+        if (x + w > 34) break; s += `<rect x="${x}" y="${30 - ht}" width="${w}" height="${ht}" fill="${i % 2 ? '#3E3A33' : ink}"/>`;
+        if (ht > 12) s += `<rect x="${x + 1}" y="${33 - ht}" width="1" height="1" fill="#E8C565"/>`; x += w + .8; }
+      return disc(`<circle cx="${12 + (h % 16)}" cy="11" r="3.4" fill="#E8C565" opacity=".9"/>${s}<rect x="4" y="30" width="32" height="3" fill="${ink}"/>`);
+    }
+    case 'table':
+      return disc(`<rect x="9" y="8" width="22" height="25" rx="1" fill="${cream}" stroke="${ink}" stroke-width=".8"/>
+        <rect x="9" y="8" width="22" height="4.4" fill="${ink}"/>
+        ${[0, 1, 2, 3].map(i => `<rect x="10.4" y="${14 + i * 4.6}" width="2.6" height="2.6" fill="${i ? '#C9BFA6' : gold}"/>
+          <path d="M14.6 ${15.3 + i * 4.6}h${11 - (i * 2 + h % 3)}" stroke="${ink}" stroke-width="1.1"/>`).join('')}`);
+    case 'cup': {
+      const v = h % 3, g = `<defs><linearGradient id="cg${h % 997}" x1="0" x2="1"><stop offset="0" stop-color="#8A6116"/><stop offset=".45" stop-color="#F1D27C"/><stop offset="1" stop-color="#9C7424"/></linearGradient></defs>`;
+      const G = `url(#cg${h % 997})`;
+      const C = [
+        `<path d="M13 8h14c0 9-3 13-7 14-4-1-7-5-7-14Z" fill="${G}"/><path d="M13 10c-5 0-6 7 0 8M27 10c5 0 6 7 0 8" fill="none" stroke="#B98C42" stroke-width="1.8"/>`,
+        `<path d="M14 7h12l-2 11c-1 3-3 4-4 4s-3-1-4-4Z" fill="${G}"/><path d="M15 10c-3-1-6 0-6 3s3 4 6 4M25 10c3-1 6 0 6 3s-3 4-6 4" fill="none" stroke="#B98C42" stroke-width="1.4"/>`,
+        `<path d="M12 9h16c0 6-3 11-8 12-5-1-8-6-8-12Z" fill="${G}"/><ellipse cx="20" cy="9" rx="8" ry="1.6" fill="#F6E3A8"/>`][v];
+      return disc(g + C + `<path d="M18.4 21.5h3.2v5h-3.2Z" fill="${G}"/><rect x="14" y="26.5" width="12" height="2.4" fill="${G}"/><rect x="13" y="28.9" width="14" height="3.6" rx=".6" fill="#3B3229"/>`);
+    }
+    case 'globe':
+      return disc(`<circle cx="20" cy="20" r="11.5" fill="#2A4A7A"/><path d="M14 13c3 0 5 2 4 5s-4 2-5 5 1 5-1 6M24 10c-1 3 2 4 4 4s3 3 1 5-4 1-4 4 2 4 3 5" fill="#4E7A54"/>
+        <circle cx="20" cy="20" r="11.5" fill="none" stroke="${ink}" stroke-width=".8"/><ellipse cx="20" cy="20" rx="5" ry="11.5" fill="none" stroke="${cream}" stroke-width=".4" opacity=".7"/>
+        <path d="M8.5 20h23M10 14h20M10 26h20" stroke="${cream}" stroke-width=".4" opacity=".7"/>`);
+    case 'chalk':
+      return disc(`<rect x="6" y="9" width="28" height="21" rx="1.5" fill="#24382C" stroke="#7A5A30" stroke-width="1.6"/>
+        <path d="M11 14l3 3M14 14l-3 3M26 23l3 3M29 23l-3 3" stroke="${cream}" stroke-width="1"/>
+        <circle cx="13" cy="24" r="1.8" fill="none" stroke="${cream}" stroke-width="1"/><circle cx="27" cy="15" r="1.8" fill="none" stroke="${cream}" stroke-width="1"/>
+        <path d="M14.5 23C19 ${17 + h % 5} 21 14 25 15" fill="none" stroke="#F1D27C" stroke-width="1" stroke-dasharray="1.4 1"/><path d="M24.6 13.4 26.4 15.6 23.6 16Z" fill="#F1D27C"/>`);
+    case 'ribbon':
+      return disc(`<path d="M20 9c-4 0-5 4-3 8l9 15 3-2-8-13c-1-2-1-4 0-5 1 1 1 3 0 5l-8 13 3 2 9-15c2-4 1-8-5-8Z" fill="${ink}"/>
+        <path d="M14 33h12" stroke="${gold}" stroke-width=".8"/>`);
+    case 'shirt': {
+      const col = { branca:'#F4F1E7', branco:'#F4F1E7', amarela:'#E8C02F', amarelo:'#E8C02F', azul:'#1F4E8C', verde:'#2F6B45', vermelha:'#B23A2E', vermelho:'#B23A2E',
+        preta:'#20241E', preto:'#20241E', cinza:'#8A8A86', laranja:'#E07B24', roxa:'#5B2C83', roxo:'#5B2C83', rosa:'#E48AA6', grena:'#7A1F2B', bordo:'#7A1F2B' }[f] || '#888';
+      return disc(`<path d="M14 8l-7 4 3 6 3-1.4V32h14V16.6l3 1.4 3-6-7-4c-1 2-3 3-6 3s-5-1-6-3Z" fill="${col}" stroke="${ink}" stroke-width=".9" stroke-linejoin="round"/>
+        <path d="M16.6 8.6c1 1.6 2 2.2 3.4 2.2s2.4-.6 3.4-2.2" fill="none" stroke="${ink}" stroke-width=".8"/>`);
+    }
+    case 'mascot': {
+      const col = ['#E07B24', '#1F4E8C', '#B23A2E', '#2F6B45', '#C7962C', '#5B2C83'][h % 6];
+      return disc(`<ellipse cx="20" cy="29" rx="8" ry="6" fill="${col}"/><circle cx="20" cy="17" r="8" fill="${col}"/>
+        <circle cx="16.8" cy="16" r="2.2" fill="#fff"/><circle cx="23.2" cy="16" r="2.2" fill="#fff"/><circle cx="17.2" cy="16.4" r="1" fill="${ink}"/><circle cx="23.6" cy="16.4" r="1" fill="${ink}"/>
+        <path d="M16.4 20.6c2 2 5.2 2 7.2 0" fill="none" stroke="${ink}" stroke-width="1" stroke-linecap="round"/>
+        ${['<path d="M13 11l-2-5 5 3M27 11l2-5-5 3" fill="' + col + '"/>', '<path d="M18 9l2-4 2 4" fill="#B23A2E"/>', '<circle cx="12.5" cy="11" r="2.6" fill="' + col + '"/><circle cx="27.5" cy="11" r="2.6" fill="' + col + '"/>'][h % 3]}` + ball(29, 31, 3));
+    }
+    case 'dog':
+      return disc(`<path d="M12 12c-3 0-4 6-2 9l3-2M28 12c3 0 4 6 2 9l-3-2" fill="#5A4C3D"/><ellipse cx="20" cy="19" rx="8" ry="8.4" fill="#C9A77C"/>
+        <ellipse cx="20" cy="24" rx="4.4" ry="3.4" fill="#EFE6CF"/><ellipse cx="20" cy="22.4" rx="1.8" ry="1.2" fill="${ink}"/>
+        <circle cx="16.6" cy="17" r="1.1" fill="${ink}"/><circle cx="23.4" cy="17" r="1.1" fill="${ink}"/><path d="M14 30h12" stroke="${red}" stroke-width="1.6"/>`);
+    case 'ball': {
+      const c1 = ['#1F4E8C', '#B23A2E', '#2F6B45', '#C7962C', '#20241E', '#E07B24'][h % 6], c2 = ['#E8C02F', '#1F4E8C', '#B23A2E', '#2F6B45'][(h >> 3) % 4];
+      return disc(`<circle cx="20" cy="20" r="11" fill="#fff" stroke="${ink}" stroke-width=".9"/>
+        <path d="M11 15c4 2 6 6 5 11M29 15c-4 2-6 6-5 11M14 29c4-2 8-2 12 0" fill="none" stroke="${c1}" stroke-width="2.2"/>
+        <path d="M17 11c2 2 4 2 6 0" fill="none" stroke="${c2}" stroke-width="2"/>`);
+    }
+    case 'torch':
+      return disc(`<path d="M17 18h6l-1.6 15h-2.8Z" fill="#B98C42" stroke="${ink}" stroke-width=".6"/><rect x="16" y="16.4" width="8" height="2.4" rx=".6" fill="#8A6116"/>
+        <path d="M20 4c3 4 5 6 4 9-1 2-2 3-4 3s-3-1-4-3c-1-3 1-4 2-6 0 2 1 3 2 3 0-2-1-4 0-6Z" fill="#E07B24"/><path d="M20 9c1.4 2 2 3 1.6 4.6-.4 1-1 1.4-1.6 1.4s-1.4-.4-1.6-1.4c-.2-1.4.6-2.2 1.6-4.6Z" fill="#F1D27C"/>`);
+    case 'net':
+      return disc(`<path d="M7 29V11h26v18" fill="none" stroke="${ink}" stroke-width="1.6"/>
+        <path d="M10 11v18M13 11v18M16 11v18M19 11v18M22 11v18M25 11v18M28 11v18M31 11v18M7 14h26M7 17h26M7 20h26M7 23h26M7 26h26" stroke="${ink}" stroke-width=".35" opacity=".55"/>` + ball(22, 23, 3.4));
+    case 'pennant': {
+      const [a, b] = heraldInk(t);
+      return disc(`<path d="M10 8v26" stroke="${ink}" stroke-width="1.4"/><path d="M11 9h20l-20 13Z" fill="${a}" stroke="${ink}" stroke-width=".6"/>
+        <path d="M11 13.6h12" stroke="${b}" stroke-width="1.6"/><circle cx="10" cy="7.4" r="1.2" fill="${gold}"/>`);
+    }
+    case 'match':
+      return disc(`<rect x="6" y="12" width="28" height="16" rx="2" fill="${ink}"/>
+        <rect x="8.4" y="14.4" width="9.6" height="11.2" rx="1" fill="#2B302A"/><rect x="22" y="14.4" width="9.6" height="11.2" rx="1" fill="#2B302A"/>
+        <path d="M11 20h4.4M24.6 20H29" stroke="#F1D27C" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="20" cy="17.6" r=".8" fill="#F1D27C"/><circle cx="20" cy="22.4" r=".8" fill="#F1D27C"/>
+        <path d="M12 28v4M28 28v4" stroke="${ink}" stroke-width="1.4"/><path d="M8 32h24" stroke="${gold}" stroke-width="1"/>`);
+    case 'quote':
+      return disc(`<text x="20" y="31" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="30" fill="${red}">“</text>`);
+  }
+  return '';
+}
+
 /* ── Pictures for answers that are not things ──
    A year is a dated stamp, a score a little scoreboard, a formation the
    players on a pitch, a number a medallion, a man the album has no photo of
    a portrait in silhouette, and anything else an illuminated initial — all on
    the same cream disc as a crest, so a board reads as one set. */
-function optGlyphSVG(text, asPerson, initial) {
+function optGlyphSVG(text, asPerson, initial, topic) {
   const t = String(text).trim();
+  if (topic && topic !== 'club') { const svg = topicSVG(topic, t); if (svg) return svg; }
   const ink = '#20241E', gold = '#B98C42', esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   let m;
   if ((m = t.match(/^(\d)-(\d)-(\d)(?:-(\d))?$/))) {
@@ -13610,22 +13863,45 @@ function optGlyphSVG(text, asPerson, initial) {
     /* no two busts on a board alike: the hairline, the suit and the tie are
        chosen from the name, so six coaches read as six men */
     let hh = 0; for (const ch of t) hh = (hh * 33 + ch.charCodeAt(0)) >>> 0;
-    const hair = ['', '<path d="M13.4 13.2c0-5.6 3-8.4 6.6-8.4s6.6 2.8 6.6 8.4c-1.4-2.6-3.6-3.9-6.6-3.9s-5.2 1.3-6.6 3.9Z" fill="#2E2620"/>',
-      '<path d="M13.2 15c-.4-6.6 2.6-10.4 6.8-10.4 4.6 0 7.4 3.6 6.8 10.4-.8-1.4-1.6-4.6-3-5.6-2.2 1.4-5.6 1.6-8.6.8-1.2 1.4-1.6 3.2-2 4.8Z" fill="#2E2620"/>',
-      '<path d="M13.6 12.6c.6-4.6 3.2-7.2 6.4-7.2s5.8 2.6 6.4 7.2c-2-1.8-4-2.4-6.4-2.4s-4.4.6-6.4 2.4Z" fill="#A79D8C"/>',
-      '<path d="M13.2 16.2c-1-7.2 2.2-11.4 6.8-11.4s7.8 4.2 6.8 11.4c-.6-3.2-1.8-5.4-3.4-6.4-1.8 1-5.2 1-6.8 0-1.6 1-2.8 3.2-3.4 6.4Z" fill="#3A3028"/>'][hh % 5];
+    const woman = /-w$/.test(String(asPerson));
+    const skin = ['#9A7458', '#6E503B', '#B88C68', '#57402F', '#C9A07E', '#82614A'][hh % 6];
+    const hairC = ['#2A211B', '#3A2C22', '#1C1815', '#5A3E28', '#8C7A62'][(hh >> 2) % 5];
+    /* hair in two layers: what falls behind the head, and the fringe over it */
+    const fringe = `<path d="M13.4 13.4c0-5.6 3-8.6 6.6-8.6s6.6 3 6.6 8.6c-1.8-2.8-3.8-4-6.6-4s-4.8 1.2-6.6 4Z" fill="${hairC}"/>`;
+    const [hairBack, hair] = woman ? [
+      [`<path d="M11.4 26c-1.6-10 1.4-19.4 8.6-19.4s10.2 9.4 8.6 19.4Z" fill="${hairC}"/>`, fringe],
+      [`<circle cx="20" cy="5.4" r="3.2" fill="${hairC}"/>`, fringe],
+      [`<path d="M12.4 20c-1.4-8 1.4-13.4 7.6-13.4s9 5.4 7.6 13.4l2.6 6c.6 1.4-1 2-2 1.2Z" fill="${hairC}"/>`, fringe]][hh % 3]
+    : ['', ['', `<path d="M13.4 13.2c0-5.6 3-8.4 6.6-8.4s6.6 2.8 6.6 8.4c-1.4-2.6-3.6-3.9-6.6-3.9s-5.2 1.3-6.6 3.9Z" fill="${hairC}"/>`,
+      `<path d="M13.2 15c-.4-6.6 2.6-10.4 6.8-10.4 4.6 0 7.4 3.6 6.8 10.4-.8-1.4-1.6-4.6-3-5.6-2.2 1.4-5.6 1.6-8.6.8-1.2 1.4-1.6 3.2-2 4.8Z" fill="${hairC}"/>`,
+      `<path d="M13.6 12.6c.6-4.6 3.2-7.2 6.4-7.2s5.8 2.6 6.4 7.2c-2-1.8-4-2.4-6.4-2.4s-4.4.6-6.4 2.4Z" fill="#A79D8C"/>`,
+      `<path d="M13.2 16.2c-1-7.2 2.2-11.4 6.8-11.4s7.8 4.2 6.8 11.4c-.6-3.2-1.8-5.4-3.4-6.4-1.8 1-5.2 1-6.8 0-1.6 1-2.8 3.2-3.4 6.4Z" fill="${hairC}"/>`,
+      `<path d="M13 12.4c0-5 3-7.8 7-7.8s7 2.8 7 7.8l-1.2-.6c-.4-2-1.4-3.2-2.6-3.6-1 .8-5.4.8-6.4 0-1.2.4-2.2 1.6-2.6 3.6Z" fill="${hairC}"/><path d="M15.4 20.6c1.2 2.6 2.8 3.4 4.6 3.4s3.4-.8 4.6-3.4c-.2 2.8-2 4.8-4.6 4.8s-4.4-2-4.6-4.8Z" fill="${hairC}" opacity=".85"/>`][hh % 6]];
     const suit = ['#3B3229', '#2A3244', '#4A3A2C', '#2F2F33'][(hh >> 3) % 4];
     const tie  = ['#8E2A20', '#1F4E8C', '#2F6B45', '#B98C42', '#5B2C83'][(hh >> 5) % 5];
+    const jersey = ['#4E5B46', '#7A2E26', '#2A4A7A', '#C4A04A', '#3B3229', '#1F6B5A', '#8C5A2A'][(hh >> 3) % 7];
+    const trim = ['#E6DCC2', '#C9A04E', '#F4F1E7'][(hh >> 6) % 3];
     const shirt = String(asPerson).startsWith('coach')
       ? `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="${suit}"/>
-         <path d="M15.6 25.6 20 32l4.4-6.4-4.4-1Z" fill="#EFE6CF"/><path d="M18.9 27.3h2.2l.9 8.2-2 2-2-2Z" fill="${tie}"/>`
-      : `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="${['#4E5B46', '#7A2E26', '#2A4A7A', '#C4A04A', '#3B3229'][(hh >> 3) % 5]}"/>
-         <path d="M15.4 25.7c1.2 2.6 2.8 3.9 4.6 3.9s3.4-1.3 4.6-3.9" fill="none" stroke="#E6DCC2" stroke-width="1.4"/>`;
-    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="#E9DFC6"/>
-      <clipPath id="pc"><circle cx="20" cy="20" r="18.5"/></clipPath><g clip-path="url(#pc)">
-      <path d="M17.4 19.5h5.2v6.6h-5.2Z" fill="#5A4C3D"/>
-      <ellipse cx="20" cy="14.6" rx="6.6" ry="7.4" fill="#5A4C3D"/>${hair}${shirt}</g>
-      <circle cx="20" cy="20" r="18.5" fill="none" stroke="#B98C42" stroke-width=".9"/></svg>`;
+         <path d="M15.6 25.6 20 32l4.4-6.4-4.4-1Z" fill="#EFE6CF"/><path d="M18.9 27.3h2.2l.9 8.2-2 2-2-2Z" fill="${tie}"/>
+         <path d="M15.6 25.6 18 33M24.4 25.6 22 33" stroke="#000" stroke-opacity=".25" stroke-width=".7"/>`
+      : `<path d="M3.5 40c.6-9.4 7.4-14.8 16.5-14.8S35.9 30.6 36.5 40Z" fill="${jersey}"/>
+         <path d="M15.2 25.6c1.2 3 2.8 4.6 4.8 4.6s3.6-1.6 4.8-4.6" fill="none" stroke="${trim}" stroke-width="1.5"/>
+         <path d="M9 31c-1 3-1.4 6-1.4 9M31 31c1 3 1.4 6 1.4 9" stroke="#000" stroke-opacity=".18" stroke-width="1"/>`;
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><defs>
+      <radialGradient id="bbg" cx=".5" cy=".38" r=".7"><stop offset="0" stop-color="#F6EEDB"/><stop offset="1" stop-color="#D9CAA6"/></radialGradient>
+      <radialGradient id="bsh" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></radialGradient>
+      <clipPath id="pc"><circle cx="20" cy="20" r="18.5"/></clipPath>
+      <pattern id="hatch" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0v2.2" stroke="#5A4C3D" stroke-width=".35" stroke-opacity=".22"/></pattern></defs>
+      <circle cx="20" cy="20" r="18.5" fill="url(#bbg)"/>
+      <g clip-path="url(#pc)">
+      ${hairBack}
+      <path d="M17.2 19.5h5.6v6.8h-5.6Z" fill="${skin}"/><path d="M17.2 22.8c1.6 1.2 4 1.2 5.6 0v-2h-5.6Z" fill="#000" opacity=".18"/>
+      <ellipse cx="13.6" cy="15.4" rx="1.3" ry="2" fill="${skin}"/><ellipse cx="26.4" cy="15.4" rx="1.3" ry="2" fill="${skin}"/>
+      <ellipse cx="20" cy="14.6" rx="6.4" ry="7.4" fill="${skin}"/><ellipse cx="20" cy="14.6" rx="6.4" ry="7.4" fill="url(#bsh)"/>
+      ${hair}${shirt}
+      <rect width="40" height="40" fill="url(#hatch)"/></g>
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="#B98C42" stroke-width=".9"/><circle cx="20" cy="20" r="17.2" fill="none" stroke="#B98C42" stroke-width=".35" opacity=".7"/></svg>`;
   }
 
   const L = (initial || (t.replace(/^(o|a|os|as|um|uma|the)\s+/i, '').match(/[A-Za-zÀ-ÿ0-9]/) || ['?'])[0]).toUpperCase();
@@ -13703,11 +13979,19 @@ function optClubDisc(r) {
         onerror="this.parentElement.innerHTML='<span class=\'opt-mono\'>${optMono(clubName(r.id))}</span>'" /></span>`;
 }
 
+/* Where the face is, for portraits painted with the man off-centre or small
+   in the frame: a round disc crops to the middle of the picture, which can be
+   a shirt or a sky. Found once by a face detector and checked by eye — the
+   point to zoom about (percent of the disc) and how far. */
+const FACE_AT = {'img/047398ed959f8903.webp':[42,0,1.93],'img/05e97d13cedb6d4d.webp':[50,0,1.97],'img/076408f0b4c3a93e.webp':[44,21,1.55],'img/091a01b09299c029.webp':[55,30,1.67],'img/120c643b5d10f93c.webp':[43,30,1.62],'img/136f515c1037e98b.webp':[52,0,1.6],'img/13c70fbbcc6a2cca.webp':[100,0,1.52],'img/15085c4eb23cdf4f.webp':[83,0,1.41],'img/1a7d080f967ddb0a.webp':[50,0,1.65],'img/1dcca609790e222f.webp':[44,0,1.59],'img/1e330c509141eea9.webp':[0,69,1.34],'img/1eef9a90a6df5b58.webp':[0,12,1.67],'img/233ae1cf6fec59f4.webp':[32,100,1.15],'img/23d6fd9b566223d9.webp':[0,96,1.22],'img/257e7187e6f928da.webp':[60,0,2.2],'img/2b4e45b260f827fc.webp':[32,12,2.2],'img/2ea3a13213ad0b1b.webp':[74,21,2.2],'img/2f405dbcde53c013.webp':[0,0,1.6],'img/30c95db2cbacd1ee.webp':[50,0,2.2],'img/31492b1694761668.webp':[100,10,1.89],'img/329d1f766658da65.webp':[62,0,1.98],'img/491fb1154f03a925.webp':[61,0,2.2],'img/4ecd9957b82a2a73.webp':[0,0,1.22],'img/516c48659ff0cdb0.webp':[29,15,1.67],'img/56611cbacf2d57d9.webp':[39,0,1.81],'img/585091556671d2a0.webp':[15,0,2.2],'img/58802c8550ef5fa7.webp':[4,0,1.4],'img/58950ff0afd5d95b.webp':[45,0,1.95],'img/59e0f3ddd8922b91.webp':[50,22,1.74],'img/5badd4c3670a511f.webp':[100,100,1.15],'img/5c83259d8ad8b222.webp':[27,0,2.2],'img/618d79848fbbec21.webp':[50,11,2.2],'img/63c96cd919447054.webp':[45,3,1.81],'img/646b967433ae9fe8.webp':[75,10,1.44],'img/6a816865c94e5bd3.webp':[0,0,1.15],'img/6c39ec3d7ddb0d8a.webp':[50,0,1.53],'img/7061b6cbdc57abe7.webp':[38,20,1.43],'img/73fcbf1ced010652.webp':[42,0,1.5],'img/779dcd8f35662801.webp':[57,0,1.74],'img/7a6f9e0a9d58ee6d.webp':[34,0,1.66],'img/81c06667fa16b652.webp':[25,11,1.62],'img/88468c09c32948e3.webp':[60,0,1.95],'img/8913cf3c11ef1543.webp':[49,0,2.01],'img/89327837f14f3c13.webp':[43,12,2.12],'img/91a3c362b76e2808.webp':[53,0,1.61],'img/9429cb23de075033.webp':[48,0,2.2],'img/9564d5244c34c91c.webp':[54,0,1.75],'img/99b7585e8a52e646.webp':[65,0,1.94],'img/a088e1694438876c.webp':[100,45,1.15],'img/a49cd1072ac4f08a.webp':[27,9,1.57],'img/a4a135f81bbd912b.webp':[66,0,1.6],'img/a6723e968a030759.webp':[37,100,1.84],'img/a87ec47c4eec7f4b.webp':[28,100,1.15],'img/acf7a54d907325b5.webp':[69,20,1.73],'img/aded84a7f9b4750b.webp':[49,35,1.94],'img/adf896d5e2f38903.webp':[12,72,2.15],'img/ae3f136a6442b4c9.webp':[24,0,1.59],'img/b70008e03cfbb25c.webp':[100,7,1.48],'img/b8e36fbf197410f6.webp':[43,0,1.39],'img/bb2b992dbac3bdf8.webp':[59,0,1.68],'img/bb36f5000c3f46c5.webp':[41,0,1.63],'img/bc4bb3d6981c73e4.webp':[20,15,1.79],'img/be2769317953d24e.webp':[75,0,2.2],'img/becb9d93999c12ae.webp':[68,0,1.64],'img/bf612f288773656a.webp':[69,11,1.91],'img/c0b1d021fd8cc669.webp':[100,36,1.15],'img/c4db925adc8f3bd8.webp':[0,0,1.5],'img/c6a6975ab66f934b.webp':[100,52,1.15],'img/c793c44643d6d9fe.webp':[77,0,1.2],'img/c8d47a3e591d0cfa.webp':[54,0,1.83],'img/c951450a110a5e28.webp':[53,8,1.91],'img/cff16530f8fa4e0f.webp':[87,0,1.66],'img/d245562ac7455ba9.webp':[29,36,1.89],'img/d3048d0dcd6295ea.webp':[64,0,1.67],'img/d609af6f47604b15.webp':[0,0,1.15],'img/d883ba64dcfcf800.webp':[18,20,1.58],'img/e89e123d5b748a6e.webp':[41,2,1.77],'img/e97089e508fffa75.webp':[20,0,1.45],'img/e9f512ce80257f30.webp':[51,0,1.97],'img/eba1efdb4dd9e614.webp':[55,2,1.75],'img/f83d090546ab384b.webp':[46,0,2.03],'img/f8a524cdc4220bde.webp':[46,0,1.94],'img/fa4679be155093f7.webp':[100,0,1.5],'img/fede689e7ef6e837.webp':[45,6,1.93]};
+const faceFit = img => { const f = FACE_AT[img]; return f ? ` style="transform:scale(${f[2]});transform-origin:${f[0]}% ${f[1]}%"` : ''; };
+
 function optArtHtml(r) {
   if (!r) return '';
   if (r.k === 'club' && r.pair) return `<span class="opt-art opt-pair">${r.pair.map(optClubDisc).join('')}</span>`;
   if (r.k === 'club' && r.ink) return optClubDisc(r);
-  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.club ? 'no' : r.coach ? 'coach-maybe' : r.man ? 'man-maybe' : false, r.L)}</span>`;
+  if (r.k === 'glyph' && r.topic === 'club') return `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`;
+  if (r.k === 'glyph') return `<span class="opt-art opt-crest opt-ink opt-glyph">${optGlyphSVG(r.n, r.club ? 'no' : r.coach ? 'coach-maybe' : r.man ? (r.woman ? 'man-maybe-w' : 'man-maybe') : false, r.L, r.topic)}</span>`;
   if (r.k === 'club') return r.blank
     ? `<span class="opt-art opt-crest opt-ink">${optBadge(heraldInk(r.n), r.n)}</span>`
     : `<span class="opt-art opt-crest"><img src="${LOGOS[r.id]}" alt="" aria-hidden="true"
@@ -13718,7 +14002,7 @@ function optArtHtml(r) {
         onerror="this.style.visibility='hidden'" />`).join('')}</span>`;
   if (r.k === 'face') return r.blank
     ? `<span class="opt-art opt-face opt-ink">${optGlyphSVG(r.n, true)}</span>`
-    : `<span class="opt-art opt-face"><img src="${r.img}" alt="" aria-hidden="true"
+    : `<span class="opt-art opt-face"><img src="${r.img}" alt="" aria-hidden="true"${faceFit(r.img)}
         onerror="this.style.visibility='hidden'" /></span>`;
   if (r.k === 'stad') return r.blank
     ? `<span class="opt-art opt-stad"></span>`
@@ -13975,6 +14259,29 @@ const CAT_ART = {
   g_escudo:'ball',   g_conta:'ball',  torcida: 'terrace',
 };
 
+/* two vignettes drawn in the album's own hand, for questions a photograph
+   cannot illustrate without answering them */
+const INK_ART = {
+  who: `<svg viewBox="0 0 104 68" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>
+    <radialGradient id="iwb" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#141B2A"/></radialGradient>
+    <linearGradient id="iws" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#8C7454"/><stop offset="1" stop-color="#4A3D2F"/></linearGradient>
+    <pattern id="iwh" width="2.4" height="2.4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v2.4" stroke="#000" stroke-width=".5" stroke-opacity=".25"/></pattern></defs>
+    <rect width="104" height="68" fill="url(#iwb)"/>
+    <g opacity=".5"><circle cx="18" cy="14" r="1" fill="#E8C565"/><circle cx="88" cy="10" r=".8" fill="#E8C565"/><circle cx="80" cy="54" r=".9" fill="#E8C565"/><circle cx="10" cy="50" r=".7" fill="#E8C565"/></g>
+    <path d="M26 70c1-14 9-21 20-23 2-.5 3.4-1.6 3.8-3.4v-4.6c-3.8-2.2-6.4-7-6.8-13-.8-9.4 4.6-17.4 11.6-17.4s12.4 8 11.6 17.4c-.4 6-3 10.8-6.8 13v4.6c.4 1.8 1.8 2.9 3.8 3.4 11 2 19 9 20 23Z" fill="url(#iws)"/>
+    <path d="M26 70c1-14 9-21 20-23 2-.5 3.4-1.6 3.8-3.4v-4.6c-3.8-2.2-6.4-7-6.8-13-.8-9.4 4.6-17.4 11.6-17.4s12.4 8 11.6 17.4c-.4 6-3 10.8-6.8 13v4.6c.4 1.8 1.8 2.9 3.8 3.4 11 2 19 9 20 23Z" fill="url(#iwh)"/>
+    <text x="54.6" y="35" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="700" font-size="22" fill="#F1D27C">?</text></svg>`,
+  chalk: `<svg viewBox="0 0 104 68" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="104" height="68" fill="#6E4F2C"/><rect x="4" y="4" width="96" height="60" rx="2" fill="#22352A"/>
+    <rect x="4" y="4" width="96" height="60" rx="2" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.2"/>
+    <g fill="none" stroke="#EDE6D2" stroke-width="1.1" stroke-linecap="round" opacity=".88">
+      <path d="M16 16l5 5M21 16l-5 5M44 40l5 5M49 40l-5 5M74 18l5 5M79 18l-5 5"/>
+      <circle cx="30" cy="46" r="3.2"/><circle cx="62" cy="24" r="3.2"/><circle cx="84" cy="46" r="3.2"/>
+      <path d="M21 20c10 6 14 14 22 20" stroke-dasharray="2.4 2"/><path d="M50 42c8-4 14-10 20-17" stroke-dasharray="2.4 2"/></g>
+    <path d="M70 25l1.6-4.4 2.8 3.6Z" fill="#F1D27C"/><path d="M42.4 40.6l-1.2-4.6 4.4 1.6Z" fill="#F1D27C"/>
+    <path d="M14 58h20" stroke="#EDE6D2" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
+    <rect x="80" y="58.6" width="12" height="3.4" rx="1" fill="#D9CFB8"/></svg>`,
+};
 function questionArtRaw(q) {
   if (q.order) return '';   // the cards themselves are the question
   if (q.score || q.xi) return '';   // the scoreboard or the pitch is the picture
@@ -14044,6 +14351,11 @@ function questionArtRaw(q) {
      name ("boot" on every Craques question, the Bola de Ouro ones included) */
   const topic = topicArt(q);
   if (topic) return realArt(topic, q);
+  /* a card of clues with nothing of its own to show is a mystery, not a
+     football on the grass; a question of laws and moves is a chalkboard */
+  if (q.clues || /\bquem sou eu\b/i.test(q.t || '')) return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Retrato misterioso">${INK_ART.who}</div>`;
+  if ((q._cat && q._cat.id === 'regras_jogadas') || /\b(drible|dribles|jogada|jargao|lance de)\b/.test(_fold(q.t || '')))
+    return `<div class="qart qart-wide print qart-ink" role="img" aria-label="Quadro de táticas">${INK_ART.chalk}</div>`;
   const key = q.icon || CAT_ART[(q._cat && q._cat.id) || ''] || 'ball';
   if (FALLBACK_PHOTO[key]) return `<div class="qart qart-wide print"><img src="${FALLBACK_PHOTO[key]}" alt="" aria-hidden="true"
         onerror="this.parentElement.outerHTML='<div class=\'qart qart-wide qart-draw\'>' + QICON['${key}'](92) + '</div>'" /></div>`;
@@ -16424,7 +16736,7 @@ function html() {
 
     ${q.clues ? `
     <div class="qcard qcard-clue">
-      <p>${art ? `<span class="clue-art">${art}</span>` : ICON.target('var(--ink-3)', 14)} Quem sou eu?</p>
+      <div class="clue-head">${art || ''}<p class="clue-title">Quem sou eu?</p></div>
       <ol class="clues">${q.clues.slice(0, q._shown || 1).map((c, i) =>
         `<li style="animation-delay:${i * 50}ms">${c}</li>`).join('')}</ol>
       ${armed && (q._shown || 1) < q.clues.length

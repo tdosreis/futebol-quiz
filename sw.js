@@ -237,8 +237,14 @@
    v73: a board of players is busts even for one-word names (Mazinho,
         Viola); trophies and tournaments are never busts; decades read
         "Anos 2000" on a calendar stamp; an audit of the bank fixed facts
-        that had drifted (Klose's record, Atlético's 1937 title, lineups). */
-const VERSION = 'v73';
+        that had drifted (Klose's record, Atlético's 1937 title, lineups).
+   v74: answers that are not men or clubs are drawn as what they are — the
+        dribble as a move, the derby as two shields, a ground, a cup, a city,
+        a pitch with the spot lit, a mascot, a shirt in its colour; women get
+        their own busts; small round portraits zoom onto the face; "Quem sou
+        eu?" opens on a mystery portrait, rules on a chalkboard; Antony's
+        card waits for its portrait in ink. */
+const VERSION = 'v74';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
