@@ -263,8 +263,11 @@
    v80: mascots are real photographs of their animals (Commons, credited)
         instead of emoji, with no club colours on the question; a nickname,
         mascot or symbol board hides the crests (Bordeaux's says "Girondins")
-        and badges keep a known club's own colours. */
-const VERSION = 'v80';
+        and badges keep a known club's own colours.
+   v81: no answer is a bare letter any more: matches and country lists show
+        their flags, months a calendar, instruments are drawn, composers a
+        note, sentences a quote, unknown clubs a badge, players a bust. */
+const VERSION = 'v81';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
