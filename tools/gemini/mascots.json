@@ -6,7 +6,8 @@
   "art": "galo",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "galo-3"
  },
  {
   "id": "crb",
@@ -15,7 +16,8 @@
   "art": "galo",
   "v": "",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "galo-3"
  },
  {
   "id": "cruzeiro",
@@ -24,7 +26,8 @@
   "art": "raposa",
   "v": "",
   "c1": "#002F8B",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "raposa-3"
  },
  {
   "id": "palmeiras",
@@ -33,7 +36,8 @@
   "art": "porco",
   "v": "",
   "c1": "#005C30",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "porco-3"
  },
  {
   "id": "flamengo",
@@ -42,7 +46,8 @@
   "art": "urubu",
   "v": "",
   "c1": "#CC1011",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "urubu-2"
  },
  {
   "id": "santos",
@@ -51,7 +56,8 @@
   "art": "peixe",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "peixe-2"
  },
  {
   "id": "sport",
@@ -60,7 +66,8 @@
   "art": "leao",
   "v": "coroa",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "leao-1"
  },
  {
   "id": "vitoria",
@@ -69,7 +76,8 @@
   "art": "leao",
   "v": "barra",
   "c1": "#B80000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "leao-1"
  },
  {
   "id": "fortaleza",
@@ -78,7 +86,8 @@
   "art": "leao",
   "v": "pici",
   "c1": "#003A9B",
-  "c2": "#A81C1C"
+  "c2": "#A81C1C",
+  "src": "leao-1"
  },
  {
   "id": "avai",
@@ -87,7 +96,8 @@
   "art": "leao",
   "v": "ilha",
   "c1": "#1B4E9B",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "leao-1"
  },
  {
   "id": "remo",
@@ -96,7 +106,8 @@
   "art": "leao",
   "v": "azul",
   "c1": "#0B1E4B",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "leao-1"
  },
  {
   "id": "americamg",
@@ -105,7 +116,8 @@
   "art": "coelho",
   "v": "",
   "c1": "#1A6B3C",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "coelho-2"
  },
  {
   "id": "pontepreta",
@@ -114,7 +126,8 @@
   "art": "macaca",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "macaca-2"
  },
  {
   "id": "criciuma",
@@ -141,7 +154,8 @@
   "art": "dragao",
   "v": "",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "dragao-1"
  },
  {
   "id": "santacruz",
@@ -150,7 +164,8 @@
   "art": "cobra",
   "v": "",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "cobra-1"
  },
  {
   "id": "goias",
@@ -159,7 +174,8 @@
   "art": "periquito",
   "v": "",
   "c1": "#0A7A3C",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "periquito-3"
  },
  {
   "id": "abc",
@@ -168,7 +184,8 @@
   "art": "elefante",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "elefante-2"
  },
  {
   "id": "sampaio",
@@ -177,7 +194,8 @@
   "art": "tubarao",
   "v": "",
   "c1": "#C00000",
-  "c2": "#E8B10A"
+  "c2": "#E8B10A",
+  "src": "tubarao-1"
  },
  {
   "id": "nautico",
@@ -186,7 +204,8 @@
   "art": "timbu",
   "v": "",
   "c1": "#B80000",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "timbu-1"
  },
  {
   "id": "vasco",
@@ -195,7 +214,8 @@
   "art": "almirante",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "almirante-1"
  },
  {
   "id": "corinthians",
@@ -204,7 +224,8 @@
   "art": "mosqueteiro",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "mosqueteiro-3"
  },
  {
   "id": "gremio",
@@ -213,7 +234,8 @@
   "art": "mosqueteiro",
   "v": "",
   "c1": "#3E72B8",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "mosqueteiro-3"
  },
  {
   "id": "internacional",
@@ -222,7 +244,8 @@
   "art": "saci",
   "v": "",
   "c1": "#C00000",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "saci-2"
  },
  {
   "id": "fluminense",
@@ -231,7 +254,8 @@
   "art": "poDeArroz",
   "v": "",
   "c1": "#8B1D3B",
-  "c2": "#2E7D52"
+  "c2": "#2E7D52",
+  "src": "poDeArroz-1"
  },
  {
   "id": "botafogo",
@@ -249,7 +273,8 @@
   "art": "santo",
   "v": "",
   "c1": "#CC0000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "santo-3"
  },
  {
   "id": "atleticopr",
@@ -258,7 +283,8 @@
   "art": "furacao",
   "v": "",
   "c1": "#C00000",
-  "c2": "#111"
+  "c2": "#111",
+  "src": "furacao-2"
  },
  {
   "id": "bahia",
@@ -276,7 +302,8 @@
   "art": "vovo",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "vovo-1"
  },
  {
   "id": "coritiba",
@@ -294,7 +321,8 @@
   "art": "dourado",
   "v": "",
   "c1": "#0A6B3C",
-  "c2": "#E8B10A"
+  "c2": "#E8B10A",
+  "src": "dourado-2"
  },
  {
   "id": "juventude",
@@ -321,7 +349,8 @@
   "art": "figueira",
   "v": "",
   "c1": "#111",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "figueira-1"
  },
  {
   "id": "paysandu",
@@ -339,7 +368,8 @@
   "art": "caravela",
   "v": "",
   "c1": "#C00000",
-  "c2": "#0A7A3C"
+  "c2": "#0A7A3C",
+  "src": "caravela-2"
  },
  {
   "id": "csa",
@@ -348,7 +378,8 @@
   "art": "azulao",
   "v": "",
   "c1": "#2B2F9B",
-  "c2": "#EEE"
+  "c2": "#EEE",
+  "src": "azulao-1"
  },
  {
   "id": "mirassol",
@@ -357,7 +388,8 @@
   "art": "leao",
   "v": "faixa",
   "c1": "#E8B10A",
-  "c2": "#0A7A3C"
+  "c2": "#0A7A3C",
+  "src": "leao-1"
  },
  {
   "id": "botafogosp",
