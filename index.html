@@ -2581,6 +2581,17 @@
     .b-correct:not(.b-fig) { background-image: url(img/atelier/slip-good.webp) !important; box-shadow: none !important; }
     .b-wrong:not(.b-fig) { background-image: url(img/atelier/slip-bad.webp) !important; box-shadow: none !important; }
     .b-correct:not(.b-fig) .tab, .b-wrong:not(.b-fig) .tab { background: none; color: #22251F; }
+    /* The audience vote on a paper slip. The slip is ivory in both themes, so
+       its figure and bar take fixed paper inks (the theme's --stock is near
+       black at night, which made every pill but the leader's unreadable), and
+       both sit inside the torn edge instead of on it. */
+    .b:not(.b-fig) .vote-pct { right: 12px; top: 9px; background: rgba(34,37,31,.1); color: #22251F;
+      box-shadow: inset 0 0 0 1px rgba(34,37,31,.18); }
+    .b:not(.b-fig).b-top-vote .vote-pct { background: #17593F; color: #F3F1E8; box-shadow: none; }
+    .b-text.b-voted:not(.b-fig) { padding-bottom: 17px; }
+    .b:not(.b-fig) .vote { left: 14px; right: 14px; bottom: 8px; height: 4px; border-radius: 2px; background: rgba(34,37,31,.12); }
+    .b:not(.b-fig) .vote > i { background: #6A6A5E; border-radius: 2px; }
+    .b:not(.b-fig).b-top-vote .vote > i { background: #17593F; }
     .b-gone { border: 0; background: url(img/atelier/stroke-card.webp) center / 100% 100% no-repeat; opacity: .08; }
     /* the lifelines: dabs of paint with a word under them, no card */
     .ajuda { background: none !important; min-width: 0; padding: 4px 6px; }
@@ -11099,7 +11110,7 @@ function usePoll() {
   const others = live.filter(o => o.id !== winner.id);
   const noise  = others.map(o => ({ id: o.id, w: 0.25 + rnd() * rnd() * 3 }));
   const sum    = noise.reduce((s, x) => s + x.w, 0) || 1;
-  const cap    = Math.max(1, lead - 2);
+  const cap    = Math.max(1, Math.round(lead * .7));   // the lead reads as a lead, not a tie
 
   poll = {};
   let spent = 0;
