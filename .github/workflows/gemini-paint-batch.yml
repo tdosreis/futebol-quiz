@@ -16,6 +16,11 @@ on:
         required: false
         type: boolean
         default: false
+      mascot_sources:
+        description: 'Only fetch reference photographs for the mascots (no Gemini calls, no cost)'
+        required: false
+        type: boolean
+        default: false
       only:
         description: 'Only these paths or player ids (comma list, optional)'
         required: false
@@ -80,7 +85,15 @@ jobs:
           git fetch -q origin gemini-batch
           git worktree add -q -B gemini-batch stage FETCH_HEAD
 
+      - name: Fetch mascot reference photographs
+        if: inputs.mascot_sources && matrix.shard == 0
+        env:
+          ONLY: ${{ inputs.only }}
+          OUT: stage/ai-batch
+        run: python3 tools/gemini/mascot_sources.py
+
       - name: Paint this shard
+        if: ${{ !inputs.mascot_sources }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ inputs.model }}
