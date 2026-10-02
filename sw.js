@@ -271,8 +271,11 @@
         plainly; Messi's 21 Copa goals and Mbappé's 22 brought up to date.
    v83: the 2025-26 season as it ended (Arsenal, Inter, Barcelona, Bayern,
         PSG, Aston Villa, Crystal Palace, Ronaldo in six Copas, Messi's
-        eight); facts behind other questions brought up to date. */
-const VERSION = 'v83';
+        eight); facts behind other questions brought up to date.
+   v84: a mascot's photograph shows in the zoom (each disc its own clip);
+        the share card draws it straight from the photograph; a club board
+        never shows a man's face for a club's name ("Charlton"). */
+const VERSION = 'v84';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

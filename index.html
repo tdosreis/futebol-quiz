@@ -11684,11 +11684,15 @@ Object.keys(MSC_IMG).forEach(k => { MASC_ART[k] = (c1, c2) => mscDisc(k, c1, c2)
    the saint) each mascot is — freely licensed, from Wikimedia Commons — in the
    same disc, until the painted mascot is ready. */
 const MSC_PHOTO = new Set(['almirante', 'azulao', 'cachorro', 'caravela', 'cobra', 'coelho', 'dourado', 'dragao', 'elefante', 'figueira', 'furacao', 'galo', 'leao', 'macaca', 'mosqueteiro', 'pantera', 'peixe', 'periquito', 'poDeArroz', 'porco', 'raposa', 'saci', 'santo', 'tigre', 'timbu', 'touro', 'tubarao', 'urubu']);
-const mscPhoto = (k, c1, c2) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="true"
-  style="display:block;width:100%;height:100%;"><defs><clipPath id="mp-${k}"><circle cx="40" cy="40" r="33"/></clipPath></defs>
+/* every disc gets its own clip id: the same mascot can be on the album page
+   (hidden) and in the zoom at once, and a clip found inside a hidden page
+   clips the zoom's photo to nothing */
+let _mpN = 0;
+const mscPhoto = (k, c1, c2, id = 'mp' + (++_mpN)) => `<svg viewBox="0 0 80 80" width="100%" aria-hidden="true"
+  style="display:block;width:100%;height:100%;"><defs><clipPath id="${id}"><circle cx="40" cy="40" r="33"/></clipPath></defs>
   <rect width="80" height="80" fill="var(--retro-card)"/>
   <circle cx="40" cy="40" r="35.5" fill="${c2 || '#E9DDC1'}"/>
-  <image href="img/msc-photo/${k}.webp" x="7" y="7" width="66" height="66" preserveAspectRatio="xMidYMid slice" clip-path="url(#mp-${k})"/>
+  <image href="img/msc-photo/${k}.webp" x="7" y="7" width="66" height="66" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>
   <circle cx="40" cy="40" r="33" fill="none" stroke="${c1 || '#2E4A3A'}" stroke-width="2.5"/>
 </svg>`;
 MSC_PHOTO.forEach(k => { MASC_ART[k] = (c1, c2) => mscPhoto(k, c1, c2); });
@@ -13407,6 +13411,11 @@ function optArtFor(q) {
         !/\s/.test(q.choices[i].trim()) && !(PL.find(p => p.img === r.img && FAMOUS.has(p.id))))
       res[i] = { k: 'face', blank: true, n: q.choices[i] }; });
   }
+  /* a question that asks for a club wants clubs: "Charlton" on a board of
+     English clubs is Charlton Athletic, not Bobby Charlton's face */
+  { const tq = _fold(q.t || '');
+    if (/\b(qual|que|quais) (clube|clubes|time|times)\b/.test(tq) && !/\b(jogador|craque|tecnico|treinador|idolo)\b/.test(tq))
+      res.forEach((r, i) => { if (r && r.k === 'face') res[i] = null; }); }
   const count = {};
   res.forEach(r => { if (r && !r.blank) count[r.k] = (count[r.k] || 0) + 1; });
   const kind = Object.keys(count).sort((a, b) => count[b] - count[a])[0];
@@ -16081,7 +16090,11 @@ async function shareFig(sid) {
   else if (st.kind === 'selecao') drawCover(await loadImg(svgUrl(flagSVG(st.id, 300))), true);
   else {
     const br = CL.find(q => q.id === st.id), m = MASCOTS[st.id] || {};
-    drawCover(await loadImg(svgUrl((MASC_ART[m.art] || (() => '<svg/>'))(br && br.c1, br && br.c2, m.v))), true);
+    /* an SVG drawn into a canvas cannot fetch the photograph inside it, so
+       a mascot with a photograph is drawn from the photograph itself */
+    if (MSC_PAINTED.has(st.id)) drawCover(await loadImg(`img/msc-club/${st.id}.webp`));
+    else if (MSC_PHOTO.has(m.art)) drawCover(await loadImg(`img/msc-photo/${m.art}.webp`));
+    else drawCover(await loadImg(svgUrl((MASC_ART[m.art] || (() => '<svg/>'))(br && br.c1, br && br.c2, m.v))), true);
   }
   if (c.v === 'assin') {
     x.save(); x.translate(px + pw / 2, py + ph - 70); x.rotate(-.16);

@@ -87,22 +87,25 @@ texture and slight hand-painted edges between colours. Full bleed: the flag fill
 edge to edge, no border, no background, no vignette, no signature. Return only the image."""
 
 
-MASCOT = """Paint an original full-length cartoon football mascot character, in the manner of a master \
-illustrator of classic 1990s Brazilian sticker albums, now painted by hand in gouache and watercolour on \
-heavy cold-press paper.
+MASCOT = """Draw an original football mascot as a bold, playful CARICATURE — a cartoon character, not a \
+portrait. It must look clearly different from a painted player portrait: no realism, no painterly watercolour.
 
 The character: {who}. It is the mascot of {club}, known as "{name}". The reference image is a photograph \
-of the real animal or object — keep its true anatomy, proportions, markings and texture, and turn it into a \
-new, original, charming character of that kind, standing or running, full body, friendly and full of \
-personality, with a big expressive face.
+of the real animal or object: use it only to get the character right — its true shape, markings, colours \
+and the features that make it recognisable — then exaggerate them the way a caricaturist would.
 
-It wears a plain football kit in the club's colours: {colors}. No crest, no badge, no logo, no sponsor, \
-no letters and no numbers anywhere.
+Style: classic Brazilian football mascot of the 1980s and 1990s, as printed in sticker albums and on \
+match programmes. Exaggerated proportions — a big head on a small, springy body — with huge expressive \
+eyes, a wide cheeky grin and lots of attitude. A dynamic full-body action pose: kicking a ball, \
+celebrating a goal with a fist in the air, or charging forward. Thick, confident black ink outlines, flat \
+bright colours with simple cel shading and a hint of halftone print texture.
 
-Rendering: confident ink-and-brush outlines, rich opaque gouache with visible brushwork and soft \
-watercolour shading, warm highlights. Background: a soft watercolour wash in the club's colours that runs \
-off every edge — no white paper, no frame, no border, no text, no signature. Square composition, the \
-character centred and filling most of the picture. Return only the image."""
+It wears a football kit in the club's colours: {colors}. No crest, no badge, no logo, no sponsor, no \
+letters and no numbers anywhere.
+
+Background: a simple flat burst or radial glow in the club's colours that runs off every edge — no \
+white paper, no frame, no border, no text, no signature. Square composition, the character centred and \
+filling most of the picture. Return only the image."""
 
 # what each figure is, for the prompt (the reference picture gives the shape)
 MASCOT_WHO = {
