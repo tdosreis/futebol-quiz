@@ -279,8 +279,10 @@
         legible, the bars inside the slip, and the crowd's pick clearly ahead.
    v86: every mascot photograph re-cut from its original so the whole
         animal fits the disc (the urubu had lost its head); two portraits
-        painted as small full-length figures brought closer. */
-const VERSION = 'v86';
+        painted as small full-length figures brought closer.
+   v87: the re-cut mascot photographs under a new folder name, so phones
+        that cached the old crops (pictures are cached by name) fetch them. */
+const VERSION = 'v87';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
