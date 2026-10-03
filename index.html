@@ -2538,6 +2538,7 @@
     .cover .home-foot { justify-content: flex-start; padding-top: 4px; }
     .cv-stats { font-size: 10.5px; color: var(--ink-3); display: flex; gap: 5px; align-items: center; margin-top: -10px; }
     .cover .home-news { align-self: stretch; }
+    .home-indep { margin: 2px 0 0; text-align: center; font-size: 9.5px; color: var(--ink-3); opacity: .8; }
 
     /* ═══ O TABULEIRO — the question set on the page, the answers as paper
        slips laid on it. Ivory on the night paper reads like cards dealt on a
@@ -8706,6 +8707,14 @@ Object.assign(LOGOS, {
    "x_fc_st_pauli": "img/crests/fc-st-pauli.webp",
    "x_torpedo_moscow": "img/crests/torpedo-moscow.webp"
   });
+/* CRESTS WITHDRAWN ON REQUEST. If a club or its rights holder asks for its
+   crest to come out, add its id here (e.g. 'flamengo', 'x_aston_villa') and
+   deploy: everywhere the crest was printed — tiles, cards, the album, the
+   share image — gets the app's own drawn shield instead, and the "whose
+   crest is this?" questions stop asking about that club. Nothing else about
+   the club changes: its name, its questions and the cards people already
+   own all stay. */
+const HIDE_CRESTS = new Set([]);
 /* the club behind an `x_` id, for anything that prints its name */
 const XCREST_NAME = {
    "x_aston_villa": "Aston Villa",
@@ -10672,7 +10681,7 @@ function GEN_QS(tier) {
   /* 35. Whose crest is this?
          The tiles must be names, not crests — ten crests beside the one in the
          question turns a football question into spot-the-picture. */
-  pick(CL.filter(c => LOGOS[c.id]), 8).forEach(c => {
+  pick(CL.filter(c => LOGOS[c.id] && !HIDE_CRESTS.has(c.id)), 8).forEach(c => {
     out.push({
       t: 'De que clube é este escudo?',
       a: [c.id],
@@ -10693,7 +10702,7 @@ function GEN_QS(tier) {
           question. Asked as text, the answer is the club's NAME, so the board
           does not need a row for it. */
   (function () {
-    const foreign = Object.keys(CLUB_NAMES).filter(id => LOGOS[id]);
+    const foreign = Object.keys(CLUB_NAMES).filter(id => LOGOS[id] && !HIDE_CRESTS.has(id));
     pick(foreign, 6).forEach(id => {
       const others = pick(foreign.filter(x => x !== id), 5).map(clubName);
       if (others.length < 5) return;
@@ -16413,6 +16422,7 @@ function html() {
           <button id="bvit2" class="link">Vitrine</button>
           <button id="bcred" class="link">Créditos</button>
         </div>
+        <p class="home-indep">App independente · sem vínculo com clubes, federações ou a FIFA</p>
 
         ${stats.games > 0 ? `<div class="cv-stats">
           ${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
@@ -16703,6 +16713,14 @@ function html() {
     return `
     <div class="pg" style="gap:10px;">
       ${topbar('Créditos das imagens')}
+      <div class="note" style="font-size:11.5px;line-height:1.45;">
+        <div style="font-weight:800;color:var(--brass);margin-bottom:3px;">App independente</div>
+        Este quiz é um projeto de fã, sem vínculo, patrocínio ou aprovação de
+        nenhum clube, federação, liga, da CBF ou da FIFA. Nomes, escudos e marcas
+        pertencem aos seus donos e aparecem só para identificação.
+        Se você representa um clube ou é titular de algum direito e quer que algo
+        seja retirado, escreva para tiagor.reis@gmail.com — atendemos rápido.
+      </div>
       <p class="small muted" style="font-size:11px;">
         As fotos vêm da <b style="color:var(--ink);">Wikimedia Commons</b> e são usadas sob
         licenças livres (CC / domínio público), impressas aqui em serigrafia.
@@ -16716,10 +16734,11 @@ function html() {
         As bandeiras são do projeto <b style="color:var(--ink);">flag-icons</b>, de
         Panayiotis Lipiridis (licença MIT); as da Iugoslávia, da União Soviética e da
         Alemanha Oriental foram desenhadas aqui.<br><br>
-        Os mascotes usam as figuras do <b style="color:var(--ink);">Fluent Emoji</b>,
-        da Microsoft (licença MIT), sobre as cores de cada clube. Mascote de clube
-        é arte do próprio clube e não existe sob licença livre; nenhum destes é a
-        arte oficial de ninguém.
+        Os mascotes são fotografias de bichos e objetos de verdade, também da
+        Wikimedia Commons (listadas abaixo), e alguns usam as figuras do
+        <b style="color:var(--ink);">Fluent Emoji</b>, da Microsoft (licença MIT).
+        Mascote de clube é arte do próprio clube; nenhum destes é a arte oficial
+        de ninguém.
       </p>
       <!-- The cap was a flat 330px, from when the page never filled the sheet;
            on a tall phone that wasted half the screen. It has to stay a cap of
@@ -18207,6 +18226,17 @@ function startTmr() {
 }
 
 /* ── Boot ── */
+/* A withdrawn crest is replaced at the source, so every place that prints
+   LOGOS[id] — an <img>, the canvas share card — draws the shield instead. */
+HIDE_CRESTS.forEach(id => {
+  if (!LOGOS[id]) return;
+  const inner = genericCrest(id);
+  const svg = inner
+    ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">${inner}</svg>`
+    : optBadge(heraldInk(clubName(id)), clubName(id)).replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ');
+  LOGOS[id] = 'data:image/svg+xml,' + encodeURIComponent(svg);
+});
+
 go();
 
 /* ── Service Worker registration ── */

@@ -281,8 +281,11 @@
         animal fits the disc (the urubu had lost its head); two portraits
         painted as small full-length figures brought closer.
    v87: the re-cut mascot photographs under a new folder name, so phones
-        that cached the old crops (pictures are cached by name) fetch them. */
-const VERSION = 'v87';
+        that cached the old crops (pictures are cached by name) fetch them.
+   v88: "App independente" notice on the home screen and the credits page;
+        HIDE_CRESTS, a list that swaps any club's crest for a drawn shield
+        everywhere, for answering a takedown request in one deploy. */
+const VERSION = 'v88';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives
