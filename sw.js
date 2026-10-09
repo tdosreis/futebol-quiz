@@ -284,8 +284,11 @@
         that cached the old crops (pictures are cached by name) fetch them.
    v88: "App independente" notice on the home screen and the credits page;
         HIDE_CRESTS, a list that swaps any club's crest for a drawn shield
-        everywhere, for answering a takedown request in one deploy. */
-const VERSION = 'v88';
+        everywhere, for answering a takedown request in one deploy.
+   v89: the cover fits on one phone screen again — the painting takes the
+        height that is left, the modes are one line each, the álbum and the
+        insígnias share a shelf; nothing under the fold is cut off. */
+const VERSION = 'v89';
 const CACHE   = 'futebol-quiz-' + VERSION;
 /* Photos, crests and flags never change under the same name (each file is
    named by its content), so they live in a cache of their own that survives

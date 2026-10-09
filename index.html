@@ -2474,9 +2474,18 @@
        The painting is the page: full bleed, fading into the paper; the title
        is set over its foot; everything else is typography on the paper —
        a contents list, a fan of stickers — with no boxes around it. */
-    .cover { padding: 0 0 26px; gap: 0; align-items: stretch; text-align: left; min-height: 100%; }
-    .cv-art { position: relative; margin: 0; height: min(64vh, 560px); min-height: 380px; overflow: hidden; }
-    .cv-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%;
+    /* The cover is ONE screen: nothing on a phone scrolls (see #qz), so
+       whatever does not fit is cut off. The painting is the part with give
+       in it — it takes whatever height the controls leave, down to a strip
+       that still shows a face — and everything under it is set tight.
+       --cv-ov is how far the title rides up over the painting's foot. */
+    .cover { --cv-ov: 98px; padding: 0 0 12px; gap: 0; align-items: stretch; text-align: left; min-height: 100%;
+      overflow-x: hidden; overflow-y: auto; }
+    .cv-art { position: relative; margin: 0; flex: 1 1 0; min-height: 150px; max-height: 600px; overflow: hidden; }
+    /* on a desktop the sheet grows with its content, so there is no leftover
+       height for the painting to take: it gets its own */
+    @media (min-width: 700px) { .cv-art { flex: none; height: min(58vh, 540px); } }
+    .cv-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
       -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0,0,0,.55) 74%, transparent 96%);
               mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0,0,0,.55) 74%, transparent 96%);
       animation: cvIn 1.1s cubic-bezier(.2,.7,.2,1) both; }
@@ -2487,58 +2496,80 @@
       padding: max(16px, env(safe-area-inset-top)) 22px 0;
       font: 700 10px/1 var(--font-s); letter-spacing: .26em; text-transform: uppercase; color: rgba(243,238,222,.92);
       text-shadow: 0 1px 3px rgba(0,0,0,.5); }
-    .cv-cap { position: absolute; z-index: 2; right: 22px; bottom: 30%; max-width: 46%; text-align: right;
+    /* the caption sits just above where the title starts, never under it */
+    .cv-cap { position: absolute; z-index: 2; right: 22px; bottom: calc(var(--cv-ov) + 12px); max-width: 46%; text-align: right;
       font: 600 13px/1.25 var(--font-d); color: #F3EEDE; text-shadow: 0 1px 2px rgba(0,0,0,.85), 0 0 14px rgba(0,0,0,.6); }
     .cv-cap b { display: block; font: 700 9px/1 var(--font-s); letter-spacing: .22em; color: var(--brass-2, #E0B968); margin-bottom: 5px; }
     .cv-cap i { display: block; font: 600 10.5px/1.3 var(--font-s); font-style: normal; opacity: .82; margin-top: 2px; }
-    .cv-body { position: relative; z-index: 2; margin-top: -118px; padding: 0 22px; display: flex; flex-direction: column; gap: 20px;
-      width: 100%; max-width: 460px; align-self: center; }
-    .cv-title { font-size: clamp(46px, 14.5vw, 62px); line-height: .9; margin: 0; letter-spacing: -.035em;
+    .cv-body { position: relative; z-index: 2; flex: none; margin-top: calc(-1 * var(--cv-ov)); padding: 0 22px;
+      display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 460px; align-self: center; }
+    .cv-title { font-size: clamp(38px, min(12.5vw, 6.4vh), 58px); line-height: .9; margin: 0 0 2px; letter-spacing: -.035em;
       text-shadow: 0 2px 18px rgba(0,0,0,.35); }
     .cv-title em { display: block; font-style: italic; font-size: 1.12em; margin-left: -.04em; }
-    .cv-dek { margin: -6px 0 0; font: 500 15px/1.42 var(--font-d); color: var(--ink-2); max-width: 30ch; }
+    .cv-dek { margin: -4px 0 0; font: 500 13.5px/1.38 var(--font-d); color: var(--ink-2); }
     .cv-dek b { color: var(--brass); font-weight: 700; white-space: nowrap; }
-    .cv-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-    .cover .cv-cta .btn-lg { width: 100%; justify-content: center; font-size: 19px; padding: 22px 30px 23px; }
-    .cv-best { font: 700 10px/1 var(--font-s); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); padding-left: 6px; }
+    .cv-cta { display: flex; flex-direction: column; align-items: stretch; gap: 7px; }
+    .cover .cv-cta .btn-lg { width: 100%; justify-content: center; font-size: 18px; padding: 16px 30px 17px; }
+    /* the record and the tally share the line under the button */
+    .cv-sub { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 3px 12px; padding: 0 6px; }
+    .cv-best { font: 700 10px/1 var(--font-s); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); }
     .cv-best b { color: var(--brass); letter-spacing: .08em; }
+    .cv-stats { font-size: 10.5px; color: var(--ink-3); display: flex; gap: 5px; align-items: center; white-space: nowrap; }
     .cv-h { display: flex; align-items: center; gap: 10px; margin: 0;
       font: 700 10px/1 var(--font-s); letter-spacing: .26em; text-transform: uppercase; color: var(--ink-3); }
+    .cv-toc .cv-h { margin-bottom: 3px; }
     .cv-toc .cv-h::after { content: ''; flex: 1; height: 5px; background: currentColor; opacity: .35;
       -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
     .cv-toc { display: flex; flex-direction: column; }
-    .cv-row { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; gap: 8px; width: 100%;
-      padding: 14px 0; background: none; border: 0; text-align: left; cursor: pointer; position: relative; color: var(--ink); }
-    .cv-row + .cv-row::before { content: ''; position: absolute; left: 38px; right: 0; top: 0; height: 1px; background: var(--rule); }
-    .cv-n { font: italic 600 22px/1 var(--font-d); color: var(--md); }
-    .cv-rt b { display: block; font: 600 22px/1.05 var(--font-d); letter-spacing: -.015em; }
-    .cv-rt small { display: block; margin-top: 4px; font: 600 12px/1.2 var(--font-s); color: var(--ink-3); }
-    .cv-ic { width: 34px; height: 34px; justify-self: end; transition: transform .2s; }
+    /* the contents list, one line a mode: numeral, name, what it is, its dab */
+    .cv-row { display: grid; grid-template-columns: 28px 1fr 28px; align-items: center; gap: 8px; width: 100%;
+      padding: 7px 0; background: none; border: 0; text-align: left; cursor: pointer; position: relative; color: var(--ink); }
+    .cv-row + .cv-row::before { content: ''; position: absolute; left: 28px; right: 0; top: 0; height: 1px; background: var(--rule); }
+    .cv-n { font: italic 600 19px/1 var(--font-d); color: var(--md); }
+    .cv-rt { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+    .cv-rt b { flex: none; font: 600 19px/1.1 var(--font-d); letter-spacing: -.015em; }
+    .cv-rt small { flex: 1 1 auto; min-width: 0; font: 600 11.5px/1.2 var(--font-s); color: var(--ink-3);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }
+    .cv-ic { width: 28px; height: 28px; justify-self: end; transition: transform .2s; }
     .cv-row:hover .cv-ic, .cv-row:focus-visible .cv-ic { transform: translateX(3px) rotate(-6deg); }
     .cv-row:active { transform: translateY(1px); }
-    .cv-album { display: flex; align-items: center; gap: 18px; padding: 18px 16px 18px 12px; border: 0; width: 100%; cursor: pointer; text-align: left;
-      color: var(--ink); background: var(--at-card-img) center / 100% 100% no-repeat; }
-    .cv-album:hover { background-image: var(--at-card-on); }
-    .cv-fan { position: relative; flex: none; width: 92px; height: 74px; }
-    .cv-fan i { position: absolute; top: 4px; left: calc(var(--i) * 24px); width: 44px; height: 62px; padding: 2px; background: #F4EEDC;
-      border-radius: 2px; box-shadow: 0 3px 8px rgba(0,0,0,.35); transform: rotate(calc((var(--i) - 1) * 9deg));
+    /* the álbum and the insígnias, side by side on one shelf */
+    .cv-shelf { display: flex; gap: 8px; align-items: stretch; }
+    .cv-album { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 9px 14px 9px 10px; border: 0;
+      cursor: pointer; text-align: left; color: var(--ink); background: var(--at-card-img) center / 100% 100% no-repeat; }
+    .cv-album:hover, .cv-ins:hover { background-image: var(--at-card-on); }
+    .cv-fan { position: relative; flex: none; width: 66px; height: 52px; }
+    .cv-fan i { position: absolute; top: 3px; left: calc(var(--i) * 17px); width: 32px; height: 45px; padding: 1.5px; background: #F4EEDC;
+      border-radius: 2px; box-shadow: 0 2px 6px rgba(0,0,0,.35); transform: rotate(calc((var(--i) - 1) * 9deg));
       transform-origin: 50% 120%; }
     .cv-fan i:nth-child(2) { top: 0; z-index: 1; }
     .cv-fan img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block;
       filter: grayscale(1) contrast(.8) brightness(.9); opacity: .55; }
     .cv-fan i.on img { filter: none; opacity: 1; }
-    .cv-at { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-    .cv-at b { font: 600 30px/1 var(--font-d); letter-spacing: -.02em; }
-    .cv-at b small { font: 600 12px/1 var(--font-s); letter-spacing: 0; color: var(--ink-3); }
-    .cv-bar { height: 7px; background: var(--rule-2, rgba(128,128,128,.2));
+    .cv-at { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .cv-at b { font: 600 24px/1 var(--font-d); letter-spacing: -.02em; white-space: nowrap; }
+    .cv-at b small { font: 600 11px/1 var(--font-s); letter-spacing: 0; color: var(--ink-3); }
+    .cv-bar { height: 6px; background: var(--rule-2, rgba(128,128,128,.2));
       -webkit-mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; mask: url(img/atelier/stroke-bar.webp) center / 100% 100%; }
     .cv-bar i { display: block; height: 100%; background: linear-gradient(90deg, #b98c42, #e6c46f); }
-    .cover .medal-strip { max-width: none; justify-content: flex-start; }
-    .cv-body > div:has(> #medal-strip) { align-items: flex-start !important; }
-    .cover .home-foot { justify-content: flex-start; padding-top: 4px; }
-    .cv-stats { font-size: 10.5px; color: var(--ink-3); display: flex; gap: 5px; align-items: center; margin-top: -10px; }
+    .cover .cv-ins { flex: none; width: 98px; max-width: none; flex-direction: column; flex-wrap: nowrap; align-items: center;
+      justify-content: center; gap: 6px; padding: 8px 6px; border: 0; color: var(--ink);
+      background: var(--at-card-img) center / 100% 100% no-repeat; }
+    .cv-ins-dots { display: flex; gap: 5px; }
+    .cover .cv-ins .medal-dot { width: 22px; height: 22px; }
+    .cover .cv-ins .medal-cap { font-size: 8.5px; line-height: 1.3; text-align: center; letter-spacing: .1em; }
+    .cover .home-foot { justify-content: flex-start; padding-top: 0; }
     .cover .home-news { align-self: stretch; }
-    .home-indep { margin: 2px 0 0; text-align: center; font-size: 9.5px; color: var(--ink-3); opacity: .8; }
+    .pg-home.cover .home-news { padding: 9px 16px; }
+    .home-indep { margin: -6px 0 0; text-align: center; font-size: 9.5px; color: var(--ink-3); opacity: .8; }
+    /* a short phone: a little less of everything but the controls */
+    @media (max-height: 700px) {
+      .cover { --cv-ov: 88px; }
+      .cv-body { gap: 10px; }
+      .cv-dek { display: none; }
+      .cv-row { padding: 6px 0; }
+      .cover .cv-cta .btn-lg { padding: 14px 30px 15px; }
+    }
 
     /* ═══ O TABULEIRO — the question set on the page, the answers as paper
        slips laid on it. Ivory on the night paper reads like cards dealt on a
@@ -2729,10 +2760,6 @@
     .qz-screen .qart-wide.print img { border-radius: 0; filter: saturate(.92) sepia(.08); }
     /* a button that can't be pressed yet is a faint stroke, not a muddy one */
     .btn-primary:disabled { background: var(--ink-3) !important; opacity: .28; color: var(--stock); filter: none; }
-    /* the contents list: the numeral sits on the title's line */
-    .cv-row { align-items: start; }
-    .cv-n { padding-top: 3px; }
-    .cv-ic { align-self: center; }
     /* end of the game: the numbers set like a table, without a box */
     .pg .stats { background: none !important; padding: 6px 0; gap: 0; }
     .pg .stats > div { padding: 0 20px; }
@@ -16359,7 +16386,13 @@ function html() {
 
         <div class="cv-cta">
           <button id="mil-btn" class="btn btn-brass btn-lg">${ICON.play('currentColor', 15)} Jogar agora</button>
-          ${best > 0 ? `<span class="cv-best">Seu recorde <b>${money(best)}</b></span>` : ''}
+          ${best > 0 || stats.games > 0 ? `<div class="cv-sub">
+            ${best > 0 ? `<span class="cv-best">Seu recorde <b>${money(best)}</b></span>` : ''}
+            ${stats.games > 0 ? `<span class="cv-stats">
+              ${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
+              · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
+              ${stats.bestStreak >= 3 ? `· ${ICON.flame('var(--brass)', 11)} ${stats.bestStreak}` : ''}</span>` : ''}
+          </div>` : ''}
         </div>
 
       ${(() => {
@@ -16387,33 +16420,34 @@ function html() {
           ${row('cta-btn', 'III', 'Treino', 'Sem apostar, sem pressa', 'train', ICON.ladder('currentColor', 15))}
         </nav>
 
-        <button id="balb" class="cv-album" type="button">
-          <span class="cv-fan" aria-hidden="true">${fan.map((p, i) => `<i class="${album.has(p.id) ? 'on' : ''}" style="--i:${i}"><img src="${p.img}" alt="" aria-hidden="true" loading="lazy"></i>`).join('')}</span>
-          <span class="cv-at">
-            <span class="cv-h">Meu álbum</span>
-            <b>${album.size}<small> de ${ALL_STICKERS.length} figurinhas</small></b>
-            <span class="cv-bar"><i style="width:${Math.max(2, pct)}%"></i></span>
-          </span>
-        </button>
-
-      ${(() => {
-        /* The insígnias, small, on the cover — and printed even at zero. An
-           empty pocket is the invitation; hiding the strip until the first one
-           is won means the player who most needs to see it never does. The
-           full cards live one tap deeper, same as the álbum. */
-        const e = earnedMedals();
-        const shown = e.slice(0, 9);
-        const blanks = Math.max(0, Math.min(3, MEDALS.length - e.length));
-        return `<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
-          <div id="medal-strip" class="medal-strip" title="Insígnias">
-            ${shown.map(m => `<span class="medal-dot" data-medal="${m.id}" title="${m.n}">${
-              (ICON[m.ic] || ICON.medal)('currentColor', 13)}</span>`).join('')}
-            ${e.length > shown.length ? `<span class="small muted" style="align-self:center;">+${e.length - shown.length}</span>` : ''}
-            ${Array.from({ length: blanks }, () => '<span class="medal-dot medal-dot-off" aria-hidden="true"></span>').join('')}
-          </div>
-          <span class="medal-cap">${e.length} de ${MEDALS.length} insígnias</span>
-        </div>`;
-      })()}
+        <div class="cv-shelf">
+          <button id="balb" class="cv-album" type="button">
+            <span class="cv-fan" aria-hidden="true">${fan.map((p, i) => `<i class="${album.has(p.id) ? 'on' : ''}" style="--i:${i}"><img src="${p.img}" alt="" aria-hidden="true" loading="lazy"></i>`).join('')}</span>
+            <span class="cv-at">
+              <span class="cv-h">Meu álbum</span>
+              <b>${album.size}<small> de ${ALL_STICKERS.length}</small></b>
+              <span class="cv-bar"><i style="width:${Math.max(2, pct)}%"></i></span>
+            </span>
+          </button>
+        ${(() => {
+          /* The insígnias, small, beside the álbum — and printed even at
+             zero. An empty pocket is the invitation; hiding them until the
+             first one is won means the player who most needs to see them
+             never does. Three pockets: the latest two won and one still
+             empty, so there is always somewhere for the next to go. */
+          const e = earnedMedals();
+          const shown = e.length >= MEDALS.length ? e.slice(-3) : e.slice(-2);
+          const blanks = Math.max(0, Math.min(3 - shown.length, MEDALS.length - e.length));
+          return `<button id="medal-strip" class="medal-strip cv-ins" type="button" title="Insígnias">
+            <span class="cv-ins-dots">
+              ${shown.map(m => `<span class="medal-dot" data-medal="${m.id}" title="${m.n}">${
+                (ICON[m.ic] || ICON.medal)('currentColor', 12)}</span>`).join('')}
+              ${Array.from({ length: blanks }, () => '<span class="medal-dot medal-dot-off" aria-hidden="true"></span>').join('')}
+            </span>
+            <span class="medal-cap">${e.length} de ${MEDALS.length}<br>insígnias</span>
+          </button>`;
+        })()}
+        </div>
 
         <div class="home-foot">
           <button id="bmute" class="btn btn-ghost btn-icon" title="Som" aria-label="Som">${
@@ -16423,11 +16457,6 @@ function html() {
           <button id="bcred" class="link">Créditos</button>
         </div>
         <p class="home-indep">App independente · sem vínculo com clubes, federações ou a FIFA</p>
-
-        ${stats.games > 0 ? `<div class="cv-stats">
-          ${stats.games} ${stats.games === 1 ? 'partida' : 'partidas'}
-          · ${Math.round(stats.correct / Math.max(1, stats.answered) * 100)}% de acerto
-          ${stats.bestStreak >= 3 ? `· ${ICON.flame('var(--brass)', 11)} ${stats.bestStreak}` : ''}</div>` : ''}
       </div>
     </div>`;
   }
